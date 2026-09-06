@@ -1,0 +1,12 @@
+# UMLS is licensed content and may not be redistributed -- each teammate
+# downloads and generates it locally (see data/README.md). Also just huge
+# (~9.5 GB): the zips, the extracted/intermediate .RRF and .tsv work files,
+# and the generated CSVs and gazetteer are all reproducible from the two
+# UMLS zips, so none of it belongs in git.
+data/external/*.zip
+data/external/umls_work/
+data/external/umls_csvs/
+data/interim/*.db
+
+__pycache__/
+*.pyc

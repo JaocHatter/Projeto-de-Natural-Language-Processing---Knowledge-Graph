@@ -234,6 +234,21 @@ def load_csvs(con: sqlite3.Connection, csv_dir: Path) -> int:
                 # drop purely numeric entries
                 if re.fullmatch(r"[\d\s.,\-]+", norm):
                     continue
+                # Drop "<letter>-<number>" / "<letter> <number>" chemical
+                # codenames (MSH synonyms like "A 7", "A-7", "B 2", "R
+                # 16470" -- old organic-chemistry naming, mostly low-value
+                # TTYs: NM/PCE/CE/PM). 1,448 of these exist across the
+                # alphabet, and the pattern is also exactly how English
+                # case-report prose opens ("A 7-year-old ...", "a 39-week-old
+                # ..."), so every such case falsely tagged one as a drug
+                # entity. Both separators must be excluded together: the
+                # hyphenated single-token form ("a-7") still collides with
+                # the spaced form via sort_key ("7 a" either way) even after
+                # the spaced form itself is dropped. Single-token forms
+                # without a separator ("b12", "t4" -- real abbreviations for
+                # e.g. vitamins/thyroid hormones) are unaffected.
+                if re.fullmatch(r"[a-z][\s-]\d+", norm):
+                    continue
 
                 p = priority(vocab, tty)
                 key = (norm, cui)
