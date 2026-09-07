@@ -21,11 +21,18 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from extract_entities import (  # noqa: E402
-    DEFAULT_CASES, DEFAULT_DB, DEFAULT_MAX_N, extract,
+    DEFAULT_DB, DEFAULT_MAX_N, extract,
 )
 from extract_measurements import (  # noqa: E402
     find_measurements, link_measurement, split_sentences,
 )
+
+# LOCAL OVERRIDE (not committed): point the app at the cleaned/merged corpus
+# (src/clean_cases.py) instead of the raw data/raw/cases.csv -- fixes the 2
+# bad ages, merges the 2 fragmented case series into one row per real
+# patient, and drops the 1 row that's a cohort summary, not a patient. See
+# CLAUDE.md "Known data-quality issues" for why.
+DEFAULT_CASES = Path(__file__).resolve().parents[1] / "data" / "interim" / "cases_clean.csv"
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the
@@ -227,6 +234,12 @@ def main():
         text = case.get("case_text") or ""
         meta = {"case_id": case.get("case_id"), "article_id": case.get("article_id"),
                 "age": case.get("age"), "gender": case.get("gender")}
+        st.sidebar.markdown(
+            f"**Patient** `{meta['case_id']}`\n\n"
+            f"Age: **{meta['age'] or '—'}**  \n"
+            f"Sex: **{meta['gender'] or '—'}**  \n"
+            f"Article: `{meta['article_id']}`"
+        )
     else:
         upload = st.file_uploader("Upload a case report (.txt)", type=["txt"])
         pasted = st.text_area("…or paste the case text here", height=200,
