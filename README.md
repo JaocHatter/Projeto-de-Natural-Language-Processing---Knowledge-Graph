@@ -63,15 +63,44 @@ bash data/external/filter_umls_mrsty.bash   # produces data/external/umls_csvs/
 python3 src/build_gazetteer.py              # produces data/interim/gazetteer.db
 ```
 
-## Entity Extraction
+## Data Cleaning
 
-`src/extract_entities.py` runs longest-match extraction over `data/raw/cases.csv`:
+`data/raw/cases.csv` comes from an upstream dataset build we don't control and has no source
+code of its own -- just a one-line field description in `data/raw/data_dictionary.csv`. It has
+confirmed issues: rows that are chapters of one patient's report split across several `case_id`s,
+rows that aren't single-patient case reports at all, and an `age`/`gender` pair that's occasionally
+wrong (e.g. a newborn's *39-week gestational age* recorded as `age=39`).
+
+`src/clean_cases.py` addresses this before anything else runs:
 
 ```bash
-python3 src/extract_entities.py             # produces data/processed/entities.csv
+python3 src/clean_cases.py                  # data/raw/cases.csv -> data/interim/cases_clean.csv
 ```
 
-Yields **3,287 entities across 56 cases**, typed as Treatment / Finding / Diagnosis / BodyPart /
+- **Merges** 2 articles whose case report was split across multiple `case_id` rows into one row
+  per real patient (`PMC6083636`: 3 fragments -> 1; `PMC11259348`: 2 -> 1).
+- **Drops** 3 rows that aren't single-patient cases: a 115-patient retrospective cohort summary,
+  a dental-education methodology paper, and an unrelated sociology paper about Theranos -- all
+  three slipped in under `case_amount=1` upstream.
+- **Re-derives `age`/`gender` from the case text itself** (regex against the patient-introducing
+  clause -- `"A/An <N>-year-old..."`, newborn/infant language, spelled-out numbers, explicit
+  gender words, pronoun-majority fallback) instead of trusting the upstream columns. Both the
+  upstream and self-extracted values are kept side by side (`age`/`gender` vs.
+  `age_upstream`/`gender_upstream`) for auditing.
+
+Corpus goes from **56 rows to 50 real patients**. Every downstream script takes `--cases`, so
+they all point at the cleaned file instead of the raw one from here on.
+
+## Entity Extraction
+
+`src/extract_entities.py` runs longest-match extraction over the cleaned corpus:
+
+```bash
+python3 src/extract_entities.py --cases data/interim/cases_clean.csv \
+                                 --out data/processed/entities.csv
+```
+
+Yields **3,134 entities across 50 patients**, typed as Treatment / Finding / Diagnosis / BodyPart /
 Exam / Symptom. Each row carries character offsets, CUI, TUI and source vocabulary. See `PLAN.md`
 for the TUI-to-entity mapping.
 
@@ -88,12 +117,13 @@ adjectival phrasing ("4 cm pseudocyst", "5-day history") -- falling back to a ch
 the sentence has no candidate:
 
 ```bash
-python3 src/extract_measurements.py         # produces data/processed/measurements.csv
+python3 src/extract_measurements.py --cases data/interim/cases_clean.csv \
+                                     --out data/processed/measurements.csv
 ```
 
-Against the full gazetteer: **558 measurements across 56 cases**, and 538 of them (96%) resolve to
-a linked entity -- 396 `same_sentence` (high-confidence), 59 `same_sentence_forward` (adjectival,
-e.g. "8 cm spleen"), 83 `window_fallback` (lower-confidence), 20 `none`.
+Against the full gazetteer: **535 measurements across 50 patients**, and 516 of them (96%) resolve
+to a linked entity -- 382 `same_sentence` (high-confidence), 55 `same_sentence_forward` (adjectival,
+e.g. "8 cm spleen"), 79 `window_fallback` (lower-confidence), 19 `none`.
 
 Stdlib-only, following the same offset/normalization conventions as `extract_entities.py` so its
 output lines up with `entities.csv` by character position. Known limitation: the nearest-entity
@@ -116,7 +146,9 @@ whichever one is kept should be the one actually committed to git going forward.
 
 `src/app.py` is a Streamlit viewer that highlights entities inline, for either a corpus case or new
 text you paste or upload. Extraction runs live (~35 ms per case) through the same `extract()`
-function the CLI uses, so the app and the pipeline can never disagree.
+function the CLI uses, so the app and the pipeline can never disagree. The corpus source is
+`data/interim/cases_clean.csv` (50 patients, see Data Cleaning above), not the raw file -- the
+sidebar shows each selected patient's `case_id`, self-extracted age and sex alongside the text.
 
 ```bash
 pip install -r requirements.txt
@@ -136,6 +168,9 @@ Extracted from text via the gazetteer:
 
 - Symptom, Finding, Diagnosis, Exam, Treatment, BodyPart
 
-Carried through from the `cases.csv` columns (not extracted):
+Per-patient, not extracted from the entity gazetteer:
 
-- Person, Age, Sex
+- **Age, Sex** -- self-extracted from the case text by `clean_cases.py` (see Data Cleaning), not
+  carried through from `cases.csv` unchanged; the upstream columns had confirmed errors.
+- **Person** -- identity is the row itself (`case_id` in `cases_clean.csv`, one row per real
+  patient); there's no separate name/ID field beyond that.
