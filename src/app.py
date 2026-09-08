@@ -6,7 +6,7 @@ Combined viewer: UMLS gazetteer NER (app.py) + value/unit extraction
 Requires data/interim/gazetteer.db (build it first: python3 src/build_gazetteer.py).
 
 Run:
-    streamlit run src/app_full.py
+    streamlit run src/app.py
 """
 
 import csv
@@ -14,6 +14,7 @@ import html
 import io
 import sqlite3
 import sys
+from contextlib import closing
 from pathlib import Path
 
 import pandas as pd
@@ -21,18 +22,14 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from extract_entities import (  # noqa: E402
-    DEFAULT_DB, DEFAULT_MAX_N, extract,
+    DEFAULT_DB, DEFAULT_MAX_N, CSV_COLUMNS,
 )
 from extract_measurements import (  # noqa: E402
-    find_measurements, link_measurement, split_sentences,
+    analyze_case, CSV_COLUMNS as MEASUREMENT_COLUMNS,
 )
-
-# LOCAL OVERRIDE (not committed): point the app at the cleaned/merged corpus
-# (src/clean_cases.py) instead of the raw data/raw/cases.csv -- fixes the 2
-# bad ages, merges the 2 fragmented case series into one row per real
-# patient, and drops the 1 row that's a cohort summary, not a patient. See
-# CLAUDE.md "Known data-quality issues" for why.
-DEFAULT_CASES = Path(__file__).resolve().parents[1] / "data" / "interim" / "cases_clean.csv"
+from project_paths import DEFAULT_CASES, DEFAULT_METADATA
+from patient_data import new_patient
+from graph_panel import graph_panel
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the
@@ -45,50 +42,38 @@ PALETTE = {
     "Symptom":     ("#e87ba4", "#d55181"),   # slot 5 magenta
     "BodyPart":    ("#008300", "#008300"),   # slot 6 green
     "Measurement": ("#64748b", "#94a3b8"),   # slot 7 slate -- value/unit
+    "Person": ("#334155", "#334155"),
+    "Age": ("#8b5cf6", "#8b5cf6"),
+    "Sex": ("#0891b2", "#0891b2"),
 }
 ENTITY_ORDER = list(PALETTE)
-
-CSV_COLUMNS = ["case_id", "article_id", "age", "gender", "start", "end",
-               "surface_text", "term_norm", "cui", "tui", "entity_type",
-               "n_tokens", "vocabulary", "tty"]
-
 
 # ---------------------------------------------------------------------------
 # Cached resources
 # ---------------------------------------------------------------------------
 
-@st.cache_resource
-def get_connection() -> sqlite3.Connection:
-    return sqlite3.connect(str(DEFAULT_DB), check_same_thread=False)
+def file_revision(path: Path) -> tuple:
+    stat = path.stat()
+    return stat.st_mtime_ns, stat.st_size
 
 
 @st.cache_data
-def load_cases() -> list[dict]:
+def load_cases(revision: tuple) -> list[dict]:
     with open(DEFAULT_CASES, newline="", encoding="utf-8", errors="replace") as f:
         return list(csv.DictReader(f))
 
 
 @st.cache_data
-def analyze(text: str, max_n: int):
+def analyze(text: str, max_n: int, db_revision: tuple):
     """Full pipeline: gazetteer entities + measurements linked to them."""
-    con = get_connection()
-    gaz_hits = extract(text, con, max_n)
+    with closing(sqlite3.connect(DEFAULT_DB.as_uri() + "?mode=ro", uri=True)) as con:
+        return analyze_case(text, con, max_n)
 
-    entities = [
-        {"start": e["start"], "end": e["end"],
-         "surface_text": e["surface_text"], "entity_type": e["entity_type"]}
-        for e in gaz_hits
-    ]
-    entities.sort(key=lambda e: e["start"])
 
-    sent_spans = split_sentences(text)
-    sent_starts = [s for s, _ in sent_spans]
-
-    measurements = find_measurements(text)
-    for m in measurements:
-        m.update(link_measurement(m, entities, sent_starts))
-
-    return gaz_hits, measurements
+@st.cache_data
+def load_articles(revision: tuple) -> dict:
+    with DEFAULT_METADATA.open(newline="", encoding="utf-8") as f:
+        return {r["article_id"]: r for r in csv.DictReader(f)}
 
 
 # ---------------------------------------------------------------------------
@@ -166,7 +151,8 @@ def render_highlighted(text: str, spans: list[dict]) -> str:
         tip = html.escape(sp["tooltip"], quote=True)
         out.append(
             f'<mark title="{tip}" style="background:{_rgba(PALETTE[sp["kind"]][0], 0.17)};'
-            f'box-shadow: inset 0 -2px 0 {colour}">'
+            f'box-shadow: inset 0 -2px 0 {colour};'
+            f'outline:{"2px solid #111827" if sp.get("selected") else "none"}">'
             f'{html.escape(text[sp["start"]:sp["end"]])}</mark>'
         )
         cursor = sp["end"]
@@ -227,19 +213,28 @@ def main():
 
     text, meta = "", {}
     if source == "Corpus case":
-        cases = load_cases()
+        if not DEFAULT_CASES.exists():
+            st.error("Cleaned corpus not found. Run: python3 src/clean_cases.py")
+            st.stop()
+        cases = load_cases(file_revision(DEFAULT_CASES))
+        if not cases:
+            st.error("The cleaned corpus contains no patients.")
+            st.stop()
         ids = [c["case_id"] for c in cases]
         chosen = st.sidebar.selectbox(f"Case ({len(ids)} available)", ids)
         case = next(c for c in cases if c["case_id"] == chosen)
         text = case.get("case_text") or ""
-        meta = {"case_id": case.get("case_id"), "article_id": case.get("article_id"),
-                "age": case.get("age"), "gender": case.get("gender")}
+        meta = {k: v for k, v in case.items() if k != "case_text"}
+        meta["data_source"] = "data/interim/cases_clean.csv"
         st.sidebar.markdown(
             f"**Patient** `{meta['case_id']}`\n\n"
             f"Age: **{meta['age'] or '—'}**  \n"
             f"Sex: **{meta['gender'] or '—'}**  \n"
             f"Article: `{meta['article_id']}`"
         )
+        with st.sidebar.expander("Patient provenance"):
+            st.json({k: meta.get(k, "") for k in ("source_case_ids", "age_method", "gender_method",
+                                                   "age_upstream", "gender_upstream")})
     else:
         upload = st.file_uploader("Upload a case report (.txt)", type=["txt"])
         pasted = st.text_area("…or paste the case text here", height=200,
@@ -249,13 +244,14 @@ def main():
             st.caption(f"Loaded **{upload.name}** ({len(text):,} characters)")
         else:
             text = pasted
-        meta = {"case_id": "pasted", "article_id": "", "age": "", "gender": ""}
+        meta = new_patient(text)
+        st.sidebar.write(f'Age: {meta["age"] or "unknown"} · Sex: {meta["gender"]}')
 
     if not text.strip():
         st.info("Select a corpus case, or paste / upload text to annotate.")
         st.stop()
 
-    entities, measurements = analyze(text, DEFAULT_MAX_N)
+    entities, measurements = analyze(text, DEFAULT_MAX_N, file_revision(DEFAULT_DB))
 
     counts = {
         **{e: sum(1 for x in entities if x["entity_type"] == e) for e in
@@ -272,36 +268,50 @@ def main():
     )
 
     st.markdown(_colour_css(), unsafe_allow_html=True)
-    st.markdown('<div class="ner-root">', unsafe_allow_html=True)
-    if not spans:
-        st.warning("Nothing matched in this text.")
-    st.markdown(render_legend(set(counts)) + render_highlighted(text, spans), unsafe_allow_html=True)
-
-    left, right = st.columns([1, 2], gap="large")
-    with left:
+    text_tab, graph_tab, tables_tab = st.tabs(["Annotated text", "Knowledge Graph", "Tables"])
+    with graph_tab:
+        article = (load_articles(file_revision(DEFAULT_METADATA)).get(meta["article_id"])
+                   if DEFAULT_METADATA.exists() and meta.get("article_id") else None)
+        st.markdown(render_legend(set(PALETTE)), unsafe_allow_html=True)
+        graph, selected, evidence = graph_panel(meta, text, entities, measurements, PALETTE, article)
+    selected_spans = {(ev["start"], ev["end"]) for ev in evidence}
+    with text_tab:
+        if not spans:
+            st.warning("Nothing matched in this text.")
+        if selected_spans:
+            st.caption("Black outlines mark the graph selection. Exact excerpts are in the graph inspector.")
+        marked = [{**sp, "selected": (sp["start"], sp["end"]) in selected_spans} for sp in spans]
+        if selected_spans:
+            marked = [sp for sp in marked if sp["selected"] or not any(
+                sp["start"] < end and sp["end"] > start for start, end in selected_spans)]
+        st.markdown(render_legend(set(counts)) + render_highlighted(text, marked), unsafe_allow_html=True)
         st.subheader("By type")
         st.markdown(render_bars(counts), unsafe_allow_html=True)
-    with right:
+    with tables_tab:
+        only_selected = st.checkbox("Only graph selection", disabled=selected is None)
+        df = pd.DataFrame([{**meta, **e} for e in entities], columns=CSV_COLUMNS)
+        df_meas = pd.DataFrame([{**meta, **m} for m in measurements], columns=MEASUREMENT_COLUMNS)
+        for column in ("linked_entity_start", "linked_entity_end"):
+            df_meas[column] = pd.to_numeric(df_meas[column], errors="coerce").astype("Int64")
+        shown_e, shown_m = df, df_meas
+        edges = graph["edges"]
+        if only_selected and selected is not None:
+            shown_e = df.loc[[(e["start"], e["end"]) in selected_spans for e in entities]]
+            shown_m = df_meas.loc[[(m["start"], m["end"]) in selected_spans for m in measurements]]
+            edges = [e for e in edges if selected["id"] in (e["id"], e["source"], e["target"])]
         st.subheader("Entities")
-        rows = [{**meta, **e} for e in entities]
-        df = pd.DataFrame(rows, columns=CSV_COLUMNS) if rows else pd.DataFrame(columns=CSV_COLUMNS)
-        st.dataframe(df.drop(columns=["article_id", "age", "gender"]),
+        st.dataframe(shown_e, width="stretch", height=260, hide_index=True)
+        st.subheader("Measurements")
+        st.dataframe(shown_m, width="stretch", height=260, hide_index=True)
+        st.subheader("Relations")
+        st.dataframe(pd.DataFrame(edges, columns=["source", "relation", "target", "count", "link_method"]),
                      width="stretch", height=260, hide_index=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.subheader("Measurements")
-    cols_meas = ["start", "end", "surface_text", "value", "range_low", "range_high",
-                 "unit", "unit_category", "linked_entity_surface", "linked_entity_type",
-                 "link_method"]
-    df_meas = pd.DataFrame(measurements, columns=cols_meas) if measurements else pd.DataFrame(columns=cols_meas)
-    st.dataframe(df_meas, width="stretch", height=280, hide_index=True)
-
-    buf = io.StringIO()
-    df.to_csv(buf, index=False)
-    st.download_button(
-        "⬇ Download entities (CSV)", buf.getvalue(),
-        file_name=f"entities_{meta.get('case_id') or 'pasted'}.csv", mime="text/csv",
-    )
+        st.caption("Extraction CSV downloads include the entire patient, regardless of graph filters.")
+        for label, frame in (("entities", df), ("measurements", df_meas)):
+            buf = io.StringIO()
+            frame.to_csv(buf, index=False)
+            st.download_button(f"Download {label} (CSV)", buf.getvalue(),
+                               file_name=f'{label}_{meta["case_id"]}.csv', mime="text/csv")
 
 
 if __name__ == "__main__":

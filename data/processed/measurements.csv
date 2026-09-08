@@ -1,4 +1,234 @@
 case_id,article_id,start,end,surface_text,is_range,value,range_low,range_high,unit,unit_norm,unit_category,linked_entity_start,linked_entity_end,linked_entity_surface,linked_entity_type,link_method
+PMC5137649_01,PMC5137649,37,42,3-day,False,3,,,day,day,time,54,65,right flank,BodyPart,same_sentence_forward
+PMC5137649_01,PMC5137649,337,340,6cm,False,6,,,cm,cm,length,300,319,computed tomography,Exam,same_sentence
+PMC5137649_01,PMC5137649,516,519,6cm,False,6,,,cm,cm,length,441,448,EUS-FNA,Exam,same_sentence
+PMC5137649_01,PMC5137649,522,525,9cm,False,9,,,cm,cm,length,441,448,EUS-FNA,Exam,same_sentence
+PMC5137649_01,PMC5137649,780,790,476.5ng/ml,False,476.5,,,ng/ml,ng/ml,lab_concentration,737,761,carcinoembryonic antigen,Exam,same_sentence
+PMC5137649_01,PMC5137649,837,840,6iu,False,6,,,iu,iu,dose_unit,737,761,carcinoembryonic antigen,Exam,same_sentence
+PMC5137649_01,PMC5137649,2070,2075,9.5cm,False,9.5,,,cm,cm,length,1975,1998,no evidence of bleeding,Finding,window_fallback
+PMC5137649_01,PMC5137649,2078,2083,4.5cm,False,4.5,,,cm,cm,length,1975,1998,no evidence of bleeding,Finding,window_fallback
+PMC5137649_01,PMC5137649,2086,2091,2.0cm,False,2.0,,,cm,cm,length,1975,1998,no evidence of bleeding,Finding,window_fallback
+PMC5137649_01,PMC5137649,2213,2218,day 4,False,4,,,day,day,time,,,,,none
+PMC9387390_01,PMC9387390,857,866,11 months,False,11,,,months,months,time,891,903,chemotherapy,Treatment,same_sentence_forward
+PMC9387390_01,PMC9387390,1486,1492,4 days,False,4,,,days,days,time,1418,1426,surgical,Treatment,window_fallback
+PMC9387390_01,PMC9387390,1688,1694,7 days,False,7,,,days,days,time,1664,1676,follow-up CT,Exam,same_sentence
+PMC9387390_01,PMC9387390,3666,3671,20 mm,False,20,,,mm,mm,length,3639,3647,drainage,Treatment,window_fallback
+PMC9387390_01,PMC9387390,3674,3679,10 mm,False,10,,,mm,mm,length,3639,3647,drainage,Treatment,window_fallback
+PMC9387390_01,PMC9387390,3938,3943,25 mm,False,25,,,mm,mm,length,3785,3809,delayed gastric emptying,Finding,window_fallback
+PMC9387390_01,PMC9387390,3946,3951,90 mm,False,90,,,mm,mm,length,3785,3809,delayed gastric emptying,Finding,window_fallback
+PMC3437073_01,PMC3437073,288,292,7 cm,False,7,,,cm,cm,length,205,216,tuberculous,Diagnosis,window_fallback
+PMC3437073_01,PMC3437073,546,550,8 cm,False,8,,,cm,cm,length,526,532,spleen,BodyPart,same_sentence
+PMC3437073_01,PMC3437073,1864,1870,300 mg,False,300,,,mg,mg,mass,1859,1862,INH,Treatment,same_sentence
+PMC3437073_01,PMC3437073,1884,1890,600 mg,False,600,,,mg,mg,mass,1859,1862,INH,Treatment,same_sentence
+PMC3437073_01,PMC3437073,1906,1912,600 mg,False,600,,,mg,mg,mass,1895,1905,Ethambutol,Treatment,same_sentence
+PMC3437073_01,PMC3437073,1933,1939,500 mg,False,500,,,mg,mg,mass,1895,1905,Ethambutol,Treatment,same_sentence
+PMC3437073_01,PMC3437073,1947,1954,5 weeks,False,5,,,weeks,weeks,time,1920,1939,Pyrazinamide 500 mg,Treatment,same_sentence
+PMC7102447_01,PMC7102447,154,159,33 mm,False,33,,,mm,mm,length,108,146,bioprosthetic mitral valve replacement,Treatment,same_sentence
+PMC7102447_01,PMC7102447,467,477,0.04 ng/mL,False,0.04,,,ng/mL,ng/ml,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
+PMC7102447_01,PMC7102447,519,529,21.2 ng/mL,False,21.2,,,ng/mL,ng/ml,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
+PMC7102447_01,PMC7102447,534,541,308 U/L,False,308,,,U/L,u/l,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
+PMC7102447_01,PMC7102447,1136,1145,20.1 mmHg,False,20.1,,,mmHg,mmhg,pressure,1092,1105,regurgitation,Symptom,same_sentence
+PMC7102447_01,PMC7102447,1164,1171,0.68 cm,False,0.68,,,cm,cm,length,1092,1105,regurgitation,Symptom,same_sentence
+PMC7102447_01,PMC7102447,1228,1236,6 months,False,6,,,months,months,time,1092,1105,regurgitation,Symptom,window_fallback
+PMC7102447_01,PMC7102447,1480,1485,33 mm,False,33,,,mm,mm,length,1460,1467,surgery,Treatment,same_sentence
+PMC7102447_01,PMC7102447,1789,1795,4 mmHg,False,4,,,mmHg,mmhg,pressure,1746,1772,mitral valve mean gradient,Finding,same_sentence
+PMC6354154_01,PMC6354154,2070,2079,24 months,False,24,,,months,months,time,2104,2114,recurrence,Diagnosis,same_sentence_forward
+PMC6354154_01,PMC6354154,2332,2341,36 months,False,36,,,months,months,time,2316,2327,no response,Finding,window_fallback
+PMC4782471_01,PMC4782471,73,77,5 mm,False,5,,,mm,mm,length,0,4,A 10,Treatment,same_sentence
+PMC4782471_01,PMC4782471,671,676,50 mg,False,50,,,mg,mg,mass,517,541,under general anesthesia,Finding,window_fallback
+PMC4782471_01,PMC4782471,946,952,1-week,False,1,,,week,week,time,886,902,persistent fever,Diagnosis,same_sentence
+PMC4782471_01,PMC4782471,1158,1163,60 mm,False,60,,,mm,mm,length,1135,1149,blood pressure,Finding,same_sentence
+PMC4782471_01,PMC4782471,1406,1412,120 mm,False,120,,,mm,mm,length,1363,1402,elevated erythrocyte sedimentation rate,Finding,same_sentence
+PMC4782471_01,PMC4782471,1438,1446,91 mg/dl,False,91,,,mg/dl,mg/dl,lab_concentration,1363,1402,elevated erythrocyte sedimentation rate,Finding,same_sentence
+PMC4782471_01,PMC4782471,1538,1541,6 g,False,6,,,g,g,mass,1491,1512,normal platelet count,Finding,same_sentence
+PMC4782471_01,PMC4782471,1704,1708,5 mm,False,5,,,mm,mm,length,1664,1680,Echocardiography,Exam,same_sentence
+PMC4782471_01,PMC4782471,1711,1715,6 mm,False,6,,,mm,mm,length,1704,1708,5 mm,Finding,same_sentence
+PMC4782471_01,PMC4782471,2287,2294,3 weeks,False,3,,,weeks,weeks,time,2268,2282,no improvement,Finding,same_sentence
+PMC4782471_01,PMC4782471,2913,2919,12 min,False,12,,,min,min,time,2873,2879,bypass,Treatment,same_sentence
+PMC4782471_01,PMC4782471,3249,3255,2 days,False,2,,,days,days,time,3244,3248,died,Finding,same_sentence
+PMC4835621_01,PMC4835621,1667,1670,73%,False,73,,,%,%,percentage,1616,1638,white blood cell count,Exam,same_sentence
+PMC4835621_01,PMC4835621,1698,1707,11.3 g/dL,False,11.3,,,g/dL,g/dl,lab_concentration,1616,1638,white blood cell count,Exam,same_sentence
+PMC4835621_01,PMC4835621,1789,1793,2.4%,False,2.4,,,%,%,percentage,1767,1785,reticulocyte count,Exam,same_sentence
+PMC4835621_01,PMC4835621,2105,2113,405 IU/L,False,405,,,IU/L,iu/l,lab_concentration,2053,2060,Lactate,Treatment,same_sentence
+PMC4835621_01,PMC4835621,2148,2159,15.30 mg/dL,False,15.30,,,mg/dL,mg/dl,lab_concentration,2053,2060,Lactate,Treatment,window_fallback
+PMC4835621_01,PMC4835621,2260,2263,10%,False,10,,,%,%,percentage,2287,2297,antibodies,Treatment,same_sentence_forward
+PMC4835621_01,PMC4835621,2722,2728,3.5 cm,False,3.5,,,cm,cm,length,2708,2718,thickening,Finding,same_sentence
+PMC4835621_01,PMC4835621,3600,3607,10 days,False,10,,,days,days,time,3588,3599,treated for,Finding,same_sentence
+PMC4835621_01,PMC4835621,3904,3908,2.5%,False,2.5,,,%,%,percentage,,,,,none
+PMC4835621_01,PMC4835621,3916,3920,0.7%,False,0.7,,,%,%,percentage,,,,,none
+PMC4835621_01,PMC4835621,3925,3933,302 IU/L,False,302,,,IU/L,iu/l,lab_concentration,,,,,none
+PMC4835621_01,PMC4835621,3941,3949,182 IU/L,False,182,,,IU/L,iu/l,lab_concentration,,,,,none
+PMC4835621_01,PMC4835621,4078,4088,31.2 mg/dL,False,31.2,,,mg/dL,mg/dl,lab_concentration,4065,4072,therapy,Treatment,same_sentence
+PMC4835621_01,PMC4835621,4092,4102,99.3 mg/dL,False,99.3,,,mg/dL,mg/dl,lab_concentration,4065,4072,therapy,Treatment,same_sentence
+PMC8627357_01,PMC8627357,1101,1104,88%,False,88,,,%,%,percentage,1090,1097,hypoxia,Diagnosis,same_sentence
+PMC5833205_01,PMC5833205,155,162,2 weeks,False,2,,,weeks,weeks,time,137,154,periorbital edema,Diagnosis,same_sentence
+PMC5833205_01,PMC5833205,690,698,1.8 g/dL,False,1.8,,,g/dL,g/dl,lab_concentration,679,686,albumin,Treatment,same_sentence
+PMC5833205_01,PMC5833205,909,918,6.4 mg/dL,False,6.4,,,mg/dL,mg/dl,lab_concentration,876,893,microcytic anemia,Diagnosis,same_sentence
+PMC5833205_01,PMC5833205,1031,1039,1.6 g/dL,False,1.6,,,g/dL,g/dl,lab_concentration,1020,1027,albumin,Treatment,same_sentence
+PMC5833205_01,PMC5833205,1058,1066,3.0 g/dL,False,3.0,,,g/dL,g/dl,lab_concentration,1041,1054,total protein,Exam,same_sentence
+PMC5833205_01,PMC5833205,1180,1187,1.13 mg,False,1.13,,,mg,mg,mass,1079,1098,alpha-1-antitrypsin,Treatment,same_sentence
+PMC5833205_01,PMC5833205,1704,1709,20 mL,False,20,,,mL,ml,volume,1691,1702,transfusion,Treatment,same_sentence
+PMC5833205_01,PMC5833205,1796,1800,6 mg,False,6,,,mg,mg,mass,1771,1782,replacement,Treatment,same_sentence
+PMC5833205_01,PMC5833205,2203,2209,1 week,False,1,,,week,week,time,2177,2184,albumin,Treatment,same_sentence
+PMC5833205_01,PMC5833205,2251,2259,3 months,False,3,,,months,months,time,2263,2267,oral,Finding,same_sentence_forward
+PMC5833205_01,PMC5833205,2310,2319,11.8 g/dL,False,11.8,,,g/dL,g/dl,lab_concentration,2273,2280,therapy,Treatment,same_sentence
+PMC3917415_01,PMC3917415,34,42,23 years,False,23,,,years,years,time,55,58,SLE,Diagnosis,same_sentence_forward
+PMC3917415_01,PMC3917415,202,207,7.5mg,False,7.5,,,mg,mg,mass,181,193,prednisolone,Treatment,same_sentence
+PMC3917415_01,PMC3917415,232,236,50mg,False,50,,,mg,mg,mass,212,228,cyclophosphamide,Treatment,same_sentence
+PMC3917415_01,PMC3917415,300,305,5.6mL,False,5.6,,,mL,ml,volume,212,228,cyclophosphamide,Treatment,window_fallback
+PMC3917415_01,PMC3917415,482,489,66mg/dL,False,66,,,mg/dL,mg/dl,lab_concentration,371,398,chronic kidney disease (CKD,Diagnosis,window_fallback
+PMC3917415_01,PMC3917415,495,502,14mg/dL,False,14,,,mg/dL,mg/dl,lab_concentration,371,398,chronic kidney disease (CKD,Diagnosis,window_fallback
+PMC3917415_01,PMC3917415,577,582,6.5IU,False,6.5,,,IU,iu,dose_unit,558,571,antibody (IgG,Treatment,same_sentence
+PMC7718649_01,PMC7718649,108,113,10 mg,False,10,,,mg,mg,mass,89,92,SLE,Diagnosis,same_sentence
+PMC7718649_01,PMC7718649,156,161,0.2 g,False,0.2,,,g,g,mass,136,154,hydroxychloroquine,Treatment,same_sentence
+PMC7718649_01,PMC7718649,838,843,75 mg,False,75,,,mg,mg,mass,810,814,oral,Finding,same_sentence
+PMC7718649_01,PMC7718649,865,870,0.3 g,False,0.3,,,g,g,mass,857,864,arbidol,Treatment,same_sentence
+PMC7718649_01,PMC7718649,897,902,0.4 g,False,0.4,,,g,g,mass,857,864,arbidol,Treatment,same_sentence
+PMC7718649_01,PMC7718649,942,947,1.4 g,False,1.4,,,g,g,mass,857,864,arbidol,Treatment,same_sentence
+PMC7718649_01,PMC7718649,1097,1103,7 days,False,7,,,days,days,time,1087,1092,drugs,Treatment,same_sentence
+PMC7718649_01,PMC7718649,1560,1563,5 g,False,5,,,g,g,mass,1508,1528,human immunoglobulin,Treatment,same_sentence
+PMC7718649_01,PMC7718649,1649,1654,25 mg,False,25,,,mg,mg,mass,1637,1647,prednisone,Treatment,same_sentence
+PMC7718649_01,PMC7718649,1671,1677,5 days,False,5,,,days,days,time,1637,1647,prednisone,Treatment,same_sentence
+PMC7718649_01,PMC7718649,2554,2561,74 mmHg,False,74,,,mmHg,mmhg,pressure,2531,2545,blood pressure,Finding,same_sentence
+PMC7718649_01,PMC7718649,2736,2739,98%,False,98,,,%,%,percentage,2717,2722,nasal,Finding,same_sentence
+PMC7718649_01,PMC7718649,3108,3112,7.1%,False,7.1,,,%,%,percentage,3137,3142,sugar,Treatment,same_sentence_forward
+PMC7718649_01,PMC7718649,3159,3170,11.1 mmol/L,False,11.1,,,mmol/L,mmol/l,lab_concentration,3137,3142,sugar,Treatment,same_sentence
+PMC7718649_01,PMC7718649,3355,3360,25 mg,False,25,,,mg,mg,mass,3343,3353,Prednisone,Treatment,same_sentence
+PMC7718649_01,PMC7718649,3403,3408,0.2 g,False,0.2,,,g,g,mass,3383,3401,hydroxychloroquine,Treatment,same_sentence
+PMC7718649_01,PMC7718649,3499,3504,40 mg,False,40,,,mg,mg,mass,3475,3483,COVID-19,Diagnosis,window_fallback
+PMC7718649_01,PMC7718649,3602,3607,0.5 g,False,0.5,,,g,g,mass,3576,3586,prednisone,Treatment,window_fallback
+PMC7718649_01,PMC7718649,3704,3709,50 mg,False,50,,,mg,mg,mass,3677,3686,infection,Diagnosis,window_fallback
+PMC7718649_01,PMC7718649,4224,4229,15 mg,False,15,,,mg,mg,mass,4213,4220,reduced,Finding,same_sentence
+PMC7718649_01,PMC7718649,4267,4273,day 15,False,15,,,day,day,time,4244,4253,pneumonia,Diagnosis,window_fallback
+PMC7718649_01,PMC7718649,4872,4877,10 mg,False,10,,,mg,mg,mass,4861,4868,reduced,Finding,same_sentence
+PMC7718649_01,PMC7718649,4977,4983,day 16,False,16,,,day,day,time,4892,4901,pneumonia,Diagnosis,window_fallback
+PMC7718649_01,PMC7718649,5037,5043,day 20,False,20,,,day,day,time,5068,5078,wrist pain,Symptom,same_sentence_forward
+PMC7718649_01,PMC7718649,5096,5101,60 mg,False,60,,,mg,mg,mass,5084,5094,loxoprofen,Treatment,same_sentence
+PMC7718649_01,PMC7718649,5150,5156,day 22,False,22,,,day,day,time,5084,5094,loxoprofen,Treatment,window_fallback
+PMC7718649_01,PMC7718649,5664,5670,3 days,False,3,,,days,days,time,5640,5644,back,BodyPart,same_sentence
+PMC6134951_01,PMC6134951,461,464,40%,False,40,,,%,%,percentage,451,456,score,Finding,same_sentence
+PMC6134951_01,PMC6134951,1077,1083,600 mg,False,600,,,mg,mg,mass,1067,1076,alectinib,Treatment,same_sentence
+PMC6134951_01,PMC6134951,1163,1170,10 days,False,10,,,days,days,time,1131,1152,left-sided chest pain,Symptom,window_fallback
+PMC6134951_01,PMC6134951,2005,2010,30 mg,False,30,,,mg,mg,mass,1979,1989,prednisone,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2014,2019,day 1,False,1,,,day,day,time,1979,1989,prednisone,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2039,2044,20 mg,False,20,,,mg,mg,mass,1979,1989,prednisone,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2084,2089,10 mg,False,10,,,mg,mg,mass,1979,1989,prednisone,Treatment,window_fallback
+PMC6134951_01,PMC6134951,2109,2115,5 days,False,5,,,days,days,time,2081,2086,at 10,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2139,2145,7 days,False,7,,,days,days,time,2081,2086,at 10,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2193,2198,50 mg,False,50,,,mg,mg,mass,2177,2192,diphenhydramine,Treatment,same_sentence
+PMC6134951_01,PMC6134951,2386,2391,1 day,False,1,,,day,day,time,2350,2357,febrile,Symptom,same_sentence
+PMC6134951_01,PMC6134951,2661,2667,1 week,False,1,,,week,week,time,2650,2660,brigatinib,Treatment,same_sentence
+PMC6343374_01,PMC6343374,38,44,2760 g,False,2760,,,g,g,mass,,,,,none
+PMC6343374_01,PMC6343374,92,100,38 weeks,False,38,,,weeks,weeks,time,76,91,gestational age,Finding,same_sentence
+PMC6343374_01,PMC6343374,271,274,75%,False,75,,,%,%,percentage,232,245,truncal valve,BodyPart,same_sentence
+PMC6343374_01,PMC6343374,422,427,day 6,False,6,,,day,day,time,385,393,Surgical,Treatment,same_sentence
+PMC6343374_01,PMC6343374,1383,1390,70 mmHg,False,70,,,mmHg,mmhg,pressure,1278,1287,Follow-up,Finding,same_sentence
+PMC6343374_01,PMC6343374,1478,1486,2 months,False,2,,,months,months,time,1493,1500,surgery,Treatment,same_sentence_forward
+PMC6343374_01,PMC6343374,1580,1588,7 months,False,7,,,months,months,time,1611,1624,stent removal,Treatment,same_sentence_forward
+PMC6343374_01,PMC6343374,1829,1835,54-day,False,54,,,day,day,time,1766,1776,intubation,Treatment,window_fallback
+PMC6343374_01,PMC6343374,1893,1902,36 months,False,36,,,months,months,time,1873,1889,echocardiography,Exam,same_sentence
+PMC6343374_01,PMC6343374,2145,2150,12.5%,False,12.5,,,%,%,percentage,2046,2049,TAC,Treatment,window_fallback
+PMC6343374_01,PMC6343374,2616,2621,13.2%,False,13.2,,,%,%,percentage,2598,2605,surgery,Treatment,same_sentence
+PMC6343374_01,PMC6343374,3453,3457,5 mm,False,5,,,mm,mm,length,3407,3413,relief,Finding,same_sentence
+PMC6343374_01,PMC6343374,3460,3465,20 mm,False,20,,,mm,mm,length,3453,3457,5 mm,Finding,same_sentence
+PMC6343374_01,PMC6343374,3813,3816,33%,False,33,,,%,%,percentage,3727,3735,analysis,Exam,same_sentence
+PMC6343374_01,PMC6343374,3820,3828,6 months,False,6,,,months,months,time,3727,3735,analysis,Exam,same_sentence
+PMC6343374_01,PMC6343374,4211,4217,3 days,False,3,,,days,days,time,4144,4164,ST-segment elevation,Finding,same_sentence
+PMC9529523_01,PMC9529523,46,53,11-year,False,11,,,year,year,time,72,97,postpartum cardiomyopathy,Diagnosis,same_sentence_forward
+PMC9529523_01,PMC9529523,129,135,30-35%,True,,30,35,%,%,percentage,108,125,ejection fraction,Finding,same_sentence
+PMC9529523_01,PMC9529523,926,936,2317 mg/dL,False,2317,,,mg/dL,mg/dl,lab_concentration,912,915,IgG,Exam,same_sentence
+PMC9529523_01,PMC9529523,1411,1416,77 mm,False,77,,,mm,mm,length,1360,1400,elevated; erythrocyte sedimentation rate,Finding,same_sentence
+PMC9529523_01,PMC9529523,1451,1460,6.2 mg/dL,False,6.2,,,mg/dL,mg/dl,lab_concentration,1411,1416,77 mm,Treatment,same_sentence
+PMC9529523_01,PMC9529523,1695,1701,300 mg,False,300,,,mg,mg,mass,1676,1694,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,1709,1715,3.9 mg,False,3.9,,,mg,mg,mass,1676,1694,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,2235,2245,2.14 mg/dL,False,2.14,,,mg/dL,mg/dl,lab_concentration,2215,2231,serum creatinine,Exam,same_sentence
+PMC9529523_01,PMC9529523,2265,2274,1.0 mg/dL,False,1.0,,,mg/dL,mg/dl,lab_concentration,2215,2231,serum creatinine,Exam,same_sentence
+PMC9529523_01,PMC9529523,2311,2319,61 mg/dL,False,61,,,mg/dL,mg/dl,lab_concentration,2337,2350,urine protein,Exam,same_sentence_forward
+PMC9529523_01,PMC9529523,2326,2331,90 mm,False,90,,,mm,mm,length,2337,2350,urine protein,Exam,same_sentence_forward
+PMC9529523_01,PMC9529523,2407,2419,1232.1 ng/ml,False,1232.1,,,ng/ml,ng/ml,lab_concentration,2378,2396,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,2481,2491,1000 ng/mL,False,1000,,,ng/mL,ng/ml,lab_concentration,2446,2464,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,2631,2637,200 mg,False,200,,,mg,mg,mass,2592,2610,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,2645,2651,3.1 mg,False,3.1,,,mg,mg,mass,2592,2610,hydroxychloroquine,Treatment,same_sentence
+PMC9529523_01,PMC9529523,2986,2989,78%,False,78,,,%,%,percentage,2955,2981,forced vital capacity (FVC,Exam,same_sentence
+PMC9529523_01,PMC9529523,3028,3031,83%,False,83,,,%,%,percentage,2955,2981,forced vital capacity (FVC,Exam,same_sentence
+PMC9529523_01,PMC9529523,3049,3053,107%,False,107,,,%,%,percentage,2955,2981,forced vital capacity (FVC,Exam,same_sentence
+PMC9529523_01,PMC9529523,3142,3145,37%,False,37,,,%,%,percentage,3095,3101,carbon,Treatment,same_sentence
+PMC9529523_01,PMC9529523,3460,3462,5%,False,5,,,%,%,percentage,3356,3362,injury,Diagnosis,window_fallback
+PMC9529523_01,PMC9529523,3475,3479,125%,False,125,,,%,%,percentage,3356,3362,injury,Diagnosis,window_fallback
+PMC9529523_01,PMC9529523,3495,3504,995 pg/mL,False,995,,,pg/mL,pg/ml,lab_concentration,3356,3362,injury,Diagnosis,window_fallback
+PMC9529523_01,PMC9529523,4255,4264,1.5 weeks,False,1.5,,,weeks,weeks,time,4268,4289,mycophenolate mofetil,Treatment,same_sentence_forward
+PMC9529523_01,PMC9529523,4509,4512,10%,False,10,,,%,%,percentage,4469,4498,ventricular ejection fraction,Exam,same_sentence
+PMC9529523_01,PMC9529523,4541,4547,860 ml,False,860,,,ml,ml,volume,4514,4532,pericardiocentesis,Treatment,same_sentence
+PMC9529523_01,PMC9529523,4675,4683,17 mg/dL,False,17,,,mg/dL,mg/dl,lab_concentration,4642,4652,malignancy,Diagnosis,window_fallback
+PMC9529523_01,PMC9529523,5093,5102,274 ng/ml,False,274,,,ng/ml,ng/ml,lab_concentration,5064,5082,hydroxychloroquine,Treatment,same_sentence
+PMC9532611_01,PMC9532611,126,136,1.8 mmol/l,False,1.8,,,mmol/l,mmol/l,lab_concentration,55,59,a 12,Treatment,same_sentence
+PMC9532611_01,PMC9532611,189,196,94 mmHg,False,94,,,mmHg,mmhg,pressure,171,183,hypertension,Diagnosis,same_sentence
+PMC9532611_01,PMC9532611,296,302,142 cm,False,142,,,cm,cm,length,232,241,pregnancy,Finding,window_fallback
+PMC9532611_01,PMC9532611,322,327,44 kg,False,44,,,kg,kg,mass,232,241,pregnancy,Finding,window_fallback
+PMC9532611_01,PMC9532611,831,838,4 years,False,4,,,years,years,time,778,790,hypertension,Diagnosis,window_fallback
+PMC9532611_02,PMC9532611,195,200,49 kg,False,49,,,kg,kg,mass,113,137,increased blood pressure,Finding,window_fallback
+PMC9532611_02,PMC9532611,228,234,136 cm,False,136,,,cm,cm,length,113,137,increased blood pressure,Finding,window_fallback
+PMC9532611_02,PMC9532611,317,324,6 years,False,6,,,years,years,time,277,285,bone age,Finding,same_sentence
+PMC5875137_01,PMC5875137,200,206,6.5 cm,False,6.5,,,cm,cm,length,166,181,aortic aneurysm,Diagnosis,same_sentence
+PMC5875137_01,PMC5875137,251,258,3 weeks,False,3,,,weeks,weeks,time,283,313,replacement of ascending aorta,Treatment,same_sentence_forward
+PMC5875137_01,PMC5875137,319,324,30 mm,False,30,,,mm,mm,length,283,313,replacement of ascending aorta,Treatment,same_sentence
+PMC6949661_01,PMC6949661,1136,1143,122 bpm,False,122,,,bpm,bpm,rate,1121,1132,tachycardia,Finding,same_sentence
+PMC6949661_01,PMC6949661,2575,2580,30 cm,False,30,,,cm,cm,length,2567,2574,jejunum,BodyPart,same_sentence
+PMC6949661_01,PMC6949661,2776,2782,130 cm,False,130,,,cm,cm,length,2755,2761,pushed,Diagnosis,same_sentence
+PMC6949661_01,PMC6949661,3030,3037,2 years,False,2,,,years,years,time,3041,3048,surgery,Treatment,same_sentence_forward
+PMC10405809_01,PMC10405809,77,82,10 kg,False,10,,,kg,kg,mass,48,57,dysphagia,Diagnosis,same_sentence
+PMC10405809_01,PMC10405809,168,175,5 years,False,5,,,years,years,time,128,151,epigastric burning pain,Symptom,same_sentence
+PMC10405809_01,PMC10405809,878,882,3 cm,False,3,,,cm,cm,length,854,868,Barium swallow,Exam,same_sentence
+PMC10405809_01,PMC10405809,885,889,2 cm,False,2,,,cm,cm,length,854,868,Barium swallow,Exam,same_sentence
+PMC10405809_01,PMC10405809,1519,1524,20 cm,False,20,,,cm,cm,length,1476,1502,Esophagogastroduodenoscopy,Exam,same_sentence
+PMC10405809_01,PMC10405809,1721,1726,12 mm,False,12,,,mm,mm,length,1658,1665,dilated,Finding,same_sentence
+PMC10405809_01,PMC10405809,2493,2498,15 mm,False,15,,,mm,mm,length,2454,2472,balloon dilatation,Treatment,same_sentence
+PMC10405809_01,PMC10405809,2502,2509,4-weeks,False,4,,,weeks,weeks,time,2454,2472,balloon dilatation,Treatment,same_sentence
+PMC10405809_01,PMC10405809,2576,2581,20 mg,False,20,,,mg,mg,mass,2526,2536,dilatation,Diagnosis,same_sentence
+PMC10405809_01,PMC10405809,2623,2631,6 months,False,6,,,months,months,time,2605,2615,hematinics,Treatment,window_fallback
+PMC10405809_01,PMC10405809,2644,2648,7 kg,False,7,,,kg,kg,mass,2668,2682,feeds normally,Finding,same_sentence_forward
+PMC7519975_01,PMC7519975,1128,1135,65 mmHg,False,65,,,mmHg,mmhg,pressure,1081,1104,arterial blood pressure,Finding,same_sentence
+PMC7519975_01,PMC7519975,1637,1644,148 meq,False,148,,,meq,meq,dose_unit,1624,1636,serum sodium,Exam,same_sentence
+PMC7519975_01,PMC7519975,1668,1675,3.7 meq,False,3.7,,,meq,meq,dose_unit,1652,1667,serum potassium,Exam,same_sentence
+PMC7519975_01,PMC7519975,1692,1699,112 meq,False,112,,,meq,meq,dose_unit,1683,1691,chloride,Treatment,same_sentence
+PMC7519975_01,PMC7519975,1711,1716,17 mg,False,17,,,mg,mg,mass,1707,1710,BUN,Exam,same_sentence
+PMC7519975_01,PMC7519975,1739,1745,0.4 mg,False,0.4,,,mg,mg,mass,1707,1710,BUN,Exam,same_sentence
+PMC7519975_01,PMC7519975,1771,1777,125 mg,False,125,,,mg,mg,mass,1757,1770,serum glucose,Exam,same_sentence
+PMC7519975_01,PMC7519975,1803,1809,8.2 mg,False,8.2,,,mg,mg,mass,1789,1802,serum calcium,Exam,same_sentence
+PMC7519975_01,PMC7519975,2091,2098,30 days,False,30,,,days,days,time,2069,2083,cardiac arrest,Diagnosis,same_sentence
+PMC7519975_01,PMC7519975,3835,3842,60 mmHg,False,60,,,mmHg,mmhg,pressure,3795,3818,arterial blood pressure,Finding,same_sentence
+PMC7519975_01,PMC7519975,3893,3899,62 bpm,False,62,,,bpm,bpm,rate,3878,3883,heart,BodyPart,same_sentence
+PMC7519975_01,PMC7519975,4011,4017,88-90%,True,,88,90,%,%,percentage,3990,3996,oxygen,Treatment,same_sentence
+PMC7519975_01,PMC7519975,4440,4445,day 2,False,2,,,day,day,time,4288,4295,Surgery,Treatment,window_fallback
+PMC7519975_01,PMC7519975,4505,4510,day 3,False,3,,,day,day,time,4471,4482,vasopressor,Treatment,same_sentence
+PMC7519975_01,PMC7519975,4556,4561,day 4,False,4,,,day,day,time,4505,4510,day 3,Finding,window_fallback
+PMC7519975_01,PMC7519975,4741,4746,day 7,False,7,,,day,day,time,4719,4723,died,Finding,same_sentence
+PMC3950436_01,PMC3950436,39,44,40 kg,False,40,,,kg,kg,mass,,,,,none
+PMC3950436_01,PMC3950436,1413,1420,74 mmHg,False,74,,,mmHg,mmhg,pressure,1389,1403,blood pressure,Finding,same_sentence
+PMC3950436_01,PMC3950436,1475,1478,98%,False,98,,,%,%,percentage,1446,1452,oxygen,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1560,1566,120 mg,False,120,,,mg,mg,mass,1513,1521,Ketamine,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1568,1572,3 mg,False,3,,,mg,mg,mass,1513,1521,Ketamine,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1588,1593,10 ml,False,10,,,ml,ml,volume,1513,1521,Ketamine,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1694,1700,80 mcg,False,80,,,mcg,mcg,mass,1712,1727,dexmedetomidine,Treatment,same_sentence_forward
+PMC3950436_01,PMC3950436,1702,1707,2 mcg,False,2,,,mcg,mcg,mass,1712,1727,dexmedetomidine,Treatment,same_sentence_forward
+PMC3950436_01,PMC3950436,1787,1792,10 ml,False,10,,,ml,ml,volume,1729,1737,Precedex,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1813,1816,5 g,False,5,,,g,g,mass,1808,1812,EMLA,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1823,1825,5%,False,5,,,%,%,percentage,1808,1812,EMLA,Treatment,same_sentence
+PMC3950436_01,PMC3950436,1930,1935,10 cm,False,10,,,cm,cm,length,1898,1918,planned tracheostomy,Treatment,same_sentence
+PMC3950436_01,PMC3950436,2198,2205,70 mmHg,False,70,,,mmHg,mmhg,pressure,2207,2209,HR,Finding,same_sentence_forward
+PMC3950436_01,PMC3950436,2242,2245,98%,False,98,,,%,%,percentage,2234,2236,O2,Treatment,same_sentence
+PMC3950436_01,PMC3950436,2249,2252,24G,False,24,,,G,g,mass,2234,2236,O2,Treatment,window_fallback
+PMC3950436_01,PMC3950436,2346,2350,5 ml,False,5,,,ml,ml,volume,2351,2360,lidocaine,Treatment,same_sentence_forward
+PMC3950436_01,PMC3950436,2361,2363,1%,False,1,,,%,%,percentage,2351,2360,lidocaine,Treatment,same_sentence
+PMC3950436_01,PMC3950436,2531,2537,6.0 mm,False,6.0,,,mm,mm,length,2508,2520,tracheostomy,Treatment,same_sentence
+PMC10434843_01,PMC10434843,414,421,2 years,False,2,,,years,years,time,403,413,right hand,BodyPart,same_sentence
+PMC10434843_01,PMC10434843,1962,1970,603 mg/l,False,603,,,mg/l,mg/l,lab_concentration,1940,1953,total protein,Exam,same_sentence
+PMC10434843_01,PMC10434843,2194,2199,33.7%,False,33.7,,,%,%,percentage,2180,2182,CD,Finding,same_sentence
+PMC10434843_01,PMC10434843,3142,3145,50%,False,50,,,%,%,percentage,3067,3095,motor nerve conduction block,Finding,same_sentence
+PMC10434843_01,PMC10434843,4869,4876,4 weeks,False,4,,,weeks,weeks,time,4858,4862,IVIG,Treatment,same_sentence
+PMC10434843_01,PMC10434843,5197,5204,3-month,False,3,,,month,month,time,5092,5097,wrist,BodyPart,same_sentence
+PMC10434843_01,PMC10434843,5479,5482,50%,False,50,,,%,%,percentage,5423,5451,motor nerve conduction block,Finding,same_sentence
+PMC2700431_01,PMC2700431,952,958,day 15,False,15,,,day,day,time,887,898,nasogastric,BodyPart,window_fallback
 PMC10106591_01,PMC10106591,236,243,2 weeks,False,2,,,weeks,weeks,time,212,222,chest pain,Symptom,same_sentence
 PMC10106591_01,PMC10106591,624,631,7 years,False,7,,,years,years,time,607,619,hypertension,Diagnosis,same_sentence
 PMC10106591_01,PMC10106591,686,692,150 mg,False,150,,,mg,mg,mass,655,672,antihypertensives,Treatment,same_sentence
@@ -30,489 +260,11 @@ PMC10106591_01,PMC10106591,3884,3889,90 mg,False,90,,,mg,mg,mass,3846,3855,dilti
 PMC10106591_01,PMC10106591,3944,3950,100 mg,False,100,,,mg,mg,mass,3846,3855,diltiazem,Treatment,same_sentence
 PMC10106591_01,PMC10106591,4008,4013,20 mg,False,20,,,mg,mg,mass,3935,3950,"aspirin, 100 mg",Treatment,same_sentence
 PMC10106591_01,PMC10106591,4357,4365,3 months,False,3,,,months,months,time,4291,4300,follow-up,Finding,same_sentence
-PMC10405809_01,PMC10405809,77,82,10 kg,False,10,,,kg,kg,mass,48,57,dysphagia,Diagnosis,same_sentence
-PMC10405809_01,PMC10405809,168,175,5 years,False,5,,,years,years,time,128,151,epigastric burning pain,Symptom,same_sentence
-PMC10405809_01,PMC10405809,878,882,3 cm,False,3,,,cm,cm,length,854,868,Barium swallow,Exam,same_sentence
-PMC10405809_01,PMC10405809,885,889,2 cm,False,2,,,cm,cm,length,854,868,Barium swallow,Exam,same_sentence
-PMC10405809_01,PMC10405809,1520,1525,20 cm,False,20,,,cm,cm,length,1477,1503,Esophagogastroduodenoscopy,Exam,same_sentence
-PMC10405809_01,PMC10405809,1722,1727,12 mm,False,12,,,mm,mm,length,1659,1666,dilated,Finding,same_sentence
-PMC10405809_01,PMC10405809,2494,2499,15 mm,False,15,,,mm,mm,length,2455,2473,balloon dilatation,Treatment,same_sentence
-PMC10405809_01,PMC10405809,2503,2510,4-weeks,False,4,,,weeks,weeks,time,2455,2473,balloon dilatation,Treatment,same_sentence
-PMC10405809_01,PMC10405809,2577,2582,20 mg,False,20,,,mg,mg,mass,2527,2537,dilatation,Diagnosis,same_sentence
-PMC10405809_01,PMC10405809,2624,2632,6 months,False,6,,,months,months,time,2606,2616,hematinics,Treatment,window_fallback
-PMC10405809_01,PMC10405809,2645,2649,7 kg,False,7,,,kg,kg,mass,2669,2683,feeds normally,Finding,same_sentence_forward
-PMC10434843_01,PMC10434843,414,421,2 years,False,2,,,years,years,time,403,413,right hand,BodyPart,same_sentence
-PMC10434843_01,PMC10434843,1964,1972,603 mg/l,False,603,,,mg/l,mg/l,lab_concentration,1942,1955,total protein,Exam,same_sentence
-PMC10434843_01,PMC10434843,2196,2201,33.7%,False,33.7,,,%,%,percentage,2182,2184,CD,Finding,same_sentence
-PMC10434843_01,PMC10434843,3145,3148,50%,False,50,,,%,%,percentage,3070,3098,motor nerve conduction block,Finding,same_sentence
-PMC10434843_01,PMC10434843,4874,4881,4 weeks,False,4,,,weeks,weeks,time,4863,4867,IVIG,Treatment,same_sentence
-PMC10434843_01,PMC10434843,5202,5209,3-month,False,3,,,month,month,time,5097,5102,wrist,BodyPart,same_sentence
-PMC10434843_01,PMC10434843,5484,5487,50%,False,50,,,%,%,percentage,5428,5456,motor nerve conduction block,Finding,same_sentence
-PMC10488652_01,PMC10488652,154,161,10 days,False,10,,,days,days,time,82,91,emergency,Diagnosis,same_sentence
-PMC10488652_01,PMC10488652,1007,1015,6.2 g/dl,False,6.2,,,g/dl,g/dl,lab_concentration,973,981,dilution,Exam,same_sentence
-PMC10488652_01,PMC10488652,1028,1033,18.1%,False,18.1,,,%,%,percentage,1017,1027,hematocrit,Exam,same_sentence
-PMC10488652_01,PMC10488652,1362,1367,40 mg,False,40,,,mg,mg,mass,1335,1348,dexamethasone,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1392,1398,4 days,False,4,,,days,days,time,1335,1348,dexamethasone,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1435,1441,200 mg,False,200,,,mg,mg,mass,1403,1421,hydroxychloroquine,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1766,1770,5 mg,False,5,,,mg,mg,mass,1742,1752,prednisone,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1817,1823,200 mg,False,200,,,mg,mg,mass,1785,1803,hydroxychloroquine,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1876,1882,500 mg,False,500,,,mg,mg,mass,1841,1862,mycophenolate mofetil,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1889,1897,12 hours,False,12,,,hours,hours,time,1841,1862,mycophenolate mofetil,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1939,1945,500 mg,False,500,,,mg,mg,mass,1841,1862,mycophenolate mofetil,Treatment,same_sentence
-PMC10488652_01,PMC10488652,1952,1959,8 hours,False,8,,,hours,hours,time,1841,1862,mycophenolate mofetil,Treatment,same_sentence
-PMC10521634_01,PMC10521634,326,328,4g,False,4,,,g,g,mass,319,324,5-ASA,Treatment,same_sentence
-PMC10521634_01,PMC10521634,713,721,11.5g/dl,False,11.5,,,g/dl,g/dl,lab_concentration,725,739,platelet count,Exam,same_sentence_forward
-PMC10521634_01,PMC10521634,771,777,5mg/dl,False,5,,,mg/dl,mg/dl,lab_concentration,725,739,platelet count,Exam,same_sentence
-PMC10521634_01,PMC10521634,889,895,300 mg,False,300,,,mg,mg,mass,870,880,infections,Diagnosis,same_sentence
-PMC10521634_01,PMC10521634,1006,1013,week 10,False,10,,,week,week,time,1017,1026,treatment,Treatment,same_sentence_forward
-PMC10521634_01,PMC10521634,1152,1160,14 weeks,False,14,,,weeks,weeks,time,1168,1177,treatment,Treatment,same_sentence_forward
-PMC10521634_01,PMC10521634,1340,1347,week 26,False,26,,,week,week,time,1317,1326,remission,Finding,window_fallback
-PMC10521634_01,PMC10521634,1945,1951,120 cm,False,120,,,cm,cm,length,1959,1964,colon,BodyPart,same_sentence_forward
-PMC10521634_01,PMC10521634,2431,2434,5mg,False,5,,,mg,mg,mass,2412,2422,biosimilar,Treatment,same_sentence
-PMC10521634_01,PMC10521634,3097,3104,4 weeks,False,4,,,weeks,weeks,time,3109,3112,add,Finding,same_sentence_forward
-PMC10521634_01,PMC10521634,3132,3137,2.5mg,False,2.5,,,mg,mg,mass,3113,3125,azathioprine,Treatment,same_sentence
-PMC10521634_01,PMC10521634,3203,3211,24 weeks,False,24,,,weeks,weeks,time,3223,3232,treatment,Treatment,same_sentence_forward
-PMC11131390_01,PMC11131390,25,33,64 years,False,64,,,years,years,time,2,9,retired,Finding,same_sentence
-PMC11131390_01,PMC11131390,337,350,2.0-4.4 pg/mL,True,,2.0,4.4,pg/mL,pg/ml,lab_concentration,198,213,hyperthyroidism,Diagnosis,same_sentence
-PMC11131390_01,PMC11131390,485,494,16.3 IU/L,False,16.3,,,IU/L,iu/l,lab_concentration,460,469,diagnosis,Exam,same_sentence
-PMC11131390_01,PMC11131390,504,513,1.75 IU/L,False,1.75,,,IU/L,iu/l,lab_concentration,460,469,diagnosis,Exam,same_sentence
-PMC11131390_01,PMC11131390,546,551,34 IU,False,34,,,IU,iu,dose_unit,520,530,antibodies,Treatment,same_sentence
-PMC11131390_01,PMC11131390,607,613,115 IU,False,115,,,IU,iu,dose_unit,580,590,antibodies,Treatment,same_sentence
-PMC11131390_01,PMC11131390,779,784,20 mg,False,20,,,mg,mg,mass,761,772,carbimazole,Treatment,same_sentence
-PMC11131390_01,PMC11131390,990,994,5 mg,False,5,,,mg,mg,mass,967,976,euthyroid,Finding,same_sentence
-PMC11131390_01,PMC11131390,1015,1024,15 months,False,15,,,months,months,time,967,976,euthyroid,Finding,same_sentence
-PMC11131390_01,PMC11131390,1153,1159,2.5 mg,False,2.5,,,mg,mg,mass,1073,1085,discontinued,Finding,same_sentence
-PMC11131390_01,PMC11131390,1168,1176,2 months,False,2,,,months,months,time,1073,1085,discontinued,Finding,same_sentence
-PMC11131390_01,PMC11131390,1239,1246,2 years,False,2,,,years,years,time,1213,1222,treatment,Treatment,same_sentence
-PMC11131390_01,PMC11131390,1550,1558,3.3 IU/L,False,3.3,,,IU/L,iu/l,lab_concentration,1478,1487,euthyroid,Finding,same_sentence
-PMC11131390_01,PMC11131390,1578,1586,4 months,False,4,,,months,months,time,1478,1487,euthyroid,Finding,window_fallback
-PMC11131390_01,PMC11131390,1634,1638,4 kg,False,4,,,kg,kg,mass,1639,1650,weight gain,Finding,same_sentence_forward
-PMC11131390_01,PMC11131390,1652,1660,67-71 kg,True,,67,71,kg,kg,mass,1639,1650,weight gain,Finding,same_sentence
-PMC11131390_01,PMC11131390,1867,1875,66 years,False,66,,,years,years,time,1854,1865,patient age,Finding,same_sentence
-PMC11131390_01,PMC11131390,1894,1899,71 kg,False,71,,,kg,kg,mass,1854,1865,patient age,Finding,same_sentence
-PMC11131390_01,PMC11131390,2187,2196,45 months,False,45,,,months,months,time,1964,1977,levothyroxine,Treatment,same_sentence
-PMC11131390_01,PMC11131390,2283,2291,0.8 IU/L,False,0.8,,,IU/L,iu/l,lab_concentration,,,,,none
-PMC11131390_01,PMC11131390,2421,2429,4 months,False,4,,,months,months,time,2383,2397,hypothyroidism,Diagnosis,same_sentence
-PMC11259348_P1,PMC11259348,161,167,4 g/dL,False,4,,,g/dL,g/dl,lab_concentration,140,156,hemoglobin level,Exam,same_sentence
-PMC11259348_P1,PMC11259348,2597,2600,50%,False,50,,,%,%,percentage,,,,,none
-PMC11259348_P1,PMC11259348,3053,3056,50%,False,50,,,%,%,percentage,2857,2861,"2, P",Treatment,same_sentence
-PMC11259348_P1,PMC11259348,3239,3242,50%,False,50,,,%,%,percentage,3187,3194,a group,Finding,same_sentence
-PMC11259348_P1,PMC11259348,3440,3446,30 min,False,30,,,min,min,time,3447,3464,incubation period,Finding,same_sentence_forward
-PMC11345641_01,PMC11345641,736,742,289U/L,False,289,,,U/L,u/l,lab_concentration,680,707,serum lactate dehydrogenase,Exam,same_sentence
-PMC11345641_01,PMC11345641,859,864,8.4cm,False,8.4,,,cm,cm,length,832,838,uterus,BodyPart,same_sentence
-PMC11345641_01,PMC11345641,988,992,15mm,False,15,,,mm,mm,length,974,984,thickening,Finding,same_sentence
-PMC11345641_01,PMC11345641,1152,1158,12.6cm,False,12.6,,,cm,cm,length,1104,1117,anterior wall,BodyPart,same_sentence
-PMC11345641_01,PMC11345641,1165,1168,80%,False,80,,,%,%,percentage,1104,1117,anterior wall,BodyPart,same_sentence
-PMC11345641_01,PMC11345641,1657,1662,12 cm,False,12,,,cm,cm,length,1629,1637,fibroids,Diagnosis,same_sentence
-PMC11345641_01,PMC11345641,2352,2358,7.8 cm,False,7.8,,,cm,cm,length,2204,2219,ultrasonography,Exam,same_sentence
-PMC11345641_01,PMC11345641,2776,2783,340 U/L,False,340,,,U/L,u/l,lab_concentration,2717,2725,Serum CA,Exam,same_sentence
-PMC11345641_01,PMC11345641,3035,3039,5 cm,False,5,,,cm,cm,length,2983,2999,limited mobility,Finding,window_fallback
-PMC11345641_01,PMC11345641,3338,3343,20 cm,False,20,,,cm,cm,length,3313,3320,surgery,Treatment,same_sentence
-PMC11345641_01,PMC11345641,3666,3670,3 cm,False,3,,,cm,cm,length,3653,3659,tumors,Diagnosis,same_sentence
-PMC11345641_01,PMC11345641,3763,3767,7 cm,False,7,,,cm,cm,length,3750,3756,tumors,Diagnosis,same_sentence
-PMC11345641_01,PMC11345641,3867,3871,4 cm,False,4,,,cm,cm,length,3821,3832,lymph nodes,BodyPart,same_sentence
-PMC11368112_01,PMC11368112,26,31,2-day,False,2,,,day,day,time,43,58,chest tightness,Symptom,same_sentence_forward
-PMC11368112_01,PMC11368112,532,535,85%,False,85,,,%,%,percentage,405,422,rapid respiration,Finding,window_fallback
-PMC11368112_01,PMC11368112,542,549,65 mg/L,False,65,,,mg/L,mg/l,lab_concentration,405,422,rapid respiration,Finding,window_fallback
-PMC11368112_01,PMC11368112,556,561,55 mm,False,55,,,mm,mm,length,405,422,rapid respiration,Finding,window_fallback
-PMC11368112_01,PMC11368112,578,588,26.12 mg/L,False,26.12,,,mg/L,mg/l,lab_concentration,,,,,none
-PMC11368112_01,PMC11368112,1783,1787,3 cm,False,3,,,cm,cm,length,1725,1737,intracardiac,BodyPart,window_fallback
-PMC11368112_01,PMC11368112,2280,2290,0.2-0.8 cm,True,,0.2,0.8,cm,cm,length,2263,2278,multiple ulcers,Diagnosis,same_sentence
-PMC11368112_01,PMC11368112,2966,2971,80 mg,False,80,,,mg,mg,mass,2944,2962,methylprednisolone,Treatment,same_sentence
-PMC11368112_01,PMC11368112,3000,3005,60 mg,False,60,,,mg,mg,mass,2944,2962,methylprednisolone,Treatment,same_sentence
-PMC11368112_01,PMC11368112,3043,3047,5 mg,False,5,,,mg,mg,mass,3032,3039,reduced,Finding,same_sentence
-PMC11368112_01,PMC11368112,3064,3068,5 mg,False,5,,,mg,mg,mass,3032,3039,reduced,Finding,same_sentence
-PMC11368112_01,PMC11368112,3093,3099,200 mg,False,200,,,mg,mg,mass,3077,3089,cyclosporine,Treatment,same_sentence
-PMC11368112_01,PMC11368112,3330,3337,14 days,False,14,,,days,days,time,3246,3255,treatment,Treatment,window_fallback
-PMC11420039_01,PMC11420039,143,150,2 weeks,False,2,,,weeks,weeks,time,87,92,limbs,BodyPart,same_sentence
-PMC11420039_01,PMC11420039,609,616,1000 cm,False,1000,,,cm,cm,length,503,514,lower limbs,BodyPart,window_fallback
-PMC11420039_01,PMC11420039,659,665,200 cm,False,200,,,cm,cm,length,503,514,lower limbs,BodyPart,window_fallback
-PMC11420039_01,PMC11420039,1305,1310,40 mg,False,40,,,mg,mg,mass,1240,1249,diagnosis,Exam,window_fallback
-PMC11420039_01,PMC11420039,1414,1419,20 mg,False,20,,,mg,mg,mass,1349,1367,methylprednisolone,Treatment,same_sentence
-PMC11420039_01,PMC11420039,1439,1444,16 mg,False,16,,,mg,mg,mass,1349,1367,methylprednisolone,Treatment,same_sentence
-PMC11420039_01,PMC11420039,1838,1843,16 mg,False,16,,,mg,mg,mass,1796,1814,methylprednisolone,Treatment,same_sentence
-PMC11420039_01,PMC11420039,1863,1868,12 mg,False,12,,,mg,mg,mass,1796,1814,methylprednisolone,Treatment,same_sentence
-PMC11420039_01,PMC11420039,1987,1993,600 mg,False,600,,,mg,mg,mass,1920,1929,Dupilumab,Treatment,same_sentence
-PMC11420039_01,PMC11420039,1995,2001,300 mg,False,300,,,mg,mg,mass,1920,1929,Dupilumab,Treatment,same_sentence
-PMC11420039_01,PMC11420039,2031,2037,300 mg,False,300,,,mg,mg,mass,1920,1929,Dupilumab,Treatment,same_sentence
-PMC11420039_01,PMC11420039,3297,3301,4 mg,False,4,,,mg,mg,mass,3286,3293,reduced,Finding,same_sentence
-PMC11420039_01,PMC11420039,4541,4545,20 g,False,20,,,g,g,mass,4476,4496,Human immunoglobulin,Treatment,same_sentence
-PMC11420039_01,PMC11420039,4708,4714,1.6 mg,False,1.6,,,mg,mg,mass,4682,4704,subcutaneous injection,Treatment,same_sentence
-PMC11420039_01,PMC11420039,4719,4725,1 week,False,1,,,week,week,time,4682,4704,subcutaneous injection,Treatment,same_sentence
-PMC11722600_01,PMC11722600,232,238,day 20,False,20,,,day,day,time,197,210,genitourinary,BodyPart,window_fallback
-PMC11722600_01,PMC11722600,650,657,55 mg/L,False,55,,,mg/L,mg/l,lab_concentration,616,619,mm3,Finding,same_sentence
-PMC11722600_01,PMC11722600,663,669,5 mg/L,False,5,,,mg/L,mg/l,lab_concentration,616,619,mm3,Finding,same_sentence
-PMC11722600_01,PMC11722600,706,711,29 mm,False,29,,,mm,mm,length,672,697,erythrocyte sedimentation,Exam,same_sentence
-PMC11722600_01,PMC11722600,718,725,3-20 mm,True,,3,20,mm,mm,length,672,697,erythrocyte sedimentation,Exam,same_sentence
-PMC11722600_01,PMC11722600,991,995,8 mm,False,8,,,mm,mm,length,972,980,appendix,BodyPart,same_sentence
-PMC11722600_01,PMC11722600,1074,1078,4 cm,False,4,,,cm,cm,length,1052,1063,right ovary,BodyPart,same_sentence
-PMC11722600_01,PMC11722600,2256,2263,6 month,False,6,,,month,month,time,2264,2273,follow-up,Finding,same_sentence_forward
-PMC11722600_02,PMC11722600,750,757,85 mg/L,False,85,,,mg/L,mg/l,lab_concentration,737,740,mm3,Finding,same_sentence
-PMC11722600_02,PMC11722600,763,770,5 mg/dL,False,5,,,mg/dL,mg/dl,lab_concentration,737,740,mm3,Finding,same_sentence
-PMC11722600_02,PMC11722600,906,911,17 mm,False,17,,,mm,mm,length,887,895,appendix,BodyPart,same_sentence
-PMC11722600_02,PMC11722600,1782,1788,7 days,False,7,,,days,days,time,1639,1645,pelvis,BodyPart,window_fallback
-PMC11722600_02,PMC11722600,1967,1975,6 months,False,6,,,months,months,time,1979,1991,follow-up CT,Exam,same_sentence_forward
-PMC11722600_02,PMC11722600,2522,2528,2.5 cm,False,2.5,,,cm,cm,length,2481,2489,appendix,BodyPart,same_sentence
-PMC11722600_02,PMC11722600,2553,2558,45 mm,False,45,,,mm,mm,length,2481,2489,appendix,BodyPart,same_sentence
-PMC11723754_01,PMC11723754,295,298,3cm,False,3,,,cm,cm,length,276,289,sacral region,BodyPart,same_sentence
-PMC11723754_01,PMC11723754,1101,1106,7g/dl,False,7,,,g/dl,g/dl,lab_concentration,1071,1082,transfusion,Treatment,same_sentence
-PMC11723754_01,PMC11723754,1232,1237,day 3,False,3,,,day,day,time,1214,1227,Noradrenaline,Treatment,window_fallback
-PMC11783470_01,PMC11783470,419,428,11.5 g/dL,False,11.5,,,g/dL,g/dl,lab_concentration,430,452,transferrin saturation,Exam,same_sentence_forward
-PMC11783470_01,PMC11783470,453,458,12.8%,False,12.8,,,%,%,percentage,430,452,transferrin saturation,Exam,same_sentence
-PMC11783470_01,PMC11783470,469,478,200 ng/mL,False,200,,,ng/mL,ng/ml,lab_concentration,460,468,ferritin,Treatment,same_sentence
-PMC11783470_01,PMC11783470,489,498,76 mcg/dL,False,76,,,mcg/dL,mcg/dl,lab_concentration,484,488,iron,Treatment,same_sentence
-PMC11783470_01,PMC11783470,568,571,20%,False,20,,,%,%,percentage,544,566,transferrin saturation,Exam,same_sentence
-PMC11783470_01,PMC11783470,731,735,7-mm,False,7,,,mm,mm,length,743,749,lesion,Finding,same_sentence_forward
-PMC11783470_01,PMC11783470,1661,1669,3 months,False,3,,,months,months,time,1690,1700,recurrence,Diagnosis,same_sentence_forward
-PMC12215201_01,PMC12215201,129,137,2 months,False,2,,,months,months,time,89,98,emergency,Diagnosis,same_sentence
-PMC12215201_01,PMC12215201,850,858,6.1 g/dL,False,6.1,,,g/dL,g/dl,lab_concentration,860,874,platelet count,Exam,same_sentence_forward
-PMC12215201_01,PMC12215201,905,914,3.2 mg/dL,False,3.2,,,mg/dL,mg/dl,lab_concentration,889,904,total bilirubin,Exam,same_sentence
-PMC12215201_01,PMC12215201,937,945,315 IU/L,False,315,,,IU/L,iu/l,lab_concentration,889,904,total bilirubin,Exam,same_sentence
-PMC12215201_01,PMC12215201,951,959,305 IU/L,False,305,,,IU/L,iu/l,lab_concentration,889,904,total bilirubin,Exam,same_sentence
-PMC12215201_01,PMC12215201,965,973,209 IU/L,False,209,,,IU/L,iu/l,lab_concentration,889,904,total bilirubin,Exam,same_sentence
-PMC12215201_01,PMC12215201,987,995,2.6 g/dL,False,2.6,,,g/dL,g/dl,lab_concentration,979,986,albumin,Treatment,same_sentence
-PMC12215201_01,PMC12215201,1119,1125,2.1 cm,False,2.1,,,cm,cm,length,1067,1072,liver,BodyPart,same_sentence
-PMC12215201_01,PMC12215201,1273,1279,4.6 cm,False,4.6,,,cm,cm,length,1193,1204,very little,Finding,same_sentence
-PMC12215201_01,PMC12215201,1965,1971,1 g/dL,False,1,,,g/dL,g/dl,lab_concentration,1913,1919,bloody,Finding,window_fallback
-PMC12215201_01,PMC12215201,1976,1982,2 g/dL,False,2,,,g/dL,g/dl,lab_concentration,2002,2009,albumin,Treatment,same_sentence_forward
-PMC12215201_01,PMC12215201,2029,2035,1 g/dL,False,1,,,g/dL,g/dl,lab_concentration,2002,2009,albumin,Treatment,same_sentence
-PMC12215201_01,PMC12215201,2040,2048,1.1 g/dL,False,1.1,,,g/dL,g/dl,lab_concentration,2002,2009,albumin,Treatment,same_sentence
-PMC12215201_01,PMC12215201,3149,3156,2 weeks,False,2,,,weeks,weeks,time,3134,3148,cardiac arrest,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,181,187,2 days,False,2,,,days,days,time,153,161,vomiting,Symptom,same_sentence
-PMC12832199_01,PMC12832199,659,665,1 year,False,1,,,year,year,time,592,600,prolapse,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,670,678,3 months,False,3,,,months,months,time,592,600,prolapse,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,960,968,9.6 g/dL,False,9.6,,,g/dL,g/dl,lab_concentration,940,946,anemia,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,988,996,2.8 g/dL,False,2.8,,,g/dL,g/dl,lab_concentration,971,986,hypoalbuminemia,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,1036,1045,2.2 mg/dL,False,2.2,,,mg/dL,mg/dl,lab_concentration,1003,1022,acute kidney injury,Diagnosis,same_sentence
-PMC12832199_01,PMC12832199,1231,1237,6.5 cm,False,6.5,,,cm,cm,length,1165,1191,gastric outlet obstruction,Diagnosis,window_fallback
-PMC12832199_01,PMC12832199,1272,1278,5.5 cm,False,5.5,,,cm,cm,length,1165,1191,gastric outlet obstruction,Diagnosis,window_fallback
-PMC12832199_01,PMC12832199,2734,2741,18 days,False,18,,,days,days,time,2727,2733,repair,Treatment,same_sentence
-PMC12832199_01,PMC12832199,3771,3775,5 cm,False,5,,,cm,cm,length,3730,3745,intraperitoneal,Finding,same_sentence
-PMC12832199_01,PMC12832199,4036,4043,191 min,False,191,,,min,min,time,4057,4082,blood loss. Postoperative,Diagnosis,same_sentence_forward
-PMC12832199_01,PMC12832199,4172,4178,day 27,False,27,,,day,day,time,4149,4158,Endoscopy,Exam,same_sentence
-PMC12832199_01,PMC12832199,4452,4460,2 months,False,2,,,months,months,time,4440,4442,CT,Exam,same_sentence
-PMC12832199_01,PMC12832199,4930,4939,10 months,False,10,,,months,months,time,4903,4913,recurrence,Diagnosis,same_sentence
-PMC2700431_01,PMC2700431,954,960,day 15,False,15,,,day,day,time,889,900,nasogastric,BodyPart,window_fallback
-PMC2817501_01,PMC2817501,340,347,80 mmHg,False,80,,,mmHg,mmhg,pressure,321,335,blood pressure,Finding,same_sentence
-PMC2817501_01,PMC2817501,591,598,30 mmHg,False,30,,,mmHg,mmhg,pressure,485,517,Transesophageal echocardiography,Exam,same_sentence
-PMC2817501_01,PMC2817501,677,684,20 mmHg,False,20,,,mmHg,mmhg,pressure,612,642,rheumatic mitral valve disease,Diagnosis,same_sentence
-PMC2817501_01,PMC2817501,700,706,1.8 cm,False,1.8,,,cm,cm,length,612,642,rheumatic mitral valve disease,Diagnosis,same_sentence
-PMC2817501_01,PMC2817501,789,792,30%,False,30,,,%,%,percentage,756,785,ventricular ejection fraction,Exam,same_sentence
-PMC2817501_01,PMC2817501,832,839,68 mmHg,False,68,,,mmHg,mmhg,pressure,803,828,pulmonary artery pressure,Finding,same_sentence
-PMC2817501_01,PMC2817501,946,949,90%,False,90,,,%,%,percentage,914,936,Coronary arteriography,Exam,same_sentence
-PMC2817501_01,PMC2817501,1503,1508,29 mm,False,29,,,mm,mm,length,1517,1526,aortotomy,Treatment,same_sentence_forward
-PMC2817501_01,PMC2817501,1830,1835,21 mm,False,21,,,mm,mm,length,,,,,none
-PMC3437073_01,PMC3437073,288,292,7 cm,False,7,,,cm,cm,length,205,216,tuberculous,Diagnosis,window_fallback
-PMC3437073_01,PMC3437073,546,550,8 cm,False,8,,,cm,cm,length,526,532,spleen,BodyPart,same_sentence
-PMC3437073_01,PMC3437073,1867,1873,300 mg,False,300,,,mg,mg,mass,1862,1865,INH,Treatment,same_sentence
-PMC3437073_01,PMC3437073,1887,1893,600 mg,False,600,,,mg,mg,mass,1862,1865,INH,Treatment,same_sentence
-PMC3437073_01,PMC3437073,1909,1915,600 mg,False,600,,,mg,mg,mass,1898,1908,Ethambutol,Treatment,same_sentence
-PMC3437073_01,PMC3437073,1936,1942,500 mg,False,500,,,mg,mg,mass,1898,1908,Ethambutol,Treatment,same_sentence
-PMC3437073_01,PMC3437073,1950,1957,5 weeks,False,5,,,weeks,weeks,time,1923,1942,Pyrazinamide 500 mg,Treatment,same_sentence
-PMC3557982_01,PMC3557982,412,418,6 days,False,6,,,days,days,time,,,,,none
-PMC3557982_01,PMC3557982,1025,1032,"1,593 g",False,"1,593",,,g,g,mass,1006,1016,right lung,BodyPart,same_sentence
-PMC3557982_01,PMC3557982,1046,1053,"1,268 g",False,"1,268",,,g,g,mass,1006,1016,right lung,BodyPart,same_sentence
-PMC3557982_01,PMC3557982,1071,1080,350-450 g,True,,350,450,g,g,mass,1006,1016,right lung,BodyPart,same_sentence
-PMC3557982_01,PMC3557982,2536,2542,43-day,False,43,,,day,day,time,2496,2500,died,Finding,window_fallback
-PMC3859158_01,PMC3859158,35,42,4-month,False,4,,,month,month,time,60,75,epigastric pain,Symptom,same_sentence_forward
-PMC3859158_01,PMC3859158,997,1004,11.5 cm,False,11.5,,,cm,cm,length,967,975,CT) scan,Exam,same_sentence
-PMC3859158_01,PMC3859158,1715,1721,6.2 cm,False,6.2,,,cm,cm,length,1684,1699,pancreatic mass,Finding,same_sentence
-PMC3859158_01,PMC3859158,2739,2746,6-month,False,6,,,month,month,time,2711,2718,therapy,Treatment,window_fallback
-PMC3897989_01,PMC3897989,678,684,79 U/L,False,79,,,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,686,694,5-45 U/L,True,,5,45,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,697,703,51 U/L,False,51,,,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,705,713,5-35 U/L,True,,5,35,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,716,723,540 U/L,False,540,,,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,725,735,30-110 U/L,True,,30,110,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,738,745,197 U/L,False,197,,,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,747,755,7-50 U/L,True,,7,50,U/L,u/l,lab_concentration,610,625,total bilirubin,Exam,same_sentence
-PMC3897989_01,PMC3897989,858,869,"3,180 mg/dL",False,"3,180",,,mg/dL,mg/dl,lab_concentration,841,844,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,871,885,694-1620 mg/dL,True,,694,1620,mg/dL,mg/dl,lab_concentration,841,844,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,891,900,344 mg/dL,False,344,,,mg/dL,mg/dl,lab_concentration,841,844,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,902,914,60-263 mg/dL,True,,60,263,mg/dL,mg/dl,lab_concentration,841,844,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,1745,1756,66.89 ng/mL,False,66.89,,,ng/mL,ng/ml,lab_concentration,1703,1708,tumor,Diagnosis,same_sentence
-PMC3897989_01,PMC3897989,1758,1767,0-5 ng/mL,True,,0,5,ng/mL,ng/ml,lab_concentration,1703,1708,tumor,Diagnosis,same_sentence
-PMC3897989_01,PMC3897989,2011,2016,0.5 g,False,0.5,,,g,g,mass,1972,1981,Infection,Diagnosis,same_sentence
-PMC3897989_01,PMC3897989,2021,2028,8 hours,False,8,,,hours,hours,time,1972,1981,Infection,Diagnosis,same_sentence
-PMC3897989_01,PMC3897989,2225,2231,250 mg,False,250,,,mg,mg,mass,2107,2116,elevation,Treatment,same_sentence
-PMC3897989_01,PMC3897989,2516,2523,44.36 g,False,44.36,,,g,g,mass,2477,2480,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,2527,2535,0.03-2 g,True,,0.03,2,g,g,mass,2477,2480,IgG,Exam,same_sentence
-PMC3897989_01,PMC3897989,2958,2963,40 mg,False,40,,,mg,mg,mass,2932,2950,methylprednisolone,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3068,3075,376 U/L,False,376,,,U/L,u/l,lab_concentration,3047,3062,steroid therapy,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3077,3083,38 U/L,False,38,,,U/L,u/l,lab_concentration,3047,3062,steroid therapy,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3156,3163,243 U/L,False,243,,,U/L,u/l,lab_concentration,3047,3062,steroid therapy,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3165,3171,47 U/L,False,47,,,U/L,u/l,lab_concentration,3047,3062,steroid therapy,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3173,3179,47 U/L,False,47,,,U/L,u/l,lab_concentration,3047,3062,steroid therapy,Treatment,same_sentence
-PMC3897989_01,PMC3897989,3283,3288,32 mg,False,32,,,mg,mg,mass,3274,3278,oral,Finding,same_sentence
-PMC3897989_01,PMC3897989,3378,3383,32 mg,False,32,,,mg,mg,mass,3310,3315,liver,BodyPart,window_fallback
-PMC3897989_01,PMC3897989,3403,3408,16 mg,False,16,,,mg,mg,mass,3310,3315,liver,BodyPart,window_fallback
-PMC3897989_01,PMC3897989,3526,3533,40 days,False,40,,,days,days,time,3540,3549,treatment,Treatment,same_sentence_forward
-PMC3897989_01,PMC3897989,3658,3665,135 U/L,False,135,,,U/L,u/l,lab_concentration,3576,3580,back,BodyPart,window_fallback
-PMC3897989_01,PMC3897989,3667,3674,134 U/L,False,134,,,U/L,u/l,lab_concentration,3576,3580,back,BodyPart,window_fallback
-PMC3897989_01,PMC3897989,3809,3813,5 mg,False,5,,,mg,mg,mass,3664,3670,"L, 134",Treatment,window_fallback
-PMC3897989_01,PMC3897989,3867,3874,40 days,False,40,,,days,days,time,,,,,none
-PMC3897989_01,PMC3897989,4086,4092,500 mg,False,500,,,mg,mg,mass,4044,4057,herpes zoster,Diagnosis,same_sentence
-PMC3897989_01,PMC3897989,4110,4116,9 days,False,9,,,days,days,time,4075,4092,acyclovir (500 mg,Treatment,same_sentence
-PMC3917415_01,PMC3917415,34,42,23 years,False,23,,,years,years,time,55,58,SLE,Diagnosis,same_sentence_forward
-PMC3917415_01,PMC3917415,202,207,7.5mg,False,7.5,,,mg,mg,mass,181,193,prednisolone,Treatment,same_sentence
-PMC3917415_01,PMC3917415,232,236,50mg,False,50,,,mg,mg,mass,212,228,cyclophosphamide,Treatment,same_sentence
-PMC3917415_01,PMC3917415,300,305,5.6mL,False,5.6,,,mL,ml,volume,212,228,cyclophosphamide,Treatment,window_fallback
-PMC3917415_01,PMC3917415,482,489,66mg/dL,False,66,,,mg/dL,mg/dl,lab_concentration,371,398,chronic kidney disease (CKD,Diagnosis,window_fallback
-PMC3917415_01,PMC3917415,495,502,14mg/dL,False,14,,,mg/dL,mg/dl,lab_concentration,371,398,chronic kidney disease (CKD,Diagnosis,window_fallback
-PMC3917415_01,PMC3917415,577,582,6.5IU,False,6.5,,,IU,iu,dose_unit,558,571,antibody (IgG,Treatment,same_sentence
-PMC3950436_01,PMC3950436,39,44,40 kg,False,40,,,kg,kg,mass,,,,,none
-PMC3950436_01,PMC3950436,1413,1420,74 mmHg,False,74,,,mmHg,mmhg,pressure,1389,1403,blood pressure,Finding,same_sentence
-PMC3950436_01,PMC3950436,1475,1478,98%,False,98,,,%,%,percentage,1446,1452,oxygen,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1561,1567,120 mg,False,120,,,mg,mg,mass,1514,1522,Ketamine,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1569,1573,3 mg,False,3,,,mg,mg,mass,1514,1522,Ketamine,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1589,1594,10 ml,False,10,,,ml,ml,volume,1514,1522,Ketamine,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1695,1701,80 mcg,False,80,,,mcg,mcg,mass,1713,1728,dexmedetomidine,Treatment,same_sentence_forward
-PMC3950436_01,PMC3950436,1703,1708,2 mcg,False,2,,,mcg,mcg,mass,1713,1728,dexmedetomidine,Treatment,same_sentence_forward
-PMC3950436_01,PMC3950436,1788,1793,10 ml,False,10,,,ml,ml,volume,1730,1738,Precedex,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1814,1817,5 g,False,5,,,g,g,mass,1809,1813,EMLA,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1824,1826,5%,False,5,,,%,%,percentage,1809,1813,EMLA,Treatment,same_sentence
-PMC3950436_01,PMC3950436,1931,1936,10 cm,False,10,,,cm,cm,length,1899,1919,planned tracheostomy,Treatment,same_sentence
-PMC3950436_01,PMC3950436,2200,2207,70 mmHg,False,70,,,mmHg,mmhg,pressure,2209,2211,HR,Finding,same_sentence_forward
-PMC3950436_01,PMC3950436,2244,2247,98%,False,98,,,%,%,percentage,2236,2238,O2,Treatment,same_sentence
-PMC3950436_01,PMC3950436,2251,2254,24G,False,24,,,G,g,mass,2236,2238,O2,Treatment,window_fallback
-PMC3950436_01,PMC3950436,2348,2352,5 ml,False,5,,,ml,ml,volume,2353,2362,lidocaine,Treatment,same_sentence_forward
-PMC3950436_01,PMC3950436,2363,2365,1%,False,1,,,%,%,percentage,2353,2362,lidocaine,Treatment,same_sentence
-PMC3950436_01,PMC3950436,2533,2539,6.0 mm,False,6.0,,,mm,mm,length,2510,2522,tracheostomy,Treatment,same_sentence
-PMC4073451_01,PMC4073451,893,902,14 months,False,14,,,months,months,time,909,922,decompression,Treatment,same_sentence_forward
-PMC4310058_01,PMC4310058,135,142,2 weeks,False,2,,,weeks,weeks,time,84,89,skull,BodyPart,window_fallback
-PMC4310058_01,PMC4310058,225,232,2 years,False,2,,,years,years,time,84,89,skull,BodyPart,window_fallback
-PMC4310058_01,PMC4310058,716,723,2 years,False,2,,,years,years,time,740,745,skull,BodyPart,same_sentence_forward
-PMC4310058_01,PMC4310058,1245,1249,5 cm,False,5,,,cm,cm,length,1130,1142,cranioplasty,Treatment,window_fallback
-PMC4310058_01,PMC4310058,1985,1990,day 2,False,2,,,day,day,time,,,,,none
-PMC4782471_01,PMC4782471,73,77,5 mm,False,5,,,mm,mm,length,0,4,A 10,Treatment,same_sentence
-PMC4782471_01,PMC4782471,673,678,50 mg,False,50,,,mg,mg,mass,518,542,under general anesthesia,Finding,window_fallback
-PMC4782471_01,PMC4782471,949,955,1-week,False,1,,,week,week,time,889,905,persistent fever,Diagnosis,same_sentence
-PMC4782471_01,PMC4782471,1161,1166,60 mm,False,60,,,mm,mm,length,1138,1152,blood pressure,Finding,same_sentence
-PMC4782471_01,PMC4782471,1409,1415,120 mm,False,120,,,mm,mm,length,1366,1405,elevated erythrocyte sedimentation rate,Finding,same_sentence
-PMC4782471_01,PMC4782471,1441,1449,91 mg/dl,False,91,,,mg/dl,mg/dl,lab_concentration,1366,1405,elevated erythrocyte sedimentation rate,Finding,same_sentence
-PMC4782471_01,PMC4782471,1541,1544,6 g,False,6,,,g,g,mass,1494,1515,normal platelet count,Finding,same_sentence
-PMC4782471_01,PMC4782471,1708,1712,5 mm,False,5,,,mm,mm,length,1668,1684,Echocardiography,Exam,same_sentence
-PMC4782471_01,PMC4782471,1715,1719,6 mm,False,6,,,mm,mm,length,1708,1712,5 mm,Finding,same_sentence
-PMC4782471_01,PMC4782471,2291,2298,3 weeks,False,3,,,weeks,weeks,time,2272,2286,no improvement,Finding,same_sentence
-PMC4782471_01,PMC4782471,2918,2924,12 min,False,12,,,min,min,time,2878,2884,bypass,Treatment,same_sentence
-PMC4782471_01,PMC4782471,3254,3260,2 days,False,2,,,days,days,time,3249,3253,died,Finding,same_sentence
-PMC4828947_01,PMC4828947,627,632,1 min,False,1,,,min,min,time,589,597,seizures,Symptom,same_sentence
-PMC4828947_01,PMC4828947,679,686,1200 mg,False,1200,,,mg,mg,mass,665,678,oxcarbazepine,Treatment,same_sentence
-PMC4828947_01,PMC4828947,709,716,1500 mg,False,1500,,,mg,mg,mass,695,708,valproic acid,Treatment,same_sentence
-PMC4828947_01,PMC4828947,2843,2852,60 months,False,60,,,months,months,time,2859,2868,operation,Treatment,same_sentence_forward
-PMC4835621_01,PMC4835621,1668,1671,73%,False,73,,,%,%,percentage,1617,1639,white blood cell count,Exam,same_sentence
-PMC4835621_01,PMC4835621,1699,1708,11.3 g/dL,False,11.3,,,g/dL,g/dl,lab_concentration,1617,1639,white blood cell count,Exam,same_sentence
-PMC4835621_01,PMC4835621,1790,1794,2.4%,False,2.4,,,%,%,percentage,1768,1786,reticulocyte count,Exam,same_sentence
-PMC4835621_01,PMC4835621,2106,2114,405 IU/L,False,405,,,IU/L,iu/l,lab_concentration,2054,2061,Lactate,Treatment,same_sentence
-PMC4835621_01,PMC4835621,2149,2160,15.30 mg/dL,False,15.30,,,mg/dL,mg/dl,lab_concentration,2054,2061,Lactate,Treatment,window_fallback
-PMC4835621_01,PMC4835621,2261,2264,10%,False,10,,,%,%,percentage,2288,2298,antibodies,Treatment,same_sentence_forward
-PMC4835621_01,PMC4835621,2724,2730,3.5 cm,False,3.5,,,cm,cm,length,2710,2720,thickening,Finding,same_sentence
-PMC4835621_01,PMC4835621,3603,3610,10 days,False,10,,,days,days,time,3591,3602,treated for,Finding,same_sentence
-PMC4835621_01,PMC4835621,3907,3911,2.5%,False,2.5,,,%,%,percentage,,,,,none
-PMC4835621_01,PMC4835621,3919,3923,0.7%,False,0.7,,,%,%,percentage,,,,,none
-PMC4835621_01,PMC4835621,3928,3936,302 IU/L,False,302,,,IU/L,iu/l,lab_concentration,,,,,none
-PMC4835621_01,PMC4835621,3944,3952,182 IU/L,False,182,,,IU/L,iu/l,lab_concentration,,,,,none
-PMC4835621_01,PMC4835621,4081,4091,31.2 mg/dL,False,31.2,,,mg/dL,mg/dl,lab_concentration,4068,4075,therapy,Treatment,same_sentence
-PMC4835621_01,PMC4835621,4095,4105,99.3 mg/dL,False,99.3,,,mg/dL,mg/dl,lab_concentration,4068,4075,therapy,Treatment,same_sentence
-PMC5137649_01,PMC5137649,37,42,3-day,False,3,,,day,day,time,54,65,right flank,BodyPart,same_sentence_forward
-PMC5137649_01,PMC5137649,337,340,6cm,False,6,,,cm,cm,length,300,319,computed tomography,Exam,same_sentence
-PMC5137649_01,PMC5137649,516,519,6cm,False,6,,,cm,cm,length,441,448,EUS-FNA,Exam,same_sentence
-PMC5137649_01,PMC5137649,522,525,9cm,False,9,,,cm,cm,length,441,448,EUS-FNA,Exam,same_sentence
-PMC5137649_01,PMC5137649,780,790,476.5ng/ml,False,476.5,,,ng/ml,ng/ml,lab_concentration,737,761,carcinoembryonic antigen,Exam,same_sentence
-PMC5137649_01,PMC5137649,837,840,6iu,False,6,,,iu,iu,dose_unit,737,761,carcinoembryonic antigen,Exam,same_sentence
-PMC5137649_01,PMC5137649,2073,2078,9.5cm,False,9.5,,,cm,cm,length,1977,2000,no evidence of bleeding,Finding,window_fallback
-PMC5137649_01,PMC5137649,2081,2086,4.5cm,False,4.5,,,cm,cm,length,1977,2000,no evidence of bleeding,Finding,window_fallback
-PMC5137649_01,PMC5137649,2089,2094,2.0cm,False,2.0,,,cm,cm,length,1977,2000,no evidence of bleeding,Finding,window_fallback
-PMC5137649_01,PMC5137649,2216,2221,day 4,False,4,,,day,day,time,,,,,none
-PMC5804616_01,PMC5804616,625,634,80.5 mmHg,False,80.5,,,mmHg,mmhg,pressure,600,606,oxygen,Treatment,same_sentence
-PMC5804616_01,PMC5804616,678,687,38.8 mmHg,False,38.8,,,mmHg,mmhg,pressure,644,658,carbon dioxide,Exam,same_sentence
-PMC5804616_01,PMC5804616,801,805,3 mm,False,3,,,mm,mm,length,718,737,computed tomography,Exam,same_sentence
-PMC5804616_01,PMC5804616,1315,1320,35 mg,False,35,,,mg,mg,mass,1243,1261,left main bronchus,BodyPart,same_sentence
-PMC5804616_01,PMC5804616,1450,1456,6.0 mm,False,6.0,,,mm,mm,length,1335,1354,Tracheal intubation,Treatment,same_sentence
-PMC5804616_01,PMC5804616,1476,1482,400 mm,False,400,,,mm,mm,length,1335,1354,Tracheal intubation,Treatment,same_sentence
-PMC5804616_01,PMC5804616,1527,1532,26 cm,False,26,,,cm,cm,length,1335,1354,Tracheal intubation,Treatment,same_sentence
-PMC5804616_01,PMC5804616,2681,2683,4%,False,4,,,%,%,percentage,2653,2663,anesthesia,Symptom,same_sentence
-PMC5804616_01,PMC5804616,2716,2722,1.5-2%,True,,1.5,2,%,%,percentage,2684,2695,sevoflurane,Treatment,same_sentence
-PMC5804616_01,PMC5804616,2872,2882,250-400 ml,True,,250,400,ml,ml,volume,2887,2892,10-20,Finding,same_sentence_forward
-PMC5804616_01,PMC5804616,2986,2990,6 ml,False,6,,,ml,ml,volume,2957,2975,abdominal incision,Treatment,same_sentence
-PMC5804616_01,PMC5804616,2994,2996,1%,False,1,,,%,%,percentage,2957,2975,abdominal incision,Treatment,same_sentence
-PMC5804616_01,PMC5804616,3067,3071,0.3%,False,0.3,,,%,%,percentage,3044,3063,continuous infusion,Treatment,same_sentence
-PMC5804616_01,PMC5804616,3097,3103,4-6 ml,True,,4,6,ml,ml,volume,3072,3083,ropivacaine,Treatment,same_sentence
-PMC5804616_01,PMC5804616,3190,3200,252.4 mmHg,False,252.4,,,mmHg,mmhg,pressure,3145,3172,Arterial blood gas analysis,Exam,same_sentence
-PMC5804616_01,PMC5804616,3213,3222,36.9 mmHg,False,36.9,,,mmHg,mmhg,pressure,3145,3172,Arterial blood gas analysis,Exam,same_sentence
-PMC5804616_01,PMC5804616,3385,3388,98%,False,98,,,%,%,percentage,3330,3356,arterial oxygen saturation,Exam,same_sentence
-PMC5804616_01,PMC5804616,3454,3460,60 min,False,60,,,min,min,time,3470,3477,surgery,Treatment,same_sentence_forward
-PMC5804616_01,PMC5804616,3512,3515,89%,False,89,,,%,%,percentage,3470,3477,surgery,Treatment,same_sentence
-PMC5804616_01,PMC5804616,4017,4027,101.7 mmHg,False,101.7,,,mmHg,mmhg,pressure,3972,3999,arterial blood gas analysis,Exam,same_sentence
-PMC5804616_01,PMC5804616,4250,4253,99%,False,99,,,%,%,percentage,4174,4192,right pneumothorax,Finding,same_sentence
-PMC5804616_01,PMC5804616,4398,4404,650 ml,False,650,,,ml,ml,volume,4408,4424,pleural effusion,Diagnosis,same_sentence_forward
-PMC5804616_01,PMC5804616,6828,6834,60 min,False,60,,,min,min,time,6840,6863,spontaneous respiration,Finding,same_sentence_forward
-PMC5804616_01,PMC5804616,6976,6979,89%,False,89,,,%,%,percentage,6919,6937,surgical procedure,Treatment,same_sentence
-PMC5804616_01,PMC5804616,7890,7894,2.1%,False,2.1,,,%,%,percentage,7843,7855,pneumothorax,Diagnosis,same_sentence
-PMC5833205_01,PMC5833205,155,162,2 weeks,False,2,,,weeks,weeks,time,137,154,periorbital edema,Diagnosis,same_sentence
-PMC5833205_01,PMC5833205,690,698,1.8 g/dL,False,1.8,,,g/dL,g/dl,lab_concentration,679,686,albumin,Treatment,same_sentence
-PMC5833205_01,PMC5833205,910,919,6.4 mg/dL,False,6.4,,,mg/dL,mg/dl,lab_concentration,877,894,microcytic anemia,Diagnosis,same_sentence
-PMC5833205_01,PMC5833205,1032,1040,1.6 g/dL,False,1.6,,,g/dL,g/dl,lab_concentration,1021,1028,albumin,Treatment,same_sentence
-PMC5833205_01,PMC5833205,1059,1067,3.0 g/dL,False,3.0,,,g/dL,g/dl,lab_concentration,1042,1055,total protein,Exam,same_sentence
-PMC5833205_01,PMC5833205,1181,1188,1.13 mg,False,1.13,,,mg,mg,mass,1080,1099,alpha-1-antitrypsin,Treatment,same_sentence
-PMC5833205_01,PMC5833205,1706,1711,20 mL,False,20,,,mL,ml,volume,1693,1704,transfusion,Treatment,same_sentence
-PMC5833205_01,PMC5833205,1798,1802,6 mg,False,6,,,mg,mg,mass,1773,1784,replacement,Treatment,same_sentence
-PMC5833205_01,PMC5833205,2206,2212,1 week,False,1,,,week,week,time,2180,2187,albumin,Treatment,same_sentence
-PMC5833205_01,PMC5833205,2254,2262,3 months,False,3,,,months,months,time,2266,2270,oral,Finding,same_sentence_forward
-PMC5833205_01,PMC5833205,2313,2322,11.8 g/dL,False,11.8,,,g/dL,g/dl,lab_concentration,2276,2283,therapy,Treatment,same_sentence
-PMC5875137_01,PMC5875137,200,206,6.5 cm,False,6.5,,,cm,cm,length,166,181,aortic aneurysm,Diagnosis,same_sentence
-PMC5875137_01,PMC5875137,252,259,3 weeks,False,3,,,weeks,weeks,time,284,314,replacement of ascending aorta,Treatment,same_sentence_forward
-PMC5875137_01,PMC5875137,320,325,30 mm,False,30,,,mm,mm,length,284,314,replacement of ascending aorta,Treatment,same_sentence
-PMC6083636_P1,PMC6083636,228,235,9 years,False,9,,,years,years,time,146,157,consent was,Finding,window_fallback
-PMC6083636_P1,PMC6083636,598,603,10 mg,False,10,,,mg,mg,mass,558,580,Cycloplegic refraction,Exam,same_sentence
-PMC6083636_P1,PMC6083636,1965,1972,23.5 mm,False,23.5,,,mm,mm,length,1909,1913,300A,Treatment,same_sentence
-PMC6083636_P1,PMC6083636,3120,3123,20%,False,20,,,%,%,percentage,3087,3093,scores,Finding,same_sentence
-PMC6134951_01,PMC6134951,461,464,40%,False,40,,,%,%,percentage,451,456,score,Finding,same_sentence
-PMC6134951_01,PMC6134951,1078,1084,600 mg,False,600,,,mg,mg,mass,1068,1077,alectinib,Treatment,same_sentence
-PMC6134951_01,PMC6134951,1164,1171,10 days,False,10,,,days,days,time,1132,1153,left-sided chest pain,Symptom,window_fallback
-PMC6134951_01,PMC6134951,2006,2011,30 mg,False,30,,,mg,mg,mass,1980,1990,prednisone,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2015,2020,day 1,False,1,,,day,day,time,1980,1990,prednisone,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2040,2045,20 mg,False,20,,,mg,mg,mass,1980,1990,prednisone,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2085,2090,10 mg,False,10,,,mg,mg,mass,1980,1990,prednisone,Treatment,window_fallback
-PMC6134951_01,PMC6134951,2110,2116,5 days,False,5,,,days,days,time,2082,2087,at 10,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2140,2146,7 days,False,7,,,days,days,time,2082,2087,at 10,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2194,2199,50 mg,False,50,,,mg,mg,mass,2178,2193,diphenhydramine,Treatment,same_sentence
-PMC6134951_01,PMC6134951,2387,2392,1 day,False,1,,,day,day,time,2351,2358,febrile,Symptom,same_sentence
-PMC6134951_01,PMC6134951,2662,2668,1 week,False,1,,,week,week,time,2651,2661,brigatinib,Treatment,same_sentence
-PMC6343374_01,PMC6343374,38,44,2760 g,False,2760,,,g,g,mass,,,,,none
-PMC6343374_01,PMC6343374,92,100,38 weeks,False,38,,,weeks,weeks,time,76,91,gestational age,Finding,same_sentence
-PMC6343374_01,PMC6343374,271,274,75%,False,75,,,%,%,percentage,232,245,truncal valve,BodyPart,same_sentence
-PMC6343374_01,PMC6343374,423,428,day 6,False,6,,,day,day,time,386,394,Surgical,Treatment,same_sentence
-PMC6343374_01,PMC6343374,1385,1392,70 mmHg,False,70,,,mmHg,mmhg,pressure,1280,1289,Follow-up,Finding,same_sentence
-PMC6343374_01,PMC6343374,1480,1488,2 months,False,2,,,months,months,time,1495,1502,surgery,Treatment,same_sentence_forward
-PMC6343374_01,PMC6343374,1582,1590,7 months,False,7,,,months,months,time,1613,1626,stent removal,Treatment,same_sentence_forward
-PMC6343374_01,PMC6343374,1831,1837,54-day,False,54,,,day,day,time,1768,1778,intubation,Treatment,window_fallback
-PMC6343374_01,PMC6343374,1895,1904,36 months,False,36,,,months,months,time,1875,1891,echocardiography,Exam,same_sentence
-PMC6343374_01,PMC6343374,2148,2153,12.5%,False,12.5,,,%,%,percentage,2049,2052,TAC,Treatment,window_fallback
-PMC6343374_01,PMC6343374,2620,2625,13.2%,False,13.2,,,%,%,percentage,2602,2609,surgery,Treatment,same_sentence
-PMC6343374_01,PMC6343374,3457,3461,5 mm,False,5,,,mm,mm,length,3411,3417,relief,Finding,same_sentence
-PMC6343374_01,PMC6343374,3464,3469,20 mm,False,20,,,mm,mm,length,3457,3461,5 mm,Finding,same_sentence
-PMC6343374_01,PMC6343374,3817,3820,33%,False,33,,,%,%,percentage,3731,3739,analysis,Exam,same_sentence
-PMC6343374_01,PMC6343374,3824,3832,6 months,False,6,,,months,months,time,3731,3739,analysis,Exam,same_sentence
-PMC6343374_01,PMC6343374,4215,4221,3 days,False,3,,,days,days,time,4148,4168,ST-segment elevation,Finding,same_sentence
-PMC6354154_01,PMC6354154,2075,2084,24 months,False,24,,,months,months,time,2109,2119,recurrence,Diagnosis,same_sentence_forward
-PMC6354154_01,PMC6354154,2337,2346,36 months,False,36,,,months,months,time,2321,2332,no response,Finding,window_fallback
-PMC6949661_01,PMC6949661,1138,1145,122 bpm,False,122,,,bpm,bpm,rate,1123,1134,tachycardia,Finding,same_sentence
-PMC6949661_01,PMC6949661,2579,2584,30 cm,False,30,,,cm,cm,length,2571,2578,jejunum,BodyPart,same_sentence
-PMC6949661_01,PMC6949661,2780,2786,130 cm,False,130,,,cm,cm,length,2759,2765,pushed,Diagnosis,same_sentence
-PMC6949661_01,PMC6949661,3034,3041,2 years,False,2,,,years,years,time,3045,3052,surgery,Treatment,same_sentence_forward
-PMC7086412_01,PMC7086412,94,102,40 weeks,False,40,,,weeks,weeks,time,77,85,Delivery,Treatment,same_sentence
-PMC7086412_01,PMC7086412,619,627,25 weeks,False,25,,,weeks,weeks,time,587,594,glucose,Treatment,same_sentence
-PMC7086412_01,PMC7086412,872,880,25 weeks,False,25,,,weeks,weeks,time,824,848,blood glucose monitoring,Treatment,same_sentence
-PMC7086412_01,PMC7086412,1547,1551,6.6%,False,6.6,,,%,%,percentage,1469,1480,abnormality,Finding,same_sentence
-PMC7086412_01,PMC7086412,2030,2038,36 hours,False,36,,,hours,hours,time,1987,1995,dilation,Diagnosis,same_sentence
-PMC7086412_02,PMC7086412,82,90,37 weeks,False,37,,,weeks,weeks,time,65,73,Delivery,Treatment,same_sentence
-PMC7086412_02,PMC7086412,543,547,5.0%,False,5.0,,,%,%,percentage,395,412,weeks gestational,Finding,window_fallback
-PMC7086412_02,PMC7086412,589,598,160 mg/dL,False,160,,,mg/dL,mg/dl,lab_concentration,,,,,none
-PMC7086412_02,PMC7086412,628,636,hour 100,False,100,,,hour,hour,time,612,621,follow-up,Finding,same_sentence
-PMC7086412_02,PMC7086412,737,746,135 mg/dL,False,135,,,mg/dL,mg/dl,lab_concentration,665,672,fasting,Finding,same_sentence
-PMC7086412_02,PMC7086412,935,943,25 weeks,False,25,,,weeks,weeks,time,823,829,single,Finding,window_fallback
-PMC7086412_02,PMC7086412,988,996,36 weeks,False,36,,,weeks,weeks,time,938,955,weeks gestational,Finding,same_sentence
-PMC7086412_02,PMC7086412,1018,1025,36-week,False,36,,,week,week,time,991,1008,weeks gestational,Finding,window_fallback
-PMC7086412_02,PMC7086412,1125,1134,101 mg/dL,False,101,,,mg/dL,mg/dl,lab_concentration,1053,1060,fasting,Finding,same_sentence
-PMC7086412_02,PMC7086412,1488,1492,6.6%,False,6.6,,,%,%,percentage,1410,1421,abnormality,Finding,same_sentence
-PMC7086412_02,PMC7086412,1874,1882,24 hours,False,24,,,hours,hours,time,1845,1853,dilation,Diagnosis,same_sentence
-PMC7086412_02,PMC7086412,3076,3082,3590 g,False,3590,,,g,g,mass,3045,3053,delivery,Treatment,same_sentence
-PMC7102447_01,PMC7102447,154,159,33 mm,False,33,,,mm,mm,length,108,146,bioprosthetic mitral valve replacement,Treatment,same_sentence
-PMC7102447_01,PMC7102447,467,477,0.04 ng/mL,False,0.04,,,ng/mL,ng/ml,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
-PMC7102447_01,PMC7102447,519,529,21.2 ng/mL,False,21.2,,,ng/mL,ng/ml,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
-PMC7102447_01,PMC7102447,534,541,308 U/L,False,308,,,U/L,u/l,lab_concentration,411,434,left atrial enlargement,Finding,window_fallback
-PMC7102447_01,PMC7102447,1136,1145,20.1 mmHg,False,20.1,,,mmHg,mmhg,pressure,1092,1105,regurgitation,Symptom,same_sentence
-PMC7102447_01,PMC7102447,1164,1171,0.68 cm,False,0.68,,,cm,cm,length,1092,1105,regurgitation,Symptom,same_sentence
-PMC7102447_01,PMC7102447,1228,1236,6 months,False,6,,,months,months,time,1092,1105,regurgitation,Symptom,window_fallback
-PMC7102447_01,PMC7102447,1480,1485,33 mm,False,33,,,mm,mm,length,1460,1467,surgery,Treatment,same_sentence
-PMC7102447_01,PMC7102447,1789,1795,4 mmHg,False,4,,,mmHg,mmhg,pressure,1746,1772,mitral valve mean gradient,Finding,same_sentence
-PMC7519975_01,PMC7519975,1128,1135,65 mmHg,False,65,,,mmHg,mmhg,pressure,1081,1104,arterial blood pressure,Finding,same_sentence
-PMC7519975_01,PMC7519975,1637,1644,148 meq,False,148,,,meq,meq,dose_unit,1624,1636,serum sodium,Exam,same_sentence
-PMC7519975_01,PMC7519975,1668,1675,3.7 meq,False,3.7,,,meq,meq,dose_unit,1652,1667,serum potassium,Exam,same_sentence
-PMC7519975_01,PMC7519975,1692,1699,112 meq,False,112,,,meq,meq,dose_unit,1683,1691,chloride,Treatment,same_sentence
-PMC7519975_01,PMC7519975,1711,1716,17 mg,False,17,,,mg,mg,mass,1707,1710,BUN,Exam,same_sentence
-PMC7519975_01,PMC7519975,1739,1745,0.4 mg,False,0.4,,,mg,mg,mass,1707,1710,BUN,Exam,same_sentence
-PMC7519975_01,PMC7519975,1771,1777,125 mg,False,125,,,mg,mg,mass,1757,1770,serum glucose,Exam,same_sentence
-PMC7519975_01,PMC7519975,1803,1809,8.2 mg,False,8.2,,,mg,mg,mass,1789,1802,serum calcium,Exam,same_sentence
-PMC7519975_01,PMC7519975,2091,2098,30 days,False,30,,,days,days,time,2069,2083,cardiac arrest,Diagnosis,same_sentence
-PMC7519975_01,PMC7519975,3835,3842,60 mmHg,False,60,,,mmHg,mmhg,pressure,3795,3818,arterial blood pressure,Finding,same_sentence
-PMC7519975_01,PMC7519975,3893,3899,62 bpm,False,62,,,bpm,bpm,rate,3878,3883,heart,BodyPart,same_sentence
-PMC7519975_01,PMC7519975,4011,4017,88-90%,True,,88,90,%,%,percentage,3990,3996,oxygen,Treatment,same_sentence
-PMC7519975_01,PMC7519975,4441,4446,day 2,False,2,,,day,day,time,4289,4296,Surgery,Treatment,window_fallback
-PMC7519975_01,PMC7519975,4506,4511,day 3,False,3,,,day,day,time,4472,4483,vasopressor,Treatment,same_sentence
-PMC7519975_01,PMC7519975,4557,4562,day 4,False,4,,,day,day,time,4506,4511,day 3,Finding,window_fallback
-PMC7519975_01,PMC7519975,4742,4747,day 7,False,7,,,day,day,time,4720,4724,died,Finding,same_sentence
-PMC7718649_01,PMC7718649,108,113,10 mg,False,10,,,mg,mg,mass,89,92,SLE,Diagnosis,same_sentence
-PMC7718649_01,PMC7718649,156,161,0.2 g,False,0.2,,,g,g,mass,136,154,hydroxychloroquine,Treatment,same_sentence
-PMC7718649_01,PMC7718649,839,844,75 mg,False,75,,,mg,mg,mass,811,815,oral,Finding,same_sentence
-PMC7718649_01,PMC7718649,866,871,0.3 g,False,0.3,,,g,g,mass,858,865,arbidol,Treatment,same_sentence
-PMC7718649_01,PMC7718649,898,903,0.4 g,False,0.4,,,g,g,mass,858,865,arbidol,Treatment,same_sentence
-PMC7718649_01,PMC7718649,943,948,1.4 g,False,1.4,,,g,g,mass,858,865,arbidol,Treatment,same_sentence
-PMC7718649_01,PMC7718649,1099,1105,7 days,False,7,,,days,days,time,1089,1094,drugs,Treatment,same_sentence
-PMC7718649_01,PMC7718649,1562,1565,5 g,False,5,,,g,g,mass,1510,1530,human immunoglobulin,Treatment,same_sentence
-PMC7718649_01,PMC7718649,1651,1656,25 mg,False,25,,,mg,mg,mass,1639,1649,prednisone,Treatment,same_sentence
-PMC7718649_01,PMC7718649,1673,1679,5 days,False,5,,,days,days,time,1639,1649,prednisone,Treatment,same_sentence
-PMC7718649_01,PMC7718649,2558,2565,74 mmHg,False,74,,,mmHg,mmhg,pressure,2535,2549,blood pressure,Finding,same_sentence
-PMC7718649_01,PMC7718649,2740,2743,98%,False,98,,,%,%,percentage,2721,2726,nasal,Finding,same_sentence
-PMC7718649_01,PMC7718649,3112,3116,7.1%,False,7.1,,,%,%,percentage,3141,3146,sugar,Treatment,same_sentence_forward
-PMC7718649_01,PMC7718649,3163,3174,11.1 mmol/L,False,11.1,,,mmol/L,mmol/l,lab_concentration,3141,3146,sugar,Treatment,same_sentence
-PMC7718649_01,PMC7718649,3360,3365,25 mg,False,25,,,mg,mg,mass,3348,3358,Prednisone,Treatment,same_sentence
-PMC7718649_01,PMC7718649,3408,3413,0.2 g,False,0.2,,,g,g,mass,3388,3406,hydroxychloroquine,Treatment,same_sentence
-PMC7718649_01,PMC7718649,3504,3509,40 mg,False,40,,,mg,mg,mass,3480,3488,COVID-19,Diagnosis,window_fallback
-PMC7718649_01,PMC7718649,3607,3612,0.5 g,False,0.5,,,g,g,mass,3581,3591,prednisone,Treatment,window_fallback
-PMC7718649_01,PMC7718649,3709,3714,50 mg,False,50,,,mg,mg,mass,3682,3691,infection,Diagnosis,window_fallback
-PMC7718649_01,PMC7718649,4230,4235,15 mg,False,15,,,mg,mg,mass,4219,4226,reduced,Finding,same_sentence
-PMC7718649_01,PMC7718649,4274,4280,day 15,False,15,,,day,day,time,4250,4259,pneumonia,Diagnosis,window_fallback
-PMC7718649_01,PMC7718649,4879,4884,10 mg,False,10,,,mg,mg,mass,4868,4875,reduced,Finding,same_sentence
-PMC7718649_01,PMC7718649,4984,4990,day 16,False,16,,,day,day,time,4899,4908,pneumonia,Diagnosis,window_fallback
-PMC7718649_01,PMC7718649,5044,5050,day 20,False,20,,,day,day,time,5075,5085,wrist pain,Symptom,same_sentence_forward
-PMC7718649_01,PMC7718649,5103,5108,60 mg,False,60,,,mg,mg,mass,5091,5101,loxoprofen,Treatment,same_sentence
-PMC7718649_01,PMC7718649,5158,5164,day 22,False,22,,,day,day,time,5091,5101,loxoprofen,Treatment,window_fallback
-PMC7718649_01,PMC7718649,5672,5678,3 days,False,3,,,days,days,time,5648,5652,back,BodyPart,same_sentence
-PMC8627357_01,PMC8627357,1101,1104,88%,False,88,,,%,%,percentage,1090,1097,hypoxia,Diagnosis,same_sentence
-PMC9387390_01,PMC9387390,858,867,11 months,False,11,,,months,months,time,892,904,chemotherapy,Treatment,same_sentence_forward
-PMC9387390_01,PMC9387390,1489,1495,4 days,False,4,,,days,days,time,1420,1428,surgical,Treatment,window_fallback
-PMC9387390_01,PMC9387390,1691,1697,7 days,False,7,,,days,days,time,1667,1679,follow-up CT,Exam,same_sentence
-PMC9387390_01,PMC9387390,3672,3677,20 mm,False,20,,,mm,mm,length,3645,3653,drainage,Treatment,window_fallback
-PMC9387390_01,PMC9387390,3680,3685,10 mm,False,10,,,mm,mm,length,3645,3653,drainage,Treatment,window_fallback
-PMC9387390_01,PMC9387390,3944,3949,25 mm,False,25,,,mm,mm,length,3791,3815,delayed gastric emptying,Finding,window_fallback
-PMC9387390_01,PMC9387390,3952,3957,90 mm,False,90,,,mm,mm,length,3791,3815,delayed gastric emptying,Finding,window_fallback
-PMC9529523_01,PMC9529523,46,53,11-year,False,11,,,year,year,time,72,97,postpartum cardiomyopathy,Diagnosis,same_sentence_forward
-PMC9529523_01,PMC9529523,129,135,30-35%,True,,30,35,%,%,percentage,108,125,ejection fraction,Finding,same_sentence
-PMC9529523_01,PMC9529523,928,938,2317 mg/dL,False,2317,,,mg/dL,mg/dl,lab_concentration,914,917,IgG,Exam,same_sentence
-PMC9529523_01,PMC9529523,1413,1418,77 mm,False,77,,,mm,mm,length,1362,1402,elevated; erythrocyte sedimentation rate,Finding,same_sentence
-PMC9529523_01,PMC9529523,1453,1462,6.2 mg/dL,False,6.2,,,mg/dL,mg/dl,lab_concentration,1413,1418,77 mm,Treatment,same_sentence
-PMC9529523_01,PMC9529523,1698,1704,300 mg,False,300,,,mg,mg,mass,1679,1697,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,1712,1718,3.9 mg,False,3.9,,,mg,mg,mass,1679,1697,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,2239,2249,2.14 mg/dL,False,2.14,,,mg/dL,mg/dl,lab_concentration,2219,2235,serum creatinine,Exam,same_sentence
-PMC9529523_01,PMC9529523,2269,2278,1.0 mg/dL,False,1.0,,,mg/dL,mg/dl,lab_concentration,2219,2235,serum creatinine,Exam,same_sentence
-PMC9529523_01,PMC9529523,2315,2323,61 mg/dL,False,61,,,mg/dL,mg/dl,lab_concentration,2341,2354,urine protein,Exam,same_sentence_forward
-PMC9529523_01,PMC9529523,2330,2335,90 mm,False,90,,,mm,mm,length,2341,2354,urine protein,Exam,same_sentence_forward
-PMC9529523_01,PMC9529523,2411,2423,1232.1 ng/ml,False,1232.1,,,ng/ml,ng/ml,lab_concentration,2382,2400,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,2485,2495,1000 ng/mL,False,1000,,,ng/mL,ng/ml,lab_concentration,2450,2468,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,2635,2641,200 mg,False,200,,,mg,mg,mass,2596,2614,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,2649,2655,3.1 mg,False,3.1,,,mg,mg,mass,2596,2614,hydroxychloroquine,Treatment,same_sentence
-PMC9529523_01,PMC9529523,2990,2993,78%,False,78,,,%,%,percentage,2959,2985,forced vital capacity (FVC,Exam,same_sentence
-PMC9529523_01,PMC9529523,3032,3035,83%,False,83,,,%,%,percentage,2959,2985,forced vital capacity (FVC,Exam,same_sentence
-PMC9529523_01,PMC9529523,3053,3057,107%,False,107,,,%,%,percentage,2959,2985,forced vital capacity (FVC,Exam,same_sentence
-PMC9529523_01,PMC9529523,3146,3149,37%,False,37,,,%,%,percentage,3099,3105,carbon,Treatment,same_sentence
-PMC9529523_01,PMC9529523,3464,3466,5%,False,5,,,%,%,percentage,3360,3366,injury,Diagnosis,window_fallback
-PMC9529523_01,PMC9529523,3479,3483,125%,False,125,,,%,%,percentage,3360,3366,injury,Diagnosis,window_fallback
-PMC9529523_01,PMC9529523,3499,3508,995 pg/mL,False,995,,,pg/mL,pg/ml,lab_concentration,3360,3366,injury,Diagnosis,window_fallback
-PMC9529523_01,PMC9529523,4261,4270,1.5 weeks,False,1.5,,,weeks,weeks,time,4274,4295,mycophenolate mofetil,Treatment,same_sentence_forward
-PMC9529523_01,PMC9529523,4515,4518,10%,False,10,,,%,%,percentage,4475,4504,ventricular ejection fraction,Exam,same_sentence
-PMC9529523_01,PMC9529523,4547,4553,860 ml,False,860,,,ml,ml,volume,4520,4538,pericardiocentesis,Treatment,same_sentence
-PMC9529523_01,PMC9529523,4681,4689,17 mg/dL,False,17,,,mg/dL,mg/dl,lab_concentration,4648,4658,malignancy,Diagnosis,window_fallback
-PMC9529523_01,PMC9529523,5099,5108,274 ng/ml,False,274,,,ng/ml,ng/ml,lab_concentration,5070,5088,hydroxychloroquine,Treatment,same_sentence
-PMC9532611_01,PMC9532611,126,136,1.8 mmol/l,False,1.8,,,mmol/l,mmol/l,lab_concentration,55,59,a 12,Treatment,same_sentence
-PMC9532611_01,PMC9532611,189,196,94 mmHg,False,94,,,mmHg,mmhg,pressure,171,183,hypertension,Diagnosis,same_sentence
-PMC9532611_01,PMC9532611,296,302,142 cm,False,142,,,cm,cm,length,232,241,pregnancy,Finding,window_fallback
-PMC9532611_01,PMC9532611,322,327,44 kg,False,44,,,kg,kg,mass,232,241,pregnancy,Finding,window_fallback
-PMC9532611_01,PMC9532611,831,838,4 years,False,4,,,years,years,time,778,790,hypertension,Diagnosis,window_fallback
-PMC9532611_02,PMC9532611,195,200,49 kg,False,49,,,kg,kg,mass,113,137,increased blood pressure,Finding,window_fallback
-PMC9532611_02,PMC9532611,228,234,136 cm,False,136,,,cm,cm,length,113,137,increased blood pressure,Finding,window_fallback
-PMC9532611_02,PMC9532611,317,324,6 years,False,6,,,years,years,time,277,285,bone age,Finding,same_sentence
+PMC4073451_01,PMC4073451,892,901,14 months,False,14,,,months,months,time,908,921,decompression,Treatment,same_sentence_forward
+PMC6083636_01,PMC6083636,228,235,9 years,False,9,,,years,years,time,146,157,consent was,Finding,window_fallback
+PMC6083636_01,PMC6083636,598,603,10 mg,False,10,,,mg,mg,mass,558,580,Cycloplegic refraction,Exam,same_sentence
+PMC6083636_02,PMC6083636,1267,1274,23.5 mm,False,23.5,,,mm,mm,length,1211,1215,300A,Treatment,same_sentence
+PMC6083636_03,PMC6083636,513,516,20%,False,20,,,%,%,percentage,480,486,scores,Finding,same_sentence
 PMC9969157_01,PMC9969157,31,38,7 weeks,False,7,,,weeks,weeks,time,,,,,none
 PMC9969157_01,PMC9969157,640,645,5 min,False,5,,,min,min,time,574,581,Grimace,Symptom,same_sentence
 PMC9969157_01,PMC9969157,682,689,2.46 kg,False,2.46,,,kg,kg,mass,711,715,head,BodyPart,same_sentence_forward
@@ -534,3 +286,274 @@ PMC9969157_01,PMC9969157,2760,2765,15 mg,False,15,,,mg,mg,mass,2745,2753,infusio
 PMC9969157_01,PMC9969157,2778,2781,2 g,False,2,,,g,g,mass,2745,2753,infusion,Treatment,same_sentence
 PMC9969157_01,PMC9969157,2789,2792,20%,False,20,,,%,%,percentage,2745,2753,infusion,Treatment,same_sentence
 PMC9969157_01,PMC9969157,3114,3120,day 33,False,33,,,day,day,time,3024,3030,liquid,Finding,window_fallback
+PMC4828947_01,PMC4828947,627,632,1 min,False,1,,,min,min,time,589,597,seizures,Symptom,same_sentence
+PMC4828947_01,PMC4828947,679,686,1200 mg,False,1200,,,mg,mg,mass,665,678,oxcarbazepine,Treatment,same_sentence
+PMC4828947_01,PMC4828947,709,716,1500 mg,False,1500,,,mg,mg,mass,695,708,valproic acid,Treatment,same_sentence
+PMC4828947_01,PMC4828947,2841,2850,60 months,False,60,,,months,months,time,2857,2866,operation,Treatment,same_sentence_forward
+PMC7086412_01,PMC7086412,94,102,40 weeks,False,40,,,weeks,weeks,time,77,85,Delivery,Treatment,same_sentence
+PMC7086412_01,PMC7086412,619,627,25 weeks,False,25,,,weeks,weeks,time,587,594,glucose,Treatment,same_sentence
+PMC7086412_01,PMC7086412,872,880,25 weeks,False,25,,,weeks,weeks,time,824,848,blood glucose monitoring,Treatment,same_sentence
+PMC7086412_01,PMC7086412,1545,1549,6.6%,False,6.6,,,%,%,percentage,1467,1478,abnormality,Finding,same_sentence
+PMC7086412_01,PMC7086412,2027,2035,36 hours,False,36,,,hours,hours,time,1984,1992,dilation,Diagnosis,same_sentence
+PMC7086412_02,PMC7086412,82,90,37 weeks,False,37,,,weeks,weeks,time,65,73,Delivery,Treatment,same_sentence
+PMC7086412_02,PMC7086412,542,546,5.0%,False,5.0,,,%,%,percentage,394,411,weeks gestational,Finding,window_fallback
+PMC7086412_02,PMC7086412,588,597,160 mg/dL,False,160,,,mg/dL,mg/dl,lab_concentration,,,,,none
+PMC7086412_02,PMC7086412,627,635,hour 100,False,100,,,hour,hour,time,611,620,follow-up,Finding,same_sentence
+PMC7086412_02,PMC7086412,736,745,135 mg/dL,False,135,,,mg/dL,mg/dl,lab_concentration,664,671,fasting,Finding,same_sentence
+PMC7086412_02,PMC7086412,934,942,25 weeks,False,25,,,weeks,weeks,time,822,828,single,Finding,window_fallback
+PMC7086412_02,PMC7086412,987,995,36 weeks,False,36,,,weeks,weeks,time,937,954,weeks gestational,Finding,same_sentence
+PMC7086412_02,PMC7086412,1017,1024,36-week,False,36,,,week,week,time,990,1007,weeks gestational,Finding,window_fallback
+PMC7086412_02,PMC7086412,1124,1133,101 mg/dL,False,101,,,mg/dL,mg/dl,lab_concentration,1052,1059,fasting,Finding,same_sentence
+PMC7086412_02,PMC7086412,1486,1490,6.6%,False,6.6,,,%,%,percentage,1408,1419,abnormality,Finding,same_sentence
+PMC7086412_02,PMC7086412,1871,1879,24 hours,False,24,,,hours,hours,time,1842,1850,dilation,Diagnosis,same_sentence
+PMC7086412_02,PMC7086412,3072,3078,3590 g,False,3590,,,g,g,mass,3041,3049,delivery,Treatment,same_sentence
+PMC3557982_01,PMC3557982,412,418,6 days,False,6,,,days,days,time,,,,,none
+PMC3557982_01,PMC3557982,1024,1031,"1,593 g",False,"1,593",,,g,g,mass,1005,1015,right lung,BodyPart,same_sentence
+PMC3557982_01,PMC3557982,1045,1052,"1,268 g",False,"1,268",,,g,g,mass,1005,1015,right lung,BodyPart,same_sentence
+PMC3557982_01,PMC3557982,1070,1079,350-450 g,True,,350,450,g,g,mass,1005,1015,right lung,BodyPart,same_sentence
+PMC3557982_01,PMC3557982,2533,2539,43-day,False,43,,,day,day,time,2493,2497,died,Finding,window_fallback
+PMC9815523_01,PMC9815523,577,586,22 months,False,22,,,months,months,time,547,556,follow-up,Finding,same_sentence
+PMC9815523_01,PMC9815523,640,645,22.2%,False,22.2,,,%,%,percentage,667,685,diagnostic imaging,Exam,same_sentence_forward
+PMC9815523_01,PMC9815523,795,800,13.3%,False,13.3,,,%,%,percentage,769,779,thrombosis,Diagnosis,window_fallback
+PMC9815523_01,PMC9815523,834,838,8.9%,False,8.9,,,%,%,percentage,856,866,thrombosis,Diagnosis,same_sentence_forward
+PMC9815523_01,PMC9815523,898,903,77.8%,False,77.8,,,%,%,percentage,919,926,imaging,Exam,same_sentence_forward
+PMC9815523_01,PMC9815523,1195,1200,97.8%,False,97.8,,,%,%,percentage,1127,1141,immobilization,Treatment,window_fallback
+PMC9815523_01,PMC9815523,1510,1519,94 months,False,94,,,months,months,time,1476,1483,therapy,Treatment,same_sentence
+PMC9815523_01,PMC9815523,1560,1571,23.5 months,False,23.5,,,months,months,time,1476,1483,therapy,Treatment,same_sentence
+PMC9815523_01,PMC9815523,1592,1597,35.6%,False,35.6,,,%,%,percentage,1476,1483,therapy,Treatment,window_fallback
+PMC9815523_01,PMC9815523,1643,1652,36 months,False,36,,,months,months,time,1625,1634,follow-up,Finding,same_sentence
+PMC9815523_01,PMC9815523,2551,2554,58%,False,58,,,%,%,percentage,2529,2536,surgery,Treatment,same_sentence
+PMC9815523_01,PMC9815523,2595,2598,26%,False,26,,,%,%,percentage,2529,2536,surgery,Treatment,same_sentence
+PMC9815523_01,PMC9815523,2670,2672,9%,False,9,,,%,%,percentage,2605,2626,anticoagulant therapy,Treatment,same_sentence
+PMC9815523_01,PMC9815523,2787,2789,4%,False,4,,,%,%,percentage,2763,2778,stent placement,Treatment,same_sentence
+PMC9815523_01,PMC9815523,2811,2813,2%,False,2,,,%,%,percentage,2763,2778,stent placement,Treatment,same_sentence
+PMC9815523_01,PMC9815523,2843,2846,83%,False,83,,,%,%,percentage,2763,2778,stent placement,Treatment,window_fallback
+PMC9815523_01,PMC9815523,2951,2962,10.5 months,False,10.5,,,months,months,time,2886,2909,anticoagulation therapy,Treatment,same_sentence
+PMC9815523_01,PMC9815523,4249,4251,4%,False,4,,,%,%,percentage,4262,4284,postoperative bleeding,Diagnosis,same_sentence_forward
+PMC9815523_01,PMC9815523,5083,5092,13 months,False,13,,,months,months,time,5015,5036,vitamin K antagonists,Treatment,same_sentence
+PMC9815523_01,PMC9815523,5341,5349,2 months,False,2,,,months,months,time,5292,5315,anticoagulation therapy,Treatment,same_sentence
+PMC9815523_01,PMC9815523,5687,5692,48.1%,False,48.1,,,%,%,percentage,5702,5711,follow-up,Finding,same_sentence_forward
+PMC4310058_01,PMC4310058,135,142,2 weeks,False,2,,,weeks,weeks,time,84,89,skull,BodyPart,window_fallback
+PMC4310058_01,PMC4310058,225,232,2 years,False,2,,,years,years,time,84,89,skull,BodyPart,window_fallback
+PMC4310058_01,PMC4310058,714,721,2 years,False,2,,,years,years,time,738,743,skull,BodyPart,same_sentence_forward
+PMC4310058_01,PMC4310058,1242,1246,5 cm,False,5,,,cm,cm,length,1127,1139,cranioplasty,Treatment,window_fallback
+PMC4310058_01,PMC4310058,1981,1986,day 2,False,2,,,day,day,time,,,,,none
+PMC3859158_01,PMC3859158,35,42,4-month,False,4,,,month,month,time,60,75,epigastric pain,Symptom,same_sentence_forward
+PMC3859158_01,PMC3859158,994,1001,11.5 cm,False,11.5,,,cm,cm,length,964,972,CT) scan,Exam,same_sentence
+PMC3859158_01,PMC3859158,1710,1716,6.2 cm,False,6.2,,,cm,cm,length,1679,1694,pancreatic mass,Finding,same_sentence
+PMC3859158_01,PMC3859158,2733,2740,6-month,False,6,,,month,month,time,2705,2712,therapy,Treatment,window_fallback
+PMC9650410_01,PMC9650410,9394,9402,10 years,False,10,,,years,years,time,9261,9268,painful,Symptom,window_fallback
+PMC5804616_01,PMC5804616,624,633,80.5 mmHg,False,80.5,,,mmHg,mmhg,pressure,599,605,oxygen,Treatment,same_sentence
+PMC5804616_01,PMC5804616,677,686,38.8 mmHg,False,38.8,,,mmHg,mmhg,pressure,643,657,carbon dioxide,Exam,same_sentence
+PMC5804616_01,PMC5804616,800,804,3 mm,False,3,,,mm,mm,length,717,736,computed tomography,Exam,same_sentence
+PMC5804616_01,PMC5804616,1313,1318,35 mg,False,35,,,mg,mg,mass,1241,1259,left main bronchus,BodyPart,same_sentence
+PMC5804616_01,PMC5804616,1448,1454,6.0 mm,False,6.0,,,mm,mm,length,1333,1352,Tracheal intubation,Treatment,same_sentence
+PMC5804616_01,PMC5804616,1474,1480,400 mm,False,400,,,mm,mm,length,1333,1352,Tracheal intubation,Treatment,same_sentence
+PMC5804616_01,PMC5804616,1525,1530,26 cm,False,26,,,cm,cm,length,1333,1352,Tracheal intubation,Treatment,same_sentence
+PMC5804616_01,PMC5804616,2679,2681,4%,False,4,,,%,%,percentage,2651,2661,anesthesia,Symptom,same_sentence
+PMC5804616_01,PMC5804616,2714,2720,1.5-2%,True,,1.5,2,%,%,percentage,2682,2693,sevoflurane,Treatment,same_sentence
+PMC5804616_01,PMC5804616,2870,2880,250-400 ml,True,,250,400,ml,ml,volume,2885,2890,10-20,Finding,same_sentence_forward
+PMC5804616_01,PMC5804616,2984,2988,6 ml,False,6,,,ml,ml,volume,2955,2973,abdominal incision,Treatment,same_sentence
+PMC5804616_01,PMC5804616,2992,2994,1%,False,1,,,%,%,percentage,2955,2973,abdominal incision,Treatment,same_sentence
+PMC5804616_01,PMC5804616,3065,3069,0.3%,False,0.3,,,%,%,percentage,3042,3061,continuous infusion,Treatment,same_sentence
+PMC5804616_01,PMC5804616,3095,3101,4-6 ml,True,,4,6,ml,ml,volume,3070,3081,ropivacaine,Treatment,same_sentence
+PMC5804616_01,PMC5804616,3188,3198,252.4 mmHg,False,252.4,,,mmHg,mmhg,pressure,3143,3170,Arterial blood gas analysis,Exam,same_sentence
+PMC5804616_01,PMC5804616,3211,3220,36.9 mmHg,False,36.9,,,mmHg,mmhg,pressure,3143,3170,Arterial blood gas analysis,Exam,same_sentence
+PMC5804616_01,PMC5804616,3383,3386,98%,False,98,,,%,%,percentage,3328,3354,arterial oxygen saturation,Exam,same_sentence
+PMC5804616_01,PMC5804616,3451,3457,60 min,False,60,,,min,min,time,3467,3474,surgery,Treatment,same_sentence_forward
+PMC5804616_01,PMC5804616,3509,3512,89%,False,89,,,%,%,percentage,3467,3474,surgery,Treatment,same_sentence
+PMC5804616_01,PMC5804616,4014,4024,101.7 mmHg,False,101.7,,,mmHg,mmhg,pressure,3969,3996,arterial blood gas analysis,Exam,same_sentence
+PMC5804616_01,PMC5804616,4247,4250,99%,False,99,,,%,%,percentage,4171,4189,right pneumothorax,Finding,same_sentence
+PMC5804616_01,PMC5804616,4395,4401,650 ml,False,650,,,ml,ml,volume,4405,4421,pleural effusion,Diagnosis,same_sentence_forward
+PMC5804616_01,PMC5804616,6822,6828,60 min,False,60,,,min,min,time,6834,6857,spontaneous respiration,Finding,same_sentence_forward
+PMC5804616_01,PMC5804616,6970,6973,89%,False,89,,,%,%,percentage,6913,6931,surgical procedure,Treatment,same_sentence
+PMC5804616_01,PMC5804616,7883,7887,2.1%,False,2.1,,,%,%,percentage,7836,7848,pneumothorax,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,677,683,79 U/L,False,79,,,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,685,693,5-45 U/L,True,,5,45,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,696,702,51 U/L,False,51,,,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,704,712,5-35 U/L,True,,5,35,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,715,722,540 U/L,False,540,,,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,724,734,30-110 U/L,True,,30,110,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,737,744,197 U/L,False,197,,,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,746,754,7-50 U/L,True,,7,50,U/L,u/l,lab_concentration,609,624,total bilirubin,Exam,same_sentence
+PMC3897989_01,PMC3897989,857,868,"3,180 mg/dL",False,"3,180",,,mg/dL,mg/dl,lab_concentration,840,843,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,870,884,694-1620 mg/dL,True,,694,1620,mg/dL,mg/dl,lab_concentration,840,843,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,890,899,344 mg/dL,False,344,,,mg/dL,mg/dl,lab_concentration,840,843,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,901,913,60-263 mg/dL,True,,60,263,mg/dL,mg/dl,lab_concentration,840,843,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,1743,1754,66.89 ng/mL,False,66.89,,,ng/mL,ng/ml,lab_concentration,1701,1706,tumor,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,1756,1765,0-5 ng/mL,True,,0,5,ng/mL,ng/ml,lab_concentration,1701,1706,tumor,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,2009,2014,0.5 g,False,0.5,,,g,g,mass,1970,1979,Infection,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,2019,2026,8 hours,False,8,,,hours,hours,time,1970,1979,Infection,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,2222,2228,250 mg,False,250,,,mg,mg,mass,2104,2113,elevation,Treatment,same_sentence
+PMC3897989_01,PMC3897989,2513,2520,44.36 g,False,44.36,,,g,g,mass,2474,2477,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,2524,2532,0.03-2 g,True,,0.03,2,g,g,mass,2474,2477,IgG,Exam,same_sentence
+PMC3897989_01,PMC3897989,2954,2959,40 mg,False,40,,,mg,mg,mass,2928,2946,methylprednisolone,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3064,3071,376 U/L,False,376,,,U/L,u/l,lab_concentration,3043,3058,steroid therapy,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3073,3079,38 U/L,False,38,,,U/L,u/l,lab_concentration,3043,3058,steroid therapy,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3152,3159,243 U/L,False,243,,,U/L,u/l,lab_concentration,3043,3058,steroid therapy,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3161,3167,47 U/L,False,47,,,U/L,u/l,lab_concentration,3043,3058,steroid therapy,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3169,3175,47 U/L,False,47,,,U/L,u/l,lab_concentration,3043,3058,steroid therapy,Treatment,same_sentence
+PMC3897989_01,PMC3897989,3279,3284,32 mg,False,32,,,mg,mg,mass,3270,3274,oral,Finding,same_sentence
+PMC3897989_01,PMC3897989,3374,3379,32 mg,False,32,,,mg,mg,mass,3306,3311,liver,BodyPart,window_fallback
+PMC3897989_01,PMC3897989,3399,3404,16 mg,False,16,,,mg,mg,mass,3306,3311,liver,BodyPart,window_fallback
+PMC3897989_01,PMC3897989,3522,3529,40 days,False,40,,,days,days,time,3536,3545,treatment,Treatment,same_sentence_forward
+PMC3897989_01,PMC3897989,3654,3661,135 U/L,False,135,,,U/L,u/l,lab_concentration,3572,3576,back,BodyPart,window_fallback
+PMC3897989_01,PMC3897989,3663,3670,134 U/L,False,134,,,U/L,u/l,lab_concentration,3572,3576,back,BodyPart,window_fallback
+PMC3897989_01,PMC3897989,3805,3809,5 mg,False,5,,,mg,mg,mass,3660,3666,"L, 134",Treatment,window_fallback
+PMC3897989_01,PMC3897989,3862,3869,40 days,False,40,,,days,days,time,,,,,none
+PMC3897989_01,PMC3897989,4081,4087,500 mg,False,500,,,mg,mg,mass,4039,4052,herpes zoster,Diagnosis,same_sentence
+PMC3897989_01,PMC3897989,4105,4111,9 days,False,9,,,days,days,time,4070,4087,acyclovir (500 mg,Treatment,same_sentence
+PMC2817501_01,PMC2817501,340,347,80 mmHg,False,80,,,mmHg,mmhg,pressure,321,335,blood pressure,Finding,same_sentence
+PMC2817501_01,PMC2817501,591,598,30 mmHg,False,30,,,mmHg,mmhg,pressure,485,517,Transesophageal echocardiography,Exam,same_sentence
+PMC2817501_01,PMC2817501,677,684,20 mmHg,False,20,,,mmHg,mmhg,pressure,612,642,rheumatic mitral valve disease,Diagnosis,same_sentence
+PMC2817501_01,PMC2817501,700,706,1.8 cm,False,1.8,,,cm,cm,length,612,642,rheumatic mitral valve disease,Diagnosis,same_sentence
+PMC2817501_01,PMC2817501,789,792,30%,False,30,,,%,%,percentage,756,785,ventricular ejection fraction,Exam,same_sentence
+PMC2817501_01,PMC2817501,832,839,68 mmHg,False,68,,,mmHg,mmhg,pressure,803,828,pulmonary artery pressure,Finding,same_sentence
+PMC2817501_01,PMC2817501,946,949,90%,False,90,,,%,%,percentage,914,936,Coronary arteriography,Exam,same_sentence
+PMC2817501_01,PMC2817501,1502,1507,29 mm,False,29,,,mm,mm,length,1516,1525,aortotomy,Treatment,same_sentence_forward
+PMC2817501_01,PMC2817501,1829,1834,21 mm,False,21,,,mm,mm,length,,,,,none
+PMC11131390_01,PMC11131390,25,33,64 years,False,64,,,years,years,time,2,9,retired,Finding,same_sentence
+PMC11131390_01,PMC11131390,337,350,2.0-4.4 pg/mL,True,,2.0,4.4,pg/mL,pg/ml,lab_concentration,198,213,hyperthyroidism,Diagnosis,same_sentence
+PMC11131390_01,PMC11131390,485,494,16.3 IU/L,False,16.3,,,IU/L,iu/l,lab_concentration,460,469,diagnosis,Exam,same_sentence
+PMC11131390_01,PMC11131390,504,513,1.75 IU/L,False,1.75,,,IU/L,iu/l,lab_concentration,460,469,diagnosis,Exam,same_sentence
+PMC11131390_01,PMC11131390,546,551,34 IU,False,34,,,IU,iu,dose_unit,520,530,antibodies,Treatment,same_sentence
+PMC11131390_01,PMC11131390,607,613,115 IU,False,115,,,IU,iu,dose_unit,580,590,antibodies,Treatment,same_sentence
+PMC11131390_01,PMC11131390,779,784,20 mg,False,20,,,mg,mg,mass,761,772,carbimazole,Treatment,same_sentence
+PMC11131390_01,PMC11131390,990,994,5 mg,False,5,,,mg,mg,mass,967,976,euthyroid,Finding,same_sentence
+PMC11131390_01,PMC11131390,1015,1024,15 months,False,15,,,months,months,time,967,976,euthyroid,Finding,same_sentence
+PMC11131390_01,PMC11131390,1153,1159,2.5 mg,False,2.5,,,mg,mg,mass,1073,1085,discontinued,Finding,same_sentence
+PMC11131390_01,PMC11131390,1168,1176,2 months,False,2,,,months,months,time,1073,1085,discontinued,Finding,same_sentence
+PMC11131390_01,PMC11131390,1239,1246,2 years,False,2,,,years,years,time,1213,1222,treatment,Treatment,same_sentence
+PMC11131390_01,PMC11131390,1550,1558,3.3 IU/L,False,3.3,,,IU/L,iu/l,lab_concentration,1478,1487,euthyroid,Finding,same_sentence
+PMC11131390_01,PMC11131390,1578,1586,4 months,False,4,,,months,months,time,1478,1487,euthyroid,Finding,window_fallback
+PMC11131390_01,PMC11131390,1634,1638,4 kg,False,4,,,kg,kg,mass,1639,1650,weight gain,Finding,same_sentence_forward
+PMC11131390_01,PMC11131390,1652,1660,67-71 kg,True,,67,71,kg,kg,mass,1639,1650,weight gain,Finding,same_sentence
+PMC11131390_01,PMC11131390,1867,1875,66 years,False,66,,,years,years,time,1854,1865,patient age,Finding,same_sentence
+PMC11131390_01,PMC11131390,1894,1899,71 kg,False,71,,,kg,kg,mass,1854,1865,patient age,Finding,same_sentence
+PMC11131390_01,PMC11131390,2187,2196,45 months,False,45,,,months,months,time,1964,1977,levothyroxine,Treatment,same_sentence
+PMC11131390_01,PMC11131390,2283,2291,0.8 IU/L,False,0.8,,,IU/L,iu/l,lab_concentration,,,,,none
+PMC11131390_01,PMC11131390,2421,2429,4 months,False,4,,,months,months,time,2383,2397,hypothyroidism,Diagnosis,same_sentence
+PMC10521634_01,PMC10521634,326,328,4g,False,4,,,g,g,mass,319,324,5-ASA,Treatment,same_sentence
+PMC10521634_01,PMC10521634,712,720,11.5g/dl,False,11.5,,,g/dl,g/dl,lab_concentration,724,738,platelet count,Exam,same_sentence_forward
+PMC10521634_01,PMC10521634,770,776,5mg/dl,False,5,,,mg/dl,mg/dl,lab_concentration,724,738,platelet count,Exam,same_sentence
+PMC10521634_01,PMC10521634,888,894,300 mg,False,300,,,mg,mg,mass,869,879,infections,Diagnosis,same_sentence
+PMC10521634_01,PMC10521634,1005,1012,week 10,False,10,,,week,week,time,1016,1025,treatment,Treatment,same_sentence_forward
+PMC10521634_01,PMC10521634,1151,1159,14 weeks,False,14,,,weeks,weeks,time,1167,1176,treatment,Treatment,same_sentence_forward
+PMC10521634_01,PMC10521634,1339,1346,week 26,False,26,,,week,week,time,1316,1325,remission,Finding,window_fallback
+PMC10521634_01,PMC10521634,1942,1948,120 cm,False,120,,,cm,cm,length,1956,1961,colon,BodyPart,same_sentence_forward
+PMC10521634_01,PMC10521634,2427,2430,5mg,False,5,,,mg,mg,mass,2408,2418,biosimilar,Treatment,same_sentence
+PMC10521634_01,PMC10521634,3093,3100,4 weeks,False,4,,,weeks,weeks,time,3105,3108,add,Finding,same_sentence_forward
+PMC10521634_01,PMC10521634,3128,3133,2.5mg,False,2.5,,,mg,mg,mass,3109,3121,azathioprine,Treatment,same_sentence
+PMC10521634_01,PMC10521634,3199,3207,24 weeks,False,24,,,weeks,weeks,time,3219,3228,treatment,Treatment,same_sentence_forward
+PMC10710131_01,PMC10710131,850,857,5 years,False,5,,,years,years,time,834,839,tooth,BodyPart,same_sentence
+PMC10488652_01,PMC10488652,154,161,10 days,False,10,,,days,days,time,82,91,emergency,Diagnosis,same_sentence
+PMC10488652_01,PMC10488652,1006,1014,6.2 g/dl,False,6.2,,,g/dl,g/dl,lab_concentration,972,980,dilution,Exam,same_sentence
+PMC10488652_01,PMC10488652,1027,1032,18.1%,False,18.1,,,%,%,percentage,1016,1026,hematocrit,Exam,same_sentence
+PMC10488652_01,PMC10488652,1361,1366,40 mg,False,40,,,mg,mg,mass,1334,1347,dexamethasone,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1391,1397,4 days,False,4,,,days,days,time,1334,1347,dexamethasone,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1434,1440,200 mg,False,200,,,mg,mg,mass,1402,1420,hydroxychloroquine,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1765,1769,5 mg,False,5,,,mg,mg,mass,1741,1751,prednisone,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1816,1822,200 mg,False,200,,,mg,mg,mass,1784,1802,hydroxychloroquine,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1875,1881,500 mg,False,500,,,mg,mg,mass,1840,1861,mycophenolate mofetil,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1888,1896,12 hours,False,12,,,hours,hours,time,1840,1861,mycophenolate mofetil,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1938,1944,500 mg,False,500,,,mg,mg,mass,1840,1861,mycophenolate mofetil,Treatment,same_sentence
+PMC10488652_01,PMC10488652,1951,1958,8 hours,False,8,,,hours,hours,time,1840,1861,mycophenolate mofetil,Treatment,same_sentence
+PMC11420039_01,PMC11420039,143,150,2 weeks,False,2,,,weeks,weeks,time,87,92,limbs,BodyPart,same_sentence
+PMC11420039_01,PMC11420039,609,616,1000 cm,False,1000,,,cm,cm,length,503,514,lower limbs,BodyPart,window_fallback
+PMC11420039_01,PMC11420039,659,665,200 cm,False,200,,,cm,cm,length,503,514,lower limbs,BodyPart,window_fallback
+PMC11420039_01,PMC11420039,1305,1310,40 mg,False,40,,,mg,mg,mass,1240,1249,diagnosis,Exam,window_fallback
+PMC11420039_01,PMC11420039,1414,1419,20 mg,False,20,,,mg,mg,mass,1349,1367,methylprednisolone,Treatment,same_sentence
+PMC11420039_01,PMC11420039,1439,1444,16 mg,False,16,,,mg,mg,mass,1349,1367,methylprednisolone,Treatment,same_sentence
+PMC11420039_01,PMC11420039,1837,1842,16 mg,False,16,,,mg,mg,mass,1795,1813,methylprednisolone,Treatment,same_sentence
+PMC11420039_01,PMC11420039,1862,1867,12 mg,False,12,,,mg,mg,mass,1795,1813,methylprednisolone,Treatment,same_sentence
+PMC11420039_01,PMC11420039,1986,1992,600 mg,False,600,,,mg,mg,mass,1919,1928,Dupilumab,Treatment,same_sentence
+PMC11420039_01,PMC11420039,1994,2000,300 mg,False,300,,,mg,mg,mass,1919,1928,Dupilumab,Treatment,same_sentence
+PMC11420039_01,PMC11420039,2030,2036,300 mg,False,300,,,mg,mg,mass,1919,1928,Dupilumab,Treatment,same_sentence
+PMC11420039_01,PMC11420039,3295,3299,4 mg,False,4,,,mg,mg,mass,3284,3291,reduced,Finding,same_sentence
+PMC11420039_01,PMC11420039,4539,4543,20 g,False,20,,,g,g,mass,4474,4494,Human immunoglobulin,Treatment,same_sentence
+PMC11420039_01,PMC11420039,4706,4712,1.6 mg,False,1.6,,,mg,mg,mass,4680,4702,subcutaneous injection,Treatment,same_sentence
+PMC11420039_01,PMC11420039,4717,4723,1 week,False,1,,,week,week,time,4680,4702,subcutaneous injection,Treatment,same_sentence
+PMC11259348_01,PMC11259348,161,167,4 g/dL,False,4,,,g/dL,g/dl,lab_concentration,140,156,hemoglobin level,Exam,same_sentence
+PMC11259348_02,PMC11259348,2126,2129,50%,False,50,,,%,%,percentage,,,,,none
+PMC11259348_02,PMC11259348,2578,2581,50%,False,50,,,%,%,percentage,2384,2388,"2, P",Treatment,same_sentence
+PMC11259348_02,PMC11259348,2763,2766,50%,False,50,,,%,%,percentage,2711,2718,a group,Finding,same_sentence
+PMC11259348_02,PMC11259348,2963,2969,30 min,False,30,,,min,min,time,2970,2987,incubation period,Finding,same_sentence_forward
+PMC11368112_01,PMC11368112,26,31,2-day,False,2,,,day,day,time,43,58,chest tightness,Symptom,same_sentence_forward
+PMC11368112_01,PMC11368112,532,535,85%,False,85,,,%,%,percentage,405,422,rapid respiration,Finding,window_fallback
+PMC11368112_01,PMC11368112,542,549,65 mg/L,False,65,,,mg/L,mg/l,lab_concentration,405,422,rapid respiration,Finding,window_fallback
+PMC11368112_01,PMC11368112,556,561,55 mm,False,55,,,mm,mm,length,405,422,rapid respiration,Finding,window_fallback
+PMC11368112_01,PMC11368112,578,588,26.12 mg/L,False,26.12,,,mg/L,mg/l,lab_concentration,,,,,none
+PMC11368112_01,PMC11368112,1782,1786,3 cm,False,3,,,cm,cm,length,1724,1736,intracardiac,BodyPart,window_fallback
+PMC11368112_01,PMC11368112,2279,2289,0.2-0.8 cm,True,,0.2,0.8,cm,cm,length,2262,2277,multiple ulcers,Diagnosis,same_sentence
+PMC11368112_01,PMC11368112,2964,2969,80 mg,False,80,,,mg,mg,mass,2942,2960,methylprednisolone,Treatment,same_sentence
+PMC11368112_01,PMC11368112,2998,3003,60 mg,False,60,,,mg,mg,mass,2942,2960,methylprednisolone,Treatment,same_sentence
+PMC11368112_01,PMC11368112,3041,3045,5 mg,False,5,,,mg,mg,mass,3030,3037,reduced,Finding,same_sentence
+PMC11368112_01,PMC11368112,3062,3066,5 mg,False,5,,,mg,mg,mass,3030,3037,reduced,Finding,same_sentence
+PMC11368112_01,PMC11368112,3091,3097,200 mg,False,200,,,mg,mg,mass,3075,3087,cyclosporine,Treatment,same_sentence
+PMC11368112_01,PMC11368112,3328,3335,14 days,False,14,,,days,days,time,3244,3253,treatment,Treatment,window_fallback
+PMC11345641_01,PMC11345641,736,742,289U/L,False,289,,,U/L,u/l,lab_concentration,680,707,serum lactate dehydrogenase,Exam,same_sentence
+PMC11345641_01,PMC11345641,859,864,8.4cm,False,8.4,,,cm,cm,length,832,838,uterus,BodyPart,same_sentence
+PMC11345641_01,PMC11345641,988,992,15mm,False,15,,,mm,mm,length,974,984,thickening,Finding,same_sentence
+PMC11345641_01,PMC11345641,1152,1158,12.6cm,False,12.6,,,cm,cm,length,1104,1117,anterior wall,BodyPart,same_sentence
+PMC11345641_01,PMC11345641,1165,1168,80%,False,80,,,%,%,percentage,1104,1117,anterior wall,BodyPart,same_sentence
+PMC11345641_01,PMC11345641,1656,1661,12 cm,False,12,,,cm,cm,length,1628,1636,fibroids,Diagnosis,same_sentence
+PMC11345641_01,PMC11345641,2351,2357,7.8 cm,False,7.8,,,cm,cm,length,2203,2218,ultrasonography,Exam,same_sentence
+PMC11345641_01,PMC11345641,2775,2782,340 U/L,False,340,,,U/L,u/l,lab_concentration,2716,2724,Serum CA,Exam,same_sentence
+PMC11345641_01,PMC11345641,3034,3038,5 cm,False,5,,,cm,cm,length,2982,2998,limited mobility,Finding,window_fallback
+PMC11345641_01,PMC11345641,3336,3341,20 cm,False,20,,,cm,cm,length,3311,3318,surgery,Treatment,same_sentence
+PMC11345641_01,PMC11345641,3664,3668,3 cm,False,3,,,cm,cm,length,3651,3657,tumors,Diagnosis,same_sentence
+PMC11345641_01,PMC11345641,3761,3765,7 cm,False,7,,,cm,cm,length,3748,3754,tumors,Diagnosis,same_sentence
+PMC11345641_01,PMC11345641,3865,3869,4 cm,False,4,,,cm,cm,length,3819,3830,lymph nodes,BodyPart,same_sentence
+PMC11723754_01,PMC11723754,294,297,3cm,False,3,,,cm,cm,length,275,288,sacral region,BodyPart,same_sentence
+PMC11723754_01,PMC11723754,1100,1105,7g/dl,False,7,,,g/dl,g/dl,lab_concentration,1070,1081,transfusion,Treatment,same_sentence
+PMC11723754_01,PMC11723754,1231,1236,day 3,False,3,,,day,day,time,1213,1226,Noradrenaline,Treatment,window_fallback
+PMC11783470_01,PMC11783470,419,428,11.5 g/dL,False,11.5,,,g/dL,g/dl,lab_concentration,430,452,transferrin saturation,Exam,same_sentence_forward
+PMC11783470_01,PMC11783470,453,458,12.8%,False,12.8,,,%,%,percentage,430,452,transferrin saturation,Exam,same_sentence
+PMC11783470_01,PMC11783470,469,478,200 ng/mL,False,200,,,ng/mL,ng/ml,lab_concentration,460,468,ferritin,Treatment,same_sentence
+PMC11783470_01,PMC11783470,489,498,76 mcg/dL,False,76,,,mcg/dL,mcg/dl,lab_concentration,484,488,iron,Treatment,same_sentence
+PMC11783470_01,PMC11783470,567,570,20%,False,20,,,%,%,percentage,543,565,transferrin saturation,Exam,same_sentence
+PMC11783470_01,PMC11783470,730,734,7-mm,False,7,,,mm,mm,length,742,748,lesion,Finding,same_sentence_forward
+PMC11783470_01,PMC11783470,1660,1668,3 months,False,3,,,months,months,time,1689,1699,recurrence,Diagnosis,same_sentence_forward
+PMC11722600_01,PMC11722600,232,238,day 20,False,20,,,day,day,time,197,210,genitourinary,BodyPart,window_fallback
+PMC11722600_01,PMC11722600,648,655,55 mg/L,False,55,,,mg/L,mg/l,lab_concentration,614,617,mm3,Finding,same_sentence
+PMC11722600_01,PMC11722600,661,667,5 mg/L,False,5,,,mg/L,mg/l,lab_concentration,614,617,mm3,Finding,same_sentence
+PMC11722600_01,PMC11722600,704,709,29 mm,False,29,,,mm,mm,length,670,695,erythrocyte sedimentation,Exam,same_sentence
+PMC11722600_01,PMC11722600,716,723,3-20 mm,True,,3,20,mm,mm,length,670,695,erythrocyte sedimentation,Exam,same_sentence
+PMC11722600_01,PMC11722600,988,992,8 mm,False,8,,,mm,mm,length,969,977,appendix,BodyPart,same_sentence
+PMC11722600_01,PMC11722600,1071,1075,4 cm,False,4,,,cm,cm,length,1049,1060,right ovary,BodyPart,same_sentence
+PMC11722600_01,PMC11722600,2249,2256,6 month,False,6,,,month,month,time,2257,2266,follow-up,Finding,same_sentence_forward
+PMC11722600_02,PMC11722600,748,755,85 mg/L,False,85,,,mg/L,mg/l,lab_concentration,735,738,mm3,Finding,same_sentence
+PMC11722600_02,PMC11722600,761,768,5 mg/dL,False,5,,,mg/dL,mg/dl,lab_concentration,735,738,mm3,Finding,same_sentence
+PMC11722600_02,PMC11722600,904,909,17 mm,False,17,,,mm,mm,length,885,893,appendix,BodyPart,same_sentence
+PMC11722600_02,PMC11722600,1779,1785,7 days,False,7,,,days,days,time,1636,1642,pelvis,BodyPart,window_fallback
+PMC11722600_02,PMC11722600,1963,1971,6 months,False,6,,,months,months,time,1975,1987,follow-up CT,Exam,same_sentence_forward
+PMC11722600_02,PMC11722600,2518,2524,2.5 cm,False,2.5,,,cm,cm,length,2477,2485,appendix,BodyPart,same_sentence
+PMC11722600_02,PMC11722600,2549,2554,45 mm,False,45,,,mm,mm,length,2477,2485,appendix,BodyPart,same_sentence
+PMC12215201_01,PMC12215201,129,137,2 months,False,2,,,months,months,time,89,98,emergency,Diagnosis,same_sentence
+PMC12215201_01,PMC12215201,849,857,6.1 g/dL,False,6.1,,,g/dL,g/dl,lab_concentration,859,873,platelet count,Exam,same_sentence_forward
+PMC12215201_01,PMC12215201,904,913,3.2 mg/dL,False,3.2,,,mg/dL,mg/dl,lab_concentration,888,903,total bilirubin,Exam,same_sentence
+PMC12215201_01,PMC12215201,936,944,315 IU/L,False,315,,,IU/L,iu/l,lab_concentration,888,903,total bilirubin,Exam,same_sentence
+PMC12215201_01,PMC12215201,950,958,305 IU/L,False,305,,,IU/L,iu/l,lab_concentration,888,903,total bilirubin,Exam,same_sentence
+PMC12215201_01,PMC12215201,964,972,209 IU/L,False,209,,,IU/L,iu/l,lab_concentration,888,903,total bilirubin,Exam,same_sentence
+PMC12215201_01,PMC12215201,986,994,2.6 g/dL,False,2.6,,,g/dL,g/dl,lab_concentration,978,985,albumin,Treatment,same_sentence
+PMC12215201_01,PMC12215201,1118,1124,2.1 cm,False,2.1,,,cm,cm,length,1066,1071,liver,BodyPart,same_sentence
+PMC12215201_01,PMC12215201,1272,1278,4.6 cm,False,4.6,,,cm,cm,length,1192,1203,very little,Finding,same_sentence
+PMC12215201_01,PMC12215201,1963,1969,1 g/dL,False,1,,,g/dL,g/dl,lab_concentration,1911,1917,bloody,Finding,window_fallback
+PMC12215201_01,PMC12215201,1974,1980,2 g/dL,False,2,,,g/dL,g/dl,lab_concentration,2000,2007,albumin,Treatment,same_sentence_forward
+PMC12215201_01,PMC12215201,2027,2033,1 g/dL,False,1,,,g/dL,g/dl,lab_concentration,2000,2007,albumin,Treatment,same_sentence
+PMC12215201_01,PMC12215201,2038,2046,1.1 g/dL,False,1.1,,,g/dL,g/dl,lab_concentration,2000,2007,albumin,Treatment,same_sentence
+PMC12215201_01,PMC12215201,3147,3154,2 weeks,False,2,,,weeks,weeks,time,3132,3146,cardiac arrest,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,181,187,2 days,False,2,,,days,days,time,153,161,vomiting,Symptom,same_sentence
+PMC12832199_01,PMC12832199,658,664,1 year,False,1,,,year,year,time,591,599,prolapse,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,669,677,3 months,False,3,,,months,months,time,591,599,prolapse,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,958,966,9.6 g/dL,False,9.6,,,g/dL,g/dl,lab_concentration,938,944,anemia,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,986,994,2.8 g/dL,False,2.8,,,g/dL,g/dl,lab_concentration,969,984,hypoalbuminemia,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,1034,1043,2.2 mg/dL,False,2.2,,,mg/dL,mg/dl,lab_concentration,1001,1020,acute kidney injury,Diagnosis,same_sentence
+PMC12832199_01,PMC12832199,1229,1235,6.5 cm,False,6.5,,,cm,cm,length,1163,1189,gastric outlet obstruction,Diagnosis,window_fallback
+PMC12832199_01,PMC12832199,1270,1276,5.5 cm,False,5.5,,,cm,cm,length,1163,1189,gastric outlet obstruction,Diagnosis,window_fallback
+PMC12832199_01,PMC12832199,2730,2737,18 days,False,18,,,days,days,time,2723,2729,repair,Treatment,same_sentence
+PMC12832199_01,PMC12832199,3766,3770,5 cm,False,5,,,cm,cm,length,3725,3740,intraperitoneal,Finding,same_sentence
+PMC12832199_01,PMC12832199,4031,4038,191 min,False,191,,,min,min,time,4052,4077,blood loss. Postoperative,Diagnosis,same_sentence_forward
+PMC12832199_01,PMC12832199,4166,4172,day 27,False,27,,,day,day,time,4143,4152,Endoscopy,Exam,same_sentence
+PMC12832199_01,PMC12832199,4446,4454,2 months,False,2,,,months,months,time,4434,4436,CT,Exam,same_sentence
+PMC12832199_01,PMC12832199,4924,4933,10 months,False,10,,,months,months,time,4897,4907,recurrence,Diagnosis,same_sentence
