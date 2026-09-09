@@ -2,7 +2,7 @@
 """
 Longest-match entity extraction over the clinical case corpus.
 
-Reads  : data/raw/cases.csv          (case_text + case-level age/gender)
+Reads  : data/interim/cases_clean.csv (one row per patient, corrected age/gender)
 Uses   : data/interim/gazetteer.db   (built by build_gazetteer.py)
 Writes : data/processed/entities.csv (one row per entity span)
 
@@ -28,15 +28,17 @@ from pathlib import Path
 # from it causes silent misses -- no error, just missing entities.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_gazetteer import normalize, sort_key  # noqa: E402
+from project_paths import DEFAULT_CASES, DEFAULT_DB, PROJECT_ROOT
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CASES = PROJECT_ROOT / "data" / "raw" / "cases.csv"
-DEFAULT_DB = PROJECT_ROOT / "data" / "interim" / "gazetteer.db"
 DEFAULT_OUT = PROJECT_ROOT / "data" / "processed" / "entities.csv"
 
 # Sliding-window size. Measured on this corpus: raising it to 8 finds exactly
 # one extra entity across all 56 cases, so 6 is the right trade.
 DEFAULT_MAX_N = 6
+
+CSV_COLUMNS = ["case_id", "article_id", "age", "gender", "start", "end",
+               "surface_text", "term_norm", "cui", "tui", "entity_type",
+               "n_tokens", "vocabulary", "tty", "preferred_term"]
 
 # UMLS semantic type -> project ontology. T033 (Finding) is deliberately its
 # own type rather than folded into Symptom: it is a grab-bag holding both real
@@ -127,6 +129,7 @@ def extract(text: str, con: sqlite3.Connection, max_n: int,
                 "term_norm": norm, "cui": cui, "tui": tui,
                 "entity_type": TUI_TO_ENTITY[tui], "n_tokens": n,
                 "vocabulary": vocab, "tty": tty,
+                "preferred_term": term_pref or surface,
             }
             break
 
@@ -164,9 +167,7 @@ def main():
     with open(args.cases, newline="", encoding="utf-8", errors="replace") as f:
         cases = list(csv.DictReader(f))
 
-    fields = ["case_id", "article_id", "age", "gender", "start", "end",
-              "surface_text", "term_norm", "cui", "tui", "entity_type",
-              "n_tokens", "vocabulary", "tty"]
+    fields = CSV_COLUMNS
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     by_type = collections.Counter()

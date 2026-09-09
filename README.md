@@ -150,6 +150,40 @@ function the CLI uses, so the app and the pipeline can never disagree. The corpu
 `data/interim/cases_clean.csv` (50 patients, see Data Cleaning above), not the raw file -- the
 sidebar shows each selected patient's `case_id`, self-extracted age and sex alongside the text.
 
+The **Knowledge Graph** tab uses that same cleaned patient and live extraction.
+It represents Person, Age, Sex, the six clinical entity categories and their
+linked measurements. Select nodes or edges to inspect source text and methods;
+switch between concepts aggregated by CUI and individual occurrences; filter
+types and association methods; and export JSON, GraphML or CSV ZIP. Relation
+labels and an explicit Relations table make the graph's meaning inspectable.
+
+Measurements are hidden initially: click a concept to reveal its associated
+values, or Person to reveal unlinked measurements. Clicking the background hides
+them again. The Measurements control also offers Hide all; there is no automatic
+Show all mode. Changing cases or filters clears previous expansions.
+The canvas provides search by name/CUI, focus selection, zoom buttons and Escape
+to clear selection. Circular nodes and zoom-sensitive labels reduce clutter.
+Enable **Group by IS_A category** to arrange concepts around Treatment, Diagnosis,
+Exam, Finding, Symptom and BodyPart class nodes. Multi-type concepts keep every
+IS_A relation (their visual placement uses one class). These are project semantic
+categories, not inferred clinical assertions or the full UMLS hierarchy.
+
+`Person` is identified by the cleaned `case_id` (including merged `_P1` IDs).
+`HAS_AGE` and `HAS_SEX` use the cleaning output and retain extraction methods,
+upstream values and `source_case_ids` for auditing. Missing age produces no Age
+node; newborn age **0** is retained. Clinical links are typed `MENTIONS_*`
+relations, and measurement links remain `ASSOCIATED_WITH_MEASUREMENT` with their
+original occurrence offsets and `link_method`. A text mention does not establish
+a confirmed diagnosis, treatment administration or causality.
+
+All downstream defaults now use `data/interim/cases_clean.csv` via
+`src/project_paths.py`. The app and graph export CLI extract directly from the
+selected cleaned text, so stale processed CSVs cannot introduce dropped patients
+or lose the merged fragments. Optional `--from-csv` export validates corpus IDs
+and offsets and rejects incompatible annotations; `--cases` still supports an
+explicit alternative corpus. See [source documentation](src/README.md) for the
+graph schema, CLI, provenance and tests.
+
 ```bash
 pip install -r requirements.txt
 streamlit run src/app.py            # opens http://localhost:8501

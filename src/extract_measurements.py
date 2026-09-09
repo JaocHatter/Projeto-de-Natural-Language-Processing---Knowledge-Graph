@@ -12,7 +12,7 @@ a character window when the sentence has no earlier entity), the same
 heuristic used in the project's example knowledge graphs (e.g. "serum lipase
 ... (850 U/L)" -> the value attaches to the "serum lipase" Exam entity).
 
-Reads  : data/raw/cases.csv
+Reads  : data/interim/cases_clean.csv
 Uses   : data/interim/gazetteer.db (via extract_entities.extract, to find the
          entities a value can attach to)
 Writes : data/processed/measurements.csv
@@ -37,6 +37,11 @@ from extract_entities import (  # noqa: E402
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = PROJECT_ROOT / "data" / "processed" / "measurements.csv"
+
+CSV_COLUMNS = ["case_id", "article_id", "start", "end", "surface_text", "is_range",
+               "value", "range_low", "range_high", "unit", "unit_norm", "unit_category",
+               "linked_entity_start", "linked_entity_end", "linked_entity_surface",
+               "linked_entity_type", "link_method", "linked_entity_cui", "linked_entity_id"]
 
 # Closed unit vocabulary -> category. Deliberately excludes bare single-letter
 # units ("L", "M", "C") that are ambiguous in this corpus -- "L"/"R" mark
@@ -238,10 +243,24 @@ def link_measurement(meas: dict, entities: list[dict], sent_starts: list[int]) -
     if best is None:
         return {"linked_entity_start": "", "linked_entity_end": "",
                 "linked_entity_surface": "", "linked_entity_type": "",
+                "linked_entity_cui": "", "linked_entity_id": "",
                 "link_method": "none"}
     return {"linked_entity_start": best["start"], "linked_entity_end": best["end"],
             "linked_entity_surface": best["surface_text"],
+            "linked_entity_cui": best.get("cui", ""),
+            "linked_entity_id": f'concept:{best["cui"]}' if best.get("cui") else "",
             "linked_entity_type": best["entity_type"], "link_method": method}
+
+
+def analyze_case(text: str, con: sqlite3.Connection | None,
+                 max_n: int = DEFAULT_MAX_N) -> tuple[list[dict], list[dict]]:
+    """One shared extraction pass for the app, export CLI and measurement CLI."""
+    entities = extract(text, con, max_n) if con is not None else []
+    sent_starts = [start for start, _ in split_sentences(text)]
+    measurements = find_measurements(text)
+    for meas in measurements:
+        meas.update(link_measurement(meas, entities, sent_starts))
+    return entities, measurements
 
 
 def main():
@@ -276,11 +295,7 @@ def main():
     with open(args.cases, newline="", encoding="utf-8", errors="replace") as f:
         cases = list(csv.DictReader(f))
 
-    fields = ["case_id", "article_id", "start", "end", "surface_text",
-              "is_range", "value", "range_low", "range_high",
-              "unit", "unit_norm", "unit_category",
-              "linked_entity_start", "linked_entity_end",
-              "linked_entity_surface", "linked_entity_type", "link_method"]
+    fields = CSV_COLUMNS
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     by_category = collections.Counter()
@@ -292,30 +307,17 @@ def main():
         writer.writeheader()
         for case in cases:
             text = case.get("case_text") or ""
-            gaz_hits = extract(text, con, args.max_n) if con is not None else []
-
-            entities = [
-                {"start": e["start"], "end": e["end"],
-                 "surface_text": e["surface_text"], "entity_type": e["entity_type"]}
-                for e in gaz_hits
-            ]
-            entities.sort(key=lambda e: e["start"])
-
-            sent_spans = split_sentences(text)
-            sent_starts = [s for s, _ in sent_spans]
-
-            for meas in find_measurements(text):
+            _, measurements = analyze_case(text, con, args.max_n)
+            for meas in measurements:
                 assert text[meas["start"]:meas["end"]] == meas["surface_text"]
-                link = link_measurement(meas, entities, sent_starts)
                 writer.writerow({
                     "case_id": case.get("case_id"),
                     "article_id": case.get("article_id"),
                     **meas,
-                    **link,
                 })
                 total += 1
                 by_category[meas["unit_category"]] += 1
-                by_link_method[link["link_method"]] += 1
+                by_link_method[meas["link_method"]] += 1
     if con is not None:
         con.close()
 
