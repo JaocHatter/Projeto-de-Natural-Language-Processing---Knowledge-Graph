@@ -29,7 +29,7 @@ from extract_measurements import (  # noqa: E402
 )
 from project_paths import DEFAULT_CASES, DEFAULT_METADATA
 from patient_data import new_patient
-from graph_panel import graph_panel
+from knowledge_graph.ui import graph_panel
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the

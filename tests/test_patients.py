@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from graph_builder import build_graph, filter_graph, validate_graph, MENTION_RELATIONS
+from knowledge_graph.model import build_graph, filter_graph, validate_graph, MENTION_RELATIONS
 from patient_data import new_patient, validate_annotations
 from project_paths import DEFAULT_CASES, DEFAULT_DB
 from extract_measurements import analyze_case

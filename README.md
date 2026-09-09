@@ -208,3 +208,10 @@ Per-patient, not extracted from the entity gazetteer:
   carried through from `cases.csv` unchanged; the upstream columns had confirmed errors.
 - **Person** -- identity is the row itself (`case_id` in `cases_clean.csv`, one row per real
   patient); there's no separate name/ID field beyond that.
+
+## AI-assisted development
+
+Claude and OpenAI Codex were used as development assistants during implementation,
+refactoring, debugging and documentation. Their suggestions and generated changes
+were reviewed and validated with the project's automated and browser tests before
+being incorporated.

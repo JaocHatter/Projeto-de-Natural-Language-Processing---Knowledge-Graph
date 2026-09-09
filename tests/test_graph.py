@@ -12,10 +12,10 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from graph_builder import build_graph, filter_graph, group_graph, interaction_views, validate_graph
+from knowledge_graph.model import build_graph, filter_graph, group_graph, interaction_views, validate_graph
 from extract_measurements import analyze_case, link_measurement
 from extract_entities import extract
-from graph_export import to_json, to_graphml, to_csv_zip, GRAPHML_NS
+from knowledge_graph.export import to_json, to_graphml, to_csv_zip, GRAPHML_NS
 from build_gazetteer import create_schema
 
 

@@ -27,10 +27,24 @@ raw/cases.csv → clean_cases.py → interim/cases_clean.csv
                        entities + linked measurements
                                       │
                                       ▼
-                       graph_builder.build_graph()
-                           ├── graph_panel.py → graph_view.py → Cytoscape.js
-                           └── graph_export.py → JSON / GraphML / CSV ZIP
+                   knowledge_graph.model.build_graph()
+                           ├── ui.py → Cytoscape.js
+                           └── export.py → JSON / GraphML / CSV ZIP
 ```
+
+The graph implementation is isolated in `src/knowledge_graph/`:
+
+```text
+knowledge_graph/
+├── model.py       # schema, construction, validation and projections
+├── export.py      # JSON, GraphML, CSV ZIP and export command
+├── ui.py          # Streamlit controls, Cytoscape bridge and evidence inspector
+└── assets/        # browser code, styles and pinned Cytoscape distribution
+```
+
+This keeps the model usable without Streamlit while avoiding separate panel and
+renderer modules for one UI. `src/graph_export.py` is only a compatibility entry
+point, so existing commands and automation do not need to change.
 
 `project_paths.py` is the shared source for the cleaned-corpus, gazetteer and
 article-metadata paths. Entity extraction, measurement extraction, the app and
@@ -124,7 +138,7 @@ New pasted/uploaded cases use the age/sex extraction functions from
 unknown. Corpus/database/metadata revision keys invalidate caches after changes.
 
 Cytoscape.js 3.33.1 is bundled locally with its MIT license in
-`src/assets/cytoscape/`. No CDN, Node build step, NetworkX or Neo4j is required.
+`src/knowledge_graph/assets/cytoscape/`. No CDN, Node build step, NetworkX or Neo4j is required.
 The component uses Streamlit v2 with `isolate_styles=False` for Cytoscape pointer
 hit testing. Component HTML/JS are fixed; external labels are passed as data and
 text excerpts are HTML-escaped. CSS classes use the `kg-` prefix.
