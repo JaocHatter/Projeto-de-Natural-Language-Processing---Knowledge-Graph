@@ -1,2 +1,5 @@
-streamlit>=1.63
-pandas>=2.0
+# Dependencies are declared in pyproject.toml; this installs the package itself.
+# Prefer a virtual environment:
+#     python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+# The Makefile targets work without installing anything (they set PYTHONPATH=src).
+-e .

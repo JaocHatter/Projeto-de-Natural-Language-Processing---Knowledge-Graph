@@ -8,11 +8,11 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
-from knowledge_graph.model import build_graph, filter_graph, validate_graph, MENTION_RELATIONS
-from patient_data import new_patient, validate_annotations
-from project_paths import DEFAULT_CASES, DEFAULT_DB
-from extract_measurements import analyze_case
+
+from clinical_kg.graph.model import build_graph, filter_graph, validate_graph, MENTION_RELATIONS
+from clinical_kg.corpus.patients import new_patient, validate_annotations
+from clinical_kg.paths import DEFAULT_CASES, DEFAULT_DB
+from clinical_kg.extraction.measurements import analyze_case
 
 
 class PatientTests(unittest.TestCase):

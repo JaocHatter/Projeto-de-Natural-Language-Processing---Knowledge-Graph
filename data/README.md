@@ -94,14 +94,14 @@ intermediate once per semantic type. Progress is printed per step.
 `VOCABS=""` to keep all vocabularies.
 
 > Note: the vocabulary filter is an unanchored regex, so `MTH` also admits `MTHSPL`/`MTHICD9` and
-> `ICD10CM` admits `CCSR_ICD10CM`. `src/build_gazetteer.py` compensates by matching vocabularies
+> `ICD10CM` admits `CCSR_ICD10CM`. `src/clinical_kg/gazetteer/build.py` compensates by matching vocabularies
 > exactly (`ALLOWED_VOCABS`), so the leak is filtered out downstream rather than here.
 
 ### Then, from the project root
 
 ```bash
-python3 src/build_gazetteer.py     # umls_csvs/ -> interim/gazetteer.db
-python3 src/extract_entities.py    # raw/cases.csv -> processed/entities.csv
+clinical-kg build-gazetteer     # umls_csvs/ -> interim/gazetteer.db
+clinical-kg extract-entities    # raw/cases.csv -> processed/entities.csv
 ```
 
 ---
@@ -115,8 +115,8 @@ python3 src/extract_entities.py    # raw/cases.csv -> processed/entities.csv
 | `external/filter_umls_mrsty.bash` | **Tracked in git.** The transformation | 8 KB |
 | `external/umls_work/` | *Generated.* Extracted `.RRF` files and intermediates | 3.1 GB |
 | `external/umls_csvs/` | *Generated.* One CSV per semantic type + consolidated | 380 MB |
-| `interim/gazetteer.db` | *Generated* by `src/build_gazetteer.py`. 1,097,541 indexed terms | 289 MB |
-| `processed/entities.csv` | *Generated* by `src/extract_entities.py`. 3,287 entity spans | 352 KB |
+| `interim/gazetteer.db` | *Generated* by `src/clinical_kg/gazetteer/build.py`. 1,097,541 indexed terms | 289 MB |
+| `processed/entities.csv` | *Generated* by `src/clinical_kg/extraction/entities.py`. 3,287 entity spans | 352 KB |
 
 ### `raw/` — the case corpus
 

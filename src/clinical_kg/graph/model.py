@@ -15,8 +15,20 @@ MENTION_RELATIONS = {
     "Exam": "MENTIONS_EXAM", "Symptom": "MENTIONS_SYMPTOM",
     "Finding": "MENTIONS_FINDING", "BodyPart": "MENTIONS_BODY_PART",
 }
+# Extracted clinical relations. These are heuristic text relations from
+# extract_relations.py, carrying an assertion status -- still not clinical
+# assertions, but no longer only "this case mentions X".
+CLINICAL_RELATIONS = {
+    "HAS_SYMPTOM": "has symptom", "HAS_DIAGNOSIS": "has diagnosis",
+    "HAS_FINDING": "has finding", "TREATED_WITH": "treated with",
+    "REVEALED_BY": "revealed", "LOCATED_IN": "located in",
+    "CAUSED_BY": "caused by", "COORDINATE_WITH": "co-occurs with",
+}
+ASSERTION_STATUSES = ("affirmed", "negated", "hedged", "historical", "family",
+                      "not_assessed")
 RELATION_LABELS = {
     "IS_A": "is a",
+    **CLINICAL_RELATIONS,
     **{relation: "mentions " + kind.lower() for kind, relation in MENTION_RELATIONS.items()},
     "HAS_AGE": "has age", "HAS_SEX": "has sex", "REPORTS_PERSON": "reports patient",
     "ASSOCIATED_WITH_MEASUREMENT": "associated measurement",
@@ -39,7 +51,8 @@ def _evidence(row: dict, case_id: str, text: str) -> dict:
 
 
 def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[dict],
-                *, aggregate: bool = True, article: dict | None = None) -> dict:
+                *, aggregate: bool = True, article: dict | None = None,
+                relations: list[dict] | None = None) -> dict:
     """Return a deterministic JSON-compatible graph; accept live or legacy CSV rows.
 
     A measurement joins an exact occurrence, even in the aggregated view. A
@@ -131,6 +144,61 @@ def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[
                  spans=[[ev["start"], ev["end"]] for _, ev in typed_rows],
                  surface_forms=sorted({r["surface_text"] for r, _ in typed_rows}))
 
+    # Extracted relations. Endpoints are resolved through the same occurrence
+    # index the measurements use, so a relation can only reference a span that
+    # actually produced an entity node. A negated relation is retained and
+    # labelled, never silently dropped -- "no rebound tenderness" is a finding
+    # about the patient too.
+    relation_edges: dict[str, dict] = {}
+    for row in sorted(relations or [], key=lambda r: (int(r["tail_start"]),
+                                                      int(r["tail_end"]),
+                                                      r["relation"])):
+        if row.get("case_id", case_id) != case_id:
+            raise ValueError("Cannot mix cases in a per-case graph")
+        relation = row["relation"]
+        if relation not in CLINICAL_RELATIONS:
+            raise ValueError(f"Unknown relation: {relation}")
+        status = row.get("assertion_status") or "not_assessed"
+        if status not in ASSERTION_STATUSES:
+            raise ValueError(f"Unknown assertion status: {status}")
+        tail = occurrences.get((int(row["tail_start"]), int(row["tail_end"])))
+        if tail is None:
+            warnings.append(f"Relation {relation} dropped: unresolved tail span.")
+            continue
+        if str(row.get("head_kind", "")) == "Person" or row.get("head_start") in ("", None, -1, "-1"):
+            source = case_node
+        else:
+            head = occurrences.get((int(row["head_start"]), int(row["head_end"])))
+            if head is None:
+                warnings.append(f"Relation {relation} dropped: unresolved head span.")
+                continue
+            source = head[0]
+        if source == tail[0]:
+            continue          # aggregation collapsed both arguments onto one concept
+        edge_id = _id("edge", relation, source, tail[0])
+        span = [int(row["tail_start"]), int(row["tail_end"])]
+        score = float(row.get("score") or 0.0)
+        existing = relation_edges.get(edge_id)
+        if existing is None:
+            relation_edges[edge_id] = {
+                "id": edge_id, "source": source, "target": tail[0],
+                "relation": relation, "case_id": case_id,
+                "assertion_status": status, "count": 1,
+                "score": score, "heuristic": True,
+                "trigger_text": row.get("trigger_text", ""),
+                "trigger_category": row.get("trigger_category", ""),
+                "spans": [span],
+            }
+        else:
+            existing["count"] += 1
+            existing["spans"].append(span)
+            # Keep the best-supported reading of a repeated relation.
+            if score > existing["score"]:
+                existing.update(score=score, assertion_status=status,
+                                trigger_text=row.get("trigger_text", ""),
+                                trigger_category=row.get("trigger_category", ""))
+    edges.extend(relation_edges.values())
+
     measurement_ids = set()
     for row in sorted(measurements, key=lambda m: (int(m["start"]), int(m["end"]))):
         ev = _evidence(row, case_id, text)
@@ -169,10 +237,12 @@ def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[
         else:
             edge(case_node, node_id, "CONTAINS_UNLINKED_MEASUREMENT", link_method="none")
 
-    graph = {"schema_version": 2, "case_id": case_id, "text_sha256": text_hash,
+    graph = {"schema_version": 3, "case_id": case_id, "text_sha256": text_hash,
              "source_case_ids": source_ids, "data_source": meta.get("data_source", "patient_metadata"),
              "mode": "concepts" if aggregate else "occurrences",
-             "semantics": "Text mentions and heuristic measurement associations; not clinical assertions.",
+             "semantics": "Text mentions, heuristic measurement associations and "
+                          "heuristic extracted relations with assertion status; "
+                          "not clinical assertions.",
              "nodes": sorted(nodes, key=lambda n: n["id"]),
              "edges": sorted(edges, key=lambda e: e["id"]), "warnings": warnings}
     validate_graph(graph)
