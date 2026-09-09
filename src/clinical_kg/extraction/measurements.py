@@ -18,7 +18,7 @@ Uses   : data/interim/gazetteer.db (via extract_entities.extract, to find the
 Writes : data/processed/measurements.csv
 
 Usage:
-    python3 src/extract_measurements.py
+    clinical-kg extract-measurements
 """
 
 import argparse
@@ -30,12 +30,12 @@ import sqlite3
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from extract_entities import (  # noqa: E402
+from clinical_kg.paths import PROJECT_ROOT
+
+from clinical_kg.extraction.entities import (
     DEFAULT_CASES, DEFAULT_DB, DEFAULT_MAX_N, mask_figure_refs, extract,
 )
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUT = PROJECT_ROOT / "data" / "processed" / "measurements.csv"
 
 CSV_COLUMNS = ["case_id", "article_id", "start", "end", "surface_text", "is_range",
@@ -290,7 +290,7 @@ def main():
         print(f"  WARNING: {args.db} not found -- running without the UMLS gazetteer.\n"
               "  There is nothing for a value to link to without it, so every\n"
               "  measurement will come out with link_method=none. Build it first:\n"
-              "  python3 src/build_gazetteer.py\n")
+              "  clinical-kg build-gazetteer\n")
 
     with open(args.cases, newline="", encoding="utf-8", errors="replace") as f:
         cases = list(csv.DictReader(f))

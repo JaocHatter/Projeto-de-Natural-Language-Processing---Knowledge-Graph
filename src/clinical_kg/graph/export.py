@@ -1,7 +1,7 @@
 """Export evidence-backed graphs as JSON, GraphML, or a CSV ZIP (stdlib only).
 
 Example:
-    python3 src/graph_export.py --case-id PMC5137649_01 --out /tmp/case.graphml
+    clinical-kg export-graph --case-id PMC5137649_01 --out /tmp/case.graphml
 """
 
 import argparse
@@ -15,9 +15,9 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from .model import build_graph, validate_graph
-from project_paths import PROJECT_ROOT, DEFAULT_CASES, DEFAULT_DB, DEFAULT_METADATA
-from extract_measurements import analyze_case
-from patient_data import validate_annotations
+from clinical_kg.paths import PROJECT_ROOT, DEFAULT_CASES, DEFAULT_DB, DEFAULT_METADATA
+from clinical_kg.extraction.measurements import analyze_case
+from clinical_kg.corpus.patients import validate_annotations
 
 GRAPHML_NS = "http://graphml.graphdrawing.org/xmlns"
 

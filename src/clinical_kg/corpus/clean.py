@@ -35,14 +35,16 @@ Reads : data/raw/cases.csv
 Writes: data/interim/cases_clean.csv
 
 Usage:
-    python3 src/clean_cases.py
+    clinical-kg clean-cases
 """
 
+import argparse
 import csv
 import re
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+from clinical_kg.paths import PROJECT_ROOT
+
 DEFAULT_IN = PROJECT_ROOT / "data" / "raw" / "cases.csv"
 DEFAULT_OUT = PROJECT_ROOT / "data" / "interim" / "cases_clean.csv"
 
@@ -296,7 +298,16 @@ def run_report(out_rows: list[dict]) -> None:
 
 
 def main():
-    rows = load_rows(DEFAULT_IN)
+    # Without argparse this stage rewrote the corpus when handed --help.
+    ap = argparse.ArgumentParser(
+        description="Clean the raw case corpus into one row per real patient.")
+    ap.add_argument("--in", dest="source", type=Path, default=DEFAULT_IN,
+                    help="raw cases CSV (default: data/raw/cases.csv)")
+    ap.add_argument("--out", type=Path, default=DEFAULT_OUT,
+                    help="cleaned output CSV (default: data/interim/cases_clean.csv)")
+    args = ap.parse_args()
+
+    rows = load_rows(args.source)
     rows_by_id = {r["case_id"]: r for r in rows}
     merged_ids = {cid for group in MERGE_GROUPS for cid in group}
 
@@ -324,8 +335,8 @@ def main():
 
     out_rows.sort(key=lambda r: r["case_id"])
 
-    DEFAULT_OUT.parent.mkdir(parents=True, exist_ok=True)
-    with open(DEFAULT_OUT, "w", newline="", encoding="utf-8") as f:
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.out, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=OUT_FIELDS)
         writer.writeheader()
         for r in out_rows:
@@ -333,8 +344,8 @@ def main():
 
     run_report(out_rows)
 
-    print(f"in : {len(rows)} rows  ({DEFAULT_IN})")
-    print(f"out: {len(out_rows)} rows  ({DEFAULT_OUT})")
+    print(f"in : {len(rows)} rows  ({args.source})")
+    print(f"out: {len(out_rows)} rows  ({args.out})")
     print(f"  dropped: {len(DROP_CASE_IDS)}  ({', '.join(sorted(DROP_CASE_IDS))})")
     print(f"  merged : {len(merged_ids)} fragments -> {len(MERGE_GROUPS)} patient rows")
 

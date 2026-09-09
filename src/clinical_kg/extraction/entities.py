@@ -12,8 +12,8 @@ delimitation -- "acute pancreatitis" (C0001339) is a different concept from
 "pancreatitis" (C0030305), and the longer span is the correct one.
 
 Usage:
-    python3 src/extract_entities.py
-    python3 src/extract_entities.py --max-n 6 --keep-stopterms
+    clinical-kg extract-entities
+    clinical-kg extract-entities --max-n 6 --keep-stopterms
 """
 
 import argparse
@@ -24,11 +24,8 @@ import sqlite3
 import sys
 from pathlib import Path
 
-# Normalization MUST come from the gazetteer builder. A second copy that drifts
-# from it causes silent misses -- no error, just missing entities.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_gazetteer import normalize, sort_key  # noqa: E402
-from project_paths import DEFAULT_CASES, DEFAULT_DB, PROJECT_ROOT
+from clinical_kg.gazetteer.build import normalize, sort_key
+from clinical_kg.paths import DEFAULT_CASES, DEFAULT_DB, PROJECT_ROOT
 
 DEFAULT_OUT = PROJECT_ROOT / "data" / "processed" / "entities.csv"
 

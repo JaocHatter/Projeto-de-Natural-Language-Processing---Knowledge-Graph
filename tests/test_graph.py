@@ -11,12 +11,11 @@ import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from knowledge_graph.model import build_graph, filter_graph, group_graph, interaction_views, validate_graph
-from extract_measurements import analyze_case, link_measurement
-from extract_entities import extract
-from knowledge_graph.export import to_json, to_graphml, to_csv_zip, GRAPHML_NS
-from build_gazetteer import create_schema
+from clinical_kg.graph.model import build_graph, filter_graph, group_graph, interaction_views, validate_graph
+from clinical_kg.extraction.measurements import analyze_case, link_measurement
+from clinical_kg.extraction.entities import extract
+from clinical_kg.graph.export import to_json, to_graphml, to_csv_zip, GRAPHML_NS
+from clinical_kg.gazetteer.build import create_schema
 
 
 class GraphTests(unittest.TestCase):

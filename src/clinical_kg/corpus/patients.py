@@ -2,7 +2,7 @@
 
 import hashlib
 
-from clean_cases import extract_age, extract_gender
+from clinical_kg.corpus.clean import extract_age, extract_gender
 
 
 def new_patient(text: str) -> dict:

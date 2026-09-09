@@ -3,10 +3,10 @@
 Combined viewer: UMLS gazetteer NER (app.py) + value/unit extraction
 (extract_measurements.py), overlaid on the same case text in one view.
 
-Requires data/interim/gazetteer.db (build it first: python3 src/build_gazetteer.py).
+Requires data/interim/gazetteer.db (build it first: clinical-kg build-gazetteer).
 
 Run:
-    streamlit run src/app.py
+    streamlit run src/clinical_kg/app/main.py
 """
 
 import csv
@@ -20,16 +20,15 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from extract_entities import (  # noqa: E402
+from clinical_kg.extraction.entities import (
     DEFAULT_DB, DEFAULT_MAX_N, CSV_COLUMNS,
 )
-from extract_measurements import (  # noqa: E402
+from clinical_kg.extraction.measurements import (
     analyze_case, CSV_COLUMNS as MEASUREMENT_COLUMNS,
 )
-from project_paths import DEFAULT_CASES, DEFAULT_METADATA
-from patient_data import new_patient
-from knowledge_graph.ui import graph_panel
+from clinical_kg.paths import DEFAULT_CASES, DEFAULT_METADATA
+from clinical_kg.corpus.patients import new_patient
+from clinical_kg.graph.ui import graph_panel
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the
@@ -205,7 +204,7 @@ def main():
 
     if not DEFAULT_DB.exists():
         st.error(f"Gazetteer not found at {DEFAULT_DB}\n\n"
-                 "Build it first: `python3 src/build_gazetteer.py`")
+                 "Build it first: `clinical-kg build-gazetteer`")
         st.stop()
 
     source = st.sidebar.radio("Source", ["Corpus case", "New case"])
@@ -214,7 +213,7 @@ def main():
     text, meta = "", {}
     if source == "Corpus case":
         if not DEFAULT_CASES.exists():
-            st.error("Cleaned corpus not found. Run: python3 src/clean_cases.py")
+            st.error("Cleaned corpus not found. Run: clinical-kg clean-cases")
             st.stop()
         cases = load_cases(file_revision(DEFAULT_CASES))
         if not cases:

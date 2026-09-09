@@ -16,8 +16,8 @@ Resulting table: terms
     tty          TEXT   <- UMLS term type (PT, SY, LA, ...)
 
 Usage:
-    python3 src/build_gazetteer.py
-    python3 src/build_gazetteer.py --csv-dir data/external/umls_csvs \
+    clinical-kg build-gazetteer
+    clinical-kg build-gazetteer --csv-dir data/external/umls_csvs \
                                    --db data/interim/gazetteer.db
 """
 
@@ -29,11 +29,12 @@ import sqlite3
 import sys
 from pathlib import Path
 
+from clinical_kg.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CSV_DIR = PROJECT_ROOT / "data" / "external" / "umls_csvs"
 DEFAULT_DB = PROJECT_ROOT / "data" / "interim" / "gazetteer.db"
 

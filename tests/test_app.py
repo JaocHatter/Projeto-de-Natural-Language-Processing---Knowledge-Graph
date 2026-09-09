@@ -5,7 +5,6 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "src"))
 try:
     from streamlit.testing.v1 import AppTest
 except ImportError:
@@ -16,7 +15,7 @@ except ImportError:
                      "Requires Streamlit and the local gazetteer")
 class AppTests(unittest.TestCase):
     def test_case_filters_exports_and_new_text(self):
-        at = AppTest.from_file(str(ROOT / "src/app.py"), default_timeout=30).run()
+        at = AppTest.from_file(str(ROOT / "src/clinical_kg/app/main.py"), default_timeout=30).run()
         self.assertFalse(at.exception)
         self.assertEqual([tab.label for tab in at.tabs], ["Annotated text", "Knowledge Graph", "Tables"])
         self.assertEqual(len(at.get("download_button")), 5)

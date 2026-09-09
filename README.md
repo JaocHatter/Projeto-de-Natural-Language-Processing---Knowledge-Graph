@@ -1,5 +1,30 @@
 # Natural Language Processing - Knowledge Graph Project
 
+## Quickstart
+
+The pipeline is stdlib-only and runs from a plain checkout — the `Makefile`
+puts `src` on `PYTHONPATH`, so nothing needs installing:
+
+```bash
+make test      # run the test suite
+make all       # clean-cases -> entities -> measurements -> relations
+make app       # launch the Streamlit viewer
+make help      # list every target
+```
+
+Installing the package adds a `clinical-kg` command (equivalent to
+`python3 -m clinical_kg`):
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install -e .
+clinical-kg                                    # list every command
+clinical-kg extract-relations --explain PMC10106591_01
+```
+
+Only the Streamlit viewer needs third-party packages; every extraction stage is
+standard library only.
+
 ## Project Structure
 
 ```
@@ -19,8 +44,22 @@
     │   ├── notebooks      <- Jupyter notebooks or equivalent
     │   └── workflows      <- Orange workflows or equivalent 
     │
-    ├── src                <- Source code in programming language or system (e.g., Cytoscape)
-    │   └── README.md      <- Basic installation/execution instructions
+    ├── pyproject.toml     <- Packaging, dependencies and the clinical-kg command
+    ├── Makefile           <- Zero-install entry points (make test / all / app)
+    │
+    ├── src                <- Source code (src-layout: one installable package)
+    │   └── clinical_kg
+    │       ├── README.md      <- Architecture, layering and data flow
+    │       ├── paths.py       <- Single source of truth for project paths
+    │       ├── cli.py         <- One dispatcher over every pipeline stage
+    │       ├── corpus/        <- Case cleaning and patient records
+    │       ├── gazetteer/     <- UMLS term dictionary (SQLite)
+    │       ├── extraction/    <- Entities and measurements
+    │       ├── relations/     <- Typed clinical relations (CRF)
+    │       ├── graph/         <- Graph model, export and viewer
+    │       └── app/           <- Streamlit front end
+    │
+    ├── tests              <- Test suite (python3 -m unittest discover -s tests)
     │
     └── assets             <- Media used in the project
         ├── images         <- Images used in README.md text
@@ -55,12 +94,12 @@ The project uses **UMLS semantic classification** for medical entity extraction.
 
 ## Gazetteer
 
-`src/build_gazetteer.py` loads these CSVs into an indexed SQLite database used for
+`src/clinical_kg/gazetteer/build.py` loads these CSVs into an indexed SQLite database used for
 longest-match entity extraction:
 
 ```bash
 bash data/external/filter_umls_mrsty.bash   # produces data/external/umls_csvs/
-python3 src/build_gazetteer.py              # produces data/interim/gazetteer.db
+clinical-kg build-gazetteer              # produces data/interim/gazetteer.db
 ```
 
 ## Data Cleaning
@@ -71,10 +110,10 @@ confirmed issues: rows that are chapters of one patient's report split across se
 rows that aren't single-patient case reports at all, and an `age`/`gender` pair that's occasionally
 wrong (e.g. a newborn's *39-week gestational age* recorded as `age=39`).
 
-`src/clean_cases.py` addresses this before anything else runs:
+`src/clinical_kg/corpus/clean.py` addresses this before anything else runs:
 
 ```bash
-python3 src/clean_cases.py                  # data/raw/cases.csv -> data/interim/cases_clean.csv
+clinical-kg clean-cases                  # data/raw/cases.csv -> data/interim/cases_clean.csv
 ```
 
 - **Merges** 2 articles whose case report was split across multiple `case_id` rows into one row
@@ -93,10 +132,10 @@ they all point at the cleaned file instead of the raw one from here on.
 
 ## Entity Extraction
 
-`src/extract_entities.py` runs longest-match extraction over the cleaned corpus:
+`src/clinical_kg/extraction/entities.py` runs longest-match extraction over the cleaned corpus:
 
 ```bash
-python3 src/extract_entities.py --cases data/interim/cases_clean.csv \
+clinical-kg extract-entities --cases data/interim/cases_clean.csv \
                                  --out data/processed/entities.csv
 ```
 
@@ -110,14 +149,14 @@ Medications are not extracted as a separate category: RXNORM/MSH already resolve
 inside the gazetteer's `Treatment` type (alongside `T061` therapeutic procedures), and the team
 decided a suffix-pattern fallback for the rest wasn't worth the added complexity for this stage.
 
-`src/extract_measurements.py` finds value(+range)+unit spans (`850 U/L`, `10-140 U/L`, `4 cm`,
+`src/clinical_kg/extraction/measurements.py` finds value(+range)+unit spans (`850 U/L`, `10-140 U/L`, `4 cm`,
 `40mg`, `day 8`) over a closed clinical unit vocabulary, then links each one to the nearest gazetteer
 entity that precedes it in the same sentence -- checking just after the value too, for the common
 adjectival phrasing ("4 cm pseudocyst", "5-day history") -- falling back to a character window when
 the sentence has no candidate:
 
 ```bash
-python3 src/extract_measurements.py --cases data/interim/cases_clean.csv \
+clinical-kg extract-measurements --cases data/interim/cases_clean.csv \
                                      --out data/processed/measurements.csv
 ```
 
@@ -142,9 +181,66 @@ close to but not identical to the numbers quoted elsewhere in this document (1,6
 original teammate's version turns up, prefer it and diff the two rather than assuming they match;
 whichever one is kept should be the one actually committed to git going forward.
 
+## Relations
+
+`src/extract_relations.py` extracts typed, directed clinical relations between the entities,
+using a **linear-chain CRF** that BIO-tags relation triggers over each sentence and decodes with
+Viterbi:
+
+```bash
+clinical-kg extract-relations --cases data/interim/cases_clean.csv \
+                                 --entities data/processed/entities.csv \
+                                 --out data/processed/relations.csv
+```
+
+Yields **849 relations across 50 patients** in eight types -- `TREATED_WITH`, `LOCATED_IN`,
+`HAS_DIAGNOSIS`, `REVEALED_BY`, `HAS_FINDING`, `COORDINATE_WITH`, `HAS_SYMPTOM`, `CAUSED_BY` --
+each carrying an **assertion status** (`affirmed` / `negated` / `hedged` / `historical` /
+`family`), so "examination revealed tenderness ... but **no** rebound tenderness" does not become
+an affirmed symptom.
+
+The CRF's weights are **set by hand** (`src/clinical_kg/relations/features.py`, one auditable `WEIGHTS` dict),
+not learned: this project has no labeled relation data. A linear-chain CRF is a log-linear model
+over sequences, so hand-set potentials keep Viterbi inference and the sequence constraints that a
+per-pair score cannot express -- BIO validity, one trigger per clause, a trigger-length cap -- while
+giving up any claim the weights are optimal. Every edge therefore records which weights fired in a
+`rule_path` column, and `--explain CASE_ID` prints scored relations for one case.
+
+The implementation is isolated in `src/clinical_kg/relations/` (segmentation, coarse POS, the weight table,
+the CRF, extraction, annotation and evaluation), stdlib-only like the rest of the pipeline;
+`src/extract_relations.py` is a compatibility entry point, following the `graph_export.py`
+convention.
+
+**[`src/clinical_kg/relations/README.md`](src/clinical_kg/relations/README.md) documents the full process** -- each stage,
+what the corpus measurements showed, and why each design choice was made. Two highlights: POS
+exists because 87% of the bigrams between two entities occur exactly once (`presented by` appears
+once in the corpus, `reported with` never), and the "discard any pair with a comma between them"
+rule had to be **inverted**, since a comma sits between 34% of adjacent entity pairs and
+coordinated lists are the most productive relation pattern in the text.
+
+See [`MEMORY_BANK/PLAN_TO_GET_RELATIONS.md`](MEMORY_BANK/PLAN_TO_GET_RELATIONS.md) for the
+original seven heuristics and what measuring each one against the corpus showed.
+
+### Evaluating relations
+
+With no labels to train on, the gold set is **test-only**: 9 cases chosen deterministically and
+spread by entity count, never used to tune the weights.
+
+```bash
+clinical-kg annotate-relations     # build the gold set (resumable, accept/reject)
+clinical-kg evaluate-relations     # P/R/F1, threshold sweep, per-relation, ablation
+```
+
+The annotator enumerates every *candidate* pair rather than the edges the model accepted -- judging
+only the model's own output would measure precision and leave recall unmeasurable. Because the
+weights are hand-set, the defensible claim is a component one, so the evaluator prints an ablation
+table showing what the POS backoff, coordination inheritance, assertion scoping and CRF transitions
+each contribute. Recall ceilings (the candidate window, and how many candidates were judged) are
+printed alongside.
+
 ## Visualization
 
-`src/app.py` is a Streamlit viewer that highlights entities inline, for either a corpus case or new
+`src/clinical_kg/app/main.py` is a Streamlit viewer that highlights entities inline, for either a corpus case or new
 text you paste or upload. Extraction runs live (~35 ms per case) through the same `extract()`
 function the CLI uses, so the app and the pipeline can never disagree. The corpus source is
 `data/interim/cases_clean.csv` (50 patients, see Data Cleaning above), not the raw file -- the
@@ -168,6 +264,12 @@ Exam, Finding, Symptom and BodyPart class nodes. Multi-type concepts keep every
 IS_A relation (their visual placement uses one class). These are project semantic
 categories, not inferred clinical assertions or the full UMLS hierarchy.
 
+Extracted relations from `data/processed/relations.csv` are passed to `build_graph(...,
+relations=...)` and become typed directed edges alongside the `MENTIONS_*` scaffolding, each
+retaining its assertion status, trigger text and score. A relation whose endpoints do not resolve
+to an entity occurrence is reported in `warnings` rather than attached to an arbitrary node, and a
+negated relation is labelled, never silently dropped.
+
 `Person` is identified by the cleaned `case_id` (including merged `_P1` IDs).
 `HAS_AGE` and `HAS_SEX` use the cleaning output and retain extraction methods,
 upstream values and `source_case_ids` for auditing. Missing age produces no Age
@@ -177,16 +279,23 @@ original occurrence offsets and `link_method`. A text mention does not establish
 a confirmed diagnosis, treatment administration or causality.
 
 All downstream defaults now use `data/interim/cases_clean.csv` via
-`src/project_paths.py`. The app and graph export CLI extract directly from the
+`src/clinical_kg/paths.py`. The app and graph export CLI extract directly from the
 selected cleaned text, so stale processed CSVs cannot introduce dropped patients
 or lose the merged fragments. Optional `--from-csv` export validates corpus IDs
 and offsets and rejects incompatible annotations; `--cases` still supports an
-explicit alternative corpus. See [source documentation](src/README.md) for the
+explicit alternative corpus. See [source documentation](src/clinical_kg/README.md) for the
 graph schema, CLI, provenance and tests.
 
 ```bash
-pip install -r requirements.txt
-streamlit run src/app.py            # opens http://localhost:8501
+make app                                  # no install needed
+```
+
+or, to get the `clinical-kg` command on your PATH:
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install -e .
+streamlit run src/clinical_kg/app/main.py     # opens http://localhost:8501
 ```
 
 Hover any highlight for its CUI, semantic type and source vocabulary. The page also shows per-type

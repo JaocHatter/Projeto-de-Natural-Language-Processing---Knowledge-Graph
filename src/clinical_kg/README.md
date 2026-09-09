@@ -1,58 +1,99 @@
-# Patient knowledge graph
+# clinical_kg
 
-Run from the repository root with Python 3.11+:
+The pipeline package: corpus cleaning, gazetteer, entity/measurement/relation
+extraction, graph construction and the Streamlit viewer.
+
+## Running it
+
+Everything works from a plain checkout with no install — the `Makefile` sets
+`PYTHONPATH=src` for you:
 
 ```bash
-pip install -r requirements.txt
-python3 src/clean_cases.py
-# Build this only if the SQLite gazetteer is missing (requires UMLS CSVs):
-python3 src/build_gazetteer.py
-streamlit run src/app.py
+make test          # the test suite
+make all           # clean-cases -> entities -> measurements -> relations
+make app           # the Streamlit viewer
+make help          # every target
 ```
 
-`clean_cases.py` writes `data/interim/cases_clean.csv`. If that file already
-contains reviewed changes, use it directly rather than regenerating it.
-The application never rewrites input or processed CSVs. Its corpus is the
-50 cleaned patient rows, not the 56 upstream fragments/cohort rows. The
+Installing adds the `clinical-kg` console script (otherwise use
+`python3 -m clinical_kg <command>`):
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install -e .
+clinical-kg                       # lists every command
+clinical-kg extract-relations --explain PMC10106591_01
+```
+
+`clinical-kg clean-cases` writes `data/interim/cases_clean.csv`. If that file
+already contains reviewed changes, use it directly rather than regenerating it.
+The application never rewrites input or processed CSVs. Its corpus is the 50
+cleaned patient rows, not the 56 upstream fragments/cohort rows. The
 `source_case_ids`, extraction methods and original demographics are preserved.
+
+## Layout
+
+Imports only ever point *down* this list, so the layering is acyclic and the
+package needs no `sys.path` manipulation anywhere:
+
+```text
+clinical_kg/
+├── paths.py            # single source of truth for every project path
+├── cli.py              # one dispatcher; each stage keeps its own argparse
+├── __main__.py         # python3 -m clinical_kg <command>
+├── corpus/             # clean.py (case cleaning), patients.py (patient records)
+├── gazetteer/          # build.py -> data/interim/gazetteer.db
+├── extraction/         # entities.py, measurements.py
+├── relations/          # typed clinical relations -- see relations/README.md
+├── graph/              # model.py, export.py, ui.py, assets/
+└── app/                # main.py (Streamlit)
+```
+
+`PROJECT_ROOT` is derived once, in `paths.py`. No module re-derives it from its
+own `__file__`; that is what used to break whenever a module moved.
 
 ## Data flow
 
 ```text
-raw/cases.csv → clean_cases.py → interim/cases_clean.csv
+raw/cases.csv → corpus.clean → interim/cases_clean.csv
                                       │
                      gazetteer.db ────┤
                                       ▼
-                   extract_measurements.analyze_case()
+                   extraction.measurements.analyze_case()
                        entities + linked measurements
                                       │
                                       ▼
-                   knowledge_graph.model.build_graph()
+                   relations.extract.analyze_case()
+                       typed relations + assertion status
+                                      │
+                                      ▼
+                   graph.model.build_graph()
                            ├── ui.py → Cytoscape.js
                            └── export.py → JSON / GraphML / CSV ZIP
 ```
 
-The graph implementation is isolated in `src/knowledge_graph/`:
+Relation extraction is documented separately in
+[`relations/README.md`](relations/README.md) — the CRF, the hand-set weights and
+what the corpus measurements showed — plus a step-by-step walkthrough in
+[English](../../docs/relation-extraction.en.md) and
+[Castellano](../../docs/relation-extraction.es.md).
 
-```text
-knowledge_graph/
-├── model.py       # schema, construction, validation and projections
-├── export.py      # JSON, GraphML, CSV ZIP and export command
-├── ui.py          # Streamlit controls, Cytoscape bridge and evidence inspector
-└── assets/        # browser code, styles and pinned Cytoscape distribution
-```
+## Known limitation: token_frequency.csv
 
-This keeps the model usable without Streamlit while avoiding separate panel and
-renderer modules for one UI. `src/graph_export.py` is only a compatibility entry
-point, so existing commands and automation do not need to change.
+`pipelines/token_frequency.py` produces `data/interim/token_frequency.csv`,
+which feeds the relation scorer's `trig.freq_bucket` feature. That script is
+**outside this package and tokenizes differently** — `re.sub(r'[^\w\s-]',' ')`
+plus `.split()`, rather than the `extraction.entities.TOKEN_RE` used everywhere
+else. Measured on the corpus the two vocabularies differ by 300 tokens one way
+and 275 the other: it shreds decimals such as `0.133` and keeps bare `-`, so
+roughly 6% of that frequency table cannot match any token the pipeline emits.
 
-`project_paths.py` is the shared source for the cleaned-corpus, gazetteer and
-article-metadata paths. Entity extraction, measurement extraction, the app and
-graph export all default to the cleaned corpus. The SQLite gazetteer remains a
-dictionary, not a patient graph database. The viewer and graph exporter run
-fresh extraction; processed CSVs are used only by explicit CSV export mode.
+The effect is small (frequency is one log-binned feature among many) and fixing
+it would change relation output, so it is recorded rather than silently
+corrected. To fix: move the script into `corpus/` on the shared tokenizer and
+regenerate.
 
-## Graph schema (version 2)
+## Graph schema (version 3)
 
 | Source | Relation | Target | Meaning |
 |---|---|---|---|
@@ -138,7 +179,7 @@ New pasted/uploaded cases use the age/sex extraction functions from
 unknown. Corpus/database/metadata revision keys invalidate caches after changes.
 
 Cytoscape.js 3.33.1 is bundled locally with its MIT license in
-`src/knowledge_graph/assets/cytoscape/`. No CDN, Node build step, NetworkX or Neo4j is required.
+`src/clinical_kg/graph/assets/cytoscape/`. No CDN, Node build step, NetworkX or Neo4j is required.
 The component uses Streamlit v2 with `isolate_styles=False` for Cytoscape pointer
 hit testing. Component HTML/JS are fixed; external labels are passed as data and
 text excerpts are HTML-escaped. CSS classes use the `kg-` prefix.
@@ -148,9 +189,9 @@ text excerpts are HTML-escaped. CSS classes use the `kg-` prefix.
 By default the CLI uses the same cleaned-text extraction as the viewer:
 
 ```bash
-python3 src/graph_export.py --case-id PMC6083636_P1 --include-article --out /tmp/patient.json
-python3 src/graph_export.py --case-id PMC6083636_P1 --occurrences --out /tmp/patient.graphml
-python3 src/graph_export.py --case-id PMC4630775_01 --out /tmp/newborn.zip
+clinical-kg export-graph --case-id PMC6083636_P1 --include-article --out /tmp/patient.json
+clinical-kg export-graph --case-id PMC6083636_P1 --occurrences --out /tmp/patient.graphml
+clinical-kg export-graph --case-id PMC4630775_01 --out /tmp/newborn.zip
 ```
 
 Use `--cases`, `--db`, or `--metadata` to select other inputs. Existing exports
@@ -164,9 +205,9 @@ or provide CSV paths. This mode does not require the gazetteer or Streamlit:
 
 ```bash
 # Generate aligned annotations without overwriting reviewed processed files:
-python3 src/extract_entities.py --out /tmp/entities-clean.csv
-python3 src/extract_measurements.py --out /tmp/measurements-clean.csv
-python3 src/graph_export.py --case-id PMC6083636_P1 --entities /tmp/entities-clean.csv --measurements /tmp/measurements-clean.csv --out /tmp/patient-offline.json
+clinical-kg extract-entities --out /tmp/entities-clean.csv
+clinical-kg extract-measurements --out /tmp/measurements-clean.csv
+clinical-kg export-graph --case-id PMC6083636_P1 --entities /tmp/entities-clean.csv --measurements /tmp/measurements-clean.csv --out /tmp/patient-offline.json
 ```
 
 CSV mode validates IDs against the selected corpus, text offsets and resolved
@@ -191,7 +232,7 @@ Streamlit on port 8517, then run the test in another terminal:
 
 ```bash
 npm install --prefix /tmp/kg-browser-test --ignore-scripts playwright@1.55.0
-streamlit run src/app.py --server.port=8517 --server.headless=true
+streamlit run src/clinical_kg/app/main.py --server.port=8517 --server.headless=true
 node tests/browser_smoke.cjs /tmp/kg-browser-test/node_modules/playwright
 ```
 
