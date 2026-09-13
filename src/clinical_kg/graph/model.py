@@ -52,12 +52,21 @@ def _evidence(row: dict, case_id: str, text: str) -> dict:
 
 def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[dict],
                 *, aggregate: bool = True, article: dict | None = None,
-                relations: list[dict] | None = None) -> dict:
+                relations: list[dict] | None = None,
+                umls_relations: dict[tuple[str, str], list[dict]] | None = None) -> dict:
     """Return a deterministic JSON-compatible graph; accept live or legacy CSV rows.
 
     A measurement joins an exact occurrence, even in the aggregated view. A
     supplied CUI must agree with that occurrence. Unresolved links are retained
     as unlinked measurements with a warning, never attached to an arbitrary CUI.
+
+    `umls_relations` (from `relations.ontology.load`) is a second, independent
+    evidence layer: UMLS's own CUI-to-CUI relations, restricted here to pairs
+    where *this case's own entities* resolved to both CUIs. It never merges
+    into the text-derived `relations` edges of the same name -- each ontology
+    edge gets its own id and `evidence_source="umls_ontology"` -- because "UMLS
+    relates these two concepts in general" is not a claim that this patient's
+    text asserts it.
     """
     text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
     case_id = str(meta.get("case_id") or f"pasted-{text_hash[:16]}")
@@ -198,6 +207,30 @@ def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[
                                 trigger_text=row.get("trigger_text", ""),
                                 trigger_category=row.get("trigger_category", ""))
     edges.extend(relation_edges.values())
+
+    # UMLS's own relations (relations/ontology.py), restricted to concept
+    # pairs *this case's own entities* resolved to -- concept-level only
+    # (occurrence mode has no single node per CUI to anchor to). Each gets
+    # its own edge id distinct from any text-derived edge of the same name,
+    # so the two evidence layers are never silently merged into one count.
+    if aggregate and umls_relations:
+        cui_to_node = {rows[0][0]["cui"]: node_id for node_id, rows in groups.items()}
+        seen_ontology = set()
+        for (head_cui, tail_cui), rows in umls_relations.items():
+            head_node, tail_node = cui_to_node.get(head_cui), cui_to_node.get(tail_cui)
+            if head_node is None or tail_node is None or head_node == tail_node:
+                continue
+            for row in rows:
+                relation = row["relation"]
+                edge_id = _id("edge", relation, head_node, tail_node, "umls")
+                if edge_id in seen_ontology:
+                    continue
+                seen_ontology.add(edge_id)
+                edges.append({"id": edge_id, "source": head_node, "target": tail_node,
+                             "relation": relation, "case_id": case_id,
+                             "assertion_status": "not_assessed",
+                             "evidence_source": "umls_ontology", "heuristic": False,
+                             "rela": row.get("rela", ""), "sab": row.get("sab", "")})
 
     measurement_ids = set()
     for row in sorted(measurements, key=lambda m: (int(m["start"]), int(m["end"]))):

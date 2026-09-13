@@ -41,13 +41,14 @@ standard library only.
     │   └── raw            <- Original data without modifications
     │
     ├── pipelines
-    │   ├── notebooks      <- Jupyter notebooks or equivalent
-    │   └── workflows      <- Orange workflows or equivalent 
+    │   └── notebooks      <- Jupyter notebooks or equivalent
+    │       (no pipelines/workflows/: this project doesn't use Orange)
     │
     ├── pyproject.toml     <- Packaging, dependencies and the clinical-kg command
     ├── Makefile           <- Zero-install entry points (make test / all / app)
     │
     ├── src                <- Source code (src-layout: one installable package)
+    │   ├── README.md       <- Basic install/run instructions
     │   └── clinical_kg
     │       ├── README.md      <- Architecture, layering and data flow
     │       ├── paths.py       <- Single source of truth for project paths
@@ -140,7 +141,8 @@ clinical-kg extract-entities --cases data/interim/cases_clean.csv \
 ```
 
 Yields **3,134 entities across 50 patients**, typed as Treatment / Finding / Diagnosis / BodyPart /
-Exam / Symptom. Each row carries character offsets, CUI, TUI and source vocabulary. See `PLAN.md`
+Exam / Symptom. Each row carries character offsets, CUI, TUI and source vocabulary. See
+`TUI_TO_ENTITY` in [`src/clinical_kg/extraction/entities.py`](src/clinical_kg/extraction/entities.py)
 for the TUI-to-entity mapping.
 
 ## Measurements
@@ -199,7 +201,7 @@ each carrying an **assertion status** (`affirmed` / `negated` / `hedged` / `hist
 `family`), so "examination revealed tenderness ... but **no** rebound tenderness" does not become
 an affirmed symptom.
 
-The CRF's weights are **set by hand** (`src/clinical_kg/relations/features.py`, one auditable `WEIGHTS` dict),
+The CRF's weights are **set by hand** (`src/clinical_kg/relations/core/features.py`, one auditable `WEIGHTS` dict),
 not learned: this project has no labeled relation data. A linear-chain CRF is a log-linear model
 over sequences, so hand-set potentials keep Viterbi inference and the sequence constraints that a
 per-pair score cannot express -- BIO validity, one trigger per clause, a trigger-length cap -- while
@@ -217,9 +219,6 @@ exists because 87% of the bigrams between two entities occur exactly once (`pres
 once in the corpus, `reported with` never), and the "discard any pair with a comma between them"
 rule had to be **inverted**, since a comma sits between 34% of adjacent entity pairs and
 coordinated lists are the most productive relation pattern in the text.
-
-See [`MEMORY_BANK/PLAN_TO_GET_RELATIONS.md`](MEMORY_BANK/PLAN_TO_GET_RELATIONS.md) for the
-original seven heuristics and what measuring each one against the corpus showed.
 
 ### Evaluating relations
 

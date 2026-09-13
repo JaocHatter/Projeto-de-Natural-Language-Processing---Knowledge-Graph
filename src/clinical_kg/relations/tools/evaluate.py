@@ -28,9 +28,9 @@ import sys
 from pathlib import Path
 
 from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES
-from . import features as rf
+from ..core import features as rf
 from .annotate import DEFAULT_GOLD
-from .extract import DEFAULT_FREQ, analyze_case, load_entities, load_frequencies
+from ..extract import DEFAULT_FREQ, analyze_case, load_entities, load_frequencies
 
 SWEEP = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0]
 

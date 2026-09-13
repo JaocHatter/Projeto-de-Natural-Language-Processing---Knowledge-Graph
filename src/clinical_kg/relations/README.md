@@ -1,10 +1,5 @@
 # Relation extraction
 
-> **Step-by-step walkthrough** with real traces, per-token scores and two fully
-> worked examples: [English](../../../docs/relation-extraction.en.md) ·
-> [Castellano](../../../docs/relation-extraction.es.md).
-> This file covers the design rationale; those cover the mechanics.
-
 How the clinical relations in `data/processed/relations.csv` are produced, and
 why the pipeline is built the way it is. Run from the repository root:
 
@@ -47,21 +42,26 @@ interim/token_frequency.csv ──┐
                     crf.emissions() ──► crf.viterbi() ──► crf.decode_triggers()
                               │                   O / B-TRIG / I-TRIG / NEG
                               ▼
-                    extract.analyze_sentence()    attach · type · coordinate · assert
-                              │
+                    extract.analyze_sentence()    attach (coreference.CorefState) ·
+                              │                   type · coordinate · assert
                               ▼
                     processed/relations.csv ──► clinical_kg.graph.model.build_graph()
 ```
 
 ```text
 relations/
-├── text_layer.py   # sentence, clause and token segmentation with offsets
-├── pos.py          # coarse POS: hand lexicon + suffix backoff
-├── features.py     # trigger lexicon, cue lists, and the WEIGHTS table
-├── crf.py          # emission/transition potentials and Viterbi decoding
-├── extract.py      # candidate generation, attachment, typing, assertion, CLI
-├── annotate.py     # interactive gold-set annotation (evaluation only)
-└── evaluate.py     # precision/recall, threshold sweep, ablation
+├── core/               # the algorithm itself -- no CLI, imported by extract.py
+│   ├── text_layer.py   #   sentence, clause and token segmentation with offsets
+│   ├── pos.py          #   coarse POS: hand lexicon + suffix backoff
+│   ├── features.py     #   trigger lexicon, cue lists, and the hand-set WEIGHTS table
+│   ├── crf.py          #   emission/transition potentials and Viterbi decoding
+│   └── coreference.py  #   cross-sentence patient anchoring (recency rule, no ML)
+├── extract.py          # candidate generation, attachment, typing, assertion, CLI --
+│                       #   the one module that runs in production
+├── ontology.py         # UMLS's own relations (MRREL.RRF), a second evidence source
+└── tools/              # developer-facing only, not part of extract-relations
+    ├── annotate.py     #   interactive gold-set annotation
+    └── evaluate.py     #   precision/recall, threshold sweep, ablation
 ```
 
 Every stage is reached through the package CLI (`clinical_kg/cli.py`), which
@@ -160,8 +160,28 @@ Two consequences are designed in:
    explanation is the only defence a hand-weighted model has. `--explain`
    prints them per case.
 
-If labels ever exist, these become the initialization and the same feature code
-fits properly.
+## Cross-sentence patient coreference (`coreference.py`)
+
+`extract.py`'s attachment already anchored a trigger with no left-hand entity
+to the **Person** root when the clause subject was patient-referring
+(`the patient`, `she`, `he`, ...) — but only within that one clause. A
+one-bit `CorefState` (`patient_active`) is now threaded across a case's
+sentences in `analyze_case`, so an elided subject in a later sentence still
+resolves correctly:
+
+> The patient was diagnosed with pneumonia. **Subsequently treated with
+> ceftriaxone.**
+
+The second sentence has no `PATIENT_CUES` word at all, so before this it
+could never anchor to Person and the edge was silently unreachable. The rule
+is recency, not general entity coreference (every case here has exactly one
+patient to refer to): a sentence's own `PATIENT_CUES`/`FAMILY_CUES` always
+take priority over the inherited state, so a fresh "his mother" correctly
+blocks anchoring in its own sentence without leaking into the next one, and a
+fresh "he" in the next sentence overrides a stale family-history state from
+the one before. A sentence with no clinical entity at all is skipped by
+`analyze_case` entirely and therefore never updates the state — a known gap,
+same spirit as this project's other documented heuristic limits.
 
 ## Step 4 — Attachment, typing and coordination (`extract.py`)
 
@@ -169,7 +189,12 @@ Each decoded trigger attaches to its **nearest entity on each side within the
 clause**. With no entity to the left it anchors to the **Person** root — but
 only when the clause subject is patient-referring (`the patient` 263, `she` 93,
 `he` 62 …) **and** no other-subject cue is present, so `family` (20) and
-`mother` (3) prevent family history becoming the patient's history.
+`mother` (3) prevent family history becoming the patient's history. When the
+clause has no subject cue of its own at all (an elided subject: "Subsequently
+treated with ceftriaxone."), this falls back to `coreference.CorefState`,
+which carries the previous sentence's patient/family verdict forward — see
+[Cross-sentence patient coreference](#cross-sentence-patient-coreference-coreferencepy)
+below.
 
 Pair-level potentials add token distance, bucketed to the observed distribution
 (gap 0 → 142 pairs, 1–3 → 1,078, 4–10 → 1,133, >10 → 731), clause agreement,
@@ -199,9 +224,7 @@ Diagnosis+Diagnosis (3).
 > holds in the unit test, where all four entities are constructed as `Symptom`
 > by hand, but **not on real corpus data**: the gazetteer types that list as
 > Symptom / Finding / Symptom / Finding, so no pair coordinates and the sentence
-> produces no coordinate edges at all. See
-> [`docs/relation-extraction.en.md`](../../../docs/relation-extraction.en.md)
-> for the full trace.
+> produces no coordinate edges at all.
 
 ### Orientation
 
@@ -246,6 +269,44 @@ Offsets index the untouched `case_text` and are asserted on every write.
 directed edges; an edge whose endpoints do not resolve is reported in
 `warnings` rather than attached to an arbitrary node.
 
+## A second evidence source: UMLS's own relations (`ontology.py`)
+
+Everything above infers relations from how a sentence is *worded*. UMLS
+already asserts many of the same relations as domain knowledge, independent
+of any one case report -- e.g. `may_treat`/`may_be_treated_by` between a drug
+and a disease in `MRREL.RRF`. `ontology.py` filters that file down to
+relations between CUIs this corpus's own entities actually resolved to:
+
+```bash
+clinical-kg build-umls-relations     # -> data/interim/umls_relations.csv
+```
+
+`MRREL.RRF` is read as a stream directly out of the UMLS metathesaurus zip
+(`zipfile` + `io.TextIOWrapper`) and never extracted to disk -- it is ~6 GB
+uncompressed. Only three RELA pairs are mapped, chosen for an unambiguous,
+high-precision match to one of this project's 8 relation types:
+`may_treat`/`may_be_treated_by` → `TREATED_WITH`,
+`has_finding_site`/`finding_site_of` → `LOCATED_IN`,
+`has_causative_agent`/`causative_agent_of` → `CAUSED_BY`. Direction
+(`RELA_DIRECTION`'s `swap` flag) was **verified empirically** against a live
+2026AA `MRREL.RRF`, not assumed from the RELA name's grammar --
+`may_treat`/`may_be_treated_by` turned out not to mirror each other the way
+`finding_site_of`/`has_finding_site` do, so guessing would have silently
+produced backwards `TREATED_WITH` edges. The gazetteer's six-vocabulary
+whitelist (`SNOMEDCT_US, MSH, LNC, RXNORM, ICD10CM, MTH`) is deliberately
+**not** reapplied here: `may_treat`/`may_be_treated_by` only exist under
+`MED-RT`, and this step adds no new entities, only edges between CUIs the
+corpus already extracted, so the vocabulary restriction that keeps entity
+*names* manageable does not need to apply to relation *evidence*. Each row's
+source vocabulary is still kept in the output for provenance.
+
+This feeds **a distinct graph layer** (`graph.model.build_graph(...,
+umls_relations=...)`): an edge between two concepts *this case's own
+entities* resolved to, tagged `evidence_source="umls_ontology"` and never
+sharing an edge id with a text-derived edge of the same relation -- "UMLS
+relates these two concepts in general" is not a claim that this patient's
+text asserts it for this case.
+
 ## Evaluation
 
 With nothing to train on, the gold set is **test-only**: 9 cases chosen
@@ -278,5 +339,9 @@ python3 -m unittest discover -s tests
 
 `tests/test_relations.py` covers segmentation hazards, the POS minimal pairs,
 BIO validity and the trigger-length cap, negation scope termination, coordination
-inheritance, edge orientation, offset round-trips, the graph integration, and a
-subprocess smoke test of each CLI entry point.
+inheritance, edge orientation, offset round-trips, the graph integration, a
+subprocess smoke test of each CLI entry point, cross-sentence coreference (and
+that a family cue never leaks into the next sentence), and `ontology.py`'s RELA
+direction table (pinned against real examples, not just internal consistency).
+`tests/test_graph.py` covers the UMLS ontology edge layer staying distinct
+from a text-derived edge of the same relation and pair.
