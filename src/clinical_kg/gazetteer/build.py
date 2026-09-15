@@ -99,17 +99,32 @@ STOPTERMS = {
     "male", "female", "man", "woman", "age", "size", "week", "month", "year",
     "years", "past", "present", "left", "right", "upper", "lower", "total",
     "she", "he", "her", "his", "it", "one", "two", "three", "first", "second",
+    # matches "the emergency room/department", never an actual diagnosis --
+    # see extraction.entities.EXCLUDED_CUIS for the same fix applied by CUI
+    # (C2745965 "Emergencies") to the gazetteer already built in this repo
+    "emergency",
     # units of measure
     "mg", "mm", "cm", "ml", "kg", "mmhg", "mcg", "iu", "dl", "mmol", "mg/dl",
     # quantifiers / function words that survive as SNOMED PT or MTH PN
     "no", "per", "four", "five", "none", "both", "each", "other", "at", "air",
     # bare modifiers -- qualify an entity, are not one
     "negative", "positive", "severe", "mild", "moderate", "confirmed",
-    "improved", "physical", "acute", "chronic", "large", "small",
+    "improved", "physical", "acute", "chronic", "large", "small", "surgical",
+    "possible", "indicated", "oral",
+    # generic process nouns -- name a category of care/procedure, not a
+    # specific one. Measured on this corpus: "treatment" (32x), "follow-up"
+    # (29x), "diagnosis" (26x) and "analysis" (14x) all match a bare, overly
+    # literal UMLS concept (e.g. MSH "treatment" C0087111) with no clinical
+    # content of their own.
+    "treatment", "follow-up", "diagnosis", "analysis", "procedures",
     # SNOMED qualifier / context phrases (matched as whole phrases)
     "history of", "presence of", "absence of", "negative for", "positive for",
     "treated with", "transferred to", "no evidence of", "evidence of",
     "consistent with", "associated with", "due to", "status post",
+    # LOINC questionnaire/consent-form fragments, matched verbatim as concept
+    # names (LOINC often encodes literal survey text) -- boilerplate from a
+    # case report's consent statement, never clinical content.
+    "consent was", "i did",
 }
 
 # British -> American spelling (UMLS uses American)

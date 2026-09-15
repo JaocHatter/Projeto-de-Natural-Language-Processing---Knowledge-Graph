@@ -22,10 +22,11 @@ COMMANDS = {
     "build-gazetteer":      ("clinical_kg.gazetteer.build",      "build the UMLS SQLite gazetteer"),
     "extract-entities":     ("clinical_kg.extraction.entities",  "extract entities from the corpus"),
     "extract-measurements": ("clinical_kg.extraction.measurements", "extract and link measurements"),
-    "pos-lexicon":          ("clinical_kg.relations.pos",        "dump the POS lexicon and coverage"),
+    "pos-lexicon":          ("clinical_kg.relations.core.pos",   "dump the POS lexicon and coverage"),
     "extract-relations":    ("clinical_kg.relations.extract",    "extract typed clinical relations"),
-    "annotate-relations":   ("clinical_kg.relations.annotate",   "annotate the gold relation set"),
-    "evaluate-relations":   ("clinical_kg.relations.evaluate",   "score relations against the gold set"),
+    "annotate-relations":   ("clinical_kg.relations.tools.annotate", "annotate the gold relation set"),
+    "build-umls-relations": ("clinical_kg.relations.ontology",   "filter UMLS's own relations to this corpus's CUIs"),
+    "evaluate-relations":   ("clinical_kg.relations.tools.evaluate", "score relations against the gold set"),
     "export-graph":         ("clinical_kg.graph.export",         "export graphs as JSON/GraphML/CSV"),
 }
 

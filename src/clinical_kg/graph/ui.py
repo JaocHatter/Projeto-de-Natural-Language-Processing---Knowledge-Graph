@@ -6,7 +6,7 @@ from pathlib import Path
 import streamlit as st
 import streamlit.components.v2 as components
 
-from .model import (LINK_METHODS, RELATION_LABELS, build_graph, filter_graph,
+from .model import (CLINICAL_RELATIONS, LINK_METHODS, RELATION_LABELS, build_graph, filter_graph,
                     graph_fingerprint, group_graph, interaction_views)
 from .export import to_csv_zip, to_graphml, to_json
 
@@ -64,9 +64,29 @@ def cytoscape_elements(graph: dict, palette: dict) -> list[dict]:
     for edge in graph["edges"]:
         label = RELATION_LABELS.get(edge["relation"], edge["relation"])
         method = edge.get("link_method", "")
-        elements.append({"data": {**edge, "label": label,
-                                  "line_style": "dashed" if method == "window_fallback" else "solid",
-                                  "tooltip": f'{edge["relation"]}\n{method}'}})
+        line_style = "dashed" if method == "window_fallback" else "solid"
+        tooltip = f'{edge["relation"]}\n{method}'
+        if edge["relation"] in CLINICAL_RELATIONS:
+            # A typed clinical relation: text-derived (heuristic CRF, with an
+            # assertion status and the trigger that fired) or UMLS's own
+            # ontology edge (domain knowledge, not a claim about this text).
+            if edge.get("evidence_source") == "umls_ontology":
+                line_style = "dotted"
+                tooltip = (f'{edge["relation"]} · UMLS ontology ({edge.get("rela", "")}, '
+                           f'{edge.get("sab", "")})\nnot asserted by this case\'s text')
+            else:
+                status = edge.get("assertion_status", "not_assessed")
+                if status == "negated":
+                    label = f"{label} (negated)"
+                    line_style = "dashed"
+                elif status not in ("affirmed", "not_assessed"):
+                    label = f"{label} ({status})"
+                trigger = edge.get("trigger_text") or "adjacency"
+                tooltip = (f'{edge["relation"]} · {status}\ntrigger: {trigger} · '
+                           f'score {edge.get("score", 0.0):.2f} · {edge.get("count", 1)} mention(s); '
+                           'heuristic, not a clinical assertion')
+        elements.append({"data": {**edge, "label": label, "line_style": line_style,
+                                  "tooltip": tooltip}})
     return elements
 
 
@@ -87,6 +107,16 @@ STYLE = [
     {"selector": "edge", "style": {
         "curve-style": "bezier", "target-arrow-shape": "triangle", "arrow-scale": 0.65, "width": 1,
         "opacity": 0.45, "line-color": "#94a3b8", "target-arrow-color": "#94a3b8", "line-style": "data(line_style)",
+    }},
+    # Typed clinical relations stand out from the MENTIONS_* scaffolding.
+    {"selector": "edge[?heuristic][assertion_status]", "style": {
+        "line-color": "#7c3aed", "target-arrow-color": "#7c3aed", "width": 1.6, "opacity": 0.7,
+    }},
+    {"selector": 'edge[assertion_status = "negated"]', "style": {
+        "line-color": "#dc2626", "target-arrow-color": "#dc2626",
+    }},
+    {"selector": 'edge[evidence_source = "umls_ontology"]', "style": {
+        "line-color": "#0f766e", "target-arrow-color": "#0f766e", "width": 1.4, "opacity": 0.6,
     }},
     {"selector": "edge:selected", "style": {
         "label": "data(label)", "font-size": 11, "text-background-color": "#ffffff",
@@ -179,10 +209,20 @@ def render_inspector(selection: dict | None, graph: dict, text: str) -> list[dic
 
 
 def graph_panel(meta: dict, text: str, entities: list[dict], measurements: list[dict],
-                palette: dict, article: dict | None = None) -> tuple[dict, dict | None, list[dict]]:
-    """Render graph controls, interactive canvas, evidence and downloads."""
+                palette: dict, article: dict | None = None,
+                relations: list[dict] | None = None,
+                umls_relations: dict[tuple[str, str], list[dict]] | None = None
+                ) -> tuple[dict, dict | None, list[dict]]:
+    """Render graph controls, interactive canvas, evidence and downloads.
+
+    `relations` are rows in the relations.csv schema (relations.extract.to_row)
+    over the same `entities`; `umls_relations` is relations.ontology.load()'s
+    output. Both are optional and feed build_graph's two extra edge layers.
+    """
     st.caption("One Person per cleaned patient row. Age and Sex come from the cleaning pipeline. "
-               "Clinical edges describe text mentions; measurement associations are heuristic.")
+               "Clinical edges describe text mentions; measurement associations are heuristic. "
+               "Typed relations (purple; red dashed when negated) are heuristic CRF output with an "
+               "assertion status; dotted teal edges are UMLS's own relations, not claims of this text.")
     clinical_types = [kind for kind in palette if kind not in ("Measurement", "Person", "Age", "Sex")]
     with st.expander("Graph filters", expanded=True):
         left, right = st.columns(2)
@@ -205,7 +245,16 @@ def graph_panel(meta: dict, text: str, entities: list[dict], measurements: list[
                                                "circle": "Circular"}.get)
             labels = st.checkbox("Show relation labels", value=False)
             show_article = st.checkbox("Show source article", value=False, disabled=article is None)
-    graph = build_graph(meta, text, entities, measurements, aggregate=aggregate, article=article)
+            show_relations = st.checkbox("Show extracted relations", value=True,
+                                         disabled=not relations,
+                                         help="Typed edges from the relation extractor, each with an assertion status.")
+            show_umls = st.checkbox("Show UMLS ontology relations", value=True,
+                                    disabled=not umls_relations or not aggregate,
+                                    help="UMLS's own relations between concepts this case mentions. "
+                                         "Concept view only; not asserted by the text.")
+    graph = build_graph(meta, text, entities, measurements, aggregate=aggregate, article=article,
+                        relations=relations if show_relations else None,
+                        umls_relations=umls_relations if show_umls else None)
     if grouped:
         graph = group_graph(graph, clinical_types)
     candidates = filter_graph(graph, entity_types=types, link_methods=methods,

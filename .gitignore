@@ -8,6 +8,7 @@ data/external/umls_work/
 data/external/umls_csvs/
 data/interim/*.db
 
+
 __pycache__/
 *.pyc
 venv/

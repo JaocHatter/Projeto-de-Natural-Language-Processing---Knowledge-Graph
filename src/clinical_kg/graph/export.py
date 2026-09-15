@@ -15,9 +15,12 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from .model import build_graph, validate_graph
-from clinical_kg.paths import PROJECT_ROOT, DEFAULT_CASES, DEFAULT_DB, DEFAULT_METADATA
+from clinical_kg.paths import (PROJECT_ROOT, DEFAULT_CASES, DEFAULT_DB, DEFAULT_METADATA,
+                               DEFAULT_RELATIONS, DEFAULT_TOKEN_FREQ, DEFAULT_UMLS_RELATIONS)
 from clinical_kg.extraction.measurements import analyze_case
 from clinical_kg.corpus.patients import validate_annotations
+from clinical_kg.relations import ontology
+from clinical_kg.relations.extract import analyze_case as analyze_relations, load_frequencies, to_row
 
 GRAPHML_NS = "http://graphml.graphdrawing.org/xmlns"
 
@@ -94,6 +97,19 @@ def _read_csv(path: Path) -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def extract_relations(case: dict, entities: list[dict], freq_path: Path = DEFAULT_TOKEN_FREQ) -> list[dict]:
+    """Typed relations for one case, in the relations.csv row schema, from the
+    same entity spans the graph is built on -- so the relation offsets can never
+    disagree with the entity offsets. Shared by the export CLI and the viewer."""
+    freq = load_frequencies(freq_path)
+    return [to_row(case, rel) for rel in analyze_relations(case["case_text"], entities, freq)]
+
+
+def load_umls_relations(path: Path = DEFAULT_UMLS_RELATIONS) -> dict[tuple[str, str], list[dict]]:
+    """UMLS's own relations (build-umls-relations), or {} when never built."""
+    return ontology.load(path) if path.exists() else {}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--case-id", required=True)
@@ -102,6 +118,11 @@ def main():
     ap.add_argument("--from-csv", action="store_true", help="Use aligned processed CSVs instead of live extraction")
     ap.add_argument("--entities", type=Path, help="Use this entities CSV (implies --from-csv)")
     ap.add_argument("--measurements", type=Path, help="Use this measurements CSV (implies --from-csv)")
+    ap.add_argument("--relations", type=Path,
+                    help="Use this relations CSV (implies --from-csv; default data/processed/relations.csv when present)")
+    ap.add_argument("--umls-relations", type=Path, default=DEFAULT_UMLS_RELATIONS,
+                    help="UMLS ontology relations CSV from build-umls-relations (skipped when absent)")
+    ap.add_argument("--no-relations", action="store_true", help="Omit extracted and UMLS relation edges")
     ap.add_argument("--metadata", type=Path, default=DEFAULT_METADATA)
     ap.add_argument("--include-article", action="store_true")
     ap.add_argument("--occurrences", action="store_true")
@@ -121,7 +142,9 @@ def main():
         article = None
         if args.include_article:
             article = next((a for a in _read_csv(args.metadata) if a["article_id"] == case["article_id"]), None)
-        from_csv = args.from_csv or args.entities is not None or args.measurements is not None
+        from_csv = (args.from_csv or args.entities is not None or args.measurements is not None
+                    or args.relations is not None)
+        relations, umls_relations = [], {}
         if from_csv:
             entities = _read_csv(args.entities or PROJECT_ROOT / "data/processed/entities.csv")
             measurements = _read_csv(args.measurements or PROJECT_ROOT / "data/processed/measurements.csv")
@@ -129,12 +152,20 @@ def main():
             validate_annotations(cases, measurements, "measurements.csv")
             entities = [r for r in entities if r["case_id"] == args.case_id]
             measurements = [r for r in measurements if r["case_id"] == args.case_id]
+            relations_path = args.relations or DEFAULT_RELATIONS
+            if not args.no_relations and relations_path.exists():
+                relations = [r for r in _read_csv(relations_path) if r["case_id"] == args.case_id]
         else:
             with closing(sqlite3.connect(args.db.resolve().as_uri() + "?mode=ro", uri=True)) as con:
                 entities, measurements = analyze_case(case["case_text"], con)
+            if not args.no_relations:
+                relations = extract_relations(case, entities)
+        if not args.no_relations:
+            umls_relations = load_umls_relations(args.umls_relations)
         case["data_source"] = str(args.cases)
         graph = build_graph(case, case["case_text"], entities, measurements,
-                            aggregate=not args.occurrences, article=article)
+                            aggregate=not args.occurrences, article=article,
+                            relations=relations, umls_relations=umls_relations)
         if from_csv and graph["warnings"]:
             raise ValueError("Annotation CSVs have unresolved occurrence links. Regenerate them from the same corpus.")
         payload = writers[args.out.suffix.lower()](graph)

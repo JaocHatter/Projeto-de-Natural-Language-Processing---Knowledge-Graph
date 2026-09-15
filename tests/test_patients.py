@@ -82,7 +82,10 @@ class PatientTests(unittest.TestCase):
                         # Later merged fragments use offsets into concatenated text.
                         self.assertTrue(any(n["evidence"] and n["evidence"][0]["start"] > 3000
                                             for n in graph["nodes"]))
-            self.assertEqual(totals["entities"], 3134)
+            # 3134 minus generic-word/boilerplate false entities excluded via
+            # extraction.entities.EXCLUDED_CUIS/EXCLUDED_TERMS (see there and
+            # gazetteer.build.STOPTERMS for what each one is and why).
+            self.assertEqual(totals["entities"], 2957)
             self.assertEqual(totals["measurements"], 535)
         finally:
             con.close()

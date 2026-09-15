@@ -91,6 +91,38 @@ class GraphTests(unittest.TestCase):
         self.assertTrue(any(n["id"] == "concept:C2" for n in graph["nodes"]))
         self.assertEqual(next(n for n in graph["nodes"] if n["kind"] == "Person")["age"], "0")
 
+    def test_umls_ontology_layer_is_a_distinct_edge(self):
+        # C1 and C2 are both present in this fixture's own entities, so an
+        # ontology edge between them should be added; a third CUI absent from
+        # the case must be silently skipped rather than dangling.
+        umls_relations = {
+            ("C1", "C2"): [{"relation": "CAUSED_BY", "rela": "has_causative_agent",
+                            "sab": "SNOMEDCT_US"}],
+            ("C1", "C9"): [{"relation": "TREATED_WITH", "rela": "may_treat", "sab": "MED-RT"}],
+        }
+        graph = self.build(umls_relations=umls_relations)
+        validate_graph(graph)
+        ontology_edges = [e for e in graph["edges"]
+                          if e.get("evidence_source") == "umls_ontology"]
+        self.assertEqual(len(ontology_edges), 1)
+        edge = ontology_edges[0]
+        self.assertEqual((edge["source"], edge["target"]), ("concept:C1", "concept:C2"))
+        self.assertEqual(edge["relation"], "CAUSED_BY")
+        self.assertEqual(edge["rela"], "has_causative_agent")
+        # A text-derived edge of the same name/pair must never collide with it.
+        text_relations = [{"case_id": "test", "relation": "CAUSED_BY",
+                           "assertion_status": "affirmed", "head_kind": "Concept",
+                           "head_start": self.entities[0]["start"], "head_end": self.entities[0]["end"],
+                           "tail_start": self.entities[2]["start"], "tail_end": self.entities[2]["end"],
+                           "score": 1.0}]
+        combined = self.build(relations=text_relations, umls_relations=umls_relations)
+        validate_graph(combined)
+        same_pair = [e for e in combined["edges"] if e["relation"] == "CAUSED_BY"
+                    and e["source"] == "concept:C1" and e["target"] == "concept:C2"]
+        self.assertEqual(len(same_pair), 2)
+        self.assertEqual({e.get("evidence_source", "text") for e in same_pair},
+                         {"text", "umls_ontology"})
+
     def test_ids_and_output_are_deterministic(self):
         graph = self.build()
         other = build_graph(self.meta, self.text, self.entities[::-1], self.measurements[::-1])
@@ -190,6 +222,51 @@ class GraphTests(unittest.TestCase):
         edge = next(e for e in graph["edges"] if e.get("link_method") == "window_fallback")
         self.assertTrue(edge["lower_confidence"])
         self.assertTrue(edge["heuristic"])
+
+
+class RelationWiringTests(unittest.TestCase):
+    """The export CLI and the viewer feed build_graph through one shared helper,
+    so live relation extraction can never diverge from `extract-relations`."""
+
+    def setUp(self):
+        from clinical_kg.graph.export import extract_relations, load_umls_relations
+        from clinical_kg.relations.extract import analyze_case as analyze_relations
+        self.extract_relations, self.load_umls_relations = extract_relations, load_umls_relations
+        self.analyze_relations = analyze_relations
+        self.text = ("Echocardiography showed a thickened septum but no pericardial "
+                     "effusion. She was treated with aspirin.")
+        self.case = {"case_id": "test", "article_id": "a", "age": "44", "gender": "Female",
+                     "case_text": self.text}
+        self.entities = []
+        for surface, kind, cui in (("Echocardiography", "Exam", "C1"),
+                                   ("pericardial effusion", "Finding", "C3"), ("aspirin", "Treatment", "C4")):
+            start = self.text.index(surface)
+            self.entities.append({"start": start, "end": start + len(surface), "surface_text": surface,
+                                  "cui": cui, "tui": "T000", "entity_type": kind, "preferred_term": surface,
+                                  "vocabulary": "MTH", "tty": "PT"})
+
+    def test_helper_matches_the_cli_path_and_reaches_the_graph(self):
+        rows = self.extract_relations(self.case, self.entities, freq_path=Path("/nonexistent/freq.csv"))
+        direct = self.analyze_relations(self.text, self.entities, {})
+        self.assertEqual(len(rows), len(direct))
+        self.assertEqual([r["relation"] for r in rows], [r["relation"] for r in direct])
+        self.assertTrue(all(r["case_id"] == "test" for r in rows))
+        for aggregate in (True, False):
+            graph = build_graph(self.case, self.text, self.entities, [], aggregate=aggregate, relations=rows)
+            validate_graph(graph)
+            self.assertFalse(graph["warnings"])
+            typed = [e for e in graph["edges"] if e.get("assertion_status") not in (None, "not_assessed")]
+            self.assertEqual(len(typed), len(rows))
+            negated = next(e for e in typed if e["assertion_status"] == "negated")
+            self.assertIn("C3", negated["target"])   # "no pericardial effusion" is kept, labelled
+            self.assertEqual(json.loads(to_json(graph)), graph)
+            with zipfile.ZipFile(io.BytesIO(to_csv_zip(graph))) as archive:
+                edges = list(csv.DictReader(io.StringIO(archive.read("edges.csv").decode())))
+            self.assertIn("assertion_status", edges[0])
+            self.assertEqual(sum(e["assertion_status"] == "negated" for e in edges), 1)
+
+    def test_missing_umls_layer_is_empty_not_an_error(self):
+        self.assertEqual(self.load_umls_relations(Path("/nonexistent/umls_relations.csv")), {})
 
 
 if __name__ == "__main__":

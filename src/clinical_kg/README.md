@@ -74,24 +74,20 @@ raw/cases.csv → corpus.clean → interim/cases_clean.csv
 
 Relation extraction is documented separately in
 [`relations/README.md`](relations/README.md) — the CRF, the hand-set weights and
-what the corpus measurements showed — plus a step-by-step walkthrough in
-[English](../../docs/relation-extraction.en.md) and
-[Castellano](../../docs/relation-extraction.es.md).
+what the corpus measurements showed.
 
 ## Known limitation: token_frequency.csv
 
-`pipelines/token_frequency.py` produces `data/interim/token_frequency.csv`,
-which feeds the relation scorer's `trig.freq_bucket` feature. That script is
-**outside this package and tokenizes differently** — `re.sub(r'[^\w\s-]',' ')`
-plus `.split()`, rather than the `extraction.entities.TOKEN_RE` used everywhere
-else. Measured on the corpus the two vocabularies differ by 300 tokens one way
-and 275 the other: it shreds decimals such as `0.133` and keeps bare `-`, so
-roughly 6% of that frequency table cannot match any token the pipeline emits.
-
-The effect is small (frequency is one log-binned feature among many) and fixing
-it would change relation output, so it is recorded rather than silently
-corrected. To fix: move the script into `corpus/` on the shared tokenizer and
-regenerate.
+`data/interim/token_frequency.csv` feeds the relation scorer's
+`trig.freq_bucket` feature, but nothing in this repository produces it: the
+script that once did (`pipelines/token_frequency.py`) was never committed, and
+it tokenized differently from the package (`re.sub(r'[^\w\s-]',' ')` plus
+`.split()` rather than `extraction.entities.TOKEN_RE`), so ~6% of its rows
+could not match a pipeline token anyway. The extractor tolerates the missing
+table (`load_frequencies` returns `{}`, every token then gets the same small
+frequency bonus) and the committed `relations.csv` and gold set were produced
+without it. To restore the feature, regenerate the table on the shared
+tokenizer.
 
 ## Graph schema (version 3)
 
@@ -108,13 +104,17 @@ regenerate.
 | Person | `MENTIONS_BODY_PART` | BodyPart concept/mention | Anatomy term occurs in the report |
 | Concept/mention | `ASSOCIATED_WITH_MEASUREMENT` | Measurement | Heuristic association with an exact text occurrence |
 | Person | `CONTAINS_UNLINKED_MEASUREMENT` | Measurement | Value was extracted without a resolved association |
+| Person or Concept/mention | `HAS_SYMPTOM` / `HAS_DIAGNOSIS` / `HAS_FINDING` / `TREATED_WITH` / `REVEALED_BY` / `LOCATED_IN` / `CAUSED_BY` / `COORDINATE_WITH` (`heuristic=true`) | Concept/mention | Typed relation decoded from the text by `relations/extract.py`, with `assertion_status` (`affirmed`/`negated`/`hedged`/`historical`/`family`), `trigger_text`, `score` and the tail `spans` |
+| Concept | `TREATED_WITH`/`LOCATED_IN`/`CAUSED_BY` (`evidence_source=umls_ontology`) | Concept | UMLS's own relation between two concepts *this case also mentions* -- domain knowledge, not a claim this case's text asserts it (see `relations/ontology.py`) |
 
-These clinical relation names express **text mentions**, with
-`assertion_status=not_assessed`. No negation, temporal context, experiencer,
-diagnostic confirmation or causal relation is inferred. Even `same_sentence`
-is a heuristic, not a calibrated confidence score. All association methods are
-enabled by default, but measurement nodes only appear after selecting their
-owner; `window_fallback` edges are dashed and can be filtered out.
+The `MENTIONS_*` names express **text mentions**, with
+`assertion_status=not_assessed`. The typed relations are the heuristic CRF
+output: an assertion status is attached, but no diagnostic confirmation or
+causality is established by it, and a negated relation is kept and labelled
+rather than dropped. Even `same_sentence` is a heuristic, not a calibrated
+confidence score. All association methods are enabled by default, but
+measurement nodes only appear after selecting their owner; `window_fallback`
+edges are dashed and can be filtered out.
 
 Identity and provenance:
 
@@ -153,7 +153,14 @@ entities, measurements and an explicit relation table, with a selection filter.
 
 Filters control categories, Age/Sex, measurements, link methods and article
 visibility. Relation labels are shown on selected edges and can be enabled for
-the whole graph. Selecting a concept, measurement or edge emphasizes its direct
+the whole graph. Typed relations are extracted live over the same entity spans
+(`graph.export.extract_relations`, the CLI's code path) and drawn in purple --
+red and dashed when negated, with the status appended to the label otherwise;
+UMLS ontology edges (`data/interim/umls_relations.csv`, when built) are dotted
+teal and only exist in the aggregated concept view. **Show extracted
+relations** and **Show UMLS ontology relations** toggle each layer. The Tables
+tab lists the graph edges with their assertion status and, separately, the
+extracted relations in the `relations.csv` schema. Selecting a concept, measurement or edge emphasizes its direct
 neighbors. Measurements default to **On node selection**: concepts reveal only
 their associated values, Person reveals unlinked values, and selecting a value
 keeps its owner's values open. Clicking the background hides measurements again.
@@ -195,7 +202,11 @@ clinical-kg export-graph --case-id PMC4630775_01 --out /tmp/newborn.zip
 ```
 
 Use `--cases`, `--db`, or `--metadata` to select other inputs. Existing exports
-are protected unless `--force` is given. JSON retains nested data. GraphML uses
+are protected unless `--force` is given. Typed relations are included by
+default: extracted live in this mode, or read from `data/processed/relations.csv`
+(or `--relations PATH`) in CSV mode; `--umls-relations PATH` points at the UMLS
+ontology layer (default `data/interim/umls_relations.csv`, skipped when absent)
+and `--no-relations` omits both layers. JSON retains nested data. GraphML uses
 directed edges and string attributes; lists/dictionaries are JSON-encoded.
 CSV ZIP contains `nodes.csv`, `edges.csv` and `metadata.json`, with nested fields
 JSON-encoded. Use a CSV parser to preserve quoted commas.
