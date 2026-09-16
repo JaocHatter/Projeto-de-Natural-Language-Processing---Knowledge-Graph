@@ -345,46 +345,6 @@ reorganizing the source code, and generating this document and the logical model
 code suggestion was reviewed and validated against the automated test suite (71 tests) and against
 the manually annotated gold set before being incorporated.
 
-## Project Structure
-
-```
-.
-├── README.md                <- Project documentation (this file)
-│
-├── data
-│   ├── external                <- Third-party data in input format for transformation
-│   ├── interim                  <- Intermediate data, e.g., transformation results
-│   ├── processed                <- Final data used for publication/analysis
-│   └── raw                      <- Original data without modifications
-│
-├── pipelines
-│   └── notebooks                <- Jupyter notebooks
-│
-├── pyproject.toml            <- Packaging, dependencies and the clinical-kg command
-├── Makefile                   <- Zero-install entry points (make test / all / app)
-│
-├── src                         <- Source code (src-layout: one installable package)
-│   └── clinical_kg
-│       ├── README.md              <- Architecture, layering and data flow
-│       ├── paths.py                <- Single source of truth for project paths
-│       ├── cli.py                   <- One dispatcher over every pipeline stage
-│       ├── corpus/                  <- Case cleaning and patient records
-│       ├── gazetteer/               <- UMLS term dictionary (SQLite)
-│       ├── extraction/              <- Entities and measurements
-│       ├── relations/               <- Typed clinical relations (CRF)
-│       ├── graph/                    <- Graph model, export and viewer
-│       └── app/                       <- Streamlit front end
-│
-├── tests                        <- Test suite (python3 -m unittest discover -s tests)
-│
-└── assets                       <- Media used in the project
-    ├── images                      <- Images used in README.md
-    └── slides                       <- Presentation slides
-```
-
-`pipelines/workflows` is intentionally absent: the assignment allows "Orange or an equivalent
-visual workflow tool", and this project does not use one — an empty, unused folder would be exactly
-the kind of clutter this project avoids.
 
 ## References
 
