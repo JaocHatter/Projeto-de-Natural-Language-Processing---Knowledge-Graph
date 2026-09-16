@@ -51,6 +51,26 @@ TUI_TO_ENTITY = {
     "T023": "BodyPart", "T029": "BodyPart",
 }
 
+# Specific CUIs that are valid UMLS concepts but produce false entities in
+# this corpus's prose -- same idea as gazetteer.build.STOPTERMS (too generic
+# to trust standalone), scoped by CUI instead of surface string because the
+# match is legitimate, just contextually wrong here. Belongs in STOPTERMS too
+# for whenever the gazetteer is rebuilt from a full UMLS release; kept here
+# as well so the fix applies immediately without rebuilding gazetteer.db.
+#   C2745965 "Emergencies" (MSH, T046->Diagnosis): matches the bare word
+#   "emergency" in "admitted to the emergency room/department" -- 12
+#   occurrences across the corpus, never an actual patient diagnosis.
+EXCLUDED_CUIS = {"C2745965"}
+
+# Same idea, but by normalized term string instead of CUI -- these are
+# generic process nouns and consent-boilerplate phrases (see the matching
+# entries and comments in gazetteer.build.STOPTERMS) that also need
+# immediate effect without rebuilding gazetteer.db. Checked against `norm`
+# (already lowercased/normalized), not the raw surface text.
+EXCLUDED_TERMS = {"treatment", "follow-up", "diagnosis", "analysis",
+                  "procedures", "surgical", "consent was", "i did",
+                  "possible", "indicated", "oral"}
+
 TOKEN_RE = re.compile(r"[A-Za-z][A-Za-z\-']*|\d+(?:[.,]\d+)*")
 
 # Figure/table references. "Fig" is itself a UMLS term (the fruit), so these
@@ -115,6 +135,8 @@ def extract(text: str, con: sqlite3.Connection, max_n: int,
             surface = text[start:end]
 
             if is_stop and not keep_stopterms:
+                continue
+            if cui in EXCLUDED_CUIS or (norm in EXCLUDED_TERMS and not keep_stopterms):
                 continue
             if is_bad_abbreviation(surface, term_pref or "", n):
                 continue

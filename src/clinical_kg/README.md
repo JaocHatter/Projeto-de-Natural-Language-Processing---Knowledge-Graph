@@ -74,9 +74,7 @@ raw/cases.csv → corpus.clean → interim/cases_clean.csv
 
 Relation extraction is documented separately in
 [`relations/README.md`](relations/README.md) — the CRF, the hand-set weights and
-what the corpus measurements showed — plus a step-by-step walkthrough in
-[English](../../docs/relation-extraction.en.md) and
-[Castellano](../../docs/relation-extraction.es.md).
+what the corpus measurements showed.
 
 ## Known limitation: token_frequency.csv
 
@@ -108,6 +106,7 @@ regenerate.
 | Person | `MENTIONS_BODY_PART` | BodyPart concept/mention | Anatomy term occurs in the report |
 | Concept/mention | `ASSOCIATED_WITH_MEASUREMENT` | Measurement | Heuristic association with an exact text occurrence |
 | Person | `CONTAINS_UNLINKED_MEASUREMENT` | Measurement | Value was extracted without a resolved association |
+| Concept | `TREATED_WITH`/`LOCATED_IN`/`CAUSED_BY` (`evidence_source=umls_ontology`) | Concept | UMLS's own relation between two concepts *this case also mentions* -- domain knowledge, not a claim this case's text asserts it (see `relations/ontology.py`) |
 
 These clinical relation names express **text mentions**, with
 `assertion_status=not_assessed`. No negation, temporal context, experiencer,

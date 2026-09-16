@@ -31,10 +31,11 @@ from pathlib import Path
 from clinical_kg.paths import (DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_RELATIONS,
                            DEFAULT_TOKEN_FREQ)
 
-from . import features as rf
-from .crf import decode_triggers, emissions, viterbi
-from .pos import tag_token
-from .text_layer import clause_of, segment
+from .core import features as rf
+from .core.coreference import CorefState
+from .core.crf import decode_triggers, emissions, viterbi
+from .core.pos import tag_token
+from .core.text_layer import clause_of, segment
 
 DEFAULT_OUT = DEFAULT_RELATIONS
 DEFAULT_FREQ = DEFAULT_TOKEN_FREQ
@@ -105,6 +106,22 @@ def assertion_for(states, spans, start, end):
 # --------------------------------------------------------------------------
 COORD_FILLERS = frozenset({",", ";", "and", "or", "as", "well", "with", "plus", "&"})
 
+# Types treated as interchangeable inside a coordinated list. Measured on
+# this corpus: a clean list of clinical manifestations ("malaise, headache,
+# myalgia, rash, diarrhea, emesis") routinely has one member typed
+# differently by the gazetteer than its neighbors ("rash" as Diagnosis
+# instead of Symptom) -- requiring an exact type match fractures that single
+# list in two, and everything past the mistyped entity silently stops
+# coordinating. Treatment/Exam/BodyPart still require an exact match: there
+# is no equivalent evidence they get mistyped this way inside real lists.
+COORDINATE_COMPATIBLE = {"Symptom", "Finding", "Diagnosis"}
+
+
+def _coordinate_compatible(type_a, type_b):
+    if type_a == type_b:
+        return True
+    return type_a in COORDINATE_COMPATIBLE and type_b in COORDINATE_COMPATIBLE
+
 
 def coordinate_siblings(entities, text):
     """Map entity index -> index of the list head it coordinates with.
@@ -125,8 +142,7 @@ def coordinate_siblings(entities, text):
             continue
         if len(between) > 30:
             continue
-        # Compatible arguments: same project type, or both clinical concepts.
-        if left["entity_type"] != right["entity_type"]:
+        if not _coordinate_compatible(left["entity_type"], right["entity_type"]):
             continue
         head_of[i + 1] = head_of.get(i, i)
     return head_of
@@ -135,14 +151,6 @@ def coordinate_siblings(entities, text):
 # --------------------------------------------------------------------------
 # Attachment
 # --------------------------------------------------------------------------
-def patient_subject(tokens, upto):
-    """Is the clause subject the patient, with no other-subject cue?"""
-    window = [t.lower() for t in tokens[:upto]]
-    if any(w in rf.FAMILY_CUES for w in window):
-        return False
-    return any(w in rf.PATIENT_CUES for w in window)
-
-
 def score_pair(head, tail, gap, same_clause, intervening, trigger_strength, has_trigger):
     """Pair-level potential added to the trigger score. Returns (score, names)."""
     W = rf.WEIGHTS
@@ -169,14 +177,23 @@ def score_pair(head, tail, gap, same_clause, intervening, trigger_strength, has_
     return total, names
 
 
-def analyze_sentence(text, sent, entities, freq, threshold=None):
+def analyze_sentence(text, sent, entities, freq, threshold=None, coref=None):
     """Extract relations from one sentence. Returns a list of relation dicts.
 
     `threshold` overrides decide.threshold; pass float("-inf") to get every
     candidate the generator considered, which is what the annotation tool and
     the precision-recall sweep need -- scoring only the edges the model already
     accepted would make recall unmeasurable.
+
+    `coref` is a coreference.CorefState threaded across a case's sentences in
+    order, so a trigger with no left-hand entity and no local subject cue
+    ("Subsequently treated with ceftriaxone.") can still anchor to Person when
+    the previous sentence was about the patient. A fresh, single-sentence
+    state is used when none is passed, matching this function's behavior
+    before cross-sentence coreference existed.
     """
+    if coref is None:
+        coref = CorefState()
     W = rf.WEIGHTS
     cutoff = W["decide.threshold"] if threshold is None else threshold
     spans = sent["tokens"]
@@ -244,7 +261,7 @@ def analyze_sentence(text, sent, entities, freq, threshold=None):
             continue
         tail = min(right, key=lambda e: e["start"])
         head = max(left, key=lambda e: e["end"]) if left else None
-        if head is None and not patient_subject(tokens, trigger["i"]):
+        if head is None and not coref.resolve(tokens, trigger["i"]):
             continue
         intervening = sum(1 for e in entities
                           if head and head["end"] <= e["start"] < tail["start"]
@@ -297,6 +314,7 @@ def analyze_sentence(text, sent, entities, freq, threshold=None):
             "token_gap": gap, "same_clause": same,
             "score": score, "rule_path": "|".join(names),
         })
+    coref.advance(tokens)
     return out
 
 
@@ -317,12 +335,13 @@ def load_entities(path: Path) -> dict[str, list[dict]]:
 def analyze_case(text: str, entities: list[dict], freq: dict[str, int],
                  threshold=None) -> list[dict]:
     out = []
+    coref = CorefState()
     for sent in segment(text):
         inside = [e for e in entities
                   if e["start"] >= sent["start"] and e["end"] <= sent["end"]]
         if len(inside) < 1:
             continue
-        out.extend(analyze_sentence(text, sent, inside, freq, threshold))
+        out.extend(analyze_sentence(text, sent, inside, freq, threshold, coref))
     return out
 
 

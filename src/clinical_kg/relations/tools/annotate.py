@@ -26,11 +26,10 @@ import argparse
 import csv
 from pathlib import Path
 
-from clinical_kg.paths import (DEFAULT_CASES, DEFAULT_ENTITIES,
-                           DEFAULT_GOLD_RELATIONS)
+from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_GOLD_RELATIONS
 
-from . import features as rf
-from .extract import DEFAULT_FREQ, analyze_case, load_entities, load_frequencies
+from ..core import features as rf
+from ..extract import DEFAULT_FREQ, analyze_case, load_entities, load_frequencies
 
 DEFAULT_GOLD = DEFAULT_GOLD_RELATIONS
 DEFAULT_N_CASES = 9

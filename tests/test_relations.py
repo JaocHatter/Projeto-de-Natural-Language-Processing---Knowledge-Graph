@@ -1,18 +1,21 @@
 """Run with python3 -m unittest discover -s tests (stdlib only)."""
 
+import os
 import sys
 import unittest
 from pathlib import Path
 
-from clinical_kg.relations import features as rf
-from clinical_kg.relations.crf import (NEG_INF, decode_triggers, emissions,
-                                       transition, viterbi)
+from clinical_kg.relations import ontology
+from clinical_kg.relations.core import features as rf
+from clinical_kg.relations.core.coreference import CorefState
+from clinical_kg.relations.core.crf import (NEG_INF, decode_triggers, emissions,
+                                            transition, viterbi)
+from clinical_kg.relations.core.pos import tag_sequence, tag_token
+from clinical_kg.relations.core.text_layer import (clause_spans, segment,
+                                                   sentence_spans, token_spans)
 from clinical_kg.relations.extract import (analyze_case, analyze_sentence,
                                            assertion_states,
                                            coordinate_siblings)
-from clinical_kg.relations.pos import tag_sequence, tag_token
-from clinical_kg.relations.text_layer import (clause_spans, segment,
-                                              sentence_spans, token_spans)
 
 
 def entity(text, surface, kind, cui="C1"):
@@ -145,6 +148,101 @@ class AssertionTests(unittest.TestCase):
     def test_hedging_is_detected(self):
         text = "Findings were consistent with pulmonary adenocarcinoma."
         self.assertEqual(self.first(text, "adenocarcinoma"), "hedged")
+
+
+class CoreferenceTests(unittest.TestCase):
+    """analyze_case threads one CorefState across a case's sentences, so a
+    trigger with no left-hand entity and no local subject cue can still
+    anchor to Person from the previous sentence's context."""
+
+    def test_elided_subject_inherits_the_previous_sentence(self):
+        text = ("The patient was diagnosed with pneumonia. Subsequently "
+                "treated with ceftriaxone.")
+        ents = [entity(text, "pneumonia", "Diagnosis"),
+                entity(text, "ceftriaxone", "Treatment")]
+        rels = analyze_case(text, ents, {})
+        treated = [r for r in rels if r["tail"]["surface_text"] == "ceftriaxone"]
+        self.assertTrue(treated, "ceftriaxone should anchor to Person "
+                                 "via the inherited coreference state")
+        self.assertIsNone(treated[0]["head"])
+        self.assertEqual(treated[0]["relation"], "TREATED_WITH")
+
+    def test_family_cue_does_not_leak_into_the_next_sentence(self):
+        text = "His mother had diabetes. He was diagnosed with pneumonia."
+        ents = [entity(text, "diabetes", "Diagnosis"),
+                entity(text, "pneumonia", "Diagnosis")]
+        rels = analyze_case(text, ents, {})
+        diabetes = [r for r in rels if r["tail"]["surface_text"] == "diabetes"]
+        pneumonia = [r for r in rels if r["tail"]["surface_text"] == "pneumonia"]
+        # Family history must not be anchored to the patient's own Person node.
+        self.assertFalse(diabetes, "family-history diabetes should not "
+                                   "attach to the patient")
+        # An explicit "He" in the next sentence overrides the stale
+        # family-cue state inherited from the previous one.
+        self.assertTrue(pneumonia)
+        self.assertIsNone(pneumonia[0]["head"])
+
+    def test_bare_state_defaults_to_patient_active(self):
+        # A lone sentence with no CorefState (as analyze_sentence's direct
+        # callers, e.g. tests, use it) starts True: a case report's opening
+        # sentence is conventionally about the patient even before any
+        # pronoun appears.
+        state = CorefState()
+        self.assertTrue(state.resolve(["Diagnosed", "with", "pneumonia"], 0))
+
+
+class OntologyTests(unittest.TestCase):
+    """relations/ontology.py: MRREL.RRF row filtering and reorientation.
+
+    Direction was verified empirically against a live 2026AA MRREL.RRF (see
+    ontology.RELA_DIRECTION's comment) rather than assumed from the RELA
+    name's grammar -- may_treat/may_be_treated_by turned out NOT to mirror
+    each other the way finding_site_of/has_finding_site do, so these tests
+    pin the exact (head, tail) each RELA must produce.
+    """
+
+    def mrrel_fields(self, cui1, rela, cui2, sab="SNOMEDCT_US", suppress="N"):
+        fields = [""] * 16
+        fields[0], fields[7], fields[4] = cui1, rela, cui2
+        fields[10], fields[14] = sab, suppress
+        return fields
+
+    def test_may_treat_is_not_swapped(self):
+        fields = self.mrrel_fields("DISEASE", "may_treat", "DRUG", sab="MED-RT")
+        row = ontology.resolve_row(fields, {"DISEASE", "DRUG"})
+        self.assertEqual((row["head_cui"], row["tail_cui"]), ("DISEASE", "DRUG"))
+        self.assertEqual(row["relation"], "TREATED_WITH")
+
+    def test_may_be_treated_by_is_swapped(self):
+        # MRREL stores this one as (drug, disease) -- the opposite order from
+        # may_treat's (disease, drug) -- so it must be flipped to land on the
+        # same (head=disease, tail=drug) convention.
+        fields = self.mrrel_fields("DRUG", "may_be_treated_by", "DISEASE", sab="MED-RT")
+        row = ontology.resolve_row(fields, {"DISEASE", "DRUG"})
+        self.assertEqual((row["head_cui"], row["tail_cui"]), ("DISEASE", "DRUG"))
+        self.assertEqual(row["relation"], "TREATED_WITH")
+
+    def test_has_finding_site_is_swapped(self):
+        fields = self.mrrel_fields("BODYPART", "has_finding_site", "FINDING")
+        row = ontology.resolve_row(fields, {"BODYPART", "FINDING"})
+        self.assertEqual((row["head_cui"], row["tail_cui"]), ("FINDING", "BODYPART"))
+        self.assertEqual(row["relation"], "LOCATED_IN")
+
+    def test_suppressed_row_is_dropped(self):
+        fields = self.mrrel_fields("A", "may_treat", "B", suppress="Y")
+        self.assertIsNone(ontology.resolve_row(fields, {"A", "B"}))
+
+    def test_cui_outside_corpus_is_dropped(self):
+        fields = self.mrrel_fields("A", "may_treat", "B")
+        self.assertIsNone(ontology.resolve_row(fields, {"A"}))
+
+    def test_unknown_rela_is_dropped(self):
+        fields = self.mrrel_fields("A", "isa", "B")
+        self.assertIsNone(ontology.resolve_row(fields, {"A", "B"}))
+
+    def test_self_relation_is_dropped(self):
+        fields = self.mrrel_fields("A", "may_treat", "A")
+        self.assertIsNone(ontology.resolve_row(fields, {"A"}))
 
 
 class CoordinationTests(unittest.TestCase):

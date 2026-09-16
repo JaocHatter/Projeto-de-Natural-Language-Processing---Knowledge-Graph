@@ -179,7 +179,8 @@ def render_inspector(selection: dict | None, graph: dict, text: str) -> list[dic
 
 
 def graph_panel(meta: dict, text: str, entities: list[dict], measurements: list[dict],
-                palette: dict, article: dict | None = None) -> tuple[dict, dict | None, list[dict]]:
+                palette: dict, article: dict | None = None,
+                relations: list[dict] | None = None) -> tuple[dict, dict | None, list[dict]]:
     """Render graph controls, interactive canvas, evidence and downloads."""
     st.caption("One Person per cleaned patient row. Age and Sex come from the cleaning pipeline. "
                "Clinical edges describe text mentions; measurement associations are heuristic.")
@@ -205,7 +206,8 @@ def graph_panel(meta: dict, text: str, entities: list[dict], measurements: list[
                                                "circle": "Circular"}.get)
             labels = st.checkbox("Show relation labels", value=False)
             show_article = st.checkbox("Show source article", value=False, disabled=article is None)
-    graph = build_graph(meta, text, entities, measurements, aggregate=aggregate, article=article)
+    graph = build_graph(meta, text, entities, measurements, aggregate=aggregate,
+                        article=article, relations=relations)
     if grouped:
         graph = group_graph(graph, clinical_types)
     candidates = filter_graph(graph, entity_types=types, link_methods=methods,

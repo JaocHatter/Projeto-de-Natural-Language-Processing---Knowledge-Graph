@@ -12,9 +12,7 @@ hand rather than learned. That makes two things non-negotiable:
 
 The weights are log-space potentials of a linear-chain CRF. Setting them by
 hand instead of fitting them keeps the CRF's inference -- Viterbi decoding over
-the tag sequence -- while giving up any claim that the values are optimal. If a
-labeled set ever exists, these become the initialization and the same feature
-code fits properly.
+the tag sequence -- while giving up any claim that the values are optimal.
 """
 
 # --------------------------------------------------------------------------
@@ -145,12 +143,29 @@ WEIGHTS = {
     # -- Combining trigger and pair evidence -------------------------------
     "score.trigger_weight":    0.6,   # x mean trigger emission potential
     # -- Decision threshold ------------------------------------------------
-    "decide.threshold":        1.5,
+    # Measured, not guessed: the gold set's threshold sweep (10 cases, 385
+    # judged candidates -- see relations/README.md "Evaluation") shows 1.5
+    # loses recall for almost no precision gain (P=0.605/R=0.428/F1=0.501 at
+    # 1.5 vs P=0.602/R=0.653/F1=0.626 at 1.0). 1.0 is chosen over the
+    # marginally higher-F1 0.0/0.5 because a knowledge graph is inspected,
+    # not just scored: a wrong edge shown to a viewer costs more trust than a
+    # missing one, so the extra precision (fewer false edges cluttering the
+    # graph) is worth a little recall. Re-measure with `evaluate-relations`
+    # if the gold set grows enough to change this.
+    "decide.threshold":        1.0,
 }
 
 # Entity-type pair priors. Derived from which pairs are clinically meaningful,
 # not from raw co-occurrence counts -- BodyPart+BodyPart co-occurs constantly
 # (180 adjacent pairs) but is usually just anatomical modification.
+#
+# This is the fallback table now, not the only source: pair_prior() below
+# prefers a density measured from UMLS's own relations (relations.ontology.
+# type_prior) for any pair it covers -- currently the ones shaped like
+# TREATED_WITH/LOCATED_IN/CAUSED_BY (Diagnosis+Treatment, *+BodyPart,
+# Treatment+Diagnosis). Everything else here (Exam+Finding, Diagnosis+Symptom,
+# same-type pairs, ...) has no UMLS-mapped relation to derive a density from,
+# so it stays hand-set.
 ENTITY_PAIR_PRIOR = {
     ("Exam", "Finding"): 1.0, ("Exam", "Diagnosis"): 1.0,
     ("Exam", "Symptom"): 0.6, ("Exam", "BodyPart"): 0.4,
@@ -194,7 +209,36 @@ ABLATE = {"pos_backoff": False, "coordination": False,
           "negation": False, "transitions": False}
 
 
+_umls_type_prior_cache = None
+
+
+def _umls_type_prior() -> dict[tuple[str, str], float]:
+    """Cached, lazy: relations.ontology.type_prior() over the corpus's real
+    UMLS relations. Imported lazily (not at module load) to avoid a load-time
+    dependency from core/ back out to relations/ontology.py, and to avoid
+    file I/O just from importing this module.
+    """
+    global _umls_type_prior_cache
+    if _umls_type_prior_cache is None:
+        from clinical_kg.paths import DEFAULT_ENTITIES, DEFAULT_UMLS_RELATIONS
+
+        from .. import ontology
+        _umls_type_prior_cache = ontology.type_prior(DEFAULT_ENTITIES, DEFAULT_UMLS_RELATIONS)
+    return _umls_type_prior_cache
+
+
 def pair_prior(head_type: str, tail_type: str) -> float:
+    """How plausible a relation is between these two project entity types.
+
+    Prefers a density measured from UMLS's own relations over this corpus's
+    CUIs (relations.ontology.type_prior) when that pair is covered; falls
+    back to the hand-set ENTITY_PAIR_PRIOR for pairs UMLS has no equivalent
+    relation for (HAS_SYMPTOM/HAS_DIAGNOSIS/HAS_FINDING/REVEALED_BY-shaped
+    pairs), or if build-umls-relations has never been run at all.
+    """
+    umls = _umls_type_prior().get((head_type, tail_type))
+    if umls is not None:
+        return umls
     return ENTITY_PAIR_PRIOR.get((head_type, tail_type), DEFAULT_PAIR_PRIOR)
 
 

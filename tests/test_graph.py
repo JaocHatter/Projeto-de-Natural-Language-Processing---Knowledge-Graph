@@ -91,6 +91,38 @@ class GraphTests(unittest.TestCase):
         self.assertTrue(any(n["id"] == "concept:C2" for n in graph["nodes"]))
         self.assertEqual(next(n for n in graph["nodes"] if n["kind"] == "Person")["age"], "0")
 
+    def test_umls_ontology_layer_is_a_distinct_edge(self):
+        # C1 and C2 are both present in this fixture's own entities, so an
+        # ontology edge between them should be added; a third CUI absent from
+        # the case must be silently skipped rather than dangling.
+        umls_relations = {
+            ("C1", "C2"): [{"relation": "CAUSED_BY", "rela": "has_causative_agent",
+                            "sab": "SNOMEDCT_US"}],
+            ("C1", "C9"): [{"relation": "TREATED_WITH", "rela": "may_treat", "sab": "MED-RT"}],
+        }
+        graph = self.build(umls_relations=umls_relations)
+        validate_graph(graph)
+        ontology_edges = [e for e in graph["edges"]
+                          if e.get("evidence_source") == "umls_ontology"]
+        self.assertEqual(len(ontology_edges), 1)
+        edge = ontology_edges[0]
+        self.assertEqual((edge["source"], edge["target"]), ("concept:C1", "concept:C2"))
+        self.assertEqual(edge["relation"], "CAUSED_BY")
+        self.assertEqual(edge["rela"], "has_causative_agent")
+        # A text-derived edge of the same name/pair must never collide with it.
+        text_relations = [{"case_id": "test", "relation": "CAUSED_BY",
+                           "assertion_status": "affirmed", "head_kind": "Concept",
+                           "head_start": self.entities[0]["start"], "head_end": self.entities[0]["end"],
+                           "tail_start": self.entities[2]["start"], "tail_end": self.entities[2]["end"],
+                           "score": 1.0}]
+        combined = self.build(relations=text_relations, umls_relations=umls_relations)
+        validate_graph(combined)
+        same_pair = [e for e in combined["edges"] if e["relation"] == "CAUSED_BY"
+                    and e["source"] == "concept:C1" and e["target"] == "concept:C2"]
+        self.assertEqual(len(same_pair), 2)
+        self.assertEqual({e.get("evidence_source", "text") for e in same_pair},
+                         {"text", "umls_ontology"})
+
     def test_ids_and_output_are_deterministic(self):
         graph = self.build()
         other = build_graph(self.meta, self.text, self.entities[::-1], self.measurements[::-1])
