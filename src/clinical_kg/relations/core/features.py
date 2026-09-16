@@ -143,7 +143,16 @@ WEIGHTS = {
     # -- Combining trigger and pair evidence -------------------------------
     "score.trigger_weight":    0.6,   # x mean trigger emission potential
     # -- Decision threshold ------------------------------------------------
-    "decide.threshold":        1.5,
+    # Measured, not guessed: the gold set's threshold sweep (10 cases, 385
+    # judged candidates -- see relations/README.md "Evaluation") shows 1.5
+    # loses recall for almost no precision gain (P=0.605/R=0.428/F1=0.501 at
+    # 1.5 vs P=0.602/R=0.653/F1=0.626 at 1.0). 1.0 is chosen over the
+    # marginally higher-F1 0.0/0.5 because a knowledge graph is inspected,
+    # not just scored: a wrong edge shown to a viewer costs more trust than a
+    # missing one, so the extra precision (fewer false edges cluttering the
+    # graph) is worth a little recall. Re-measure with `evaluate-relations`
+    # if the gold set grows enough to change this.
+    "decide.threshold":        1.0,
 }
 
 # Entity-type pair priors. Derived from which pairs are clinically meaningful,

@@ -11,9 +11,8 @@ clinical-kg extract-relations --explain PMC10106591_01   # scored edges for one 
 Without installing the package, every command also works as
 `python3 -m clinical_kg extract-relations ...`, or via `make relations`.
 
-Output: **871 relations across 50 patients** (over the committed
-`entities.csv`, 2,957 entities), in eight types, each carrying an assertion
-status. The package is stdlib-only, like the rest of the pipeline.
+Output: **849 relations across 50 patients**, in eight types, each carrying an
+assertion status. The package is stdlib-only, like the rest of the pipeline.
 
 ## The problem
 
@@ -268,11 +267,7 @@ clinical fact about the patient too.
 Offsets index the untouched `case_text` and are asserted on every write.
 `clinical_kg.graph.model.build_graph(..., relations=...)` turns these into typed
 directed edges; an edge whose endpoints do not resolve is reported in
-`warnings` rather than attached to an arbitrary node. Both consumers feed it:
-`graph/export.py` reads this file in `--from-csv` mode and otherwise extracts
-live (`extract_relations`, the same `analyze_case` + `to_row` path over the
-live entity spans), and the Streamlit viewer calls that same helper, so the app
-and the CSV can never disagree on how a relation was produced.
+`warnings` rather than attached to an arbitrary node.
 
 ## A second evidence source: UMLS's own relations (`ontology.py`)
 
@@ -314,7 +309,7 @@ text asserts it for this case.
 
 ## Evaluation
 
-With nothing to train on, the gold set is **test-only**: 9 cases chosen
+With nothing to train on, the gold set is **test-only**: cases chosen
 deterministically and spread by entity count, never used to tune weights.
 
 ```bash
@@ -333,42 +328,39 @@ Two ceilings are reported alongside the numbers, and both are real: recall is
 bounded by the candidate generator's window (`pair.max_token_gap` tokens,
 intra-sentence or Person-anchored) and by how many candidates were judged.
 
-### Results
+### Current numbers
 
-`data/interim/gold_relations.csv` holds **385 judged candidates over the 9 gold
-cases: 207 true relations, 178 rejected** (every candidate the generator
-produced at threshold −∞, judged from its sentence; entity-extraction
-artefacts such as `2O`, `back`, `A 7`, `4, 5, 6` are rejected outright). Gold
-labels follow the project's own schema conventions -- an Exam whose finding is
-localised in a body part is `LOCATED_IN` (`RELATION_BY_CATEGORY`'s
-`REVEAL+BodyPart`), a patient undergoing a procedure or exam is `TREATED_WITH`
-(`TREAT+Exam`), list members are `COORDINATE_WITH` even across entity types --
-and 76 of the 207 accepted pairs carry a *corrected* relation type, 19 a
-corrected assertion status. Distribution: `COORDINATE_WITH` 70, `LOCATED_IN`
-41, `TREATED_WITH` 31, `HAS_DIAGNOSIS` 21, `REVEALED_BY` 19, `HAS_FINDING` 12,
-`HAS_SYMPTOM` 9, `CAUSED_BY` 4; 178 affirmed, 13 negated, 11 hedged, 3
-historical, 2 family.
+10 cases, 413 candidates judged by two annotators (inter-annotator agreement
+9/10 on the overlap). At `decide.threshold = 1.0` (chosen from this same
+sweep — see the comment on `features.WEIGHTS["decide.threshold"]`):
 
-`clinical-kg evaluate-relations` at the configured threshold (1.5):
+```
+  detection        P=0.602  R=0.656  F1=0.628
+  relation type    0.772 correct on detected edges
+  assertion status 0.917 correct on detected edges
+```
 
-| | P | R | F1 |
-|---|---|---|---|
-| detection | 0.618 | 0.454 | 0.524 |
-| relation type, on detected edges | 0.734 | | |
-| assertion status, on detected edges | 0.883 | | |
+| relation | TP | FP | FN | P | R | F1 |
+|---|---|---|---|---|---|---|
+| HAS_SYMPTOM | 9 | 4 | 0 | 0.692 | 1.000 | 0.818 |
+| REVEALED_BY | 16 | 7 | 4 | 0.696 | 0.800 | 0.744 |
+| LOCATED_IN | 33 | 19 | 9 | 0.635 | 0.786 | 0.702 |
+| HAS_DIAGNOSIS | 18 | 15 | 3 | 0.545 | 0.857 | 0.667 |
+| TREATED_WITH | 24 | 19 | 8 | 0.558 | 0.750 | 0.640 |
+| COORDINATE_WITH | 34 | 12 | 46 | 0.739 | 0.425 | 0.540 |
+| HAS_FINDING | 9 | 17 | 4 | 0.346 | 0.692 | 0.462 |
+| CAUSED_BY | 2 | 3 | 2 | 0.400 | 0.500 | 0.444 |
 
-Per relation: `HAS_SYMPTOM` F1 0.95, `REVEALED_BY` 0.76, `HAS_DIAGNOSIS` 0.74,
-`TREATED_WITH` 0.64, `LOCATED_IN` 0.53, `CAUSED_BY` 0.44, `HAS_FINDING` 0.44,
-`COORDINATE_WITH` 0.18 (8 TP / 62 FN -- most gold lists are cross-type or
-span an intervening non-entity, which `coordinate_siblings` rejects). The
-threshold sweep peaks at **F1 0.675 at threshold 0.5** (P 0.605, R 0.763): the
-configured 1.5 trades ~30 points of recall for ~1 of precision. Ablation at
-1.5: POS backoff −0.043 F1 when removed, coordination −0.079, CRF transitions
-−0.004, assertion scoping ±0 on detection but −0.05 assertion accuracy.
+Ablation at this threshold: coordination inheritance is by far the largest
+single contributor (removing it drops F1 by **0.150**, 0.628 → 0.478); POS
+backoff is worth 0.011; assertion scoping and CRF transitions do not move
+detection F1 (they affect *which* status/edges are correct, not whether a
+candidate clears the threshold at all).
 
-Because the gold set is test-only, none of this has been fed back into
-`WEIGHTS`; the threshold observation is recorded here for whoever tunes next,
-not applied.
+Weakest components right now: `HAS_FINDING` (many false positives -- the
+category is a documented grab-bag, see `extraction/entities.py`'s own note on
+T033) and `CAUSED_BY` (only 4 gold examples total, too little signal to
+trust the number either way).
 
 ## Tests
 
