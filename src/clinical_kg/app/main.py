@@ -26,9 +26,14 @@ from clinical_kg.extraction.entities import (
 from clinical_kg.extraction.measurements import (
     analyze_case, CSV_COLUMNS as MEASUREMENT_COLUMNS,
 )
-from clinical_kg.paths import DEFAULT_CASES, DEFAULT_METADATA
+from clinical_kg.paths import DEFAULT_CASES, DEFAULT_METADATA, DEFAULT_TOKEN_FREQ
 from clinical_kg.corpus.patients import new_patient
 from clinical_kg.graph.ui import graph_panel
+from clinical_kg.relations.extract import (
+    analyze_case as analyze_relations,
+    load_frequencies as load_relation_frequencies,
+    to_row as relation_to_row,
+)
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the
@@ -67,6 +72,11 @@ def analyze(text: str, max_n: int, db_revision: tuple):
     """Full pipeline: gazetteer entities + measurements linked to them."""
     with closing(sqlite3.connect(DEFAULT_DB.as_uri() + "?mode=ro", uri=True)) as con:
         return analyze_case(text, con, max_n)
+
+
+@st.cache_data
+def load_token_frequencies(revision: tuple) -> dict:
+    return load_relation_frequencies(DEFAULT_TOKEN_FREQ)
 
 
 @st.cache_data
@@ -251,6 +261,9 @@ def main():
         st.stop()
 
     entities, measurements = analyze(text, DEFAULT_MAX_N, file_revision(DEFAULT_DB))
+    freq = (load_token_frequencies(file_revision(DEFAULT_TOKEN_FREQ))
+           if DEFAULT_TOKEN_FREQ.exists() else {})
+    relations = [relation_to_row(meta, rel) for rel in analyze_relations(text, entities, freq)]
 
     counts = {
         **{e: sum(1 for x in entities if x["entity_type"] == e) for e in
@@ -272,7 +285,8 @@ def main():
         article = (load_articles(file_revision(DEFAULT_METADATA)).get(meta["article_id"])
                    if DEFAULT_METADATA.exists() and meta.get("article_id") else None)
         st.markdown(render_legend(set(PALETTE)), unsafe_allow_html=True)
-        graph, selected, evidence = graph_panel(meta, text, entities, measurements, PALETTE, article)
+        graph, selected, evidence = graph_panel(meta, text, entities, measurements, PALETTE,
+                                               article, relations)
     selected_spans = {(ev["start"], ev["end"]) for ev in evidence}
     with text_tab:
         if not spans:

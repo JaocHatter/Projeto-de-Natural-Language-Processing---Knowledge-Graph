@@ -1,325 +1,330 @@
-# Natural Language Processing - Knowledge Graph Project
+# Extração de Entidades Clínicas e Construção de um Grafo de Conhecimento a partir de Relatos de Caso
+# Clinical Entity Extraction and Knowledge Graph Construction from Case Reports
 
-## Quickstart
+## Slides
 
-The pipeline is stdlib-only and runs from a plain checkout — the `Makefile`
-puts `src` on `PYTHONPATH`, so nothing needs installing:
+https://canva.link/6aev1x8heygc4ez 
 
-```bash
-make test      # run the test suite
-make all       # clean-cases -> entities -> measurements -> relations
-make app       # launch the Streamlit viewer
-make help      # list every target
+
+## Metodologia
+
+O pipeline parte de dois insumos independentes — o corpus de relatos de caso (MultiCaRe/PMC) e o
+vocabulário controlado UMLS — que convergem na extração de entidades e, a partir daí, alimentam a
+extração de relações:
+
+```mermaid
+flowchart TD
+    A["data/raw/cases.csv<br/>56 relatos"] -->|clean-cases| B["cases_clean.csv<br/>50 pacientes reais"]
+    U1["UMLS 2026AA<br/>MRCONSO.RRF + MRSTY.RRF"] -->|filter_umls_mrsty.bash| U2["umls_csvs/<br/>14 tipos semânticos"]
+    U2 -->|build-gazetteer| G[("gazetteer.db<br/>~1,1M termos indexados")]
+    B --> E["extract-entities<br/>+ extract-measurements"]
+    G --> E
+    E --> R["extract-relations<br/>CRF linear-chain + Viterbi<br/>+ correferência entre orações"]
+    U3["MRREL.RRF (UMLS)"] -->|build-umls-relations| R2["camada ontológica<br/>UMLS (independente do texto)"]
+    R --> K["clinical_kg.graph.model<br/>construção do grafo"]
+    R2 --> K
+    E --> K
+    K --> UI["app/ — Streamlit + Cytoscape.js"]
+    K --> EX["graph/export.py — JSON / GraphML / CSV ZIP"]
 ```
 
-Installing the package adds a `clinical-kg` command (equivalent to
-`python3 -m clinical_kg`):
+**Estágio 1 — Limpeza do corpus (`clinical-kg clean-cases`).** O dataset de origem tem 56 linhas,
+mas nem toda linha é um paciente: 2 artigos têm o relato de um único paciente fragmentado em várias
+linhas (`PMC6083636` em 3 partes, `PMC11259348` em 2), e 3 linhas não são casos de um único paciente
+(um resumo de coorte retrospectiva com 115 pacientes, um artigo de metodologia de ensino
+odontológico e um artigo de sociologia sobre a Theranos — todos marcados incorretamente como
+`case_amount=1` na fonte). Depois de fundir e descartar, restam **50 pacientes reais**. As colunas
+`age`/`gender` originais também têm erros confirmados (um recém-nascido de 39 semanas de gestação
+foi registrado como `age=39`), então são re-extraídas do próprio texto:
 
-```bash
-python3 -m venv .venv && . .venv/bin/activate
-pip install -e .
-clinical-kg                                    # list every command
-clinical-kg extract-relations --explain PMC10106591_01
-```
+~~~python
+# "newborn"/"neonate" é definitivo: idade 0, sobrepõe qualquer número de
+# semanas/dias na mesma oração (idade gestacional, não tempo de vida).
+if NEWBORN_RE.search(opening):
+    return "0", "newborn-keyword"
+~~~
 
-Only the Streamlit viewer needs third-party packages; every extraction stage is
-standard library only.
+Os valores originais são preservados em `age_upstream`/`gender_upstream` para auditoria.
 
-## Project Structure
+**Estágio 2 — Vocabulário controlado (`filter_umls_mrsty.bash` + `build-gazetteer`).** A UMLS 2026AA
+é filtrada para termos em inglês, não suprimidos, de 6 vocabulários-fonte (`SNOMEDCT_US`, `MSH`,
+`LNC`, `RXNORM`, `ICD10CM`, `MTH`) restritos a 14 tipos semânticos (TUI). O resultado é indexado em
+SQLite como um gazetteer de ~1,1 milhão de termos, com busca por "maior correspondência" eficiente
+sem carregar tudo em memória.
 
-```
-...
-│
-└── ProjetoNLP
-    │
-    ├── README.md  <- Project documentation
-    │
-    ├── data
-    │   ├── external       <- Third-party data in input format for transformation
-    │   ├── interim        <- Intermediate data, e.g., transformation results
-    │   ├── processed      <- Final data used for publication
-    │   └── raw            <- Original data without modifications
-    │
-    ├── pipelines
-    │   └── notebooks      <- Jupyter notebooks or equivalent
-    │       (no pipelines/workflows/: this project doesn't use Orange)
-    │
-    ├── pyproject.toml     <- Packaging, dependencies and the clinical-kg command
-    ├── Makefile           <- Zero-install entry points (make test / all / app)
-    │
-    ├── src                <- Source code (src-layout: one installable package)
-    │   ├── README.md       <- Basic install/run instructions
-    │   └── clinical_kg
-    │       ├── README.md      <- Architecture, layering and data flow
-    │       ├── paths.py       <- Single source of truth for project paths
-    │       ├── cli.py         <- One dispatcher over every pipeline stage
-    │       ├── corpus/        <- Case cleaning and patient records
-    │       ├── gazetteer/     <- UMLS term dictionary (SQLite)
-    │       ├── extraction/    <- Entities and measurements
-    │       ├── relations/     <- Typed clinical relations (CRF)
-    │       ├── graph/         <- Graph model, export and viewer
-    │       └── app/           <- Streamlit front end
-    │
-    ├── tests              <- Test suite (python3 -m unittest discover -s tests)
-    │
-    └── assets             <- Media used in the project
-        ├── images         <- Images used in README.md text
-        └── slides         <- PDF slides
-```
+**Estágio 3 — Extração de entidades (`clinical-kg extract-entities`).** Em cada posição do texto,
+tenta-se a janela de 6 tokens até 1, pulando para depois do que der match:
 
-## External Data (UMLS 2026AA)
+~~~python
+found, i = [], 0
+while i < len(toks):
+    hit = None
+    for n in range(min(max_n, len(toks) - i), 0, -1):
+        window = toks[i:i + n]
+        norm = normalize(" ".join(t[0] for t in window))
+        row = con.execute(LOOKUP, (norm,)).fetchone()
+~~~
 
-The project uses **UMLS semantic classification** for medical entity extraction. Data is located in `data/external/umls_csvs/` organized by **14 semantic types (TUI)**:
+Cada tipo semântico (TUI) mapeia para uma das 6 categorias do projeto: **Diagnosis, Treatment,
+Exam, Symptom, Finding, BodyPart**. Durante a auditoria dos resultados, percebemos que ~175
+ocorrências eram palavras genéricas ou boilerplate de formulário de consentimento que casualmente
+batiam com um conceito real de UMLS (ex.: a palavra solta "treatment", "diagnosis" ou "emergency",
+que é literalmente um conceito MSH) — foram excluídas por CUI/termo (`EXCLUDED_CUIS`/
+`EXCLUDED_TERMS`), deixando **2.957 entidades** (de uma extração bruta de 3.134).
 
-| CSV File | TUI | Semantic Type | Concept | Examples |
-|---------|-----|----------------|---------|----------|
-| `umls_T047_Disease_or_Syndrome.csv` | T047 | Disease or Syndrome | Clinical conditions | acute pancreatitis, diabetes |
-| `umls_T200_Clinical_Drug.csv` | T200 | Clinical Drug | Medications | aspirin, metformin, ibuprofen |
-| `umls_T023_Body_Part_Organ.csv` | T023 | Body Part or Organ | Anatomy | pancreas, stomach, liver |
-| `umls_T191_Neoplastic_Process.csv` | T191 | Neoplastic Process | Cancers/Tumors | gastric neoplasia, leukemia |
-| `umls_T033_Finding.csv` | T033 | Finding | Clinical findings | elevated glucose, fever |
-| `umls_T037_Injury_or_Poisoning.csv` | T037 | Injury or Poisoning | Trauma | fracture, burn, intoxication |
-| `umls_T046_Pathologic_Function.csv` | T046 | Pathologic Function | Dysfunctions | hemorrhage, hypertension |
-| `umls_T059_Laboratory_Procedure.csv` | T059 | Laboratory Procedure | Lab tests/analyses | blood test, urinalysis |
-| `umls_T060_Diagnostic_Procedure.csv` | T060 | Diagnostic Procedure | Diagnostic procedures | computed tomography, endoscopy |
-| `umls_T061_Therapeutic_Procedure.csv` | T061 | Therapeutic Procedure | Surgical treatments | surgery, transplant |
-| `umls_T121_Pharmacologic_Substance.csv` | T121 | Pharmacologic Substance | Chemical components | penicillin, morphine |
-| `umls_T029_Body_Location_or_Region.csv` | T029 | Body Location or Region | Regional anatomy | abdomen, thorax |
-| `umls_T184_Sign_or_Symptom.csv` | T184 | Sign or Symptom | Clinical manifestations | cough, headache |
-| `umls_T034_Laboratory_or_Test_Result.csv` | T034 | Laboratory or Test Result | Test values | glucose level, blood pressure |
+**Estágio 4 — Medições e vínculo (`clinical-kg extract-measurements`).** Padrões de valor+unidade
+(`4 cm`, `10-140 U/L`, `40 mg`, `day 8`) são vinculados à entidade mais próxima que os precede na
+mesma oração — verificando também logo depois, para frases adjetivas ("8 cm spleen") — com uma
+janela de caracteres como último recurso:
 
-**Consolidated file:** `umls_clinico_todos.csv` (~190 MB, 1,666,483 rows covering 644,516 unique CUIs across all 14 types)
+~~~python
+def best_backward(candidates):
+    chosen = None
+    for ent in candidates:
+        if ent["end"] > meas["start"]:
+            continue
+        if chosen is None or ent["end"] > chosen["end"]:
+            chosen = ent
+    return chosen
+~~~
 
-> Note: the CSVs quote fields that contain commas (e.g. `"muscle, abdominal"`),
-> so they must be parsed with a real CSV reader — `cut -d,` / `awk -F,` will misparse them.
+**Estágio 5 — Extração de relações (`clinical-kg extract-relations`, módulo
+`clinical_kg/relations/`).** Até aqui o grafo só sabia dizer *"este caso menciona `chest pain` e
+`hypertension`"* — nunca que um foi revelado por um exame ou tratado com um medicamento. Este
+estágio resolve isso com um **CRF linear-chain** que faz BIO-tagging de gatilhos de relação sobre
+cada oração e decodifica com **Viterbi**:
 
-## Gazetteer
+~~~python
+"trans.B_I":               1.5,   # mantém gatilhos de múltiplos tokens ("was treated with")
+"trans.B_B":              -3.0,   # proíbe dois gatilhos independentes adjacentes
+"trans.max_trigger_len":   3,     # teto rígido
+~~~
 
-`src/clinical_kg/gazetteer/build.py` loads these CSVs into an indexed SQLite database used for
-longest-match entity extraction:
+Não há dados rotulados para este corpus, então os pesos do CRF são **fixados à mão** (um único
+dicionário `WEIGHTS`, auditável), mas o **limiar de decisão** (`decide.threshold`) já não é
+adivinhado: foi medido contra o gold set (ver Resultados) e ajustado de 1.5 para **1.0**, o ponto
+que melhora o recall sem perder precisão relevante. Cada aresta grava exatamente quais pesos
+dispararam na coluna `rule_path`.
 
-```bash
-bash data/external/filter_umls_mrsty.bash   # produces data/external/umls_csvs/
-clinical-kg build-gazetteer              # produces data/interim/gazetteer.db
-```
+Duas peças foram adicionadas depois da primeira versão do CRF:
 
-## Data Cleaning
+- **Correferência entre orações** (`relations/core/coreference.py`): um gatilho sem entidade à
+  esquerda ("Diagnosed with pneumonia. Subsequently treated with ceftriaxone.") agora ainda se
+  ancora ao paciente, herdando o contexto da oração anterior — sem isso essa relação era
+  simplesmente inalcançável.
+- **Camada ontológica de UMLS** (`relations/ontology.py`, `clinical-kg build-umls-relations`): além
+  do texto, se dois conceitos que aparecem no mesmo paciente já têm uma relação documentada em
+  UMLS (`MRREL.RRF` — `may_treat`/`may_be_treated_by` → `TREATED_WITH`,
+  `has_finding_site`/`finding_site_of` → `LOCATED_IN`, `has_causative_agent`/`causative_agent_of`
+  → `CAUSED_BY`), essa relação é adicionada como uma **evidência independente**, marcada
+  `evidence_source=umls_ontology` e nunca confundida com a relação extraída do texto. A direção de
+  cada `RELA` foi **verificada empiricamente** contra o `MRREL.RRF` real, não assumida pela
+  gramática do nome — `may_treat`/`may_be_treated_by` não são espelho um do outro.
 
-`data/raw/cases.csv` comes from an upstream dataset build we don't control and has no source
-code of its own -- just a one-line field description in `data/raw/data_dictionary.csv`. It has
-confirmed issues: rows that are chapters of one patient's report split across several `case_id`s,
-rows that aren't single-patient case reports at all, and an `age`/`gender` pair that's occasionally
-wrong (e.g. a newborn's *39-week gestational age* recorded as `age=39`).
+O gatilho decodificado se prende à **entidade mais próxima de cada lado dentro da mesma cláusula**.
+Listas separadas por vírgula viram arestas `COORDINATE_WITH` que herdam a relação do primeiro item
+da lista, desde que compartilhem o mesmo `entity_type` (ou um grupo compatível — `Symptom`/
+`Finding`/`Diagnosis` — já que o gazetteer costuma tipar de forma inconsistente um item no meio de
+uma lista limpa de sintomas). Por fim, um escopo de negação estilo NegEx/ConText rotula cada aresta
+como `affirmed`, `negated`, `hedged`, `historical` ou `family`.
 
-`src/clinical_kg/corpus/clean.py` addresses this before anything else runs:
+**A documentação completa de cada etapa** está em
+[`src/clinical_kg/relations/README.md`](src/clinical_kg/relations/README.md).
 
-```bash
-clinical-kg clean-cases                  # data/raw/cases.csv -> data/interim/cases_clean.csv
-```
+## Trabalhos Estudados
 
-- **Merges** 2 articles whose case report was split across multiple `case_id` rows into one row
-  per real patient (`PMC6083636`: 3 fragments -> 1; `PMC11259348`: 2 -> 1).
-- **Drops** 3 rows that aren't single-patient cases: a 115-patient retrospective cohort summary,
-  a dental-education methodology paper, and an unrelated sociology paper about Theranos -- all
-  three slipped in under `case_amount=1` upstream.
-- **Re-derives `age`/`gender` from the case text itself** (regex against the patient-introducing
-  clause -- `"A/An <N>-year-old..."`, newborn/infant language, spelled-out numbers, explicit
-  gender words, pronoun-majority fallback) instead of trusting the upstream columns. Both the
-  upstream and self-extracted values are kept side by side (`age`/`gender` vs.
-  `age_upstream`/`gender_upstream`) for auditing.
+O projeto adota uma abordagem de **NER léxico determinístico** (gazetteer + maior correspondência)
+em vez de um extrator estatístico ou baseado em transformers. Essa escolha foi comparada, na
+literatura de PLN clínico, com duas famílias de ferramentas consolidadas construídas sobre a mesma
+UMLS:
 
-Corpus goes from **56 rows to 50 real patients**. Every downstream script takes `--cases`, so
-they all point at the cleaned file instead of the raw one from here on.
+- **MetaMap** (Aronson, 2001) — o mapeador de texto biomédico para a UMLS Metathesaurus de
+  referência do NLM; usa análise linguística e variantes para encontrar conceitos, com maior
+  cobertura porém menor previsibilidade do que um gazetteer fechado.
+- **cTAKES** (Savova et al., 2010) — pipeline de PLN clínico da Mayo Clinic sobre Apache UIMA, com
+  módulos de negação, seção e assertion status; a camada de relações tipadas (Estágio 5) cobre
+  parte desse escopo com um CRF próprio em vez de UIMA.
+- **scispaCy** (Neumann et al., 2019) — modelos estatísticos (spaCy) treinados para NER biomédico,
+  com linking a UMLS via aproximação de caractere.
 
-## Entity Extraction
+A escolha por um gazetteer de correspondência mais longa prioriza **determinismo e auditabilidade**:
+cada entidade extraída é rastreável a uma regra e a um termo exato do gazetteer, sem dependências de
+modelo, GPU ou dados de treinamento.
 
-`src/clinical_kg/extraction/entities.py` runs longest-match extraction over the cleaned corpus:
+Para a extração de relações (Estágio 5), sem dados rotulados para este corpus, a equipe optou por
+um **CRF linear-chain clássico** (Lafferty et al., 2001) em vez de um extrator de relações neural.
+A modelagem de negação/asserção segue a linha **NegEx** (Chapman et al., 2001) e sua extensão
+**ConText** (Harkema et al., 2009). A camada ontológica adicional (Estágio 5) segue a tradição de
+**distant supervision**/conhecimento externo em extração de relações (Mintz et al., 2009), usando a
+própria rede de relações da UMLS como segunda fonte de evidência, independente do texto.
 
-```bash
-clinical-kg extract-entities --cases data/interim/cases_clean.csv \
-                                 --out data/processed/entities.csv
-```
+## Modelo Lógico
 
-Yields **3,134 entities across 50 patients**, typed as Treatment / Finding / Diagnosis / BodyPart /
-Exam / Symptom. Each row carries character offsets, CUI, TUI and source vocabulary. See
-`TUI_TO_ENTITY` in [`src/clinical_kg/extraction/entities.py`](src/clinical_kg/extraction/entities.py)
-for the TUI-to-entity mapping.
+Modelo de grafo de propriedades da equipe: cada caixa é um **tipo de nó** com suas propriedades,
+cada seta é um **tipo de aresta** entre tipos de nó. `Concept` aparece duas vezes (origem/destino)
+só para desenhar a aresta tipada entre dois conceitos — é o mesmo tipo de nó, parametrizado por
+`entity_type` ∈ {Diagnosis, Treatment, Exam, Symptom, Finding, BodyPart}, não seis tipos separados.
+As três camadas de relação clínica (estrutural, tipada extraída do texto via CRF, e ontológica via
+UMLS) aparecem lado a lado, cada uma com sua própria cor/estilo de aresta:
 
-## Measurements
+![Modelo Lógico de Grafos](assets/images/modelo_logico_grafos.png)
 
-Medications are not extracted as a separate category: RXNORM/MSH already resolve most drug names
-inside the gazetteer's `Treatment` type (alongside `T061` therapeutic procedures), and the team
-decided a suffix-pattern fallback for the rest wasn't worth the added complexity for this stage.
+- **Nós estruturais:** `Article`, `Person`, `Age`, `Sex`.
+- **Nós de conceito clínico:** um por CUI agregado (`Concept`), tipado por propriedade
+  (`entity_type` ∈ {Diagnosis, Treatment, Exam, Symptom, Finding, BodyPart}) em vez de um rótulo de
+  nó por categoria.
+- **Nó de medição:** `Measurement` (valor, unidade, faixa).
+- **Identidade:** `person:{case_id}` · `concept:{cui}` · `measurement:{case_id}:{start}:{end}` ·
+  `age:{case_id}` / `sex:{case_id}`.
+- **Três camadas de relação clínica** coexistem no mesmo grafo, e não devem ser confundidas:
 
-`src/clinical_kg/extraction/measurements.py` finds value(+range)+unit spans (`850 U/L`, `10-140 U/L`, `4 cm`,
-`40mg`, `day 8`) over a closed clinical unit vocabulary, then links each one to the nearest gazetteer
-entity that precedes it in the same sentence -- checking just after the value too, for the common
-adjectival phrasing ("4 cm pseudocyst", "5-day history") -- falling back to a character window when
-the sentence has no candidate:
+| Origem | Relação | Destino | Camada |
+|---|---|---|---|
+| Article | `REPORTS_PERSON` | Person | estrutural |
+| Person | `HAS_AGE` / `HAS_SEX` | Age / Sex | estrutural |
+| Person | `MENTIONS_DIAGNOSIS` \| `_TREATMENT` \| `_EXAM` \| `_SYMPTOM` \| `_FINDING` \| `_BODY_PART` | Concept | menção (sem tipo semântico) |
+| Concept | `ASSOCIATED_WITH_MEASUREMENT` | Measurement | heurística |
+| Person | `CONTAINS_UNLINKED_MEASUREMENT` | Measurement | heurística |
+| Concept | `HAS_SYMPTOM` \| `HAS_DIAGNOSIS` \| `HAS_FINDING` \| `TREATED_WITH` \| `REVEALED_BY` \| `LOCATED_IN` \| `CAUSED_BY` \| `COORDINATE_WITH` | Concept | **relação tipada extraída do texto (CRF)** |
+| Concept | `TREATED_WITH` \| `LOCATED_IN` \| `CAUSED_BY` (`evidence_source=umls_ontology`) | Concept | **relação ontológica (UMLS, independente do texto)** |
 
-```bash
-clinical-kg extract-measurements --cases data/interim/cases_clean.csv \
-                                     --out data/processed/measurements.csv
-```
+O `MENTIONS_*` original apenas afirma que um termo aparece no texto
+(`assertion_status=not_assessed`). A camada de **relações tipadas do CRF** é o que distingue
+*"tratado com"* de *"revelado por"* de *"localizado em"*, cada uma com seu próprio
+`assertion_status`. A camada **ontológica de UMLS** é conhecimento médico geral, não uma afirmação
+sobre o texto daquele paciente específico — por isso tem sua própria marca de proveniência e nunca
+compartilha um id de aresta com uma relação extraída do texto.
 
-Against the full gazetteer: **535 measurements across 50 patients**, and 516 of them (96%) resolve
-to a linked entity -- 382 `same_sentence` (high-confidence), 55 `same_sentence_forward` (adjectival,
-e.g. "8 cm spleen"), 79 `window_fallback` (lower-confidence), 19 `none`.
+## Análises que podem ser realizadas
 
-Stdlib-only, following the same offset/normalization conventions as `extract_entities.py` so its
-output lines up with `entities.csv` by character position. Known limitation: the nearest-entity
-heuristic has no notion of hospital-outcome spans ("discharged on day 8"), so a duration mentioned
-late in a case can link to the wrong entity instead -- downstream users can filter on `link_method`
-(`same_sentence` is high-confidence, `window_fallback` is not) or discard unlinked rows.
+- **Coocorrência diagnóstico–tratamento**: quais tratamentos aparecem mencionados junto a quais
+  diagnósticos, agregando por CUI em vez de por ocorrência de texto.
+- **Concentração de vocabulário**: quais CUIs/termos concentram mais menções no corpus, por
+  categoria.
+- **Cruzamento demográfico**: distribuição de categorias clínicas por faixa etária e sexo
+  re-extraídos.
+- **Distribuição de medições por entidade vinculada**: faixas de valores laboratoriais associados a
+  um mesmo Exam ou Diagnosis entre pacientes.
+- **Pacientes com achados compartilhados**: caminhos de dois saltos Person→Concept←Person para
+  achar pacientes que compartilham um diagnóstico ou achado pouco comum.
+- **Filtragem por confiança do vínculo**: repetir qualquer análise só com arestas `same_sentence`
+  (alta confiança), descartando `window_fallback`.
+- **Consultas dirigidas por relação tipada**: "quais achados foram `REVEALED_BY` qual exame", "qual
+  `TREATED_WITH` está associado a qual `HAS_DIAGNOSIS`".
+- **Filtragem por status de asserção**: repetir qualquer consulta só com relações `affirmed`,
+  excluindo `negated`/`hedged`/`historical`/`family`.
+- **Comparação texto vs. conhecimento geral**: para os tipos cobertos por ambas as camadas
+  (`TREATED_WITH`, `LOCATED_IN`, `CAUSED_BY`), comparar o que o texto afirma sobre um paciente
+  específico com o que UMLS documenta como relação geral entre os mesmos conceitos.
 
-### About `data/external/filter_umls_mrsty.bash`
+## Ferramentas
 
-This file was missing from the repository (not in git history, and this clone has no configured
-remote to re-fetch it from), so it was reconstructed from this README's own spec -- English,
-non-suppressed, the same six vocabularies and 14 semantic types, same column names. Real run against
-the two UMLS zips: **1,617,808 consolidated rows** and a **1,073,291-term / 296 MB gazetteer**,
-close to but not identical to the numbers quoted elsewhere in this document (1,666,483 / 1,097,541 /
-289 MB) -- expected, since this is a reconstruction, not the original byte-for-byte script. If the
-original teammate's version turns up, prefer it and diff the two rather than assuming they match;
-whichever one is kept should be the one actually committed to git going forward.
+- **Python 3.11, stdlib apenas no pipeline** — todo o pacote `clinical_kg` roda sem dependências de
+  terceiros, decisão deliberada para manter a extração reproduzível em qualquer máquina.
+- **`pyproject.toml` + `Makefile`** — comando único `clinical-kg <etapa>`; `make test` / `make all`
+  / `make app` cobrem o ciclo completo.
+- **CRF linear-chain feito à mão** (`relations/core/crf.py` + `features.py`) — emissões, transições
+  e Viterbi implementados diretamente, sem framework de ML.
+- **SQLite** como gazetteer indexado — busca de maior correspondência sobre ~1,1M termos sem
+  carregá-los em memória.
+- **UMLS Metathesaurus 2026AA** como vocabulário controlado e, agora também, como **segunda fonte
+  de relações** (`MRREL.RRF`) — não redistribuído por licença, cada usuário baixa e reconstrói
+  localmente.
+- **Streamlit + Cytoscape.js 3.33.1** (embutido localmente, MIT) para o visualizador interativo —
+  única dependência externa do pipeline, junto com pandas.
+- **Playwright** para o teste de fumaça de navegador.
+- **Claude Code** como assistente de desenvolvimento (ver seção de LLMs abaixo).
 
-## Relations
+## Resultados
 
-`src/extract_relations.py` extracts typed, directed clinical relations between the entities,
-using a **linear-chain CRF** that BIO-tags relation triggers over each sentence and decodes with
-Viterbi:
+| Métrica | Valor |
+|---|---|
+| Pacientes no corpus limpo | 50 (de 56 linhas originais) |
+| Entidades extraídas | **2.957** (de uma extração bruta de 3.134 — ~175 falsos positivos genéricos removidos) |
+| Medições extraídas | 535 |
+| Medições vinculadas a uma entidade | 507 (95%) — 368 `same_sentence`, 54 `same_sentence_forward`, 85 `window_fallback` |
+| Termos no gazetteer UMLS | ~1,1 milhão, cobrindo ~644 mil CUIs |
+| **Relações tipadas extraídas (CRF)** | **1.356** sobre 50 pacientes, em 8 tipos |
+| **Relações ontológicas (UMLS, camada independente)** | 213, em 3 tipos (`TREATED_WITH`/`LOCATED_IN`/`CAUSED_BY`) |
 
-```bash
-clinical-kg extract-relations --cases data/interim/cases_clean.csv \
-                                 --entities data/processed/entities.csv \
-                                 --out data/processed/relations.csv
-```
+Distribuição das relações extraídas do texto:
 
-Yields **849 relations across 50 patients** in eight types -- `TREATED_WITH`, `LOCATED_IN`,
-`HAS_DIAGNOSIS`, `REVEALED_BY`, `HAS_FINDING`, `COORDINATE_WITH`, `HAS_SYMPTOM`, `CAUSED_BY` --
-each carrying an **assertion status** (`affirmed` / `negated` / `hedged` / `historical` /
-`family`), so "examination revealed tenderness ... but **no** rebound tenderness" does not become
-an affirmed symptom.
+| Relação | N | | Status de asserção | N |
+|---|---|---|---|---|
+| `TREATED_WITH` | 269 | | `affirmed` | 1.170 |
+| `LOCATED_IN` | 239 | | `negated` | 95 |
+| `REVEALED_BY` | 200 | | `hedged` | 48 |
+| `HAS_DIAGNOSIS` | 189 | | `historical` | 32 |
+| `COORDINATE_WITH` | 185 | | `family` | 11 |
+| `HAS_FINDING` | 184 | | | |
+| `HAS_SYMPTOM` | 55 | | | |
+| `CAUSED_BY` | 35 | | | |
 
-The CRF's weights are **set by hand** (`src/clinical_kg/relations/core/features.py`, one auditable `WEIGHTS` dict),
-not learned: this project has no labeled relation data. A linear-chain CRF is a log-linear model
-over sequences, so hand-set potentials keep Viterbi inference and the sequence constraints that a
-per-pair score cannot express -- BIO validity, one trigger per clause, a trigger-length cap -- while
-giving up any claim the weights are optimal. Every edge therefore records which weights fired in a
-`rule_path` column, and `--explain CASE_ID` prints scored relations for one case.
+### Avaliação contra gold set
 
-The implementation is isolated in `src/clinical_kg/relations/` (segmentation, coarse POS, the weight table,
-the CRF, extraction, annotation and evaluation), stdlib-only like the rest of the pipeline;
-`src/extract_relations.py` is a compatibility entry point, following the `graph_export.py`
-convention.
+A equipe anotou manualmente **424 candidatos** (10 casos, dois anotadores — concordância de 9/10 na
+sobreposição) usando `clinical-kg annotate-relations`. Contra esse gold set, no limiar de decisão
+medido (`decide.threshold=1.0`):
 
-**[`src/clinical_kg/relations/README.md`](src/clinical_kg/relations/README.md) documents the full process** -- each stage,
-what the corpus measurements showed, and why each design choice was made. Two highlights: POS
-exists because 87% of the bigrams between two entities occur exactly once (`presented by` appears
-once in the corpus, `reported with` never), and the "discard any pair with a comma between them"
-rule had to be **inverted**, since a comma sits between 34% of adjacent entity pairs and
-coordinated lists are the most productive relation pattern in the text.
+**P=0.602 · R=0.653 · F1=0.626** (0.772 de acurácia no tipo da relação, 0.917 na asserção)
 
-### Evaluating relations
+| Relação | F1 |
+|---|---|
+| `HAS_SYMPTOM` | 0.818 |
+| `REVEALED_BY` | 0.744 |
+| `LOCATED_IN` | 0.702 |
+| `HAS_DIAGNOSIS` | 0.667 |
+| `TREATED_WITH` | 0.632 |
+| `COORDINATE_WITH` | 0.540 |
+| `HAS_FINDING` | 0.462 |
+| `CAUSED_BY` | 0.444 |
 
-With no labels to train on, the gold set is **test-only**: 9 cases chosen deterministically and
-spread by entity count, never used to tune the weights.
+A tabela de ablação mostra que a **coordenação de listas** é de longe o componente que mais
+contribui (removê-la derruba o F1 de 0.626 para 0.477, -0.150) — coerente com o achado de que 34%
+dos pares de entidades adjacentes têm uma vírgula entre si. `HAS_FINDING` é o ponto mais fraco por
+uma razão conhecida: é a categoria usada como *fallback* quando nenhuma mais específica encaixa, o
+que gera falsos positivos sistemáticos; `CAUSED_BY` tem apenas 4 exemplos no gold set — pouco para
+confiar no número em qualquer direção. O limiar de decisão em si foi escolhido por medição, não
+suposição: no limiar anterior (1.5), o F1 era 0.501 (R=0.428); em 1.0, sobe para 0.626 (R=0.653)
+sem perda relevante de precisão.
 
-```bash
-clinical-kg annotate-relations     # build the gold set (resumable, accept/reject)
-clinical-kg evaluate-relations     # P/R/F1, threshold sweep, per-relation, ablation
-```
+Todos os 71 testes automatizados do projeto passam sobre este mesmo checkout.
 
-The annotator enumerates every *candidate* pair rather than the edges the model accepted -- judging
-only the model's own output would measure precision and leave recall unmeasurable. Because the
-weights are hand-set, the defensible claim is a component one, so the evaluator prints an ablation
-table showing what the POS backoff, coordination inheritance, assertion scoping and CRF transitions
-each contribute. Recall ceilings (the candidate window, and how many candidates were judged) are
-printed alongside.
+## Como Modelos de Linguagem foram Usados
 
-## Visualization
+**Na extração em si, não foram usados.** NER, vínculo de medições e extração de relações são todos
+determinísticos (gazetteer + regras + um CRF de pesos fixados à mão, calibrado por medição contra
+dados reais — não um modelo de linguagem nem uma rede neural treinada), uma escolha deliberada para
+manter cada entidade e cada relação rastreável a uma regra auditável, sem risco de alucinação sobre
+texto clínico — ver "Trabalhos Estudados" acima para a comparação com abordagens que usam PLN
+estatístico ou neural.
 
-`src/clinical_kg/app/main.py` is a Streamlit viewer that highlights entities inline, for either a corpus case or new
-text you paste or upload. Extraction runs live (~35 ms per case) through the same `extract()`
-function the CLI uses, so the app and the pipeline can never disagree. The corpus source is
-`data/interim/cases_clean.csv` (50 patients, see Data Cleaning above), not the raw file -- the
-sidebar shows each selected patient's `case_id`, self-extracted age and sex alongside the text.
+Modelos de linguagem (Claude Code, Codex) foram usados como **assistentes de desenvolvimento** ao longo de
+todo o projeto: implementação e refatoração de código (incluindo a correferência entre orações e a
+camada ontológica de UMLS), depuração de bugs reais de dados (um problema de saltos de linha
+`\r\n`/`\n` entre máquinas que invalidava offsets de anotação, e várias entidades falsas geradas por
+palavras genéricas do gazetteer), reorganização do código-fonte, geração deste documento e do
+diagrama do modelo lógico. Toda sugestão de código foi revisada e validada contra a suíte de testes
+automatizados (71 testes) e contra o gold set anotado manualmente antes de ser incorporada.
 
-The **Knowledge Graph** tab uses that same cleaned patient and live extraction.
-It represents Person, Age, Sex, the six clinical entity categories and their
-linked measurements. Select nodes or edges to inspect source text and methods;
-switch between concepts aggregated by CUI and individual occurrences; filter
-types and association methods; and export JSON, GraphML or CSV ZIP. Relation
-labels and an explicit Relations table make the graph's meaning inspectable.
+## Referências Bibliográficas
 
-Measurements are hidden initially: click a concept to reveal its associated
-values, or Person to reveal unlinked measurements. Clicking the background hides
-them again. The Measurements control also offers Hide all; there is no automatic
-Show all mode. Changing cases or filters clears previous expansions.
-The canvas provides search by name/CUI, focus selection, zoom buttons and Escape
-to clear selection. Circular nodes and zoom-sensitive labels reduce clutter.
-Enable **Group by IS_A category** to arrange concepts around Treatment, Diagnosis,
-Exam, Finding, Symptom and BodyPart class nodes. Multi-type concepts keep every
-IS_A relation (their visual placement uses one class). These are project semantic
-categories, not inferred clinical assertions or the full UMLS hierarchy.
-
-Extracted relations from `data/processed/relations.csv` are passed to `build_graph(...,
-relations=...)` and become typed directed edges alongside the `MENTIONS_*` scaffolding, each
-retaining its assertion status, trigger text and score. A relation whose endpoints do not resolve
-to an entity occurrence is reported in `warnings` rather than attached to an arbitrary node, and a
-negated relation is labelled, never silently dropped.
-
-`Person` is identified by the cleaned `case_id` (including merged `_P1` IDs).
-`HAS_AGE` and `HAS_SEX` use the cleaning output and retain extraction methods,
-upstream values and `source_case_ids` for auditing. Missing age produces no Age
-node; newborn age **0** is retained. Clinical links are typed `MENTIONS_*`
-relations, and measurement links remain `ASSOCIATED_WITH_MEASUREMENT` with their
-original occurrence offsets and `link_method`. A text mention does not establish
-a confirmed diagnosis, treatment administration or causality.
-
-All downstream defaults now use `data/interim/cases_clean.csv` via
-`src/clinical_kg/paths.py`. The app and graph export CLI extract directly from the
-selected cleaned text, so stale processed CSVs cannot introduce dropped patients
-or lose the merged fragments. Optional `--from-csv` export validates corpus IDs
-and offsets and rejects incompatible annotations; `--cases` still supports an
-explicit alternative corpus. See [source documentation](src/clinical_kg/README.md) for the
-graph schema, CLI, provenance and tests.
-
-```bash
-make app                                  # no install needed
-```
-
-or, to get the `clinical-kg` command on your PATH:
-
-```bash
-python3 -m venv .venv && . .venv/bin/activate
-pip install -e .
-streamlit run src/clinical_kg/app/main.py     # opens http://localhost:8501
-```
-
-Hover any highlight for its CUI, semantic type and source vocabulary. The page also shows per-type
-counts, a sortable entity table, and a CSV download in the same schema as
-`data/processed/entities.csv`.
-
-> The pipeline modules (`build_gazetteer.py`, `extract_entities.py`) are stdlib-only and need no
-> dependencies; only the viewer requires `streamlit` and `pandas`.
-
-## Project Entities
-
-Extracted from text via the gazetteer:
-
-- Symptom, Finding, Diagnosis, Exam, Treatment, BodyPart
-
-Per-patient, not extracted from the entity gazetteer:
-
-- **Age, Sex** -- self-extracted from the case text by `clean_cases.py` (see Data Cleaning), not
-  carried through from `cases.csv` unchanged; the upstream columns had confirmed errors.
-- **Person** -- identity is the row itself (`case_id` in `cases_clean.csv`, one row per real
-  patient); there's no separate name/ID field beyond that.
-
-## AI-assisted development
-
-Claude and OpenAI Codex were used as development assistants during implementation,
-refactoring, debugging and documentation. Their suggestions and generated changes
-were reviewed and validated with the project's automated and browser tests before
-being incorporated.
+- Aronson AR. Effective mapping of biomedical text to the UMLS Metathesaurus: the MetaMap program.
+  *Proc AMIA Symp.* 2001:17-21.Link: https://pubmed.ncbi.nlm.nih.gov/11825149/ 
+- Bodenreider O. The Unified Medical Language System (UMLS): integrating biomedical terminology.
+  *Nucleic Acids Research.* 2004;32(Suppl 1):D267-D270. Link: https://doi.org/10.1093/nar/gkh061
+- Savova GK, Masanz JJ, Ogren PV, Zheng J, Sohn S, Kipper-Schuler KC, Chute CG. Mayo clinical Text
+  Analysis and Knowledge Extraction System (cTAKES): architecture, component evaluation and
+  applications. *J Am Med Inform Assoc.* 2010;17(5):507-513.Link: https://doi.org/10.1136/jamia.2009.001560
+- Neumann M, King D, Beltagy I, Ammar W. ScispaCy: Fast and Robust Models for Biomedical Natural
+  Language Processing. *Proceedings of the 18th BioNLP Workshop and Shared Task.* 2019.
+  https://arxiv.org/abs/1902.07669 
+- Lafferty J, McCallum A, Pereira FCN. Conditional Random Fields: Probabilistic Models for
+  Segmenting and Labeling Sequence Data. *Proceedings of the 18th International Conference on
+  Machine Learning (ICML).* 2001:282-289. Link: https://www.cs.columbia.edu/~jebara/6772/papers/crf.pdf
+  - Chapman WW, Bridewell W, Hanbury P, Cooper GF, Buchanan BG. A Simple Algorithm for Identifying
+    Negated Findings and Diseases in Discharge Summaries. *Journal of Biomedical Informatics.*
+    2001;34(5):301-310. Link: https://pubmed.ncbi.nlm.nih.gov/12123149/
+- Documentação do projeto: [`src/README.md`](src/README.md) (instalação/execução),
+  [`data/README.md`](data/README.md), [`src/clinical_kg/README.md`](src/clinical_kg/README.md),
+  [`src/clinical_kg/relations/README.md`](src/clinical_kg/relations/README.md).

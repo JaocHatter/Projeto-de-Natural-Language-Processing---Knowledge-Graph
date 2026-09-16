@@ -309,7 +309,7 @@ text asserts it for this case.
 
 ## Evaluation
 
-With nothing to train on, the gold set is **test-only**: 9 cases chosen
+With nothing to train on, the gold set is **test-only**: cases chosen
 deterministically and spread by entity count, never used to tune weights.
 
 ```bash
@@ -328,8 +328,39 @@ Two ceilings are reported alongside the numbers, and both are real: recall is
 bounded by the candidate generator's window (`pair.max_token_gap` tokens,
 intra-sentence or Person-anchored) and by how many candidates were judged.
 
-> The gold set has **not been annotated yet**. Until it is, the pipeline has
-> counts but no quality numbers.
+### Current numbers
+
+10 cases, 424 candidates judged by two annotators (inter-annotator agreement
+9/10 on the overlap). At `decide.threshold = 1.0` (chosen from this same
+sweep — see the comment on `features.WEIGHTS["decide.threshold"]`):
+
+```
+  detection        P=0.602  R=0.653  F1=0.626
+  relation type    0.772 correct on detected edges
+  assertion status 0.917 correct on detected edges
+```
+
+| relation | TP | FP | FN | P | R | F1 |
+|---|---|---|---|---|---|---|
+| HAS_SYMPTOM | 9 | 4 | 0 | 0.692 | 1.000 | 0.818 |
+| REVEALED_BY | 16 | 7 | 4 | 0.696 | 0.800 | 0.744 |
+| LOCATED_IN | 33 | 19 | 9 | 0.635 | 0.786 | 0.702 |
+| HAS_DIAGNOSIS | 18 | 15 | 3 | 0.545 | 0.857 | 0.667 |
+| TREATED_WITH | 24 | 19 | 9 | 0.558 | 0.727 | 0.632 |
+| COORDINATE_WITH | 34 | 12 | 46 | 0.739 | 0.425 | 0.540 |
+| HAS_FINDING | 9 | 17 | 4 | 0.346 | 0.692 | 0.462 |
+| CAUSED_BY | 2 | 3 | 2 | 0.400 | 0.500 | 0.444 |
+
+Ablation at this threshold: coordination inheritance is by far the largest
+single contributor (removing it drops F1 by **0.150**, 0.626 → 0.477); POS
+backoff is worth 0.011; assertion scoping and CRF transitions do not move
+detection F1 (they affect *which* status/edges are correct, not whether a
+candidate clears the threshold at all).
+
+Weakest components right now: `HAS_FINDING` (many false positives -- the
+category is a documented grab-bag, see `extraction/entities.py`'s own note on
+T033) and `CAUSED_BY` (only 4 gold examples total, too little signal to
+trust the number either way).
 
 ## Tests
 
