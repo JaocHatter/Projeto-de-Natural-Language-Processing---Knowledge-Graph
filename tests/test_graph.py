@@ -224,5 +224,50 @@ class GraphTests(unittest.TestCase):
         self.assertTrue(edge["heuristic"])
 
 
+class RelationWiringTests(unittest.TestCase):
+    """The export CLI and the viewer feed build_graph through one shared helper,
+    so live relation extraction can never diverge from `extract-relations`."""
+
+    def setUp(self):
+        from clinical_kg.graph.export import extract_relations, load_umls_relations
+        from clinical_kg.relations.extract import analyze_case as analyze_relations
+        self.extract_relations, self.load_umls_relations = extract_relations, load_umls_relations
+        self.analyze_relations = analyze_relations
+        self.text = ("Echocardiography showed a thickened septum but no pericardial "
+                     "effusion. She was treated with aspirin.")
+        self.case = {"case_id": "test", "article_id": "a", "age": "44", "gender": "Female",
+                     "case_text": self.text}
+        self.entities = []
+        for surface, kind, cui in (("Echocardiography", "Exam", "C1"),
+                                   ("pericardial effusion", "Finding", "C3"), ("aspirin", "Treatment", "C4")):
+            start = self.text.index(surface)
+            self.entities.append({"start": start, "end": start + len(surface), "surface_text": surface,
+                                  "cui": cui, "tui": "T000", "entity_type": kind, "preferred_term": surface,
+                                  "vocabulary": "MTH", "tty": "PT"})
+
+    def test_helper_matches_the_cli_path_and_reaches_the_graph(self):
+        rows = self.extract_relations(self.case, self.entities, freq_path=Path("/nonexistent/freq.csv"))
+        direct = self.analyze_relations(self.text, self.entities, {})
+        self.assertEqual(len(rows), len(direct))
+        self.assertEqual([r["relation"] for r in rows], [r["relation"] for r in direct])
+        self.assertTrue(all(r["case_id"] == "test" for r in rows))
+        for aggregate in (True, False):
+            graph = build_graph(self.case, self.text, self.entities, [], aggregate=aggregate, relations=rows)
+            validate_graph(graph)
+            self.assertFalse(graph["warnings"])
+            typed = [e for e in graph["edges"] if e.get("assertion_status") not in (None, "not_assessed")]
+            self.assertEqual(len(typed), len(rows))
+            negated = next(e for e in typed if e["assertion_status"] == "negated")
+            self.assertIn("C3", negated["target"])   # "no pericardial effusion" is kept, labelled
+            self.assertEqual(json.loads(to_json(graph)), graph)
+            with zipfile.ZipFile(io.BytesIO(to_csv_zip(graph))) as archive:
+                edges = list(csv.DictReader(io.StringIO(archive.read("edges.csv").decode())))
+            self.assertIn("assertion_status", edges[0])
+            self.assertEqual(sum(e["assertion_status"] == "negated" for e in edges), 1)
+
+    def test_missing_umls_layer_is_empty_not_an_error(self):
+        self.assertEqual(self.load_umls_relations(Path("/nonexistent/umls_relations.csv")), {})
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -26,14 +26,12 @@ from clinical_kg.extraction.entities import (
 from clinical_kg.extraction.measurements import (
     analyze_case, CSV_COLUMNS as MEASUREMENT_COLUMNS,
 )
-from clinical_kg.paths import DEFAULT_CASES, DEFAULT_METADATA, DEFAULT_TOKEN_FREQ
+from clinical_kg.paths import (DEFAULT_CASES, DEFAULT_METADATA, DEFAULT_TOKEN_FREQ,
+                               DEFAULT_UMLS_RELATIONS)
 from clinical_kg.corpus.patients import new_patient
+from clinical_kg.graph.export import extract_relations, load_umls_relations
 from clinical_kg.graph.ui import graph_panel
-from clinical_kg.relations.extract import (
-    analyze_case as analyze_relations,
-    load_frequencies as load_relation_frequencies,
-    to_row as relation_to_row,
-)
+from clinical_kg.relations.extract import CSV_COLUMNS as RELATION_COLUMNS
 
 # Same 6 slots as app.py (validated palette), plus one new category for this
 # project's own extraction. Not independently contrast-validated like the
@@ -75,14 +73,25 @@ def analyze(text: str, max_n: int, db_revision: tuple):
 
 
 @st.cache_data
-def load_token_frequencies(revision: tuple) -> dict:
-    return load_relation_frequencies(DEFAULT_TOKEN_FREQ)
-
-
-@st.cache_data
 def load_articles(revision: tuple) -> dict:
     with DEFAULT_METADATA.open(newline="", encoding="utf-8") as f:
         return {r["article_id"]: r for r in csv.DictReader(f)}
+
+
+@st.cache_data
+def relations_for(meta: dict, text: str, entities: list[dict], freq_revision: tuple) -> list[dict]:
+    """Typed relations over the live entity spans (same code path as the CLI),
+    keyed by case text and entities so a re-extraction re-runs the CRF."""
+    return extract_relations({**meta, "case_text": text}, entities)
+
+
+@st.cache_data
+def umls_relations(revision: tuple) -> dict:
+    return load_umls_relations()
+
+
+def optional_revision(path: Path) -> tuple:
+    return file_revision(path) if path.exists() else ()
 
 
 # ---------------------------------------------------------------------------
@@ -261,9 +270,8 @@ def main():
         st.stop()
 
     entities, measurements = analyze(text, DEFAULT_MAX_N, file_revision(DEFAULT_DB))
-    freq = (load_token_frequencies(file_revision(DEFAULT_TOKEN_FREQ))
-           if DEFAULT_TOKEN_FREQ.exists() else {})
-    relations = [relation_to_row(meta, rel) for rel in analyze_relations(text, entities, freq)]
+    relations = relations_for(meta, text, entities, optional_revision(DEFAULT_TOKEN_FREQ))
+    ontology_edges = umls_relations(optional_revision(DEFAULT_UMLS_RELATIONS))
 
     counts = {
         **{e: sum(1 for x in entities if x["entity_type"] == e) for e in
@@ -285,8 +293,8 @@ def main():
         article = (load_articles(file_revision(DEFAULT_METADATA)).get(meta["article_id"])
                    if DEFAULT_METADATA.exists() and meta.get("article_id") else None)
         st.markdown(render_legend(set(PALETTE)), unsafe_allow_html=True)
-        graph, selected, evidence = graph_panel(meta, text, entities, measurements, PALETTE,
-                                               article, relations)
+        graph, selected, evidence = graph_panel(meta, text, entities, measurements, PALETTE, article,
+                                                relations=relations, umls_relations=ontology_edges)
     selected_spans = {(ev["start"], ev["end"]) for ev in evidence}
     with text_tab:
         if not spans:
@@ -306,19 +314,30 @@ def main():
         df_meas = pd.DataFrame([{**meta, **m} for m in measurements], columns=MEASUREMENT_COLUMNS)
         for column in ("linked_entity_start", "linked_entity_end"):
             df_meas[column] = pd.to_numeric(df_meas[column], errors="coerce").astype("Int64")
-        shown_e, shown_m = df, df_meas
+        df_rel = pd.DataFrame([{**meta, **r} for r in relations], columns=RELATION_COLUMNS)
+        # Person-anchored relations leave the head offsets empty, like unlinked measurements.
+        for column in ("head_start", "head_end", "trigger_start", "trigger_end"):
+            df_rel[column] = pd.to_numeric(df_rel[column], errors="coerce").astype("Int64")
+        shown_e, shown_m, shown_r = df, df_meas, df_rel
         edges = graph["edges"]
         if only_selected and selected is not None:
             shown_e = df.loc[[(e["start"], e["end"]) in selected_spans for e in entities]]
             shown_m = df_meas.loc[[(m["start"], m["end"]) in selected_spans for m in measurements]]
+            shown_r = df_rel.loc[[(r["tail_start"], r["tail_end"]) in selected_spans
+                                  or (r["head_start"], r["head_end"]) in selected_spans for r in relations]]
             edges = [e for e in edges if selected["id"] in (e["id"], e["source"], e["target"])]
         st.subheader("Entities")
         st.dataframe(shown_e, width="stretch", height=260, hide_index=True)
         st.subheader("Measurements")
         st.dataframe(shown_m, width="stretch", height=260, hide_index=True)
         st.subheader("Relations")
-        st.dataframe(pd.DataFrame(edges, columns=["source", "relation", "target", "count", "link_method"]),
+        st.dataframe(pd.DataFrame(edges, columns=["source", "relation", "target", "assertion_status",
+                                                  "count", "link_method", "evidence_source"]),
                      width="stretch", height=260, hide_index=True)
+        st.subheader("Extracted relations")
+        st.caption("Typed relations from the CRF extractor, in the data/processed/relations.csv schema. "
+                   "Heuristic; the assertion status records negation, hedging, history and family context.")
+        st.dataframe(shown_r, width="stretch", height=260, hide_index=True)
         st.caption("Extraction CSV downloads include the entire patient, regardless of graph filters.")
         for label, frame in (("entities", df), ("measurements", df_meas)):
             buf = io.StringIO()

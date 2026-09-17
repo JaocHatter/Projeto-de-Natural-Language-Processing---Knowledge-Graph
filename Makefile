@@ -5,12 +5,13 @@ PY      ?= python3
 export PYTHONPATH := src
 
 .PHONY: help install test clean-cases gazetteer entities measurements \
-        relations annotate evaluate pos-lexicon graph app all
+        relations umls-relations annotate evaluate pos-lexicon graph app all
 
 help:
 	@echo "make test          run the test suite"
 	@echo "make all           clean-cases -> entities -> measurements -> relations"
 	@echo "make relations     extract relations into data/processed/relations.csv"
+	@echo "make umls-relations  filter UMLS MRREL.RRF to this corpus's CUIs (needs the UMLS zip)"
 	@echo "make evaluate      score relations against the gold set"
 	@echo "make app           launch the Streamlit viewer"
 	@echo "make install       pip install -e . (adds the clinical-kg command)"
@@ -26,6 +27,7 @@ gazetteer:        ; $(PY) -m clinical_kg build-gazetteer
 entities:         ; $(PY) -m clinical_kg extract-entities
 measurements:     ; $(PY) -m clinical_kg extract-measurements
 relations:        ; $(PY) -m clinical_kg extract-relations
+umls-relations:   ; $(PY) -m clinical_kg build-umls-relations
 annotate:         ; $(PY) -m clinical_kg annotate-relations
 evaluate:         ; $(PY) -m clinical_kg evaluate-relations
 pos-lexicon:      ; $(PY) -m clinical_kg pos-lexicon

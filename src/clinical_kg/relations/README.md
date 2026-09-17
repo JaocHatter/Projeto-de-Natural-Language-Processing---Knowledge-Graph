@@ -330,12 +330,12 @@ intra-sentence or Person-anchored) and by how many candidates were judged.
 
 ### Current numbers
 
-10 cases, 424 candidates judged by two annotators (inter-annotator agreement
+10 cases, 413 candidates judged by two annotators (inter-annotator agreement
 9/10 on the overlap). At `decide.threshold = 1.0` (chosen from this same
 sweep — see the comment on `features.WEIGHTS["decide.threshold"]`):
 
 ```
-  detection        P=0.602  R=0.653  F1=0.626
+  detection        P=0.602  R=0.656  F1=0.628
   relation type    0.772 correct on detected edges
   assertion status 0.917 correct on detected edges
 ```
@@ -346,13 +346,13 @@ sweep — see the comment on `features.WEIGHTS["decide.threshold"]`):
 | REVEALED_BY | 16 | 7 | 4 | 0.696 | 0.800 | 0.744 |
 | LOCATED_IN | 33 | 19 | 9 | 0.635 | 0.786 | 0.702 |
 | HAS_DIAGNOSIS | 18 | 15 | 3 | 0.545 | 0.857 | 0.667 |
-| TREATED_WITH | 24 | 19 | 9 | 0.558 | 0.727 | 0.632 |
+| TREATED_WITH | 24 | 19 | 8 | 0.558 | 0.750 | 0.640 |
 | COORDINATE_WITH | 34 | 12 | 46 | 0.739 | 0.425 | 0.540 |
 | HAS_FINDING | 9 | 17 | 4 | 0.346 | 0.692 | 0.462 |
 | CAUSED_BY | 2 | 3 | 2 | 0.400 | 0.500 | 0.444 |
 
 Ablation at this threshold: coordination inheritance is by far the largest
-single contributor (removing it drops F1 by **0.150**, 0.626 → 0.477); POS
+single contributor (removing it drops F1 by **0.150**, 0.628 → 0.478); POS
 backoff is worth 0.011; assertion scoping and CRF transitions do not move
 detection F1 (they affect *which* status/edges are correct, not whether a
 candidate clears the threshold at all).

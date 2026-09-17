@@ -116,7 +116,11 @@ clinical-kg extract-entities    # raw/cases.csv -> processed/entities.csv
 | `external/umls_work/` | *Generated.* Extracted `.RRF` files and intermediates | 3.1 GB |
 | `external/umls_csvs/` | *Generated.* One CSV per semantic type + consolidated | 380 MB |
 | `interim/gazetteer.db` | *Generated* by `src/clinical_kg/gazetteer/build.py`. 1,097,541 indexed terms | 289 MB |
-| `processed/entities.csv` | *Generated* by `src/clinical_kg/extraction/entities.py`. 3,287 entity spans | 352 KB |
+| `processed/entities.csv` | *Generated* by `src/clinical_kg/extraction/entities.py`. 2,957 entity spans | 355 KB |
+| `processed/measurements.csv` | *Generated* by `src/clinical_kg/extraction/measurements.py`. 535 value/unit spans linked to entities | 62 KB |
+| `processed/relations.csv` | *Generated* by `src/clinical_kg/relations/extract.py`. 871 typed relations with assertion status | — |
+| `interim/gold_relations.csv` | *Annotated* via `clinical-kg annotate-relations`. 385 judged candidates over 9 test-only cases | — |
+| `interim/umls_relations.csv` | *Generated* by `src/clinical_kg/relations/ontology.py` from `MRREL.RRF`. UMLS relations between corpus CUIs | 12 KB |
 
 ### `raw/` — the case corpus
 
@@ -184,3 +188,17 @@ The semantic-type CSVs and their TUI meanings are tabulated in the project [`REA
 
 > If you see a `conso_filtered.tsv` in `umls_work/`, it is a manually renamed leftover — the script
 > writes `conso_filtrado.tsv` and will recreate that name on the next run.
+
+## Line endings and character offsets
+
+Every processed CSV (`entities.csv`, `measurements.csv`, `relations.csv`, `gold_relations.csv`)
+stores **character offsets into `interim/cases_clean.csv`'s `case_text`**. Those offsets are only
+valid against the exact bytes of that text: if git (`core.autocrlf=true` on Windows) rewrites the
+newlines inside `case_text` as `
+
+`, every offset after a newline shifts by one and the whole
+pipeline fails its offset assertions. Keep the corpus with LF newlines (or add
+`*.csv text eol=lf` to `.gitattributes`), and regenerate the processed CSVs from the same checkout
+that produced `cases_clean.csv` rather than mixing files from machines with different settings.
+`corpus.patients.validate_annotations` (used by `export-graph --from-csv`) is the check that
+catches a mismatch.
