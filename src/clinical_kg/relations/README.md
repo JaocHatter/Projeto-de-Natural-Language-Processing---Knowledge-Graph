@@ -335,24 +335,24 @@ intra-sentence or Person-anchored) and by how many candidates were judged.
 sweep — see the comment on `features.WEIGHTS["decide.threshold"]`):
 
 ```
-  detection        P=0.602  R=0.656  F1=0.628
-  relation type    0.772 correct on detected edges
-  assertion status 0.917 correct on detected edges
+  detection        P=0.606  R=0.652  F1=0.628
+  relation type    0.774 correct on detected edges
+  assertion status 0.918 correct on detected edges
 ```
 
 | relation | TP | FP | FN | P | R | F1 |
 |---|---|---|---|---|---|---|
-| HAS_SYMPTOM | 9 | 4 | 0 | 0.692 | 1.000 | 0.818 |
+| HAS_SYMPTOM | 9 | 3 | 0 | 0.750 | 1.000 | 0.857 |
 | REVEALED_BY | 16 | 7 | 4 | 0.696 | 0.800 | 0.744 |
 | LOCATED_IN | 33 | 19 | 9 | 0.635 | 0.786 | 0.702 |
 | HAS_DIAGNOSIS | 18 | 15 | 3 | 0.545 | 0.857 | 0.667 |
-| TREATED_WITH | 24 | 19 | 8 | 0.558 | 0.750 | 0.640 |
-| COORDINATE_WITH | 34 | 12 | 46 | 0.739 | 0.425 | 0.540 |
+| TREATED_WITH | 25 | 18 | 8 | 0.581 | 0.758 | 0.658 |
+| COORDINATE_WITH | 34 | 12 | 48 | 0.739 | 0.415 | 0.531 |
 | HAS_FINDING | 9 | 17 | 4 | 0.346 | 0.692 | 0.462 |
-| CAUSED_BY | 2 | 3 | 2 | 0.400 | 0.500 | 0.444 |
+| CAUSED_BY | 2 | 4 | 2 | 0.333 | 0.500 | 0.400 |
 
 Ablation at this threshold: coordination inheritance is by far the largest
-single contributor (removing it drops F1 by **0.150**, 0.628 → 0.478); POS
+single contributor (removing it drops F1 by **0.149**, 0.628 → 0.479); POS
 backoff is worth 0.011; assertion scoping and CRF transitions do not move
 detection F1 (they affect *which* status/edges are correct, not whether a
 candidate clears the threshold at all).

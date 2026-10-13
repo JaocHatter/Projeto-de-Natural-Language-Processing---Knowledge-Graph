@@ -116,7 +116,7 @@ clinical-kg extract-entities    # raw/cases.csv -> processed/entities.csv
 | `external/umls_work/` | *Generated.* Extracted `.RRF` files and intermediates | 3.1 GB |
 | `external/umls_csvs/` | *Generated.* One CSV per semantic type + consolidated | 380 MB |
 | `interim/gazetteer.db` | *Generated* by `src/clinical_kg/gazetteer/build.py`. 1,097,541 indexed terms | 289 MB |
-| `processed/entities.csv` | *Generated* by `src/clinical_kg/extraction/entities.py`. 2,957 entity spans | 355 KB |
+| `processed/entities.csv` | *Generated* by `src/clinical_kg/extraction/entities.py`. 2,939 entity spans | 353 KB |
 | `processed/measurements.csv` | *Generated* by `src/clinical_kg/extraction/measurements.py`. 535 value/unit spans linked to entities | 62 KB |
 | `processed/relations.csv` | *Generated* by `src/clinical_kg/relations/extract.py`. 871 typed relations with assertion status | — |
 | `interim/gold_relations.csv` | *Annotated* via `clinical-kg annotate-relations`. 385 judged candidates over 9 test-only cases | — |

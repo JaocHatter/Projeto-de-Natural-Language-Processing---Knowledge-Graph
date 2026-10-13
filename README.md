@@ -108,7 +108,7 @@ Each semantic type (TUI) maps to one of the project's 6 categories: **Diagnosis,
 Symptom, Finding, BodyPart**. While auditing the results we noticed ~175 occurrences were generic
 words or consent-form boilerplate that happened to match a real UMLS concept (e.g., the bare word
 "treatment", "diagnosis" or "emergency", which is literally an MSH concept) — these were excluded
-by CUI/term (`EXCLUDED_CUIS`/`EXCLUDED_TERMS`), leaving **2,957 entities** (down from a raw
+by CUI/term (`EXCLUDED_CUIS`/`EXCLUDED_TERMS`), leaving **2,939 entities** (down from a raw
 extraction of 3,134).
 
 **Stage 4 — Measurements and linking (`clinical-kg extract-measurements`).** Value+unit patterns
@@ -278,24 +278,24 @@ text-extracted relation.
 | Metric | Value |
 |---|---|
 | Patients in the cleaned corpus | 50 (from 56 original rows) |
-| Entities extracted | **2,957** (from a raw extraction of 3,134 — ~175 generic false positives removed) |
+| Entities extracted | **2,939** (from a raw extraction of 3,134 — ~195 generic false positives removed) |
 | Measurements extracted | 535 |
-| Measurements linked to an entity | 507 (95%) — 368 `same_sentence`, 54 `same_sentence_forward`, 85 `window_fallback` |
+| Measurements linked to an entity | 506 (95%) — 364 `same_sentence`, 58 `same_sentence_forward`, 84 `window_fallback` |
 | Terms in the UMLS gazetteer | ~1.1 million, covering ~644 thousand CUIs |
-| **Typed relations extracted (CRF)** | **1,356** across 50 patients, in 8 types |
+| **Typed relations extracted (CRF)** | **1,350** across 50 patients, in 8 types |
 | **Ontological relations (UMLS, independent layer)** | 213, in 3 types (`TREATED_WITH`/`LOCATED_IN`/`CAUSED_BY`) |
 
 Distribution of text-extracted relations:
 
 | Relation | N | | Assertion status | N |
 |---|---|---|---|---|
-| `TREATED_WITH` | 269 | | `affirmed` | 1,170 |
-| `LOCATED_IN` | 239 | | `negated` | 95 |
+| `TREATED_WITH` | 263 | | `affirmed` | 1,164 |
+| `LOCATED_IN` | 240 | | `negated` | 95 |
 | `REVEALED_BY` | 200 | | `hedged` | 48 |
 | `HAS_DIAGNOSIS` | 189 | | `historical` | 32 |
 | `COORDINATE_WITH` | 185 | | `family` | 11 |
-| `HAS_FINDING` | 184 | | | |
-| `HAS_SYMPTOM` | 55 | | | |
+| `HAS_FINDING` | 185 | | | |
+| `HAS_SYMPTOM` | 53 | | | |
 | `CAUSED_BY` | 35 | | | |
 
 ### Evaluation against the gold set
@@ -304,26 +304,26 @@ The team manually annotated **413 candidates** (10 cases, two annotators — 9/1
 overlap; offsets index the LF cleaned corpus) using `clinical-kg annotate-relations`. Against this gold set, at the measured decision
 threshold (`decide.threshold=1.0`):
 
-**P=0.602 · R=0.656 · F1=0.628** (0.772 relation-type accuracy, 0.917 assertion accuracy)
+**P=0.606 · R=0.652 · F1=0.628** (0.774 relation-type accuracy, 0.918 assertion accuracy)
 
 | Relation | F1 |
 |---|---|
-| `HAS_SYMPTOM` | 0.818 |
+| `HAS_SYMPTOM` | 0.857 |
 | `REVEALED_BY` | 0.744 |
 | `LOCATED_IN` | 0.702 |
 | `HAS_DIAGNOSIS` | 0.667 |
-| `TREATED_WITH` | 0.640 |
-| `COORDINATE_WITH` | 0.540 |
+| `TREATED_WITH` | 0.658 |
+| `COORDINATE_WITH` | 0.531 |
 | `HAS_FINDING` | 0.462 |
-| `CAUSED_BY` | 0.444 |
+| `CAUSED_BY` | 0.400 |
 
 The ablation table shows that **list coordination** is by far the largest contributor (removing it
-drops F1 from 0.628 to 0.478, -0.150) — consistent with the finding that 34% of adjacent entity
+drops F1 from 0.628 to 0.479, -0.149) — consistent with the finding that 34% of adjacent entity
 pairs have a comma between them. `HAS_FINDING` is the weakest point for a known reason: it is the
 fallback category when no more specific one fits, which produces systematic false positives;
 `CAUSED_BY` has only 4 examples in the gold set — too few to trust the number in either direction.
 The decision threshold itself was chosen by measurement, not assumption: at the previous threshold
-(1.5), F1 was 0.503 (R=0.430); at 1.0, it rises to 0.628 (R=0.656) with no meaningful loss of
+(1.5), F1 was 0.503 (R=0.429); at 1.0, it rises to 0.628 (R=0.652) with no meaningful loss of
 precision.
 
 All 73 automated tests in the project pass on this same checkout.

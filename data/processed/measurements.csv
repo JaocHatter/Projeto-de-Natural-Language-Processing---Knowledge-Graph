@@ -95,7 +95,7 @@ PMC11131390_01,PMC11131390,2283,2291,0.8 IU/L,False,0.8,,,IU/L,iu/l,lab_concentr
 PMC11131390_01,PMC11131390,2421,2429,4 months,False,4,,,months,months,time,2383,2397,hypothyroidism,Diagnosis,same_sentence,C0020676,concept:C0020676
 PMC11259348_P1,PMC11259348,161,167,4 g/dL,False,4,,,g/dL,g/dl,lab_concentration,140,156,hemoglobin level,Exam,same_sentence,C0019029,concept:C0019029
 PMC11259348_P1,PMC11259348,2593,2596,50%,False,50,,,%,%,percentage,,,,,none,,
-PMC11259348_P1,PMC11259348,3045,3048,50%,False,50,,,%,%,percentage,2851,2855,"2, P",Treatment,same_sentence,C0608663,concept:C0608663
+PMC11259348_P1,PMC11259348,3045,3048,50%,False,50,,,%,%,percentage,3065,3073,prepared,Finding,same_sentence_forward,C4082130,concept:C4082130
 PMC11259348_P1,PMC11259348,3230,3233,50%,False,50,,,%,%,percentage,3178,3185,a group,Finding,same_sentence,C4522145,concept:C4522145
 PMC11259348_P1,PMC11259348,3430,3436,30 min,False,30,,,min,min,time,3437,3454,incubation period,Finding,same_sentence_forward,C1320226,concept:C1320226
 PMC11345641_01,PMC11345641,736,742,289U/L,False,289,,,U/L,u/l,lab_concentration,680,707,serum lactate dehydrogenase,Exam,same_sentence,C1278052,concept:C1278052
@@ -249,7 +249,7 @@ PMC3897989_01,PMC3897989,3399,3404,16 mg,False,16,,,mg,mg,mass,3306,3311,liver,B
 PMC3897989_01,PMC3897989,3522,3529,40 days,False,40,,,days,days,time,3551,3554,IgG,Exam,same_sentence_forward,C0202087,concept:C0202087
 PMC3897989_01,PMC3897989,3654,3661,135 U/L,False,135,,,U/L,u/l,lab_concentration,3572,3576,back,BodyPart,window_fallback,C1995000,concept:C1995000
 PMC3897989_01,PMC3897989,3663,3670,134 U/L,False,134,,,U/L,u/l,lab_concentration,3572,3576,back,BodyPart,window_fallback,C1995000,concept:C1995000
-PMC3897989_01,PMC3897989,3805,3809,5 mg,False,5,,,mg,mg,mass,3660,3666,"L, 134",Treatment,window_fallback,C0064458,concept:C0064458
+PMC3897989_01,PMC3897989,3805,3809,5 mg,False,5,,,mg,mg,mass,,,,,none,,
 PMC3897989_01,PMC3897989,3862,3869,40 days,False,40,,,days,days,time,,,,,none,,
 PMC3897989_01,PMC3897989,4081,4087,500 mg,False,500,,,mg,mg,mass,4039,4052,herpes zoster,Diagnosis,same_sentence,C0019360,concept:C0019360
 PMC3897989_01,PMC3897989,4105,4111,9 days,False,9,,,days,days,time,4070,4087,acyclovir (500 mg,Treatment,same_sentence,C5222310,concept:C5222310
@@ -284,7 +284,7 @@ PMC4310058_01,PMC4310058,225,232,2 years,False,2,,,years,years,time,84,89,skull,
 PMC4310058_01,PMC4310058,714,721,2 years,False,2,,,years,years,time,738,743,skull,BodyPart,same_sentence_forward,C0037303,concept:C0037303
 PMC4310058_01,PMC4310058,1242,1246,5 cm,False,5,,,cm,cm,length,1127,1139,cranioplasty,Treatment,window_fallback,C0196112,concept:C0196112
 PMC4310058_01,PMC4310058,1981,1986,day 2,False,2,,,day,day,time,,,,,none,,
-PMC4782471_01,PMC4782471,73,77,5 mm,False,5,,,mm,mm,length,0,4,A 10,Treatment,same_sentence,C0052080,concept:C0052080
+PMC4782471_01,PMC4782471,73,77,5 mm,False,5,,,mm,mm,length,82,102,aortic regurgitation,Diagnosis,same_sentence_forward,C0003504,concept:C0003504
 PMC4782471_01,PMC4782471,671,676,50 mg,False,50,,,mg,mg,mass,517,541,under general anesthesia,Finding,window_fallback,C1719976,concept:C1719976
 PMC4782471_01,PMC4782471,946,952,1-week,False,1,,,week,week,time,886,902,persistent fever,Diagnosis,same_sentence,C0476474,concept:C0476474
 PMC4782471_01,PMC4782471,1158,1163,60 mm,False,60,,,mm,mm,length,1135,1149,blood pressure,Finding,same_sentence,C1271104,concept:C1271104
@@ -365,7 +365,7 @@ PMC5875137_01,PMC5875137,251,258,3 weeks,False,3,,,weeks,weeks,time,283,313,repl
 PMC5875137_01,PMC5875137,319,324,30 mm,False,30,,,mm,mm,length,283,313,replacement of ascending aorta,Treatment,same_sentence,C0729662,concept:C0729662
 PMC6083636_P1,PMC6083636,228,235,9 years,False,9,,,years,years,time,,,,,none,,
 PMC6083636_P1,PMC6083636,598,603,10 mg,False,10,,,mg,mg,mass,558,580,Cycloplegic refraction,Exam,same_sentence,C0855713,concept:C0855713
-PMC6083636_P1,PMC6083636,1965,1972,23.5 mm,False,23.5,,,mm,mm,length,1909,1913,300A,Treatment,same_sentence,C0100700,concept:C0100700
+PMC6083636_P1,PMC6083636,1965,1972,23.5 mm,False,23.5,,,mm,mm,length,1976,1985,both eyes,BodyPart,same_sentence_forward,C0229118,concept:C0229118
 PMC6083636_P1,PMC6083636,3119,3122,20%,False,20,,,%,%,percentage,3086,3092,scores,Finding,same_sentence,C0449820,concept:C0449820
 PMC6134951_01,PMC6134951,461,464,40%,False,40,,,%,%,percentage,451,456,score,Finding,same_sentence,C0449820,concept:C0449820
 PMC6134951_01,PMC6134951,1077,1083,600 mg,False,600,,,mg,mg,mass,1067,1076,alectinib,Treatment,same_sentence,C3853921,concept:C3853921
@@ -505,7 +505,7 @@ PMC9529523_01,PMC9529523,4509,4512,10%,False,10,,,%,%,percentage,4469,4498,ventr
 PMC9529523_01,PMC9529523,4541,4547,860 ml,False,860,,,ml,ml,volume,4514,4532,pericardiocentesis,Treatment,same_sentence,C0191234,concept:C0191234
 PMC9529523_01,PMC9529523,4675,4683,17 mg/dL,False,17,,,mg/dL,mg/dl,lab_concentration,4642,4652,malignancy,Diagnosis,window_fallback,C0006826,concept:C0006826
 PMC9529523_01,PMC9529523,5093,5102,274 ng/ml,False,274,,,ng/ml,ng/ml,lab_concentration,5064,5082,hydroxychloroquine,Treatment,same_sentence,C0020336,concept:C0020336
-PMC9532611_01,PMC9532611,126,136,1.8 mmol/l,False,1.8,,,mmol/l,mmol/l,lab_concentration,55,59,a 12,Treatment,same_sentence,C0620347,concept:C0620347
+PMC9532611_01,PMC9532611,126,136,1.8 mmol/l,False,1.8,,,mmol/l,mmol/l,lab_concentration,138,146,weakness,Symptom,same_sentence_forward,C3714552,concept:C3714552
 PMC9532611_01,PMC9532611,189,196,94 mmHg,False,94,,,mmHg,mmhg,pressure,171,183,hypertension,Diagnosis,same_sentence,C0020538,concept:C0020538
 PMC9532611_01,PMC9532611,296,302,142 cm,False,142,,,cm,cm,length,232,241,pregnancy,Finding,window_fallback,C0549206,concept:C0549206
 PMC9532611_01,PMC9532611,322,327,44 kg,False,44,,,kg,kg,mass,232,241,pregnancy,Finding,window_fallback,C0549206,concept:C0549206

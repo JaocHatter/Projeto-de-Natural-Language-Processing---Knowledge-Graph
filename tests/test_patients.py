@@ -84,8 +84,11 @@ class PatientTests(unittest.TestCase):
                                             for n in graph["nodes"]))
             # 3134 minus generic-word/boilerplate false entities excluded via
             # extraction.entities.EXCLUDED_CUIS/EXCLUDED_TERMS (see there and
-            # gazetteer.build.STOPTERMS for what each one is and why).
-            self.assertEqual(totals["entities"], 2957)
+            # gazetteer.build.STOPTERMS for what each one is and why). Was 2957
+            # until processed/entities.csv was regenerated against the current
+            # gazetteer: the older build still matched 19 alphanumeric codes
+            # ("39 C", "P2", "A 7") as Treatment.
+            self.assertEqual(totals["entities"], 2939)
             self.assertEqual(totals["measurements"], 535)
         finally:
             con.close()
