@@ -13,6 +13,12 @@ dependencies = [
     "pandas>=2.0",
 ]
 
+# Project 2's experiment runs on the standard library alone (Naive Bayes and
+# logistic regression are implemented in clinical_kg.learning.models); this
+# extra only adds the SVM and random-forest comparisons.
+[project.optional-dependencies]
+learning = ["scikit-learn>=1.3"]
+
 [project.scripts]
 clinical-kg = "clinical_kg.cli:main"
 
