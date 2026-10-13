@@ -1,0 +1,12 @@
+# Character offsets in data/processed/*.csv index data/interim/cases_clean.csv's
+# case_text. A checkout that rewrites LF as CRLF shifts every offset after a
+# newline, which silently invalidates entity, measurement and relation spans
+# (and made corpus.patients.validate_annotations fail). Normalize on commit and
+# check out LF on every platform so the offsets stay valid.
+* text=auto eol=lf
+
+# Binary: never touched by the rules above.
+*.png binary
+*.pdf binary
+*.zip binary
+*.db binary
