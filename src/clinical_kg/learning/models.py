@@ -131,6 +131,38 @@ class LogisticRegression:
         return ranked[:n]
 
 
+
+class OneVsRest:
+    """Multi-class on top of any binary model: one classifier per class.
+
+    Logistic regression is binary by construction, so an 8-relation decision is
+    made by training one "this class or not" model per relation and keeping the
+    class whose model is most confident. With four gold examples for CAUSED_BY
+    its own classifier sees four positives, which is why the per-class numbers
+    for the rare relations are reported but not trusted.
+    """
+
+    def __init__(self, build=None, **kwargs):
+        self.build = build or (lambda: LogisticRegression(**kwargs))
+        self.models: dict = {}
+        self.classes: list = []
+
+    def fit(self, examples, labels):
+        self.classes = sorted(set(labels))
+        self.models = {}
+        for c in self.classes:
+            binary = [1 if label == c else 0 for label in labels]
+            self.models[c] = self.build().fit(examples, binary)
+        return self
+
+    def predict(self, feats):
+        return max(self.classes, key=lambda c: self.models[c].predict_proba(feats)[1])
+
+    def predict_proba(self, feats):
+        raw = {c: self.models[c].predict_proba(feats)[1] for c in self.classes}
+        total = sum(raw.values()) or 1.0
+        return {c: v / total for c, v in raw.items()}
+
 def sklearn_model(name: str, seed: int = 0):
     """An sklearn classifier wrapped in the same predict/fit interface, or None
     when scikit-learn is not installed."""

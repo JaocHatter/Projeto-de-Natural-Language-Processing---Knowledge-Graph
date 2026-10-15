@@ -28,6 +28,7 @@ COMMANDS = {
     "build-umls-relations": ("clinical_kg.relations.ontology",   "filter UMLS's own relations to this corpus's CUIs"),
     "evaluate-relations":   ("clinical_kg.relations.tools.evaluate", "score relations against the gold set"),
     "learn-relations":      ("clinical_kg.learning.experiment",     "train/compare learned relation extraction (Project 2)"),
+    "extract-relations-ml": ("clinical_kg.learning.extract",        "extract relations with the learned model (Project 2)"),
     "export-graph":         ("clinical_kg.graph.export",         "export graphs as JSON/GraphML/CSV"),
 }
 

@@ -22,7 +22,7 @@ import collections
 import sys
 
 from .dataset import DEFAULT_GROUPS, FEATURE_GROUPS, load_examples
-from .models import LogisticRegression, NaiveBayes, sklearn_model
+from .models import LogisticRegression, NaiveBayes, OneVsRest, sklearn_model
 
 # Project 1's operating point (relations.core.features.WEIGHTS).
 P1_THRESHOLD = 1.0
@@ -149,8 +149,10 @@ def main():
     report("Project 1 (hand-set)", p1_predictions,
            typed=p1_typed if args.task == "relation" else None)
 
+    # Logistic regression is binary; the 8-relation task goes through OneVsRest.
+    linear = LogisticRegression if args.task == "binary" else OneVsRest
     builders = [("Naive Bayes (scratch)", NaiveBayes),
-                ("Logistic regression", LogisticRegression)]
+                ("Logistic regression", linear)]
     for label, name in (("Linear SVM", "svm"), ("Random forest", "random_forest")):
         if sklearn_model(name) is not None:
             builders.append((label, lambda n=name: sklearn_model(n)))
