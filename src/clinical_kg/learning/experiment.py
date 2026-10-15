@@ -5,6 +5,13 @@ Both systems score the *same* candidates -- Project 1's generator produces them
 and this module never adds or removes one -- so every difference below comes
 from the decision function alone.
 
+One caveat on the protocol, measured rather than waved away: the PMI/LLR
+counts and the n-gram frequency table in `dataset` are built over the whole
+corpus, including the held-out case. They use no labels, but the held-out
+text does contribute to them. Recomputing them per fold costs F1 0.738 ->
+0.725 on the relation task, so that 0.013 is the size of the effect and
+0.725 is the number to quote when the strict reading is wanted.
+
 Validation is leave-one-case-out over the 10 annotated case reports, not a
 random split: candidates from one report share entities, sentences and writing
 style, so a random split would train and test on the same text and report a

@@ -41,7 +41,11 @@ from clinical_kg.relations.core.pos import tag_sequence
 from clinical_kg.relations.extract import analyze_case, load_entities
 
 FEATURE_GROUPS = ("lex", "pos", "struct", "assoc", "p1")
-DEFAULT_GROUPS = ("lex", "pos", "struct", "assoc")
+# The measured best, not every group: lexical and POS n-gram indicators make
+# the classifier worse on this corpus (F1 0.738 -> 0.677 and 0.653), because
+# 413 examples cannot support ~3,000 sparse parameters. The n-gram evidence
+# reaches the model compressed, through `assoc` and through ngram.ContextScorer.
+DEFAULT_GROUPS = ("struct", "assoc")
 
 # Window of tokens kept on the outer side of each entity.
 CONTEXT_WINDOW = 2
