@@ -29,8 +29,9 @@ from clinical_kg.relations.extract import (CSV_COLUMNS, analyze_case,
                                            load_entities, to_row)
 
 from .dataset import (Associations, DEFAULT_GROUPS, FEATURE_GROUPS,
-                      candidate_features, load_examples)
+                      candidate_features, context_tokens, load_examples)
 from .models import LogisticRegression, NaiveBayes, OneVsRest, sklearn_model
+from .ngram import ContextScorer
 
 DEFAULT_OUT = PROJECT_ROOT / "data/processed/relations_ml.csv"
 NO_RELATION = "NONE"
@@ -46,15 +47,34 @@ def build_model(name: str):
 
 
 def train(model_name: str, groups) -> tuple:
-    """Fit on every judged candidate. Returns (model, number of examples)."""
+    """Fit on every judged candidate.
+
+    Returns (model, scorer, n), where `scorer` is the fitted pair of n-gram
+    language models the classifier expects to see a score from. The training
+    values for that feature come from an inner leave-one-case-out pass: a
+    language model finds a context it has already read far likelier than a new
+    one, so fitting the classifier on self-scored contexts teaches it to trust
+    the feature more than it deserves.
+    """
     examples = load_examples(groups)
     model = build_model(model_name)
     if model is None:
         raise SystemExit(f"ERROR: model {model_name!r} needs scikit-learn "
                          "(pip install scikit-learn), or use --model logistic")
+
+    fit_scorer = lambda subset: ContextScorer().fit(
+        [e.context for e in subset if e.is_relation],
+        [e.context for e in subset if not e.is_relation])
+    scores = {}
+    for held_out in sorted({e.case_id for e in examples}):
+        inner = fit_scorer([e for e in examples if e.case_id != held_out])
+        scores.update({e.key: inner.score(e.context)
+                       for e in examples if e.case_id == held_out})
+    scorer = fit_scorer(examples)
+
     labels = [ex.relation if ex.is_relation else NO_RELATION for ex in examples]
-    model.fit([ex.features for ex in examples], labels)
-    return model, len(examples)
+    model.fit([{**ex.features, "lm_score": scores[ex.key]} for ex in examples], labels)
+    return model, scorer, len(examples)
 
 
 def main():
@@ -87,7 +107,7 @@ def main():
     print(f"  features  : {', '.join(groups)}")
     print(f"  out       : {args.out}\n")
 
-    model, n_train = train(args.model, groups)
+    model, scorer, n_train = train(args.model, groups)
     print(f"  trained on {n_train} judged candidates\n")
 
     with open(args.cases, newline="", encoding="utf-8", errors="replace") as f:
@@ -108,6 +128,9 @@ def main():
                                     threshold=float("-inf")):
                 considered += 1
                 feats = candidate_features(text, rel, assoc, ngram_counts, groups)
+                start = rel["head"]["end"] if rel["head"] else rel["sent_start"]
+                feats["lm_score"] = scorer.score(
+                    context_tokens(text, start, rel["tail"]["start"]))
                 predicted = model.predict(feats)
                 if predicted == NO_RELATION:
                     continue

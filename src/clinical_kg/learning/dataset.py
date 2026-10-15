@@ -78,6 +78,19 @@ class Example:
 class Associations:
     """PMI and log-likelihood ratio over corpus bigrams.
 
+    Counted over the case reports *and* the UMLS definitions of the concepts
+    they mention, when those have been extracted. PMI asks whether two words
+    co-occur more than chance in clinical language generally, and that estimate
+    is what this corpus cannot support on its own: 81.6% of its bigram types
+    occur exactly once. The definitions roughly double the text (29,718 words
+    against 25,407) and are in-domain by construction. Measured, this is worth
+    F1 0.730 -> 0.738.
+
+    The same definitions do *not* help the language models in `ngram.py`, which
+    is not a contradiction: those have to tell relation-bearing wording apart
+    from the rest, and definitions join concepts with generic connectors
+    ("and", "or", "of the") that carry no such signal here.
+
     Raw PMI is unusable on a corpus this size -- every hapax ties at the maximum
     -- so `pmi` returns 0.0 below MIN_PMI_COUNT rather than a huge score for a
     single co-occurrence. LLR (Dunning 1993) is reported alongside because it
@@ -87,9 +100,11 @@ class Associations:
 
     MIN_PMI_COUNT = 5
 
-    def __init__(self, texts):
+    def __init__(self, texts, background_texts=None):
+        if background_texts is None:
+            background_texts = load_definition_texts()
         tokens = []
-        for text in texts:
+        for text in list(texts) + list(background_texts):
             tokens += [m.group().lower() for m in TOKEN_RE.finditer(mask_figure_refs(text))]
         self.unigram = collections.Counter(tokens)
         self.bigram = collections.Counter(zip(tokens, tokens[1:]))
@@ -192,6 +207,17 @@ def candidate_features(text, rel, assoc, ngram_counts, groups=DEFAULT_GROUPS):
 # --------------------------------------------------------------------------
 # Loading
 # --------------------------------------------------------------------------
+def load_definition_texts(path: Path = None) -> list[str]:
+    """UMLS definitions of this corpus's own CUIs, or [] when never extracted."""
+    from .ngram import DEFAULT_DEFINITIONS
+    path = DEFAULT_DEFINITIONS if path is None else path
+    if not path.exists():
+        return []
+    with open(path, newline="", encoding="utf-8") as f:
+        return [row["definition"] for row in csv.DictReader(f)
+                if row.get("definition", "").strip()]
+
+
 def context_tokens(text: str, start: int, end: int) -> list[str]:
     """The words between two entities, as the language models see them."""
     from .ngram import tokenize
