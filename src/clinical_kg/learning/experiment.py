@@ -22,6 +22,7 @@ import collections
 import sys
 
 from .dataset import DEFAULT_GROUPS, FEATURE_GROUPS, load_examples
+from .ngram import BackgroundLM, ContextScorer, load_definitions
 from .models import LogisticRegression, NaiveBayes, OneVsRest, sklearn_model
 
 # Project 1's operating point (relations.core.features.WEIGHTS).
@@ -67,7 +68,35 @@ def run_p1_baseline(examples, task):
     return predictions, typed
 
 
-def run_model(build, examples, task):
+def lm_scores(train, targets, lam, background):
+    """Language-model feature for `targets`, from models fitted on `train`."""
+    scorer = ContextScorer(lam=lam, background=background).fit(
+        [e.context for e in train if e.is_relation],
+        [e.context for e in train if not e.is_relation])
+    return {e.key: scorer.score(e.context) for e in targets}
+
+
+def with_lm(train, test, lam, background):
+    """Feature dicts with the language-model score added.
+
+    The training examples get theirs from an *inner* leave-one-case-out pass:
+    a model that has already read a context finds it far likelier than it will
+    find an unseen one, so scoring the training set with models fitted on the
+    training set makes the feature look more reliable during fitting than it
+    ever is at prediction time, and the classifier over-weights it. Measured,
+    that mistake costs more than the feature earns (F1 0.670 against 0.723).
+    """
+    scores = {}
+    for held_out in sorted({e.case_id for e in train}):
+        inner_train = [e for e in train if e.case_id != held_out]
+        inner_test = [e for e in train if e.case_id == held_out]
+        scores.update(lm_scores(inner_train, inner_test, lam, background))
+    scores.update(lm_scores(train, test, lam, background))
+    attach = lambda e: {**e.features, "lm_score": scores[e.key]}
+    return [attach(e) for e in train], [attach(e) for e in test]
+
+
+def run_model(build, examples, task, lam=None, background=None):
     """Leave-one-case-out predictions for one model builder."""
     predictions, per_fold, typed_hits, fired = [], [], 0, 0
     for _, train, test in folds(examples):
@@ -75,12 +104,17 @@ def run_model(build, examples, task):
             labels = [ex.is_relation for ex in train]
         else:
             labels = [ex.relation or "NONE" for ex in train]
+        if lam is None:
+            train_feats = [ex.features for ex in train]
+            test_feats = [ex.features for ex in test]
+        else:
+            train_feats, test_feats = with_lm(train, test, lam, background)
         model = build()
-        model.fit([ex.features for ex in train], labels)
+        model.fit(train_feats, labels)
 
         fold_pred = []
-        for ex in test:
-            raw = model.predict(ex.features)
+        for ex, feats in zip(test, test_feats):
+            raw = model.predict(feats)
             if task == "binary":
                 pred = int(raw)
             else:
@@ -122,6 +156,13 @@ def main():
     ap.add_argument("--ablation", action="store_true", help="evaluate each feature group")
     ap.add_argument("--groups", default=",".join(DEFAULT_GROUPS),
                     help=f"comma-separated subset of {','.join(FEATURE_GROUPS)}")
+    ap.add_argument("--lm", action="store_true",
+                    help="add the n-gram language-model score as a feature")
+    ap.add_argument("--lam", type=float, default=1.0,
+                    help="1.0 = case corpus only; below that, interpolate with "
+                         "the UMLS definitions (requires --lm)")
+    ap.add_argument("--sweep-lam", action="store_true",
+                    help="sweep the interpolation weight instead of one run")
     args = ap.parse_args()
 
     groups = tuple(g for g in args.groups.split(",") if g)
@@ -157,8 +198,39 @@ def main():
         if sklearn_model(name) is not None:
             builders.append((label, lambda n=name: sklearn_model(n)))
 
+    background = None
+    lam = None
+    if args.lm:
+        definitions = load_definitions()
+        background = BackgroundLM(definitions) if definitions else None
+        lam = args.lam
+        source = (f"interpolated with {len(definitions)} UMLS definitions "
+                  f"(lambda={lam})" if background and lam < 1.0
+                  else "case corpus only")
+        print(f"  n-gram language model : on, {source}" + chr(10))
+        if args.lam < 1.0 and background is None:
+            print("  WARNING: no UMLS definitions found; lambda ignored.")
+            print("  Run the extraction step that writes "
+                  "data/interim/umls_definitions.csv first." + chr(10))
+
+    if args.sweep_lam:
+        definitions = load_definitions()
+        if not definitions:
+            print("ERROR: --sweep-lam needs data/interim/umls_definitions.csv",
+                  file=sys.stderr)
+            sys.exit(1)
+        shared = BackgroundLM(definitions)
+        print("  Interpolation sweep (logistic regression):")
+        print("  lambda=1.0 ignores the UMLS definitions; lower values lean on them." + chr(10))
+        for value in (1.0, 0.9, 0.8, 0.7, 0.5, 0.3):
+            predictions, per_fold, _ = run_model(
+                linear, examples, args.task, lam=value, background=shared)
+            report(f"lambda = {value:.1f}", predictions, per_fold)
+        return
+
     for label, build in builders:
-        predictions, per_fold, typed = run_model(build, examples, args.task)
+        predictions, per_fold, typed = run_model(build, examples, args.task,
+                                                 lam=lam, background=background)
         report(label, predictions, per_fold, typed)
 
     if not any(label.startswith(("Linear", "Random")) for label, _ in builders):

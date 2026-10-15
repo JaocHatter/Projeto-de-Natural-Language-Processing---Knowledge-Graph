@@ -66,6 +66,10 @@ class Example:
     head_text: str = ""
     tail_text: str = ""
     rule_path: str = field(default="")
+    # Tokens between the two entities, for ngram.ContextScorer. Kept on the
+    # example rather than turned into features here because the language models
+    # have to be refitted inside every fold.
+    context: list = field(default_factory=list)
 
 
 # --------------------------------------------------------------------------
@@ -188,6 +192,12 @@ def candidate_features(text, rel, assoc, ngram_counts, groups=DEFAULT_GROUPS):
 # --------------------------------------------------------------------------
 # Loading
 # --------------------------------------------------------------------------
+def context_tokens(text: str, start: int, end: int) -> list[str]:
+    """The words between two entities, as the language models see them."""
+    from .ngram import tokenize
+    return tokenize(text[start:end])
+
+
 def _gold_key(row):
     return (row["case_id"], str(row["head_start"]), str(row["head_end"]),
             str(row["tail_start"]), str(row["tail_end"]))
@@ -228,8 +238,10 @@ def load_examples(groups=DEFAULT_GROUPS, cases_path: Path = DEFAULT_CASES,
             row = gold.get(key)
             if row is None:          # candidate nobody judged: not evaluable
                 continue
+            start = head["end"] if head else rel["sent_start"]
             collected[key] = Example(
                 case_id=case["case_id"], key=key,
+                context=context_tokens(text, start, tail["start"]),
                 features=candidate_features(text, rel, assoc, ngram_counts, groups),
                 is_relation=int(row["is_relation"]),
                 relation=row["gold_relation"],
