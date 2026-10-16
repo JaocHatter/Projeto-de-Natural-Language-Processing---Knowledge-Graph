@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-kg"
+version = "0.1.0"
+description = "Knowledge graph of clinical case reports: entities, measurements and relations"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "streamlit>=1.63",
+    "pandas>=2.0",
+]
+
+[project.scripts]
+clinical-kg = "clinical_kg.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"clinical_kg.graph" = ["assets/**/*"]
