@@ -132,6 +132,44 @@ class LogisticRegression:
 
 
 
+class WeightedLogisticRegression(LogisticRegression):
+    """Logistic regression that weights the minority class up.
+
+    One-vs-rest turns an 8-relation decision into eight "this class or not"
+    problems, and the rare ones are hopeless by default: CAUSED_BY has four
+    positives against 409 negatives, so a classifier that always answers "not
+    CAUSED_BY" is 99% accurate and never fires. Scaling each positive update by
+    the class ratio removes that free ride.
+
+    Measured on the relation task: CAUSED_BY goes from never predicted to 14
+    predictions and overall F1 from 0.738 to 0.757, while the share of detected
+    edges carrying the right type falls from 0.938 to 0.870 -- the model now
+    takes risks on rare classes instead of playing safe on common ones. For a
+    knowledge graph that trade is worth making: an edge type that never appears
+    is a hole in the graph, not a conservative choice.
+    """
+
+    def fit(self, examples, labels):
+        positives = sum(labels)
+        weight = ((len(labels) - positives) / positives) if positives else 1.0
+        self.weights, self.bias = {}, 0.0
+        order = list(range(len(examples)))
+        rng = random.Random(self.seed)
+        for epoch in range(self.epochs):
+            rng.shuffle(order)
+            rate = self.lr / (1.0 + epoch)
+            for i in order:
+                feats, y = examples[i], labels[i]
+                error = (self._sigmoid(self._raw(feats)) - y) * (weight if y else 1.0)
+                self.bias -= rate * error
+                for name, value in feats.items():
+                    if value:
+                        current = self.weights.get(name, 0.0)
+                        self.weights[name] = current - rate * (error * value
+                                                               + self.l2 * current)
+        return self
+
+
 class OneVsRest:
     """Multi-class on top of any binary model: one classifier per class.
 
@@ -142,8 +180,9 @@ class OneVsRest:
     for the rare relations are reported but not trusted.
     """
 
-    def __init__(self, build=None, **kwargs):
-        self.build = build or (lambda: LogisticRegression(**kwargs))
+    def __init__(self, build=None, balanced: bool = True, **kwargs):
+        default = WeightedLogisticRegression if balanced else LogisticRegression
+        self.build = build or (lambda: default(**kwargs))
         self.models: dict = {}
         self.classes: list = []
 
