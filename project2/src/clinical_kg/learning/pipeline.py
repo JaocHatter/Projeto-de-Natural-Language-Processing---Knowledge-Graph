@@ -37,6 +37,7 @@ import argparse
 import collections
 import csv
 import json
+import random
 import sys
 from pathlib import Path
 
@@ -207,9 +208,10 @@ def medir(previsoes):
     detectadas = [(e, p_) for e, p_ in previsoes if p_ != NENHUMA and e.eh_relacao]
     tipo = (sum(1 for e, p_ in detectadas if p_ == e.relacao) / len(detectadas)) if detectadas else 0.0
 
-    por_caso = {}
+    por_caso, contagem_por_caso = {}, {}
     for caso in sorted({e.caso for e, _ in previsoes}):
-        por_caso[caso] = prf(*contar([(e, p_) for e, p_ in previsoes if e.caso == caso]))[2]
+        contagem_por_caso[caso] = contar([(e, p_) for e, p_ in previsoes if e.caso == caso])
+        por_caso[caso] = prf(*contagem_por_caso[caso])[2]
 
     por_relacao = {}
     for rel in sorted({e.relacao for e, _ in previsoes} - {NENHUMA}):
@@ -218,7 +220,36 @@ def medir(previsoes):
         rfn = sum(1 for e, p_ in previsoes if e.relacao == rel and p_ != rel)
         por_relacao[rel] = (rvp, rfp, rfn)
     return dict(vp=vp, fp=fp, fn=fn, p=p, r=r, f1=f1, tipo=tipo,
-                por_caso=por_caso, por_relacao=por_relacao)
+                por_caso=por_caso, por_relacao=por_relacao, contagem_por_caso=contagem_por_caso)
+
+
+def bootstrap_pareado(contagens_a: dict, contagens_b: dict, repeticoes: int = 10000, semente: int = 0) -> dict:
+    """Intervalo de confiança da diferença de F1 (A menos B), remuestreando CASOS.
+
+    Em cada repetição sorteiam-se casos com reposição (o mesmo sorteio para A e B, daí
+    "pareado"), somam-se as contagens (vp, fp, fn) deles e calcula-se o F1 de cada método
+    no conjunto sorteado. O intervalo de 95% são os percentis 2,5 e 97,5 das diferenças.
+    Se ele fica todo acima de zero, A supera B de forma consistente entre os casos;
+    se inclui o zero, a diferença não se distingue do acaso.
+    """
+    casos = sorted(contagens_a)
+    rng = random.Random(semente)
+
+    def f1(contagens, sorteio):
+        vp = sum(contagens[c][0] for c in sorteio)
+        fp = sum(contagens[c][1] for c in sorteio)
+        fn = sum(contagens[c][2] for c in sorteio)
+        return prf(vp, fp, fn)[2]
+
+    diferencas = []
+    for _ in range(repeticoes):
+        sorteio = rng.choices(casos, k=len(casos))
+        diferencas.append(f1(contagens_a, sorteio) - f1(contagens_b, sorteio))
+    diferencas.sort()
+    n = len(diferencas)
+    return {"diferenca": sum(diferencas) / n,
+            "ic_inf": diferencas[int(0.025 * n)], "ic_sup": diferencas[int(0.975 * n) - 1],
+            "prob_positiva": sum(1 for d in diferencas if d > 0) / n}
 
 
 def confronto(por_caso, referencia, tol=1e-9):
@@ -263,6 +294,21 @@ def cmd_treinar(args):
                ["variante", "descricao", "precisao", "cobertura", "f1", "tipo_acertado",
                 "f1_caso_media", "f1_caso_dp", "casos_vs_p1_V-E-D", "casos_vs_estrutura_V-E-D"], linhas)
     gravar_csv(SAIDA / "metricas_por_caso.csv", ["variante", "caso", "f1"], linhas_caso)
+
+    # Intervalos de confiança (bootstrap por caso) das diferenças de F1 mais importantes.
+    contrastes = [("completo", "p1"), ("estrutura", "p1"), ("lexico", "p1"),
+                  ("completo", "estrutura"), ("pmi", "estrutura"), ("lm", "estrutura"),
+                  ("lexico", "estrutura")]
+    linhas_boot = []
+    print("\nDiferença de F1 (A − B), bootstrap por caso, IC 95%:")
+    for a, b in contrastes:
+        r = bootstrap_pareado(resultados[a]["contagem_por_caso"], resultados[b]["contagem_por_caso"])
+        linhas_boot.append((a, b, f"{r['diferenca']:+.4f}", f"{r['ic_inf']:+.4f}",
+                            f"{r['ic_sup']:+.4f}", f"{r['prob_positiva']:.3f}"))
+        marca = "distinguível de zero" if r["ic_inf"] > 0 or r["ic_sup"] < 0 else "inclui o zero"
+        print(f"  {a:<10} − {b:<10} {r['diferenca']:+.3f}  [{r['ic_inf']:+.3f}, {r['ic_sup']:+.3f}]  {marca}")
+    gravar_csv(SAIDA / "metricas_bootstrap.csv",
+               ["a", "b", "diferenca_f1", "ic95_inf", "ic95_sup", "prob_a_maior"], linhas_boot)
 
     linhas_rel = []
     for nome in ("p1", "completo"):

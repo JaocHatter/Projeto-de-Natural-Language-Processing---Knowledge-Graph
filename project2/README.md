@@ -125,15 +125,31 @@ O confronto compara o Projeto 1 (regras) com o Projeto 2 (aprendido) em três n�
 listas de achados (`COORDINATE_WITH`: 185 → 426) e menos `HAS_DIAGNOSIS`/`HAS_FINDING`, que o P1 dispara como
 categoria de reserva.
 
+**Intervalos de confiança.** Com 10 casos, "ganha em 9 de 10" precisa de um intervalo. Fez-se um *bootstrap
+pareado por caso* (10.000 repetições: sorteiam-se casos com reposição, o mesmo sorteio para os dois métodos, e
+calcula-se a diferença de F1; o intervalo de 95% são os percentis 2,5 e 97,5). Resultado
+([`metricas_bootstrap.csv`](data/processed/metricas_bootstrap.csv)):
+
+| Diferença de F1 (A − B) | Diferença | IC 95% | Distinguível de zero? |
+|---|---|---|---|
+| P2 completo − P1 | +0,118 | [+0,079, +0,165] | **sim** |
+| P2 só estrutura − P1 | +0,124 | [+0,083, +0,175] | **sim** |
+| P2 n-gramas diretos − P1 | +0,090 | [+0,012, +0,165] | sim |
+| P2 completo − só estrutura | −0,006 | [−0,025, +0,015] | não |
+| P2 + PMI − só estrutura | −0,001 | [−0,020, +0,021] | não |
+| P2 + modelo de linguagem − só estrutura | +0,004 | [−0,010, +0,018] | não |
+| P2 n-gramas diretos − só estrutura | −0,034 | [−0,097, +0,027] | não |
+
 **Como ler isso, com honestidade.**
 
-* O modelo aprendido supera as regras de forma consistente: F1 de 0,63 para ~0,75, acerto do tipo de 0,77 para
-  ~0,91, e vitória em 9 dos 10 casos.
+* O modelo aprendido supera as regras de forma consistente: F1 de 0,63 para ~0,75 (diferença de +0,12, com
+  intervalo de 95% inteiramente acima de zero), acerto do tipo de 0,77 para ~0,91, e vitória em 9 dos 10 casos.
 * **As variantes com PMI e modelo de linguagem não se distinguem da variante só de estrutura.** Ficam entre 0,744 e
   0,755 de F1, com desvio entre casos de 0,06 a 0,08. Contra a de estrutura, o PMI ganha em 4 casos e perde em 4, o
   modelo de linguagem em 3 e 3, e o completo ganha em 4 e **perde em 6**.
-* **O uso direto dos n-gramas também não ajudou.** Com cada frase de 1 a 3 palavras como atributo, o F1 cai para
-  0,718 e o desvio entre casos sobe (0,166); perde para a variante só de estrutura em 7 dos 10 casos. A
+* **O uso direto dos n-gramas também não ajudou.** Com cada frase de 1 a 3 palavras como atributo, o F1 fica em
+  0,718 (a estimativa é menor que a de estrutura, mas o intervalo da diferença inclui o zero) e o desvio entre
+  casos sobe (0,166); perde para a variante só de estrutura em 7 dos 10 casos. A
   precisão e o tipo certo sobem (0,72 e 0,93) porque o modelo passa a disparar menos (cobertura 0,72). Nem
   `REVEALED_BY`, a relação mais dependente de uma palavra-gatilho, melhora de forma relevante (F1 0,36 → 0,38), e
   `TREATED_WITH` piora (0,58 → 0,47).
@@ -210,7 +226,8 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 ![Frases entre entidades](assets/images/frases_entre_entidades.png)
 
 * **N-gramas e PMI: o que dizem os dados.** Usar as frases diretamente como atributos (a variante mais óbvia)
-  piorou o F1 (0,750 → 0,718): com 413 exemplos, milhares de frases viram parâmetros sem evidência. O topo do PMI são termos clínicos ("pleural effusion"), não gatilhos;
+  não melhorou o F1 (0,750 → 0,718, diferença que o bootstrap não distingue de zero): com 413 exemplos, milhares
+  de frases viram parâmetros sem evidência. O topo do PMI são termos clínicos ("pleural effusion"), não gatilhos;
   os gatilhos têm PMI baixo porque são palavras frequentes. O `lm_score` separa as classes dentro da amostra
   (0,26 contra −0,15) e **quase não separa fora dela** (0,08 contra 0,03), por isso o empilhamento era necessário
   e por isso o ganho dos n-gramas é pequeno.
@@ -221,6 +238,14 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
   0,89 para 0,91. Mas `CAUSED_BY` **nunca foi aprendida** em nenhuma configuração testada (pesos máximos de 1 a
   20): com 4 exemplos não há evidência. O ajuste foi escolhido olhando a mesma validação de 10 casos, o que
   dá um risco leve de superajuste.
+* **UMLS como fonte de etiquetas: avaliada e descartada.** As relações do próprio UMLS (`MRREL`) já filtradas para
+  o corpus são 213 (110 `TREATED_WITH`, 100 `LOCATED_IN`, 3 `CAUSED_BY`), mas só **10 dos 2.391 pares candidatos**
+  (0,4%) têm alguma relação do UMLS entre seus dois conceitos. UMLS descreve conhecimento geral, não o que cada
+  texto afirma, cobre só 3 dos 8 tipos e não traz negativos; por isso não serve para rotular os pares.
+* **Sobre o conjunto de avaliação (*gold*).** Os 413 pares julgados vêm de 10 dos 50 casos e só incluem pares que
+  o gerador de candidatos do Projeto 1 propôs; relações fora desse conjunto não são medidas. Além disso, os
+  julgamentos foram feitos com apoio de um modelo de linguagem e revisados pela equipe. Por isso, os números de F1
+  comparam os dois métodos sobre esse recorte, e não devem ser lidos como o desempenho em qualquer texto clínico.
 * **Limitações.** Poucos dados (413 pares em 10 casos); o modelo final foi treinado com os pares de 10 dos 50
   casos, então as relações desses 10 são otimistas e as dos outros 40 são previsões reais; entidades e
   `assertion_status` continuam vindo do P1.

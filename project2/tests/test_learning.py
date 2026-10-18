@@ -10,8 +10,8 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloA
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
-from clinical_kg.learning.pipeline import (combinar_relacoes, confronto, jaccard, linha_ml,
-                                           medir, prf, tabela_gatilhos)
+from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto, jaccard,
+                                           linha_ml, medir, prf, tabela_gatilhos)
 from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
@@ -340,6 +340,32 @@ class TestComparacao(unittest.TestCase):
         self.assertNotIn("of the", por_frase)        # só palavras de função
         self.assertNotIn("the patient", por_frase)   # começa com artigo
         self.assertIn("treated", vistos)
+
+
+class TestBootstrap(unittest.TestCase):
+    CASOS = {f"c{i}": (8, 2, 2) for i in range(10)}          # (vp, fp, fn) iguais nos 10 casos
+
+    def test_metodos_identicos_nao_se_distinguem(self):
+        r = bootstrap_pareado(self.CASOS, self.CASOS, repeticoes=500)
+        self.assertEqual((r["diferenca"], r["ic_inf"], r["ic_sup"]), (0.0, 0.0, 0.0))
+
+    def test_metodo_claramente_melhor_tem_intervalo_acima_de_zero(self):
+        melhor = {f"c{i}": (9, 1, 1) for i in range(10)}
+        r = bootstrap_pareado(melhor, self.CASOS, repeticoes=500)
+        self.assertGreater(r["ic_inf"], 0)
+        self.assertEqual(r["prob_positiva"], 1.0)
+
+    def test_diferenca_instavel_inclui_o_zero(self):
+        a = {f"c{i}": ((9, 1, 1) if i % 2 else (6, 4, 4)) for i in range(10)}
+        b = {f"c{i}": ((6, 4, 4) if i % 2 else (9, 1, 1)) for i in range(10)}
+        r = bootstrap_pareado(a, b, repeticoes=2000)
+        self.assertLess(r["ic_inf"], 0)
+        self.assertGreater(r["ic_sup"], 0)
+
+    def test_reprodutivel_com_a_mesma_semente(self):
+        melhor = {f"c{i}": (9 - i % 3, 1 + i % 2, 1) for i in range(10)}
+        self.assertEqual(bootstrap_pareado(melhor, self.CASOS, 300, semente=5),
+                         bootstrap_pareado(melhor, self.CASOS, 300, semente=5))
 
 
 class TestAtributos(unittest.TestCase):

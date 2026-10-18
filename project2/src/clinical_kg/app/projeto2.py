@@ -162,6 +162,15 @@ def aba_comparacao(dados):
                "casos ≈ 0,06 a 0,09). O que se sustenta é que o aprendido supera as regras em 9 de 10 "
                "casos; não que o PMI ou o modelo de linguagem, sozinhos, melhorem o F1.")
 
+    boot = SAIDA / "metricas_bootstrap.csv"
+    if boot.exists():
+        st.subheader("Intervalos de confiança (bootstrap por caso)")
+        st.caption("Diferença de F1 (A − B), 10.000 repetições. Se o intervalo de 95% inclui o zero, a diferença "
+                   "não se distingue do acaso com estes 10 casos.")
+        st.dataframe(tabela(boot, revisao(boot)).rename(columns={
+            "diferenca_f1": "diferença F1", "ic95_inf": "IC95 inf", "ic95_sup": "IC95 sup",
+            "prob_a_maior": "P(A > B)"}), hide_index=True, width="stretch")
+
     por_caso = tabela(SAIDA / "metricas_por_caso.csv", revisao(SAIDA / "metricas_por_caso.csv"))
     st.subheader("F1 caso a caso")
     st.bar_chart(por_caso[por_caso.variante.isin(["p1", "completo"])]
