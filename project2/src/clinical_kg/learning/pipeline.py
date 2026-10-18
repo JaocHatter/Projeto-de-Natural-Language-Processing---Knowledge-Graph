@@ -617,7 +617,7 @@ def cmd_comparar(args):
     ng1, ng2 = len(g1), len(g2)
     n1, n2 = len(conectados(g1)), len(conectados(g2))
     linhas = [
-        ("relações extraídas (50 casos)", total["p1"], total["p2"], "pares de entidades classificados como relação"),
+        ("relações extraídas (50 casos)", total["p1"], total["p2"], "pares únicos (cabeça, cauda, tipo); relacoes_ml.csv pode ter linhas repetidas do mesmo par"),
         ("relações por caso", round(total["p1"] / len(casos), 1), round(total["p2"] / len(casos), 1), ""),
         ("relações idênticas (mesmo par e tipo)", total["ambos"], total["ambos"], f"Jaccard {total['jaccard']}"),
         ("arestas do grafo (conceitos agregados)", ng1, ng2, "arestas clínicas únicas por caso"),

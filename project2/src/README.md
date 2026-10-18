@@ -62,3 +62,50 @@ clinical_kg/
 Full architecture, layers and graph schema:
 [`clinical_kg/README.md`](clinical_kg/README.md). Relation extraction process
 in detail: [`clinical_kg/relations/README.md`](clinical_kg/relations/README.md).
+
+## Project 2: n-grams, PMI and logistic regression
+
+An extension of Project 1 that replaces the hand-written rules' decision with a statistical model
+(no LLMs, no embeddings). The new code lives in `clinical_kg/learning/`:
+
+```text
+learning/
+├── ngramas.py     # n-grams, PMI, LLR and a bigram language model
+├── modelo.py      # per-pair features, hand-written logistic regression, stacking, ModeloAprendido
+└── pipeline.py    # subcommands: tabelas, treinar, extrair, comparar
+```
+
+Everything runs with one command, in the right order (the UMLS gazetteer is not needed):
+
+```bash
+bash run_all.sh                 # tabelas -> treinar -> extrair -> comparar (~1 min)
+bash run_all.sh --teste         # run the tests first
+bash run_all.sh --notebook      # also execute pipelines/notebooks/projeto2.ipynb
+make p2                         # the same, without bash
+```
+
+On Windows, `run_all.sh` runs in Git Bash or WSL. Each stage also runs on its own:
+
+```bash
+PYTHONPATH=src python -m clinical_kg.learning.pipeline tabelas   # data/interim/tabela_*.csv
+PYTHONPATH=src python -m clinical_kg.learning.pipeline treinar   # metrics, weights and modelo.json
+PYTHONPATH=src python -m clinical_kg.learning.pipeline extrair   # data/processed/relacoes_ml.csv
+PYTHONPATH=src python -m clinical_kg.learning.pipeline comparar  # comparacao_*.csv and figures
+```
+
+Optional dependencies (the core uses only the standard library; the viewer uses `streamlit` and `pandas`):
+
+```bash
+pip install -e ".[verificacao]"   # scikit-learn: cross-checks the hand-written logistic regression
+pip install -e ".[figuras]"       # matplotlib: draws the PNGs written by `comparar`
+```
+
+**P1 × P2 viewer** (graphs coloured by method, metrics, PMI and model weights):
+
+```bash
+make app-p2        # or: PYTHONPATH=src python -m streamlit run src/clinical_kg/app/projeto2.py
+```
+
+Corpus cases use the files already extracted. The *Caso novo (ao vivo)* option needs the UMLS
+gazetteer: keep it at `data/interim/gazetteer.db`, or point to another location with the
+`CLINICAL_KG_GAZETTEER` environment variable. The gazetteer is licensed content and is **not tracked by git**.
