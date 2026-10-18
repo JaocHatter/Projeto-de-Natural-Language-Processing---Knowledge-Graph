@@ -171,6 +171,17 @@ def aba_comparacao(dados):
             "diferenca_f1": "diferença F1", "ic95_inf": "IC95 inf", "ic95_sup": "IC95 sup",
             "prob_a_maior": "P(A > B)"}), hide_index=True, width="stretch")
 
+    fraco = SAIDA / "metricas_fraco.csv"
+    if fraco.exists():
+        st.subheader("Supervisão fraca: treinar só com as etiquetas das regras do P1")
+        st.caption("As variantes *fraco_* aprendem com o que o P1 decidiu nos 50 casos (sem gold) e são provadas no "
+                   "gold. *Recuperadas*: relações reais que o P1 perdeu e o modelo achou; *FP removidos/novos*: "
+                   "falsos positivos do P1 que o modelo eliminou ou criou.")
+        st.dataframe(tabela(fraco, revisao(fraco)).rename(columns={
+            "concordancia_com_p1": "concorda com o P1", "relacoes_recuperadas": "recuperadas",
+            "relacoes_perdidas": "perdidas", "falsos_positivos_removidos": "FP removidos",
+            "falsos_positivos_novos": "FP novos"}), hide_index=True, width="stretch")
+
     por_caso = tabela(SAIDA / "metricas_por_caso.csv", revisao(SAIDA / "metricas_por_caso.csv"))
     st.subheader("F1 caso a caso")
     st.bar_chart(por_caso[por_caso.variante.isin(["p1", "completo"])]

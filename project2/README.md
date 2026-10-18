@@ -10,10 +10,12 @@ Os slides serão compartilhados e adicionados através de um link do Canva quand
 * **Caderno executado, com as saídas salvas** (o GitHub o exibe direto no navegador):
   [`pipelines/notebooks/projeto2.ipynb`](pipelines/notebooks/projeto2.ipynb). Conta o projeto na ordem
   n-gramas → PMI → modelo de linguagem → regressão logística → comparação com o Projeto 1.
-* **Tudo regenerado com um comando** (cerca de 1 minuto, sem precisar do gazetteer UMLS):
+* **Tudo regenerado com um comando** (cerca de 6 minutos; `--rapido` pula a supervisão fraca e leva ~1 minuto;
+  não precisa do gazetteer UMLS):
 
   ```bash
   bash run_all.sh            # tabelas -> treinar -> extrair -> comparar   (ou: make p2)
+  bash run_all.sh --rapido   # sem a supervisão fraca (a parte lenta)
   ```
 
 * **Visualizador interativo** dos grafos do P1 (regras), do P2 (aprendido) e da comparação, com cada aresta
@@ -85,7 +87,13 @@ flowchart LR
 5. **Ablação do uso direto dos n-gramas.** Cada frase de 1 a 3 palavras do texto entre as entidades, vista em
    pelo menos 2 pares de treino, vira um atributo binário. Serve só para medir (não alimenta o grafo): responde se
    o uso mais direto dos n-gramas faria melhor do que a versão comprimida.
-6. **Avaliação.** 413 pares julgados à mão em 10 casos (o *gold*, construído no Projeto 1). Validação **deixando
+6. **Supervisão fraca** (*Possibilidade 4* da guia do professor). O mesmo modelo, treinado **sem nenhum
+   julgamento humano**: as regras do Projeto 1 rotulam todos os 2.391 candidatos dos 50 casos (o tipo que
+   propõem se o `score` passa do limiar, senão "nenhuma") e o modelo aprende com esses rótulos dos **outros 49
+   casos**; a prova é o gold do caso retirado, que nunca entra no treino. Responde às perguntas da guia: o modelo
+   reproduz as regras? generaliza? acha o que as regras perderam? reduz falsos positivos? E dá aos n-gramas 6
+   vezes mais dados do que no treino com o gold.
+7. **Avaliação.** 413 pares julgados à mão em 10 casos (o *gold*, construído no Projeto 1). Validação **deixando
    um caso de fora**: em cada rodada, o modelo, as contagens de PMI e os modelos de linguagem são refeitos sem o
    caso de teste, então nenhum número é medido sobre texto que o modelo já leu.
 
@@ -104,6 +112,11 @@ O confronto compara o Projeto 1 (regras) com o Projeto 2 (aprendido) em três n�
 | P2 + modelo de linguagem | 0,679 | 0,851 | 0,755 | 0,888 | 0,726 ± 0,081 | 9-0-1 |
 | **P2 completo** | 0,679 | 0,824 | 0,744 | 0,912 | 0,725 ± 0,059 | 9-0-1 |
 | P2 completo (scikit-learn) | 0,663 | 0,864 | 0,750 | 0,895 | 0,733 ± 0,060 | 9-0-1 |
+| *Supervisão fraca:* só estrutura | 0,581 | 0,783 | 0,667 | 0,780 | 0,647 ± 0,084 | 7-0-3 |
+| *Supervisão fraca:* n-gramas diretos | 0,597 | 0,656 | 0,625 | 0,779 | 0,623 ± 0,103 | 4-1-5 |
+| *Supervisão fraca:* completo | 0,586 | 0,769 | 0,665 | 0,788 | 0,642 ± 0,093 | 7-0-3 |
+
+As três últimas linhas se treinam com as **etiquetas das regras do P1** (49 casos, sem gold); as demais, com o gold.
 
 ![F1 por variante](assets/images/f1_variantes.png)
 ![F1 caso a caso](assets/images/f1_por_caso.png)
@@ -139,6 +152,11 @@ calcula-se a diferença de F1; o intervalo de 95% são os percentis 2,5 e 97,5).
 | P2 + PMI − só estrutura | −0,001 | [−0,020, +0,021] | não |
 | P2 + modelo de linguagem − só estrutura | +0,004 | [−0,010, +0,018] | não |
 | P2 n-gramas diretos − só estrutura | −0,034 | [−0,097, +0,027] | não |
+| Fraco completo − P1 | +0,038 | [−0,003, +0,082] | não |
+| Fraco só estrutura − P1 | +0,040 | [+0,007, +0,075] | sim |
+| Fraco n-gramas diretos − P1 | −0,001 | [−0,037, +0,041] | não |
+| Fraco n-gramas diretos − fraco só estrutura | −0,041 | [−0,059, −0,016] | **sim (pior)** |
+| Fraco completo − P2 completo (gold) | −0,080 | [−0,119, −0,042] | **sim (pior)** |
 
 **Como ler isso, com honestidade.**
 
@@ -155,6 +173,12 @@ calcula-se a diferença de F1; o intervalo de 95% são os percentis 2,5 e 97,5).
   `TREATED_WITH` piora (0,58 → 0,47).
 * O ganho vem sobretudo dos atributos estruturais (tipos de entidade, distância, pontuação) e de ter um
   classificador treinado, não dos n-gramas, nem comprimidos (PMI, modelo de linguagem) nem diretos.
+* **Supervisão fraca: com mais dados, os n-gramas fazem o modelo imitar as regras, não superá-las.** Treinado só
+  com as etiquetas do P1 (2.391 candidatos), o modelo com n-gramas diretos fica em F1 0,625, igual ao do P1
+  (0,628), e **concorda com as decisões do P1 em 85,5%** dos pares, contra 77,5% do modelo só de estrutura:
+  as frases aprendem o léxico de gatilhos que as regras já usavam. Mas isso o torna *pior* que a variante só de
+  estrutura (−0,041, intervalo que não inclui zero), porque também memoriza os erros das regras. O treino com
+  o gold (413 julgamentos humanos) supera o treino com 2.391 etiquetas das regras (−0,080 para o fraco completo).
 
 ## Trabalhos Estudados
 
@@ -212,7 +236,7 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 * **pandas e matplotlib**: tabelas do visualizador e as figuras (laranja = P1, verde = P2).
 * **SQLite (gazetteer UMLS)**: reconhecimento de entidades, herdado do P1; licenciado e fora do git.
 * **nbformat e nbclient**: executam o caderno para guardá-lo com as saídas.
-* **Testes**: 112 testes (`python -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
+* **Testes**: 120 testes (`python -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
   o score de um exemplo não depende do próprio rótulo.
 
 ## Resultados
@@ -231,6 +255,14 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
   os gatilhos têm PMI baixo porque são palavras frequentes. O `lm_score` separa as classes dentro da amostra
   (0,26 contra −0,15) e **quase não separa fora dela** (0,08 contra 0,03), por isso o empilhamento era necessário
   e por isso o ganho dos n-gramas é pequeno.
+* **Supervisão fraca e n-gramas: a resposta da pergunta central.** Com as etiquetas do P1 em todos os candidatos
+  dos 50 casos, a variante só de estrutura chega a F1 0,667, um pouco acima do P1 (+0,040, IC [+0,007, +0,075]), e
+  mostra o que as regras perdem: **recupera 35 relações que o P1 não via** (perde 7), remove 11 falsos positivos
+  das regras, mas introduz 40 novos. Os n-gramas diretos, agora com 6 vezes mais dados, **reproduzem o
+  comportamento das regras** (F1 0,625, concordância de 85,5% com o P1) sem superá-las. Resposta honesta: os
+  n-gramas capturam bem o léxico de gatilhos escrito à mão, mas, com etiquetas que vêm das próprias regras, não
+  há de onde aprender algo além delas. Isso sugere (hipótese, não testada) que, para ir além das regras, fariam
+  falta mais julgamentos humanos e não apenas mais texto.
 * **Um achado: o peso da classe rara estragou `CAUSED_BY`.** Com 4 exemplos, o peso (positivos × negativos /
   positivos, teto 20) fazia o modelo disparar a relação em quase qualquer par: **99 arestas nos 50 casos contra 35
   do P1**, e F1 zero na validação. A correção é uma regra geral, não um remendo: o peso de uma classe nunca passa
@@ -258,7 +290,7 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 * **No desenvolvimento: apoio de um assistente de IA.** O desenvolvimento do Projeto 2 contou com o apoio de um
   assistente de IA (Claude Code) em tarefas de implementação, depuração, revisão de código, escrita de testes e de
   documentação, sob a direção da equipe, que definia o plano, revisava cada etapa e aprovava cada alteração. O
-  resultado foi corrigido e validado pela suíte de testes (112 testes) e pelos números reproduzíveis de
+  resultado foi corrigido e validado pela suíte de testes (120 testes) e pelos números reproduzíveis de
   `run_all.sh`.
 * **Proveniência do gold.** Como descrito no README do Projeto 1, o conjunto de 413 pares julgados foi construído
   com o anotador interativo e **com apoio de um modelo de linguagem** na proposta dos julgamentos, revisada pela

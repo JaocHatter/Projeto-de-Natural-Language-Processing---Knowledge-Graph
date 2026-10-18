@@ -3,6 +3,7 @@
 #
 #   bash run_all.sh               # tabelas -> treinar -> extrair -> comparar
 #   bash run_all.sh --teste       # roda antes a suíte de testes
+#   bash run_all.sh --rapido      # pula a supervisão fraca (a parte lenta): ~1 min em vez de ~6
 #   bash run_all.sh --notebook    # executa também pipelines/notebooks/projeto2.ipynb
 #
 # Entradas (já no repositório):  data/interim/cases_clean.csv, data/interim/gold_relations.csv,
@@ -27,13 +28,14 @@ if [ -z "$PYTHON" ]; then
 fi
 [ -n "$PYTHON" ] || { echo "ERRO: não encontrei o Python (defina PYTHON=/caminho/do/python)." >&2; exit 1; }
 
-TESTE=0; NOTEBOOK=0
+TESTE=0; NOTEBOOK=0; RAPIDO=0
 for argumento in "$@"; do
   case "$argumento" in
     --teste) TESTE=1 ;;
     --notebook) NOTEBOOK=1 ;;
-    -h|--help) sed -n '2,13p' "$0"; exit 0 ;;
-    *) echo "opção desconhecida: $argumento (use --teste, --notebook ou --help)" >&2; exit 2 ;;
+    --rapido) RAPIDO=1 ;;
+    -h|--help) sed -n '2,14p' "$0"; exit 0 ;;
+    *) echo "opção desconhecida: $argumento (use --teste, --rapido, --notebook ou --help)" >&2; exit 2 ;;
   esac
 done
 
@@ -54,7 +56,11 @@ passo "1/4  Tabelas de n-gramas, PMI e LLR"
 "$PYTHON" -m clinical_kg.learning.pipeline tabelas
 
 passo "2/4  Treinar: validação deixando um caso de fora, ablações e modelo final"
-"$PYTHON" -m clinical_kg.learning.pipeline treinar
+if [ "$RAPIDO" = 1 ]; then
+  "$PYTHON" -m clinical_kg.learning.pipeline treinar --sem-fraco
+else
+  "$PYTHON" -m clinical_kg.learning.pipeline treinar
+fi
 
 passo "3/4  Extrair: relações dos 50 casos com o modelo"
 "$PYTHON" -m clinical_kg.learning.pipeline extrair

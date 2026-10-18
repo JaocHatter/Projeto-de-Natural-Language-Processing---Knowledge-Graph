@@ -3,15 +3,16 @@
 import math
 import unittest
 
-from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloAprendido,
+from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, carregar_candidatos_fracos, Exemplo, ModeloAprendido,
                                          PontuadorLM,
                                          RegressaoLogistica, UmContraTodos,
                                          pontuacoes_fora_de_amostra,
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
-from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto, jaccard,
-                                           linha_ml, medir, prf, tabela_gatilhos)
+from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto,
+                                           diagnostico_fraco, jaccard, linha_ml, medir, prf,
+                                           prever_validando_fraco, tabela_gatilhos)
 from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
@@ -366,6 +367,61 @@ class TestBootstrap(unittest.TestCase):
         melhor = {f"c{i}": (9 - i % 3, 1 + i % 2, 1) for i in range(10)}
         self.assertEqual(bootstrap_pareado(melhor, self.CASOS, 300, semente=5),
                          bootstrap_pareado(melhor, self.CASOS, 300, semente=5))
+
+
+class TestSupervisaoFraca(unittest.TestCase):
+    def test_treina_so_com_as_etiquetas_fracas_e_nunca_com_as_do_gold(self):
+        # Fracos: "treated with" = relação. Gold: os MESMOS textos, mas com rótulo oposto.
+        fracos = _mini_corpus()
+        for e in fracos:
+            e.estruturais = {}
+        gold = [_exemplo("c1", 100 + i, ["treated", "with"], 0) for i in range(3)]   # gold diz NENHUMA
+        previsoes = prever_validando_fraco(gold, fracos, {"c1": "x", "c2": "x", "c3": "x", "c4": "x"},
+                                           "fraco_lexico")
+        # A previsão segue o que as regras (fracos) ensinaram, não o rótulo do gold.
+        self.assertTrue(all(p == "R" for _, p in previsoes))
+
+    def test_o_caso_de_teste_fica_fora_do_treino(self):
+        fracos = _mini_corpus()                  # casos c1..c4
+        for e in fracos:
+            e.estruturais = {}
+        gold = [_exemplo("c1", 100, ["treated", "with"], 1)]
+        usados = []
+        import clinical_kg.learning.pipeline as pl
+        original = pl.ModeloAprendido.ajustar
+        def espiao(self, exemplos, corpus, classificador=None):
+            usados.append({e.caso for e in exemplos})
+            return original(self, exemplos, corpus, classificador)
+        pl.ModeloAprendido.ajustar = espiao
+        try:
+            prever_validando_fraco(gold, fracos, {c: "x" for c in ("c1", "c2", "c3", "c4")}, "fraco_estrutura")
+        finally:
+            pl.ModeloAprendido.ajustar = original
+        self.assertEqual(usados, [{"c2", "c3", "c4"}])
+
+    def test_diagnostico_conta_recuperadas_perdidas_e_falsos_positivos(self):
+        def par(eh, p1_score):
+            e = _exemplo("c1", id(object()) % 10000, [], eh)
+            e.extras = {"p1_score": p1_score}
+            return e
+        previsoes = [
+            (par(1, 0.0), "R"),        # relação que o P1 perdeu e o modelo recuperou
+            (par(1, 2.0), NENHUMA),    # relação que o P1 achou e o modelo perdeu
+            (par(0, 2.0), NENHUMA),    # falso positivo do P1 que o modelo removeu
+            (par(0, 0.0), "R"),        # falso positivo novo do modelo
+            (par(1, 2.0), "R"),        # os dois acertam
+        ]
+        d = diagnostico_fraco(previsoes)
+        self.assertEqual((d["recuperadas"], d["perdidas"], d["fp_removidos"], d["fp_novos"]), (1, 1, 1, 1))
+        self.assertAlmostEqual(d["concordancia_com_p1"], 1 / 5)   # só o último par concorda
+
+    def test_candidatos_fracos_vem_das_regras_do_p1(self):
+        from clinical_kg.relations.core import features as regras_p1
+        fracos = carregar_candidatos_fracos()
+        self.assertEqual(len(fracos), 2391)
+        self.assertEqual(len({e.caso for e in fracos}), 50)
+        limiar = regras_p1.WEIGHTS["decide.threshold"]
+        self.assertTrue(all((e.relacao != NENHUMA) == (e.extras["p1_score"] >= limiar) for e in fracos))
 
 
 class TestAtributos(unittest.TestCase):

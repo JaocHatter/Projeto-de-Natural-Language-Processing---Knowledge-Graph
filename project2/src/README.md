@@ -78,7 +78,8 @@ learning/
 Everything runs with one command, in the right order (the UMLS gazetteer is not needed):
 
 ```bash
-bash run_all.sh                 # tabelas -> treinar -> extrair -> comparar (~1 min)
+bash run_all.sh                 # tabelas -> treinar -> extrair -> comparar (~5 min)
+bash run_all.sh --rapido        # skips the slow weak-supervision experiment (~1 min)
 bash run_all.sh --teste         # run the tests first
 bash run_all.sh --notebook      # also execute pipelines/notebooks/projeto2.ipynb
 make p2                         # the same, without bash

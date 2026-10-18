@@ -48,7 +48,8 @@ from clinical_kg.relations.extract import (CSV_COLUMNS, DEFAULT_FREQ, analyze_ca
                                            load_entities, load_frequencies, to_row)
 
 from .modelo import (NENHUMA, ModeloAprendido, UmContraTodosSklearn,
-                     atributos_estruturais, carregar_exemplos, sklearn_disponivel)
+                     atributos_estruturais, carregar_candidatos_fracos, carregar_exemplos,
+                     sklearn_disponivel)
 from .ngramas import Associacoes, contar_ngramas, tokenizar
 
 TABELA_NGRAMAS = PROJECT_ROOT / "data/interim/tabela_ngramas.csv"
@@ -66,7 +67,17 @@ VARIANTES = {
     "lm":        dict(usar_pmi=False, usar_lm=True),
     "completo":  dict(usar_pmi=True,  usar_lm=True),
 }
+# Supervisão fraca: o mesmo modelo, treinado com o que as regras do P1 decidiram nos 50 casos
+# (e não com o gold). Só o gold, de outros casos, serve de prova.
+VARIANTES_FRACAS = {
+    "fraco_estrutura": VARIANTES["estrutura"],
+    "fraco_lexico":    VARIANTES["lexico"],
+    "fraco_completo":  VARIANTES["completo"],
+}
 DESCRICAO = {
+    "fraco_estrutura": "treinado com as etiquetas do P1 (50 casos): só estrutura",
+    "fraco_lexico": "treinado com as etiquetas do P1 (50 casos): estrutura + frases diretas",
+    "fraco_completo": "treinado com as etiquetas do P1 (50 casos): completo (PMI + modelo de linguagem)",
     "p1": "Projeto 1 (regras à mão)",
     "estrutura": "só tipos, distância e pontuação",
     "lexico": "estrutura + frases (1 a 3 palavras) como atributos diretos",
@@ -195,6 +206,38 @@ def prever_validando(exemplos, textos, variante):
     return saida
 
 
+def prever_validando_fraco(gold, fracos, textos, variante):
+    """Supervisão fraca: treina com as etiquetas do P1, avalia no gold.
+
+    Em cada rodada um caso do gold fica de fora: o modelo aprende com os candidatos dos
+    OUTROS 49 casos, rotulados só pelas regras (as etiquetas do gold nunca entram no
+    treino), e é testado nos pares julgados à mão do caso retirado.
+    """
+    flags = VARIANTES_FRACAS[variante]
+    saida = []
+    for caso in sorted({e.caso for e in gold}):
+        treino = [e for e in fracos if e.caso != caso]
+        corpus = [t for c, t in textos.items() if c != caso]
+        modelo = ModeloAprendido(**flags).ajustar(treino, corpus)
+        saida += [(e, modelo.prever_exemplo(e)) for e in gold if e.caso == caso]
+    return saida
+
+
+def diagnostico_fraco(previsoes):
+    """As perguntas da guia: reproduz as regras? recupera o que elas perderam? tira falsos positivos?"""
+    limiar = regras_p1.WEIGHTS["decide.threshold"]
+    n = len(previsoes)
+    p1_diz = [e.extras["p1_score"] >= limiar for e, _ in previsoes]
+    modelo_diz = [p != NENHUMA for _, p in previsoes]
+    return {
+        "concordancia_com_p1": sum(a == b for a, b in zip(p1_diz, modelo_diz)) / n,
+        "recuperadas": sum(1 for (e, _), a, b in zip(previsoes, p1_diz, modelo_diz) if e.eh_relacao and b and not a),
+        "perdidas": sum(1 for (e, _), a, b in zip(previsoes, p1_diz, modelo_diz) if e.eh_relacao and a and not b),
+        "fp_removidos": sum(1 for (e, _), a, b in zip(previsoes, p1_diz, modelo_diz) if not e.eh_relacao and a and not b),
+        "fp_novos": sum(1 for (e, _), a, b in zip(previsoes, p1_diz, modelo_diz) if not e.eh_relacao and b and not a),
+    }
+
+
 def medir(previsoes):
     """Detecção (há relação?), tipo certo entre as detectadas, F1 por caso e por relação."""
     def contar(itens):
@@ -275,6 +318,17 @@ def cmd_treinar(args):
     for nome in nomes:
         resultados[nome] = medir(prever_validando(exemplos, textos, nome))
 
+    # Supervisão fraca: etiquetas das regras do P1 em todos os candidatos dos 50 casos
+    # (a parte mais lenta; `--sem-fraco` a pula).
+    diagnosticos = {}
+    if not args.sem_fraco:
+        fracos = carregar_candidatos_fracos(args.casos, args.entidades)
+        for nome in VARIANTES_FRACAS:
+            previsoes = prever_validando_fraco(exemplos, fracos, textos, nome)
+            resultados[nome] = medir(previsoes)
+            diagnosticos[nome] = diagnostico_fraco(previsoes)
+            nomes.append(nome)
+
     n_casos = len({e.caso for e in exemplos})
     print(f"{len(exemplos)} pares julgados, {n_casos} casos (deixa-um-caso-fora)\n")
     print(f"{'variante':<18}{'prec':>7}{'cob':>7}{'F1':>7}{'tipo':>7}   F1 por caso     vs P1 (V-E-D)")
@@ -298,7 +352,11 @@ def cmd_treinar(args):
     # Intervalos de confiança (bootstrap por caso) das diferenças de F1 mais importantes.
     contrastes = [("completo", "p1"), ("estrutura", "p1"), ("lexico", "p1"),
                   ("completo", "estrutura"), ("pmi", "estrutura"), ("lm", "estrutura"),
-                  ("lexico", "estrutura")]
+                  ("lexico", "estrutura"),
+                  ("fraco_completo", "p1"), ("fraco_estrutura", "p1"), ("fraco_lexico", "p1"),
+                  ("fraco_lexico", "fraco_estrutura"), ("fraco_completo", "fraco_estrutura"),
+                  ("fraco_completo", "completo")]
+    contrastes = [c for c in contrastes if c[0] in resultados and c[1] in resultados]
     linhas_boot = []
     print("\nDiferença de F1 (A − B), bootstrap por caso, IC 95%:")
     for a, b in contrastes:
@@ -309,6 +367,19 @@ def cmd_treinar(args):
         print(f"  {a:<10} − {b:<10} {r['diferenca']:+.3f}  [{r['ic_inf']:+.3f}, {r['ic_sup']:+.3f}]  {marca}")
     gravar_csv(SAIDA / "metricas_bootstrap.csv",
                ["a", "b", "diferenca_f1", "ic95_inf", "ic95_sup", "prob_a_maior"], linhas_boot)
+
+    if diagnosticos:
+        print("\nSupervisão fraca (treino com as etiquetas do P1, prova no gold):")
+        print(f"  {'variante':<17}{'concorda com P1':>16}{'recuperadas':>13}{'perdidas':>10}{'FP removidos':>14}{'FP novos':>10}")
+        linhas_fraco = []
+        for nome, d in diagnosticos.items():
+            print(f"  {nome:<17}{d['concordancia_com_p1']:>16.3f}{d['recuperadas']:>13}{d['perdidas']:>10}"
+                  f"{d['fp_removidos']:>14}{d['fp_novos']:>10}")
+            linhas_fraco.append((nome, f"{d['concordancia_com_p1']:.4f}", d["recuperadas"], d["perdidas"],
+                                 d["fp_removidos"], d["fp_novos"]))
+        gravar_csv(SAIDA / "metricas_fraco.csv",
+                   ["variante", "concordancia_com_p1", "relacoes_recuperadas", "relacoes_perdidas",
+                    "falsos_positivos_removidos", "falsos_positivos_novos"], linhas_fraco)
 
     linhas_rel = []
     for nome in ("p1", "completo"):
@@ -557,7 +628,7 @@ def desenhar_figuras(metricas, por_caso, por_tipo, gatilhos):
     # 1. F1 por variante
     nomes = [m["variante"] for m in metricas]
     valores = [float(m["f1"]) for m in metricas]
-    cores = [COR_P1 if n == "p1" else COR_P2 for n in nomes]
+    cores = [COR_P1 if n == "p1" else "#2563eb" if n.startswith("fraco_") else COR_P2 for n in nomes]
     fig, ax = plt.subplots(figsize=(7, 3.6))
     barras = ax.bar(nomes, valores, color=cores)
     ax.bar_label(barras, fmt="%.3f", padding=2)
@@ -714,6 +785,9 @@ def main(argv=None):
         if nome == "treinar":
             from clinical_kg.paths import DEFAULT_GOLD_RELATIONS
             s.add_argument("--gold", type=Path, default=DEFAULT_GOLD_RELATIONS)
+        if nome == "treinar":
+            s.add_argument("--sem-fraco", action="store_true",
+                           help="pula a supervisão fraca (a parte mais lenta: ~4 min)")
         if nome == "extrair":
             s.add_argument("--modelo", type=Path, default=MODELO_JSON)
             s.add_argument("--saida", type=Path, default=RELACOES_ML)

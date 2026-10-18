@@ -24,6 +24,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_GOLD_RELATIONS
+from clinical_kg.relations.core import features as regras_p1
 from clinical_kg.relations.extract import (DEFAULT_FREQ, analyze_case, load_entities,
                                            load_frequencies)
 
@@ -136,6 +137,34 @@ def carregar_exemplos(casos: Path = DEFAULT_CASES, entidades: Path = DEFAULT_ENT
             # nunca como atributo (ver `atributos`).
             extras={"p1_score": cand["score"], "p1_relacao": cand["relation"]}))
     return exemplos
+
+
+def carregar_candidatos_fracos(casos: Path = DEFAULT_CASES, entidades: Path = DEFAULT_ENTITIES) -> list[Exemplo]:
+    """TODOS os candidatos dos 50 casos, rotulados pelas regras do Projeto 1 (supervisão fraca).
+
+    O rótulo é o que o P1 decidiu: o tipo que ele propôs se o `score` passa do limiar, e
+    NENHUMA caso contrário. Nenhum julgamento humano entra aqui: as etiquetas herdam
+    os erros das regras, e é exatamente isso que o experimento mede.
+    """
+    with open(casos, encoding="utf-8") as f:
+        textos = {r["case_id"]: r["case_text"] for r in csv.DictReader(f)}
+    ents = load_entities(entidades)
+    freq = load_frequencies(DEFAULT_FREQ)
+    limiar = regras_p1.WEIGHTS["decide.threshold"]
+    saida = []
+    for caso in sorted(textos):
+        for cand in analyze_case(textos[caso], ents.get(caso, []), freq, threshold=float("-inf")):
+            cab = cand["head"]
+            chave = (caso, cab["start"] if cab else -1, cab["end"] if cab else -1,
+                     cand["tail"]["start"], cand["tail"]["end"])
+            estruturais, entre = atributos_estruturais(textos[caso], cand)
+            relacao = cand["relation"] if cand["score"] >= limiar else NENHUMA
+            saida.append(Exemplo(
+                caso=caso, chave=chave, estruturais=estruturais, entre=entre,
+                eh_relacao=int(relacao != NENHUMA), relacao=relacao,
+                cabeca=cab["surface_text"] if cab else "PATIENT", cauda=cand["tail"]["surface_text"],
+                extras={"p1_score": cand["score"], "p1_relacao": cand["relation"]}))
+    return saida
 
 
 # --------------------------------------------------------------------------
