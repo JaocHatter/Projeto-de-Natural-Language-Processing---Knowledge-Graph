@@ -3,7 +3,9 @@
 import math
 import unittest
 
-from clinical_kg.learning.modelo import (NENHUMA, RegressaoLogistica, UmContraTodos,
+from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, PontuadorLM,
+                                         RegressaoLogistica, UmContraTodos,
+                                         pontuacoes_fora_de_amostra,
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
@@ -138,6 +140,58 @@ class TestSklearn(unittest.TestCase):
         sk = UmContraTodosSklearn().ajustar(X, r)
         concordam = sum(a_mao.tem_relacao(x) == sk.tem_relacao(x) for x in X) / len(X)
         self.assertGreater(concordam, 0.85)
+
+
+def _exemplo(caso, i, entre, eh):
+    return Exemplo(caso=caso, chave=(caso, i, i, i, i), estruturais={}, entre=entre,
+                   eh_relacao=eh, relacao="R" if eh else NENHUMA)
+
+
+def _mini_corpus():
+    """Quatro casos; relações usam 'treated with', não-relações usam 'of the'."""
+    ex = []
+    for caso in ["c1", "c2", "c3", "c4"]:
+        for i in range(5):
+            ex.append(_exemplo(caso, i, ["treated", "with"], 1))
+            ex.append(_exemplo(caso, 10 + i, ["of", "the"], 0))
+    return ex
+
+
+class TestEmpilhamento(unittest.TestCase):
+    def test_pontuador_separa_os_dois_tipos_de_texto(self):
+        p = PontuadorLM().ajustar(_mini_corpus())
+        self.assertGreater(p.pontuar(["treated", "with"]), 0)
+        self.assertLess(p.pontuar(["of", "the"]), 0)
+        self.assertTrue(-1.0 <= p.pontuar(["xyzzy"]) <= 1.0)
+
+    def test_score_fora_de_amostra_nao_depende_do_proprio_caso(self):
+        ex = _mini_corpus()
+        antes = pontuacoes_fora_de_amostra(ex)
+        # Inverte todos os rótulos do caso c1: o score de c1 não pode mudar,
+        # porque nenhum modelo que o pontua viu c1.
+        invertido = [_exemplo(e.caso, e.chave[1], e.entre, 1 - e.eh_relacao)
+                     if e.caso == "c1" else e for e in ex]
+        depois = pontuacoes_fora_de_amostra(invertido)
+        for e in ex:
+            if e.caso == "c1":
+                self.assertEqual(antes[e.chave], depois[e.chave])
+        # E o score dos outros casos muda, pois eles viram o c1 com outros rótulos.
+        self.assertNotEqual(antes[("c2", 0, 0, 0, 0)], depois[("c2", 0, 0, 0, 0)])
+
+    def test_score_dentro_da_amostra_e_otimista(self):
+        ex = _mini_corpus()
+        fora = pontuacoes_fora_de_amostra(ex)
+        dentro = PontuadorLM().ajustar(ex)
+        alvo = ex[0]   # relação
+        self.assertGreaterEqual(dentro.pontuar(alvo.entre), fora[alvo.chave])
+
+    def test_empilhamento_usa_fora_no_treino_e_completo_no_teste(self):
+        ex = _mini_corpus()
+        e = Empilhamento().ajustar(ex)
+        x_treino = e.atributos_treino(ex[0])
+        x_teste = e.atributos_teste(ex[0])
+        self.assertEqual(x_treino["lm_score"], e.fora_de_amostra[ex[0].chave])
+        self.assertEqual(x_teste["lm_score"], e.pontuador.pontuar(ex[0].entre))
 
 
 class TestAtributos(unittest.TestCase):

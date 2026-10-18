@@ -26,7 +26,7 @@ from pathlib import Path
 from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_GOLD_RELATIONS
 from clinical_kg.relations.extract import analyze_case, load_entities
 
-from .ngramas import tokenizar
+from .ngramas import ModeloLinguagem, tokenizar
 
 NENHUMA = "NENHUMA"   # rótulo dos pares sem relação
 
@@ -232,6 +232,83 @@ class UmContraTodos:
 
     def tem_relacao(self, x: dict) -> int:
         return 0 if self.prever(x) == NENHUMA else 1
+
+
+# --------------------------------------------------------------------------
+# Empilhamento (stacking, Wolpert 1992)
+# --------------------------------------------------------------------------
+LIMITE_LM = 3.0   # a diferença de log-probabilidades é cortada em [-3, 3] e escalada
+
+
+class PontuadorLM:
+    """Nível 0: dois modelos de linguagem, um por resposta.
+
+    Um aprende com o texto entre as entidades dos pares COM relação, o outro dos
+    pares SEM relação. O atributo é a diferença de suas log-probabilidades médias:
+    positivo quando o texto "soa" como o de uma relação, negativo quando não.
+    Isso comprime milhares de n-gramas em um único número, que é o que 413 exemplos
+    conseguem sustentar (n-gramas soltos como atributos pioram o modelo).
+    """
+
+    def __init__(self, k: float = 0.4, peso_bigrama: float = 0.7):
+        self.k, self.peso_bigrama = k, peso_bigrama
+
+    def ajustar(self, exemplos: list[Exemplo]):
+        com = [e.entre for e in exemplos if e.eh_relacao]
+        sem = [e.entre for e in exemplos if not e.eh_relacao]
+        self.com = ModeloLinguagem(self.k, self.peso_bigrama).ajustar(com)
+        self.sem = ModeloLinguagem(self.k, self.peso_bigrama).ajustar(sem)
+        return self
+
+    def pontuar(self, entre: list) -> float:
+        diferenca = self.com.log_prob_media(entre) - self.sem.log_prob_media(entre)
+        return max(min(diferenca, LIMITE_LM), -LIMITE_LM) / LIMITE_LM
+
+
+def pontuacoes_fora_de_amostra(exemplos: list[Exemplo], **parametros) -> dict:
+    """O `lm_score` de cada exemplo, medido por modelos que NÃO viram o seu caso.
+
+    É o ponto central do empilhamento. Se o nível 1 treinasse com scores dados por
+    modelos que já leram o próprio exemplo (e seu rótulo), veria um sinal bom
+    demais, aprenderia a confiar nele e falharia em texto novo. Por isso cada
+    exemplo é pontuado por um modelo treinado nos outros casos (validação
+    cruzada por caso, não por exemplo: pares do mesmo relato dividem frases).
+    """
+    casos = sorted({e.caso for e in exemplos})
+    saida = {}
+    for caso in casos:
+        dentro = [e for e in exemplos if e.caso == caso]
+        fora = [e for e in exemplos if e.caso != caso]
+        pontuador = PontuadorLM(**parametros).ajustar(fora)
+        for e in dentro:
+            saida[e.chave] = pontuador.pontuar(e.entre)
+    return saida
+
+
+class Empilhamento:
+    """Gera os atributos do nível 1 com o `lm_score` do nível 0.
+
+        e = Empilhamento().ajustar(treino)
+        X_treino = [e.atributos_treino(x, assoc) for x in treino]   # score fora de amostra
+        X_teste  = [e.atributos_teste(x, assoc) for x in teste]     # score do modelo completo
+
+    No treino usa-se o score fora de amostra; na previsão, o dos modelos de
+    linguagem treinados em todo o `treino`.
+    """
+
+    def __init__(self, **parametros):
+        self.parametros = parametros
+
+    def ajustar(self, treino: list[Exemplo]):
+        self.fora_de_amostra = pontuacoes_fora_de_amostra(treino, **self.parametros)
+        self.pontuador = PontuadorLM(**self.parametros).ajustar(treino)
+        return self
+
+    def atributos_treino(self, exemplo: Exemplo, assoc=None) -> dict:
+        return {**atributos(exemplo, assoc), "lm_score": self.fora_de_amostra[exemplo.chave]}
+
+    def atributos_teste(self, exemplo: Exemplo, assoc=None) -> dict:
+        return {**atributos(exemplo, assoc), "lm_score": self.pontuador.pontuar(exemplo.entre)}
 
 
 # --------------------------------------------------------------------------
