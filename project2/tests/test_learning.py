@@ -3,12 +3,14 @@
 import math
 import unittest
 
-from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, PontuadorLM,
+from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloAprendido,
+                                         PontuadorLM,
                                          RegressaoLogistica, UmContraTodos,
                                          pontuacoes_fora_de_amostra,
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
+from clinical_kg.learning.pipeline import confronto, medir, prf
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
 
@@ -192,6 +194,48 @@ class TestEmpilhamento(unittest.TestCase):
         x_teste = e.atributos_teste(ex[0])
         self.assertEqual(x_treino["lm_score"], e.fora_de_amostra[ex[0].chave])
         self.assertEqual(x_teste["lm_score"], e.pontuador.pontuar(ex[0].entre))
+
+
+class TestModeloAprendido(unittest.TestCase):
+    def test_grava_e_recarrega_com_as_mesmas_previsoes(self):
+        import json
+        ex = _mini_corpus()
+        for e in ex:   # um atributo estrutural que acompanha o rótulo
+            e.estruturais = {"tipo": 1.0 if e.eh_relacao else 0.0}
+        textos = ["treated with aspirin"] * 6 + ["of the patient"] * 6
+        m = ModeloAprendido().ajustar(ex, textos)
+        r = ModeloAprendido.de_dict(json.loads(json.dumps(m.para_dict())))
+        for e in ex:
+            self.assertEqual(m.prever(e.estruturais, e.entre), r.prever(e.estruturais, e.entre))
+        self.assertEqual(m.prever_exemplo(ex[0]), "R")
+        self.assertEqual(m.prever_exemplo(ex[5]), NENHUMA)
+
+    def test_ablacoes_desligam_as_pecas(self):
+        ex = _mini_corpus()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False).ajustar(ex, [])
+        self.assertIsNone(m.assoc)
+        self.assertNotIn("lm_score", m.atributos_de({}, ["of", "the"]))
+
+
+class TestMedidas(unittest.TestCase):
+    def test_prf(self):
+        self.assertEqual(prf(0, 0, 0), (0.0, 0.0, 0.0))
+        p, r, f1 = prf(6, 2, 4)
+        self.assertAlmostEqual(p, 0.75)
+        self.assertAlmostEqual(r, 0.6)
+        self.assertAlmostEqual(f1, 2 * 0.75 * 0.6 / 1.35)
+
+    def test_medir_separa_deteccao_e_tipo(self):
+        a = _exemplo("c1", 1, [], 1); a.relacao = "R"
+        b = _exemplo("c1", 2, [], 1); b.relacao = "R"
+        c = _exemplo("c1", 3, [], 0)
+        m = medir([(a, "R"), (b, "OUTRA"), (c, "R")])
+        self.assertEqual((m["vp"], m["fp"], m["fn"]), (2, 1, 0))
+        self.assertAlmostEqual(m["tipo"], 0.5)   # detectou 2 relações, acertou o tipo de 1
+
+    def test_confronto_conta_vence_empata_perde(self):
+        self.assertEqual(confronto({"a": 0.9, "b": 0.5, "c": 0.1},
+                                   {"a": 0.5, "b": 0.5, "c": 0.3}), (1, 1, 1))
 
 
 class TestAtributos(unittest.TestCase):

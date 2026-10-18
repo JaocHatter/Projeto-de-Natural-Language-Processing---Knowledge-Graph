@@ -25,6 +25,7 @@ import math
 from clinical_kg.extraction.entities import TOKEN_RE, mask_figure_refs
 
 INICIO, FIM = "<s>", "</s>"
+SEP = " "   # separa as duas palavras de um bigrama ao serializar (tokens nunca têm espaço)
 
 # Abaixo disto o PMI vale zero. Com um único par visto uma vez, PMI = log2(N)
 # para qualquer par: todos empatam no máximo e nenhum é evidência.
@@ -98,6 +99,25 @@ class Associacoes:
                     - entropia(k11 + k12, k21 + k22)
                     - entropia(k11 + k21, k12 + k22))
 
+    def para_dict(self) -> dict:
+        """Contagens em forma serializável (JSON), para guardar com o modelo."""
+        return {"contagem_minima": self.contagem_minima,
+                "unigramas": dict(self.unigramas),
+                "bigramas": {SEP.join(par): c for par, c in self.bigramas.items()}}
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls([], d["contagem_minima"])
+        obj.unigramas = collections.Counter(d["unigramas"])
+        obj.bigramas = collections.Counter({tuple(k.split(SEP)): c for k, c in d["bigramas"].items()})
+        obj.total = max(sum(obj.bigramas.values()), 1)
+        obj.total_palavras = max(sum(obj.unigramas.values()), 1)
+        obj.esquerda, obj.direita = collections.Counter(), collections.Counter()
+        for (a, b), c in obj.bigramas.items():
+            obj.esquerda[a] += c
+            obj.direita[b] += c
+        return obj
+
     def ranking(self, medida: str = "pmi"):
         """Bigramas com contagem suficiente, do mais ao menos associado."""
         pontuar = self.pmi if medida == "pmi" else self.llr
@@ -129,6 +149,20 @@ class ModeloLinguagem:
         self.total = sum(self.unigramas.values())
         self.vocabulario = len(self.unigramas) + 1   # +1 reserva massa para palavras novas
         return self
+
+    def para_dict(self) -> dict:
+        return {"k": self.k, "peso_bigrama": self.peso_bigrama,
+                "unigramas": dict(self.unigramas),
+                "bigramas": {SEP.join(par): c for par, c in self.bigramas.items()}}
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls(d["k"], d["peso_bigrama"])
+        obj.unigramas = collections.Counter(d["unigramas"])
+        obj.bigramas = collections.Counter({tuple(k.split(SEP)): c for k, c in d["bigramas"].items()})
+        obj.total = sum(obj.unigramas.values())
+        obj.vocabulario = len(obj.unigramas) + 1
+        return obj
 
     def probabilidade(self, anterior: str, palavra: str) -> float:
         k, v = self.k, self.vocabulario

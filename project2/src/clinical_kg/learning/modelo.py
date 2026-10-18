@@ -24,9 +24,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_GOLD_RELATIONS
-from clinical_kg.relations.extract import analyze_case, load_entities
+from clinical_kg.relations.extract import (DEFAULT_FREQ, analyze_case, load_entities,
+                                           load_frequencies)
 
-from .ngramas import ModeloLinguagem, tokenizar
+from .ngramas import Associacoes, ModeloLinguagem, tokenizar
 
 NENHUMA = "NENHUMA"   # rótulo dos pares sem relação
 
@@ -106,12 +107,13 @@ def carregar_exemplos(casos: Path = DEFAULT_CASES, entidades: Path = DEFAULT_ENT
     with open(casos, encoding="utf-8") as f:
         textos = {r["case_id"]: r["case_text"] for r in csv.DictReader(f)}
     ents = load_entities(entidades)
+    freq = load_frequencies(DEFAULT_FREQ)
     with open(gold, newline="", encoding="utf-8") as f:
         julgados = list(csv.DictReader(f))
 
     candidatos = {}
     for caso in {j["case_id"] for j in julgados}:
-        for c in analyze_case(textos[caso], ents[caso], {}, threshold=float("-inf")):
+        for c in analyze_case(textos[caso], ents[caso], freq, threshold=float("-inf")):
             cab = c["head"]
             chave = (caso, cab["start"] if cab else -1, cab["end"] if cab else -1,
                      c["tail"]["start"], c["tail"]["end"])
@@ -129,7 +131,10 @@ def carregar_exemplos(casos: Path = DEFAULT_CASES, entidades: Path = DEFAULT_ENT
         exemplos.append(Exemplo(
             caso=j["case_id"], chave=chave, estruturais=estruturais, entre=entre,
             eh_relacao=eh, relacao=(j["gold_relation"] if eh else NENHUMA),
-            cabeca=j["head_text"], cauda=j["tail_text"]))
+            cabeca=j["head_text"], cauda=j["tail_text"],
+            # O que o P1 decidiu sobre o mesmo par: só para a linha de base,
+            # nunca como atributo (ver `atributos`).
+            extras={"p1_score": cand["score"], "p1_relacao": cand["relation"]}))
     return exemplos
 
 
@@ -197,6 +202,15 @@ class RegressaoLogistica:
     def prever(self, x: dict) -> int:
         return 1 if self.probabilidade(x) >= 0.5 else 0
 
+    def para_dict(self) -> dict:
+        return {"pesos": self.pesos, "vies": self.vies}
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls()
+        obj.pesos, obj.vies = dict(d["pesos"]), d["vies"]
+        return obj
+
     def pesos_principais(self, n: int = 15) -> list[tuple[str, float]]:
         """Os atributos de maior peso absoluto: o que o modelo aprendeu a olhar."""
         return sorted(self.pesos.items(), key=lambda kv: -abs(kv[1]))[:n]
@@ -233,6 +247,17 @@ class UmContraTodos:
     def tem_relacao(self, x: dict) -> int:
         return 0 if self.prever(x) == NENHUMA else 1
 
+    def para_dict(self) -> dict:
+        return {"classes": self.classes,
+                "modelos": {c: m.para_dict() for c, m in self.modelos.items()}}
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls()
+        obj.classes = list(d["classes"])
+        obj.modelos = {c: RegressaoLogistica.de_dict(m) for c, m in d["modelos"].items()}
+        return obj
+
 
 # --------------------------------------------------------------------------
 # Empilhamento (stacking, Wolpert 1992)
@@ -259,6 +284,16 @@ class PontuadorLM:
         self.com = ModeloLinguagem(self.k, self.peso_bigrama).ajustar(com)
         self.sem = ModeloLinguagem(self.k, self.peso_bigrama).ajustar(sem)
         return self
+
+    def para_dict(self) -> dict:
+        return {"k": self.k, "peso_bigrama": self.peso_bigrama,
+                "com": self.com.para_dict(), "sem": self.sem.para_dict()}
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls(d["k"], d["peso_bigrama"])
+        obj.com, obj.sem = ModeloLinguagem.de_dict(d["com"]), ModeloLinguagem.de_dict(d["sem"])
+        return obj
 
     def pontuar(self, entre: list) -> float:
         diferenca = self.com.log_prob_media(entre) - self.sem.log_prob_media(entre)
@@ -309,6 +344,73 @@ class Empilhamento:
 
     def atributos_teste(self, exemplo: Exemplo, assoc=None) -> dict:
         return {**atributos(exemplo, assoc), "lm_score": self.pontuador.pontuar(exemplo.entre)}
+
+
+# --------------------------------------------------------------------------
+# O modelo completo, com tudo o que ele precisa para decidir um par novo
+# --------------------------------------------------------------------------
+class ModeloAprendido:
+    """Atributos estruturais + PMI/LLR + `lm_score` (empilhamento) + regressão.
+
+    Reúne o que o treino produz (contagens de PMI, os dois modelos de linguagem e
+    os pesos) para que a avaliação, a extração e o Streamlit usem o mesmo objeto, e
+    para que ele seja gravado em `modelo.json` e recarregado sem retreinar.
+
+    `usar_pmi` e `usar_lm` ligam e desligam cada peça (as ablações do experimento).
+    """
+
+    def __init__(self, usar_pmi: bool = True, usar_lm: bool = True, **regressao):
+        self.usar_pmi, self.usar_lm, self.regressao = usar_pmi, usar_lm, regressao
+
+    def ajustar(self, exemplos: list[Exemplo], textos_corpus, classificador=None):
+        """`textos_corpus`: textos dos casos de treino, de onde saem as contagens de PMI."""
+        self.assoc = Associacoes(textos_corpus) if self.usar_pmi else None
+        self.empilhamento = Empilhamento().ajustar(exemplos) if self.usar_lm else None
+        if self.empilhamento:
+            X = [self.empilhamento.atributos_treino(e, self.assoc) for e in exemplos]
+        else:
+            X = [atributos(e, self.assoc) for e in exemplos]
+        self.classificador = (classificador or UmContraTodos(**self.regressao)).ajustar(
+            X, [e.relacao for e in exemplos])
+        return self
+
+    def atributos_de(self, estruturais: dict, entre: list) -> dict:
+        f = dict(estruturais)
+        if self.assoc is not None:
+            f.update(atributos_associacao(entre, self.assoc))
+        if self.empilhamento is not None:
+            f["lm_score"] = self.empilhamento.pontuador.pontuar(entre)
+        return f
+
+    def prever(self, estruturais: dict, entre: list) -> tuple[str, float]:
+        """(relação prevista ou NENHUMA, probabilidade normalizada dessa classe)."""
+        x = self.atributos_de(estruturais, entre)
+        probs = self.classificador.probabilidades(x)
+        classe = self.classificador.prever(x)
+        return classe, probs[classe]
+
+    def prever_exemplo(self, e: Exemplo) -> str:
+        return self.prever(e.estruturais, e.entre)[0]
+
+    def para_dict(self) -> dict:
+        return {
+            "usar_pmi": self.usar_pmi, "usar_lm": self.usar_lm,
+            "associacoes": self.assoc.para_dict() if self.assoc else None,
+            "pontuador": self.empilhamento.pontuador.para_dict() if self.empilhamento else None,
+            "classificador": self.classificador.para_dict(),
+        }
+
+    @classmethod
+    def de_dict(cls, d: dict):
+        obj = cls(d["usar_pmi"], d["usar_lm"])
+        obj.assoc = Associacoes.de_dict(d["associacoes"]) if d["associacoes"] else None
+        if d["pontuador"]:
+            obj.empilhamento = Empilhamento()
+            obj.empilhamento.pontuador = PontuadorLM.de_dict(d["pontuador"])
+        else:
+            obj.empilhamento = None
+        obj.classificador = UmContraTodos.de_dict(d["classificador"])
+        return obj
 
 
 # --------------------------------------------------------------------------
