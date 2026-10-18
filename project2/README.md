@@ -1,68 +1,256 @@
-# Projeto <Título em Português>
-# Project <Title in English>
+# Extração de Relações Clínicas com N-gramas, PMI e Regressão Logística
+# Clinical Relation Extraction with N-grams, PMI and Logistic Regression
 
 ## Slides
 
-> Link para o PDF da apresentação.
-
-<link>
+Os slides serão compartilhados e adicionados através de um link do Canva quando estiverem prontos.
 
 ## Demonstração Executável
 
-> Link para uma demonstração executável (notebook no Binder ou Colab) e/ou página web com resultados visuais.
+* **Caderno executado, com as saídas salvas** (o GitHub o exibe direto no navegador):
+  [`pipelines/notebooks/projeto2.ipynb`](pipelines/notebooks/projeto2.ipynb). Conta o projeto na ordem
+  n-gramas → PMI → modelo de linguagem → regressão logística → comparação com o Projeto 1.
+* **Tudo regenerado com um comando** (cerca de 1 minuto, sem precisar do gazetteer UMLS):
 
-<link>
+  ```bash
+  bash run_all.sh            # tabelas -> treinar -> extrair -> comparar   (ou: make p2)
+  ```
+
+* **Visualizador interativo** dos grafos do P1 (regras), do P2 (aprendido) e da comparação, com cada aresta
+  colorida pelo método que a produziu:
+
+  ```bash
+  PYTHONPATH=src python -m streamlit run src/clinical_kg/app/projeto2.py     # ou: make app-p2
+  ```
+
+  Casos do corpus usam os arquivos já extraídos. A opção *Caso novo (ao vivo)* aceita um texto colado e o passa
+  pelo gazetteer UMLS e pelos dois métodos; ela exige o `gazetteer.db` (ver [`src/README.md`](src/README.md)).
 
 ## Metodologia
 
-> Descreva como o grafo de conhecimento foi extraído. Um diagrama com as etapas é opcional. Use trechos curtos de código ligados a uma explicação.
+**Ponto de partida.** O Projeto 1 extraiu um grafo de conhecimento de 50 relatos de caso do MultiCaRe
+(entidades via gazetteer UMLS) e decidia se havia relação entre duas entidades com um CRF de pesos escritos à
+mão e um léxico de 140 gatilhos. O Projeto 2 pergunta se **estatística e aprendizado de máquina clássico**,
+sem LLMs, embeddings nem Transformers, decidem melhor, e se o grafo muda.
 
-<descrição>
+**O que não muda (controle do experimento).** Os pares candidatos são os do Projeto 1, sem alteração, e as
+entidades e o `assertion_status` (negação, hipótese, histórico) também. Os dois sistemas veem exatamente os
+mesmos pares: qualquer diferença vem de **quem decide**.
+
+```mermaid
+flowchart LR
+    A["texto entre<br/>duas entidades"] -->|n-gramas| B["bigramas e trigramas"]
+    B -->|PMI / LLR| C["quais frases se atraem<br/>mais que o acaso"]
+    A -->|modelo de linguagem<br/>empilhado| D["lm_score<br/>(fora de amostra)"]
+    C --> E["atributos do par<br/>+ tipos, distância, pontuação"]
+    D --> E
+    E -->|regressão logística<br/>um-contra-todos| F["relação (8 tipos)<br/>ou nenhuma"]
+    F --> G["grafo de conhecimento<br/>(mesmo esquema do P1)"]
+```
+
+1. **N-gramas.** Sequências de *n* palavras do texto entre duas entidades ("was treated with"). Com 86,6% dos
+   bigramas do corpus aparecendo uma única vez, estatísticas ingênuas enganam, o que motiva as duas etapas
+   seguintes.
+2. **PMI e LLR** (Church & Hanks, 1990; Dunning, 1993). O PMI compara a frequência de um bigrama com a esperada
+   ao acaso; o LLR mede a mesma associação sem supor contagens grandes. O PMI vale zero abaixo de 5 ocorrências,
+   para não premiar pares vistos uma vez:
+
+   ```python
+   def pmi(self, a, b):
+       c = self.bigramas.get((a, b), 0)
+       if c < self.contagem_minima:
+           return 0.0
+       return math.log2((c / self.total) / ((self.unigramas[a] / self.total_palavras)
+                                            * (self.unigramas[b] / self.total_palavras)))
+   ```
+
+3. **Modelo de linguagem e empilhamento** (Jurafsky & Martin; Wolpert, 1992). Dois modelos bigrama com
+   suavização add-k, um sobre os pares com relação e outro sobre os sem, condensam os n-gramas em **um número**
+   (`lm_score`). Para que a regressão não veja um sinal inflado, cada exemplo é pontuado por modelos treinados
+   **sem o seu caso**:
+
+   ```python
+   for caso in casos:                       # validação cruzada por caso, não por exemplo
+       dentro = [e for e in exemplos if e.caso == caso]
+       fora = [e for e in exemplos if e.caso != caso]
+       pontuador = PontuadorLM(**parametros).ajustar(fora)
+       for e in dentro:
+           saida[e.chave] = pontuador.pontuar(e.entre)
+   ```
+
+4. **Regressão logística, escrita à mão** (SGD, penalidade L2), uma por relação (um-contra-todos), com os
+   atributos: tipos das entidades, distância, pontuação, `pmi_max`, `pmi_medio`, `llr_max` e `lm_score`.
+   Uma versão do scikit-learn serve só de verificação. O peso da classe rara nunca passa do número de seus
+   exemplos positivos (ver *Resultados*).
+5. **Ablação do uso direto dos n-gramas.** Cada frase de 1 a 3 palavras do texto entre as entidades, vista em
+   pelo menos 2 pares de treino, vira um atributo binário. Serve só para medir (não alimenta o grafo): responde se
+   o uso mais direto dos n-gramas faria melhor do que a versão comprimida.
+6. **Avaliação.** 413 pares julgados à mão em 10 casos (o *gold*, construído no Projeto 1). Validação **deixando
+   um caso de fora**: em cada rodada, o modelo, as contagens de PMI e os modelos de linguagem são refeitos sem o
+   caso de teste, então nenhum número é medido sobre texto que o modelo já leu.
 
 ### Confronto com Trabalho Anterior
 
-> Comparação com a versão anterior (Projeto 1), qualitativa ou experimental.
+O confronto compara o Projeto 1 (regras) com o Projeto 2 (aprendido) em três níveis.
 
-<descrição>
+**1. Experimental, no gold** (413 pares, validação deixando um caso de fora):
+
+| Variante | Precisão | Cobertura | F1 | Tipo certo | F1 por caso | Casos vs P1 (V-E-D) |
+|---|---|---|---|---|---|---|
+| **P1 (regras à mão)** | 0,602 | 0,656 | 0,628 | 0,772 | 0,610 ± 0,142 | — |
+| P2 só estrutura | 0,671 | 0,851 | 0,750 | 0,894 | 0,725 ± 0,078 | 9-0-1 |
+| P2 + n-gramas diretos (frases como atributos) | 0,716 | 0,719 | 0,718 | 0,925 | 0,665 ± 0,166 | 7-0-3 |
+| P2 + PMI/LLR | 0,678 | 0,837 | 0,749 | 0,908 | 0,731 ± 0,071 | 9-0-1 |
+| P2 + modelo de linguagem | 0,679 | 0,851 | 0,755 | 0,888 | 0,726 ± 0,081 | 9-0-1 |
+| **P2 completo** | 0,679 | 0,824 | 0,744 | 0,912 | 0,725 ± 0,059 | 9-0-1 |
+| P2 completo (scikit-learn) | 0,663 | 0,864 | 0,750 | 0,895 | 0,733 ± 0,060 | 9-0-1 |
+
+![F1 por variante](assets/images/f1_variantes.png)
+![F1 caso a caso](assets/images/f1_por_caso.png)
+
+**2. No grafo, nos 50 casos** (mesmas entidades, quem decide é o que muda):
+
+| | P1 | P2 |
+|---|---|---|
+| Relações únicas (cabeça, cauda, tipo) | 1.352 | 1.441 |
+| Idênticas nos dois (mesmo par e tipo) | 623 | 623 (Jaccard 0,29) |
+| Arestas do grafo agregado por conceito | 1.299 | 1.379 (605 idênticas, Jaccard 0,29) |
+| Grau médio dos nós conectados | 1,68 | 1,71 |
+
+![Relações por tipo](assets/images/relacoes_por_tipo.png)
+
+**3. Qualitativo.** No gold, fora de amostra: os dois acertam 158 pares, **só o P2 acerta 114**, só o P1 acerta
+50 e os dois erram 91 (exemplos reais em
+[`data/processed/comparacao_exemplos.csv`](data/processed/comparacao_exemplos.csv)). O P2 recupera muito mais
+listas de achados (`COORDINATE_WITH`: 185 → 426) e menos `HAS_DIAGNOSIS`/`HAS_FINDING`, que o P1 dispara como
+categoria de reserva.
+
+**Como ler isso, com honestidade.**
+
+* O modelo aprendido supera as regras de forma consistente: F1 de 0,63 para ~0,75, acerto do tipo de 0,77 para
+  ~0,91, e vitória em 9 dos 10 casos.
+* **As variantes com PMI e modelo de linguagem não se distinguem da variante só de estrutura.** Ficam entre 0,744 e
+  0,755 de F1, com desvio entre casos de 0,06 a 0,08. Contra a de estrutura, o PMI ganha em 4 casos e perde em 4, o
+  modelo de linguagem em 3 e 3, e o completo ganha em 4 e **perde em 6**.
+* **O uso direto dos n-gramas também não ajudou.** Com cada frase de 1 a 3 palavras como atributo, o F1 cai para
+  0,718 e o desvio entre casos sobe (0,166); perde para a variante só de estrutura em 7 dos 10 casos. A
+  precisão e o tipo certo sobem (0,72 e 0,93) porque o modelo passa a disparar menos (cobertura 0,72). Nem
+  `REVEALED_BY`, a relação mais dependente de uma palavra-gatilho, melhora de forma relevante (F1 0,36 → 0,38), e
+  `TREATED_WITH` piora (0,58 → 0,47).
+* O ganho vem sobretudo dos atributos estruturais (tipos de entidade, distância, pontuação) e de ter um
+  classificador treinado, não dos n-gramas, nem comprimidos (PMI, modelo de linguagem) nem diretos.
 
 ## Trabalhos Estudados
 
-> Breve discussão dos trabalhos relacionados.
+* **Church & Hanks (1990)** introduzem o PMI para medir associação entre palavras e extrair colocações; é a
+  base de nossa medida de atração entre bigramas. Sua limitação conhecida (pares raros ganham PMI altíssimo)
+  explica o corte de contagem mínima que adotamos.
+* **Dunning (1993)** propõe a razão de verossimilhança (LLR) para estatísticas de surpresa em dados esparsos,
+  onde o qui-quadrado falha; a usamos ao lado do PMI porque nosso corpus é pequeno.
+* **Jurafsky & Martin, *Speech and Language Processing*** (capítulos de n-gramas, suavização e regressão
+  logística) são a referência do curso para o modelo de linguagem bigrama com add-k e para a regressão logística
+  que implementamos.
+* **Wolpert (1992)** descreve o empilhamento (*stacked generalization*): a saída de modelos de nível 0, obtida
+  fora de amostra, vira atributo de um modelo de nível 1. É o que justifica calcular o `lm_score` sem o caso do
+  próprio exemplo.
+* **MultiCaRe (Nievas Offidani & Delrieux, 2024)** é o conjunto de relatos de caso de que partimos, e
+  **UMLS (Bodenreider, 2004)** o vocabulário controlado do gazetteer que reconhece as entidades.
 
-<descrição>
+Não comparamos com modelos neurais ou de Transformers, que o enunciado exclui.
 
 ## Modelo Lógico
 
-> Modelo do grafo criado pela equipe, com a imagem PNG da pasta `assets/images`.
+O modelo de grafo é o do Projeto 1 e **não muda**: o P2 altera apenas quem decide as arestas tipadas entre
+conceitos (as de `TREATED_WITH`, `LOCATED_IN`, `HAS_DIAGNOSIS` etc.).
 
-<imagem>
+![Modelo lógico do grafo](assets/images/modelo_logico_grafos.png)
+
+* **Nós:** `Article`, `Person`, `Age`, `Sex`, `Concept` (um por CUI, com `entity_type`) e `Measurement`.
+* **Relações do texto:** `HAS_SYMPTOM`, `HAS_DIAGNOSIS`, `HAS_FINDING`, `TREATED_WITH`, `REVEALED_BY`,
+  `LOCATED_IN`, `CAUSED_BY` e `COORDINATE_WITH`, cada uma com `assertion_status`.
+* **O que o P2 acrescenta às arestas:** no P2 o `score` da aresta é a **probabilidade** dada pelo modelo (no P1
+  era a pontuação das regras), o gatilho do P1 é apagado, e o visualizador marca a `origem` da aresta (`p1`,
+  `p2` ou `ambos`) na vista de comparação.
 
 ## Análises que podem ser realizadas
 
-> Análises que o grafo permite.
+Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com achados em comum, filtro por
+`assertion_status` etc.), agora também sobre o grafo aprendido, e:
 
-<descrição>
+* **Comparar métodos**: quais arestas só um dos métodos encontra, por tipo e por caso, e se as diferenças se
+  concentram em certos tipos (listas de achados, diagnósticos).
+* **Filtrar por confiança**: no P2 o `score` é uma probabilidade; cortar arestas com baixa confiança troca
+  cobertura por precisão.
+* **Listas de achados**: `COORDINATE_WITH` permite reconstruir enumerações de sintomas, exames ou medicamentos.
+* **Auditoria do que o modelo aprendeu**: os pesos da regressão (por relação) mostram quais atributos empurram
+  para cada tipo.
+* **Frases que sinalizam relação**: as frases mais frequentes entre duas entidades, e quais delas já estavam no
+  léxico de gatilhos do P1 (52 das 140 palavras do léxico são confirmadas pelo corpus).
 
 ## Ferramentas
 
-> Visão geral das ferramentas usadas e como foram usadas.
-
-<descrição>
+* **Python (biblioteca padrão)**: o núcleo do projeto (n-gramas, PMI, LLR, modelo de linguagem e regressão
+  logística) é escrito à mão, sem dependências, para que cada fórmula seja auditável.
+* **scikit-learn**: só verifica a regressão escrita à mão (resultados próximos, 0,744 contra 0,750 de F1).
+* **Streamlit e Cytoscape.js**: visualizador dos grafos, com seletor P1/P2/comparação e caso novo ao vivo.
+* **pandas e matplotlib**: tabelas do visualizador e as figuras (laranja = P1, verde = P2).
+* **SQLite (gazetteer UMLS)**: reconhecimento de entidades, herdado do P1; licenciado e fora do git.
+* **nbformat e nbclient**: executam o caderno para guardá-lo com as saídas.
+* **Testes**: 112 testes (`python -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
+  o score de um exemplo não depende do próprio rótulo.
 
 ## Resultados
 
-> Principais resultados e discussão. Imagens do grafo são bem-vindas.
+* **Aprender supera escrever regras**: F1 de 0,628 para 0,744–0,755 e tipo acertado de 0,772 para até 0,912, com
+  vitória em 9 dos 10 casos. Ganhos grandes em `HAS_DIAGNOSIS` (F1 0,49 → 0,82), `HAS_FINDING` (0,32 → 0,67),
+  `COORDINATE_WITH` (0,52 → 0,75) e `HAS_SYMPTOM` (0,73 → 0,95).
+* **Mesmo corpus, grafos diferentes**: só 623 das ~1.400 relações coincidem (Jaccard 0,29), o que confirma a
+  advertência de que métricas parecidas podem esconder grafos distintos.
 
-<descrição>
+![Frases entre entidades](assets/images/frases_entre_entidades.png)
+
+* **N-gramas e PMI: o que dizem os dados.** Usar as frases diretamente como atributos (a variante mais óbvia)
+  piorou o F1 (0,750 → 0,718): com 413 exemplos, milhares de frases viram parâmetros sem evidência. O topo do PMI são termos clínicos ("pleural effusion"), não gatilhos;
+  os gatilhos têm PMI baixo porque são palavras frequentes. O `lm_score` separa as classes dentro da amostra
+  (0,26 contra −0,15) e **quase não separa fora dela** (0,08 contra 0,03), por isso o empilhamento era necessário
+  e por isso o ganho dos n-gramas é pequeno.
+* **Um achado: o peso da classe rara estragou `CAUSED_BY`.** Com 4 exemplos, o peso (positivos × negativos /
+  positivos, teto 20) fazia o modelo disparar a relação em quase qualquer par: **99 arestas nos 50 casos contra 35
+  do P1**, e F1 zero na validação. A correção é uma regra geral, não um remendo: o peso de uma classe nunca passa
+  do número de seus exemplos positivos (`limitar_por_suporte`). Resultado: **31 arestas** e o tipo acertado sobe de
+  0,89 para 0,91. Mas `CAUSED_BY` **nunca foi aprendida** em nenhuma configuração testada (pesos máximos de 1 a
+  20): com 4 exemplos não há evidência. O ajuste foi escolhido olhando a mesma validação de 10 casos, o que
+  dá um risco leve de superajuste.
+* **Limitações.** Poucos dados (413 pares em 10 casos); o modelo final foi treinado com os pares de 10 dos 50
+  casos, então as relações desses 10 são otimistas e as dos outros 40 são previsões reais; entidades e
+  `assertion_status` continuam vindo do P1.
 
 ## Como Modelos de Linguagem foram Usados
 
-> Tarefas em que modelos de linguagem foram aplicados.
-
-<descrição>
+* **No pipeline: só um modelo de linguagem estatístico clássico.** Um modelo de n-gramas (bigrama com
+  suavização add-k), treinado por nós sobre o próprio corpus, gera o `lm_score`. **Não há LLMs, embeddings
+  nem modelos Transformer** em nenhuma etapa da extração, conforme o enunciado.
+* **No desenvolvimento: apoio de um assistente de IA.** O desenvolvimento do Projeto 2 contou com o apoio de um
+  assistente de IA (Claude Code) em tarefas de implementação, depuração, revisão de código, escrita de testes e de
+  documentação, sob a direção da equipe, que definia o plano, revisava cada etapa e aprovava cada alteração. O
+  resultado foi corrigido e validado pela suíte de testes (112 testes) e pelos números reproduzíveis de
+  `run_all.sh`.
+* **Proveniência do gold.** Como descrito no README do Projeto 1, o conjunto de 413 pares julgados foi construído
+  com o anotador interativo e **com apoio de um modelo de linguagem** na proposta dos julgamentos, revisada pela
+  equipe. Os números de avaliação acima devem ser lidos com essa proveniência em mente.
 
 ## Referências Bibliográficas
 
-> Artigos, links e referências, em qualquer estilo de citação.
-
-<referências>
+* Church KW, Hanks P. Word Association Norms, Mutual Information, and Lexicography. *Computational
+  Linguistics.* 1990;16(1):22-29. <https://aclanthology.org/J90-1003/>
+* Dunning T. Accurate Methods for the Statistics of Surprise and Coincidence. *Computational Linguistics.*
+  1993;19(1):61-74. <https://aclanthology.org/J93-1003/>
+* Jurafsky D, Martin JH. *Speech and Language Processing*. 3rd ed. draft. Stanford University.
+  <https://web.stanford.edu/~jurafsky/slp3/>
+* Wolpert DH. Stacked Generalization. *Neural Networks.* 1992;5(2):241-259.
+  <https://doi.org/10.1016/S0893-6080(05)80023-1>
+* Nievas Offidani M, Delrieux C. Dataset of clinical cases, images, image labels and captions from open access
+  case reports from PubMed Central (1990–2023). *Data in Brief.* 2024;52:110008.
+  <https://doi.org/10.1016/j.dib.2023.110008>
+* Bodenreider O. The Unified Medical Language System (UMLS): integrating biomedical terminology. *Nucleic
+  Acids Research.* 2004;32(Database issue):D267-D270. <https://doi.org/10.1093/nar/gkh061>

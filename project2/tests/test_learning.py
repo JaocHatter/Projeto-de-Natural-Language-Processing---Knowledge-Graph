@@ -219,6 +219,40 @@ class TestModeloAprendido(unittest.TestCase):
         self.assertNotIn("lm_score", m.atributos_de({}, ["of", "the"]))
 
 
+class TestNgramasDiretos(unittest.TestCase):
+    def _treino(self):
+        ex = _mini_corpus()
+        for e in ex:
+            e.estruturais = {}
+        return ex
+
+    def test_so_entram_frases_vistas_em_pelo_menos_minimo_pares(self):
+        ex = self._treino() + [_exemplo("c9", 99, ["raro", "unico"], 0)]
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        self.assertIn(("treated", "with"), m.vocabulario_ngramas)
+        self.assertNotIn(("raro", "unico"), m.vocabulario_ngramas)   # visto em 1 par
+
+    def test_as_frases_viram_atributos_e_separam_as_classes(self):
+        ex = self._treino()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        self.assertIn("ngrama:treated with", m.atributos_de({}, ["treated", "with"]))
+        self.assertEqual(m.prever_exemplo(ex[0]), "R")
+        self.assertEqual(m.prever_exemplo(ex[5]), NENHUMA)
+
+    def test_grava_e_recarrega_o_vocabulario(self):
+        import json
+        ex = self._treino()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        r = ModeloAprendido.de_dict(json.loads(json.dumps(m.para_dict())))
+        self.assertEqual(m.vocabulario_ngramas, r.vocabulario_ngramas)
+        self.assertEqual(m.prever_exemplo(ex[0]), r.prever_exemplo(ex[0]))
+
+    def test_desligado_por_padrao(self):
+        m = ModeloAprendido().ajustar(self._treino(), ["x y"] * 6)
+        self.assertFalse(m.usar_ngramas)
+        self.assertFalse(any(k.startswith("ngrama:") for k in m.atributos_de({}, ["treated", "with"])))
+
+
 class TestMedidas(unittest.TestCase):
     def test_prf(self):
         self.assertEqual(prf(0, 0, 0), (0.0, 0.0, 0.0))

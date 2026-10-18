@@ -27,7 +27,7 @@ from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_GOLD_RELA
 from clinical_kg.relations.extract import (DEFAULT_FREQ, analyze_case, load_entities,
                                            load_frequencies)
 
-from .ngramas import Associacoes, ModeloLinguagem, tokenizar
+from .ngramas import Associacoes, ModeloLinguagem, contar_ngramas, tokenizar
 
 NENHUMA = "NENHUMA"   # rótulo dos pares sem relação
 
@@ -369,10 +369,22 @@ class ModeloAprendido:
     para que ele seja gravado em `modelo.json` e recarregado sem retreinar.
 
     `usar_pmi` e `usar_lm` ligam e desligam cada peça (as ablações do experimento).
+
+    `usar_ngramas` é o uso DIRETO dos n-gramas, só como ablação: cada frase de 1 a 3
+    palavras do texto entre as entidades vira um atributo binário ("treated with"
+    ligado ou desligado). Só entram as frases que aparecem em pelo menos
+    `minimo_ngrama` pares de treino; as outras seriam parâmetros sem evidência.
     """
 
-    def __init__(self, usar_pmi: bool = True, usar_lm: bool = True, **regressao):
+    def __init__(self, usar_pmi: bool = True, usar_lm: bool = True, usar_ngramas: bool = False,
+                 minimo_ngrama: int = 2, **regressao):
         self.usar_pmi, self.usar_lm, self.regressao = usar_pmi, usar_lm, regressao
+        self.usar_ngramas, self.minimo_ngrama = usar_ngramas, minimo_ngrama
+        self.vocabulario_ngramas: set = set()
+
+    def _atributos_ngramas(self, entre: list) -> dict:
+        return {"ngrama:" + " ".join(g): 1.0 for g in contar_ngramas(entre, 3)
+                if g in self.vocabulario_ngramas}
 
     def ajustar(self, exemplos: list[Exemplo], textos_corpus, classificador=None):
         """`textos_corpus`: textos dos casos de treino, de onde saem as contagens de PMI."""
@@ -382,6 +394,11 @@ class ModeloAprendido:
             X = [self.empilhamento.atributos_treino(e, self.assoc) for e in exemplos]
         else:
             X = [atributos(e, self.assoc) for e in exemplos]
+        if self.usar_ngramas:
+            em_quantos = collections.Counter(g for e in exemplos for g in contar_ngramas(e.entre, 3))
+            self.vocabulario_ngramas = {g for g, c in em_quantos.items() if c >= self.minimo_ngrama}
+            for x, e in zip(X, exemplos):
+                x.update(self._atributos_ngramas(e.entre))
         self.classificador = (classificador or UmContraTodos(**self.regressao)).ajustar(
             X, [e.relacao for e in exemplos])
         return self
@@ -392,6 +409,8 @@ class ModeloAprendido:
             f.update(atributos_associacao(entre, self.assoc))
         if self.empilhamento is not None:
             f["lm_score"] = self.empilhamento.pontuador.pontuar(entre)
+        if self.usar_ngramas:
+            f.update(self._atributos_ngramas(entre))
         return f
 
     def prever(self, estruturais: dict, entre: list) -> tuple[str, float]:
@@ -406,7 +425,8 @@ class ModeloAprendido:
 
     def para_dict(self) -> dict:
         return {
-            "usar_pmi": self.usar_pmi, "usar_lm": self.usar_lm,
+            "usar_pmi": self.usar_pmi, "usar_lm": self.usar_lm, "usar_ngramas": self.usar_ngramas,
+            "vocabulario_ngramas": sorted(" ".join(g) for g in self.vocabulario_ngramas),
             "associacoes": self.assoc.para_dict() if self.assoc else None,
             "pontuador": self.empilhamento.pontuador.para_dict() if self.empilhamento else None,
             "classificador": self.classificador.para_dict(),
@@ -414,7 +434,8 @@ class ModeloAprendido:
 
     @classmethod
     def de_dict(cls, d: dict):
-        obj = cls(d["usar_pmi"], d["usar_lm"])
+        obj = cls(d["usar_pmi"], d["usar_lm"], d.get("usar_ngramas", False))
+        obj.vocabulario_ngramas = {tuple(f.split()) for f in d.get("vocabulario_ngramas", [])}
         obj.assoc = Associacoes.de_dict(d["associacoes"]) if d["associacoes"] else None
         if d["pontuador"]:
             obj.empilhamento = Empilhamento()

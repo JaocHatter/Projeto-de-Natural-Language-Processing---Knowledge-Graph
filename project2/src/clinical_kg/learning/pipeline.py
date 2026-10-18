@@ -60,6 +60,7 @@ N_MAX = 3
 # Cada variante liga uma combinação de peças. "completo" é o modelo proposto.
 VARIANTES = {
     "estrutura": dict(usar_pmi=False, usar_lm=False),
+    "lexico":    dict(usar_pmi=False, usar_lm=False, usar_ngramas=True),
     "pmi":       dict(usar_pmi=True,  usar_lm=False),
     "lm":        dict(usar_pmi=False, usar_lm=True),
     "completo":  dict(usar_pmi=True,  usar_lm=True),
@@ -67,6 +68,7 @@ VARIANTES = {
 DESCRICAO = {
     "p1": "Projeto 1 (regras à mão)",
     "estrutura": "só tipos, distância e pontuação",
+    "lexico": "estrutura + frases (1 a 3 palavras) como atributos diretos",
     "pmi": "estrutura + PMI/LLR",
     "lm": "estrutura + modelo de linguagem (stacking)",
     "completo": "estrutura + PMI/LLR + modelo de linguagem",
