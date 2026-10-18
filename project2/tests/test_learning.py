@@ -10,7 +10,7 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloA
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
-from clinical_kg.learning.pipeline import confronto, linha_ml, medir, prf
+from clinical_kg.learning.pipeline import combinar_relacoes, confronto, linha_ml, medir, prf
 from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
@@ -267,6 +267,28 @@ class TestLimitePorSuporte(unittest.TestCase):
         limitado = UmContraTodos(limitar_por_suporte=True).ajustar(X, rotulos)
         self.assertGreater(livre.modelos["RARA"].probabilidade({"x": 1.0}),
                            limitado.modelos["RARA"].probabilidade({"x": 1.0}))
+
+
+class TestComparacaoDeGrafos(unittest.TestCase):
+    @staticmethod
+    def _linha(relacao, cabeca, cauda, **extra):
+        return {"case_id": "c1", "head_start": cabeca, "tail_start": cauda, "relation": relacao, **extra}
+
+    def test_origem_p1_p2_ou_ambos(self):
+        p1 = [self._linha("TREATED_WITH", 1, 5), self._linha("LOCATED_IN", 2, 6)]
+        p2 = [self._linha("TREATED_WITH", 1, 5), self._linha("HAS_FINDING", 3, 7)]
+        origem = {(l["relation"]): l["origem"] for l in combinar_relacoes(p1, p2)}
+        self.assertEqual(origem, {"TREATED_WITH": "ambos", "LOCATED_IN": "p1", "HAS_FINDING": "p2"})
+
+    def test_mesmo_par_com_tipo_diferente_sao_relacoes_distintas(self):
+        p1 = [self._linha("HAS_FINDING", 1, 5)]
+        p2 = [self._linha("REVEALED_BY", 1, 5)]
+        self.assertEqual({l["origem"] for l in combinar_relacoes(p1, p2)}, {"p1", "p2"})
+
+    def test_ambos_usa_a_linha_do_p2(self):
+        p1 = [self._linha("TREATED_WITH", 1, 5, score="2.0")]
+        p2 = [self._linha("TREATED_WITH", 1, 5, score="0.9")]
+        self.assertEqual(combinar_relacoes(p1, p2)[0]["score"], "0.9")
 
 
 class TestAtributos(unittest.TestCase):

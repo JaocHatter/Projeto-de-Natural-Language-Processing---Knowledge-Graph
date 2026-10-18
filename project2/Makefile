@@ -37,3 +37,7 @@ all: clean-cases entities measurements relations
 
 app:
 	streamlit run src/clinical_kg/app/main.py
+
+# Projeto 2: visualizador P1 x P2 (não precisa do gazetteer UMLS)
+app-p2:
+	streamlit run src/clinical_kg/app/projeto2.py

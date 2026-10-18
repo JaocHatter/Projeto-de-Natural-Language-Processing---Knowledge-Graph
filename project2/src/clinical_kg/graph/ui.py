@@ -11,6 +11,8 @@ from .model import (CLINICAL_RELATIONS, LINK_METHODS, RELATION_LABELS, build_gra
 from .export import to_csv_zip, to_graphml, to_json
 
 ASSETS = Path(__file__).resolve().parent / "assets"
+# Projeto 2: rótulo de cada método na vista de comparação (ver app/projeto2.py).
+ORIGEM_ROTULO = {"p1": "só P1 (regras)", "p2": "só P2 (aprendido)", "ambos": "P1 e P2"}
 HTML = """
 <div class="kg-root">
   <div class="kg-controls">
@@ -85,6 +87,8 @@ def cytoscape_elements(graph: dict, palette: dict) -> list[dict]:
                 tooltip = (f'{edge["relation"]} · {status}\ntrigger: {trigger} · '
                            f'score {edge.get("score", 0.0):.2f} · {edge.get("count", 1)} mention(s); '
                            'heuristic, not a clinical assertion')
+                if edge.get("origem"):
+                    tooltip += f'\nmétodo: {ORIGEM_ROTULO.get(edge["origem"], edge["origem"])}'
         elements.append({"data": {**edge, "label": label, "line_style": line_style,
                                   "tooltip": tooltip}})
     return elements
@@ -114,6 +118,12 @@ STYLE = [
     }},
     {"selector": 'edge[assertion_status = "negated"]', "style": {
         "line-color": "#dc2626", "target-arrow-color": "#dc2626",
+    }},
+    {"selector": 'edge[origem = "p1"]', "style": {
+        "line-color": "#ea580c", "target-arrow-color": "#ea580c", "width": 2, "opacity": 0.85,
+    }},
+    {"selector": 'edge[origem = "p2"]', "style": {
+        "line-color": "#16a34a", "target-arrow-color": "#16a34a", "width": 2, "opacity": 0.85,
     }},
     {"selector": 'edge[evidence_source = "umls_ontology"]', "style": {
         "line-color": "#0f766e", "target-arrow-color": "#0f766e", "width": 1.4, "opacity": 0.6,

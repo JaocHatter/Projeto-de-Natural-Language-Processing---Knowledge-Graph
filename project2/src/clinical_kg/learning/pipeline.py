@@ -303,6 +303,26 @@ def linha_ml(caso: dict, cand: dict, relacao: str, probabilidade: float) -> dict
     return linha
 
 
+def relacoes_p2(modelo: ModeloAprendido, caso: dict, texto: str, entidades: list[dict],
+                freq: dict) -> tuple[list[dict], int]:
+    """As relações que o modelo aceita em um caso, e quantos candidatos olhou.
+
+    É a única porta de decisão do P2: o subcomando `extrair` e o visualizador
+    (inclusive para um caso novo colado pelo usuário) passam por aqui.
+    """
+    linhas, candidatos = [], 0
+    for cand in analyze_case(texto, entidades, freq, threshold=float("-inf")):
+        candidatos += 1
+        estruturais, entre = atributos_estruturais(texto, cand)
+        relacao, probabilidade = modelo.prever(estruturais, entre)
+        if relacao == NENHUMA:
+            continue
+        linha = linha_ml({**caso, "case_text": texto}, cand, relacao, probabilidade)
+        assert texto[cand["tail"]["start"]:cand["tail"]["end"]] == linha["tail_text"]
+        linhas.append(linha)
+    return linhas, candidatos
+
+
 def chave_relacao(linha: dict) -> tuple:
     return (linha["case_id"], str(linha["head_start"]), str(linha["tail_start"]), linha["relation"])
 
@@ -316,17 +336,10 @@ def cmd_extrair(args):
 
     linhas, candidatos = [], 0
     for caso in casos:
-        texto = textos[caso["case_id"]]
-        for cand in analyze_case(texto, entidades.get(caso["case_id"], []), freq,
-                                 threshold=float("-inf")):
-            candidatos += 1
-            estruturais, entre = atributos_estruturais(texto, cand)
-            relacao, probabilidade = modelo.prever(estruturais, entre)
-            if relacao == NENHUMA:
-                continue
-            linha = linha_ml({**caso, "case_text": texto}, cand, relacao, probabilidade)
-            assert texto[cand["tail"]["start"]:cand["tail"]["end"]] == linha["tail_text"]
-            linhas.append(linha)
+        novas, n = relacoes_p2(modelo, caso, textos[caso["case_id"]],
+                               entidades.get(caso["case_id"], []), freq)
+        linhas += novas
+        candidatos += n
 
     args.saida.parent.mkdir(parents=True, exist_ok=True)
     with open(args.saida, "w", newline="", encoding="utf-8") as f:
@@ -370,6 +383,20 @@ def cmd_extrair(args):
     print(f"  {'total':<16}{len(p1):>6}{len(linhas):>6}")
     if p1:
         print(f"\nrelações idênticas (mesmo par e tipo): {len(ml & set(p1))}")
+
+
+def combinar_relacoes(p1: list[dict], p2: list[dict]) -> list[dict]:
+    """Une as relações dos dois métodos, marcando cada uma com `origem`.
+
+    Duas linhas são a mesma relação quando têm a mesma cabeça, a mesma cauda e o
+    mesmo tipo. `origem` vale "p1", "p2" ou "ambos"; para "ambos" ficam os dados
+    (e o `assertion_status`) da linha do Projeto 2.
+    """
+    por_chave = {chave_relacao(l): {**l, "origem": "p1"} for l in p1}
+    for l in p2:
+        k = chave_relacao(l)
+        por_chave[k] = {**l, "origem": "ambos" if k in por_chave else "p2"}
+    return list(por_chave.values())
 
 
 def main(argv=None):

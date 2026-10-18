@@ -196,11 +196,15 @@ def build_graph(meta: dict, text: str, entities: list[dict], measurements: list[
                 "score": score, "heuristic": True,
                 "trigger_text": row.get("trigger_text", ""),
                 "trigger_category": row.get("trigger_category", ""),
+                # Projeto 2: qual método produziu a aresta (p1, p2 ou ambos); vazio no Projeto 1.
+                "origem": row.get("origem", ""),
                 "spans": [span],
             }
         else:
             existing["count"] += 1
             existing["spans"].append(span)
+            if existing["origem"] != row.get("origem", ""):
+                existing["origem"] = "ambos"
             # Keep the best-supported reading of a repeated relation.
             if score > existing["score"]:
                 existing.update(score=score, assertion_status=status,
