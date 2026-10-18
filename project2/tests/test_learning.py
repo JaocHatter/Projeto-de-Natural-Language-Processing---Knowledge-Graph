@@ -10,7 +10,8 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloA
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
-from clinical_kg.learning.pipeline import combinar_relacoes, confronto, linha_ml, medir, prf
+from clinical_kg.learning.pipeline import (combinar_relacoes, confronto, jaccard, linha_ml,
+                                           medir, prf, tabela_gatilhos)
 from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
@@ -289,6 +290,22 @@ class TestComparacaoDeGrafos(unittest.TestCase):
         p1 = [self._linha("TREATED_WITH", 1, 5, score="2.0")]
         p2 = [self._linha("TREATED_WITH", 1, 5, score="0.9")]
         self.assertEqual(combinar_relacoes(p1, p2)[0]["score"], "0.9")
+
+
+class TestComparacao(unittest.TestCase):
+    def test_jaccard(self):
+        self.assertEqual(jaccard({1, 2, 3}, {2, 3, 4}), 0.5)
+        self.assertEqual(jaccard(set(), set()), 0.0)
+
+    def test_tabela_gatilhos_marca_o_lexico_do_p1_e_ignora_funcao(self):
+        entre = ["was treated with"] * 4 + ["of the"] * 6 + ["the patient"] * 5
+        linhas, vistos = tabela_gatilhos(entre, minimo=3)
+        por_frase = {l["ngrama"]: l for l in linhas}
+        self.assertIn("treated with", por_frase)
+        self.assertEqual(por_frase["treated with"]["no_lexico_p1"], 1)
+        self.assertNotIn("of the", por_frase)        # só palavras de função
+        self.assertNotIn("the patient", por_frase)   # começa com artigo
+        self.assertIn("treated", vistos)
 
 
 class TestAtributos(unittest.TestCase):
