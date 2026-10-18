@@ -221,9 +221,16 @@ class UmContraTodos:
 
     O rótulo `NENHUMA` entra como mais uma classe. A previsão é a classe cujo modelo
     está mais confiante, então um par é "relação" quando a vencedora não é NENHUMA.
+
+    `limitar_por_suporte`: o peso da classe rara nunca passa do número de exemplos
+    positivos que a classe tem. Sem isso, CAUSED_BY (4 exemplos contra 409) recebia
+    peso 20, aprendia a disparar em quase qualquer par e gerava 99 arestas no grafo
+    contra 35 do Projeto 1. Com 4 exemplos o modelo não tem evidência para mais que
+    um peso 4; a partir de ~20 positivos o limite deixa de agir.
     """
 
-    def __init__(self, **parametros):
+    def __init__(self, limitar_por_suporte: bool = True, **parametros):
+        self.limitar_por_suporte = limitar_por_suporte
         self.parametros = parametros
         self.classes: list[str] = []
         self.modelos: dict[str, RegressaoLogistica] = {}
@@ -231,9 +238,14 @@ class UmContraTodos:
     def ajustar(self, X: list[dict], rotulos: list[str]):
         self.classes = sorted(set(rotulos))
         self.modelos = {}
+        contagem = collections.Counter(rotulos)
         for c in self.classes:
             binario = [1 if r == c else 0 for r in rotulos]
-            self.modelos[c] = RegressaoLogistica(**self.parametros).ajustar(X, binario)
+            parametros = dict(self.parametros)
+            if self.limitar_por_suporte:
+                teto = parametros.get("peso_max", RegressaoLogistica().peso_max)
+                parametros["peso_max"] = min(teto, contagem[c])
+            self.modelos[c] = RegressaoLogistica(**parametros).ajustar(X, binario)
         return self
 
     def probabilidades(self, x: dict) -> dict[str, float]:

@@ -3,6 +3,7 @@
 
     python -m clinical_kg.learning.pipeline tabelas    # n-gramas, PMI e LLR do corpus
     python -m clinical_kg.learning.pipeline treinar    # validação, ablações e modelo final
+    python -m clinical_kg.learning.pipeline extrair    # relações dos 50 casos com o modelo
 
 tabelas
     Lê  : data/interim/cases_clean.csv, data/processed/entities.csv
@@ -12,6 +13,11 @@ treinar
     Lê  : os mesmos + data/interim/gold_relations.csv (413 pares julgados à mão)
     Grava: data/processed/metricas_validacao.csv, metricas_por_caso.csv,
            metricas_por_relacao.csv, pesos_modelo.csv e modelo.json
+
+extrair
+    Lê  : data/processed/modelo.json + casos e entidades
+    Grava: data/processed/relacoes_ml.csv, no esquema de relations.csv do Projeto 1,
+           de modo que `graph.model.build_graph` o consome sem mudanças
 
 Os candidatos de relação são os do Projeto 1 (`relations.extract.analyze_case`
 sem limiar), de modo que os dois sistemas sempre vejam os mesmos pares.
@@ -28,18 +34,21 @@ import json
 import sys
 from pathlib import Path
 
-from clinical_kg.paths import DEFAULT_CASES, DEFAULT_ENTITIES, PROJECT_ROOT
+from clinical_kg.paths import (DEFAULT_CASES, DEFAULT_ENTITIES, DEFAULT_MEASUREMENTS,
+                               DEFAULT_RELATIONS, PROJECT_ROOT)
 from clinical_kg.relations.core import features as regras_p1
-from clinical_kg.relations.extract import analyze_case, load_entities
+from clinical_kg.relations.extract import (CSV_COLUMNS, DEFAULT_FREQ, analyze_case,
+                                           load_entities, load_frequencies, to_row)
 
 from .modelo import (NENHUMA, ModeloAprendido, UmContraTodosSklearn,
-                     carregar_exemplos, sklearn_disponivel)
+                     atributos_estruturais, carregar_exemplos, sklearn_disponivel)
 from .ngramas import Associacoes, contar_ngramas, tokenizar
 
 TABELA_NGRAMAS = PROJECT_ROOT / "data/interim/tabela_ngramas.csv"
 TABELA_PMI = PROJECT_ROOT / "data/interim/tabela_pmi.csv"
 SAIDA = PROJECT_ROOT / "data/processed"
 MODELO_JSON = SAIDA / "modelo.json"
+RELACOES_ML = SAIDA / "relacoes_ml.csv"
 N_MAX = 3
 
 # Cada variante liga uma combinação de peças. "completo" é o modelo proposto.
@@ -71,6 +80,20 @@ def textos_dos_casos(caminho: Path = DEFAULT_CASES) -> dict[str, str]:
     # Sem newline="": os deslocamentos indexam o texto com quebras de linha LF.
     with open(caminho, encoding="utf-8") as f:
         return {r["case_id"]: r["case_text"] for r in csv.DictReader(f)}
+
+
+def entidades_lf(caminho: Path = DEFAULT_ENTITIES) -> dict[str, list[dict]]:
+    """Entidades por caso, com o texto de cada uma em quebras de linha LF.
+
+    `entities.csv` guarda algumas entidades que cruzam uma quebra de linha com
+    CR+LF, mas os deslocamentos (e o texto do caso) usam só LF. Sem normalizar, o
+    grafo recusa a evidência porque o trecho do texto não bate com a entidade.
+    """
+    por_caso = load_entities(caminho)
+    for linhas in por_caso.values():
+        for e in linhas:
+            e["surface_text"] = e["surface_text"].replace("\r\n", "\n")
+    return por_caso
 
 
 def texto_entre(texto: str, cand: dict) -> str:
@@ -261,17 +284,109 @@ def cmd_treinar(args):
         print(f"  {nome:<34}{w:>8.2f}")
 
 
+# --------------------------------------------------------------------------
+# extrair: o modelo decide todos os candidatos dos 50 casos
+# --------------------------------------------------------------------------
+def linha_ml(caso: dict, cand: dict, relacao: str, probabilidade: float) -> dict:
+    """Uma linha no esquema de relations.csv, decidida pelo modelo aprendido.
+
+    O que vem do Projeto 1 e não é decisão de relação é mantido: os pares, as
+    posições e o `assertion_status` (negada, hipotética, histórica...), que é uma
+    etapa à parte de escopo. O que era decisão das regras é trocado: o tipo vem do
+    modelo, `score` passa a ser a probabilidade dele e o gatilho do P1 é apagado,
+    para a linha não sugerir que uma regra a produziu.
+    """
+    linha = to_row(caso, cand)
+    linha.update(relation=relacao, score=round(probabilidade, 3),
+                 trigger_text="", trigger_start="", trigger_end="", trigger_category="",
+                 rule_path="p2.regressao_logistica")
+    return linha
+
+
+def chave_relacao(linha: dict) -> tuple:
+    return (linha["case_id"], str(linha["head_start"]), str(linha["tail_start"]), linha["relation"])
+
+
+def cmd_extrair(args):
+    modelo = ModeloAprendido.de_dict(json.load(open(args.modelo, encoding="utf-8")))
+    casos = ler_casos(args.casos)
+    textos = textos_dos_casos(args.casos)
+    entidades = entidades_lf(args.entidades)
+    freq = load_frequencies(DEFAULT_FREQ)
+
+    linhas, candidatos = [], 0
+    for caso in casos:
+        texto = textos[caso["case_id"]]
+        for cand in analyze_case(texto, entidades.get(caso["case_id"], []), freq,
+                                 threshold=float("-inf")):
+            candidatos += 1
+            estruturais, entre = atributos_estruturais(texto, cand)
+            relacao, probabilidade = modelo.prever(estruturais, entre)
+            if relacao == NENHUMA:
+                continue
+            linha = linha_ml({**caso, "case_text": texto}, cand, relacao, probabilidade)
+            assert texto[cand["tail"]["start"]:cand["tail"]["end"]] == linha["tail_text"]
+            linhas.append(linha)
+
+    args.saida.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.saida, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=CSV_COLUMNS)
+        w.writeheader()
+        w.writerows(linhas)
+
+    por_tipo = collections.Counter(l["relation"] for l in linhas)
+    print(f"{len(casos)} casos, {candidatos} candidatos, {len(linhas)} relações aceitas "
+          f"({len(linhas) / max(candidatos, 1):.0%})")
+    print(f"{args.saida.relative_to(PROJECT_ROOT)}\n")
+
+    # O grafo do Projeto 1 precisa carregar o arquivo sem erro.
+    from clinical_kg.graph.model import CLINICAL_RELATIONS, build_graph
+    medicoes = collections.defaultdict(list)
+    if DEFAULT_MEASUREMENTS.exists():
+        with open(DEFAULT_MEASUREMENTS, newline="", encoding="utf-8") as f:
+            for m in csv.DictReader(f):
+                medicoes[m["case_id"]].append(m)
+    por_caso = collections.defaultdict(list)
+    for l in linhas:
+        por_caso[l["case_id"]].append(l)
+    arestas, avisos = 0, 0
+    for caso in casos:
+        cid = caso["case_id"]
+        g = build_graph(caso, textos[cid], entidades.get(cid, []), medicoes.get(cid, []),
+                        relations=por_caso.get(cid, []))
+        arestas += sum(1 for e in g["edges"] if e["relation"] in CLINICAL_RELATIONS)
+        avisos += len(g.get("warnings", []))
+    print(f"grafo: {arestas} arestas clínicas, {avisos} avisos (carregou os {len(casos)} casos)\n")
+
+    p1 = {}
+    if DEFAULT_RELATIONS.exists():
+        with open(DEFAULT_RELATIONS, newline="", encoding="utf-8") as f:
+            p1 = {chave_relacao(l): l for l in csv.DictReader(f)}
+    ml = {chave_relacao(l) for l in linhas}
+    tipos_p1 = collections.Counter(k[3] for k in p1)
+    print(f"{'relação':<18}{'P1':>6}{'P2':>6}")
+    for r in sorted(set(por_tipo) | set(tipos_p1)):
+        print(f"  {r:<16}{tipos_p1[r]:>6}{por_tipo[r]:>6}")
+    print(f"  {'total':<16}{len(p1):>6}{len(linhas):>6}")
+    if p1:
+        print(f"\nrelações idênticas (mesmo par e tipo): {len(ml & set(p1))}")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="comando", required=True)
     for nome, ajuda, func in (("tabelas", "n-gramas, PMI e LLR do corpus", cmd_tabelas),
-                              ("treinar", "validação, ablações e modelo final", cmd_treinar)):
+                              ("treinar", "validação, ablações e modelo final", cmd_treinar),
+                              ("extrair", "relações dos 50 casos com o modelo", cmd_extrair)):
         s = sub.add_parser(nome, help=ajuda)
         s.add_argument("--casos", type=Path, default=DEFAULT_CASES)
         s.add_argument("--entidades", type=Path, default=DEFAULT_ENTITIES)
         if nome == "treinar":
             from clinical_kg.paths import DEFAULT_GOLD_RELATIONS
             s.add_argument("--gold", type=Path, default=DEFAULT_GOLD_RELATIONS)
+        if nome == "extrair":
+            s.add_argument("--modelo", type=Path, default=MODELO_JSON)
+            s.add_argument("--saida", type=Path, default=RELACOES_ML)
         s.set_defaults(func=func)
     args = ap.parse_args(argv)
     args.func(args)

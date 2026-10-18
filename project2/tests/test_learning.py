@@ -10,7 +10,8 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, Exemplo, ModeloA
                                          UmContraTodosSklearn, atributos,
                                          atributos_associacao, carregar_exemplos,
                                          sklearn_disponivel)
-from clinical_kg.learning.pipeline import confronto, medir, prf
+from clinical_kg.learning.pipeline import confronto, linha_ml, medir, prf
+from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
 
@@ -236,6 +237,36 @@ class TestMedidas(unittest.TestCase):
     def test_confronto_conta_vence_empata_perde(self):
         self.assertEqual(confronto({"a": 0.9, "b": 0.5, "c": 0.1},
                                    {"a": 0.5, "b": 0.5, "c": 0.3}), (1, 1, 1))
+
+
+class TestExtracao(unittest.TestCase):
+    def test_linha_ml_segue_o_esquema_do_p1_e_apaga_o_gatilho(self):
+        cand = {
+            "relation": "HAS_FINDING", "assertion_status": "negated", "sent_start": 0,
+            "sent_end": 30, "token_gap": 2, "same_clause": True, "score": 2.5,
+            "rule_path": "score.trigger_weight",
+            "head": {"start": 0, "end": 4, "cui": "C1", "entity_type": "Exam", "surface_text": "scan"},
+            "tail": {"start": 10, "end": 16, "cui": "C2", "entity_type": "Finding", "surface_text": "lesion"},
+            "trigger": {"words": ["showed"], "start": 5, "end": 11, "category": "REVEAL"},
+        }
+        linha = linha_ml({"case_id": "c1", "article_id": "a1"}, cand, "REVEALED_BY", 0.8123)
+        self.assertEqual(list(linha), CSV_COLUMNS)
+        self.assertEqual(linha["relation"], "REVEALED_BY")
+        self.assertEqual(linha["score"], 0.812)
+        self.assertEqual(linha["assertion_status"], "negated")   # escopo é etapa do P1
+        self.assertEqual(linha["trigger_text"], "")              # nada de gatilho do P1
+        self.assertEqual(linha["rule_path"], "p2.regressao_logistica")
+
+
+class TestLimitePorSuporte(unittest.TestCase):
+    def test_classe_rara_nao_recebe_peso_maior_que_seus_exemplos(self):
+        # 3 positivos de "RARA" contra 60 de "NENHUMA": sem limite o peso seria 20.
+        X = [{"x": 1.0}] * 3 + [{"x": 1.0}] * 60
+        rotulos = ["RARA"] * 3 + [NENHUMA] * 60
+        livre = UmContraTodos(limitar_por_suporte=False).ajustar(X, rotulos)
+        limitado = UmContraTodos(limitar_por_suporte=True).ajustar(X, rotulos)
+        self.assertGreater(livre.modelos["RARA"].probabilidade({"x": 1.0}),
+                           limitado.modelos["RARA"].probabilidade({"x": 1.0}))
 
 
 class TestAtributos(unittest.TestCase):
