@@ -26,7 +26,7 @@ PMC10106591_01,PMC10106591,LOCATED_IN,affirmed,Concept,3059,3067,C1261287,Diagno
 PMC10106591_01,PMC10106591,COORDINATE_WITH,affirmed,Concept,3152,3160,C1261287,Diagnosis,stenosis,3200,3208,C1261287,Diagnosis,stenosis,,,,,2933,3369,8,False,0.367,p2.regressao_logistica
 PMC10106591_01,PMC10106591,LOCATED_IN,affirmed,Concept,3266,3274,C1261287,Diagnosis,stenosis,3296,3317,C1261316,BodyPart,right coronary artery,,,,,2933,3369,5,True,0.763,p2.regressao_logistica
 PMC10106591_01,PMC10106591,TREATED_WITH,affirmed,Person,,,,Person,,3424,3446,C0023508,Exam,white blood cell count,,,,,3370,3665,7,False,0.936,p2.regressao_logistica
-PMC10106591_01,PMC10106591,LOCATED_IN,affirmed,Concept,3424,3446,C0023508,Exam,white blood cell count,3456,3461,C0023884,BodyPart,liver,,,,,3370,3665,1,False,0.811,p2.regressao_logistica
+PMC10106591_01,PMC10106591,LOCATED_IN,affirmed,Concept,3424,3446,C0023508,Exam,white blood cell count,3456,3461,C0023884,BodyPart,liver,,,,,3370,3665,1,False,0.81,p2.regressao_logistica
 PMC10106591_01,PMC10106591,COORDINATE_WITH,affirmed,Concept,3545,3556,C0441509,Treatment,coagulation,3567,3592,C0005833,Exam,erythrocyte sedimentation,,,,,3370,3665,1,False,0.784,p2.regressao_logistica
 PMC10106591_01,PMC10106591,TREATED_WITH,affirmed,Person,,,,Person,,3699,3702,C1623258,Exam,ECG,,,,,3666,3749,5,False,0.971,p2.regressao_logistica
 PMC10106591_01,PMC10106591,TREATED_WITH,affirmed,Person,,,,Person,,3786,3789,C1623258,Exam,ECG,,,,,3750,3813,6,False,0.968,p2.regressao_logistica
@@ -48,7 +48,7 @@ PMC10405809_01,PMC10405809,LOCATED_IN,affirmed,Concept,1007,1016,C0014876,BodyPa
 PMC10405809_01,PMC10405809,HAS_DIAGNOSIS,hedged,Person,,,,Person,,1073,1104,C0017168,Diagnosis,gastroesophageal reflux disease,,,,,1050,1248,3,False,0.778,p2.regressao_logistica
 PMC10405809_01,PMC10405809,LOCATED_IN,hedged,Concept,1124,1133,C1261287,Diagnosis,stricture,1141,1150,C0014876,BodyPart,esophagus,,,,,1050,1248,2,True,0.91,p2.regressao_logistica
 PMC10405809_01,PMC10405809,REVEALED_BY,affirmed,Concept,1164,1170,C1444647,Finding,wanted,1194,1204,C0006826,Diagnosis,malignancy,,,,,1050,1248,4,True,0.415,p2.regressao_logistica
-PMC10405809_01,PMC10405809,COORDINATE_WITH,affirmed,Concept,1194,1204,C0006826,Diagnosis,malignancy,1225,1236,C1262477,Finding,weight loss,,,,,1050,1248,3,False,0.648,p2.regressao_logistica
+PMC10405809_01,PMC10405809,COORDINATE_WITH,affirmed,Concept,1194,1204,C0006826,Diagnosis,malignancy,1225,1236,C1262477,Finding,weight loss,,,,,1050,1248,3,False,0.647,p2.regressao_logistica
 PMC10405809_01,PMC10405809,COORDINATE_WITH,affirmed,Concept,1225,1236,C1262477,Finding,weight loss,1241,1247,C0002871,Diagnosis,anemia,,,,,1050,1248,1,False,0.592,p2.regressao_logistica
 PMC10405809_01,PMC10405809,LOCATED_IN,affirmed,Concept,1278,1286,C0040405,Exam,CT) scan,1294,1298,C0027530,BodyPart,neck,,,,,1249,1475,2,True,0.934,p2.regressao_logistica
 PMC10405809_01,PMC10405809,COORDINATE_WITH,affirmed,Concept,1294,1298,C0027530,BodyPart,neck,1303,1309,C0817096,BodyPart,thorax,,,,,1249,1475,1,False,0.733,p2.regressao_logistica
@@ -94,17 +94,18 @@ PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,1906,1916,C0007584,E
 PMC10434843_01,PMC10434843,TREATED_WITH,negated,Concept,2030,2037,C5966160,Treatment,albumin,2067,2081,C2883932,Diagnosis,immunoglobulin,,,,,1811,2103,4,False,0.72,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,2104,2118,C0016263,Exam,Flow cytometry,2180,2182,C0332140,Finding,CD,,,,,2104,2276,8,True,0.532,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,2368,2370,C0332140,Finding,CD,2477,2500,C0270933,Diagnosis,inflammatory neuropathy,,,,,2277,2510,18,False,0.354,p2.regressao_logistica
+PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,2637,2647,C0003241,Treatment,antibodies,2732,2765,C0282647,Exam,indirect immunofluorescence assay,,,,,2610,2767,17,False,0.355,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,negated,Concept,2795,2808,C1148554,Exam,determination,2825,2839,C2883932,Diagnosis,Immunoglobulin,,,,,2768,3037,2,True,0.737,p2.regressao_logistica
 PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,2898,2908,C0003241,Treatment,antibodies,2964,2969,C1510438,Exam,assay,,,,,2768,3037,14,False,0.53,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,negated,Concept,2825,2839,C2883932,Diagnosis,Immunoglobulin,2846,2856,C0003241,Treatment,antibodies,,,,,2768,3037,2,True,0.374,p2.regressao_logistica
 PMC10434843_01,PMC10434843,HAS_FINDING,affirmed,Person,,,,Person,,3067,3095,C0429379,Finding,motor nerve conduction block,,,,,3038,3181,4,False,0.726,p2.regressao_logistica
 PMC10434843_01,PMC10434843,LOCATED_IN,historical,Concept,3585,3601,C0013839,Exam,electromyography,3643,3674,C0224279,BodyPart,abductor pollicis brevis muscle,,,,,3574,3710,6,True,0.847,p2.regressao_logistica
-PMC10434843_01,PMC10434843,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,3726,3729,C0393847,Diagnosis,MMN,,,,,3711,3779,3,False,0.788,p2.regressao_logistica
+PMC10434843_01,PMC10434843,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,3726,3729,C0393847,Diagnosis,MMN,,,,,3711,3779,3,False,0.789,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,3801,3816,C0041618,Exam,ultrasonography,3838,3849,C1293134,Treatment,enlargement,,,,,3782,4043,2,True,0.889,p2.regressao_logistica
 PMC10434843_01,PMC10434843,LOCATED_IN,affirmed,Concept,3801,3816,C0041618,Exam,ultrasonography,3784,3800,C0031119,BodyPart,peripheral nerve,,,,,3782,4043,0,True,0.882,p2.regressao_logistica
 PMC10434843_01,PMC10434843,LOCATED_IN,affirmed,Concept,4033,4042,C1285572,Exam,phenotype,3999,4008,C0446516,BodyPart,upper arm,,,,,3782,4043,3,True,0.9,p2.regressao_logistica
 PMC10434843_01,PMC10434843,HAS_DIAGNOSIS,negated,Person,,,,Person,,4152,4175,C5671289,Diagnosis,autoimmune encephalitis,,,,,4044,4184,14,False,0.596,p2.regressao_logistica
-PMC10434843_01,PMC10434843,TREATED_WITH,affirmed,Person,,,,Person,,4316,4326,C0003241,Treatment,antibodies,,,,,4298,4574,5,False,0.889,p2.regressao_logistica
+PMC10434843_01,PMC10434843,TREATED_WITH,affirmed,Person,,,,Person,,4316,4326,C0003241,Treatment,antibodies,,,,,4298,4574,5,False,0.891,p2.regressao_logistica
 PMC10434843_01,PMC10434843,TREATED_WITH,affirmed,Concept,4316,4326,C0003241,Treatment,antibodies,4357,4367,C0006826,Diagnosis,malignancy,,,,,4298,4574,5,False,0.657,p2.regressao_logistica
 PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,4357,4367,C0006826,Diagnosis,malignancy,4386,4391,C0027651,Diagnosis,tumor,,,,,4298,4574,3,False,0.663,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,negated,Concept,4528,4534,C1699633,Exam,PET-CT,4568,4573,C0027651,Diagnosis,tumor,,,,,4298,4574,6,True,0.568,p2.regressao_logistica
@@ -119,7 +120,7 @@ PMC10434843_01,PMC10434843,TREATED_WITH,affirmed,Person,,,,Person,,5273,5291,C02
 PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,5273,5291,C0200125,Exam,electroneurography,5397,5402,C0028778,Finding,block,,,,,5244,5530,16,False,0.547,p2.regressao_logistica
 PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,5397,5402,C0028778,Finding,block,5423,5451,C0429379,Finding,motor nerve conduction block,,,,,5244,5530,3,False,0.401,p2.regressao_logistica
 PMC10434843_01,PMC10434843,REVEALED_BY,hedged,Concept,5729,5751,C5980913,Finding,differential diagnosis,5774,5782,C0039082,Diagnosis,syndrome,,,,,5721,5874,2,True,0.287,p2.regressao_logistica
-PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,5787,5816,C0002736,Diagnosis,amyotrophic lateral sclerosis,5863,5873,C0003241,Treatment,antibodies,,,,,5721,5874,10,True,0.413,p2.regressao_logistica
+PMC10434843_01,PMC10434843,REVEALED_BY,affirmed,Concept,5787,5816,C0002736,Diagnosis,amyotrophic lateral sclerosis,5863,5873,C0003241,Treatment,antibodies,,,,,5721,5874,10,True,0.414,p2.regressao_logistica
 PMC10434843_01,PMC10434843,COORDINATE_WITH,affirmed,Concept,5774,5782,C0039082,Diagnosis,syndrome,5787,5816,C0002736,Diagnosis,amyotrophic lateral sclerosis,,,,,5721,5874,1,False,0.737,p2.regressao_logistica
 PMC10434843_01,PMC10434843,HAS_FINDING,affirmed,Person,,,,Person,,5986,6002,C0423551,Finding,sensory symptoms,,,,,5958,6170,4,False,0.64,p2.regressao_logistica
 PMC10434843_01,PMC10434843,LOCATED_IN,affirmed,Concept,5986,6002,C0423551,Finding,sensory symptoms,6034,6046,C0025058,BodyPart,median nerve,,,,,5958,6170,6,True,0.504,p2.regressao_logistica
@@ -145,7 +146,7 @@ PMC10488652_01,PMC10488652,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1291,1303,C0
 PMC10488652_01,PMC10488652,TREATED_WITH,affirmed,Person,,,,Person,,1334,1347,C0011777,Treatment,dexamethasone,,,,,1305,1575,4,False,0.762,p2.regressao_logistica
 PMC10488652_01,PMC10488652,COORDINATE_WITH,affirmed,Concept,1334,1347,C0011777,Treatment,dexamethasone,1402,1420,C0020336,Treatment,hydroxychloroquine,,,,,1305,1575,12,False,0.669,p2.regressao_logistica
 PMC10488652_01,PMC10488652,TREATED_WITH,affirmed,Person,,,,Person,,1741,1751,C0032952,Treatment,prednisone,,,,,1654,1959,12,False,0.729,p2.regressao_logistica
-PMC10488652_01,PMC10488652,COORDINATE_WITH,affirmed,Concept,1741,1751,C0032952,Treatment,prednisone,1784,1802,C0020336,Treatment,hydroxychloroquine,,,,,1654,1959,8,False,0.766,p2.regressao_logistica
+PMC10488652_01,PMC10488652,COORDINATE_WITH,affirmed,Concept,1741,1751,C0032952,Treatment,prednisone,1784,1802,C0020336,Treatment,hydroxychloroquine,,,,,1654,1959,8,False,0.767,p2.regressao_logistica
 PMC10488652_01,PMC10488652,COORDINATE_WITH,affirmed,Concept,1784,1802,C0020336,Treatment,hydroxychloroquine,1840,1861,C0209368,Treatment,mycophenolate mofetil,,,,,1654,1959,9,False,0.727,p2.regressao_logistica
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,160,169,C0012833,Symptom,dizziness,175,190,C0267596,Diagnosis,rectal bleeding,,,,,0,191,1,False,0.824,p2.regressao_logistica
 PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Person,,,,Person,,274,289,C0001617,Treatment,corticosteroids,,,,,192,398,13,False,0.672,p2.regressao_logistica
@@ -158,7 +159,7 @@ PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,724,738,C0032181,Exam,pl
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,789,797,C0015879,Treatment,ferritin,802,809,C5966160,Treatment,albumin,,,,,658,817,1,False,0.804,p2.regressao_logistica
 PMC10521634_01,PMC10521634,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,869,879,C3714514,Diagnosis,infections,,,,,818,912,9,False,0.794,p2.regressao_logistica
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,913,930,C0042487,Diagnosis,Venous thrombosis,931,942,C0199176,Treatment,prophylaxis,,,,,913,1001,0,True,0.699,p2.regressao_logistica
-PMC10521634_01,PMC10521634,HAS_FINDING,affirmed,Person,,,,Person,,1210,1224,C0836924,Diagnosis,thrombocytosis,,,,,1145,1279,11,False,0.51,p2.regressao_logistica
+PMC10521634_01,PMC10521634,HAS_FINDING,affirmed,Person,,,,Person,,1210,1224,C0836924,Diagnosis,thrombocytosis,,,,,1145,1279,11,False,0.509,p2.regressao_logistica
 PMC10521634_01,PMC10521634,CAUSED_BY,affirmed,Concept,1210,1224,C0836924,Diagnosis,thrombocytosis,1241,1249,C0015879,Treatment,ferritin,,,,,1145,1279,3,False,0.455,p2.regressao_logistica
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,1241,1249,C0015879,Treatment,ferritin,1264,1271,C5966160,Treatment,albumin,,,,,1145,1279,3,False,0.694,p2.regressao_logistica
 PMC10521634_01,PMC10521634,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1387,1404,C0024050,Diagnosis,lower GI bleeding,,,,,1327,1405,10,False,0.775,p2.regressao_logistica
@@ -171,7 +172,7 @@ PMC10521634_01,PMC10521634,LOCATED_IN,negated,Concept,2040,2045,C0009368,BodyPar
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,2063,2073,C0006826,Diagnosis,malignancy,2172,2178,C0041582,Diagnosis,ulcers,,,,,1998,2257,14,False,0.335,p2.regressao_logistica
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,2172,2178,C0041582,Diagnosis,ulcers,2201,2213,C0021368,Diagnosis,inflammation,,,,,1998,2257,3,False,0.679,p2.regressao_logistica
 PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Person,,,,Person,,2305,2310,C0127615,Treatment,5-ASA,,,,,2258,2444,6,False,0.704,p2.regressao_logistica
-PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Person,,,,Person,,2315,2319,C0019139,Treatment,LMWH,,,,,2258,2444,9,False,0.683,p2.regressao_logistica
+PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Person,,,,Person,,2315,2319,C0019139,Treatment,LMWH,,,,,2258,2444,9,False,0.682,p2.regressao_logistica
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,2333,2364,C0398663,Diagnosis,post-splenectomy thrombocytosis,2397,2407,C0666743,Treatment,infliximab,,,,,2258,2444,5,False,0.59,p2.regressao_logistica
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,2333,2364,C0398663,Diagnosis,post-splenectomy thrombocytosis,2408,2418,C4045974,Treatment,biosimilar,,,,,2258,2444,6,False,0.583,p2.regressao_logistica
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,2305,2310,C0127615,Treatment,5-ASA,2315,2319,C0019139,Treatment,LMWH,,,,,2258,2444,1,False,0.804,p2.regressao_logistica
@@ -183,7 +184,7 @@ PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Person,,,,Person,,2805,2812,C00
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,2805,2812,C0040405,Exam,CT scan,2830,2837,C0543467,Treatment,surgery,,,,,2781,2906,4,False,0.582,p2.regressao_logistica
 PMC10521634_01,PMC10521634,TREATED_WITH,affirmed,Concept,2842,2850,C0013103,Treatment,drainage,2868,2875,C0000833,Diagnosis,abscess,,,,,2781,2906,3,True,0.794,p2.regressao_logistica
 PMC10521634_01,PMC10521634,REVEALED_BY,affirmed,Concept,2911,2920,C0014245,Exam,endoscopy,2982,2991,C1394254,Diagnosis,cryptitis,,,,,2907,3023,9,False,0.557,p2.regressao_logistica
-PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,2982,2991,C1394254,Diagnosis,cryptitis,3002,3011,C0000833,Diagnosis,abscesses,,,,,2907,3023,2,False,0.661,p2.regressao_logistica
+PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,2982,2991,C1394254,Diagnosis,cryptitis,3002,3011,C0000833,Diagnosis,abscesses,,,,,2907,3023,2,False,0.66,p2.regressao_logistica
 PMC10521634_01,PMC10521634,HAS_FINDING,affirmed,Person,,,,Person,,3105,3108,C5401128,Finding,add,,,,,3024,3198,15,False,0.589,p2.regressao_logistica
 PMC10521634_01,PMC10521634,COORDINATE_WITH,affirmed,Concept,3306,3313,C2947996,Treatment,perform,3342,3353,C0677554,Treatment,anastomosis,,,,,3199,3354,4,False,0.539,p2.regressao_logistica
 PMC11131390_01,PMC11131390,TREATED_WITH,affirmed,Person,,,,Person,,154,176,C0040130,Exam,thyroid function tests,,,,,139,352,3,False,0.952,p2.regressao_logistica
@@ -200,17 +201,17 @@ PMC11259348_P1,PMC11259348,HAS_SYMPTOM,affirmed,Person,,,,Person,,29,41,C2129214
 PMC11259348_P1,PMC11259348,COORDINATE_WITH,affirmed,Concept,22,27,C0015967,Symptom,fever,29,41,C2129214,Symptom,loose stools,,,,,0,133,0,False,0.854,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,REVEALED_BY,affirmed,Concept,204,215,C0600103,Exam,blood group,240,248,C0003241,Treatment,antibody,,,,,200,272,5,False,0.625,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,REVEALED_BY,negated,Concept,467,487,C0274435,Diagnosis,Transfusion reaction,528,539,C0014792,Treatment,erythrocyte,,,,,467,616,5,True,0.409,p2.regressao_logistica
-PMC11259348_P1,PMC11259348,TREATED_WITH,affirmed,Concept,528,539,C0014792,Treatment,erythrocyte,559,578,C0860218,Diagnosis,ABO incompatibility,,,,,467,616,2,False,0.644,p2.regressao_logistica
+PMC11259348_P1,PMC11259348,TREATED_WITH,affirmed,Concept,528,539,C0014792,Treatment,erythrocyte,559,578,C0860218,Diagnosis,ABO incompatibility,,,,,467,616,2,False,0.643,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,TREATED_WITH,affirmed,Concept,649,658,C2945560,Finding,hemolysis,669,687,C0005841,Treatment,blood transfusions,,,,,617,779,1,True,0.505,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,REVEALED_BY,hedged,Concept,1012,1035,C0200532,Exam,Donath-Landsteiner test,1144,1152,C0003241,Treatment,antibody,,,,,1009,1176,12,False,0.703,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,COORDINATE_WITH,negated,Concept,1779,1800,C3842923,Finding,positive and negative,1827,1835,C4554418,Finding,parallel,,,,,1770,1945,5,False,0.383,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,TREATED_WITH,affirmed,Person,,,,Person,,2328,2339,C0600103,Exam,blood group,,,,,2222,2340,18,False,0.758,p2.regressao_logistica
-PMC11259348_P1,PMC11259348,HAS_FINDING,affirmed,Person,,,,Person,,2643,2645,C0608663,Treatment,P2,,,,,2541,2654,18,False,0.417,p2.regressao_logistica
-PMC11259348_P1,PMC11259348,COORDINATE_WITH,affirmed,Concept,2844,2846,C0608663,Treatment,P2,2851,2855,C0608663,Treatment,"2, P",,,,,2655,2867,2,False,0.588,p2.regressao_logistica
+PMC11259348_P1,PMC11259348,HAS_FINDING,affirmed,Person,,,,Person,,2643,2645,C0608663,Treatment,P2,,,,,2541,2654,18,False,0.418,p2.regressao_logistica
+PMC11259348_P1,PMC11259348,COORDINATE_WITH,affirmed,Concept,2844,2846,C0608663,Treatment,P2,2851,2855,C0608663,Treatment,"2, P",,,,,2655,2867,2,False,0.589,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,CAUSED_BY,negated,Concept,3093,3106,C0427620,Finding,group A blood,3178,3185,C4522145,Finding,a group,,,,,2868,3582,12,True,0.562,p2.regressao_logistica
 PMC11259348_P1,PMC11259348,CAUSED_BY,negated,Concept,3178,3185,C4522145,Finding,a group,3250,3258,C4082130,Finding,prepared,,,,,2868,3582,12,True,0.519,p2.regressao_logistica
 PMC11345641_01,PMC11345641,HAS_FINDING,affirmed,Person,,,,Person,,71,82,C0347944,Finding,pelvic mass,,,,,0,187,14,False,0.83,p2.regressao_logistica
-PMC11345641_01,PMC11345641,REVEALED_BY,affirmed,Concept,142,157,C0041618,Exam,ultrasonography,71,82,C0347944,Finding,pelvic mass,,,,,0,187,7,True,0.523,p2.regressao_logistica
+PMC11345641_01,PMC11345641,REVEALED_BY,affirmed,Concept,142,157,C0041618,Exam,ultrasonography,71,82,C0347944,Finding,pelvic mass,,,,,0,187,7,True,0.524,p2.regressao_logistica
 PMC11345641_01,PMC11345641,HAS_SYMPTOM,affirmed,Person,,,,Person,,301,315,C0000737,Symptom,abdominal pain,,,,,281,379,3,False,0.893,p2.regressao_logistica
 PMC11345641_01,PMC11345641,TREATED_WITH,affirmed,Concept,301,315,C0000737,Symptom,abdominal pain,341,352,C1293134,Treatment,enlargement,,,,,281,379,3,False,0.684,p2.regressao_logistica
 PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,476,481,C0027651,Diagnosis,tumor,576,586,C0014533,BodyPart,epididymis,,,,,466,666,15,False,0.633,p2.regressao_logistica
@@ -220,7 +221,7 @@ PMC11345641_01,PMC11345641,HAS_FINDING,affirmed,Person,,,,Person,,974,984,C02054
 PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,998,1005,C0011923,Exam,imaging,1053,1067,C0027088,BodyPart,uterine muscle,,,,,945,1205,6,True,0.83,p2.regressao_logistica
 PMC11345641_01,PMC11345641,REVEALED_BY,affirmed,Concept,1210,1213,C0024485,Exam,MRI,1244,1254,C0023267,Diagnosis,leiomyomas,,,,,1206,1310,4,True,0.561,p2.regressao_logistica
 PMC11345641_01,PMC11345641,COORDINATE_WITH,hedged,Concept,1244,1254,C0023267,Diagnosis,leiomyomas,1278,1296,C0334477,Diagnosis,cellular leiomyoma,,,,,1206,1310,3,False,0.66,p2.regressao_logistica
-PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,1314,1332,C1510477,Exam,endometrial biopsy,1387,1398,C0014180,BodyPart,endometrium,,,,,1311,1399,6,False,0.809,p2.regressao_logistica
+PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,1314,1332,C1510477,Exam,endometrial biopsy,1387,1398,C0014180,BodyPart,endometrium,,,,,1311,1399,6,False,0.808,p2.regressao_logistica
 PMC11345641_01,PMC11345641,HAS_FINDING,affirmed,Person,,,,Person,,1473,1496,C2243030,Treatment,bilateral salpingectomy,,,,,1400,1510,11,False,0.453,p2.regressao_logistica
 PMC11345641_01,PMC11345641,COORDINATE_WITH,affirmed,Concept,1437,1468,C0404090,Treatment,total laparoscopic hysterectomy,1473,1496,C2243030,Treatment,bilateral salpingectomy,,,,,1400,1510,1,False,0.804,p2.regressao_logistica
 PMC11345641_01,PMC11345641,REVEALED_BY,affirmed,Concept,1811,1834,C0026018,Exam,Microscopic examination,1874,1883,C0023267,Diagnosis,leiomyoma,,,,,1811,1994,7,True,0.559,p2.regressao_logistica
@@ -231,7 +232,7 @@ PMC11345641_01,PMC11345641,COORDINATE_WITH,affirmed,Concept,2464,2471,C0028977,B
 PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,2527,2531,C0475806,Finding,near,2543,2555,C0729890,BodyPart,iliac vessel,,,,,2196,2579,2,True,0.598,p2.regressao_logistica
 PMC11345641_01,PMC11345641,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,2887,2897,C0012359,Diagnosis,distention,,,,,2835,2999,5,False,0.956,p2.regressao_logistica
 PMC11345641_01,PMC11345641,LOCATED_IN,affirmed,Concept,2912,2925,C0746412,Finding,palpable mass,2942,2949,C0016129,BodyPart,fingers,,,,,2835,2999,2,True,0.578,p2.regressao_logistica
-PMC11345641_01,PMC11345641,COORDINATE_WITH,affirmed,Concept,2887,2897,C0012359,Diagnosis,distention,2912,2925,C0746412,Finding,palpable mass,,,,,2835,2999,3,False,0.575,p2.regressao_logistica
+PMC11345641_01,PMC11345641,COORDINATE_WITH,affirmed,Concept,2887,2897,C0012359,Diagnosis,distention,2912,2925,C0746412,Finding,palpable mass,,,,,2835,2999,3,False,0.574,p2.regressao_logistica
 PMC11345641_01,PMC11345641,TREATED_WITH,affirmed,Person,,,,Person,,3161,3183,C0085704,Exam,exploratory laparotomy,,,,,3126,3303,7,False,0.864,p2.regressao_logistica
 PMC11345641_01,PMC11345641,REVEALED_BY,affirmed,Concept,3161,3183,C0085704,Exam,exploratory laparotomy,3243,3249,C0027651,Diagnosis,tumors,,,,,3126,3303,7,False,0.569,p2.regressao_logistica
 PMC11345641_01,PMC11345641,CAUSED_BY,affirmed,Concept,3243,3249,C0027651,Diagnosis,tumors,3268,3277,C0728940,Treatment,resection,,,,,3126,3303,3,False,0.468,p2.regressao_logistica
@@ -304,7 +305,7 @@ PMC11368112_01,PMC11368112,COORDINATE_WITH,affirmed,Concept,2725,2732,C0543467,T
 PMC11368112_01,PMC11368112,COORDINATE_WITH,affirmed,Concept,2758,2774,C0042381,Treatment,vascular surgery,2780,2795,C0041618,Exam,ultrasonography,,,,,2625,2861,1,False,0.908,p2.regressao_logistica
 PMC11368112_01,PMC11368112,TREATED_WITH,affirmed,Person,,,,Person,,2942,2960,C0025815,Treatment,methylprednisolone,,,,,2862,3183,9,False,0.699,p2.regressao_logistica
 PMC11368112_01,PMC11368112,COORDINATE_WITH,affirmed,Concept,3075,3087,C0010592,Treatment,cyclosporine,3111,3119,C0043031,Treatment,warfarin,,,,,2862,3183,6,False,0.768,p2.regressao_logistica
-PMC11368112_01,PMC11368112,HAS_DIAGNOSIS,negated,Person,,,,Person,,3372,3389,C0559546,Diagnosis,adverse reactions,,,,,3310,3390,9,False,0.841,p2.regressao_logistica
+PMC11368112_01,PMC11368112,HAS_DIAGNOSIS,negated,Person,,,,Person,,3372,3389,C0559546,Diagnosis,adverse reactions,,,,,3310,3390,9,False,0.84,p2.regressao_logistica
 PMC11368112_01,PMC11368112,HAS_FINDING,affirmed,Person,,,,Person,,3625,3637,C0544452,Finding,in remission,,,,,3604,3730,3,False,0.768,p2.regressao_logistica
 PMC11420039_01,PMC11420039,COORDINATE_WITH,affirmed,Concept,485,493,C0006497,BodyPart,buttocks,503,514,C0023216,BodyPart,lower limbs,,,,,377,559,2,False,0.603,p2.regressao_logistica
 PMC11420039_01,PMC11420039,HAS_FINDING,negated,Person,,,,Person,,705,725,C0455458,Finding,past medical history,,,,,686,831,4,False,0.758,p2.regressao_logistica
@@ -334,13 +335,13 @@ PMC11420039_01,PMC11420039,TREATED_WITH,affirmed,Concept,4234,4251,C0021079,Trea
 PMC11420039_01,PMC11420039,COORDINATE_WITH,affirmed,Concept,4333,4346,C0007684,Diagnosis,CNS infection,4365,4379,C0876973,Diagnosis,lung infection,,,,,4184,4380,3,False,0.62,p2.regressao_logistica
 PMC11420039_01,PMC11420039,TREATED_WITH,affirmed,Person,,,,Person,,4424,4431,C0087111,Treatment,therapy,,,,,4381,4473,4,False,0.704,p2.regressao_logistica
 PMC11420039_01,PMC11420039,COORDINATE_WITH,affirmed,Concept,4424,4431,C0087111,Treatment,therapy,4448,4457,C0663241,Treatment,linezolid,,,,,4381,4473,2,False,0.624,p2.regressao_logistica
-PMC11420039_01,PMC11420039,COORDINATE_WITH,affirmed,Concept,4448,4457,C0663241,Treatment,linezolid,4463,4472,C0001367,Treatment,acyclovir,,,,,4381,4473,1,False,0.828,p2.regressao_logistica
+PMC11420039_01,PMC11420039,COORDINATE_WITH,affirmed,Concept,4448,4457,C0663241,Treatment,linezolid,4463,4472,C0001367,Treatment,acyclovir,,,,,4381,4473,1,False,0.829,p2.regressao_logistica
 PMC11420039_01,PMC11420039,CAUSED_BY,affirmed,Concept,4844,4872,C0438108,Finding,patient's condition improved,4995,5018,C3840968,Finding,open eyes spontaneously,,,,,4816,5052,19,False,0.502,p2.regressao_logistica
 PMC11420039_01,PMC11420039,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,5147,5166,C0876973,Diagnosis,pulmonary infection,,,,,5053,5167,13,False,0.486,p2.regressao_logistica
 PMC11722600_01,PMC11722600,TREATED_WITH,historical,Concept,28,55,C0475172,Finding,history of cesarean section,110,124,C0000737,Symptom,abdominal pain,,,,,0,176,7,True,0.454,p2.regressao_logistica
 PMC11722600_01,PMC11722600,HAS_SYMPTOM,negated,Person,,,,Person,,188,193,C0015967,Symptom,fever,,,,,177,220,3,False,0.736,p2.regressao_logistica
 PMC11722600_01,PMC11722600,COORDINATE_WITH,affirmed,Concept,295,307,C0013390,Diagnosis,dysmenorrhea,320,331,C0030794,Symptom,pelvic pain,,,,,292,332,2,False,0.598,p2.regressao_logistica
-PMC11722600_01,PMC11722600,HAS_SYMPTOM,affirmed,Person,,,,Person,,363,377,C0000737,Symptom,abdominal pain,,,,,333,459,3,False,0.562,p2.regressao_logistica
+PMC11722600_01,PMC11722600,HAS_SYMPTOM,affirmed,Person,,,,Person,,363,377,C0000737,Symptom,abdominal pain,,,,,333,459,3,False,0.561,p2.regressao_logistica
 PMC11722600_01,PMC11722600,COORDINATE_WITH,affirmed,Concept,363,377,C0000737,Symptom,abdominal pain,401,411,C0234233,Symptom,tenderness,,,,,333,459,4,False,0.713,p2.regressao_logistica
 PMC11722600_01,PMC11722600,COORDINATE_WITH,negated,Concept,401,411,C0234233,Symptom,tenderness,430,448,C0234246,Symptom,rebound tenderness,,,,,333,459,5,False,0.626,p2.regressao_logistica
 PMC11722600_01,PMC11722600,COORDINATE_WITH,affirmed,Concept,460,476,C0277974,Symptom,McBurney's point,498,512,C0277978,Symptom,obturator sign,,,,,460,526,4,False,0.672,p2.regressao_logistica
@@ -348,11 +349,10 @@ PMC11722600_01,PMC11722600,HAS_FINDING,affirmed,Person,,,,Person,,579,582,C38420
 PMC11722600_01,PMC11722600,REVEALED_BY,affirmed,Concept,670,695,C0005833,Exam,erythrocyte sedimentation,614,617,C3842088,Finding,mm3,,,,,527,795,11,False,0.529,p2.regressao_logistica
 PMC11722600_01,PMC11722600,REVEALED_BY,negated,Concept,670,695,C0005833,Exam,erythrocyte sedimentation,737,759,C0018062,Treatment,chorionic gonadotropin,,,,,527,795,11,False,0.679,p2.regressao_logistica
 PMC11722600_01,PMC11722600,REVEALED_BY,negated,Concept,817,827,C0041618,Exam,ultrasound,840,850,C0013687,Diagnosis,free fluid,,,,,796,881,2,True,0.73,p2.regressao_logistica
-PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,892,920,C0202653,Exam,CT with intravenous contrast,969,977,C0003617,BodyPart,appendix,,,,,882,1383,10,False,0.771,p2.regressao_logistica
-PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,1077,1101,C2959418,Exam,Laparoscopic exploration,1049,1060,C0227873,BodyPart,right ovary,,,,,882,1383,0,True,0.882,p2.regressao_logistica
+PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,892,920,C0202653,Exam,CT with intravenous contrast,969,977,C0003617,BodyPart,appendix,,,,,882,1383,10,False,0.77,p2.regressao_logistica
+PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,1077,1101,C2959418,Exam,Laparoscopic exploration,1049,1060,C0227873,BodyPart,right ovary,,,,,882,1383,3,True,0.9,p2.regressao_logistica
 PMC11722600_01,PMC11722600,REVEALED_BY,affirmed,Concept,1077,1101,C2959418,Exam,Laparoscopic exploration,1142,1154,C0003615,Diagnosis,appendicitis,,,,,882,1383,5,False,0.654,p2.regressao_logistica
 PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,1163,1174,C0031154,Diagnosis,peritonitis,1188,1196,C0003617,BodyPart,appendix,,,,,882,1383,2,False,0.609,p2.regressao_logistica
-PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,1077,1101,C2959418,Exam,Laparoscopic exploration,1049,1060,C0227873,BodyPart,right ovary,,,,,882,1383,3,True,0.9,p2.regressao_logistica
 PMC11722600_01,PMC11722600,REVEALED_BY,negated,Concept,1142,1154,C0003615,Diagnosis,appendicitis,1163,1174,C0031154,Diagnosis,peritonitis,,,,,882,1383,1,True,0.346,p2.regressao_logistica
 PMC11722600_01,PMC11722600,REVEALED_BY,affirmed,Concept,1223,1232,C0205400,Finding,thickened,1344,1354,C0700148,Diagnosis,congestion,,,,,882,1383,16,False,0.472,p2.regressao_logistica
 PMC11722600_01,PMC11722600,LOCATED_IN,affirmed,Concept,1344,1354,C0700148,Diagnosis,congestion,1362,1382,C0227900,BodyPart,right fallopian tube,,,,,882,1383,2,True,0.91,p2.regressao_logistica
@@ -369,9 +369,9 @@ PMC11722600_02,PMC11722600,HAS_SYMPTOM,affirmed,Person,,,,Person,,460,474,C00007
 PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,460,474,C0000737,Symptom,abdominal pain,498,508,C0234233,Symptom,tenderness,,,,,432,538,4,False,0.713,p2.regressao_logistica
 PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,498,508,C0234233,Symptom,tenderness,522,537,C0277974,Symptom,McBurney's sign,,,,,432,538,2,False,0.827,p2.regressao_logistica
 PMC11722600_02,PMC11722600,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,672,684,C0023518,Diagnosis,leukocytosis,,,,,645,770,3,False,0.957,p2.regressao_logistica
-PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,672,684,C0023518,Diagnosis,leukocytosis,697,700,C3842088,Finding,mm3,,,,,645,770,2,False,0.511,p2.regressao_logistica
+PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,672,684,C0023518,Diagnosis,leukocytosis,697,700,C3842088,Finding,mm3,,,,,645,770,2,False,0.51,p2.regressao_logistica
 PMC11722600_02,PMC11722600,LOCATED_IN,affirmed,Concept,855,857,C0040405,Exam,CT,885,893,C0003617,BodyPart,appendix,,,,,771,1030,4,True,0.958,p2.regressao_logistica
-PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,885,893,C0003617,BodyPart,appendix,976,990,C0227327,BodyPart,terminal ileum,,,,,771,1030,13,False,0.58,p2.regressao_logistica
+PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,885,893,C0003617,BodyPart,appendix,976,990,C0227327,BodyPart,terminal ileum,,,,,771,1030,13,False,0.579,p2.regressao_logistica
 PMC11722600_02,PMC11722600,REVEALED_BY,hedged,Concept,773,794,C0332148,Finding,presumptive diagnosis,798,816,C0085693,Diagnosis,acute appendicitis,,,,,771,1030,1,True,0.299,p2.regressao_logistica
 PMC11722600_02,PMC11722600,REVEALED_BY,hedged,Concept,855,857,C0040405,Exam,CT,798,816,C0085693,Diagnosis,acute appendicitis,,,,,771,1030,7,False,0.581,p2.regressao_logistica
 PMC11722600_02,PMC11722600,COORDINATE_WITH,affirmed,Concept,966,971,C0007531,BodyPart,cecum,976,990,C0227327,BodyPart,terminal ileum,,,,,771,1030,1,False,0.733,p2.regressao_logistica
@@ -398,7 +398,7 @@ PMC11723754_01,PMC11723754,LOCATED_IN,affirmed,Concept,256,265,C0450094,Finding,
 PMC11723754_01,PMC11723754,TREATED_WITH,affirmed,Concept,318,326,C0278286,Treatment,dressing,334,340,C0043250,Diagnosis,wounds,,,,,229,376,2,True,0.769,p2.regressao_logistica
 PMC11723754_01,PMC11723754,HAS_FINDING,affirmed,Person,,,,Person,,471,475,C0085639,Finding,fall,,,,,377,532,14,False,0.677,p2.regressao_logistica
 PMC11723754_01,PMC11723754,TREATED_WITH,affirmed,Person,,,,Person,,579,598,C0150238,Treatment,fluid resuscitation,,,,,533,630,8,False,0.759,p2.regressao_logistica
-PMC11723754_01,PMC11723754,COORDINATE_WITH,affirmed,Concept,674,693,C0150238,Treatment,fluid resuscitation,718,723,C0013227,Treatment,drugs,,,,,631,810,4,False,0.555,p2.regressao_logistica
+PMC11723754_01,PMC11723754,COORDINATE_WITH,affirmed,Concept,674,693,C0150238,Treatment,fluid resuscitation,718,723,C0013227,Treatment,drugs,,,,,631,810,4,False,0.556,p2.regressao_logistica
 PMC11723754_01,PMC11723754,TREATED_WITH,affirmed,Concept,718,723,C0013227,Treatment,drugs,767,808,C0026766,Diagnosis,multiple organ dysfunction syndrome (MODS,,,,,631,810,8,False,0.559,p2.regressao_logistica
 PMC11723754_01,PMC11723754,TREATED_WITH,affirmed,Person,,,,Person,,848,860,C0013832,Treatment,electrolytes,,,,,811,883,5,False,0.655,p2.regressao_logistica
 PMC11723754_01,PMC11723754,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1038,1050,C0036983,Diagnosis,septic shock,,,,,942,1051,16,False,0.593,p2.regressao_logistica
@@ -450,11 +450,11 @@ PMC12215201_01,PMC12215201,COORDINATE_WITH,affirmed,Concept,1558,1573,C0225754,B
 PMC12215201_01,PMC12215201,COORDINATE_WITH,affirmed,Concept,1574,1580,C0022646,BodyPart,kidney,1586,1591,C0262950,BodyPart,bones,,,,,1512,1696,1,False,0.757,p2.regressao_logistica
 PMC12215201_01,PMC12215201,LOCATED_IN,affirmed,Concept,1586,1591,C0262950,BodyPart,bones,1620,1627,C0003962,Symptom,ascites,,,,,1512,1696,3,True,0.639,p2.regressao_logistica
 PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,1718,1740,C2316467,Treatment,packed red blood cells,,,,,1697,1837,3,False,0.939,p2.regressao_logistica
-PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,1718,1740,C2316467,Treatment,packed red blood cells,1769,1775,C0002871,Diagnosis,anemia,,,,,1697,1837,4,False,0.652,p2.regressao_logistica
-PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,1718,1740,C2316467,Treatment,packed red blood cells,1780,1796,C0040034,Diagnosis,thrombocytopenia,,,,,1697,1837,6,False,0.636,p2.regressao_logistica
+PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,1718,1740,C2316467,Treatment,packed red blood cells,1769,1775,C0002871,Diagnosis,anemia,,,,,1697,1837,4,False,0.653,p2.regressao_logistica
+PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,1718,1740,C2316467,Treatment,packed red blood cells,1780,1796,C0040034,Diagnosis,thrombocytopenia,,,,,1697,1837,6,False,0.637,p2.regressao_logistica
 PMC12215201_01,PMC12215201,COORDINATE_WITH,affirmed,Concept,1769,1775,C0002871,Diagnosis,anemia,1780,1796,C0040034,Diagnosis,thrombocytopenia,,,,,1697,1837,1,False,0.737,p2.regressao_logistica
 PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,1860,1872,C0034115,Treatment,paracentesis,,,,,1838,1932,3,False,0.938,p2.regressao_logistica
-PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,2140,2148,C0010818,Exam,cytology,,,,,2092,2178,9,False,0.934,p2.regressao_logistica
+PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,2140,2148,C0010818,Exam,cytology,,,,,2092,2178,9,False,0.933,p2.regressao_logistica
 PMC12215201_01,PMC12215201,LOCATED_IN,affirmed,Concept,2256,2282,C0079304,Exam,Esophagogastroduodenoscopy,2367,2375,C0013303,BodyPart,duodenum,,,,,2256,2385,10,False,0.818,p2.regressao_logistica
 PMC12215201_01,PMC12215201,LOCATED_IN,affirmed,Concept,2440,2463,C1721048,Exam,Video capsule endoscopy,2519,2526,C3714551,BodyPart,stomach,,,,,2440,2543,7,True,0.787,p2.regressao_logistica
 PMC12215201_01,PMC12215201,LOCATED_IN,affirmed,Concept,2440,2463,C1721048,Exam,Video capsule endoscopy,2531,2542,C0021852,BodyPart,small bowel,,,,,2440,2543,9,False,0.904,p2.regressao_logistica
@@ -463,7 +463,7 @@ PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,2570,2591,C00
 PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,2570,2591,C0086818,Treatment,platelet transfusions,2606,2622,C0040034,Diagnosis,thrombocytopenia,,,,,2544,2623,2,True,0.742,p2.regressao_logistica
 PMC12215201_01,PMC12215201,REVEALED_BY,hedged,Concept,2652,2658,C0005558,Exam,biopsy,2765,2777,C0018923,Diagnosis,angiosarcoma,,,,,2624,2787,14,False,0.613,p2.regressao_logistica
 PMC12215201_01,PMC12215201,LOCATED_IN,affirmed,Concept,2652,2658,C0005558,Exam,biopsy,2646,2651,C0023884,BodyPart,liver,,,,,2624,2787,0,True,0.882,p2.regressao_logistica
-PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,2788,2793,C0027651,Diagnosis,Tumor,2858,2869,C0015506,Treatment,factor VIII,,,,,2788,2879,10,False,0.282,p2.regressao_logistica
+PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Concept,2788,2793,C0027651,Diagnosis,Tumor,2858,2869,C0015506,Treatment,factor VIII,,,,,2788,2879,10,False,0.299,p2.regressao_logistica
 PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,2918,2927,C0021107,Treatment,placement,,,,,2880,2951,5,False,0.838,p2.regressao_logistica
 PMC12215201_01,PMC12215201,TREATED_WITH,affirmed,Person,,,,Person,,2995,3003,C0013103,Treatment,drainage,,,,,2952,3022,6,False,0.765,p2.regressao_logistica
 PMC12215201_01,PMC12215201,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,3060,3098,C0012739,Diagnosis,disseminated intravascular coagulation,,,,,3023,3201,4,False,0.893,p2.regressao_logistica
@@ -488,7 +488,7 @@ PMC12832199_01,PMC12832199,REVEALED_BY,affirmed,Concept,1046,1048,C0040405,Exam,
 PMC12832199_01,PMC12832199,TREATED_WITH,hedged,Concept,1304,1313,C4522268,Finding,pulmonary,1344,1364,C0032290,Diagnosis,aspiration pneumonia,,,,,1291,1378,3,True,0.523,p2.regressao_logistica
 PMC12832199_01,PMC12832199,COORDINATE_WITH,affirmed,Concept,1515,1524,C0021107,Treatment,placement,1549,1567,C0338237,Treatment,antibiotic therapy,,,,,1379,1596,5,False,0.841,p2.regressao_logistica
 PMC12832199_01,PMC12832199,COORDINATE_WITH,affirmed,Concept,1549,1567,C0338237,Treatment,antibiotic therapy,1574,1595,C0358591,Treatment,proton pump inhibitor,,,,,1379,1596,2,False,0.696,p2.regressao_logistica
-PMC12832199_01,PMC12832199,LOCATED_IN,negated,Concept,1764,1774,C0012359,Diagnosis,distension,1792,1802,C0442034,BodyPart,peritoneal,,,,,1741,1823,3,False,0.459,p2.regressao_logistica
+PMC12832199_01,PMC12832199,LOCATED_IN,negated,Concept,1764,1774,C0012359,Diagnosis,distension,1792,1802,C0442034,BodyPart,peritoneal,,,,,1741,1823,3,False,0.46,p2.regressao_logistica
 PMC12832199_01,PMC12832199,COORDINATE_WITH,affirmed,Concept,1745,1759,C0000737,Symptom,abdominal pain,1764,1774,C0012359,Diagnosis,distension,,,,,1741,1823,1,False,0.765,p2.regressao_logistica
 PMC12832199_01,PMC12832199,HAS_DIAGNOSIS,negated,Person,,,,Person,,1865,1871,C0002871,Diagnosis,anemia,,,,,1824,1912,6,False,0.895,p2.regressao_logistica
 PMC12832199_01,PMC12832199,HAS_FINDING,affirmed,Person,,,,Person,,1997,2008,C0549099,Finding,perforation,,,,,1913,2038,14,False,0.796,p2.regressao_logistica
@@ -528,8 +528,8 @@ PMC2700431_01,PMC2700431,LOCATED_IN,affirmed,Concept,1192,1208,C3842377,Exam,Che
 PMC2700431_01,PMC2700431,TREATED_WITH,affirmed,Person,,,,Person,,1448,1450,C0030054,Treatment,2O,,,,,1390,1521,11,False,0.505,p2.regressao_logistica
 PMC2700431_01,PMC2700431,LOCATED_IN,affirmed,Concept,1452,1457,C0043047,Treatment,Water,1480,1485,C0230028,BodyPart,mouth,,,,,1390,1521,4,True,0.567,p2.regressao_logistica
 PMC2700431_01,PMC2700431,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1615,1635,C0032290,Diagnosis,aspiration pneumonia,,,,,1576,1709,5,False,0.939,p2.regressao_logistica
-PMC2817501_01,PMC2817501,HAS_SYMPTOM,affirmed,Person,,,,Person,,51,69,C0231807,Symptom,exertional dyspnea,,,,,0,81,10,False,0.906,p2.regressao_logistica
-PMC2817501_01,PMC2817501,HAS_SYMPTOM,affirmed,Person,,,,Person,,74,80,C0002962,Symptom,angina,,,,,0,81,13,False,0.835,p2.regressao_logistica
+PMC2817501_01,PMC2817501,HAS_SYMPTOM,affirmed,Person,,,,Person,,51,69,C0231807,Symptom,exertional dyspnea,,,,,0,81,10,False,0.91,p2.regressao_logistica
+PMC2817501_01,PMC2817501,HAS_SYMPTOM,affirmed,Person,,,,Person,,74,80,C0002962,Symptom,angina,,,,,0,81,13,False,0.831,p2.regressao_logistica
 PMC2817501_01,PMC2817501,COORDINATE_WITH,affirmed,Concept,51,69,C0231807,Symptom,exertional dyspnea,74,80,C0002962,Symptom,angina,,,,,0,81,1,False,0.898,p2.regressao_logistica
 PMC2817501_01,PMC2817501,HAS_FINDING,affirmed,Person,,,,Person,,299,315,C0457436,Finding,left hemiparesis,,,,,265,385,4,False,0.83,p2.regressao_logistica
 PMC2817501_01,PMC2817501,HAS_FINDING,affirmed,Person,,,,Person,,321,335,C1271104,Finding,blood pressure,,,,,265,385,7,False,0.74,p2.regressao_logistica
@@ -579,10 +579,10 @@ PMC3557982_01,PMC3557982,REVEALED_BY,affirmed,Concept,1097,1107,C0026018,Exam,mi
 PMC3557982_01,PMC3557982,COORDINATE_WITH,affirmed,Concept,1115,1138,C1262020,Diagnosis,diffuse alveolar damage,1177,1185,C0027540,Diagnosis,necrosis,,,,,1082,1218,4,False,0.357,p2.regressao_logistica
 PMC3557982_01,PMC3557982,REVEALED_BY,affirmed,Concept,1219,1239,C0021044,Exam,Immunohistochemistry,1257,1265,C0003241,Treatment,Antibody,,,,,1219,1398,1,True,0.779,p2.regressao_logistica
 PMC3557982_01,PMC3557982,COORDINATE_WITH,affirmed,Concept,2106,2139,C0041912,Diagnosis,upper respiratory tract infection,2144,2172,C0581372,Diagnosis,acute bilateral otitis media,,,,,2082,2227,1,False,0.737,p2.regressao_logistica
-PMC3557982_01,PMC3557982,HAS_DIAGNOSIS,historical,Person,,,,Person,,2735,2744,C0009450,Diagnosis,infection,,,,,2634,2798,16,False,0.681,p2.regressao_logistica
+PMC3557982_01,PMC3557982,HAS_DIAGNOSIS,historical,Person,,,,Person,,2735,2744,C0009450,Diagnosis,infection,,,,,2634,2798,16,False,0.641,p2.regressao_logistica
 PMC3557982_01,PMC3557982,COORDINATE_WITH,hedged,Concept,2735,2744,C0009450,Diagnosis,infection,2791,2797,C0080194,Diagnosis,strain,,,,,2634,2798,7,False,0.389,p2.regressao_logistica
 PMC3557982_01,PMC3557982,TREATED_WITH,affirmed,Person,,,,Person,,2846,2851,C0225326,Treatment,fiber,,,,,2799,3019,9,False,0.611,p2.regressao_logistica
-PMC3557982_01,PMC3557982,TREATED_WITH,affirmed,Concept,3192,3197,C0225326,Treatment,fiber,3292,3298,C0080194,Diagnosis,strain,,,,,3188,3334,18,True,0.662,p2.regressao_logistica
+PMC3557982_01,PMC3557982,TREATED_WITH,affirmed,Concept,3192,3197,C0225326,Treatment,fiber,3292,3298,C0080194,Diagnosis,strain,,,,,3188,3334,18,True,0.63,p2.regressao_logistica
 PMC3859158_01,PMC3859158,HAS_SYMPTOM,historical,Person,,,,Person,,60,75,C0232493,Symptom,epigastric pain,,,,,0,76,12,False,0.771,p2.regressao_logistica
 PMC3859158_01,PMC3859158,COORDINATE_WITH,affirmed,Concept,81,85,C0030193,Symptom,pain,143,162,C0027498,Symptom,nausea and vomiting,,,,,77,163,8,False,0.716,p2.regressao_logistica
 PMC3859158_01,PMC3859158,COORDINATE_WITH,affirmed,Concept,194,209,C1368081,Diagnosis,physical trauma,211,242,C0017168,Diagnosis,gastroesophageal reflux disease,,,,,164,316,0,False,0.755,p2.regressao_logistica
@@ -603,7 +603,7 @@ PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,964,972,C0040405,Exam,CT) s
 PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,964,972,C0040405,Exam,CT) scan,1082,1090,C0030274,BodyPart,pancreas,,,,,925,1111,19,False,0.807,p2.regressao_logistica
 PMC3859158_01,PMC3859158,COORDINATE_WITH,affirmed,Concept,1067,1080,C0001625,BodyPart,adrenal gland,1082,1090,C0030274,BodyPart,pancreas,,,,,925,1111,0,False,0.569,p2.regressao_logistica
 PMC3859158_01,PMC3859158,COORDINATE_WITH,affirmed,Concept,1215,1230,C0497156,Diagnosis,lymphadenopathy,1243,1261,C5441917,Diagnosis,distant metastasis,,,,,1200,1301,2,False,0.63,p2.regressao_logistica
-PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,1305,1316,C0031150,Exam,laparoscopy,1368,1372,C0039259,BodyPart,tail,,,,,1302,1373,8,False,0.703,p2.regressao_logistica
+PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,1305,1316,C0031150,Exam,laparoscopy,1368,1372,C0039259,BodyPart,tail,,,,,1302,1373,8,False,0.702,p2.regressao_logistica
 PMC3859158_01,PMC3859158,TREATED_WITH,affirmed,Person,,,,Person,,1392,1410,C0728940,Treatment,surgical resection,,,,,1374,1478,2,False,0.946,p2.regressao_logistica
 PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,1392,1410,C0728940,Treatment,surgical resection,1425,1429,C0039259,BodyPart,tail,,,,,1374,1478,2,True,0.546,p2.regressao_logistica
 PMC3859158_01,PMC3859158,LOCATED_IN,affirmed,Concept,1495,1518,C0026018,Exam,microscopic examination,1522,1528,C0037993,BodyPart,spleen,,,,,1479,1650,1,True,0.937,p2.regressao_logistica
@@ -646,7 +646,7 @@ PMC3897989_01,PMC3897989,LOCATED_IN,affirmed,Concept,3473,3476,C0024485,Exam,MRI
 PMC3897989_01,PMC3897989,LOCATED_IN,affirmed,Concept,3551,3554,C0202087,Exam,IgG,3572,3576,C1995000,BodyPart,back,,,,,3522,3599,3,False,0.814,p2.regressao_logistica
 PMC3897989_01,PMC3897989,LOCATED_IN,affirmed,Concept,3934,3945,C3844327,BodyPart,right chest,3966,3970,C0030193,Symptom,pain,,,,,3856,4007,2,True,0.723,p2.regressao_logistica
 PMC3897989_01,PMC3897989,COORDINATE_WITH,affirmed,Concept,3966,3970,C0030193,Symptom,pain,3972,3980,C1457868,Finding,worsened,,,,,3856,4007,0,False,0.558,p2.regressao_logistica
-PMC3897989_01,PMC3897989,COORDINATE_WITH,affirmed,Concept,3986,3993,C0333307,Diagnosis,erosion,3998,4006,C0005758,Finding,blisters,,,,,3856,4007,1,False,0.675,p2.regressao_logistica
+PMC3897989_01,PMC3897989,COORDINATE_WITH,affirmed,Concept,3986,3993,C0333307,Diagnosis,erosion,3998,4006,C0005758,Finding,blisters,,,,,3856,4007,1,False,0.674,p2.regressao_logistica
 PMC3897989_01,PMC3897989,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,4039,4052,C0019360,Diagnosis,herpes zoster,,,,,4008,4112,5,False,0.93,p2.regressao_logistica
 PMC3897989_01,PMC3897989,TREATED_WITH,affirmed,Concept,4039,4052,C0019360,Diagnosis,herpes zoster,4070,4087,C5222310,Treatment,acyclovir (500 mg,,,,,4008,4112,3,False,0.474,p2.regressao_logistica
 PMC3897989_01,PMC3897989,LOCATED_IN,affirmed,Concept,4146,4157,C0039985,Exam,chest X-ray,4195,4205,C0225706,BodyPart,right lung,,,,,4113,4206,6,True,0.921,p2.regressao_logistica
@@ -669,7 +669,6 @@ PMC3917415_01,PMC3917415,HAS_DIAGNOSIS,hedged,Person,,,,Person,,1306,1323,C01628
 PMC3917415_01,PMC3917415,LOCATED_IN,affirmed,Concept,1384,1388,C0027530,BodyPart,neck,1396,1404,C0002940,Diagnosis,aneurysm,,,,,1325,1421,2,True,0.664,p2.regressao_logistica
 PMC3917415_01,PMC3917415,REVEALED_BY,affirmed,Concept,1491,1501,C0026018,Exam,microscopy,1443,1460,C0162869,Diagnosis,ruptured aneurysm,,,,,1422,1560,0,True,0.576,p2.regressao_logistica
 PMC3917415_01,PMC3917415,TREATED_WITH,affirmed,Concept,1426,1438,C0337280,Treatment,fenestration,1443,1460,C0162869,Diagnosis,ruptured aneurysm,,,,,1422,1560,1,False,0.639,p2.regressao_logistica
-PMC3917415_01,PMC3917415,REVEALED_BY,affirmed,Concept,1491,1501,C0026018,Exam,microscopy,1443,1460,C0162869,Diagnosis,ruptured aneurysm,,,,,1422,1560,4,True,0.565,p2.regressao_logistica
 PMC3917415_01,PMC3917415,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1697,1715,C0265110,Diagnosis,cerebral vasospasm,,,,,1646,1857,7,False,0.795,p2.regressao_logistica
 PMC3917415_01,PMC3917415,REVEALED_BY,affirmed,Concept,1697,1715,C0265110,Diagnosis,cerebral vasospasm,1778,1792,C4551529,Treatment,renal dialysis,,,,,1646,1857,8,False,0.432,p2.regressao_logistica
 PMC3917415_01,PMC3917415,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1889,1918,C0020258,Diagnosis,normal pressure hydrocephalus,,,,,1858,1972,3,False,0.964,p2.regressao_logistica
@@ -692,12 +691,11 @@ PMC3950436_01,PMC3950436,TREATED_WITH,affirmed,Concept,1157,1161,C0030193,Sympto
 PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,1308,1315,C0543467,Treatment,surgery,1317,1325,C0344106,Treatment,sedation,,,,,1268,1654,0,False,0.648,p2.regressao_logistica
 PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,1446,1452,C0030054,Treatment,oxygen,1513,1521,C0022614,Treatment,Ketamine,,,,,1268,1654,9,False,0.604,p2.regressao_logistica
 PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,1808,1812,C0059079,Treatment,EMLA,1898,1918,C0189341,Treatment,planned tracheostomy,,,,,1808,2015,14,False,0.53,p2.regressao_logistica
-PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,1898,1918,C0189341,Treatment,planned tracheostomy,1969,1977,C0278286,Treatment,dressing,,,,,1808,2015,10,False,0.544,p2.regressao_logistica
+PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,1898,1918,C0189341,Treatment,planned tracheostomy,1969,1977,C0278286,Treatment,dressing,,,,,1808,2015,10,False,0.546,p2.regressao_logistica
 PMC3950436_01,PMC3950436,LOCATED_IN,affirmed,Concept,2051,2056,C0234422,Finding,awake,2062,2065,C0015392,BodyPart,eye,,,,,2016,2093,1,True,0.543,p2.regressao_logistica
 PMC3950436_01,PMC3950436,TREATED_WITH,affirmed,Person,,,,Person,,2151,2168,C1623258,Exam,electrocardiogram,,,,,2094,2186,8,False,0.897,p2.regressao_logistica
 PMC3950436_01,PMC3950436,TREATED_WITH,affirmed,Person,,,,Person,,2170,2184,C0034108,Exam,pulse oximetry,,,,,2094,2186,9,False,0.889,p2.regressao_logistica
 PMC3950436_01,PMC3950436,COORDINATE_WITH,affirmed,Concept,2151,2168,C1623258,Exam,electrocardiogram,2170,2184,C0034108,Exam,pulse oximetry,,,,,2094,2186,0,False,0.574,p2.regressao_logistica
-PMC3950436_01,PMC3950436,LOCATED_IN,affirmed,Concept,2316,2326,C0041618,Exam,ultrasound,2289,2305,C1276271,BodyPart,antecubital vein,,,,,2247,2345,0,True,0.882,p2.regressao_logistica
 PMC3950436_01,PMC3950436,LOCATED_IN,affirmed,Concept,2316,2326,C0041618,Exam,ultrasound,2289,2305,C1276271,BodyPart,antecubital vein,,,,,2247,2345,2,True,0.9,p2.regressao_logistica
 PMC3950436_01,PMC3950436,REVEALED_BY,negated,Concept,2316,2326,C0041618,Exam,ultrasound,2335,2344,C5441521,Finding,complaint,,,,,2247,2345,1,True,0.559,p2.regressao_logistica
 PMC3950436_01,PMC3950436,TREATED_WITH,affirmed,Person,,,,Person,,2508,2520,C0040590,Treatment,tracheostomy,,,,,2501,2563,1,False,0.841,p2.regressao_logistica
@@ -761,7 +759,7 @@ PMC4782471_01,PMC4782471,COORDINATE_WITH,affirmed,Concept,2957,2968,C0018794,Dia
 PMC4782471_01,PMC4782471,COORDINATE_WITH,affirmed,Concept,3039,3052,C0018801,Diagnosis,heart failure,3065,3071,C0243026,Diagnosis,sepsis,,,,,2935,3072,2,False,0.661,p2.regressao_logistica
 PMC4782471_01,PMC4782471,TREATED_WITH,affirmed,Person,,,,Person,,3111,3121,C0014563,Treatment,adrenaline,,,,,3073,3182,6,False,0.645,p2.regressao_logistica
 PMC4782471_01,PMC4782471,COORDINATE_WITH,affirmed,Concept,3111,3121,C0014563,Treatment,adrenaline,3123,3131,C0013030,Treatment,dopamine,,,,,3073,3182,0,False,0.648,p2.regressao_logistica
-PMC4782471_01,PMC4782471,COORDINATE_WITH,affirmed,Concept,3123,3131,C0013030,Treatment,dopamine,3137,3147,C0012963,Treatment,dobutamine,,,,,3073,3182,1,False,0.828,p2.regressao_logistica
+PMC4782471_01,PMC4782471,COORDINATE_WITH,affirmed,Concept,3123,3131,C0013030,Treatment,dopamine,3137,3147,C0012963,Treatment,dobutamine,,,,,3073,3182,1,False,0.829,p2.regressao_logistica
 PMC4782471_01,PMC4782471,TREATED_WITH,affirmed,Concept,3244,3248,C1546956,Finding,died,3262,3269,C0543467,Treatment,surgery,,,,,3240,3270,3,True,0.531,p2.regressao_logistica
 PMC4828947_01,PMC4828947,HAS_SYMPTOM,historical,Person,,,,Person,,56,64,C0036572,Symptom,seizures,,,,,0,87,8,False,0.903,p2.regressao_logistica
 PMC4828947_01,PMC4828947,REVEALED_BY,affirmed,Concept,122,125,C0013819,Exam,EEG,158,182,C0149958,Diagnosis,complex partial seizures,,,,,88,219,6,False,0.518,p2.regressao_logistica
@@ -771,7 +769,7 @@ PMC4828947_01,PMC4828947,COORDINATE_WITH,affirmed,Concept,348,358,C0684336,Findi
 PMC4828947_01,PMC4828947,LOCATED_IN,affirmed,Concept,444,453,C0973461,Diagnosis,dysphasia,489,493,C0028429,BodyPart,nose,,,,,427,520,5,False,0.862,p2.regressao_logistica
 PMC4828947_01,PMC4828947,TREATED_WITH,affirmed,Person,,,,Person,,560,567,C0543467,Treatment,surgery,,,,,521,721,7,False,0.734,p2.regressao_logistica
 PMC4828947_01,PMC4828947,TREATED_WITH,affirmed,Concept,638,646,C0036572,Symptom,seizures,665,678,C0069751,Treatment,oxcarbazepine,,,,,521,721,3,True,0.668,p2.regressao_logistica
-PMC4828947_01,PMC4828947,COORDINATE_WITH,affirmed,Concept,665,678,C0069751,Treatment,oxcarbazepine,695,708,C0042291,Treatment,valproic acid,,,,,521,721,4,False,0.693,p2.regressao_logistica
+PMC4828947_01,PMC4828947,COORDINATE_WITH,affirmed,Concept,665,678,C0069751,Treatment,oxcarbazepine,695,708,C0042291,Treatment,valproic acid,,,,,521,721,4,False,0.694,p2.regressao_logistica
 PMC4828947_01,PMC4828947,TREATED_WITH,negated,Concept,779,791,C0035648,Finding,risk factors,800,816,C0009952,Diagnosis,febrile seizures,,,,,722,846,2,True,0.531,p2.regressao_logistica
 PMC4828947_01,PMC4828947,COORDINATE_WITH,affirmed,Concept,800,816,C0009952,Diagnosis,febrile seizures,818,828,C0025289,Diagnosis,meningitis,,,,,722,846,0,False,0.755,p2.regressao_logistica
 PMC4828947_01,PMC4828947,COORDINATE_WITH,affirmed,Concept,818,828,C0025289,Diagnosis,meningitis,834,845,C0018674,Diagnosis,head trauma,,,,,722,846,1,False,0.764,p2.regressao_logistica
@@ -803,7 +801,7 @@ PMC4835621_01,PMC4835621,LOCATED_IN,affirmed,Concept,1479,1491,C0015462,BodyPart
 PMC4835621_01,PMC4835621,TREATED_WITH,affirmed,Person,,,,Person,,1529,1536,C0202691,Exam,head CT,,,,,1508,1576,2,False,0.933,p2.regressao_logistica
 PMC4835621_01,PMC4835621,LOCATED_IN,negated,Concept,1529,1536,C0202691,Exam,head CT,1554,1566,C0524466,BodyPart,intracranial,,,,,1508,1576,3,True,0.964,p2.regressao_logistica
 PMC4835621_01,PMC4835621,LOCATED_IN,negated,Concept,1554,1566,C0524466,BodyPart,intracranial,1567,1575,C0019080,Diagnosis,bleeding,,,,,1508,1576,0,True,0.559,p2.regressao_logistica
-PMC4835621_01,PMC4835621,COORDINATE_WITH,affirmed,Concept,1916,1927,C0441509,Treatment,Coagulation,1942,1952,C0016006,Treatment,fibrinogen,,,,,1916,1983,2,False,0.698,p2.regressao_logistica
+PMC4835621_01,PMC4835621,COORDINATE_WITH,affirmed,Concept,1916,1927,C0441509,Treatment,Coagulation,1942,1952,C0016006,Treatment,fibrinogen,,,,,1916,1983,2,False,0.699,p2.regressao_logistica
 PMC4835621_01,PMC4835621,LOCATED_IN,affirmed,Concept,2299,2317,C0005954,Exam,Bone marrow biopsy,2354,2360,C0376152,BodyPart,marrow,,,,,2299,2418,3,True,0.885,p2.regressao_logistica
 PMC4835621_01,PMC4835621,TREATED_WITH,affirmed,Person,,,,Person,,2496,2510,C0032134,Treatment,plasmapheresis,,,,,2437,2534,12,False,0.679,p2.regressao_logistica
 PMC4835621_01,PMC4835621,REVEALED_BY,affirmed,Concept,2612,2631,C0040405,Exam,computed tomography,2599,2609,C0006826,Diagnosis,malignancy,,,,,2568,2760,1,True,0.615,p2.regressao_logistica
@@ -861,7 +859,7 @@ PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,2519,2533,C5575665,Finding
 PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Concept,2651,2661,C0278134,Symptom,anesthesia,2682,2693,C0074414,Treatment,sevoflurane,,,,,2624,2733,4,True,0.558,p2.regressao_logistica
 PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Concept,2885,2890,C1630409,Finding,10-20,2921,2928,C0543467,Treatment,surgery,,,,,2824,2943,4,True,0.51,p2.regressao_logistica
 PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,2955,2973,C0198488,Treatment,abdominal incision,2995,3004,C0023660,Treatment,lidocaine,,,,,2944,3142,6,False,0.576,p2.regressao_logistica
-PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,2995,3004,C0023660,Treatment,lidocaine,3042,3061,C0444889,Treatment,continuous infusion,,,,,2944,3142,5,False,0.634,p2.regressao_logistica
+PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,2995,3004,C0023660,Treatment,lidocaine,3042,3061,C0444889,Treatment,continuous infusion,,,,,2944,3142,5,False,0.635,p2.regressao_logistica
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,3095,3098,C0442748,Finding,4-6,3114,3130,C0000739,BodyPart,abdominal muscle,,,,,2944,3142,4,True,0.502,p2.regressao_logistica
 PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,3143,3170,C0150411,Exam,Arterial blood gas analysis,3228,3230,C1304686,Finding,pH,,,,,3143,3293,15,False,0.525,p2.regressao_logistica
 PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,3328,3354,C0428175,Exam,arterial oxygen saturation,3417,3435,C0543467,Treatment,surgical procedure,,,,,3294,3436,12,True,0.668,p2.regressao_logistica
@@ -869,7 +867,7 @@ PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,3555,3566,C0004144,Diagnosi
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,3550,3554,C0024109,BodyPart,lung,3555,3566,C0004144,Diagnosis,atelectasis,,,,,3534,3698,0,True,0.559,p2.regressao_logistica
 PMC5804616_01,PMC5804616,HAS_FINDING,affirmed,Person,,,,Person,,3737,3748,C0028778,Finding,obstruction,,,,,3699,3805,3,False,0.831,p2.regressao_logistica
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,3737,3748,C0028778,Finding,obstruction,3771,3789,C0225630,BodyPart,left main bronchus,,,,,3699,3805,5,True,0.511,p2.regressao_logistica
-PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Person,,,,Person,,3916,3918,C0030054,Treatment,2O,,,,,3806,4045,20,False,0.432,p2.regressao_logistica
+PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Person,,,,Person,,3916,3918,C0030054,Treatment,2O,,,,,3806,4045,20,False,0.434,p2.regressao_logistica
 PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,3916,3918,C0030054,Treatment,2O,3969,3996,C0150411,Exam,arterial blood gas analysis,,,,,3806,4045,6,False,0.625,p2.regressao_logistica
 PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,4079,4090,C0039985,Exam,chest X-ray,4100,4118,C0546333,Finding,right pneumothorax,,,,,4046,4128,1,True,0.577,p2.regressao_logistica
 PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,4070,4077,C0543467,Treatment,surgery,4079,4090,C0039985,Exam,chest X-ray,,,,,4046,4128,0,False,0.758,p2.regressao_logistica
@@ -877,7 +875,7 @@ PMC5804616_01,PMC5804616,HAS_FINDING,affirmed,Person,,,,Person,,4702,4740,C15319
 PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Concept,4853,4862,C0700292,Finding,hypoxemia,4885,4897,C0032326,Diagnosis,pneumothorax,,,,,4619,4898,3,True,0.533,p2.regressao_logistica
 PMC5804616_01,PMC5804616,COORDINATE_WITH,affirmed,Concept,4678,4697,C0002913,Treatment,epidural anesthesia,4702,4740,C1531943,Treatment,maintenance of spontaneous respiration,,,,,4619,4898,1,False,0.804,p2.regressao_logistica
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,4903,4911,C0344329,Finding,collapse,4919,4929,C0225706,BodyPart,right lung,,,,,4899,5030,2,True,0.627,p2.regressao_logistica
-PMC5804616_01,PMC5804616,REVEALED_BY,negated,Concept,5076,5095,C0040405,Exam,computed tomography,5040,5046,C0005758,Finding,bullae,,,,,5031,5163,4,True,0.523,p2.regressao_logistica
+PMC5804616_01,PMC5804616,REVEALED_BY,negated,Concept,5076,5095,C0040405,Exam,computed tomography,5040,5046,C0005758,Finding,bullae,,,,,5031,5163,4,True,0.524,p2.regressao_logistica
 PMC5804616_01,PMC5804616,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,5233,5246,C0877248,Diagnosis,adverse event,,,,,5164,5339,12,False,0.616,p2.regressao_logistica
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,5659,5664,C0017547,Diagnosis,giant,5680,5686,C0225594,BodyPart,carina,,,,,5639,5847,3,True,0.886,p2.regressao_logistica
 PMC5804616_01,PMC5804616,LOCATED_IN,affirmed,Concept,5688,5708,C0559312,Exam,one-lung ventilation,5680,5686,C0225594,BodyPart,carina,,,,,5639,5847,0,False,0.842,p2.regressao_logistica
@@ -899,7 +897,7 @@ PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,7497,7509,C0032326,Diagnos
 PMC5804616_01,PMC5804616,HAS_FINDING,affirmed,Person,,,,Person,,7803,7809,C0813207,Treatment,bypass,,,,,7719,7994,13,False,0.43,p2.regressao_logistica
 PMC5804616_01,PMC5804616,HAS_FINDING,affirmed,Person,,,,Person,,7810,7817,C0543467,Treatment,surgery,,,,,7719,7994,14,False,0.416,p2.regressao_logistica
 PMC5804616_01,PMC5804616,REVEALED_BY,affirmed,Concept,7836,7848,C0032326,Diagnosis,pneumothorax,7946,7953,C0543467,Treatment,Surgery,,,,,7719,7994,14,False,0.406,p2.regressao_logistica
-PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Concept,7810,7817,C0543467,Treatment,surgery,7836,7848,C0032326,Diagnosis,pneumothorax,,,,,7719,7994,2,False,0.628,p2.regressao_logistica
+PMC5804616_01,PMC5804616,TREATED_WITH,affirmed,Concept,7810,7817,C0543467,Treatment,surgery,7836,7848,C0032326,Diagnosis,pneumothorax,,,,,7719,7994,2,False,0.627,p2.regressao_logistica
 PMC5804616_01,PMC5804616,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,8016,8028,C0032326,Diagnosis,pneumothorax,,,,,7995,8219,4,False,0.764,p2.regressao_logistica
 PMC5804616_01,PMC5804616,HAS_FINDING,affirmed,Person,,,,Person,,8258,8281,C0412771,Finding,spontaneous respiration,,,,,8220,8425,6,False,0.556,p2.regressao_logistica
 PMC5804616_01,PMC5804616,REVEALED_BY,hedged,Concept,8305,8317,C0032326,Diagnosis,pneumothorax,8372,8379,C0543467,Treatment,surgery,,,,,8220,8425,7,True,0.424,p2.regressao_logistica
@@ -928,14 +926,14 @@ PMC5833205_01,PMC5833205,TREATED_WITH,affirmed,Person,,,,Person,,1691,1702,C1879
 PMC5833205_01,PMC5833205,COORDINATE_WITH,affirmed,Concept,1717,1739,C2316467,Treatment,packed red blood cells,1766,1770,C0302583,Treatment,iron,,,,,1668,1826,5,False,0.547,p2.regressao_logistica
 PMC5833205_01,PMC5833205,COORDINATE_WITH,affirmed,Concept,1717,1739,C2316467,Treatment,packed red blood cells,1771,1782,C0035139,Treatment,replacement,,,,,1668,1826,6,False,0.524,p2.regressao_logistica
 PMC5833205_01,PMC5833205,TREATED_WITH,affirmed,Person,,,,Person,,2094,2101,C0087111,Treatment,therapy,,,,,2048,2102,7,False,0.794,p2.regressao_logistica
-PMC5833205_01,PMC5833205,HAS_DIAGNOSIS,negated,Person,,,,Person,,2140,2145,C0013604,Diagnosis,edema,,,,,2103,2172,7,False,0.931,p2.regressao_logistica
+PMC5833205_01,PMC5833205,HAS_DIAGNOSIS,negated,Person,,,,Person,,2140,2145,C0013604,Diagnosis,edema,,,,,2103,2172,7,False,0.93,p2.regressao_logistica
 PMC5833205_01,PMC5833205,COORDINATE_WITH,affirmed,Concept,2140,2145,C0013604,Diagnosis,edema,2154,2162,C0011991,Symptom,diarrhea,,,,,2103,2172,2,False,0.576,p2.regressao_logistica
 PMC5833205_01,PMC5833205,TREATED_WITH,affirmed,Concept,2177,2184,C5966160,Treatment,albumin,2218,2223,C0013604,Diagnosis,edema,,,,,2173,2244,6,False,0.522,p2.regressao_logistica
 PMC5875137_01,PMC5875137,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,62,75,C0006142,Diagnosis,breast cancer,,,,,0,244,10,False,0.888,p2.regressao_logistica
-PMC5875137_01,PMC5875137,LOCATED_IN,affirmed,Concept,62,75,C0006142,Diagnosis,breast cancer,94,99,C0817096,BodyPart,chest,,,,,0,244,3,False,0.468,p2.regressao_logistica
+PMC5875137_01,PMC5875137,LOCATED_IN,affirmed,Concept,62,75,C0006142,Diagnosis,breast cancer,94,99,C0817096,BodyPart,chest,,,,,0,244,3,False,0.469,p2.regressao_logistica
 PMC5875137_01,PMC5875137,LOCATED_IN,affirmed,Concept,100,119,C0040405,Exam,computed tomography,94,99,C0817096,BodyPart,chest,,,,,0,244,0,True,0.882,p2.regressao_logistica
 PMC5875137_01,PMC5875137,REVEALED_BY,affirmed,Concept,143,155,C0231221,Finding,asymptomatic,166,181,C0003486,Diagnosis,aortic aneurysm,,,,,0,244,1,True,0.261,p2.regressao_logistica
-PMC5875137_01,PMC5875137,COORDINATE_WITH,affirmed,Concept,336,344,C0032207,Treatment,platinum,360,371,C0677554,Treatment,anastomosis,,,,,245,477,2,False,0.698,p2.regressao_logistica
+PMC5875137_01,PMC5875137,COORDINATE_WITH,affirmed,Concept,336,344,C0032207,Treatment,platinum,360,371,C0677554,Treatment,anastomosis,,,,,245,477,2,False,0.699,p2.regressao_logistica
 PMC5875137_01,PMC5875137,LOCATED_IN,affirmed,Concept,360,371,C0677554,Treatment,anastomosis,379,407,C0447054,BodyPart,left internal mammary artery,,,,,245,477,2,True,0.561,p2.regressao_logistica
 PMC5875137_01,PMC5875137,TREATED_WITH,affirmed,Person,,,,Person,,492,514,C0700431,Treatment,cardiac rehabilitation,,,,,478,589,2,False,0.875,p2.regressao_logistica
 PMC5875137_01,PMC5875137,COORDINATE_WITH,negated,Concept,884,889,C0003483,BodyPart,aorta,907,919,C0729936,BodyPart,intracardiac,,,,,813,927,3,False,0.602,p2.regressao_logistica
@@ -946,12 +944,12 @@ PMC6083636_P1,PMC6083636,COORDINATE_WITH,affirmed,Concept,250,270,C1272091,Findi
 PMC6083636_P1,PMC6083636,COORDINATE_WITH,affirmed,Concept,272,282,C0038379,Diagnosis,strabismus,292,305,C0015397,Diagnosis,eye disorders,,,,,237,360,2,False,0.639,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,458,464,C4521296,Finding,ocular,465,473,C0001916,Diagnosis,albinism,,,,,361,474,0,True,0.451,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,558,580,C0855713,Exam,Cycloplegic refraction,615,624,C0229089,BodyPart,right eye,,,,,558,696,6,True,0.768,p2.regressao_logistica
-PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,698,719,C0419360,Exam,Slit-lamp examination,770,776,C0016823,BodyPart,fundus,,,,,698,820,8,False,0.78,p2.regressao_logistica
+PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,698,719,C0419360,Exam,Slit-lamp examination,770,776,C0016823,BodyPart,fundus,,,,,698,820,8,False,0.779,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,COORDINATE_WITH,affirmed,Concept,1347,1353,C0332573,Finding,macula,1377,1381,C0475806,Finding,near,,,,,1216,1419,3,False,0.349,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,HAS_FINDING,affirmed,Person,,,,Person,,1463,1469,C0332573,Finding,macula,,,,,1420,1534,6,False,0.655,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,1776,1782,C0035298,BodyPart,retina,1786,1795,C5425799,Finding,all other,,,,,1738,1865,1,True,0.531,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,TREATED_WITH,affirmed,Person,,,,Person,,1909,1913,C0100700,Treatment,300A,,,,,1866,1986,6,False,0.657,p2.regressao_logistica
-PMC6083636_P1,PMC6083636,HAS_FINDING,affirmed,Person,,,,Person,,2131,2138,C3539106,Finding,defined,,,,,2074,2240,6,False,0.639,p2.regressao_logistica
+PMC6083636_P1,PMC6083636,HAS_FINDING,affirmed,Person,,,,Person,,2131,2138,C3539106,Finding,defined,,,,,2074,2240,6,False,0.64,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,LOCATED_IN,affirmed,Concept,2131,2138,C3539106,Finding,defined,2158,2166,C0229090,BodyPart,left eye,,,,,2074,2240,4,True,0.512,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,HAS_FINDING,affirmed,Person,,,,Person,,2952,2957,C0449820,Finding,score,,,,,2900,3141,9,False,0.606,p2.regressao_logistica
 PMC6083636_P1,PMC6083636,TREATED_WITH,affirmed,Concept,3156,3160,C0475806,Finding,near,3171,3193,C0423062,Diagnosis,intermittent exotropia,,,,,3142,3340,2,True,0.398,p2.regressao_logistica
@@ -962,7 +960,6 @@ PMC6134951_01,PMC6134951,COORDINATE_WITH,affirmed,Concept,144,155,C0034079,Findi
 PMC6134951_01,PMC6134951,COORDINATE_WITH,affirmed,Concept,157,184,C0520743,Diagnosis,mediastinal lymphadenopathy,198,219,C6009854,Diagnosis,left pleural effusion,,,,,0,220,3,False,0.744,p2.regressao_logistica
 PMC6134951_01,PMC6134951,REVEALED_BY,affirmed,Concept,277,287,C5885800,Exam,1-positive,237,253,C0032227,Diagnosis,pleural effusion,,,,,221,313,0,True,0.576,p2.regressao_logistica
 PMC6134951_01,PMC6134951,REVEALED_BY,affirmed,Concept,221,229,C0010818,Exam,Cytology,237,253,C0032227,Diagnosis,pleural effusion,,,,,221,313,2,True,0.667,p2.regressao_logistica
-PMC6134951_01,PMC6134951,REVEALED_BY,affirmed,Concept,277,287,C5885800,Exam,1-positive,237,253,C0032227,Diagnosis,pleural effusion,,,,,221,313,4,True,0.565,p2.regressao_logistica
 PMC6134951_01,PMC6134951,LOCATED_IN,hedged,Concept,288,297,C4522268,Finding,pulmonary,298,312,C0001418,Diagnosis,adenocarcinoma,,,,,221,313,0,True,0.451,p2.regressao_logistica
 PMC6134951_01,PMC6134951,HAS_FINDING,negated,Person,,,,Person,,429,435,C1293131,Treatment,fusion,,,,,314,436,18,False,0.491,p2.regressao_logistica
 PMC6134951_01,PMC6134951,TREATED_WITH,affirmed,Person,,,,Person,,512,523,C0079083,Treatment,carboplatin,,,,,466,618,8,False,0.913,p2.regressao_logistica
@@ -1043,7 +1040,7 @@ PMC6354154_01,PMC6354154,REVEALED_BY,affirmed,Concept,362,373,C0021359,Finding,i
 PMC6354154_01,PMC6354154,REVEALED_BY,affirmed,Concept,515,520,C1510438,Exam,assay,522,525,C0733758,Treatment,FSH,,,,,462,594,0,True,0.742,p2.regressao_logistica
 PMC6354154_01,PMC6354154,COORDINATE_WITH,affirmed,Concept,522,525,C0733758,Treatment,FSH,527,529,C0023607,Treatment,LH,,,,,462,594,0,False,0.648,p2.regressao_logistica
 PMC6354154_01,PMC6354154,COORDINATE_WITH,affirmed,Concept,527,529,C0023607,Treatment,LH,545,557,C0039601,Treatment,testosterone,,,,,462,594,4,False,0.939,p2.regressao_logistica
-PMC6354154_01,PMC6354154,COORDINATE_WITH,affirmed,Concept,545,557,C0039601,Treatment,testosterone,563,591,C0011185,Treatment,dehydroepiandrosterone (DHEA,,,,,462,594,1,False,0.828,p2.regressao_logistica
+PMC6354154_01,PMC6354154,COORDINATE_WITH,affirmed,Concept,545,557,C0039601,Treatment,testosterone,563,591,C0011185,Treatment,dehydroepiandrosterone (DHEA,,,,,462,594,1,False,0.829,p2.regressao_logistica
 PMC6354154_01,PMC6354154,LOCATED_IN,affirmed,Concept,610,625,C0041618,Exam,ultrasonography,659,665,C0042149,BodyPart,uterus,,,,,595,776,5,True,0.957,p2.regressao_logistica
 PMC6354154_01,PMC6354154,LOCATED_IN,affirmed,Concept,610,625,C0041618,Exam,ultrasonography,670,677,C0029939,BodyPart,ovaries,,,,,595,776,7,False,0.967,p2.regressao_logistica
 PMC6354154_01,PMC6354154,COORDINATE_WITH,affirmed,Concept,659,665,C0042149,BodyPart,uterus,670,677,C0029939,BodyPart,ovaries,,,,,595,776,1,False,0.733,p2.regressao_logistica
@@ -1072,7 +1069,7 @@ PMC6949661_01,PMC6949661,COORDINATE_WITH,affirmed,Concept,275,287,C0030252,Findi
 PMC6949661_01,PMC6949661,REVEALED_BY,affirmed,Concept,667,670,C1623258,Exam,ECG,678,706,C0149721,Diagnosis,left ventricular hypertrophy,,,,,604,732,1,True,0.826,p2.regressao_logistica
 PMC6949661_01,PMC6949661,LOCATED_IN,affirmed,Concept,625,633,C0040405,Exam,CT) scan,641,645,C0018670,BodyPart,head,,,,,604,732,2,True,0.934,p2.regressao_logistica
 PMC6949661_01,PMC6949661,LOCATED_IN,affirmed,Concept,667,670,C1623258,Exam,ECG,641,645,C0018670,BodyPart,head,,,,,604,732,3,False,0.832,p2.regressao_logistica
-PMC6949661_01,PMC6949661,COORDINATE_WITH,affirmed,Concept,678,706,C0149721,Diagnosis,left ventricular hypertrophy,711,731,C1997354,Finding,early repolarization,,,,,604,732,1,False,0.675,p2.regressao_logistica
+PMC6949661_01,PMC6949661,COORDINATE_WITH,affirmed,Concept,678,706,C0149721,Diagnosis,left ventricular hypertrophy,711,731,C1997354,Finding,early repolarization,,,,,604,732,1,False,0.674,p2.regressao_logistica
 PMC6949661_01,PMC6949661,REVEALED_BY,affirmed,Concept,733,749,C0013516,Exam,Echocardiography,778,789,C0020564,Diagnosis,hypertrophy,,,,,733,818,4,False,0.595,p2.regressao_logistica
 PMC6949661_01,PMC6949661,HAS_FINDING,historical,Person,,,,Person,,897,903,C0025222,Finding,melena,,,,,819,1075,14,False,0.692,p2.regressao_logistica
 PMC6949661_01,PMC6949661,COORDINATE_WITH,affirmed,Concept,897,903,C0025222,Finding,melena,948,954,C0027497,Symptom,nausea,,,,,819,1075,6,False,0.583,p2.regressao_logistica
@@ -1107,22 +1104,22 @@ PMC6949661_01,PMC6949661,LOCATED_IN,affirmed,Concept,3253,3260,C0700124,Finding,
 PMC7086412_01,PMC7086412,CAUSED_BY,affirmed,Concept,14,21,C0600457,Finding,gravida,40,44,C0030563,Finding,para,,,,,0,144,3,False,0.358,p2.regressao_logistica
 PMC7086412_01,PMC7086412,HAS_DIAGNOSIS,historical,Person,,,,Person,,206,218,C0015927,Diagnosis,fetal demise,,,,,145,293,10,False,0.857,p2.regressao_logistica
 PMC7086412_01,PMC7086412,TREATED_WITH,affirmed,Person,,,,Person,,469,476,C0017725,Treatment,glucose,,,,,395,644,14,False,0.445,p2.regressao_logistica
-PMC7086412_01,PMC7086412,HAS_FINDING,affirmed,Person,,,,Person,,803,811,C0549206,Finding,pregnant,,,,,732,897,12,False,0.689,p2.regressao_logistica
+PMC7086412_01,PMC7086412,HAS_FINDING,affirmed,Person,,,,Person,,803,811,C0549206,Finding,pregnant,,,,,732,897,12,False,0.691,p2.regressao_logistica
 PMC7086412_01,PMC7086412,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1019,1031,C0015927,Diagnosis,fetal demise,,,,,898,1032,16,False,0.597,p2.regressao_logistica
 PMC7086412_01,PMC7086412,REVEALED_BY,affirmed,Concept,1467,1478,C1704258,Finding,abnormality,1566,1574,C0011847,Diagnosis,diabetes,,,,,1033,1640,17,False,0.385,p2.regressao_logistica
 PMC7086412_01,PMC7086412,REVEALED_BY,affirmed,Concept,1566,1574,C0011847,Diagnosis,diabetes,1619,1627,C0011847,Diagnosis,Diabetes,,,,,1033,1640,7,True,0.687,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1057,1077,C0009555,Exam,complete blood count,1079,1095,C0033707,Exam,prothrombin time,,,,,1033,1640,0,False,0.574,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1079,1095,C0033707,Exam,prothrombin time,1097,1124,C0030605,Exam,partial thromboplastin time,,,,,1033,1640,0,False,0.574,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1097,1124,C0030605,Exam,partial thromboplastin time,1126,1142,C0337428,Exam,fibrinogen level,,,,,1033,1640,0,False,0.574,p2.regressao_logistica
-PMC7086412_01,PMC7086412,REVEALED_BY,affirmed,Concept,1126,1142,C0337428,Exam,fibrinogen level,1160,1187,C0040160,Treatment,thyroid stimulating hormone,,,,,1033,1640,4,False,0.586,p2.regressao_logistica
+PMC7086412_01,PMC7086412,REVEALED_BY,affirmed,Concept,1126,1142,C0337428,Exam,fibrinogen level,1160,1187,C0040160,Treatment,thyroid stimulating hormone,,,,,1033,1640,4,False,0.585,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1160,1187,C0040160,Treatment,thyroid stimulating hormone,1195,1199,C0013227,Treatment,drug,,,,,1033,1640,1,False,0.647,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1261,1271,C0003241,Treatment,antibodies,1289,1299,C0003241,Treatment,antibodies,,,,,1033,1640,1,False,0.674,p2.regressao_logistica
 PMC7086412_01,PMC7086412,REVEALED_BY,affirmed,Concept,1301,1320,C0311370,Diagnosis,lupus anticoagulant,1321,1331,C0003241,Treatment,antibodies,,,,,1033,1640,0,True,0.699,p2.regressao_logistica
-PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1321,1331,C0003241,Treatment,antibodies,1353,1363,C0003241,Treatment,antibodies,,,,,1033,1640,3,False,0.641,p2.regressao_logistica
+PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1321,1331,C0003241,Treatment,antibodies,1353,1363,C0003241,Treatment,antibodies,,,,,1033,1640,3,False,0.662,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1353,1363,C0003241,Treatment,antibodies,1381,1391,C0003241,Treatment,antibodies,,,,,1033,1640,1,False,0.674,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1393,1417,C0584960,Diagnosis,factor V Leiden mutation,1423,1448,C1260403,Diagnosis,prothrombin gene mutation,,,,,1033,1640,1,False,0.764,p2.regressao_logistica
 PMC7086412_01,PMC7086412,TREATED_WITH,affirmed,Person,,,,Person,,1749,1767,C0259787,Treatment,induction of labor,,,,,1724,1870,4,False,0.854,p2.regressao_logistica
-PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1789,1800,C0085174,Treatment,misoprostol,1813,1820,C0733348,Treatment,Pitocin,,,,,1724,1870,2,True,0.637,p2.regressao_logistica
+PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1789,1800,C0085174,Treatment,misoprostol,1813,1820,C0733348,Treatment,Pitocin,,,,,1724,1870,2,True,0.638,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1789,1800,C0085174,Treatment,misoprostol,1821,1833,C1293122,Treatment,augmentation,,,,,1724,1870,3,True,0.501,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1789,1800,C0085174,Treatment,misoprostol,1838,1869,C1384591,Treatment,artificial rupture of membranes,,,,,1724,1870,5,False,0.715,p2.regressao_logistica
 PMC7086412_01,PMC7086412,COORDINATE_WITH,affirmed,Concept,1821,1833,C1293122,Treatment,augmentation,1838,1869,C1384591,Treatment,artificial rupture of membranes,,,,,1724,1870,1,False,0.804,p2.regressao_logistica
@@ -1133,7 +1130,7 @@ PMC7086412_01,PMC7086412,LOCATED_IN,affirmed,Concept,2699,2717,C0473306,Treatmen
 PMC7086412_01,PMC7086412,TREATED_WITH,negated,Person,,,,Person,,2858,2866,C0011209,Treatment,delivery,,,,,2817,2926,7,False,0.738,p2.regressao_logistica
 PMC7086412_01,PMC7086412,TREATED_WITH,affirmed,Person,,,,Person,,3029,3037,C0011209,Treatment,delivery,,,,,2927,3038,16,False,0.601,p2.regressao_logistica
 PMC7086412_01,PMC7086412,TREATED_WITH,affirmed,Person,,,,Person,,3106,3119,C0017887,Treatment,nitroglycerin,,,,,3039,3120,9,False,0.603,p2.regressao_logistica
-PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,14,21,C0600457,Finding,gravida,27,31,C0030563,Finding,para,,,,,0,174,1,False,0.367,p2.regressao_logistica
+PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,14,21,C0600457,Finding,gravida,27,31,C0030563,Finding,para,,,,,0,174,1,False,0.368,p2.regressao_logistica
 PMC7086412_02,PMC7086412,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,213,225,C0015927,Diagnosis,fetal demise,,,,,175,226,7,False,0.768,p2.regressao_logistica
 PMC7086412_02,PMC7086412,REVEALED_BY,affirmed,Concept,330,352,C0017741,Exam,glucose tolerance test,394,411,C5203192,Finding,weeks gestational,,,,,227,503,6,True,0.515,p2.regressao_logistica
 PMC7086412_02,PMC7086412,HAS_FINDING,affirmed,Person,,,,Person,,664,671,C0015663,Finding,fasting,,,,,609,760,9,False,0.612,p2.regressao_logistica
@@ -1145,7 +1142,7 @@ PMC7086412_02,PMC7086412,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,1361,1373,C001
 PMC7086412_02,PMC7086412,REVEALED_BY,affirmed,Concept,1408,1419,C1704258,Finding,abnormality,1507,1515,C0011847,Diagnosis,diabetes,,,,,1399,1581,17,False,0.385,p2.regressao_logistica
 PMC7086412_02,PMC7086412,REVEALED_BY,affirmed,Concept,1507,1515,C0011847,Diagnosis,diabetes,1560,1568,C0011847,Diagnosis,Diabetes,,,,,1399,1581,7,True,0.687,p2.regressao_logistica
 PMC7086412_02,PMC7086412,TREATED_WITH,affirmed,Person,,,,Person,,1607,1625,C0259787,Treatment,induction of labor,,,,,1582,1728,4,False,0.854,p2.regressao_logistica
-PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,1647,1658,C0085174,Treatment,misoprostol,1671,1678,C0733348,Treatment,Pitocin,,,,,1582,1728,2,True,0.637,p2.regressao_logistica
+PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,1647,1658,C0085174,Treatment,misoprostol,1671,1678,C0733348,Treatment,Pitocin,,,,,1582,1728,2,True,0.638,p2.regressao_logistica
 PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,1647,1658,C0085174,Treatment,misoprostol,1679,1691,C1293122,Treatment,augmentation,,,,,1582,1728,3,True,0.501,p2.regressao_logistica
 PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,1647,1658,C0085174,Treatment,misoprostol,1696,1727,C1384591,Treatment,artificial rupture of membranes,,,,,1582,1728,5,False,0.715,p2.regressao_logistica
 PMC7086412_02,PMC7086412,COORDINATE_WITH,affirmed,Concept,1679,1691,C1293122,Treatment,augmentation,1696,1727,C1384591,Treatment,artificial rupture of membranes,,,,,1582,1728,1,False,0.804,p2.regressao_logistica
@@ -1167,14 +1164,14 @@ PMC7102447_01,PMC7102447,REVEALED_BY,affirmed,Concept,285,307,C1623258,Exam,elec
 PMC7102447_01,PMC7102447,REVEALED_BY,affirmed,Concept,285,307,C1623258,Exam,electrocardiogram (EKG,336,366,C0264912,Diagnosis,left anterior fascicular block,,,,,277,435,4,True,0.813,p2.regressao_logistica
 PMC7102447_01,PMC7102447,REVEALED_BY,affirmed,Concept,285,307,C1623258,Exam,electrocardiogram (EKG,368,393,C0085615,Diagnosis,right bundle branch block,,,,,277,435,8,False,0.709,p2.regressao_logistica
 PMC7102447_01,PMC7102447,COORDINATE_WITH,affirmed,Concept,336,366,C0264912,Diagnosis,left anterior fascicular block,368,393,C0085615,Diagnosis,right bundle branch block,,,,,277,435,0,False,0.755,p2.regressao_logistica
-PMC7102447_01,PMC7102447,COORDINATE_WITH,affirmed,Concept,368,393,C0085615,Diagnosis,right bundle branch block,411,434,C0238705,Finding,left atrial enlargement,,,,,277,435,3,False,0.701,p2.regressao_logistica
+PMC7102447_01,PMC7102447,COORDINATE_WITH,affirmed,Concept,368,393,C0085615,Diagnosis,right bundle branch block,411,434,C0238705,Finding,left atrial enlargement,,,,,277,435,3,False,0.7,p2.regressao_logistica
 PMC7102447_01,PMC7102447,HAS_FINDING,affirmed,Person,,,,Person,,593,596,C0525032,Finding,INR,,,,,557,635,4,False,0.78,p2.regressao_logistica
 PMC7102447_01,PMC7102447,REVEALED_BY,affirmed,Concept,607,610,C0030605,Exam,PTT,624,626,C0032207,Treatment,PT,,,,,557,635,4,False,0.661,p2.regressao_logistica
 PMC7102447_01,PMC7102447,TREATED_WITH,affirmed,Person,,,,Person,,722,729,C0019134,Treatment,heparin,,,,,636,946,13,False,0.523,p2.regressao_logistica
 PMC7102447_01,PMC7102447,TREATED_WITH,affirmed,Person,,,,Person,,730,738,C0574032,Treatment,infusion,,,,,636,946,14,False,0.519,p2.regressao_logistica
 PMC7102447_01,PMC7102447,TREATED_WITH,affirmed,Concept,730,738,C0574032,Treatment,infusion,756,784,C0948089,Diagnosis,acute coronary syndrome (ACS,,,,,636,946,3,True,0.84,p2.regressao_logistica
 PMC7102447_01,PMC7102447,LOCATED_IN,affirmed,Concept,807,816,C0002978,Exam,angiogram,830,835,C0817096,BodyPart,chest,,,,,636,946,3,True,0.906,p2.regressao_logistica
-PMC7102447_01,PMC7102447,COORDINATE_WITH,affirmed,Concept,910,928,C0013604,Diagnosis,interstitial edema,933,945,C0018800,Finding,cardiomegaly,,,,,636,946,1,False,0.675,p2.regressao_logistica
+PMC7102447_01,PMC7102447,COORDINATE_WITH,affirmed,Concept,910,928,C0013604,Diagnosis,interstitial edema,933,945,C0018800,Finding,cardiomegaly,,,,,636,946,1,False,0.674,p2.regressao_logistica
 PMC7102447_01,PMC7102447,REVEALED_BY,affirmed,Concept,979,982,C0206054,Exam,TEE,1015,1025,C0040053,Diagnosis,thrombosis,,,,,947,1184,5,True,0.598,p2.regressao_logistica
 PMC7102447_01,PMC7102447,LOCATED_IN,affirmed,Concept,1015,1025,C0040053,Diagnosis,thrombosis,1047,1059,C0026264,BodyPart,mitral valve,,,,,947,1184,3,True,0.888,p2.regressao_logistica
 PMC7102447_01,PMC7102447,LOCATED_IN,affirmed,Concept,1047,1059,C0026264,BodyPart,mitral valve,1072,1087,C0026269,Diagnosis,mitral stenosis,,,,,947,1184,2,True,0.529,p2.regressao_logistica
@@ -1198,7 +1195,7 @@ PMC7519975_01,PMC7519975,LOCATED_IN,affirmed,Concept,904,909,C1442858,Finding,sh
 PMC7519975_01,PMC7519975,TREATED_WITH,affirmed,Concept,1005,1015,C0023038,Treatment,laparotomy,1024,1037,C0000727,Symptom,acute abdomen,,,,,923,1038,2,True,0.524,p2.regressao_logistica
 PMC7519975_01,PMC7519975,HAS_FINDING,affirmed,Person,,,,Person,,1081,1104,C1272641,Finding,arterial blood pressure,,,,,1039,1267,6,False,0.567,p2.regressao_logistica
 PMC7519975_01,PMC7519975,REVEALED_BY,affirmed,Concept,1304,1307,C1623258,Exam,ECG,1316,1335,C0232202,Finding,normal sinus rhythm,,,,,1268,1379,1,True,0.68,p2.regressao_logistica
-PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,1624,1636,C0523891,Exam,serum sodium,1652,1667,C0302353,Exam,serum potassium,,,,,1380,1936,3,False,0.55,p2.regressao_logistica
+PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,1624,1636,C0523891,Exam,serum sodium,1652,1667,C0302353,Exam,serum potassium,,,,,1380,1936,3,False,0.551,p2.regressao_logistica
 PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,1652,1667,C0302353,Exam,serum potassium,1683,1691,C0596019,Treatment,chloride,,,,,1380,1936,3,False,0.507,p2.regressao_logistica
 PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,1683,1691,C0596019,Treatment,chloride,1707,1710,C0005845,Exam,BUN,,,,,1380,1936,3,False,0.752,p2.regressao_logistica
 PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,1757,1770,C0202041,Exam,serum glucose,1789,1802,C0728876,Exam,serum calcium,,,,,1380,1936,3,False,0.562,p2.regressao_logistica
@@ -1211,9 +1208,9 @@ PMC7519975_01,PMC7519975,TREATED_WITH,affirmed,Concept,2084,2098,C3845590,Findin
 PMC7519975_01,PMC7519975,HAS_FINDING,affirmed,Person,,,,Person,,2137,2149,C3176821,Finding,Cardiac Risk,,,,,2125,2326,2,False,0.697,p2.regressao_logistica
 PMC7519975_01,PMC7519975,REVEALED_BY,affirmed,Concept,2261,2284,C0007820,Diagnosis,cerebrovascular disease,2318,2325,C0021641,Treatment,insulin,,,,,2125,2326,4,False,0.674,p2.regressao_logistica
 PMC7519975_01,PMC7519975,TREATED_WITH,affirmed,Person,,,,Person,,2370,2377,C0543467,Treatment,surgery,,,,,2327,2482,8,False,0.798,p2.regressao_logistica
-PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,2370,2377,C0543467,Treatment,surgery,2392,2402,C0557061,Treatment,discussion,,,,,2327,2482,2,False,0.67,p2.regressao_logistica
+PMC7519975_01,PMC7519975,COORDINATE_WITH,affirmed,Concept,2370,2377,C0543467,Treatment,surgery,2392,2402,C0557061,Treatment,discussion,,,,,2327,2482,2,False,0.671,p2.regressao_logistica
 PMC7519975_01,PMC7519975,TREATED_WITH,affirmed,Person,,,,Person,,2571,2582,C0038842,Treatment,supervision,,,,,2483,2617,13,False,0.626,p2.regressao_logistica
-PMC7519975_01,PMC7519975,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,2700,2708,C0018790,Diagnosis,asystole,,,,,2618,2709,10,False,0.753,p2.regressao_logistica
+PMC7519975_01,PMC7519975,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,2700,2708,C0018790,Diagnosis,asystole,,,,,2618,2709,10,False,0.754,p2.regressao_logistica
 PMC7519975_01,PMC7519975,LOCATED_IN,affirmed,Concept,2959,2965,C0871269,Finding,rhythm,2988,2993,C0817096,BodyPart,chest,,,,,2947,3016,4,True,0.543,p2.regressao_logistica
 PMC7519975_01,PMC7519975,HAS_FINDING,negated,Person,,,,Person,,3298,3304,C0871269,Finding,rhythm,,,,,3261,3335,7,False,0.736,p2.regressao_logistica
 PMC7519975_01,PMC7519975,HAS_FINDING,affirmed,Person,,,,Person,,3478,3482,C1546956,Finding,dead,,,,,3445,3525,5,False,0.686,p2.regressao_logistica
@@ -1275,7 +1272,7 @@ PMC7718649_01,PMC7718649,COORDINATE_WITH,affirmed,Concept,4425,4433,C0015879,Tre
 PMC7718649_01,PMC7718649,TREATED_WITH,affirmed,Person,,,,Person,,4590,4599,C0439775,Treatment,elevation,,,,,4547,4666,5,False,0.542,p2.regressao_logistica
 PMC7718649_01,PMC7718649,REVEALED_BY,affirmed,Concept,4861,4868,C0392756,Finding,reduced,4892,4901,C0032285,Diagnosis,pneumonia,,,,,4827,4911,6,True,0.333,p2.regressao_logistica
 PMC7718649_01,PMC7718649,HAS_SYMPTOM,affirmed,Person,,,,Person,,5068,5078,C5970507,Symptom,wrist pain,,,,,5021,5146,8,False,0.959,p2.regressao_logistica
-PMC7718649_01,PMC7718649,TREATED_WITH,affirmed,Concept,5068,5078,C5970507,Symptom,wrist pain,5084,5094,C0065199,Treatment,loxoprofen,,,,,5021,5146,1,False,0.762,p2.regressao_logistica
+PMC7718649_01,PMC7718649,TREATED_WITH,affirmed,Concept,5068,5078,C5970507,Symptom,wrist pain,5084,5094,C0065199,Treatment,loxoprofen,,,,,5021,5146,1,False,0.761,p2.regressao_logistica
 PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,50,65,C0025611,Treatment,methamphetamine,82,88,C0011892,Treatment,heroin,,,,,0,213,2,False,0.746,p2.regressao_logistica
 PMC8627357_01,PMC8627357,LOCATED_IN,affirmed,Concept,141,161,C0230330,BodyPart,left upper extremity,162,172,C0007642,Diagnosis,cellulitis,,,,,0,213,0,True,0.559,p2.regressao_logistica
 PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,162,172,C0007642,Diagnosis,cellulitis,177,184,C0013404,Symptom,dyspnea,,,,,0,213,1,False,0.779,p2.regressao_logistica
@@ -1300,7 +1297,7 @@ PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,1714,1721,C2242979,Exa
 PMC8627357_01,PMC8627357,TREATED_WITH,affirmed,Person,,,,Person,,2004,2024,C0742344,Treatment,chest tube placement,,,,,1903,2120,16,False,0.532,p2.regressao_logistica
 PMC8627357_01,PMC8627357,TREATED_WITH,affirmed,Concept,2057,2082,C3649547,Treatment,renal replacement therapy,2100,2108,C0001122,Diagnosis,acidosis,,,,,1903,2120,3,True,0.935,p2.regressao_logistica
 PMC8627357_01,PMC8627357,TREATED_WITH,affirmed,Concept,2057,2082,C3649547,Treatment,renal replacement therapy,2113,2119,C0041948,Diagnosis,uremia,,,,,1903,2120,5,False,0.903,p2.regressao_logistica
-PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,2004,2024,C0742344,Treatment,chest tube placement,2057,2082,C3649547,Treatment,renal replacement therapy,,,,,1903,2120,5,False,0.824,p2.regressao_logistica
+PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,2004,2024,C0742344,Treatment,chest tube placement,2057,2082,C3649547,Treatment,renal replacement therapy,,,,,1903,2120,5,False,0.825,p2.regressao_logistica
 PMC8627357_01,PMC8627357,COORDINATE_WITH,affirmed,Concept,2100,2108,C0001122,Diagnosis,acidosis,2113,2119,C0041948,Diagnosis,uremia,,,,,1903,2120,1,False,0.737,p2.regressao_logistica
 PMC8627357_01,PMC8627357,LOCATED_IN,affirmed,Concept,2143,2152,C0021107,Treatment,placement,2169,2174,C0817096,BodyPart,chest,,,,,2121,2311,3,True,0.513,p2.regressao_logistica
 PMC8627357_01,PMC8627357,LOCATED_IN,affirmed,Concept,2335,2342,C0015252,Treatment,removal,2356,2361,C0817096,BodyPart,chest,,,,,2312,2572,3,True,0.524,p2.regressao_logistica
@@ -1334,7 +1331,7 @@ PMC9387390_01,PMC9387390,TREATED_WITH,affirmed,Person,,,,Person,,2907,2916,C0021
 PMC9387390_01,PMC9387390,LOCATED_IN,affirmed,Concept,3082,3098,C0399620,Exam,push enteroscopy,3118,3122,C0015385,BodyPart,limb,,,,,3022,3173,3,True,0.968,p2.regressao_logistica
 PMC9387390_01,PMC9387390,LOCATED_IN,affirmed,Concept,3082,3098,C0399620,Exam,push enteroscopy,3076,3080,C0015385,BodyPart,limb,,,,,3022,3173,0,False,0.842,p2.regressao_logistica
 PMC9387390_01,PMC9387390,HAS_FINDING,affirmed,Person,,,,Person,,3336,3347,C0028778,Finding,obstruction,,,,,3246,3377,16,False,0.569,p2.regressao_logistica
-PMC9387390_01,PMC9387390,HAS_FINDING,affirmed,Person,,,,Person,,3352,3376,C0740411,Finding,delayed gastric emptying,,,,,3246,3377,18,False,0.562,p2.regressao_logistica
+PMC9387390_01,PMC9387390,HAS_FINDING,affirmed,Person,,,,Person,,3352,3376,C0740411,Finding,delayed gastric emptying,,,,,3246,3377,18,False,0.561,p2.regressao_logistica
 PMC9387390_01,PMC9387390,COORDINATE_WITH,affirmed,Concept,3336,3347,C0028778,Finding,obstruction,3352,3376,C0740411,Finding,delayed gastric emptying,,,,,3246,3377,1,False,0.431,p2.regressao_logistica
 PMC9387390_01,PMC9387390,TREATED_WITH,affirmed,Person,,,,Person,,3418,3431,C1829459,Treatment,decompression,,,,,3378,3445,6,False,0.832,p2.regressao_logistica
 PMC9387390_01,PMC9387390,TREATED_WITH,affirmed,Person,,,,Person,,3458,3469,C0035139,Treatment,replacement,,,,,3446,3648,2,False,0.832,p2.regressao_logistica
@@ -1354,8 +1351,8 @@ PMC9529523_01,PMC9529523,LOCATED_IN,affirmed,Concept,475,484,C0002978,Exam,angio
 PMC9529523_01,PMC9529523,HAS_DIAGNOSIS,affirmed,Person,,,,Person,,627,634,C0000833,Diagnosis,abscess,,,,,582,706,7,False,0.859,p2.regressao_logistica
 PMC9529523_01,PMC9529523,COORDINATE_WITH,affirmed,Concept,645,666,C0152277,Treatment,incision and drainage,695,705,C0002688,Treatment,amputation,,,,,582,706,4,False,0.607,p2.regressao_logistica
 PMC9529523_01,PMC9529523,TREATED_WITH,affirmed,Concept,627,634,C0000833,Diagnosis,abscess,645,666,C0152277,Treatment,incision and drainage,,,,,582,706,2,False,0.478,p2.regressao_logistica
-PMC9529523_01,PMC9529523,REVEALED_BY,affirmed,Concept,781,805,C0079603,Exam,immunofluorescence assay,887,897,C0003241,Treatment,antibodies,,,,,707,1048,15,False,0.647,p2.regressao_logistica
-PMC9529523_01,PMC9529523,REVEALED_BY,affirmed,Concept,1053,1063,C0042384,Diagnosis,vasculitis,1178,1188,C0003241,Treatment,antibodies,,,,,1049,1214,13,False,0.427,p2.regressao_logistica
+PMC9529523_01,PMC9529523,REVEALED_BY,affirmed,Concept,781,805,C0079603,Exam,immunofluorescence assay,887,897,C0003241,Treatment,antibodies,,,,,707,1048,15,False,0.648,p2.regressao_logistica
+PMC9529523_01,PMC9529523,REVEALED_BY,affirmed,Concept,1053,1063,C0042384,Diagnosis,vasculitis,1178,1188,C0003241,Treatment,antibodies,,,,,1049,1214,13,False,0.428,p2.regressao_logistica
 PMC9529523_01,PMC9529523,TREATED_WITH,affirmed,Concept,1232,1242,C0003241,Treatment,antibodies,1253,1272,C0311370,Diagnosis,lupus anticoagulant,,,,,1215,1547,1,True,0.686,p2.regressao_logistica
 PMC9529523_01,PMC9529523,COORDINATE_WITH,affirmed,Concept,1595,1605,C0042384,Diagnosis,vasculitis,1619,1647,C0024141,Diagnosis,systemic lupus erythematosus,,,,,1548,1648,2,True,0.628,p2.regressao_logistica
 PMC9529523_01,PMC9529523,REVEALED_BY,affirmed,Concept,1587,1594,C0442015,Exam,digital,1595,1605,C0042384,Diagnosis,vasculitis,,,,,1548,1648,0,True,0.576,p2.regressao_logistica
@@ -1397,13 +1394,13 @@ PMC9529523_01,PMC9529523,COORDINATE_WITH,affirmed,Concept,4514,4532,C0191234,Tre
 PMC9529523_01,PMC9529523,COORDINATE_WITH,affirmed,Concept,4469,4498,C0042508,Exam,ventricular ejection fraction,4514,4532,C0191234,Treatment,pericardiocentesis,,,,,4327,4653,3,False,0.541,p2.regressao_logistica
 PMC9529523_01,PMC9529523,REVEALED_BY,negated,Concept,4718,4739,C0189785,Exam,endomyocardial biopsy,4765,4787,C0020542,Diagnosis,pulmonary hypertension,,,,,4654,4798,5,False,0.497,p2.regressao_logistica
 PMC9529523_01,PMC9529523,REVEALED_BY,negated,Concept,4799,4820,C0189785,Exam,Endomyocardial biopsy,4843,4854,C0027059,Diagnosis,myocarditis,,,,,4799,5053,4,True,0.699,p2.regressao_logistica
-PMC9529523_01,PMC9529523,REVEALED_BY,hedged,Concept,4843,4854,C0027059,Diagnosis,myocarditis,5015,5029,C0878544,Diagnosis,cardiomyopathy,,,,,4799,5053,20,False,0.296,p2.regressao_logistica
+PMC9529523_01,PMC9529523,REVEALED_BY,hedged,Concept,4843,4854,C0027059,Diagnosis,myocarditis,5015,5029,C0878544,Diagnosis,cardiomyopathy,,,,,4799,5053,20,False,0.295,p2.regressao_logistica
 PMC9529523_01,PMC9529523,REVEALED_BY,hedged,Concept,5033,5052,C0026019,Exam,electron microscopy,5015,5029,C0878544,Diagnosis,cardiomyopathy,,,,,4799,5053,1,True,0.615,p2.regressao_logistica
 PMC9532611_01,PMC9532611,COORDINATE_WITH,negated,Concept,367,371,C0018494,BodyPart,hair,389,393,C0018494,BodyPart,hair,,,,,281,394,3,False,0.627,p2.regressao_logistica
-PMC9532611_01,PMC9532611,COORDINATE_WITH,negated,Concept,562,574,C0231221,Finding,asymptomatic,582,601,C3845474,Finding,other family member,,,,,526,663,2,False,0.387,p2.regressao_logistica
-PMC9532611_01,PMC9532611,CAUSED_BY,family,Concept,582,601,C3845474,Finding,other family member,616,639,C0455527,Finding,history of hypertension,,,,,526,663,3,True,0.491,p2.regressao_logistica
+PMC9532611_01,PMC9532611,COORDINATE_WITH,negated,Concept,562,574,C0231221,Finding,asymptomatic,582,601,C3845474,Finding,other family member,,,,,526,663,2,False,0.386,p2.regressao_logistica
+PMC9532611_01,PMC9532611,CAUSED_BY,family,Concept,582,601,C3845474,Finding,other family member,616,639,C0455527,Finding,history of hypertension,,,,,526,663,3,True,0.49,p2.regressao_logistica
 PMC9532611_01,PMC9532611,COORDINATE_WITH,affirmed,Concept,616,639,C0455527,Finding,history of hypertension,644,662,C1279412,Diagnosis,periodic paralysis,,,,,526,663,1,False,0.592,p2.regressao_logistica
-PMC9532611_01,PMC9532611,REVEALED_BY,affirmed,Concept,721,737,C0730342,Exam,"karyotype 46, XX",680,696,C0730341,Finding,"karyotype 46, XY",,,,,664,816,4,True,0.523,p2.regressao_logistica
+PMC9532611_01,PMC9532611,REVEALED_BY,affirmed,Concept,721,737,C0730342,Exam,"karyotype 46, XX",680,696,C0730341,Finding,"karyotype 46, XY",,,,,664,816,4,True,0.524,p2.regressao_logistica
 PMC9532611_01,PMC9532611,REVEALED_BY,affirmed,Concept,721,737,C0730342,Exam,"karyotype 46, XX",778,790,C0020538,Diagnosis,hypertension,,,,,664,816,7,False,0.591,p2.regressao_logistica
 PMC9532611_02,PMC9532611,TREATED_WITH,affirmed,Person,,,,Person,,66,75,C1285572,Exam,phenotype,,,,,0,167,12,False,0.844,p2.regressao_logistica
 PMC9532611_02,PMC9532611,REVEALED_BY,affirmed,Concept,66,75,C1285572,Exam,phenotype,113,137,C0497247,Finding,increased blood pressure,,,,,0,167,4,True,0.524,p2.regressao_logistica
@@ -1431,7 +1428,7 @@ PMC9969157_01,PMC9969157,REVEALED_BY,affirmed,Concept,171,180,C0549206,Finding,p
 PMC9969157_01,PMC9969157,COORDINATE_WITH,affirmed,Concept,72,81,C1277583,Finding,gravida 3,83,89,C0233072,Finding,para 3,,,,,0,332,0,False,0.472,p2.regressao_logistica
 PMC9969157_01,PMC9969157,CAUSED_BY,affirmed,Concept,83,89,C0233072,Finding,para 3,171,180,C0549206,Finding,pregnancy,,,,,0,332,11,False,0.502,p2.regressao_logistica
 PMC9969157_01,PMC9969157,COORDINATE_WITH,affirmed,Concept,222,242,C0085207,Diagnosis,gestational diabetes,247,271,C0852036,Diagnosis,gestational hypertension,,,,,0,332,1,False,0.737,p2.regressao_logistica
-PMC9969157_01,PMC9969157,COORDINATE_WITH,family,Concept,247,271,C0852036,Diagnosis,gestational hypertension,279,293,C0241889,Finding,family history,,,,,0,332,2,False,0.594,p2.regressao_logistica
+PMC9969157_01,PMC9969157,COORDINATE_WITH,family,Concept,247,271,C0852036,Diagnosis,gestational hypertension,279,293,C0241889,Finding,family history,,,,,0,332,2,False,0.593,p2.regressao_logistica
 PMC9969157_01,PMC9969157,TREATED_WITH,affirmed,Person,,,,Person,,362,378,C0007876,Treatment,cesarean section,,,,,333,506,5,False,0.801,p2.regressao_logistica
 PMC9969157_01,PMC9969157,TREATED_WITH,family,Concept,429,447,C3656218,Finding,maternal morbidity,464,476,C0032914,Diagnosis,preeclampsia,,,,,333,506,2,True,0.512,p2.regressao_logistica
 PMC9969157_01,PMC9969157,COORDINATE_WITH,affirmed,Concept,464,476,C0032914,Diagnosis,preeclampsia,491,505,C0162739,Diagnosis,HELLP syndrome,,,,,333,506,1,False,0.679,p2.regressao_logistica

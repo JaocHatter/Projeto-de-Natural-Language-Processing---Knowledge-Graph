@@ -12,7 +12,7 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, carregar_candida
                                          sklearn_disponivel)
 from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto,
                                            diagnostico_fraco, jaccard, linha_ml, medir, prf,
-                                           prever_validando_fraco, tabela_gatilhos)
+                                           prever_validando_fraco, sem_repetidas, tabela_gatilhos)
 from clinical_kg.relations.extract import CSV_COLUMNS
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
@@ -22,6 +22,10 @@ class TestNgramas(unittest.TestCase):
     def test_tokenizar_minusculas_e_ignora_pontuacao(self):
         self.assertEqual(tokenizar("Treated with Aspirin, 40 mg."),
                          ["treated", "with", "aspirin", "40", "mg"])
+
+    def test_tokenizar_mantem_covid_19_como_um_token(self):
+        self.assertEqual(tokenizar("COVID-19 and SARS-CoV-2, 5-year"),
+                         ["covid-19", "and", "sars-cov-2", "5", "year"])
 
     def test_contar_ngramas(self):
         c = contar_ngramas(["a", "b", "a", "b"], n_max=2)
@@ -270,12 +274,30 @@ class TestMedidas(unittest.TestCase):
         self.assertEqual((m["vp"], m["fp"], m["fn"]), (2, 1, 0))
         self.assertAlmostEqual(m["tipo"], 0.5)   # detectou 2 relações, acertou o tipo de 1
 
+    def test_matriz_de_confusao_conta_real_contra_previsto(self):
+        a = _exemplo("c1", 1, [], 1); a.relacao = "R"
+        b = _exemplo("c1", 2, [], 1); b.relacao = "R"
+        c = _exemplo("c1", 3, [], 0)
+        m = medir([(a, "R"), (b, "OUTRA"), (c, "R")])
+        self.assertEqual(m["matriz"][("R", "R")], 1)
+        self.assertEqual(m["matriz"][("R", "OUTRA")], 1)
+        self.assertEqual(m["matriz"][(NENHUMA, "R")], 1)
+        self.assertEqual(sum(m["matriz"].values()), 3)
+
     def test_confronto_conta_vence_empata_perde(self):
         self.assertEqual(confronto({"a": 0.9, "b": 0.5, "c": 0.1},
                                    {"a": 0.5, "b": 0.5, "c": 0.3}), (1, 1, 1))
 
 
 class TestExtracao(unittest.TestCase):
+    def test_sem_repetidas_fica_com_a_de_maior_probabilidade(self):
+        base = {"case_id": "c1", "head_start": "1", "tail_start": "9", "relation": "LOCATED_IN"}
+        linhas = [{**base, "score": 0.88}, {**base, "score": 0.90},
+                  {**base, "relation": "TREATED_WITH", "score": 0.7}]
+        saida = sem_repetidas(linhas)
+        self.assertEqual(len(saida), 2)
+        self.assertEqual([l["score"] for l in saida if l["relation"] == "LOCATED_IN"], [0.90])
+
     def test_linha_ml_segue_o_esquema_do_p1_e_apaga_o_gatilho(self):
         cand = {
             "relation": "HAS_FINDING", "assertion_status": "negated", "sent_start": 0,

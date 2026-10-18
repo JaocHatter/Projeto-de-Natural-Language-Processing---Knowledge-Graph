@@ -1,8 +1,8 @@
 metrica,p1,p2,nota
-relações extraídas (50 casos),1352,1441,"pares únicos (cabeça, cauda, tipo); relacoes_ml.csv pode ter linhas repetidas do mesmo par"
+relações extraídas (50 casos),1352,1442,"pares únicos (cabeça, cauda, tipo)"
 relações por caso,27.0,28.8,
 relações idênticas (mesmo par e tipo),623,623,Jaccard 0.287
-arestas do grafo (conceitos agregados),1299,1379,arestas clínicas únicas por caso
+arestas do grafo (conceitos agregados),1299,1380,arestas clínicas únicas por caso
 arestas idênticas no grafo,605,605,Jaccard 0.292
 grau médio dos nós conectados,1.68,1.71,2 x arestas / nós com alguma relação clínica
 tipos de relação presentes,8,8,de 8

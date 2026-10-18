@@ -262,8 +262,10 @@ def medir(previsoes):
         rfp = sum(1 for e, p_ in previsoes if p_ == rel and e.relacao != rel)
         rfn = sum(1 for e, p_ in previsoes if e.relacao == rel and p_ != rel)
         por_relacao[rel] = (rvp, rfp, rfn)
+    matriz = collections.Counter((e.relacao, p_) for e, p_ in previsoes)   # (real, previsto)
     return dict(vp=vp, fp=fp, fn=fn, p=p, r=r, f1=f1, tipo=tipo,
-                por_caso=por_caso, por_relacao=por_relacao, contagem_por_caso=contagem_por_caso)
+                por_caso=por_caso, por_relacao=por_relacao, contagem_por_caso=contagem_por_caso,
+                matriz=matriz)
 
 
 def bootstrap_pareado(contagens_a: dict, contagens_b: dict, repeticoes: int = 10000, semente: int = 0) -> dict:
@@ -389,6 +391,13 @@ def cmd_treinar(args):
     gravar_csv(SAIDA / "metricas_por_relacao.csv",
                ["variante", "relacao", "vp", "fp", "fn", "precisao", "cobertura", "f1"], linhas_rel)
 
+    # Matriz de confusão dos tipos (linha = gold, coluna = previsto; NENHUMA = sem relação),
+    # com as mesmas previsões fora de amostra das métricas acima.
+    linhas_matriz = [(nome, real, previsto, n)
+                     for nome in ("p1", "completo")
+                     for (real, previsto), n in sorted(resultados[nome]["matriz"].items())]
+    gravar_csv(SAIDA / "metricas_matriz_confusao.csv", ["variante", "real", "previsto", "n"], linhas_matriz)
+
     # Modelo final: todos os 413 pares e o texto de todos os casos.
     final = ModeloAprendido(**VARIANTES["completo"]).ajustar(exemplos, list(textos.values()))
     MODELO_JSON.parent.mkdir(parents=True, exist_ok=True)
@@ -445,7 +454,21 @@ def relacoes_p2(modelo: ModeloAprendido, caso: dict, texto: str, entidades: list
         linha = linha_ml({**caso, "case_text": texto}, cand, relacao, probabilidade)
         assert texto[cand["tail"]["start"]:cand["tail"]["end"]] == linha["tail_text"]
         linhas.append(linha)
-    return linhas, candidatos
+    return sem_repetidas(linhas), candidatos
+
+
+def sem_repetidas(linhas: list[dict]) -> list[dict]:
+    """Uma linha por (caso, cabeça, cauda, tipo), a de maior probabilidade.
+
+    O gerador de candidatos do P1 pode propor o mesmo par duas vezes (por caminhos
+    diferentes dentro da frase); o modelo então decide as duas e aceita as duas.
+    """
+    melhores = {}
+    for linha in linhas:
+        chave = chave_relacao(linha)
+        if chave not in melhores or linha["score"] > melhores[chave]["score"]:
+            melhores[chave] = linha
+    return list(melhores.values())
 
 
 def chave_relacao(linha: dict) -> tuple:
@@ -611,8 +634,8 @@ def exemplos_do_gold(exemplos, textos):
             for e in exemplos]
 
 
-def desenhar_figuras(metricas, por_caso, por_tipo, gatilhos):
-    """Quatro figuras para o README e os slides (cores do visualizador: P1 laranja, P2 verde)."""
+def desenhar_figuras(metricas, por_caso, por_tipo, gatilhos, matriz=None):
+    """Cinco figuras para o README e os slides (cores do visualizador: P1 laranja, P2 verde)."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -679,6 +702,32 @@ def desenhar_figuras(metricas, por_caso, por_tipo, gatilhos):
     ax.set_title("Frases entre entidades (laranja: já no léxico de gatilhos do P1)", loc="left", fontsize=10)
     gravar(fig, "frases_entre_entidades.png")
 
+    # 5. matriz de confusão dos tipos de relação, P1 e P2 (cor: fração de cada linha do gold)
+    if matriz:
+        tipos_matriz = {l["real"] for l in matriz} | {l["previsto"] for l in matriz}
+        rotulos = sorted(tipos_matriz - {"NENHUMA"}) + ["NENHUMA"]
+        fig, eixos = plt.subplots(1, 2, figsize=(12, 5.4))
+        for ax, (variante, titulo) in zip(eixos, (("p1", "P1 (regras)"), ("completo", "P2 (aprendido)"))):
+            n = {(l["real"], l["previsto"]): int(l["n"]) for l in matriz if l["variante"] == variante}
+            total = {r: sum(n.get((r, c), 0) for c in rotulos) for r in rotulos}
+            grade = [[n.get((r, c), 0) / total[r] if total[r] else 0 for c in rotulos] for r in rotulos]
+            ax.imshow(grade, cmap="Greens" if variante == "completo" else "Oranges", vmin=0, vmax=1)
+            for i, r in enumerate(rotulos):
+                for j, c in enumerate(rotulos):
+                    if n.get((r, c), 0):
+                        ax.text(j, i, n[(r, c)], ha="center", va="center", fontsize=8,
+                                color="white" if grade[i][j] > 0.6 else "black")
+            ax.set_xticks(range(len(rotulos)))
+            ax.set_xticklabels(rotulos, rotation=45, ha="right", fontsize=8)
+            ax.set_yticks(range(len(rotulos)))
+            ax.set_yticklabels(rotulos, fontsize=8)
+            ax.set_xlabel("previsto")
+            ax.set_ylabel("gold (julgado à mão)")
+            ax.set_title(titulo, loc="left")
+            for lado in ("top", "right"):
+                ax.spines[lado].set_visible(True)
+        gravar(fig, "matriz_confusao.png")
+
 
 def cmd_comparar(args):
     casos = ler_casos(args.casos)
@@ -736,7 +785,7 @@ def cmd_comparar(args):
     ng1, ng2 = len(g1), len(g2)
     n1, n2 = len(conectados(g1)), len(conectados(g2))
     linhas = [
-        ("relações extraídas (50 casos)", total["p1"], total["p2"], "pares únicos (cabeça, cauda, tipo); relacoes_ml.csv pode ter linhas repetidas do mesmo par"),
+        ("relações extraídas (50 casos)", total["p1"], total["p2"], "pares únicos (cabeça, cauda, tipo)"),
         ("relações por caso", round(total["p1"] / len(casos), 1), round(total["p2"] / len(casos), 1), ""),
         ("relações idênticas (mesmo par e tipo)", total["ambos"], total["ambos"], f"Jaccard {total['jaccard']}"),
         ("arestas do grafo (conceitos agregados)", ng1, ng2, "arestas clínicas únicas por caso"),
@@ -766,7 +815,9 @@ def cmd_comparar(args):
         return
     try:
         por_caso = ler_relacoes(SAIDA / "metricas_por_caso.csv")
-        desenhar_figuras(list(metricas.values()), por_caso, por_tipo, gatilhos)
+        caminho_matriz = SAIDA / "metricas_matriz_confusao.csv"
+        matriz = ler_relacoes(caminho_matriz) if caminho_matriz.exists() else None
+        desenhar_figuras(list(metricas.values()), por_caso, por_tipo, gatilhos, matriz)
         print(f"\nfiguras em {PASTA_FIGURAS.relative_to(PROJECT_ROOT)}/")
     except ImportError:
         print("\n(matplotlib não instalado: figuras puladas; `pip install matplotlib`)")

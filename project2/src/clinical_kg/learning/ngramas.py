@@ -33,8 +33,20 @@ CONTAGEM_MINIMA_PMI = 5
 
 
 def tokenizar(texto: str) -> list[str]:
-    """Palavras em minúsculas, com o mesmo tokenizador do restante do pipeline."""
-    return [m.group().lower() for m in TOKEN_RE.finditer(mask_figure_refs(texto))]
+    """Palavras em minúsculas, com o mesmo tokenizador do restante do pipeline.
+
+    O tokenizador compartilhado separa "covid-19" em "covid-" e "19"; aqui os dois
+    pedaços voltam a ser um só token ("covid-19", "sars-cov-2"), para que o PMI e
+    os n-gramas tratem o termo como uma unidade.
+    """
+    tokens = []
+    for m in TOKEN_RE.finditer(mask_figure_refs(texto)):
+        palavra = m.group().lower()
+        if tokens and tokens[-1].endswith("-") and palavra[0].isdigit():
+            tokens[-1] += palavra
+        else:
+            tokens.append(palavra)
+    return tokens
 
 
 def contar_ngramas(tokens: list[str], n_max: int = 3) -> collections.Counter:
@@ -132,7 +144,7 @@ class ModeloLinguagem:
         P(w | anterior) = L * P_bigrama + (1 - L) * P_unigrama
 
     O add-k (k < 1, mais suave que Laplace) evita probabilidade zero para o que o
-    corpus nunca viu: 81,6% dos bigramas deste corpus aparecem uma única vez.
+    corpus nunca viu: 81,7% dos bigramas deste corpus aparecem uma única vez.
 
     Dois modelos são treinados (textos com relação e textos sem relação) e a
     diferença de suas log-probabilidades vira um único atributo (ver `modelo.py`).

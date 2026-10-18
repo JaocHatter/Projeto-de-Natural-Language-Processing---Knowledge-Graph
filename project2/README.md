@@ -50,7 +50,7 @@ flowchart LR
     F --> G["grafo de conhecimento<br/>(mesmo esquema do P1)"]
 ```
 
-1. **N-gramas.** Sequências de *n* palavras do texto entre duas entidades ("was treated with"). Com 86,6% dos
+1. **N-gramas.** Sequências de *n* palavras do texto entre duas entidades ("was treated with"). Com 81,7% dos
    bigramas do corpus aparecendo uma única vez, estatísticas ingênuas enganam, o que motiva as duas etapas
    seguintes.
 2. **PMI e LLR** (Church & Hanks, 1990; Dunning, 1993). O PMI compara a frequência de um bigrama com a esperada
@@ -114,20 +114,32 @@ O confronto compara o Projeto 1 (regras) com o Projeto 2 (aprendido) em três n�
 | P2 completo (scikit-learn) | 0,663 | 0,864 | 0,750 | 0,895 | 0,733 ± 0,060 | 9-0-1 |
 | *Supervisão fraca:* só estrutura | 0,581 | 0,783 | 0,667 | 0,780 | 0,647 ± 0,084 | 7-0-3 |
 | *Supervisão fraca:* n-gramas diretos | 0,597 | 0,656 | 0,625 | 0,779 | 0,623 ± 0,103 | 4-1-5 |
-| *Supervisão fraca:* completo | 0,586 | 0,769 | 0,665 | 0,788 | 0,642 ± 0,093 | 7-0-3 |
+| *Supervisão fraca:* completo | 0,584 | 0,769 | 0,664 | 0,788 | 0,641 ± 0,093 | 7-0-3 |
 
 As três últimas linhas se treinam com as **etiquetas das regras do P1** (49 casos, sem gold); as demais, com o gold.
 
 ![F1 por variante](assets/images/f1_variantes.png)
 ![F1 caso a caso](assets/images/f1_por_caso.png)
 
+**Matriz de confusão dos tipos de relação** (gold na linha, previsto na coluna; `NENHUMA` = sem relação; as mesmas
+previsões fora de amostra da tabela, em [`metricas_matriz_confusao.csv`](data/processed/metricas_matriz_confusao.csv)):
+
+![Matriz de confusão P1 e P2](assets/images/matriz_confusao.png)
+
+* **Relações perdidas** (coluna `NENHUMA`): o P1 perde 46 das 80 `COORDINATE_WITH` do gold; o P2 perde 14.
+* **Tipo trocado** (fora da diagonal, excluindo `NENHUMA`): o P1 troca o tipo de 33 relações detectadas e o P2 de 16.
+  A confusão mais comum do P1 é `REVEALED_BY` lida como `TREATED_WITH` (6 casos).
+* **Falsas relações** (linha `NENHUMA`): 96 do P1 e 86 do P2. As mais comuns no P2 são `COORDINATE_WITH` (25) e
+  `REVEALED_BY` (19); no P1, `LOCATED_IN` e `TREATED_WITH` (19 cada) e `HAS_FINDING` (17).
+* **`CAUSED_BY`** (4 exemplos): o P2 não acerta nenhuma (ver *Resultados*), o P1 acerta 1.
+
 **2. No grafo, nos 50 casos** (mesmas entidades, quem decide é o que muda):
 
 | | P1 | P2 |
 |---|---|---|
-| Relações únicas (cabeça, cauda, tipo) | 1.352 | 1.441 |
+| Relações únicas (cabeça, cauda, tipo) | 1.352 | 1.442 |
 | Idênticas nos dois (mesmo par e tipo) | 623 | 623 (Jaccard 0,29) |
-| Arestas do grafo agregado por conceito | 1.299 | 1.379 (605 idênticas, Jaccard 0,29) |
+| Arestas do grafo agregado por conceito | 1.299 | 1.380 (605 idênticas, Jaccard 0,29) |
 | Grau médio dos nós conectados | 1,68 | 1,71 |
 
 ![Relações por tipo](assets/images/relacoes_por_tipo.png)
@@ -135,7 +147,7 @@ As três últimas linhas se treinam com as **etiquetas das regras do P1** (49 ca
 **3. Qualitativo.** No gold, fora de amostra: os dois acertam 158 pares, **só o P2 acerta 114**, só o P1 acerta
 50 e os dois erram 91 (exemplos reais em
 [`data/processed/comparacao_exemplos.csv`](data/processed/comparacao_exemplos.csv)). O P2 recupera muito mais
-listas de achados (`COORDINATE_WITH`: 185 → 426) e menos `HAS_DIAGNOSIS`/`HAS_FINDING`, que o P1 dispara como
+listas de achados (`COORDINATE_WITH`: 185 → 427) e menos `HAS_DIAGNOSIS`/`HAS_FINDING`, que o P1 dispara como
 categoria de reserva.
 
 **Intervalos de confiança.** Com 10 casos, "ganha em 9 de 10" precisa de um intervalo. Fez-se um *bootstrap
@@ -152,11 +164,11 @@ calcula-se a diferença de F1; o intervalo de 95% são os percentis 2,5 e 97,5).
 | P2 + PMI − só estrutura | −0,001 | [−0,020, +0,021] | não |
 | P2 + modelo de linguagem − só estrutura | +0,004 | [−0,010, +0,018] | não |
 | P2 n-gramas diretos − só estrutura | −0,034 | [−0,097, +0,027] | não |
-| Fraco completo − P1 | +0,038 | [−0,003, +0,082] | não |
+| Fraco completo − P1 | +0,037 | [−0,005, +0,081] | não |
 | Fraco só estrutura − P1 | +0,040 | [+0,007, +0,075] | sim |
 | Fraco n-gramas diretos − P1 | −0,001 | [−0,037, +0,041] | não |
 | Fraco n-gramas diretos − fraco só estrutura | −0,041 | [−0,059, −0,016] | **sim (pior)** |
-| Fraco completo − P2 completo (gold) | −0,080 | [−0,119, −0,042] | **sim (pior)** |
+| Fraco completo − P2 completo (gold) | −0,081 | [−0,121, −0,043] | **sim (pior)** |
 
 **Como ler isso, com honestidade.**
 
@@ -178,7 +190,7 @@ calcula-se a diferença de F1; o intervalo de 95% são os percentis 2,5 e 97,5).
   (0,628), e **concorda com as decisões do P1 em 85,5%** dos pares, contra 77,5% do modelo só de estrutura:
   as frases aprendem o léxico de gatilhos que as regras já usavam. Mas isso o torna *pior* que a variante só de
   estrutura (−0,041, intervalo que não inclui zero), porque também memoriza os erros das regras. O treino com
-  o gold (413 julgamentos humanos) supera o treino com 2.391 etiquetas das regras (−0,080 para o fraco completo).
+  o gold (413 julgamentos humanos) supera o treino com 2.391 etiquetas das regras (−0,081 para o fraco completo).
 
 ## Trabalhos Estudados
 
