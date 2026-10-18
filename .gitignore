@@ -12,3 +12,9 @@ __pycache__/
 *.pyc
 venv/
 .venv/
+
+# Packaging build artifacts (pip install -e . creates the egg-info tree)
+*.egg-info/
+build/
+dist/
+.venv/
