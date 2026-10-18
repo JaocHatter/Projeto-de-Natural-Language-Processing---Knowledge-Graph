@@ -4,8 +4,9 @@ import math
 import unittest
 
 from clinical_kg.learning.modelo import (NENHUMA, RegressaoLogistica, UmContraTodos,
-                                         atributos, atributos_associacao,
-                                         carregar_exemplos)
+                                         UmContraTodosSklearn, atributos,
+                                         atributos_associacao, carregar_exemplos,
+                                         sklearn_disponivel)
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
 
@@ -116,6 +117,27 @@ class TestUmContraTodos(unittest.TestCase):
         self.assertEqual(m.tem_relacao({"c": 1.0}), 0)
         self.assertEqual(m.tem_relacao({"a": 1.0}), 1)
         self.assertAlmostEqual(sum(m.probabilidades({"a": 1.0}).values()), 1.0)
+
+
+@unittest.skipUnless(sklearn_disponivel(), "scikit-learn não instalado")
+class TestSklearn(unittest.TestCase):
+    def test_mesma_interface_e_mesmas_respostas_em_dados_simples(self):
+        X = [{"a": 1.0}] * 15 + [{"b": 1.0}] * 15 + [{"c": 1.0}] * 15
+        rotulos = ["TRATA"] * 15 + ["LOCAL"] * 15 + [NENHUMA] * 15
+        m = UmContraTodosSklearn().ajustar(X, rotulos)
+        self.assertEqual(m.prever({"a": 1.0}), "TRATA")
+        self.assertEqual(m.prever({"b": 1.0}), "LOCAL")
+        self.assertEqual(m.tem_relacao({"c": 1.0}), 0)
+        self.assertAlmostEqual(sum(m.probabilidades({"a": 1.0}).values()), 1.0)
+
+    def test_concorda_com_a_versao_a_mao_no_gold(self):
+        ex = carregar_exemplos()
+        X = [atributos(e) for e in ex]
+        r = [e.relacao for e in ex]
+        a_mao = UmContraTodos().ajustar(X, r)
+        sk = UmContraTodosSklearn().ajustar(X, r)
+        concordam = sum(a_mao.tem_relacao(x) == sk.tem_relacao(x) for x in X) / len(X)
+        self.assertGreater(concordam, 0.85)
 
 
 class TestAtributos(unittest.TestCase):

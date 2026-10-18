@@ -232,3 +232,63 @@ class UmContraTodos:
 
     def tem_relacao(self, x: dict) -> int:
         return 0 if self.prever(x) == NENHUMA else 1
+
+
+# --------------------------------------------------------------------------
+# Verificação com scikit-learn
+# --------------------------------------------------------------------------
+def sklearn_disponivel() -> bool:
+    try:
+        import sklearn  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+class UmContraTodosSklearn:
+    """Mesma ideia e mesma interface de `UmContraTodos`, com a regressão logística
+    do scikit-learn. Serve para verificar a implementação à mão: se as duas dão
+    resultados próximos nos mesmos dados, o SGD escrito aqui está correto.
+
+    Os hiperparâmetros não são idênticos (scikit-learn usa um solver de segunda
+    ordem e `C` em vez de `l2`), então esperamos resultados próximos, não iguais.
+    A classe rara recebe o mesmo peso limitado que na versão à mão.
+    """
+
+    def __init__(self, C: float = 1.0, peso_max: float = 20.0, semente: int = 0):
+        self.C, self.peso_max, self.semente = C, peso_max, semente
+        self.classes: list[str] = []
+        self.modelos: dict = {}
+
+    def ajustar(self, X: list[dict], rotulos: list[str]):
+        from sklearn.feature_extraction import DictVectorizer
+        from sklearn.linear_model import LogisticRegression
+
+        self.vetorizador = DictVectorizer(sparse=False)
+        matriz = self.vetorizador.fit_transform(X)
+        self.classes = sorted(set(rotulos))
+        self.modelos = {}
+        for c in self.classes:
+            binario = [1 if r == c else 0 for r in rotulos]
+            positivos = sum(binario)
+            peso = max(min((len(binario) - positivos) / positivos, self.peso_max), 1.0)
+            self.modelos[c] = LogisticRegression(
+                C=self.C, class_weight={0: 1.0, 1: peso}, max_iter=1000,
+                random_state=self.semente).fit(matriz, binario)
+        return self
+
+    def _probabilidades_brutas(self, x: dict) -> dict[str, float]:
+        linha = self.vetorizador.transform([x])
+        return {c: float(m.predict_proba(linha)[0][1]) for c, m in self.modelos.items()}
+
+    def probabilidades(self, x: dict) -> dict[str, float]:
+        bruto = self._probabilidades_brutas(x)
+        total = sum(bruto.values()) or 1.0
+        return {c: p / total for c, p in bruto.items()}
+
+    def prever(self, x: dict) -> str:
+        bruto = self._probabilidades_brutas(x)
+        return max(self.classes, key=lambda c: bruto[c])
+
+    def tem_relacao(self, x: dict) -> int:
+        return 0 if self.prever(x) == NENHUMA else 1
