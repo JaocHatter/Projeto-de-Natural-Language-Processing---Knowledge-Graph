@@ -172,7 +172,7 @@ def aba_comparacao(dados):
             "prob_a_maior": "P(A > B)"}), hide_index=True, width="stretch")
 
     fraco = SAIDA / "metricas_fraco.csv"
-    if fraco.exists():
+    if fraco.exists() and m["variante"].str.startswith("fraco_").any():
         st.subheader("Supervisão fraca: treinar só com as etiquetas das regras do P1")
         st.caption("As variantes *fraco_* aprendem com o que o P1 decidiu nos 50 casos (sem gold) e são provadas no "
                    "gold. *Recuperadas*: relações reais que o P1 perdeu e o modelo achou; *FP removidos/novos*: "

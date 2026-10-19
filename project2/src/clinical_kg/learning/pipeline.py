@@ -376,6 +376,9 @@ def cmd_treinar(args):
         gravar_csv(SAIDA / "metricas_fraco.csv",
                    ["variante", "concordancia_com_p1", "relacoes_recuperadas", "relacoes_perdidas",
                     "falsos_positivos_removidos", "falsos_positivos_novos"], linhas_fraco)
+    else:
+        # A tabela não pode continuar representando um treino anterior.
+        (SAIDA / "metricas_fraco.csv").unlink(missing_ok=True)
 
     linhas_rel = []
     for nome in ("p1", "completo"):
@@ -494,7 +497,12 @@ def cmd_extrair(args):
     por_tipo = collections.Counter(l["relation"] for l in linhas)
     print(f"{len(casos)} casos, {candidatos} candidatos, {len(linhas)} relações aceitas "
           f"({len(linhas) / max(candidatos, 1):.0%})")
-    print(f"{args.saida.relative_to(PROJECT_ROOT)}\n")
+    caminho = args.saida.resolve()
+    try:
+        caminho = caminho.relative_to(PROJECT_ROOT.resolve())
+    except ValueError:
+        pass  # Saídas externas são válidas; exibir o caminho absoluto.
+    print(f"{caminho}\n")
 
     # O grafo do Projeto 1 precisa carregar o arquivo sem erro.
     from clinical_kg.graph.model import CLINICAL_RELATIONS, build_graph
@@ -537,9 +545,10 @@ def combinar_relacoes(p1: list[dict], p2: list[dict]) -> list[dict]:
     (e o `assertion_status`) da linha do Projeto 2.
     """
     por_chave = {chave_relacao(l): {**l, "origem": "p1"} for l in p1}
+    chaves_p1 = set(por_chave)
     for l in p2:
         k = chave_relacao(l)
-        por_chave[k] = {**l, "origem": "ambos" if k in por_chave else "p2"}
+        por_chave[k] = {**l, "origem": "ambos" if k in chaves_p1 else "p2"}
     return list(por_chave.values())
 
 
@@ -835,7 +844,7 @@ def main(argv=None):
             s.add_argument("--gold", type=Path, default=DEFAULT_GOLD_RELATIONS)
         if nome == "treinar":
             s.add_argument("--sem-fraco", action="store_true",
-                           help="pula a supervisão fraca (a parte mais lenta: ~4 min)")
+                           help="pula a supervisão fraca (~4 min) e invalida suas métricas anteriores")
         if nome == "extrair":
             s.add_argument("--modelo", type=Path, default=MODELO_JSON)
             s.add_argument("--saida", type=Path, default=RELACOES_ML)

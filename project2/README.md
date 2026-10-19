@@ -18,6 +18,9 @@ Os slides serão compartilhados e adicionados através de um link do Canva quand
   bash run_all.sh --rapido   # sem a supervisão fraca (a parte lenta)
   ```
 
+  A execução rápida invalida a tabela anterior de supervisão fraca, evitando
+  que a interface misture resultados de execuções diferentes.
+
 * **Visualizador interativo** dos grafos do P1 (regras), do P2 (aprendido) e da comparação, com cada aresta
   colorida pelo método que a produziu:
 
@@ -80,7 +83,7 @@ flowchart LR
            saida[e.chave] = pontuador.pontuar(e.entre)
    ```
 
-4. **Regressão logística, escrita à mão** (SGD, penalidade L2), uma por relação (um-contra-todos), com os
+4. **Regressão logística, escrita à mão** (SGD, penalidade L2 nos atributos ativos), uma por relação (um-contra-todos), com os
    atributos: tipos das entidades, distância, pontuação, `pmi_max`, `pmi_medio`, `llr_max` e `lm_score`.
    Uma versão do scikit-learn serve só de verificação. O peso da classe rara nunca passa do número de seus
    exemplos positivos (ver *Resultados*).
@@ -248,7 +251,7 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 * **pandas e matplotlib**: tabelas do visualizador e as figuras (laranja = P1, verde = P2).
 * **SQLite (gazetteer UMLS)**: reconhecimento de entidades, herdado do P1; licenciado e fora do git.
 * **nbformat e nbclient**: executam o caderno para guardá-lo com as saídas.
-* **Testes**: 126 testes (`make test`, ou `PYTHONPATH=src python3 -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
+* **Testes**: 131 testes (`make test`, ou `PYTHONPATH=src python3 -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
   o score de um exemplo não depende do próprio rótulo.
 
 ## Resultados
