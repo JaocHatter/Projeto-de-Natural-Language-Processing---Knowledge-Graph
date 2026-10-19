@@ -274,6 +274,15 @@ class CoordinationTests(unittest.TestCase):
 
 
 class OrientationTests(unittest.TestCase):
+    def test_gap_preservado_apos_inverter_relacao_com_gatilho(self):
+        text = "A pelvic mass was identified by ultrasonography."
+        ents = [entity(text, "pelvic mass", "Finding"),
+                entity(text, "ultrasonography", "Exam")]
+        rels = analyze_case(text, ents, {}, threshold=float("-inf"))
+        com_gatilho = [r for r in rels if r["trigger"] and "orient.swapped" in r["rule_path"]]
+        self.assertTrue(com_gatilho)
+        self.assertTrue(all(r["token_gap"] == 3 for r in com_gatilho))
+
     def test_exam_is_the_head_of_revealed_by(self):
         head = {"entity_type": "BodyPart"}
         tail = {"entity_type": "Exam"}

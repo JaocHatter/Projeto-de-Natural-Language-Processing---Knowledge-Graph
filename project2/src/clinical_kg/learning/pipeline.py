@@ -49,7 +49,7 @@ from clinical_kg.relations.extract import (CSV_COLUMNS, DEFAULT_FREQ, analyze_ca
 
 from .modelo import (NENHUMA, ModeloAprendido, UmContraTodosSklearn,
                      atributos_estruturais, carregar_candidatos_fracos, carregar_exemplos,
-                     sklearn_disponivel)
+                     sklearn_disponivel, texto_entre)
 from .ngramas import Associacoes, contar_ngramas, tokenizar
 
 TABELA_NGRAMAS = PROJECT_ROOT / "data/interim/tabela_ngramas.csv"
@@ -114,12 +114,6 @@ def entidades_lf(caminho: Path = DEFAULT_ENTITIES) -> dict[str, list[dict]]:
         for e in linhas:
             e["surface_text"] = e["surface_text"].replace("\r\n", "\n")
     return por_caso
-
-
-def texto_entre(texto: str, cand: dict) -> str:
-    """Trecho entre a cabeça e a cauda; sem cabeça (paciente), desde a frase."""
-    inicio = cand["head"]["end"] if cand["head"] else cand["sent_start"]
-    return texto[inicio:cand["tail"]["start"]]
 
 
 def textos_entre_candidatos(casos, entidades) -> list[str]:
@@ -382,6 +376,9 @@ def cmd_treinar(args):
         gravar_csv(SAIDA / "metricas_fraco.csv",
                    ["variante", "concordancia_com_p1", "relacoes_recuperadas", "relacoes_perdidas",
                     "falsos_positivos_removidos", "falsos_positivos_novos"], linhas_fraco)
+    else:
+        # A tabela não pode continuar representando um treino anterior.
+        (SAIDA / "metricas_fraco.csv").unlink(missing_ok=True)
 
     linhas_rel = []
     for nome in ("p1", "completo"):
@@ -403,7 +400,8 @@ def cmd_treinar(args):
     MODELO_JSON.parent.mkdir(parents=True, exist_ok=True)
     with open(MODELO_JSON, "w", encoding="utf-8") as f:
         json.dump(final.para_dict(), f, ensure_ascii=False, separators=(",", ":"))
-    recarregado = ModeloAprendido.de_dict(json.load(open(MODELO_JSON, encoding="utf-8")))
+    with open(MODELO_JSON, encoding="utf-8") as f:
+        recarregado = ModeloAprendido.de_dict(json.load(f))
     iguais = sum(final.prever_exemplo(e) == recarregado.prever_exemplo(e) for e in exemplos)
 
     pesos = [(c, nome, f"{w:.4f}") for c, m in final.classificador.modelos.items()
@@ -476,7 +474,8 @@ def chave_relacao(linha: dict) -> tuple:
 
 
 def cmd_extrair(args):
-    modelo = ModeloAprendido.de_dict(json.load(open(args.modelo, encoding="utf-8")))
+    with open(args.modelo, encoding="utf-8") as f:
+        modelo = ModeloAprendido.de_dict(json.load(f))
     casos = ler_casos(args.casos)
     textos = textos_dos_casos(args.casos)
     entidades = entidades_lf(args.entidades)
@@ -498,7 +497,12 @@ def cmd_extrair(args):
     por_tipo = collections.Counter(l["relation"] for l in linhas)
     print(f"{len(casos)} casos, {candidatos} candidatos, {len(linhas)} relações aceitas "
           f"({len(linhas) / max(candidatos, 1):.0%})")
-    print(f"{args.saida.relative_to(PROJECT_ROOT)}\n")
+    caminho = args.saida.resolve()
+    try:
+        caminho = caminho.relative_to(PROJECT_ROOT.resolve())
+    except ValueError:
+        pass  # Saídas externas são válidas; exibir o caminho absoluto.
+    print(f"{caminho}\n")
 
     # O grafo do Projeto 1 precisa carregar o arquivo sem erro.
     from clinical_kg.graph.model import CLINICAL_RELATIONS, build_graph
@@ -541,9 +545,10 @@ def combinar_relacoes(p1: list[dict], p2: list[dict]) -> list[dict]:
     (e o `assertion_status`) da linha do Projeto 2.
     """
     por_chave = {chave_relacao(l): {**l, "origem": "p1"} for l in p1}
+    chaves_p1 = set(por_chave)
     for l in p2:
         k = chave_relacao(l)
-        por_chave[k] = {**l, "origem": "ambos" if k in por_chave else "p2"}
+        por_chave[k] = {**l, "origem": "ambos" if k in chaves_p1 else "p2"}
     return list(por_chave.values())
 
 
@@ -790,7 +795,8 @@ def cmd_comparar(args):
         ("relações idênticas (mesmo par e tipo)", total["ambos"], total["ambos"], f"Jaccard {total['jaccard']}"),
         ("arestas do grafo (conceitos agregados)", ng1, ng2, "arestas clínicas únicas por caso"),
         ("arestas idênticas no grafo", len(g1 & g2), len(g1 & g2), f"Jaccard {jaccard(g1, g2):.3f}"),
-        ("grau médio dos nós conectados", round(2 * ng1 / n1, 2), round(2 * ng2 / n2, 2),
+        ("grau médio dos nós conectados", round(2 * ng1 / max(n1, 1), 2),
+         round(2 * ng2 / max(n2, 1), 2),
          "2 x arestas / nós com alguma relação clínica"),
         ("tipos de relação presentes", len({k[3] for k in k1}), len({k[3] for k in k2}), f"de {len(tipos)}"),
         ("F1 no gold (deixa-um-caso-fora)", metricas["p1"]["f1"], metricas["completo"]["f1"],
@@ -838,7 +844,7 @@ def main(argv=None):
             s.add_argument("--gold", type=Path, default=DEFAULT_GOLD_RELATIONS)
         if nome == "treinar":
             s.add_argument("--sem-fraco", action="store_true",
-                           help="pula a supervisão fraca (a parte mais lenta: ~4 min)")
+                           help="pula a supervisão fraca (~4 min) e invalida suas métricas anteriores")
         if nome == "extrair":
             s.add_argument("--modelo", type=Path, default=MODELO_JSON)
             s.add_argument("--saida", type=Path, default=RELACOES_ML)

@@ -8,12 +8,13 @@ from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, carregar_candida
                                          RegressaoLogistica, UmContraTodos,
                                          pontuacoes_fora_de_amostra,
                                          UmContraTodosSklearn, atributos,
-                                         atributos_associacao, carregar_exemplos,
+                                         atributos_associacao, atributos_estruturais,
+                                         carregar_exemplos, texto_entre,
                                          sklearn_disponivel)
 from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto,
                                            diagnostico_fraco, jaccard, linha_ml, medir, prf,
                                            prever_validando_fraco, sem_repetidas, tabela_gatilhos)
-from clinical_kg.relations.extract import CSV_COLUMNS
+from clinical_kg.relations.extract import CSV_COLUMNS, analyze_case
 from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
                                           contar_ngramas, tokenizar)
 
@@ -317,6 +318,12 @@ class TestExtracao(unittest.TestCase):
 
 
 class TestLimitePorSuporte(unittest.TestCase):
+    def test_sklearn_usa_o_mesmo_teto_por_suporte(self):
+        modelo = UmContraTodosSklearn()
+        self.assertEqual(modelo.peso_positivo(413, 4), 4.0)
+        self.assertEqual(modelo.peso_positivo(413, 40), 9.325)
+        self.assertEqual(modelo.peso_positivo(413, 0), 1.0)
+
     def test_classe_rara_nao_recebe_peso_maior_que_seus_exemplos(self):
         # 3 positivos de "RARA" contra 60 de "NENHUMA": sem limite o peso seria 20.
         X = [{"x": 1.0}] * 3 + [{"x": 1.0}] * 60
@@ -447,6 +454,20 @@ class TestSupervisaoFraca(unittest.TestCase):
 
 
 class TestAtributos(unittest.TestCase):
+    def test_texto_entre_preserva_ordem_fisica_em_par_invertido(self):
+        texto = "A pelvic mass was identified by ultrasonography."
+        entidades = [
+            {"start": 2, "end": 13, "surface_text": "pelvic mass", "entity_type": "Finding", "cui": "C1", "tui": "T000"},
+            {"start": 32, "end": 47, "surface_text": "ultrasonography", "entity_type": "Exam", "cui": "C2", "tui": "T000"},
+        ]
+        candidato = next(c for c in analyze_case(texto, entidades, {}, threshold=float("-inf"))
+                         if "orient.swapped" in c["rule_path"])
+        self.assertEqual(texto_entre(texto, candidato), " was identified by ")
+        estruturais, entre = atributos_estruturais(texto, candidato)
+        self.assertEqual(entre, ["was", "identified", "by"])
+        self.assertEqual(estruturais["n_palavras_entre"], 3 / 20)
+        self.assertEqual(estruturais["distancia:1_3"], 1.0)
+
     def test_atributos_de_associacao(self):
         assoc = Associacoes(["x y"] * 10 + ["z w"] * 10, contagem_minima=5)
         f = atributos_associacao(["x", "y"], assoc)

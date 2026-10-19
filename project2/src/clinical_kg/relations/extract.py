@@ -223,6 +223,7 @@ def analyze_sentence(text, sent, entities, freq, threshold=None, coref=None):
     seen = set()
 
     def emit_relation(head, tail, trigger, score, names, inherited=False):
+        gap = tokens_between(head["end"] if head else sent["start"], tail["start"])
         relation = rf.relation_for(trigger["category"] if trigger else "",
                                    tail["entity_type"])
         head, tail, relation, swapped = rf.orient(head, tail, relation)
@@ -245,8 +246,7 @@ def analyze_sentence(text, sent, entities, freq, threshold=None, coref=None):
             "assertion_status": assertion_for(states, spans, tail["start"], tail["end"]),
             "head": head, "tail": tail, "trigger": trigger,
             "sent_start": sent["start"], "sent_end": sent["end"],
-            "token_gap": tokens_between(head["end"] if head else sent["start"],
-                                        tail["start"]),
+            "token_gap": gap,
             "same_clause": head is not None and clause_idx(head) == clause_idx(tail),
             "score": score, "rule_path": "|".join(path),
         })

@@ -6,9 +6,3 @@ completo,estrutura,-0.0058,-0.0254,+0.0155,0.281
 pmi,estrutura,-0.0009,-0.0201,+0.0210,0.446
 lm,estrutura,+0.0042,-0.0103,+0.0183,0.713
 lexico,estrutura,-0.0338,-0.0974,+0.0266,0.151
-fraco_completo,p1,+0.0366,-0.0054,+0.0813,0.955
-fraco_estrutura,p1,+0.0395,+0.0071,+0.0749,0.991
-fraco_lexico,p1,-0.0013,-0.0367,+0.0406,0.453
-fraco_lexico,fraco_estrutura,-0.0408,-0.0594,-0.0164,0.001
-fraco_completo,fraco_estrutura,-0.0029,-0.0217,+0.0137,0.388
-fraco_completo,completo,-0.0814,-0.1211,-0.0425,0.000

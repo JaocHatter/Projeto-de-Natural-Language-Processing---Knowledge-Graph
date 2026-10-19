@@ -78,9 +78,12 @@ def score(gold, preds, threshold):
         fired = rel is not None and rel["score"] >= threshold
         if fired and is_gold:
             tp += 1
-            per_relation[row["gold_relation"]][0] += 1
             if rel["relation"] == row["gold_relation"]:
                 typed_tp += 1
+                per_relation[row["gold_relation"]][0] += 1
+            else:
+                per_relation[row["gold_relation"]][2] += 1
+                per_relation[rel["relation"]][1] += 1
             if rel["assertion_status"] == (row["gold_assertion"] or "affirmed"):
                 assert_ok += 1
         elif fired and not is_gold:
