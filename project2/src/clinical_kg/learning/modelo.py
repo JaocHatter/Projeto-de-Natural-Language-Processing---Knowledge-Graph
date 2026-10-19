@@ -57,11 +57,20 @@ def _faixa(distancia: int) -> str:
     return "0" if distancia == 0 else "1_3" if distancia <= 3 else "4_10" if distancia <= 10 else "mais_10"
 
 
+def texto_entre(texto: str, cand: dict) -> str:
+    """Trecho na ordem do texto, mesmo quando a relação foi orientada ao contrário."""
+    cab, cau = cand["head"], cand["tail"]
+    if cab is None:
+        return texto[cand["sent_start"]:cau["start"]]
+    if cab["start"] <= cau["start"]:
+        return texto[cab["end"]:cau["start"]]
+    return texto[cau["end"]:cab["start"]]
+
+
 def atributos_estruturais(texto: str, cand: dict) -> tuple[dict, list]:
     """Atributos sem léxico (tipos, distância, pontuação) e as palavras entre as entidades."""
     cab, cau = cand["head"], cand["tail"]
-    inicio = cab["end"] if cab else cand["sent_start"]
-    entre_texto = texto[inicio:cau["start"]]
+    entre_texto = texto_entre(texto, cand)
     entre = tokenizar(entre_texto)
 
     tipo_cab = cab["entity_type"] if cab else "Paciente"
@@ -501,6 +510,13 @@ class UmContraTodosSklearn:
         self.classes: list[str] = []
         self.modelos: dict = {}
 
+    def peso_positivo(self, total: int, positivos: int) -> float:
+        """Mesmo limite por suporte usado pela implementação à mão."""
+        if not positivos:
+            return 1.0
+        teto = min(self.peso_max, positivos)
+        return max(min((total - positivos) / positivos, teto), 1.0)
+
     def ajustar(self, X: list[dict], rotulos: list[str]):
         from sklearn.feature_extraction import DictVectorizer
         from sklearn.linear_model import LogisticRegression
@@ -512,7 +528,7 @@ class UmContraTodosSklearn:
         for c in self.classes:
             binario = [1 if r == c else 0 for r in rotulos]
             positivos = sum(binario)
-            peso = max(min((len(binario) - positivos) / positivos, self.peso_max), 1.0)
+            peso = self.peso_positivo(len(binario), positivos)
             self.modelos[c] = LogisticRegression(
                 C=self.C, class_weight={0: 1.0, 1: peso}, max_iter=1000,
                 random_state=self.semente).fit(matriz, binario)

@@ -248,7 +248,7 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 * **pandas e matplotlib**: tabelas do visualizador e as figuras (laranja = P1, verde = P2).
 * **SQLite (gazetteer UMLS)**: reconhecimento de entidades, herdado do P1; licenciado e fora do git.
 * **nbformat e nbclient**: executam o caderno para guardá-lo com as saídas.
-* **Testes**: 120 testes (`python -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
+* **Testes**: 126 testes (`make test`, ou `PYTHONPATH=src python3 -m unittest discover -s tests`), incluindo o do empilhamento, que verifica que
   o score de um exemplo não depende do próprio rótulo.
 
 ## Resultados
@@ -302,7 +302,7 @@ Valem as do Projeto 1 (co-ocorrência diagnóstico–tratamento, pacientes com a
 * **No desenvolvimento: apoio de um assistente de IA.** O desenvolvimento do Projeto 2 contou com o apoio de um
   assistente de IA (Claude Code) em tarefas de implementação, depuração, revisão de código, escrita de testes e de
   documentação, sob a direção da equipe, que definia o plano, revisava cada etapa e aprovava cada alteração. O
-  resultado foi corrigido e validado pela suíte de testes (120 testes) e pelos números reproduzíveis de
+  resultado foi corrigido e validado pela suíte de testes (126 testes) e pelos números reproduzíveis de
   `run_all.sh`.
 * **Proveniência do gold.** Como descrito no README do Projeto 1, o conjunto de 413 pares julgados foi construído
   com o anotador interativo e **com apoio de um modelo de linguagem** na proposta dos julgamentos, revisada pela

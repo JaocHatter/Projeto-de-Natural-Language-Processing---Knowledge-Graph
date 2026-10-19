@@ -49,7 +49,7 @@ from clinical_kg.relations.extract import (CSV_COLUMNS, DEFAULT_FREQ, analyze_ca
 
 from .modelo import (NENHUMA, ModeloAprendido, UmContraTodosSklearn,
                      atributos_estruturais, carregar_candidatos_fracos, carregar_exemplos,
-                     sklearn_disponivel)
+                     sklearn_disponivel, texto_entre)
 from .ngramas import Associacoes, contar_ngramas, tokenizar
 
 TABELA_NGRAMAS = PROJECT_ROOT / "data/interim/tabela_ngramas.csv"
@@ -114,12 +114,6 @@ def entidades_lf(caminho: Path = DEFAULT_ENTITIES) -> dict[str, list[dict]]:
         for e in linhas:
             e["surface_text"] = e["surface_text"].replace("\r\n", "\n")
     return por_caso
-
-
-def texto_entre(texto: str, cand: dict) -> str:
-    """Trecho entre a cabeça e a cauda; sem cabeça (paciente), desde a frase."""
-    inicio = cand["head"]["end"] if cand["head"] else cand["sent_start"]
-    return texto[inicio:cand["tail"]["start"]]
 
 
 def textos_entre_candidatos(casos, entidades) -> list[str]:
@@ -403,7 +397,8 @@ def cmd_treinar(args):
     MODELO_JSON.parent.mkdir(parents=True, exist_ok=True)
     with open(MODELO_JSON, "w", encoding="utf-8") as f:
         json.dump(final.para_dict(), f, ensure_ascii=False, separators=(",", ":"))
-    recarregado = ModeloAprendido.de_dict(json.load(open(MODELO_JSON, encoding="utf-8")))
+    with open(MODELO_JSON, encoding="utf-8") as f:
+        recarregado = ModeloAprendido.de_dict(json.load(f))
     iguais = sum(final.prever_exemplo(e) == recarregado.prever_exemplo(e) for e in exemplos)
 
     pesos = [(c, nome, f"{w:.4f}") for c, m in final.classificador.modelos.items()
@@ -476,7 +471,8 @@ def chave_relacao(linha: dict) -> tuple:
 
 
 def cmd_extrair(args):
-    modelo = ModeloAprendido.de_dict(json.load(open(args.modelo, encoding="utf-8")))
+    with open(args.modelo, encoding="utf-8") as f:
+        modelo = ModeloAprendido.de_dict(json.load(f))
     casos = ler_casos(args.casos)
     textos = textos_dos_casos(args.casos)
     entidades = entidades_lf(args.entidades)
@@ -790,7 +786,8 @@ def cmd_comparar(args):
         ("relações idênticas (mesmo par e tipo)", total["ambos"], total["ambos"], f"Jaccard {total['jaccard']}"),
         ("arestas do grafo (conceitos agregados)", ng1, ng2, "arestas clínicas únicas por caso"),
         ("arestas idênticas no grafo", len(g1 & g2), len(g1 & g2), f"Jaccard {jaccard(g1, g2):.3f}"),
-        ("grau médio dos nós conectados", round(2 * ng1 / n1, 2), round(2 * ng2 / n2, 2),
+        ("grau médio dos nós conectados", round(2 * ng1 / max(n1, 1), 2),
+         round(2 * ng2 / max(n2, 1), 2),
          "2 x arestas / nós com alguma relação clínica"),
         ("tipos de relação presentes", len({k[3] for k in k1}), len({k[3] for k in k2}), f"de {len(tipos)}"),
         ("F1 no gold (deixa-um-caso-fora)", metricas["p1"]["f1"], metricas["completo"]["f1"],

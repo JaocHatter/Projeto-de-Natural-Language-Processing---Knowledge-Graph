@@ -116,9 +116,6 @@ STYLE = [
     {"selector": "edge[?heuristic][assertion_status]", "style": {
         "line-color": "#7c3aed", "target-arrow-color": "#7c3aed", "width": 1.6, "opacity": 0.7,
     }},
-    {"selector": 'edge[assertion_status = "negated"]', "style": {
-        "line-color": "#dc2626", "target-arrow-color": "#dc2626",
-    }},
     {"selector": 'edge[origem = "p1"]', "style": {
         "line-color": "#ea580c", "target-arrow-color": "#ea580c", "width": 2, "opacity": 0.85,
     }},
@@ -127,6 +124,9 @@ STYLE = [
     }},
     {"selector": 'edge[evidence_source = "umls_ontology"]', "style": {
         "line-color": "#0f766e", "target-arrow-color": "#0f766e", "width": 1.4, "opacity": 0.6,
+    }},
+    {"selector": 'edge[assertion_status = "negated"]', "style": {
+        "line-color": "#dc2626", "target-arrow-color": "#dc2626",
     }},
     {"selector": "edge:selected", "style": {
         "label": "data(label)", "font-size": 11, "text-background-color": "#ffffff",
