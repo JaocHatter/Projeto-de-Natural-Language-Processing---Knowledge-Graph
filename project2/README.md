@@ -3,7 +3,7 @@
 
 ## Slides
 
-Os slides serão compartilhados e adicionados através de um link do Canva quando estiverem prontos.
+Apresentação em PDF: [`assets/slides/projeto2_slides.pdf`](assets/slides/projeto2_slides.pdf).
 
 ## Demonstração Executável
 
