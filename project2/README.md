@@ -5,6 +5,8 @@
 
 Apresentação em PDF: [`assets/slides/projeto2_slides.pdf`](assets/slides/projeto2_slides.pdf).
 
+Versão no Canva: <https://www.canva.com/design/DAHYaPqW5x4/EmjVc4YbHl_ZNceaWqWFmw/edit>
+
 ## Demonstração Executável
 
 * **Caderno executado, com as saídas salvas** (o GitHub o exibe direto no navegador):
