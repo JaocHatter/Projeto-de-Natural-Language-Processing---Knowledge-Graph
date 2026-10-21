@@ -1,12 +1,12 @@
 metrica,p1,p2,nota
-relações extraídas (50 casos),1352,1442,"pares únicos (cabeça, cauda, tipo)"
-relações por caso,27.0,28.8,
-relações idênticas (mesmo par e tipo),623,623,Jaccard 0.287
-arestas do grafo (conceitos agregados),1299,1380,arestas clínicas únicas por caso
-arestas idênticas no grafo,605,605,Jaccard 0.292
-grau médio dos nós conectados,1.68,1.71,2 x arestas / nós com alguma relação clínica
+relações extraídas (50 casos),1352,1463,"pares únicos (cabeça, cauda, tipo)"
+relações por caso,27.0,29.3,
+relações idênticas (mesmo par e tipo),628,628,Jaccard 0.287
+arestas do grafo (conceitos agregados),1299,1399,arestas clínicas únicas por caso
+arestas idênticas no grafo,609,609,Jaccard 0.292
+grau médio dos nós conectados,1.68,1.72,2 x arestas / nós com alguma relação clínica
 tipos de relação presentes,8,8,de 8
-F1 no gold (deixa-um-caso-fora),0.6277,0.7444,"413 pares julgados à mão, 10 casos"
-tipo acertado no gold,0.7724,0.9121,"413 pares julgados à mão, 10 casos"
-gatilhos do P1 vistos entre entidades (>=3x),52 de 140,,palavras do léxico escrito à mão que o corpus confirma
+F1 no gold (deixa-um-caso-fora),0.6277,0.7526,"413 pares julgados à mão, 10 casos"
+tipo acertado no gold,0.7724,0.9130,"413 pares julgados à mão, 10 casos"
+gatilhos do P1 vistos entre entidades (>=3x),53 de 140,,palavras do léxico escrito à mão que o corpus confirma
 bigramas mais frequentes com palavra-gatilho do P1,12 de 30,,o resto são frases que o P1 não tinha como gatilho

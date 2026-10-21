@@ -4,7 +4,6 @@ PMC10488652_01,icteric,adenopathies,sclerae supraclavicular and cervical,NENHUMA
 PMC2700431_01,repair,injuries,were done and keeping in mind the seriousness of,NENHUMA,NENHUMA,TREATED_WITH,só P1 acerta
 PMC2700431_01,injuries,tracheostomy,and anticipating long recovery time the elective surgical,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
 PMC2700431_01,Water,mouth,dye was given through,LOCATED_IN,LOCATED_IN,NENHUMA,só P1 acerta
-PMC2700431_01,aspiration pneumonia,infection,and the patient improved with regard to his,NENHUMA,NENHUMA,HAS_DIAGNOSIS,só P1 acerta
 PMC3437073_01,near,right lung,the hilum of the,NENHUMA,NENHUMA,LOCATED_IN,só P1 acerta
 PMC3437073_01,Under general anesthesia,subcutaneous abscess,the,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC3437073_01,granuloma,giant,with epithelioid cells langhans' multinucleated,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
@@ -12,7 +11,7 @@ PMC3437073_01,giant,necrosis,cells and caseation,NENHUMA,NENHUMA,COORDINATE_WITH
 PMC3437073_01,patient's condition improved,medications,on anti-tuberculous,TREATED_WITH,TREATED_WITH,NENHUMA,só P1 acerta
 PMC3897989_01,Past medical history,atrial fibrillation,revealed,REVEALED_BY,REVEALED_BY,TREATED_WITH,só P1 acerta
 PMC3897989_01,abdominal tenderness,heart,arythmia irregular,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
-PMC3897989_01,total bilirubin,at admission,,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
+PMC3897989_01,total bilirubin,at admission,showed that the serum levels of alanine transaminase alt aspartate transaminase ast alkaline phosphatase alp gamma-glutamyltransferase gamma-gt,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
 PMC3897989_01,antibody,antibody,ama anti-ama-m 2 and anti-ro,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC3897989_01,enlargement,pancreas,of the,LOCATED_IN,LOCATED_IN,NENHUMA,só P1 acerta
 PMC3897989_01,pain,worsened,,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
@@ -24,18 +23,17 @@ PMC5833205_01,ferritin,hypoproteinemia,of 4.9 ng l and,NENHUMA,NENHUMA,TREATED_W
 PMC5833205_01,edema,diarrhea,and his,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC5833205_01,albumin,edema,normalized within 1 week and his,NENHUMA,NENHUMA,TREATED_WITH,só P1 acerta
 PMC5833205_01,therapy,ferritin,his hemoglobin had risen to 11.8 g dl and his,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
-PMC6134951_01,1-positive,pleural effusion,,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
+PMC6134951_01,1-positive,pleural effusion,was consistent with ttf,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
 PMC6134951_01,DNA analysis,tumor,,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
 PMC6134951_01,lesion,interface dermatitis,was punch biopsied showing spongiotic and,REVEALED_BY,REVEALED_BY,NENHUMA,só P1 acerta
 PMC6134951_01,febrile,prednisone,episodes resolved following 1 day of,TREATED_WITH,TREATED_WITH,NENHUMA,só P1 acerta
-PMC6134951_01,skin biopsy,delayed hypersensitivity reaction,,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
+PMC6134951_01,skin biopsy,delayed hypersensitivity reaction,in light of the presence of eosinophils in the,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
 PMC6134951_01,skin biopsy,fevers,and high,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC6354154_01,assay,FSH,,NENHUMA,NENHUMA,REVEALED_BY,só P1 acerta
-PMC6354154_01,semen analysis,past medical history,,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
+PMC6354154_01,semen analysis,past medical history,and his,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC6354154_01,PATIENT,testosterone,in the postoperative period the woman is followed up with serial measurements of serum,NENHUMA,NENHUMA,TREATED_WITH,só P1 acerta
 PMC6354154_01,ovarian stimulation,no response,she had,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC6354154_01,in vitro fertilization,gonadotropin,treatment but despite,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
-PMC6354154_01,therapy,ovarian stimulation,in high doses 300 u for,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC6354154_01,not pregnant,recurrence,and no evidence of,NENHUMA,NENHUMA,COORDINATE_WITH,só P1 acerta
 PMC7718649_01,SLE,prednisone (10 mg,is,TREATED_WITH,TREATED_WITH,REVEALED_BY,só P1 acerta
 PMC7718649_01,PATIENT,COVID-19,she lived 6 miles away from huanan seafood wholesale market where was the earliest epidemic focus of,NENHUMA,NENHUMA,HAS_FINDING,só P1 acerta
@@ -56,6 +54,7 @@ PMC10488652_01,diarrhea,emesis,and occasional,COORDINATE_WITH,NENHUMA,COORDINATE
 PMC10488652_01,synovitis,edema,in bilateral metacarpophalangeal joints and grade ii,COORDINATE_WITH,NENHUMA,COORDINATE_WITH,só P2 acerta
 PMC10488652_01,neoplasia,ruled out,were,NENHUMA,HAS_FINDING,NENHUMA,só P2 acerta
 PMC10488652_01,SLE,met,were,NENHUMA,HAS_FINDING,NENHUMA,só P2 acerta
+PMC10488652_01,cold agglutinin titer,Autoimmune hemolytic anemia,was also confirmed with laboratory data revealing a,REVEALED_BY,NENHUMA,REVEALED_BY,só P2 acerta
 PMC10488652_01,cold agglutinin titer,dilution,positive,NENHUMA,REVEALED_BY,NENHUMA,só P2 acerta
 PMC10488652_01,cold,syndrome,agglutinin,NENHUMA,HAS_DIAGNOSIS,NENHUMA,só P2 acerta
 PMC2700431_01,PATIENT,traffic accident,a 35 year-old male was admitted to intensive care unit through accident emergency after a road,HAS_DIAGNOSIS,NENHUMA,HAS_DIAGNOSIS,só P2 acerta
@@ -106,7 +105,7 @@ PMC5833205_01,periorbital edema,swelling,2 weeks prior and they reported that th
 PMC5833205_01,Laboratory studies,albumin,obtained at his pediatrician's office revealed an,REVEALED_BY,TREATED_WITH,REVEALED_BY,só P2 acerta
 PMC5833205_01,albumin,urinalysis,of 1.8 g dl and a,COORDINATE_WITH,NENHUMA,COORDINATE_WITH,só P2 acerta
 PMC5833205_01,Laboratory studies,microcytic anemia,obtained in the emergency department were consistent with a,REVEALED_BY,HAS_DIAGNOSIS,REVEALED_BY,só P2 acerta
-PMC5833205_01,mean corpuscular volume,microcytic anemia,,REVEALED_BY,NENHUMA,REVEALED_BY,só P2 acerta
+PMC5833205_01,mean corpuscular volume,microcytic anemia,hemoglobin of 6.4 mg dl with,REVEALED_BY,NENHUMA,REVEALED_BY,só P2 acerta
 PMC5833205_01,albumin,total protein,of 1.6 g dl,COORDINATE_WITH,NENHUMA,COORDINATE_WITH,só P2 acerta
 PMC5833205_01,PATIENT,upper endoscopy,workup included performance of,TREATED_WITH,REVEALED_BY,TREATED_WITH,só P2 acerta
 PMC5833205_01,PATIENT,colonoscopy,workup included performance of upper endoscopy and,TREATED_WITH,REVEALED_BY,TREATED_WITH,só P2 acerta
@@ -139,6 +138,7 @@ PMC7718649_01,first time,oseltamivir 75 mg,and was given oral medicines,NENHUMA,
 PMC7718649_01,oseltamivir 75 mg,arbidol,twice daily,COORDINATE_WITH,NENHUMA,COORDINATE_WITH,só P2 acerta
 PMC7718649_01,hydroxychloroquine,usually,remained the same as her,NENHUMA,HAS_FINDING,NENHUMA,só P2 acerta
 PMC7718649_01,Intravenous immunoglobulin,immunoglobulin G,is,NENHUMA,TREATED_WITH,NENHUMA,só P2 acerta
+PMC7718649_01,PATIENT,leucocytosis,laboratory tests found,HAS_DIAGNOSIS,REVEALED_BY,HAS_DIAGNOSIS,só P2 acerta
 PMC7718649_01,PATIENT,blood pressure,physical examination revealed that the conscious of the patient was clear temperature was 37.1 c,HAS_FINDING,REVEALED_BY,HAS_FINDING,só P2 acerta
 PMC7718649_01,oxygen,oxygen,saturation under,NENHUMA,TREATED_WITH,NENHUMA,só P2 acerta
 PMC7718649_01,White blood cell count,granulocyte count,neutrophilic,COORDINATE_WITH,NENHUMA,COORDINATE_WITH,só P2 acerta
