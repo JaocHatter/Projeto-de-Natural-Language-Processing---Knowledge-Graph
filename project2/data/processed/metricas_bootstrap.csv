@@ -1,0 +1,14 @@
+a,b,diferenca_f1,ic95_inf,ic95_sup,prob_a_maior
+completo,p1,+0.1264,+0.0840,+0.1803,1.000
+estrutura,p1,+0.1229,+0.0828,+0.1748,1.000
+lexico,p1,+0.0929,+0.0119,+0.1776,0.985
+completo,estrutura,+0.0034,-0.0189,+0.0263,0.612
+pmi,estrutura,-0.0041,-0.0232,+0.0173,0.330
+lm,estrutura,+0.0125,-0.0033,+0.0292,0.935
+lexico,estrutura,-0.0300,-0.0903,+0.0256,0.159
+fraco_completo,p1,+0.0488,+0.0051,+0.0988,0.987
+fraco_estrutura,p1,+0.0424,+0.0159,+0.0758,0.999
+fraco_lexico,p1,+0.0204,-0.0120,+0.0673,0.856
+fraco_lexico,fraco_estrutura,-0.0220,-0.0424,+0.0054,0.051
+fraco_completo,fraco_estrutura,+0.0064,-0.0208,+0.0339,0.669
+fraco_completo,completo,-0.0776,-0.1179,-0.0352,0.000

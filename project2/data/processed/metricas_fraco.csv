@@ -1,0 +1,4 @@
+variante,concordancia_com_p1,relacoes_recuperadas,relacoes_perdidas,falsos_positivos_removidos,falsos_positivos_novos
+fraco_estrutura,0.7724,35,8,13,38
+fraco_lexico,0.8571,15,11,19,14
+fraco_completo,0.8063,35,7,8,30
