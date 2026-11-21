@@ -1,0 +1,8 @@
+variante,chamadas
+P3-A zero-shot,413
+P3-B few-shot,413
+"P3-B few-shot, autoconsistência k=5",2065
+P3-C empilhamento (usa os votos do P3-A),0
+P3-E cascata (só onde P1 e P2 discordam),340
+P3-F supervisão fraca (todos os candidatos),2391
+P3-F com k=5,11955

@@ -1,0 +1,9 @@
+variante,descricao,precisao,cobertura,f1,tipo_acertado,f1_caso_media,f1_caso_dp,casos_vs_p2_V-E-D
+p1,Projeto 1 (regras à mão),0.6017,0.6561,0.6277,0.7724,0.6101,0.1416,-
+p2_estrutura,"P2: só tipos, distância e pontuação",0.6727,0.8462,0.7495,0.8930,0.7246,0.0747,-
+p2_completo,P2 completo (estrutura + PMI/LLR + modelo de linguagem),0.6866,0.8326,0.7526,0.9130,0.7352,0.0535,-
+p3d_estrutura,P3-D: P2 estrutura + embeddings de sentença (empilhamento),0.6873,0.8552,0.7621,0.8995,0.7486,0.0675,5-2-3
+p3d_completo,P3-D: P2 completo + embeddings de sentença (empilhamento),0.6935,0.8190,0.7510,0.9171,0.7367,0.0575,2-3-5
+p3g_estrutura,"P3-G: P2 estrutura + julgamentos do MACCROBAT (CAUSED_BY, LOCATED_IN)",0.6542,0.8733,0.7481,0.8808,0.7273,0.0658,3-1-6
+p3g_completo,"P3-G: P2 completo + julgamentos do MACCROBAT (CAUSED_BY, LOCATED_IN)",0.6820,0.8733,0.7659,0.8860,0.7507,0.0509,8-0-2
+p3gd_completo,P3-G + P3-D: P2 completo + MACCROBAT + embeddings,0.6857,0.8688,0.7665,0.8854,0.7541,0.0495,6-1-3

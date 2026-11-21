@@ -1,0 +1,2039 @@
+case_id,start,end,surface_text,value,unit,unit_category,linked_entity_cui,linked_entity_type,link_method
+MACCROBAT_15939911,60,66,6-week,6,week,time,C3532616,Finding,same_sentence_forward
+MACCROBAT_15939911,1657,1665,6 months,6,months,time,C0030252,Finding,same_sentence
+MACCROBAT_16778410,922,926,4 cm,4,cm,length,C0202657,Exam,same_sentence
+MACCROBAT_16778410,1139,1143,4 cm,4,cm,length,C0023928,Treatment,window_fallback
+MACCROBAT_17803823,32,38,4 year,4,year,time,C0010346,Diagnosis,same_sentence_forward
+MACCROBAT_17803823,566,574,4 months,4,months,time,C0678171,Treatment,same_sentence
+MACCROBAT_17803823,935,942,2 years,2,years,time,C6022414,Diagnosis,same_sentence
+MACCROBAT_17803823,1817,1826,37.7 mg/L,37.7,mg/L,lab_concentration,C0005833,Exam,same_sentence_forward
+MACCROBAT_17803823,1862,1867,69 mm,69,mm,length,C0005833,Exam,same_sentence
+MACCROBAT_17803823,2409,2414,60 mg,60,mg,mass,C0032950,Treatment,same_sentence_forward
+MACCROBAT_17803823,2651,2658,3 years,3,years,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_18236639,22,27,65 kg,65,kg,mass,C0035467,Treatment,same_sentence_forward
+MACCROBAT_18236639,144,150,0.5 μg,0.5,μg,other,C0246631,Treatment,same_sentence
+MACCROBAT_18236639,168,172,2 mg,2,mg,mass,C0033487,Treatment,same_sentence
+MACCROBAT_18236639,227,234,0.15 μg,0.15,μg,other,C1096766,Treatment,same_sentence
+MACCROBAT_18236639,316,320,7 mm,7,mm,length,C2948008,Treatment,same_sentence
+MACCROBAT_18236639,591,596,20 cm,20,cm,length,C0030054,Treatment,same_sentence_forward
+MACCROBAT_18236639,912,919,0.25 μg,0.25,μg,other,C0444889,Treatment,same_sentence
+MACCROBAT_18236639,1027,1034,90 mmHg,90,mmHg,pressure,C0003842,BodyPart,same_sentence
+MACCROBAT_18258107,252,259,7-month,7,month,time,C1971624,Finding,window_fallback
+MACCROBAT_18258107,419,425,5 days,5,days,time,C0015967,Symptom,same_sentence_forward
+MACCROBAT_18258107,448,454,38.9°C,38.9,°C,temperature,C0015967,Symptom,same_sentence
+MACCROBAT_18258107,884,887,80%,80,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_18258107,916,919,18%,18,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_18258107,965,973,20 mg/dL,20,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_18258107,979,988,167 mg/dL,167,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_18258107,1314,1319,day 2,2,day,time,C0200949,Exam,same_sentence_forward
+MACCROBAT_18258107,1875,1880,day 5,5,day,time,C0087111,Treatment,window_fallback
+MACCROBAT_18258107,2001,2006,day 7,7,day,time,C5236074,Finding,same_sentence_forward
+MACCROBAT_18258107,2325,2330,day 9,9,day,time,,,none
+MACCROBAT_18258107,2462,2468,10-day,10,day,time,C4522267,Finding,same_sentence_forward
+MACCROBAT_18416479,621,627,900 mg,900,mg,mass,C0042105,Treatment,same_sentence
+MACCROBAT_18416479,2215,2220,30 mg,30,mg,mass,C0009450,Diagnosis,window_fallback
+MACCROBAT_18416479,2251,2257,day 11,11,day,time,C1724064,Treatment,same_sentence
+MACCROBAT_18416479,2437,2440,1 g,1,g,mass,C0025815,Treatment,same_sentence
+MACCROBAT_18416479,2632,2636,25 g,25,g,mass,C0087111,Treatment,same_sentence
+MACCROBAT_18561524,200,206,900 mg,900,mg,mass,C0287163,Treatment,same_sentence
+MACCROBAT_18561524,259,264,54 mg,54,mg,mass,C0939301,Treatment,same_sentence
+MACCROBAT_18561524,460,467,80 mmHg,80,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_18561524,566,576,5.1 mmol/l,5.1,mmol/l,lab_concentration,C1304686,Finding,same_sentence
+MACCROBAT_18561524,1018,1025,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_18561524,1118,1125,38.4 °C,38.4,°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_18561524,1292,1296,7 cm,7,cm,length,C0685095,Diagnosis,same_sentence
+MACCROBAT_18561524,1376,1379,20%,20,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_18561524,1380,1383,25%,25,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_18561524,1784,1787,10%,10,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_18561524,1788,1791,12%,12,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_18561524,1872,1879,30 mmHg,30,mmHg,pressure,C4522268,Finding,same_sentence
+MACCROBAT_18561524,2867,2870,15%,15,%,percentage,C0392756,Finding,same_sentence
+MACCROBAT_18561524,2988,2995,26 days,26,days,time,C0018823,Treatment,window_fallback
+MACCROBAT_18561524,3007,3014,28 days,28,days,time,C1995000,BodyPart,same_sentence_forward
+MACCROBAT_18561524,3398,3401,20%,20,%,percentage,C0225897,BodyPart,same_sentence
+MACCROBAT_18561524,3556,3559,30%,30,%,percentage,C0013516,Exam,same_sentence
+MACCROBAT_18561524,3560,3563,35%,35,%,percentage,C0013516,Exam,same_sentence
+MACCROBAT_18666334,736,741,40 mm,40,mm,length,C0004704,Treatment,same_sentence_forward
+MACCROBAT_18787726,1530,1535,day 4,4,day,time,C1299335,Finding,window_fallback
+MACCROBAT_18787726,1663,1667,4 cm,4,cm,length,C0342208,Diagnosis,same_sentence_forward
+MACCROBAT_18787726,1670,1674,9 cm,9,cm,length,C0342208,Diagnosis,same_sentence_forward
+MACCROBAT_18787726,1975,1978,50%,50,%,percentage,C0040583,Diagnosis,same_sentence
+MACCROBAT_18815636,40,46,4-week,4,week,time,,,none
+MACCROBAT_18815636,155,160,10 kg,10,kg,mass,C1262477,Finding,same_sentence
+MACCROBAT_18815636,166,174,3 months,3,months,time,C1262477,Finding,same_sentence
+MACCROBAT_18815636,368,375,7 years,7,years,time,C0162522,Treatment,same_sentence
+MACCROBAT_18815636,776,782,2.5 cm,2.5,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_18815636,1397,1404,6 weeks,6,weeks,time,C0229985,BodyPart,window_fallback
+MACCROBAT_18815636,1742,1751,18 months,18,months,time,C1115804,Finding,same_sentence
+MACCROBAT_19009665,250,262,1185.3 ng/mL,1185.3,ng/mL,lab_concentration,C0560175,Finding,window_fallback
+MACCROBAT_19009665,320,325,10-cm,10,cm,length,C0040405,Exam,same_sentence
+MACCROBAT_19009665,384,390,1.5-cm,1.5,cm,length,C0796494,BodyPart,window_fallback
+MACCROBAT_19009665,783,788,35 mL,35,mL,volume,C4082130,Finding,same_sentence
+MACCROBAT_19009665,793,797,3 mL,3,mL,volume,C4082130,Finding,same_sentence
+MACCROBAT_19009665,1081,1086,40 mL,40,mL,volume,C0019145,BodyPart,same_sentence
+MACCROBAT_19009665,1225,1228,90%,90,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_19009665,1458,1463,10 mg,10,mg,mass,C0011777,Treatment,same_sentence_forward
+MACCROBAT_19214295,205,212,40 mmHg,40,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_19214295,754,757,50%,50,%,percentage,C0018795,Exam,same_sentence
+MACCROBAT_19214295,1083,1090,60 mmHg,60,mmHg,pressure,C0878544,Diagnosis,window_fallback
+MACCROBAT_19214295,1095,1102,65 mmHg,65,mmHg,pressure,C0878544,Diagnosis,window_fallback
+MACCROBAT_19214295,1133,1140,40 mmHg,40,mmHg,pressure,,,none
+MACCROBAT_19214295,1145,1152,45 mmHg,45,mmHg,pressure,,,none
+MACCROBAT_19214295,1514,1521,36 mmHg,36,mmHg,pressure,C0230347,BodyPart,same_sentence_forward
+MACCROBAT_19214295,1660,1667,92 mmHg,92,mmHg,pressure,C0015801,BodyPart,same_sentence
+MACCROBAT_19214295,1911,1918,80 mmHg,80,mmHg,pressure,C0230346,BodyPart,window_fallback
+MACCROBAT_19214295,1986,1993,74 mmHg,74,mmHg,pressure,C0446516,BodyPart,same_sentence
+MACCROBAT_19214295,2013,2020,39 mmHg,39,mmHg,pressure,C0446516,BodyPart,same_sentence
+MACCROBAT_19214295,2177,2184,1.25 mm,1.25,mm,length,C0817096,BodyPart,same_sentence
+MACCROBAT_19307547,68,76,37 weeks,37,weeks,time,C0007876,Treatment,same_sentence_forward
+MACCROBAT_19307547,180,187,2 weeks,2,weeks,time,C0392756,Finding,same_sentence_forward
+MACCROBAT_19307547,295,302,"2,330 g","2,330",g,mass,C5571033,Finding,same_sentence
+MACCROBAT_19307547,330,335,47 cm,47,cm,length,C5571033,Finding,same_sentence
+MACCROBAT_19307547,360,367,33.2 cm,33.2,cm,length,C0018670,BodyPart,same_sentence
+MACCROBAT_19307547,1059,1067,27 mg/dL,27,mg/dL,lab_concentration,C0020615,Diagnosis,same_sentence
+MACCROBAT_19307547,1086,1097,0.58 mmol/L,0.58,mmol/L,lab_concentration,C0151723,Diagnosis,same_sentence
+MACCROBAT_19307547,1117,1127,2.4 mmol/L,2.4,mmol/L,lab_concentration,C0020621,Finding,same_sentence
+MACCROBAT_19307547,1156,1166,1.3 mmol/L,1.3,mmol/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_19307547,1181,1195,0.5–2.2 mmol/L,,mmol/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_19307547,1512,1515,93%,93,%,percentage,C4083049,BodyPart,same_sentence
+MACCROBAT_19307547,1861,1866,2542G,2542,G,mass,,,none
+MACCROBAT_19307547,1972,1979,20 days,20,days,time,C5549091,Finding,same_sentence
+MACCROBAT_19307547,2610,2613,94%,94,%,percentage,C0009368,BodyPart,same_sentence
+MACCROBAT_19610147,545,551,1.5 cm,1.5,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_19610147,2549,2552,15%,15,%,percentage,C0487602,Exam,same_sentence
+MACCROBAT_19816630,64,68,2 cm,2,cm,length,C0009378,Exam,same_sentence
+MACCROBAT_19816630,100,105,10 cm,10,cm,length,C0522621,Diagnosis,same_sentence
+MACCROBAT_19816630,477,481,3 cm,3,cm,length,C0522621,Diagnosis,same_sentence
+MACCROBAT_19816630,494,499,10 cm,10,cm,length,C0522621,Diagnosis,same_sentence
+MACCROBAT_19860006,543,549,7 g/dL,7,g/dL,lab_concentration,C1281911,Exam,same_sentence
+MACCROBAT_19860007,286,296,32.3 ng/mL,32.3,ng/mL,lab_concentration,C0005682,BodyPart,window_fallback
+MACCROBAT_19860007,312,322,0-15 ng/mL,,ng/mL,lab_concentration,C1704258,Finding,same_sentence_forward
+MACCROBAT_19860007,482,486,5-cm,5,cm,length,C0201933,Exam,window_fallback
+MACCROBAT_19860007,1193,1199,5.8 cm,5.8,cm,length,C0399839,Treatment,window_fallback
+MACCROBAT_19860007,1202,1208,3.2 cm,3.2,cm,length,C0399839,Treatment,window_fallback
+MACCROBAT_19860007,1324,1330,2.5 cm,2.5,cm,length,C0016059,Diagnosis,same_sentence
+MACCROBAT_19860007,1333,1339,2.0 cm,2.0,cm,length,C0016059,Diagnosis,same_sentence
+MACCROBAT_19860007,2423,2428,day 9,9,day,time,C0487602,Exam,window_fallback
+MACCROBAT_19860007,2465,2475,176 mIU/mL,176,mIU/mL,lab_concentration,C0487602,Exam,window_fallback
+MACCROBAT_19860007,2491,2502,0-10 mIU/mL,,mIU/mL,lab_concentration,,,none
+MACCROBAT_19860007,2526,2536,10.0 ng/mL,10.0,ng/mL,lab_concentration,,,none
+MACCROBAT_19860007,2657,2664,2500 mg,2500,mg,mass,C0724419,Treatment,same_sentence
+MACCROBAT_19860007,2744,2752,3 mIU/mL,3,mIU/mL,lab_concentration,C0724419,Treatment,window_fallback
+MACCROBAT_19860007,2848,2854,4-year,4,year,time,C5441917,Diagnosis,same_sentence
+MACCROBAT_19860925,93,99,4 days,4,days,time,C0019079,Symptom,same_sentence
+MACCROBAT_19860925,434,438,4 cm,4,cm,length,C0817096,BodyPart,same_sentence
+MACCROBAT_19860925,1213,1221,6 months,6,months,time,C0023928,Treatment,same_sentence
+MACCROBAT_19860925,1420,1422,2%,2,%,percentage,C0442811,Finding,same_sentence
+MACCROBAT_19860925,1437,1442,15 mm,15,mm,length,C0442811,Finding,same_sentence
+MACCROBAT_20146086,398,404,150 mg,150,mg,mass,C0017925,Diagnosis,same_sentence_forward
+MACCROBAT_20146086,703,712,11 months,11,months,time,C0017925,Diagnosis,same_sentence_forward
+MACCROBAT_20146086,1352,1358,150 mg,150,mg,mass,C0076080,Treatment,same_sentence
+MACCROBAT_20146086,2456,2459,50%,50,%,percentage,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,2512,2518,150 mg,150,mg,mass,C1135135,Treatment,window_fallback
+MACCROBAT_20146086,2608,2610,1%,1,%,percentage,C1628394,Treatment,same_sentence
+MACCROBAT_20146086,2909,2919,150–200 mg,,mg,mass,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,2999,3006,2000 mg,2000,mg,mass,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,3117,3124,1500 mg,1500,mg,mass,C1135135,Treatment,same_sentence_forward
+MACCROBAT_20146086,3488,3495,1000 mg,1000,mg,mass,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,3501,3508,1200 mg,1200,mg,mass,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,3619,3626,1 month,1,month,time,C0027497,Symptom,window_fallback
+MACCROBAT_20146086,3707,3715,2 months,2,months,time,C0024485,Exam,same_sentence
+MACCROBAT_20146086,3933,3940,1500 mg,1500,mg,mass,C1520143,Treatment,same_sentence
+MACCROBAT_20146086,4095,4101,100 mg,100,mg,mass,C1135135,Treatment,same_sentence
+MACCROBAT_20146086,4123,4132,14 months,14,months,time,C1135135,Treatment,window_fallback
+MACCROBAT_20671919,36,42,2-year,2,year,time,C0013404,Symptom,same_sentence_forward
+MACCROBAT_20671919,654,657,79%,79,%,percentage,C0040509,Finding,same_sentence
+MACCROBAT_20671919,693,696,80%,80,%,percentage,C3714541,Exam,same_sentence
+MACCROBAT_20671919,754,757,83%,83,%,percentage,C3714541,Exam,same_sentence
+MACCROBAT_20977862,1050,1055,10 mL,10,mL,volume,C0445115,Treatment,same_sentence_forward
+MACCROBAT_20977862,1550,1555,10 mg,10,mg,mass,C0012403,Treatment,same_sentence
+MACCROBAT_21067996,343,347,2.1%,2.1,%,percentage,C3536965,Treatment,same_sentence
+MACCROBAT_21067996,384,390,125 ml,125,ml,volume,C1533685,Treatment,same_sentence
+MACCROBAT_21067996,405,411,300 mg,300,mg,mass,C1533685,Treatment,same_sentence
+MACCROBAT_21067996,623,628,22 cm,22,cm,length,C0000726,BodyPart,same_sentence
+MACCROBAT_21129213,390,398,5 months,5,months,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_21129213,615,623,2-3 week,,week,time,C0013404,Symptom,same_sentence
+MACCROBAT_21129213,2177,2186,13 months,13,months,time,C1546956,Finding,same_sentence
+MACCROBAT_21254744,55,62,2 years,2,years,time,,,none
+MACCROBAT_21254744,918,924,250 mg,250,mg,mass,C0377265,Treatment,same_sentence
+MACCROBAT_21254744,947,953,100 mg,100,mg,mass,C0031507,Treatment,same_sentence
+MACCROBAT_21254744,1312,1316,15mm,15,mm,length,C0221198,Finding,same_sentence
+MACCROBAT_21254744,2176,2179,1 G,1,G,mass,C4699176,Finding,same_sentence
+MACCROBAT_21308977,1820,1829,13 months,13,months,time,C4021734,Diagnosis,same_sentence
+MACCROBAT_21477357,168,175,5-month,5,month,time,C0010200,Symptom,same_sentence_forward
+MACCROBAT_21477357,274,282,2 months,2,months,time,C0232492,Symptom,same_sentence
+MACCROBAT_21477357,341,345,37°C,37,°C,temperature,C1271104,Finding,same_sentence_forward
+MACCROBAT_21477357,365,372,40 mmHg,40,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_21477357,706,717,22145 pg/ml,22145,pg/ml,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_21477357,731,740,227 pg/ml,227,pg/ml,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_21477357,1115,1120,58 mm,58,mm,length,C0225897,BodyPart,same_sentence
+MACCROBAT_21477357,1200,1203,22%,22,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_21477357,1734,1740,1.0 cm,1.0,cm,length,C0087086,Diagnosis,same_sentence
+MACCROBAT_21477357,1951,1956,15.7%,15.7,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_21505579,184,191,3 years,3,years,time,C0729790,Finding,same_sentence_forward
+MACCROBAT_21505579,422,429,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_21505579,762,766,6 cm,6,cm,length,C0023884,BodyPart,same_sentence
+MACCROBAT_21505579,1071,1076,30 mm,30,mm,length,C0042458,BodyPart,same_sentence
+MACCROBAT_21505579,1177,1184,"74,2 mm","74,2",mm,length,C0225844,BodyPart,same_sentence
+MACCROBAT_21505579,1220,1227,"55,2 mm","55,2",mm,length,C0225860,BodyPart,same_sentence
+MACCROBAT_21505579,1258,1265,"72,3 mm","72,3",mm,length,C0225897,BodyPart,same_sentence
+MACCROBAT_21505579,1294,1301,"44,4 mm","44,4",mm,length,C0225883,BodyPart,same_sentence
+MACCROBAT_21505579,1349,1353,6 cm,6,cm,length,C0225840,BodyPart,same_sentence
+MACCROBAT_21505579,1448,1455,"55,4 mm","55,4",mm,length,C0040961,Diagnosis,same_sentence
+MACCROBAT_21505579,1526,1531,75 mm,75,mm,length,C5395247,Diagnosis,same_sentence
+MACCROBAT_21505579,1561,1564,29%,29,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_21505579,1912,1917,75 mm,75,mm,length,C5395247,Diagnosis,same_sentence
+MACCROBAT_21527041,201,209,10 years,10,years,time,C0027651,Diagnosis,same_sentence_forward
+MACCROBAT_21527041,221,225,4 cm,4,cm,length,C0027651,Diagnosis,same_sentence_forward
+MACCROBAT_21527041,280,287,2 years,2,years,time,C1457868,Finding,same_sentence
+MACCROBAT_21527041,394,398,6 cm,6,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_21527041,520,527,10 days,10,days,time,C1533591,Diagnosis,window_fallback
+MACCROBAT_21527041,606,611,1 day,1,day,time,C4554530,Finding,same_sentence
+MACCROBAT_21527041,1427,1433,2.3 cm,2.3,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_21527041,1602,1609,13 days,13,days,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_21672201,1029,1032,30%,30,%,percentage,C0205082,Finding,same_sentence
+MACCROBAT_21672201,1880,1883,30%,30,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_21672201,2667,2671,32°C,32,°C,temperature,C0917707,Treatment,window_fallback
+MACCROBAT_21672201,4228,4236,12 hours,12,hours,time,C0733815,Treatment,window_fallback
+MACCROBAT_21672201,4305,4313,3 months,3,months,time,,,none
+MACCROBAT_21672201,4497,4500,50%,50,%,percentage,C0700124,Finding,same_sentence
+MACCROBAT_21720478,167,174,6-month,6,month,time,C0231807,Symptom,same_sentence_forward
+MACCROBAT_21720478,458,465,70 mmHg,70,mmHg,pressure,C5395033,Diagnosis,same_sentence
+MACCROBAT_21720478,489,496,45 mmHg,45,mmHg,pressure,C5395033,Diagnosis,same_sentence
+MACCROBAT_21720478,532,538,0.7 cm,0.7,cm,length,C0003501,BodyPart,same_sentence
+MACCROBAT_21720478,1650,1654,3-cm,3,cm,length,C0184898,Treatment,same_sentence_forward
+MACCROBAT_21720478,2118,2122,5-cm,5,cm,length,C0184898,Treatment,same_sentence_forward
+MACCROBAT_21720478,3027,3032,27-mm,27,mm,length,C0026264,BodyPart,window_fallback
+MACCROBAT_21720478,3286,3290,1-cm,1,cm,length,C0038293,BodyPart,same_sentence
+MACCROBAT_21720478,3889,3894,day 6,6,day,time,C0013404,Symptom,same_sentence
+MACCROBAT_21923918,704,708,5-cm,5,cm,length,C1261287,Diagnosis,same_sentence
+MACCROBAT_21923918,872,876,7 cm,7,cm,length,C0506546,BodyPart,same_sentence
+MACCROBAT_21923918,965,969,5 mm,5,mm,length,C0392756,Finding,same_sentence
+MACCROBAT_21923918,1329,1333,3 cm,3,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_21923918,2988,2997,10.9 g/dL,10.9,g/dL,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_21923918,3398,3403,3-day,3,day,time,C2939419,Diagnosis,window_fallback
+MACCROBAT_21923918,3427,3433,3-week,3,week,time,C3842675,Finding,same_sentence
+MACCROBAT_21923918,3494,3500,800 mg,800,mg,mass,C0016360,Treatment,same_sentence
+MACCROBAT_21923918,3524,3529,20 mg,20,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_21923918,3685,3693,9 months,9,months,time,C1306577,Finding,same_sentence
+MACCROBAT_22218279,808,811,79%,79,%,percentage,C0221198,Finding,window_fallback
+MACCROBAT_22218279,825,827,4%,4,%,percentage,C0014772,Exam,same_sentence_forward
+MACCROBAT_22218279,922,925,1 g,1,g,mass,C0025815,Treatment,same_sentence_forward
+MACCROBAT_22218279,961,967,5 days,5,days,time,C0025815,Treatment,same_sentence
+MACCROBAT_22218279,1332,1337,44 μg,44,μg,other,C4035626,Finding,same_sentence_forward
+MACCROBAT_22514576,120,127,3 years,3,years,time,C0729790,Finding,same_sentence_forward
+MACCROBAT_22514576,230,236,100 mg,100,mg,mass,C2698969,Finding,window_fallback
+MACCROBAT_22514576,331,339,100 mmHg,100,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_22514576,867,872,18 mm,18,mm,length,C0225860,BodyPart,same_sentence
+MACCROBAT_22514576,1128,1135,30 mmHg,30,mmHg,pressure,C0040961,Diagnosis,same_sentence
+MACCROBAT_22514576,1232,1235,42%,42,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_22514576,1597,1603,"0,6 ml","0,6",ml,volume,C0878354,Treatment,same_sentence
+MACCROBAT_22514576,1638,1645,3 weeks,3,weeks,time,C0878354,Treatment,same_sentence
+MACCROBAT_22514576,1704,1711,3 weeks,3,weeks,time,C0013516,Exam,same_sentence_forward
+MACCROBAT_22515939,2059,2064,day 2,2,day,time,C0038293,BodyPart,same_sentence
+MACCROBAT_22515939,2249,2254,day 9,9,day,time,C4522268,Finding,window_fallback
+MACCROBAT_22515939,2296,2302,day 24,24,day,time,C4522268,Finding,window_fallback
+MACCROBAT_22515939,2425,2433,3 months,3,months,time,C4522268,Finding,same_sentence
+MACCROBAT_22520024,83,85,0G,0,G,mass,C0728940,Treatment,same_sentence
+MACCROBAT_22520024,217,222,25 cm,25,cm,length,C0023827,Diagnosis,same_sentence_forward
+MACCROBAT_22520024,1298,1302,7 cm,7,cm,length,C0011923,Exam,same_sentence
+MACCROBAT_22520024,2062,2068,9.5 cm,9.5,cm,length,C0023827,Diagnosis,same_sentence_forward
+MACCROBAT_22520024,2286,2292,0.1 cm,0.1,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_22520024,2512,2521,30 months,30,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_22665582,1339,1346,10 days,10,days,time,C0032181,Exam,same_sentence
+MACCROBAT_22665582,1716,1724,6 months,6,months,time,C0018787,BodyPart,same_sentence_forward
+MACCROBAT_22719160,100,107,1-month,1,month,time,C0013404,Symptom,same_sentence_forward
+MACCROBAT_22719160,470,475,75 mg,75,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_22719160,884,891,5 years,5,years,time,C0039286,Treatment,same_sentence
+MACCROBAT_22719160,952,960,17 years,17,years,time,C3665472,Treatment,same_sentence_forward
+MACCROBAT_22719160,1353,1364,"2,000 pg/mL","2,000",pg/mL,lab_concentration,C1144709,Treatment,same_sentence
+MACCROBAT_22719160,2557,2564,8-month,8,month,time,C0087111,Treatment,same_sentence
+MACCROBAT_22719160,2644,2650,1 year,1,year,time,C1444662,Finding,same_sentence
+MACCROBAT_22781096,160,167,7 years,7,years,time,,,none
+MACCROBAT_22781096,508,516,16 years,16,years,time,C0332154,Finding,window_fallback
+MACCROBAT_22781096,647,655,10 years,10,years,time,C0035334,Diagnosis,same_sentence_forward
+MACCROBAT_22781096,898,906,14 years,14,years,time,C0028738,Diagnosis,same_sentence
+MACCROBAT_22781096,1015,1023,16 years,16,years,time,C0521707,Diagnosis,same_sentence
+MACCROBAT_22781096,1052,1060,14 years,14,years,time,C0521707,Diagnosis,window_fallback
+MACCROBAT_22781096,1425,1433,15 years,15,years,time,C1384666,Diagnosis,window_fallback
+MACCROBAT_22781096,1579,1587,15 years,15,years,time,C0232807,Finding,same_sentence
+MACCROBAT_22781096,1712,1724,244–538 mg/l,,mg/l,lab_concentration,C0033687,Finding,same_sentence
+MACCROBAT_22781096,1745,1752,20 mg/l,20,mg/l,lab_concentration,C0033687,Finding,same_sentence
+MACCROBAT_22781096,1794,1801,44–59 g,,g,mass,C0033687,Finding,same_sentence
+MACCROBAT_22781096,1827,1830,3 g,3,g,mass,C0033687,Finding,same_sentence
+MACCROBAT_22781096,1961,1964,42%,42,%,percentage,C0853068,Finding,same_sentence
+MACCROBAT_22781096,2019,2022,29%,29,%,percentage,C0853068,Finding,window_fallback
+MACCROBAT_22781096,2036,2044,16 years,16,years,time,C0853068,Finding,window_fallback
+MACCROBAT_22781096,2059,2067,14 years,14,years,time,C0853068,Finding,window_fallback
+MACCROBAT_22781096,2324,2332,14 years,14,years,time,C0028778,Finding,window_fallback
+MACCROBAT_22781096,2391,2403,0.096 mmol/l,0.096,mmol/l,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_22781096,2546,2558,0.137 mmol/l,0.137,mmol/l,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_22781096,2695,2703,258 mg/l,258,mg/l,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_22781096,2722,2730,225 mg/l,225,mg/l,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_22791498,393,399,161 cm,161,cm,length,C0700442,Treatment,window_fallback
+MACCROBAT_22791498,420,425,83 kg,83,kg,mass,C0700442,Treatment,window_fallback
+MACCROBAT_22791498,450,455,60 mm,60,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_22791498,490,499,107 mg/dl,107,mg/dl,lab_concentration,C0428568,Exam,same_sentence
+MACCROBAT_22791498,514,518,6.3%,6.3,%,percentage,C0428568,Exam,same_sentence
+MACCROBAT_22791498,740,745,95 mm,95,mm,length,C0225897,BodyPart,same_sentence
+MACCROBAT_22791498,844,847,50%,50,%,percentage,C1304881,Exam,same_sentence
+MACCROBAT_22791498,1099,1108,8.2 ng/ml,8.2,ng/ml,lab_concentration,C0018563,BodyPart,window_fallback
+MACCROBAT_22791498,1123,1132,504 ng/ml,504,ng/ml,lab_concentration,C0018563,BodyPart,window_fallback
+MACCROBAT_22791498,1283,1291,8 months,8,months,time,C0028833,Treatment,same_sentence
+MACCROBAT_22791498,1493,1500,4 ng/ml,4,ng/ml,lab_concentration,C0028833,Treatment,same_sentence
+MACCROBAT_22791498,1691,1700,0.5 ng/ml,0.5,ng/ml,lab_concentration,C0543467,Treatment,window_fallback
+MACCROBAT_22814979,657,663,105 mm,105,mm,length,C0085298,Diagnosis,window_fallback
+MACCROBAT_22814979,682,689,125 bpm,125,bpm,rate,,,none
+MACCROBAT_22814979,1282,1289,130 bpm,130,bpm,rate,C0039239,Diagnosis,same_sentence
+MACCROBAT_22814979,1399,1404,40 mg,40,mg,mass,C0016860,Treatment,same_sentence_forward
+MACCROBAT_22814979,1525,1528,10%,10,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_22814979,1649,1656,170 bpm,170,bpm,rate,C2700378,Finding,window_fallback
+MACCROBAT_22814979,2251,2261,8.4 mmol/l,8.4,mmol/l,lab_concentration,C0001125,Diagnosis,same_sentence
+MACCROBAT_22814979,2271,2281,2.2 mmol/l,2.2,mmol/l,lab_concentration,C0001125,Diagnosis,same_sentence
+MACCROBAT_22814979,2356,2364,150 IU/l,150,IU/l,lab_concentration,C0001125,Diagnosis,same_sentence
+MACCROBAT_22814979,2374,2380,40 U/l,40,U/l,lab_concentration,C0001125,Diagnosis,same_sentence
+MACCROBAT_22814979,2855,2860,day 5,5,day,time,C0023884,BodyPart,window_fallback
+MACCROBAT_22814979,3077,3083,4 days,4,days,time,C0497247,Finding,same_sentence_forward
+MACCROBAT_22814979,3452,3461,90–110 mm,,mm,length,C0039231,Finding,same_sentence
+MACCROBAT_22814979,3731,3734,55%,55,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_23033875,141,149,100 mmHg,100,mmHg,pressure,C0497247,Finding,same_sentence
+MACCROBAT_23033875,1639,1642,70%,70,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_23033875,1859,1862,90%,90,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_23033875,2048,2051,98%,98,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_23033875,2427,2433,900 mL,900,mL,volume,C0020312,Diagnosis,same_sentence
+MACCROBAT_23033875,2453,2460,2500 mL,2500,mL,volume,C0003962,Symptom,same_sentence
+MACCROBAT_23033875,2485,2491,200 mL,200,mL,volume,C0349077,Diagnosis,same_sentence
+MACCROBAT_23035161,370,373,30%,30,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_23035161,409,414,55 mm,55,mm,length,C0428642,Finding,same_sentence
+MACCROBAT_23035161,678,685,35.7 °C,35.7,°C,temperature,C1272641,Finding,same_sentence_forward
+MACCROBAT_23035161,722,727,89 mm,89,mm,length,C1272641,Finding,same_sentence
+MACCROBAT_23035161,959,965,2.5 mg,2.5,mg,mass,C0136123,Treatment,same_sentence
+MACCROBAT_23035161,978,984,7.5 mg,7.5,mg,mass,C0076840,Treatment,same_sentence
+MACCROBAT_23035161,1002,1007,40 mg,40,mg,mass,C0076840,Treatment,same_sentence
+MACCROBAT_23035161,1398,1405,16 mg/l,16,mg/l,lab_concentration,C1455884,Finding,same_sentence
+MACCROBAT_23035161,1416,1422,5 mg/l,5,mg/l,lab_concentration,C1455884,Finding,same_sentence
+MACCROBAT_23035161,1451,1459,0.070 µg,0.070,µg,mass,C1455884,Finding,same_sentence
+MACCROBAT_23035161,1472,1480,0.014 µg,0.014,µg,mass,C1455884,Finding,same_sentence
+MACCROBAT_23035161,1538,1548,7382 pg/ml,7382,pg/ml,lab_concentration,C1144709,Treatment,same_sentence
+MACCROBAT_23035161,1559,1567,63 pg/ml,63,pg/ml,lab_concentration,C1144709,Treatment,same_sentence
+MACCROBAT_23035161,1706,1711,73 ml,73,ml,volume,C0449381,Finding,same_sentence
+MACCROBAT_23035161,2093,2096,1 g,1,g,mass,C0000970,Treatment,same_sentence
+MACCROBAT_23035161,2109,2112,1 g,1,g,mass,C0012586,Treatment,same_sentence
+MACCROBAT_23035161,2127,2132,75 µg,75,µg,mass,C0025376,Treatment,same_sentence
+MACCROBAT_23035161,3436,3443,11 days,11,days,time,C0031444,Treatment,window_fallback
+MACCROBAT_23035161,4244,4252,200 mg/l,200,mg/l,lab_concentration,C0449381,Finding,window_fallback
+MACCROBAT_23076693,451,455,38°C,38,°C,temperature,C1971624,Finding,window_fallback
+MACCROBAT_23076693,507,512,72 mm,72,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_23076693,933,936,75%,75,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_23076693,1024,1029,30 mm,30,mm,length,C0005833,Exam,same_sentence
+MACCROBAT_23076693,1676,1681,40 mg,40,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_23076693,1797,1803,1 week,1,week,time,C5243901,Treatment,window_fallback
+MACCROBAT_23077697,37,45,24-month,24,month,time,,,none
+MACCROBAT_23077697,153,157,4 cm,4,cm,length,C1368081,Diagnosis,window_fallback
+MACCROBAT_23077697,571,580,18 months,18,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_23124805,549,556,5 years,5,years,time,C2881086,Diagnosis,same_sentence
+MACCROBAT_23124805,793,801,10 years,10,years,time,C0025815,Treatment,same_sentence
+MACCROBAT_23124805,828,832,5 mg,5,mg,mass,C0666743,Treatment,same_sentence
+MACCROBAT_23124805,849,854,10 mg,10,mg,mass,C0666743,Treatment,same_sentence
+MACCROBAT_23124805,872,879,6 weeks,6,weeks,time,C0666743,Treatment,same_sentence
+MACCROBAT_23124805,939,945,1 year,1,year,time,C0666743,Treatment,window_fallback
+MACCROBAT_23124805,1008,1016,12 years,12,years,time,C1457868,Finding,same_sentence
+MACCROBAT_23124805,1058,1063,24 mg,24,mg,mass,C1122087,Treatment,same_sentence
+MACCROBAT_23124805,1073,1080,2 weeks,2,weeks,time,C1122087,Treatment,same_sentence
+MACCROBAT_23124805,1133,1138,15 mg,15,mg,mass,C1122087,Treatment,same_sentence
+MACCROBAT_23124805,1229,1235,750 mg,750,mg,mass,C0209368,Treatment,same_sentence
+MACCROBAT_23124805,1260,1265,10 mg,10,mg,mass,C1619966,Treatment,same_sentence
+MACCROBAT_23124805,1351,1359,16 years,16,years,time,C1619966,Treatment,window_fallback
+MACCROBAT_23124805,1802,1806,2 mg,2,mg,mass,C0003241,Treatment,same_sentence
+MACCROBAT_23124805,1844,1852,6 months,6,months,time,C4521296,Finding,same_sentence_forward
+MACCROBAT_23124805,2007,2013,0.2 mg,0.2,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_23155491,190,198,16 years,16,years,time,C0007114,Diagnosis,same_sentence
+MACCROBAT_23155491,568,576,20 years,20,years,time,C0038317,Treatment,same_sentence
+MACCROBAT_23155491,1287,1292,53 mm,53,mm,length,C0520484,Treatment,window_fallback
+MACCROBAT_23155491,1447,1455,25 years,25,years,time,C2699308,Finding,same_sentence
+MACCROBAT_23242090,102,109,5 years,5,years,time,C1457868,Finding,same_sentence
+MACCROBAT_23242090,325,331,7-year,7,year,time,C1299586,Finding,same_sentence
+MACCROBAT_23242090,410,418,20 years,20,years,time,C0554876,Diagnosis,same_sentence
+MACCROBAT_23242090,3089,3095,450 mg,450,mg,mass,C0123163,Treatment,same_sentence
+MACCROBAT_23242090,3246,3254,4 months,4,months,time,C0017725,Treatment,window_fallback
+MACCROBAT_23312850,78,84,5 days,5,days,time,C0229090,BodyPart,same_sentence
+MACCROBAT_23312850,349,356,0–20 mm,,mm,length,C0023508,Exam,same_sentence
+MACCROBAT_23312850,385,396,0–1.0 mg/dL,,mg/dL,lab_concentration,C0023508,Exam,same_sentence
+MACCROBAT_23312850,545,549,4 mm,4,mm,length,C0229186,BodyPart,same_sentence
+MACCROBAT_23312850,591,595,4 mm,4,mm,length,C0229187,BodyPart,same_sentence
+MACCROBAT_23312850,1832,1840,2000 mcg,2000,mcg,mass,C0017066,Treatment,same_sentence
+MACCROBAT_23312850,1841,1847,0.5 ml,0.5,ml,volume,C0017066,Treatment,same_sentence
+MACCROBAT_23312850,1880,1886,800 mg,800,mg,mass,C0229090,BodyPart,same_sentence
+MACCROBAT_23312850,1905,1912,14 days,14,days,time,C0983012,Treatment,same_sentence
+MACCROBAT_23312850,1933,1938,60 mg,60,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_23312850,1949,1955,7 days,7,days,time,C0032952,Treatment,same_sentence
+MACCROBAT_23312850,1968,1973,20 mg,20,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_23312850,1978,1984,7 days,7,days,time,C0032952,Treatment,same_sentence
+MACCROBAT_23312850,2451,2456,10 mg,10,mg,mass,C0001367,Treatment,same_sentence
+MACCROBAT_23312850,2474,2481,14 days,14,days,time,C0001367,Treatment,same_sentence
+MACCROBAT_23468586,169,177,10 years,10,years,time,C0878544,Diagnosis,same_sentence
+MACCROBAT_23468586,554,562,5 months,5,months,time,C0087111,Treatment,same_sentence_forward
+MACCROBAT_23468586,793,798,34.7%,34.7,%,percentage,C2599768,Finding,same_sentence
+MACCROBAT_23468586,867,875,10 years,10,years,time,C2599768,Finding,window_fallback
+MACCROBAT_23468586,983,991,6 months,6,months,time,C0007258,Treatment,same_sentence
+MACCROBAT_23468586,1439,1445,1.6 cm,1.6,cm,length,,,none
+MACCROBAT_23678274,233,239,3.2 kg,3.2,kg,mass,C0853697,Finding,window_fallback
+MACCROBAT_23678274,439,442,24%,24,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_23678274,888,892,6 kg,6,kg,mass,C0054836,Treatment,window_fallback
+MACCROBAT_23678274,939,944,71 cm,71,cm,length,C0054836,Treatment,window_fallback
+MACCROBAT_23678274,1127,1134,30 mmHg,30,mmHg,pressure,C0018787,BodyPart,same_sentence
+MACCROBAT_23678274,1417,1419,2%,2,%,percentage,C0853697,Finding,window_fallback
+MACCROBAT_23678274,1480,1491,"1,045 pg/mL","1,045",pg/mL,lab_concentration,C1317554,Treatment,same_sentence
+MACCROBAT_23678274,1560,1565,62.8%,62.8,%,percentage,C0018800,Finding,same_sentence
+MACCROBAT_23678274,1919,1926,37.7 mm,37.7,mm,length,C0449381,Finding,same_sentence
+MACCROBAT_23678274,1958,1963,36.6%,36.6,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_23678274,1984,1990,75.6 g,75.6,g,mass,C0455825,Finding,same_sentence
+MACCROBAT_23678274,2507,2509,1%,1,%,percentage,C0220981,Diagnosis,window_fallback
+MACCROBAT_23678274,2582,2593,"4,901 pg/mL","4,901",pg/mL,lab_concentration,C1317554,Treatment,same_sentence
+MACCROBAT_23678274,2820,2830,7.08 mg/dL,7.08,mg/dL,lab_concentration,C0201657,Exam,same_sentence
+MACCROBAT_23678274,3148,3158,7.8 mmol/L,7.8,mmol/L,lab_concentration,C0428196,Exam,same_sentence
+MACCROBAT_23678274,3178,3185,41.4 mm,41.4,mm,length,C0428196,Exam,same_sentence
+MACCROBAT_23678274,3420,3426,7 days,7,days,time,C0018801,Diagnosis,same_sentence
+MACCROBAT_23864579,599,604,31 mm,31,mm,length,,,none
+MACCROBAT_23864579,2179,2184,25 mm,25,mm,length,C0003501,BodyPart,same_sentence
+MACCROBAT_23864579,2409,2414,31 mm,31,mm,length,C0026264,BodyPart,same_sentence
+MACCROBAT_23897372,962,965,60%,60,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_23897372,1015,1020,36 mm,36,mm,length,C0456181,Finding,same_sentence
+MACCROBAT_23897372,1711,1720,86.3 mg/L,86.3,mg/L,lab_concentration,C1293958,Exam,window_fallback
+MACCROBAT_23897372,1730,1743,5.7–26.3 mg/L,,mg/L,lab_concentration,C1293958,Exam,window_fallback
+MACCROBAT_23897372,1780,1786,0.37 g,0.37,g,mass,,,none
+MACCROBAT_23897372,1848,1851,10%,10,%,percentage,C0005954,Exam,same_sentence
+MACCROBAT_24043987,187,195,21 years,21,years,time,C3842377,Exam,window_fallback
+MACCROBAT_24043987,223,232,10 months,10,months,time,C0425310,Finding,same_sentence
+MACCROBAT_24043987,616,619,94%,94,%,percentage,C5148364,Finding,same_sentence
+MACCROBAT_24043987,635,638,92%,92,%,percentage,C5148364,Finding,same_sentence
+MACCROBAT_24043987,842,845,69%,69,%,percentage,C3714541,Exam,same_sentence
+MACCROBAT_24043987,871,874,68%,68,%,percentage,C3714541,Exam,same_sentence
+MACCROBAT_24043987,927,930,85%,85,%,percentage,C3714541,Exam,window_fallback
+MACCROBAT_24043987,949,954,168 g,168,g,mass,C0030520,Treatment,same_sentence_forward
+MACCROBAT_24043987,1029,1040,2.34 mmol/L,2.34,mmol/L,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_24043987,1062,1069,24-hour,24,hour,time,C0428303,Exam,same_sentence_forward
+MACCROBAT_24043987,1100,1108,6.9 mmol,6.9,mmol,dose_unit,C0428303,Exam,same_sentence
+MACCROBAT_24043987,1116,1123,24-hour,24,hour,time,C0428303,Exam,same_sentence
+MACCROBAT_24043987,2289,2295,5 days,5,days,time,C0032326,Diagnosis,same_sentence
+MACCROBAT_24161539,151,157,3132 g,3132,g,mass,C0549206,Finding,same_sentence
+MACCROBAT_24161539,239,247,6 months,6,months,time,C0549206,Finding,window_fallback
+MACCROBAT_24161539,637,644,6 weeks,6,weeks,time,C0038317,Treatment,same_sentence
+MACCROBAT_24161539,688,696,6 months,6,months,time,C1299590,Finding,same_sentence
+MACCROBAT_24161539,712,718,1 year,1,year,time,C1299590,Finding,window_fallback
+MACCROBAT_24161539,834,843,6–8 month,,month,time,,,none
+MACCROBAT_24161539,1203,1209,60 min,60,min,time,C0036572,Symptom,same_sentence
+MACCROBAT_24161539,1543,1550,2 years,2,years,time,C0024485,Exam,same_sentence
+MACCROBAT_24161539,1551,1559,6 months,6,months,time,C3843647,Finding,same_sentence
+MACCROBAT_24294397,111,117,1 year,1,year,time,C0442726,Finding,same_sentence
+MACCROBAT_24294397,281,286,38 mm,38,mm,length,C0870082,Diagnosis,same_sentence
+MACCROBAT_24294397,1007,1010,95%,95,%,percentage,C0221198,Finding,same_sentence_forward
+MACCROBAT_24518095,1249,1252,68%,68,%,percentage,C0087136,Finding,same_sentence_forward
+MACCROBAT_24518095,1750,1756,250 mg,250,mg,mass,,,none
+MACCROBAT_24518095,1869,1876,1 month,1,month,time,C0040405,Exam,same_sentence
+MACCROBAT_24526194,91,98,3 weeks,3,weeks,time,C0239574,Finding,same_sentence
+MACCROBAT_24526194,113,119,1 week,1,week,time,C0042963,Symptom,same_sentence
+MACCROBAT_24526194,135,141,3 days,3,days,time,C0003460,Diagnosis,same_sentence
+MACCROBAT_24526194,192,198,1 week,1,week,time,C0013404,Symptom,same_sentence
+MACCROBAT_24526194,692,698,100 mm,100,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_24526194,1080,1087,5 years,5,years,time,C0018775,Diagnosis,same_sentence
+MACCROBAT_24654246,95,102,4-month,4,month,time,,,none
+MACCROBAT_24654246,378,383,12 cm,12,cm,length,C0428897,Finding,same_sentence
+MACCROBAT_24654246,836,845,5–6 years,,years,time,C0013227,Treatment,same_sentence
+MACCROBAT_24654246,1306,1309,64%,64,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_24654246,2102,2106,5 mm,5,mm,length,C0031050,BodyPart,same_sentence
+MACCROBAT_24781756,173,180,1 month,1,month,time,C1546956,Finding,same_sentence
+MACCROBAT_24781756,569,575,2.3 kg,2.3,kg,mass,C0018670,BodyPart,same_sentence_forward
+MACCROBAT_24781756,617,622,32 cm,32,cm,length,C0018670,BodyPart,same_sentence
+MACCROBAT_24781756,790,795,27 mm,27,mm,length,C1304767,Exam,same_sentence
+MACCROBAT_24781756,810,820,0.5–2.4 mm,,mm,length,C1304767,Exam,same_sentence
+MACCROBAT_24781756,1304,1310,4 days,4,days,time,C0224440,BodyPart,same_sentence_forward
+MACCROBAT_24781756,1441,1447,5 days,5,days,time,C0041618,Exam,same_sentence
+MACCROBAT_24781756,1535,1542,35 days,35,days,time,C0018670,BodyPart,same_sentence
+MACCROBAT_24781756,1707,1715,15 weeks,15,weeks,time,C0230005,BodyPart,window_fallback
+MACCROBAT_24781756,1790,1797,2 years,2,years,time,C0202691,Exam,same_sentence
+MACCROBAT_24781756,2003,2011,10 weeks,10,weeks,time,C0558014,Treatment,same_sentence
+MACCROBAT_24781756,2043,2051,15 weeks,15,weeks,time,C0200149,Treatment,same_sentence
+MACCROBAT_24781756,2291,2299,4 months,4,months,time,C4551472,Diagnosis,same_sentence_forward
+MACCROBAT_24781756,2486,2493,2 years,2,years,time,C0006684,Treatment,same_sentence
+MACCROBAT_24781756,2569,2574,60 mg,60,mg,mass,C0041536,Treatment,same_sentence
+MACCROBAT_24781756,2605,2613,4 months,4,months,time,C0041536,Treatment,same_sentence
+MACCROBAT_24781756,2814,2823,30 months,30,months,time,C1546956,Finding,same_sentence
+MACCROBAT_24898994,223,228,12 cm,12,cm,length,C0024881,Treatment,same_sentence
+MACCROBAT_24957905,344,347,5cm,5,cm,length,C0728940,Treatment,same_sentence
+MACCROBAT_24957905,732,738,1000mg,1000,mg,mass,C0085533,Treatment,same_sentence
+MACCROBAT_24957905,748,754,days 1,1,days,time,C4057589,Treatment,same_sentence
+MACCROBAT_24957905,767,773,28-day,28,day,time,C4057589,Treatment,same_sentence
+MACCROBAT_24957905,1139,1143,10cm,10,cm,length,C0428897,Finding,same_sentence
+MACCROBAT_25023062,231,235,10cm,10,cm,length,C0240318,Finding,same_sentence
+MACCROBAT_25023062,531,534,60%,60,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_25023062,907,912,300mg,300,mg,mass,C0010583,Treatment,same_sentence
+MACCROBAT_25023062,932,938,3 days,3,days,time,C0010583,Treatment,same_sentence
+MACCROBAT_25023062,952,956,25mg,25,mg,mass,C0010583,Treatment,same_sentence
+MACCROBAT_25023062,968,974,2 days,2,days,time,C3842676,Finding,same_sentence
+MACCROBAT_25023062,986,991,375mg,375,mg,mass,C0393022,Treatment,same_sentence
+MACCROBAT_25023062,1003,1008,1 day,1,day,time,C3842676,Finding,same_sentence
+MACCROBAT_25023062,1024,1028,40mg,40,mg,mass,C0011777,Treatment,same_sentence
+MACCROBAT_25023062,1037,1043,4 days,4,days,time,C0011777,Treatment,same_sentence
+MACCROBAT_25023062,1061,1064,2mg,2,mg,mass,C0042679,Treatment,same_sentence
+MACCROBAT_25023062,1073,1079,2 days,2,days,time,C0042679,Treatment,same_sentence
+MACCROBAT_25023062,1155,1161,1800mg,1800,mg,mass,C0010583,Treatment,same_sentence
+MACCROBAT_25023062,1169,1173,50mg,50,mg,mass,C0010583,Treatment,same_sentence
+MACCROBAT_25023062,1218,1223,300mg,300,mg,mass,C0074722,Treatment,same_sentence_forward
+MACCROBAT_25023062,1259,1263,8.4%,8.4,%,percentage,C0074722,Treatment,same_sentence
+MACCROBAT_25023062,1293,1301,24 hours,24,hours,time,C0574032,Treatment,same_sentence
+MACCROBAT_25023062,1333,1338,600mg,600,mg,mass,C3665472,Treatment,same_sentence
+MACCROBAT_25023062,1350,1356,2 days,2,days,time,C3842676,Finding,same_sentence
+MACCROBAT_25023062,1471,1474,2mg,2,mg,mass,C1145828,Treatment,same_sentence_forward
+MACCROBAT_25023062,1496,1500,30mg,30,mg,mass,C1131754,Treatment,same_sentence
+MACCROBAT_25023062,1677,1683,60mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_25023062,2101,2104,31%,31,%,percentage,C0031039,Diagnosis,same_sentence
+MACCROBAT_25023062,2382,2389,12 days,12,days,time,C0020538,Diagnosis,window_fallback
+MACCROBAT_25023062,2413,2416,37%,37,%,percentage,C0020538,Diagnosis,window_fallback
+MACCROBAT_25023062,2505,2511,day 20,20,day,time,C0013404,Symptom,same_sentence
+MACCROBAT_25023062,2519,2526,1 month,1,month,time,C0013404,Symptom,window_fallback
+MACCROBAT_25023062,2586,2589,60%,60,%,percentage,C0013404,Symptom,window_fallback
+MACCROBAT_25024632,344,349,20 cm,20,cm,length,C0347631,Diagnosis,same_sentence
+MACCROBAT_25024632,352,356,5 cm,5,cm,length,C0347631,Diagnosis,same_sentence
+MACCROBAT_25024632,1138,1140,4%,4,%,percentage,C0333288,Diagnosis,same_sentence
+MACCROBAT_25139918,397,407,10.5 mg/dL,10.5,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_25139918,490,499,286 pg/mL,286,pg/mL,lab_concentration,C0030520,Treatment,same_sentence
+MACCROBAT_25139918,687,691,2 cm,2,cm,length,C0027530,BodyPart,same_sentence
+MACCROBAT_25139918,1880,1885,60 mL,60,mL,volume,C0231221,Finding,same_sentence
+MACCROBAT_25139918,3697,3704,3 years,3,years,time,C5202951,Finding,same_sentence
+MACCROBAT_25139918,3794,3802,3 months,3,months,time,C5202951,Finding,same_sentence
+MACCROBAT_25139918,4114,4122,3 months,3,months,time,C0032743,Exam,window_fallback
+MACCROBAT_25155594,1489,1494,32 mg,32,mg,mass,C0427978,Exam,same_sentence
+MACCROBAT_25210224,377,381,1-mm,1,mm,length,C0557351,Finding,window_fallback
+MACCROBAT_25210224,389,395,0.5-mm,0.5,mm,length,C3842090,Finding,same_sentence
+MACCROBAT_25210224,1518,1522,7 mm,7,mm,length,C0024688,BodyPart,same_sentence
+MACCROBAT_25210224,1538,1542,7 mm,7,mm,length,C3842085,Finding,same_sentence
+MACCROBAT_25246819,428,437,12 months,12,months,time,C0006141,BodyPart,same_sentence
+MACCROBAT_25246819,442,449,3 years,3,years,time,C4699604,Finding,same_sentence
+MACCROBAT_25246819,767,775,19 years,19,years,time,C0206650,Diagnosis,window_fallback
+MACCROBAT_25246819,1185,1193,21 years,21,years,time,C0040132,BodyPart,window_fallback
+MACCROBAT_25246819,1811,1819,22 years,22,years,time,C0018553,Diagnosis,window_fallback
+MACCROBAT_25293719,84,92,34 weeks,34,weeks,time,C0558380,Treatment,same_sentence
+MACCROBAT_25293719,235,242,1.19 kg,1.19,kg,mass,C0018670,BodyPart,same_sentence_forward
+MACCROBAT_25293719,281,288,26.7 cm,26.7,cm,length,C0018670,BodyPart,same_sentence
+MACCROBAT_25293719,488,493,1 min,1,min,time,C0449820,Finding,same_sentence
+MACCROBAT_25293719,500,505,5 min,5,min,time,C0449820,Finding,same_sentence
+MACCROBAT_25293719,515,521,10 min,10,min,time,C0449820,Finding,same_sentence
+MACCROBAT_25293719,734,743,22 mmol/l,22,mmol/l,lab_concentration,C0064582,Treatment,same_sentence
+MACCROBAT_25293719,774,783,63 mmol/l,63,mmol/l,lab_concentration,C0064582,Treatment,same_sentence
+MACCROBAT_25293719,799,813,0.7–2.1 mmol/l,,mmol/l,lab_concentration,C0064582,Treatment,same_sentence
+MACCROBAT_25293719,1092,1095,15%,15,%,percentage,C0021440,Treatment,same_sentence
+MACCROBAT_25293719,1105,1111,7.8 mg,7.8,mg,mass,C0017725,Treatment,same_sentence
+MACCROBAT_25293719,1831,1836,15 mm,15,mm,length,C0019939,BodyPart,window_fallback
+MACCROBAT_25293719,1892,1896,8 mm,8,mm,length,,,none
+MACCROBAT_25293719,2226,2229,7 g,7,g,mass,C5966160,Treatment,same_sentence
+MACCROBAT_25293719,2240,2247,35–50 g,,g,mass,C5966160,Treatment,same_sentence
+MACCROBAT_25293719,2322,2330,2700 U/l,2700,U/l,lab_concentration,C0438235,Finding,same_sentence
+MACCROBAT_25293719,2340,2347,300 U/l,300,U/l,lab_concentration,C0438235,Finding,same_sentence
+MACCROBAT_25295501,194,200,3.8-cm,3.8,cm,length,C0398395,Treatment,same_sentence
+MACCROBAT_25295501,498,505,3 weeks,3,weeks,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_25295501,758,765,4 weeks,4,weeks,time,C1271701,Exam,same_sentence
+MACCROBAT_25295501,878,886,3 months,3,months,time,C1522449,Treatment,window_fallback
+MACCROBAT_25295501,1046,1051,10 mg,10,mg,mass,C0541315,Treatment,same_sentence
+MACCROBAT_25295501,1066,1074,6 months,6,months,time,C0541315,Treatment,window_fallback
+MACCROBAT_25295501,1159,1165,2.6 cm,2.6,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_25295501,1176,1182,0.8 cm,0.8,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_25295501,1200,1209,18 months,18,months,time,C0221198,Finding,window_fallback
+MACCROBAT_25370695,792,796,70mg,70,mg,mass,C0017205,Diagnosis,same_sentence
+MACCROBAT_25370695,808,815,2 years,2,years,time,C0017205,Diagnosis,same_sentence
+MACCROBAT_25370695,1098,1106,20 years,20,years,time,C0017205,Diagnosis,same_sentence
+MACCROBAT_25370695,1663,1670,3 years,3,years,time,C0026367,BodyPart,same_sentence
+MACCROBAT_25370695,2017,2020,6mm,6,mm,length,C0024687,BodyPart,same_sentence
+MACCROBAT_25370695,3703,3710,1-month,1,month,time,C0277786,Finding,same_sentence
+MACCROBAT_25370695,3899,3905,1-year,1,year,time,C0017205,Diagnosis,window_fallback
+MACCROBAT_25410034,1835,1842,3 weeks,3,weeks,time,C5779629,Diagnosis,same_sentence
+MACCROBAT_25410034,1972,1980,2 months,2,months,time,C2004491,Diagnosis,same_sentence
+MACCROBAT_25410883,677,686,12 mcg/dL,12,mcg/dL,lab_concentration,C1318315,Exam,same_sentence
+MACCROBAT_25410883,696,709,55–150 mcg/dL,,mcg/dL,lab_concentration,C1318315,Exam,same_sentence
+MACCROBAT_25572898,258,264,day 12,12,day,time,C0040732,Treatment,same_sentence_forward
+MACCROBAT_25572898,553,562,2–3 weeks,,weeks,time,C1384666,Diagnosis,same_sentence
+MACCROBAT_25572898,685,688,50%,50,%,percentage,C0024485,Exam,same_sentence
+MACCROBAT_25572898,705,708,50%,50,%,percentage,C0024485,Exam,same_sentence
+MACCROBAT_25572898,752,762,2.4 mmol/L,2.4,mmol/L,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_25572898,778,792,2.2–4.7 mmol/L,,mmol/L,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_25572898,803,811,61 mg/dL,61,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_25572898,827,837,15–45 mg/L,,mg/L,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_25572898,1077,1080,2 g,2,g,mass,C0249458,Treatment,same_sentence
+MACCROBAT_25572898,1339,1346,6 weeks,6,weeks,time,C0027853,Exam,same_sentence
+MACCROBAT_25572898,3018,3026,4 months,4,months,time,C1546956,Finding,same_sentence
+MACCROBAT_25572898,3069,3079,7.5 months,7.5,months,time,C1546956,Finding,same_sentence
+MACCROBAT_25661749,370,378,6 months,6,months,time,C0442750,Finding,same_sentence
+MACCROBAT_25661749,950,953,90%,90,%,percentage,C0029127,BodyPart,same_sentence
+MACCROBAT_25661749,969,972,80%,80,%,percentage,C0029127,BodyPart,same_sentence
+MACCROBAT_25661749,1273,1276,30%,30,%,percentage,C0229118,BodyPart,same_sentence
+MACCROBAT_25661749,1444,1451,4 weeks,4,weeks,time,C0002418,Diagnosis,same_sentence
+MACCROBAT_25661749,2072,2078,4.5 cm,4.5,cm,length,C0036609,BodyPart,same_sentence
+MACCROBAT_25661749,2079,2085,5.1 cm,5.1,cm,length,C0036609,BodyPart,same_sentence
+MACCROBAT_25661749,2087,2093,4.8 cm,4.8,cm,length,C0036609,BodyPart,same_sentence
+MACCROBAT_25661749,2812,2818,500 µg,500,µg,mass,C0107994,Treatment,same_sentence
+MACCROBAT_25661749,2837,2841,8 mg,8,mg,mass,C0011777,Treatment,same_sentence
+MACCROBAT_25721834,87,91,4 kg,4,kg,mass,C0015672,Symptom,window_fallback
+MACCROBAT_25721834,313,319,3.5 cm,3.5,cm,length,C0019209,Finding,same_sentence
+MACCROBAT_25721834,435,443,7.8 g/dL,7.8,g/dL,lab_concentration,C0271899,Diagnosis,same_sentence
+MACCROBAT_25721834,617,620,29%,29,%,percentage,C0427460,Exam,same_sentence
+MACCROBAT_25721834,962,965,50%,50,%,percentage,C0200676,Exam,same_sentence
+MACCROBAT_25721834,1427,1437,3.8 mmol/L,3.8,mmol/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_25721834,2281,2289,4.4 g/dL,4.4,g/dL,lab_concentration,C0002871,Diagnosis,window_fallback
+MACCROBAT_25721834,2411,2418,1700 µg,1700,µg,mass,C0015879,Treatment,same_sentence
+MACCROBAT_25721834,2597,2605,13 years,13,years,time,C0020615,Diagnosis,same_sentence
+MACCROBAT_25721834,2768,2776,15 ng/mL,15,ng/mL,lab_concentration,C0035094,Treatment,same_sentence
+MACCROBAT_25721834,2948,2952,5 mg,5,mg,mass,C0016280,Treatment,same_sentence_forward
+MACCROBAT_25721834,2985,2991,100 µg,100,µg,mass,C0016280,Treatment,same_sentence
+MACCROBAT_25721834,3490,3497,62 mmol,62,mmol,dose_unit,C0176751,Treatment,window_fallback
+MACCROBAT_25721834,3503,3507,7.8%,7.8,%,percentage,C0176751,Treatment,window_fallback
+MACCROBAT_25743872,156,163,3 weeks,3,weeks,time,C0013604,Diagnosis,same_sentence
+MACCROBAT_25743872,451,456,73 mm,73,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_25743872,475,481,70 bpm,70,bpm,rate,C1271104,Finding,same_sentence
+MACCROBAT_25743872,534,540,36.6°C,36.6,°C,temperature,C1271104,Finding,same_sentence
+MACCROBAT_25743872,545,548,97%,97,%,percentage,C1271104,Finding,same_sentence
+MACCROBAT_25743872,1014,1025,826.5 pg/mL,826.5,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_25743872,1110,1113,30%,30,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_25743872,1252,1257,50 mg,50,mg,mass,C0014963,Treatment,same_sentence
+MACCROBAT_25759562,463,469,1 year,1,year,time,C1444662,Finding,same_sentence
+MACCROBAT_25759562,542,549,2 years,2,years,time,C1444662,Finding,same_sentence
+MACCROBAT_25759562,594,601,3 years,3,years,time,C0231221,Finding,same_sentence
+MACCROBAT_25759562,900,909,2.2 mg/dL,2.2,mg/dL,lab_concentration,C5966160,Treatment,same_sentence_forward
+MACCROBAT_25759562,932,941,2.38 g/dL,2.38,g/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_25759562,1399,1405,3.2 cm,3.2,cm,length,C0032718,BodyPart,same_sentence
+MACCROBAT_25759562,1420,1426,2.5 cm,2.5,cm,length,C0032718,BodyPart,same_sentence
+MACCROBAT_25759562,1429,1435,2.4 cm,2.4,cm,length,C0032718,BodyPart,same_sentence
+MACCROBAT_25759562,1621,1628,3 years,3,years,time,C3263723,Diagnosis,same_sentence
+MACCROBAT_25759562,2563,2568,10-mm,10,mm,length,C0042345,Diagnosis,window_fallback
+MACCROBAT_25759562,3096,3103,19 mmHg,19,mmHg,pressure,C0002940,Diagnosis,window_fallback
+MACCROBAT_25759562,3107,3113,8 mmHg,8,mmHg,pressure,C0002940,Diagnosis,window_fallback
+MACCROBAT_25759562,3281,3287,1 year,1,year,time,C0231221,Finding,same_sentence
+MACCROBAT_25759562,3616,3622,2.4 cm,2.4,cm,length,C0002940,Diagnosis,same_sentence
+MACCROBAT_25759562,3637,3643,2.0 cm,2.0,cm,length,C0002940,Diagnosis,same_sentence
+MACCROBAT_25759562,3646,3652,1.9 cm,1.9,cm,length,C0002940,Diagnosis,same_sentence
+MACCROBAT_25759562,3726,3732,1.9 cm,1.9,cm,length,C0339897,Treatment,same_sentence
+MACCROBAT_25759562,3747,3753,1.6 cm,1.6,cm,length,C0339897,Treatment,same_sentence
+MACCROBAT_25759562,3756,3762,1.5 cm,1.5,cm,length,C0339897,Treatment,same_sentence
+MACCROBAT_25759562,3778,3784,1 year,1,year,time,C0339897,Treatment,same_sentence
+MACCROBAT_25793030,1689,1694,27-mm,27,mm,length,C0026264,BodyPart,window_fallback
+MACCROBAT_25793030,1830,1836,3 days,3,days,time,C0015357,Treatment,same_sentence
+MACCROBAT_25853982,223,228,1.3cm,1.3,cm,length,C2350019,Diagnosis,same_sentence
+MACCROBAT_25853982,681,690,18 months,18,months,time,C0040405,Exam,same_sentence
+MACCROBAT_25853982,1048,1054,32mmHg,32,mmHg,pressure,C0227192,BodyPart,same_sentence
+MACCROBAT_25853982,1147,1156,18 months,18,months,time,C0728940,Treatment,same_sentence_forward
+MACCROBAT_25853982,1584,1590,50mmHg,50,mmHg,pressure,C0227192,BodyPart,same_sentence
+MACCROBAT_25853982,1845,1849,36cm,36,cm,length,C0012359,Diagnosis,same_sentence
+MACCROBAT_25853982,1900,1904,39cm,39,cm,length,C0012359,Diagnosis,same_sentence
+MACCROBAT_25858931,57,63,30 min,30,min,time,,,none
+MACCROBAT_25858931,642,647,20 mg,20,mg,mass,C0040165,Treatment,same_sentence_forward
+MACCROBAT_25858931,666,672,100 µg,100,µg,mass,C0040165,Treatment,same_sentence
+MACCROBAT_25858931,803,809,93 bpm,93,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_25858931,866,869,98%,98,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_25858931,1145,1149,8 cm,8,cm,length,C1167958,Finding,same_sentence
+MACCROBAT_25858931,1499,1509,2.59 ng/mL,2.59,ng/mL,lab_concentration,C0442816,Finding,window_fallback
+MACCROBAT_25858931,1524,1541,0.015–0.045 ng/mL,,ng/mL,lab_concentration,C0442816,Finding,window_fallback
+MACCROBAT_25858931,1570,1576,84 U/L,84,U/L,lab_concentration,C0442816,Finding,window_fallback
+MACCROBAT_25858931,1591,1601,26–192 U/L,,U/L,lab_concentration,C0442816,Finding,window_fallback
+MACCROBAT_25858931,1655,1661,2–3 mm,,mm,length,C0232202,Finding,same_sentence
+MACCROBAT_25858931,1840,1846,30–35%,,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_25858931,2152,2158,162 mg,162,mg,mass,C1620287,Treatment,same_sentence_forward
+MACCROBAT_25858931,2173,2178,60 mg,60,mg,mass,C1620287,Treatment,same_sentence
+MACCROBAT_25858931,2403,2406,35%,35,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_25858931,2607,2613,2.5 mg,2.5,mg,mass,C4284232,Treatment,same_sentence
+MACCROBAT_25858931,2644,2651,12.5 mg,12.5,mg,mass,C0987218,Treatment,same_sentence
+MACCROBAT_25858931,2814,2822,2 months,2,months,time,C0013516,Exam,same_sentence
+MACCROBAT_25858931,2897,2903,65–70%,,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_25884600,446,453,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_25884600,469,475,76 bpm,76,bpm,rate,C1271104,Finding,same_sentence
+MACCROBAT_25884600,832,840,75 mg/dl,75,mg/dl,lab_concentration,C0427888,Exam,window_fallback
+MACCROBAT_25884600,1384,1387,20%,20,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_25884600,1404,1415,12.77 ng/ml,12.77,ng/ml,lab_concentration,C2700378,Finding,window_fallback
+MACCROBAT_25884600,2312,2320,2726 U/l,2726,U/l,lab_concentration,C0221423,Symptom,same_sentence
+MACCROBAT_25884600,2325,2333,7438 U/l,7438,U/l,lab_concentration,C0221423,Symptom,same_sentence
+MACCROBAT_25926582,150,157,2 years,2,years,time,C0014591,Diagnosis,same_sentence
+MACCROBAT_25926582,219,227,19 years,19,years,time,C0425957,Finding,same_sentence
+MACCROBAT_25926582,736,743,7443 µg,7443,µg,mass,C0442804,Finding,same_sentence
+MACCROBAT_25926582,898,905,0.25 mg,0.25,mg,mass,C0107994,Treatment,same_sentence
+MACCROBAT_25934795,386,391,27 mm,27,mm,length,C0597428,Exam,same_sentence
+MACCROBAT_25934795,418,427,65.6 mg/L,65.6,mg/L,lab_concentration,C0027692,Exam,same_sentence
+MACCROBAT_25934795,687,695,17 mg/dl,17,mg/dl,lab_concentration,C0428275,Exam,same_sentence
+MACCROBAT_25934795,711,721,7.94 mg/dl,7.94,mg/dl,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_25934795,744,754,0.56 mg/dl,0.56,mg/dl,lab_concentration,C0428279,Finding,same_sentence
+MACCROBAT_25934795,764,770,20 U/L,20,U/L,lab_concentration,C0428279,Finding,same_sentence
+MACCROBAT_25934795,784,790,24 U/L,24,U/L,lab_concentration,C0428279,Finding,same_sentence
+MACCROBAT_25934795,1707,1715,53 weeks,53,weeks,time,C2584946,Finding,same_sentence
+MACCROBAT_25934795,1774,1779,50 cm,50,cm,length,C0227386,BodyPart,same_sentence
+MACCROBAT_25934795,1828,1833,27 cm,27,cm,length,C0227389,BodyPart,same_sentence
+MACCROBAT_25934795,1883,1887,4 cm,4,cm,length,C0009368,BodyPart,same_sentence
+MACCROBAT_25934795,2242,2246,2 cm,2,cm,length,C0227391,BodyPart,same_sentence
+MACCROBAT_25934795,2315,2319,1 cm,1,cm,length,C1265815,Diagnosis,same_sentence
+MACCROBAT_26106249,78,84,165 cm,165,cm,length,,,none
+MACCROBAT_26106249,1564,1571,50 mmHg,50,mmHg,pressure,C0428643,Finding,same_sentence
+MACCROBAT_26106249,2485,2491,day 10,10,day,time,C0278134,Symptom,window_fallback
+MACCROBAT_26106249,2640,2647,30 mmHg,30,mmHg,pressure,C0428643,Finding,same_sentence
+MACCROBAT_26175648,494,499,39 °C,39,°C,temperature,C1531924,Finding,same_sentence
+MACCROBAT_26175648,801,805,2-mm,2,mm,length,C1442171,BodyPart,same_sentence
+MACCROBAT_26175648,1086,1094,"1,200 mg","1,200",mg,mass,C0020740,Treatment,same_sentence
+MACCROBAT_26175648,1578,1582,8 mm,8,mm,length,C0031039,Diagnosis,same_sentence
+MACCROBAT_26175648,2187,2192,12 mm,12,mm,length,C0031039,Diagnosis,same_sentence
+MACCROBAT_26175648,2281,2286,60 mL,60,mL,volume,C0191234,Treatment,same_sentence
+MACCROBAT_26175648,2484,2490,350 mL,350,mL,volume,C0189477,Treatment,same_sentence
+MACCROBAT_26175648,2760,2766,0.5 mg,0.5,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_26175648,2946,2952,2–3 mm,,mm,length,C0031039,Diagnosis,same_sentence
+MACCROBAT_26175648,3222,3230,2 months,2,months,time,C0032227,Diagnosis,same_sentence
+MACCROBAT_26216058,1369,1376,4 weeks,4,weeks,time,C5967569,Diagnosis,same_sentence
+MACCROBAT_26216058,1763,1770,6 years,6,years,time,C0917711,Exam,window_fallback
+MACCROBAT_26228535,79,86,2 years,2,years,time,C0002453,Finding,same_sentence
+MACCROBAT_26228535,142,150,6 months,6,months,time,C0457435,Finding,same_sentence
+MACCROBAT_26228535,311,315,5 cm,5,cm,length,C0027651,Diagnosis,same_sentence_forward
+MACCROBAT_26228535,533,543,4408 ng/ml,4408,ng/ml,lab_concentration,C0033371,Treatment,same_sentence
+MACCROBAT_26228535,644,654,0.50 ng/ml,0.50,ng/ml,lab_concentration,C0037663,Treatment,same_sentence
+MACCROBAT_26228535,682,693,2.60 mIU/ml,2.60,mIU/ml,lab_concentration,C0023607,Treatment,same_sentence
+MACCROBAT_26228535,731,742,4.57 mIU/ml,4.57,mIU/ml,lab_concentration,C0733758,Treatment,same_sentence
+MACCROBAT_26228535,780,790,37.4 pg/ml,37.4,pg/ml,lab_concentration,C0001655,Treatment,same_sentence
+MACCROBAT_26228535,1046,1052,4-week,4,week,time,C0013030,Treatment,same_sentence_forward
+MACCROBAT_26228535,1097,1101,1 mg,1,mg,mass,C0013030,Treatment,same_sentence
+MACCROBAT_26228535,1130,1140,2207 ng/ml,2207,ng/ml,lab_concentration,C1129001,Treatment,same_sentence
+MACCROBAT_26228535,1642,1651,250 ng/ml,250,ng/ml,lab_concentration,C0392756,Finding,same_sentence
+MACCROBAT_26228535,1800,1806,0.5 mg,0.5,mg,mass,C0107994,Treatment,same_sentence
+MACCROBAT_26228535,1884,1890,1 year,1,year,time,C5441917,Diagnosis,same_sentence
+MACCROBAT_26228535,3053,3056,2 %,2,%,percentage,,,none
+MACCROBAT_26257516,36,42,15-day,15,day,time,C0231807,Symptom,same_sentence_forward
+MACCROBAT_26257516,269,274,20 kg,20,kg,mass,C1262477,Finding,same_sentence
+MACCROBAT_26257516,291,299,6 months,6,months,time,C1262477,Finding,window_fallback
+MACCROBAT_26257516,770,777,56 mmHg,56,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_26257516,797,803,52 bpm,52,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_26257516,1544,1555,"3,996 pg/mL","3,996",pg/mL,lab_concentration,C1144709,Treatment,same_sentence
+MACCROBAT_26257516,2142,2145,70%,70,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_26257516,2516,2531,"598–1,329 mg/dL",,mg/dL,lab_concentration,C0268407,Diagnosis,window_fallback
+MACCROBAT_26257516,2964,2972,3 months,3,months,time,C5437154,Finding,same_sentence
+MACCROBAT_26264228,35,41,2-year,2,year,time,C5438122,Finding,same_sentence_forward
+MACCROBAT_26264228,260,266,2.5 cm,2.5,cm,length,C0004526,BodyPart,same_sentence
+MACCROBAT_26264228,1082,1088,2.5 cm,2.5,cm,length,C0015809,BodyPart,window_fallback
+MACCROBAT_26264228,1751,1759,5 months,5,months,time,C0024204,BodyPart,window_fallback
+MACCROBAT_26266396,214,218,3 cm,3,cm,length,C0024485,Exam,same_sentence
+MACCROBAT_26285706,65,73,2 months,2,months,time,C0011168,Diagnosis,same_sentence
+MACCROBAT_26285706,78,82,5 kg,5,kg,mass,C0011168,Diagnosis,same_sentence
+MACCROBAT_26285706,203,210,5 years,5,years,time,C0108121,Treatment,same_sentence
+MACCROBAT_26285706,257,261,4 cm,4,cm,length,C0079304,Exam,same_sentence
+MACCROBAT_26285706,1419,1423,4 cm,4,cm,length,C0577008,Finding,window_fallback
+MACCROBAT_26309459,321,328,50 mmHg,50,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_26309459,330,333,80%,80,%,percentage,C1271104,Finding,same_sentence
+MACCROBAT_26309459,383,389,2.26 g,2.26,g,mass,C0017725,Treatment,same_sentence
+MACCROBAT_26309459,411,418,125 bpm,125,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_26309459,616,623,125 bpm,125,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_26309459,725,735,6.41 ng/ml,6.41,ng/ml,lab_concentration,C0018787,BodyPart,window_fallback
+MACCROBAT_26309459,826,832,2.70 g,2.70,g,mass,C0428548,Exam,same_sentence
+MACCROBAT_26309459,841,847,0.40 g,0.40,g,mass,C0041942,Treatment,same_sentence
+MACCROBAT_26309459,865,872,18.6 mg,18.6,mg,mass,C0041942,Treatment,same_sentence
+MACCROBAT_26309459,963,968,0.4µg,0.4,µg,mass,C0028351,Treatment,same_sentence
+MACCROBAT_26309459,991,995,20µg,20,µg,mass,C0012963,Treatment,same_sentence
+MACCROBAT_26309459,1270,1273,29%,29,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_26309459,1373,1379,500 mg,500,mg,mass,C0948089,Diagnosis,same_sentence
+MACCROBAT_26309459,1451,1456,0.6ml,0.6,ml,volume,C0019139,Treatment,same_sentence
+MACCROBAT_26309459,1925,1933,24 hours,24,hours,time,C0226231,BodyPart,window_fallback
+MACCROBAT_26309459,1995,2003,24 hours,24,hours,time,C0013227,Treatment,same_sentence
+MACCROBAT_26309459,2225,2232,10 days,10,days,time,C1456496,Diagnosis,window_fallback
+MACCROBAT_26313770,109,114,1 day,1,day,time,C0019080,Diagnosis,same_sentence
+MACCROBAT_26313770,180,186,180 μg,180,μg,other,C0035525,Treatment,same_sentence_forward
+MACCROBAT_26313770,204,211,1200 mg,1200,mg,mass,C0035525,Treatment,same_sentence
+MACCROBAT_26313770,394,400,106 IU,106,IU,dose_unit,C1285573,Exam,same_sentence_forward
+MACCROBAT_26313770,503,509,106 IU,106,IU,dose_unit,C5453129,Finding,same_sentence
+MACCROBAT_26313770,560,566,103 IU,103,IU,dose_unit,C5453129,Finding,window_fallback
+MACCROBAT_26313770,573,580,week 12,12,week,time,C5453129,Finding,window_fallback
+MACCROBAT_26313770,626,631,15 IU,15,IU,dose_unit,,,none
+MACCROBAT_26313770,638,645,Week 24,24,Week,time,,,none
+MACCROBAT_26313770,782,789,Week 36,36,Week,time,C0039082,Diagnosis,window_fallback
+MACCROBAT_26313770,937,943,1 week,1,week,time,C0032181,Exam,same_sentence
+MACCROBAT_26313770,2382,2387,40 mg,40,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_26313770,2524,2530,100 mg,100,mg,mass,C0087111,Treatment,window_fallback
+MACCROBAT_26313770,2598,2604,400 mg,400,mg,mass,C0020336,Treatment,same_sentence
+MACCROBAT_26313770,2746,2753,17 days,17,days,time,C0032181,Exam,same_sentence
+MACCROBAT_26313770,3006,3014,5 months,5,months,time,C4050171,Finding,same_sentence_forward
+MACCROBAT_26327988,71,78,5 years,5,years,time,C0127615,Treatment,same_sentence
+MACCROBAT_26327988,805,810,10 cm,10,cm,length,C0332477,Finding,same_sentence
+MACCROBAT_26327988,1710,1713,1mg,1,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_26327988,1751,1756,day 7,7,day,time,C0032950,Treatment,window_fallback
+MACCROBAT_26336183,40,45,5-day,5,day,time,C0013144,Finding,same_sentence_forward
+MACCROBAT_26336183,190,197,10-year,10,year,time,C0262926,Finding,same_sentence
+MACCROBAT_26336183,333,336,1 g,1,g,mass,C0037567,Treatment,same_sentence
+MACCROBAT_26336183,1004,1009,7 u/L,7,u/L,lab_concentration,C0205054,BodyPart,window_fallback
+MACCROBAT_26336183,1039,1045,61 u/L,61,u/L,lab_concentration,C0205054,BodyPart,window_fallback
+MACCROBAT_26336183,1079,1085,17 u/L,17,u/L,lab_concentration,,,none
+MACCROBAT_26336183,1348,1356,140 mg/L,140,mg/L,lab_concentration,C0080356,Treatment,same_sentence
+MACCROBAT_26336183,1544,1550,0.25 g,0.25,g,mass,C0007584,Exam,same_sentence
+MACCROBAT_26336183,2180,2186,3 days,3,days,time,C0424092,Finding,window_fallback
+MACCROBAT_26336183,2456,2462,4 days,4,days,time,C0087111,Treatment,window_fallback
+MACCROBAT_26336183,3069,3072,1 g,1,g,mass,C0007258,Treatment,same_sentence
+MACCROBAT_26336183,3093,3100,2 weeks,2,weeks,time,C5382030,Finding,same_sentence_forward
+MACCROBAT_26336183,3423,3426,1 g,1,g,mass,C0080356,Treatment,same_sentence
+MACCROBAT_26350418,422,426,1 cm,1,cm,length,C0007570,Diagnosis,window_fallback
+MACCROBAT_26350418,537,543,1.3 cm,1.3,cm,length,C0041618,Exam,same_sentence
+MACCROBAT_26350418,658,664,4–5 mm,,mm,length,C0040137,Diagnosis,same_sentence
+MACCROBAT_26350418,831,840,9.7 mg/dl,9.7,mg/dl,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,856,870,8.4–10.4 mg/dL,,mg/dL,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,1001,1009,68 pg/mL,68,pg/mL,lab_concentration,C0543467,Treatment,same_sentence
+MACCROBAT_26350418,1059,1070,10–65 pg/mL,,pg/mL,lab_concentration,C1510438,Exam,same_sentence
+MACCROBAT_26350418,2009,2018,8.7 mg/dl,8.7,mg/dl,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,2035,2042,3 mg/dl,3,mg/dl,lab_concentration,C1601799,Treatment,same_sentence
+MACCROBAT_26350418,2136,2145,9.6 mg/dL,9.6,mg/dL,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,2150,2158,47 pg/mL,47,pg/mL,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,2339,2352,9.1–9.2 mg/dl,,mg/dl,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,2357,2368,38–44 pg/ml,,pg/ml,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_26350418,2415,2425,8–40 pg/mL,,pg/mL,lab_concentration,C1510438,Exam,same_sentence
+MACCROBAT_26361431,167,172,10 cm,10,cm,length,C0019187,Diagnosis,window_fallback
+MACCROBAT_26361431,228,232,5 cm,5,cm,length,C0019552,BodyPart,same_sentence
+MACCROBAT_26361431,382,390,227 IU/L,227,IU/L,lab_concentration,C0201885,Exam,same_sentence
+MACCROBAT_26361431,405,416,43-116 IU/L,,IU/L,lab_concentration,C0201885,Exam,same_sentence
+MACCROBAT_26361431,427,435,378 IU/L,378,IU/L,lab_concentration,C0023764,Treatment,same_sentence
+MACCROBAT_26361431,478,487,144 mg/dL,144,mg/dL,lab_concentration,C0242209,Treatment,same_sentence
+MACCROBAT_26361431,503,515,70-100 mg/dL,,mg/dL,lab_concentration,C0242209,Treatment,same_sentence
+MACCROBAT_26361431,588,596,178 IU/L,178,IU/L,lab_concentration,C0023901,Exam,same_sentence
+MACCROBAT_26361431,612,621,7-38 IU/L,,IU/L,lab_concentration,C0023901,Exam,same_sentence
+MACCROBAT_26361431,650,658,225 IU/L,225,IU/L,lab_concentration,C0023901,Exam,same_sentence
+MACCROBAT_26361431,674,683,4-43 IU/L,,IU/L,lab_concentration,C0023901,Exam,same_sentence
+MACCROBAT_26361431,718,726,370 IU/L,370,IU/L,lab_concentration,C0036776,Exam,same_sentence
+MACCROBAT_26361431,742,754,103-335 IU/L,,IU/L,lab_concentration,C0036776,Exam,same_sentence
+MACCROBAT_26361431,1264,1271,10.5 cm,10.5,cm,length,C0748861,Diagnosis,same_sentence
+MACCROBAT_26361431,1298,1302,7 cm,7,cm,length,C0006497,BodyPart,same_sentence
+MACCROBAT_26361431,1418,1421,50%,50,%,percentage,C0812425,Finding,same_sentence
+MACCROBAT_26361431,1575,1579,9 cm,9,cm,length,C0030274,BodyPart,same_sentence
+MACCROBAT_26361431,1582,1586,6 cm,6,cm,length,C0030274,BodyPart,same_sentence
+MACCROBAT_26361431,2004,2010,4.7 cm,4.7,cm,length,C0439663,Finding,same_sentence
+MACCROBAT_26361431,2325,2331,7.5 cm,7.5,cm,length,C0524471,BodyPart,window_fallback
+MACCROBAT_26361640,164,170,9.9 kg,9.9,kg,mass,C0033774,Symptom,same_sentence
+MACCROBAT_26361640,459,469,6.84 mg/dL,6.84,mg/dL,lab_concentration,C0009378,Exam,window_fallback
+MACCROBAT_26361640,490,500,9.18 mg/dL,9.18,mg/dL,lab_concentration,C0009378,Exam,window_fallback
+MACCROBAT_26361640,628,635,247 U/L,247,U/L,lab_concentration,C0525032,Finding,same_sentence
+MACCROBAT_26361640,645,651,33 U/L,33,U/L,lab_concentration,C0525032,Finding,same_sentence
+MACCROBAT_26361640,687,694,139 U/L,139,U/L,lab_concentration,C0428339,Exam,same_sentence
+MACCROBAT_26361640,704,710,32 U/L,32,U/L,lab_concentration,C0428339,Exam,same_sentence
+MACCROBAT_26361640,743,750,524 U/L,524,U/L,lab_concentration,C0428332,Exam,same_sentence
+MACCROBAT_26361640,765,772,104 U/L,104,U/L,lab_concentration,C0428332,Exam,same_sentence
+MACCROBAT_26361640,919,928,2.4 ng/mL,2.4,ng/mL,lab_concentration,C0428521,Exam,same_sentence
+MACCROBAT_26361640,938,945,5 ng/mL,5,ng/mL,lab_concentration,C0428521,Exam,same_sentence
+MACCROBAT_26361640,980,990,1880 mg/dL,1880,mg/dL,lab_concentration,C0428539,Exam,same_sentence
+MACCROBAT_26361640,1000,1009,640 mg/dL,640,mg/dL,lab_concentration,C0428539,Exam,same_sentence
+MACCROBAT_26361640,1082,1087,890 g,890,g,mass,C0202087,Exam,same_sentence
+MACCROBAT_26361640,1099,1102,3 g,3,g,mass,C0202087,Exam,same_sentence
+MACCROBAT_26361640,1260,1266,2.8 cm,2.8,cm,length,C0023884,BodyPart,same_sentence
+MACCROBAT_26361640,1270,1276,4.2 cm,4.2,cm,length,C0023884,BodyPart,same_sentence
+MACCROBAT_26395443,384,390,60mmHg,60,mmHg,pressure,C1272641,Finding,same_sentence
+MACCROBAT_26395443,407,412,98bpm,98,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_26395443,439,443,35°C,35,°C,temperature,C1531924,Finding,same_sentence
+MACCROBAT_26395443,562,570,12.3g/dL,12.3,g/dL,lab_concentration,C0425710,Finding,window_fallback
+MACCROBAT_26395443,675,682,98mg/dL,98,mg/dL,lab_concentration,C0016006,Treatment,same_sentence
+MACCROBAT_26395443,700,709,14.2mg/dL,14.2,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_26395443,728,736,3.4mg/dL,3.4,mg/dL,lab_concentration,C0201976,Exam,same_sentence
+MACCROBAT_26395443,777,783,306U/L,306,U/L,lab_concentration,C0201976,Exam,same_sentence
+MACCROBAT_26395443,822,828,302U/L,302,U/L,lab_concentration,C0201976,Exam,same_sentence
+MACCROBAT_26395443,851,858,11mEq/L,11,mEq/L,lab_concentration,C0005367,Treatment,same_sentence
+MACCROBAT_26395443,892,899,65mg/dL,65,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_26395443,918,928,1.02mmol/L,1.02,mmol/L,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_26395443,1690,1693,0mm,0,mm,length,C2361201,Exam,same_sentence
+MACCROBAT_26395443,1750,1754,4.0g,4.0,g,mass,C0040405,Exam,same_sentence
+MACCROBAT_26395443,2083,2089,2000mL,2000,mL,volume,C0429646,Finding,same_sentence
+MACCROBAT_26395443,2094,2099,200mL,200,mL,volume,C0429646,Finding,same_sentence
+MACCROBAT_26395443,2617,2623,3 days,3,days,time,C2712092,Finding,window_fallback
+MACCROBAT_26395443,2649,2655,3 days,3,days,time,C2712092,Finding,window_fallback
+MACCROBAT_26405496,13,21,31 years,31,years,time,,,none
+MACCROBAT_26405496,217,225,38 weeks,38,weeks,time,C1271104,Finding,same_sentence
+MACCROBAT_26405496,337,343,100 mm,100,mm,length,C0002928,Treatment,same_sentence
+MACCROBAT_26405496,426,434,12 hours,12,hours,time,C0002928,Treatment,window_fallback
+MACCROBAT_26405496,613,618,1 min,1,min,time,C0036572,Symptom,same_sentence
+MACCROBAT_26405496,776,783,90 mmHg,90,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_26405496,1117,1125,525 IU/L,525,IU/L,lab_concentration,C0023884,BodyPart,same_sentence
+MACCROBAT_26405496,1135,1143,214 IU/L,214,IU/L,lab_concentration,C0023884,BodyPart,same_sentence
+MACCROBAT_26405496,1175,1182,7 mg/dl,7,mg/dl,lab_concentration,C0235573,Diagnosis,same_sentence
+MACCROBAT_26405496,2403,2408,day 5,5,day,time,C0037567,Treatment,same_sentence_forward
+MACCROBAT_26444414,123,131,6.6 g/dl,6.6,g/dl,lab_concentration,C0002871,Diagnosis,window_fallback
+MACCROBAT_26444414,147,157,12–16 g/dl,,g/dl,lab_concentration,C0002871,Diagnosis,window_fallback
+MACCROBAT_26444414,342,346,2-cm,2,cm,length,C0040395,Exam,same_sentence
+MACCROBAT_26444414,419,423,2-cm,2,cm,length,C0442726,Finding,same_sentence
+MACCROBAT_26444414,525,530,20 cm,20,cm,length,C0022378,BodyPart,same_sentence
+MACCROBAT_26444414,962,967,16 mm,16,mm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_26444414,1153,1158,day 9,9,day,time,C0009566,Diagnosis,same_sentence_forward
+MACCROBAT_26445413,190,196,2.8 cm,2.8,cm,length,C0227614,BodyPart,window_fallback
+MACCROBAT_26445413,199,205,2.8 cm,2.8,cm,length,C0227614,BodyPart,window_fallback
+MACCROBAT_26445413,208,214,2.5 cm,2.5,cm,length,C0227614,BodyPart,window_fallback
+MACCROBAT_26445413,453,460,11.5 cm,11.5,cm,length,C0027695,Treatment,same_sentence
+MACCROBAT_26445413,463,469,6.5 cm,6.5,cm,length,C0027695,Treatment,same_sentence
+MACCROBAT_26445413,472,478,4.5 cm,4.5,cm,length,C0027695,Treatment,same_sentence
+MACCROBAT_26445413,534,540,3.5 cm,3.5,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_26445413,543,549,2.5 cm,2.5,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_26445413,552,558,2.2 cm,2.2,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_26445413,1162,1165,2 %,2,%,percentage,C0334094,Diagnosis,same_sentence
+MACCROBAT_26445413,1355,1359,2 cm,2,cm,length,C0000726,BodyPart,same_sentence
+MACCROBAT_26445413,1362,1368,1.8 cm,1.8,cm,length,C0000726,BodyPart,same_sentence
+MACCROBAT_26457578,92,99,3 years,3,years,time,C0025149,Diagnosis,same_sentence
+MACCROBAT_26457578,411,417,14-day,14,day,time,C1116439,BodyPart,window_fallback
+MACCROBAT_26457578,426,431,180mg,180,mg,mass,C1116439,BodyPart,window_fallback
+MACCROBAT_26457578,452,460,13-month,13,month,time,C1116439,BodyPart,window_fallback
+MACCROBAT_26457578,493,502,"17,360 mg","17,360",mg,mass,,,none
+MACCROBAT_26457578,504,513,"24,640 mg","24,640",mg,mass,,,none
+MACCROBAT_26457578,564,573,5.6 years,5.6,years,time,C0087111,Treatment,same_sentence
+MACCROBAT_26457578,582,589,6 years,6,years,time,C0087111,Treatment,window_fallback
+MACCROBAT_26457578,833,840,0.94 cm,0.94,cm,length,C0544452,Finding,same_sentence
+MACCROBAT_26457578,896,903,7 years,7,years,time,C0087111,Treatment,same_sentence
+MACCROBAT_26457578,905,911,0.3 mg,0.3,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_26457578,966,972,3.6 cm,3.6,cm,length,C0557899,Finding,same_sentence
+MACCROBAT_26457578,1141,1147,1.6 cm,1.6,cm,length,C0043262,BodyPart,same_sentence
+MACCROBAT_26457578,1286,1293,1.75 cm,1.75,cm,length,C0230415,BodyPart,same_sentence
+MACCROBAT_26457578,1329,1336,24.9 cm,24.9,cm,length,C4758646,BodyPart,same_sentence
+MACCROBAT_26457578,1350,1357,19.6 cm,19.6,cm,length,C0817321,BodyPart,same_sentence
+MACCROBAT_26457578,1381,1388,44.5 cm,44.5,cm,length,C0230415,BodyPart,same_sentence
+MACCROBAT_26457578,1401,1409,25.25 cm,25.25,cm,length,C0817320,BodyPart,same_sentence
+MACCROBAT_26457578,1422,1427,21 cm,21,cm,length,C0817322,BodyPart,same_sentence
+MACCROBAT_26457578,1454,1462,46.25 cm,46.25,cm,length,C0230416,BodyPart,same_sentence
+MACCROBAT_26457578,1500,1506,102 cm,102,cm,length,C0230416,BodyPart,window_fallback
+MACCROBAT_26457578,1532,1538,102 cm,102,cm,length,C0230416,BodyPart,window_fallback
+MACCROBAT_26457578,1652,1660,105.6 cm,105.6,cm,length,C0557899,Finding,same_sentence
+MACCROBAT_26457578,1716,1724,109.2 cm,109.2,cm,length,C0557899,Finding,same_sentence
+MACCROBAT_26469535,43,52,19 months,19,months,time,,,none
+MACCROBAT_26469535,836,844,1–2 days,,days,time,C4255126,Finding,same_sentence
+MACCROBAT_26469535,889,895,1 week,1,week,time,C1533685,Treatment,same_sentence
+MACCROBAT_26469535,900,907,2 weeks,2,weeks,time,C1533685,Treatment,same_sentence
+MACCROBAT_26469535,1091,1098,4 weeks,4,weeks,time,C1533685,Treatment,same_sentence_forward
+MACCROBAT_26469535,1138,1145,6 weeks,6,weeks,time,C1533685,Treatment,same_sentence
+MACCROBAT_26469535,1669,1676,2 weeks,2,weeks,time,C0002978,Exam,same_sentence
+MACCROBAT_26469535,1771,1778,4 weeks,4,weeks,time,C0035331,Treatment,same_sentence
+MACCROBAT_26469535,1828,1835,2 weeks,2,weeks,time,C0035331,Treatment,same_sentence
+MACCROBAT_26469535,1953,1960,6 weeks,6,weeks,time,C0035298,BodyPart,same_sentence
+MACCROBAT_26474553,29,36,1717-1G,,G,mass,C1285573,Exam,same_sentence_forward
+MACCROBAT_26474553,76,82,150 mg,150,mg,mass,C1285573,Exam,same_sentence
+MACCROBAT_26474553,127,135,9 months,9,months,time,C3264622,Treatment,window_fallback
+MACCROBAT_26474553,766,773,6 weeks,6,weeks,time,C3264621,Treatment,same_sentence_forward
+MACCROBAT_26474553,936,942,1.4 kg,1.4,kg,mass,C0010200,Symptom,window_fallback
+MACCROBAT_26474553,1083,1093,115 mmol/l,115,mmol/l,lab_concentration,C0428295,Exam,same_sentence
+MACCROBAT_26474553,1114,1123,40 mmol/l,40,mmol/l,lab_concentration,C3264621,Treatment,same_sentence
+MACCROBAT_26474553,1130,1137,6 weeks,6,weeks,time,C3264621,Treatment,same_sentence
+MACCROBAT_26474553,1142,1151,52 mmol/l,52,mmol/l,lab_concentration,C3264621,Treatment,same_sentence
+MACCROBAT_26474553,1158,1166,41 weeks,41,weeks,time,C3264621,Treatment,same_sentence
+MACCROBAT_26474553,1177,1186,30 mmol/l,30,mmol/l,lab_concentration,C3264621,Treatment,same_sentence
+MACCROBAT_26474553,1284,1292,41 weeks,41,weeks,time,C0860909,Finding,same_sentence
+MACCROBAT_26474553,1388,1395,6 weeks,6,weeks,time,C0087111,Treatment,window_fallback
+MACCROBAT_26474553,1410,1418,41 weeks,41,weeks,time,C3264621,Treatment,same_sentence_forward
+MACCROBAT_26523273,107,114,2 hours,2,hours,time,C0232492,Symptom,same_sentence
+MACCROBAT_26523273,310,317,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_26523273,451,454,70%,70,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_26523273,468,477,12.8 g/dL,12.8,g/dL,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_26523273,596,603,22 IU/L,22,IU/L,lab_concentration,C0525032,Finding,same_sentence
+MACCROBAT_26523273,630,637,12 IU/L,12,IU/L,lab_concentration,C0525032,Finding,same_sentence
+MACCROBAT_26523273,655,664,0.5 mg/dL,0.5,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_26523273,687,695,134 IU/L,134,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_26523273,719,727,295 IU/L,295,IU/L,lab_concentration,C1881354,Treatment,same_sentence
+MACCROBAT_26523273,759,766,26 IU/L,26,IU/L,lab_concentration,C1881354,Treatment,same_sentence
+MACCROBAT_26523273,788,796,4.0 g/dL,4.0,g/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_26523273,808,817,5.0 mg/dL,5.0,mg/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_26523273,855,864,0.7 mg/dL,0.7,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_26523273,968,973,20 IU,20,IU,dose_unit,C0019168,Treatment,same_sentence
+MACCROBAT_26523273,1053,1064,676.5 ng/mL,676.5,ng/mL,lab_concentration,,,none
+MACCROBAT_26523273,1161,1165,9 cm,9,cm,length,C0412620,Exam,same_sentence
+MACCROBAT_26523273,1488,1498,7.67 ng/mL,7.67,ng/mL,lab_concentration,C0206698,Diagnosis,window_fallback
+MACCROBAT_26523273,1627,1635,3 months,3,months,time,C1446539,Treatment,same_sentence
+MACCROBAT_26523273,1637,1645,3 months,3,months,time,C1446539,Treatment,window_fallback
+MACCROBAT_26523273,1712,1718,5.5 cm,5.5,cm,length,C0441633,Exam,same_sentence
+MACCROBAT_26523273,1822,1834,312.06 ng/mL,312.06,ng/mL,lab_concentration,C1627358,Treatment,same_sentence
+MACCROBAT_26523273,2992,2999,1 month,1,month,time,C0412620,Exam,same_sentence
+MACCROBAT_26523273,3039,3045,1.7 cm,1.7,cm,length,C0035110,Treatment,same_sentence
+MACCROBAT_26523273,3316,3328,162.69 ng/mL,162.69,ng/mL,lab_concentration,C0000726,BodyPart,window_fallback
+MACCROBAT_26523273,3376,3381,60 mg,60,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_26523273,3410,3416,600 mg,600,mg,mass,C0016360,Treatment,same_sentence
+MACCROBAT_26523273,3435,3441,1.5 mg,1.5,mg,mass,C0042679,Treatment,same_sentence
+MACCROBAT_26523273,3497,3503,4 week,4,week,time,C3665472,Treatment,same_sentence
+MACCROBAT_26523273,3515,3521,0.5 mg,0.5,mg,mass,C2939437,Treatment,same_sentence_forward
+MACCROBAT_26523273,3794,3803,254 ng/mL,254,ng/mL,lab_concentration,C4760449,Finding,same_sentence
+MACCROBAT_26523273,3857,3863,350 mg,350,mg,mass,C0079083,Treatment,same_sentence
+MACCROBAT_26523273,3886,3891,30 mg,30,mg,mass,C0079083,Treatment,same_sentence
+MACCROBAT_26523273,3902,3909,3 weeks,3,weeks,time,C0079083,Treatment,same_sentence
+MACCROBAT_26523273,4144,4157,1510.19 ng/mL,1510.19,ng/mL,lab_concentration,C0260835,Treatment,same_sentence
+MACCROBAT_26523273,4599,4602,20%,20,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_26523273,4610,4613,80%,80,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_26523273,4624,4632,3.6 g/dL,3.6,g/dL,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_26523273,4645,4653,2.3 g/dL,2.3,g/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_26523273,4703,4711,3.1 g/dL,3.1,g/dL,lab_concentration,C0523465,Exam,same_sentence
+MACCROBAT_26523273,4758,4766,0.8 g/dL,0.8,g/dL,lab_concentration,C2711642,Exam,same_sentence
+MACCROBAT_26523273,4842,4855,6881.93 ng/mL,6881.93,ng/mL,lab_concentration,C2242979,Exam,window_fallback
+MACCROBAT_26523273,5010,5017,1 month,1,month,time,C0034115,Treatment,same_sentence
+MACCROBAT_26530965,768,777,19 months,19,months,time,C0728747,Treatment,window_fallback
+MACCROBAT_26530965,1301,1310,12 months,12,months,time,C0677946,Finding,same_sentence
+MACCROBAT_26530965,1617,1625,4 months,4,months,time,C1306577,Finding,same_sentence
+MACCROBAT_26530965,1752,1761,19 months,19,months,time,C0729594,BodyPart,same_sentence
+MACCROBAT_26530965,1822,1829,3 years,3,years,time,C0004398,Exam,same_sentence
+MACCROBAT_26530965,2039,2047,500 days,500,days,time,C0549207,BodyPart,window_fallback
+MACCROBAT_26584481,323,329,119 mm,119,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_26584481,351,358,123 bpm,123,bpm,rate,C1271104,Finding,same_sentence
+MACCROBAT_26584481,1172,1179,24-hour,24,hour,time,C0001621,Diagnosis,same_sentence
+MACCROBAT_26584481,1433,1440,24-hour,24,hour,time,C0262613,Finding,window_fallback
+MACCROBAT_26584481,1602,1609,24-hour,24,hour,time,C0014563,Treatment,same_sentence
+MACCROBAT_26584481,1625,1631,468 μg,468,μg,other,C0028351,Treatment,same_sentence
+MACCROBAT_26584481,1656,1663,24-hour,24,hour,time,C0028351,Treatment,same_sentence
+MACCROBAT_26584481,1676,1681,13 μg,13,μg,other,C0014563,Treatment,same_sentence
+MACCROBAT_26584481,1704,1711,24-hour,24,hour,time,C0014563,Treatment,same_sentence
+MACCROBAT_26584481,1733,1739,658 μg,658,μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,1765,1772,24-hour,24,hour,time,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,1789,1797,"2,988 μg","2,988",μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,1823,1830,24-hour,24,hour,time,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,1850,1858,"3,013 μg","3,013",μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,2332,2337,77 mm,77,mm,length,C0018787,BodyPart,same_sentence
+MACCROBAT_26584481,2342,2348,78 bpm,78,bpm,rate,C0960908,Treatment,same_sentence
+MACCROBAT_26584481,2351,2358,24-hour,24,hour,time,C0960908,Treatment,same_sentence
+MACCROBAT_26584481,2429,2434,69 μg,69,μg,other,C0028351,Treatment,same_sentence
+MACCROBAT_26584481,2461,2467,221 μg,221,μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,2490,2496,202 μg,202,μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26584481,2525,2531,259 μg,259,μg,other,C0007412,Treatment,same_sentence
+MACCROBAT_26629302,35,42,1 month,1,month,time,,,none
+MACCROBAT_26629302,1667,1670,5cm,5,cm,length,C0450094,Finding,same_sentence_forward
+MACCROBAT_26664317,231,240,15 months,15,months,time,C0000921,Diagnosis,same_sentence
+MACCROBAT_26664317,614,621,40 days,40,days,time,C0507156,BodyPart,window_fallback
+MACCROBAT_26664317,761,768,4 weeks,4,weeks,time,C0018808,Finding,window_fallback
+MACCROBAT_26664317,1966,1972,6–7 mm,,mm,length,C0043246,Diagnosis,same_sentence
+MACCROBAT_26664317,2347,2352,30-mm,30,mm,length,C0043246,Diagnosis,same_sentence
+MACCROBAT_26670309,202,208,1 year,1,year,time,C0015672,Symptom,same_sentence
+MACCROBAT_26670309,450,457,3 years,3,years,time,C0553895,Treatment,same_sentence
+MACCROBAT_26670309,568,577,18 months,18,months,time,C0039232,Diagnosis,same_sentence
+MACCROBAT_26670309,738,744,100 mg,100,mg,mass,C0054836,Treatment,same_sentence_forward
+MACCROBAT_26670309,761,766,50 mg,50,mg,mass,C0054836,Treatment,same_sentence
+MACCROBAT_26670309,785,790,10 mg,10,mg,mass,C0054836,Treatment,same_sentence
+MACCROBAT_26670309,809,814,25 mg,25,mg,mass,C0126174,Treatment,same_sentence
+MACCROBAT_26670309,985,989,62 %,62,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_26670309,1114,1121,50 mmHg,50,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_26670309,2914,2919,48 °C,48,°C,temperature,C0185125,Treatment,same_sentence
+MACCROBAT_26670309,2985,2989,10 %,10,%,percentage,C0185125,Treatment,same_sentence
+MACCROBAT_26670309,3043,3048,17 ml,17,ml,volume,C0022100,Treatment,same_sentence
+MACCROBAT_26670309,3457,3465,6 months,6,months,time,C0007430,Treatment,same_sentence
+MACCROBAT_26670309,3538,3545,3-month,3,month,time,C0007430,Treatment,window_fallback
+MACCROBAT_26670309,3823,3831,6 months,6,months,time,C0034052,BodyPart,window_fallback
+MACCROBAT_26675562,217,222,24-mm,24,mm,length,C0035139,Treatment,same_sentence
+MACCROBAT_26675562,304,312,6 months,6,months,time,C0003504,Diagnosis,same_sentence_forward
+MACCROBAT_26675562,363,370,8 years,8,years,time,C0003504,Diagnosis,window_fallback
+MACCROBAT_26675562,639,645,40–45%,,%,percentage,C0042508,Exam,same_sentence
+MACCROBAT_26675562,725,730,42 mm,42,mm,length,C0225897,BodyPart,same_sentence
+MACCROBAT_26675562,1454,1459,21 mm,21,mm,length,C0014118,Diagnosis,window_fallback
+MACCROBAT_26675562,1517,1523,41 min,41,min,time,C0429123,Finding,same_sentence_forward
+MACCROBAT_26675562,1565,1571,64 min,64,min,time,C0429123,Finding,same_sentence
+MACCROBAT_26675562,1824,1831,20 mmHg,20,mmHg,pressure,C0013516,Exam,same_sentence
+MACCROBAT_26675562,1847,1850,33%,33,%,percentage,C0013516,Exam,same_sentence
+MACCROBAT_26675562,1885,1893,3 months,3,months,time,C0013516,Exam,same_sentence
+MACCROBAT_26675562,2013,2020,22 mmHg,22,mmHg,pressure,C0543467,Treatment,same_sentence
+MACCROBAT_26675562,2062,2065,47%,47,%,percentage,C0543467,Treatment,same_sentence
+MACCROBAT_26683938,122,128,3 days,3,days,time,C0013404,Symptom,same_sentence
+MACCROBAT_26683938,1186,1196,10.8 mg/dL,10.8,mg/dL,lab_concentration,C0002871,Diagnosis,same_sentence
+MACCROBAT_26683938,1212,1215,34%,34,%,percentage,C0018935,Exam,same_sentence
+MACCROBAT_26683938,2908,2915,week 10,10,week,time,C0032181,Exam,same_sentence
+MACCROBAT_26692730,461,467,108 cm,108,cm,length,C4520890,Finding,window_fallback
+MACCROBAT_26692730,816,821,12 mm,12,mm,length,C4521130,Finding,same_sentence
+MACCROBAT_26714786,96,104,50 years,50,years,time,C3809715,Symptom,same_sentence
+MACCROBAT_26714786,690,699,12 months,12,months,time,C0014591,Diagnosis,same_sentence
+MACCROBAT_26714786,1043,1047,75 g,75,g,mass,C0005841,Treatment,window_fallback
+MACCROBAT_26714786,1060,1071,120 – 160 g,,g,mass,C0005841,Treatment,window_fallback
+MACCROBAT_26714786,2470,2474,3 cm,3,cm,length,C4050026,Treatment,window_fallback
+MACCROBAT_26714786,2514,2518,2 cm,2,cm,length,,,none
+MACCROBAT_26714786,2818,2822,2 mL,2,mL,volume,C0015982,Treatment,same_sentence_forward
+MACCROBAT_26714786,3312,3320,6 months,6,months,time,C0014591,Diagnosis,window_fallback
+MACCROBAT_26714786,3372,3377,102 g,102,g,mass,C0589124,Finding,same_sentence
+MACCROBAT_26714786,3421,3429,4 months,4,months,time,C1879316,Treatment,same_sentence
+MACCROBAT_26714786,3526,3531,100 g,100,g,mass,C1879316,Treatment,same_sentence
+MACCROBAT_26714786,3567,3574,6 month,6,month,time,C0449820,Finding,same_sentence
+MACCROBAT_27004009,175,179,8 kg,8,kg,mass,C1262477,Finding,same_sentence
+MACCROBAT_27004009,314,322,10 years,10,years,time,C0017154,Diagnosis,same_sentence
+MACCROBAT_27004009,502,507,106 g,106,g,mass,C0018941,Exam,same_sentence
+MACCROBAT_27004009,1723,1727,3 cm,3,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_27004009,1730,1734,6 cm,6,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_27004009,1879,1883,1 cm,1,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_27004009,1886,1890,1 cm,1,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_27057898,91,98,10 days,10,days,time,C0008031,Symptom,same_sentence
+MACCROBAT_27057898,417,420,90%,90,%,percentage,C0085532,Exam,same_sentence
+MACCROBAT_27057898,666,672,5 days,5,days,time,C5970187,Treatment,window_fallback
+MACCROBAT_27057898,884,889,50 mm,50,mm,length,C0231239,Symptom,same_sentence
+MACCROBAT_27059701,163,169,1 week,1,week,time,C0015967,Symptom,same_sentence
+MACCROBAT_27059701,298,302,3 cm,3,cm,length,C0230186,BodyPart,same_sentence
+MACCROBAT_27059701,603,609,1.8 cm,1.8,cm,length,C0009437,BodyPart,same_sentence
+MACCROBAT_27059701,1630,1636,1.4 cm,1.4,cm,length,C0016823,BodyPart,same_sentence
+MACCROBAT_27059701,2210,2217,2 years,2,years,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_27064109,94,100,2-week,2,week,time,C0264714,Diagnosis,same_sentence
+MACCROBAT_27064109,509,513,5 mm,5,mm,length,C1623258,Exam,same_sentence
+MACCROBAT_27064109,841,850,901 pg/mL,901,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27064109,880,886,000 IU,000,IU,dose_unit,C0054015,Treatment,same_sentence
+MACCROBAT_27064109,1024,1034,14.3 mg/dL,14.3,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27064109,1085,1095,0.90 mg/dL,0.90,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27064109,1141,1150,0.2 mg/dL,0.2,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27064109,1193,1199,7.0 μg,7.0,μg,other,C0011560,Diagnosis,same_sentence
+MACCROBAT_27064109,1234,1244,0.07 ng/mL,0.07,ng/mL,lab_concentration,C0011560,Diagnosis,same_sentence
+MACCROBAT_27064109,1671,1676,12 mm,12,mm,length,C0149721,Diagnosis,same_sentence
+MACCROBAT_27064109,1790,1793,60%,60,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_27064109,2115,2120,day 1,1,day,time,C0439775,Treatment,window_fallback
+MACCROBAT_27064109,2231,2236,day 3,3,day,time,C0012798,Treatment,window_fallback
+MACCROBAT_27064109,2423,2428,day 4,4,day,time,C0016540,BodyPart,window_fallback
+MACCROBAT_27064109,3726,3732,day 10,10,day,time,C0268381,Diagnosis,window_fallback
+MACCROBAT_27064109,3802,3809,6-month,6,month,time,,,none
+MACCROBAT_27100441,699,704,75 mm,75,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_27100441,779,785,36.6°C,36.6,°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_27100441,930,936,1.0 cm,1.0,cm,length,C0443235,Treatment,same_sentence
+MACCROBAT_27100441,1019,1027,30 years,30,years,time,C0455527,Finding,same_sentence
+MACCROBAT_27100441,1108,1114,110 mm,110,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_27100441,2856,2864,0.714 μg,0.714,μg,other,C0429103,Finding,window_fallback
+MACCROBAT_27100441,2882,2891,0–0.06 μg,,μg,other,C0054015,Treatment,same_sentence_forward
+MACCROBAT_27100441,2939,2952,466.530 pg/mL,466.530,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27100441,2968,2979,0–100 pg/mL,,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27100441,3006,3015,8.14 mg/L,8.14,mg/L,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27100441,3031,3042,0–0.55 mg/L,,mg/L,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27100441,3066,3078,11.69 mmol/L,11.69,mmol/L,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27100441,3094,3110,2.90–7.20 mmol/L,,mmol/L,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27100441,3302,3310,57.90 mL,57.90,mL,volume,C0455272,Exam,same_sentence
+MACCROBAT_27100441,3331,3336,80 mL,80,mL,volume,C0455272,Exam,same_sentence
+MACCROBAT_27100441,3724,3727,55%,55,%,percentage,C0392756,Finding,same_sentence
+MACCROBAT_27100441,4144,4152,23.75 mg,23.75,mg,mass,C0724633,Treatment,same_sentence
+MACCROBAT_27100441,4179,4185,200 mg,200,mg,mass,C0002598,Treatment,same_sentence
+MACCROBAT_27100441,4212,4217,20 mg,20,mg,mass,C0002598,Treatment,same_sentence
+MACCROBAT_27100441,4265,4271,2.52 g,2.52,g,mass,C0986198,Treatment,same_sentence
+MACCROBAT_27100441,5123,5128,day 9,9,day,time,C0438953,Finding,same_sentence
+MACCROBAT_27100441,5195,5203,23.75 mg,23.75,mg,mass,C0724633,Treatment,same_sentence
+MACCROBAT_27100441,5252,5258,200 mg,200,mg,mass,C0700442,Treatment,same_sentence
+MACCROBAT_27100441,5297,5302,40 mg,40,mg,mass,C0037982,Treatment,same_sentence
+MACCROBAT_27100441,5348,5353,10 mg,10,mg,mass,C0733440,Treatment,same_sentence
+MACCROBAT_27100441,5396,5404,3 months,3,months,time,C0733440,Treatment,window_fallback
+MACCROBAT_27130218,31,38,40 week,40,week,time,,,none
+MACCROBAT_27130218,803,810,40 mmHg,40,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_27130218,912,918,0.5 mg,0.5,mg,mass,C0028351,Treatment,same_sentence
+MACCROBAT_27130218,944,948,7 μg,7,μg,other,C0012963,Treatment,same_sentence
+MACCROBAT_27130218,1004,1008,70 %,70,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_27130218,1375,1380,80 mg,80,mg,mass,C0016860,Treatment,same_sentence
+MACCROBAT_27130218,1451,1458,12 days,12,days,time,C1444662,Finding,same_sentence
+MACCROBAT_27130218,1553,1559,"1,5 mm","1,5",mm,length,C0520886,Finding,same_sentence
+MACCROBAT_27130218,1619,1623,1 mm,1,mm,length,C0520887,Finding,same_sentence
+MACCROBAT_27130218,1704,1713,908 pg/ml,908,pg/ml,lab_concentration,C3842090,Finding,window_fallback
+MACCROBAT_27130218,1729,1737,14 pg/ml,14,pg/ml,lab_concentration,C3842090,Finding,window_fallback
+MACCROBAT_27130218,1752,1762,6236 pg/ml,6236,pg/ml,lab_concentration,C3842090,Finding,window_fallback
+MACCROBAT_27130218,1778,1787,125 pg/ml,125,pg/ml,lab_concentration,,,none
+MACCROBAT_27130218,2015,2019,30 %,30,%,percentage,C2700378,Finding,same_sentence
+MACCROBAT_27130218,2327,2333,3 days,3,days,time,C1719472,Diagnosis,window_fallback
+MACCROBAT_27130218,2629,2636,15 days,15,days,time,C0024485,Exam,window_fallback
+MACCROBAT_27130218,2667,2676,12- month,12,month,time,C0589120,Finding,same_sentence_forward
+MACCROBAT_27196481,329,334,44.9%,44.9,%,percentage,,,none
+MACCROBAT_27196481,2122,2130,3 months,3,months,time,C3652465,Treatment,same_sentence
+MACCROBAT_27218632,216,224,4 months,4,months,time,C0031066,BodyPart,same_sentence
+MACCROBAT_27218632,1923,1928,29 ug,29,ug,mass,C0373748,Exam,same_sentence
+MACCROBAT_27218632,1946,1955,56-134 ug,,ug,mass,C0373748,Exam,same_sentence
+MACCROBAT_27218632,2179,2184,90 ug,90,ug,mass,C0373748,Exam,same_sentence
+MACCROBAT_27661040,308,315,2 years,2,years,time,C0023176,Diagnosis,same_sentence
+MACCROBAT_27661040,385,391,1 year,1,year,time,C0424945,Finding,same_sentence
+MACCROBAT_27661040,676,682,219 μg,219,μg,other,C0023176,Diagnosis,same_sentence
+MACCROBAT_27661040,746,753,3 weeks,3,weeks,time,C5243901,Treatment,window_fallback
+MACCROBAT_27661040,881,889,113.2 μg,113.2,μg,other,C0232488,Finding,same_sentence
+MACCROBAT_27661040,928,934,4 days,4,days,time,C0013618,Treatment,same_sentence
+MACCROBAT_27661040,1341,1346,45 kg,45,kg,mass,C0030247,Exam,same_sentence
+MACCROBAT_27661040,1439,1448,10.9 g/dl,10.9,g/dl,lab_concentration,C0002884,Diagnosis,same_sentence
+MACCROBAT_27661040,1468,1473,31.6%,31.6,%,percentage,C0018935,Exam,same_sentence
+MACCROBAT_27661040,1588,1597,158.9 U/L,158.9,U/L,lab_concentration,C0023884,BodyPart,same_sentence
+MACCROBAT_27661040,1634,1640,63 U/L,63,U/L,lab_concentration,C0023884,BodyPart,same_sentence
+MACCROBAT_27661040,1676,1683,128 U/L,128,U/L,lab_concentration,C0023884,BodyPart,same_sentence
+MACCROBAT_27661040,1741,1752,1.432 mg/dL,1.432,mg/dL,lab_concentration,C0268307,Diagnosis,same_sentence
+MACCROBAT_27661040,1773,1783,132 mmol/L,132,mmol/L,lab_concentration,C0020625,Diagnosis,same_sentence
+MACCROBAT_27661040,1809,1820,2.85 mmol/L,2.85,mmol/L,lab_concentration,C0020621,Finding,same_sentence
+MACCROBAT_27661040,1858,1864,156 mm,156,mm,length,C1272641,Finding,same_sentence
+MACCROBAT_27661040,1891,1896,96 mm,96,mm,length,C1272641,Finding,same_sentence
+MACCROBAT_27661040,1926,1934,66.28 μg,66.28,μg,other,C0524167,Exam,same_sentence
+MACCROBAT_27661040,1959,1967,419.7 μg,419.7,μg,other,C0524167,Exam,same_sentence
+MACCROBAT_27661040,1979,1984,50 μg,50,μg,other,C0524167,Exam,same_sentence
+MACCROBAT_27661040,2035,2044,7.66 mg/L,7.66,mg/L,lab_concentration,C0002563,Treatment,same_sentence
+MACCROBAT_27661040,2054,2062,4.5 mg/L,4.5,mg/L,lab_concentration,C0002563,Treatment,same_sentence
+MACCROBAT_27661040,2760,2768,24 hours,24,hours,time,C1321013,Finding,same_sentence
+MACCROBAT_27661040,3410,3416,3 days,3,days,time,C0521654,Finding,window_fallback
+MACCROBAT_27661040,3644,3651,10 days,10,days,time,C0449381,Finding,same_sentence
+MACCROBAT_27661040,3810,3818,45.57 μg,45.57,μg,other,C0013618,Treatment,window_fallback
+MACCROBAT_27661040,3847,3855,836.4 μg,836.4,μg,other,C0013618,Treatment,window_fallback
+MACCROBAT_27661040,3974,3981,14 days,14,days,time,C2348813,Exam,window_fallback
+MACCROBAT_27661040,4309,4318,24 months,24,months,time,,,none
+MACCROBAT_27683825,261,267,1 year,1,year,time,C0232989,Finding,window_fallback
+MACCROBAT_27683825,346,355,22 months,22,months,time,C0234964,Finding,same_sentence_forward
+MACCROBAT_27683825,398,405,3 years,3,years,time,C0393906,Diagnosis,same_sentence_forward
+MACCROBAT_27683825,586,594,10 years,10,years,time,C0023520,Diagnosis,window_fallback
+MACCROBAT_27683825,1084,1092,19 years,19,years,time,C2712089,Finding,same_sentence_forward
+MACCROBAT_27683825,1613,1619,2.9 mM,2.9,mM,length,C0376261,Treatment,same_sentence
+MACCROBAT_27741115,359,364,70 mm,70,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_27741115,381,385,39°C,39,°C,temperature,C1271104,Finding,same_sentence
+MACCROBAT_27741115,2454,2457,14%,14,%,percentage,C0009450,Diagnosis,same_sentence
+MACCROBAT_27741115,2477,2479,5%,5,%,percentage,C0009450,Diagnosis,same_sentence
+MACCROBAT_27741115,2670,2677,1 month,1,month,time,C1444662,Finding,same_sentence
+MACCROBAT_27741115,2817,2823,375 mg,375,mg,mass,C0393022,Treatment,same_sentence
+MACCROBAT_27741115,2847,2853,750 mg,750,mg,mass,C0010583,Treatment,same_sentence
+MACCROBAT_27741115,2878,2883,40 mg,40,mg,mass,C0011777,Treatment,same_sentence
+MACCROBAT_27741115,2893,2898,day 1,1,day,time,C0011777,Treatment,same_sentence
+MACCROBAT_27741115,2902,2907,day 4,4,day,time,C0011777,Treatment,same_sentence
+MACCROBAT_27741115,3046,3053,3 weeks,3,weeks,time,C0032113,Treatment,window_fallback
+MACCROBAT_27741115,3177,3186,825 pg/mL,825,pg/mL,lab_concentration,C0078058,Treatment,same_sentence
+MACCROBAT_27741115,3246,3253,43 days,43,days,time,C3665472,Treatment,window_fallback
+MACCROBAT_27749582,1435,1442,0.93 μg,0.93,μg,other,C0020268,Treatment,same_sentence
+MACCROBAT_27749582,1458,1468,5.00 pg/mL,5.00,pg/mL,lab_concentration,C0001655,Treatment,same_sentence
+MACCROBAT_27749582,1753,1763,5.9 mmol/L,5.9,mmol/L,lab_concentration,C0428568,Exam,same_sentence
+MACCROBAT_27749582,2119,2125,1 year,1,year,time,C0087111,Treatment,window_fallback
+MACCROBAT_27749582,2304,2312,4 months,4,months,time,C0424092,Finding,same_sentence
+MACCROBAT_27749582,2742,2748,12.43%,12.43,%,percentage,C0591126,Treatment,window_fallback
+MACCROBAT_27749582,2766,2778,15.11–26.91%,,%,percentage,C0591126,Treatment,window_fallback
+MACCROBAT_27773410,261,271,0.01 ng/ml,0.01,ng/ml,lab_concentration,C0240859,Finding,window_fallback
+MACCROBAT_27773410,285,294,4.6 ng/ml,4.6,ng/ml,lab_concentration,C0948089,Diagnosis,same_sentence_forward
+MACCROBAT_27773410,362,372,1230 pg/ml,1230,pg/ml,lab_concentration,C0948089,Diagnosis,window_fallback
+MACCROBAT_27773410,462,465,10%,10,%,percentage,C0700124,Finding,same_sentence_forward
+MACCROBAT_27773410,557,562,70 mm,70,mm,length,C0048701,Treatment,same_sentence
+MACCROBAT_27773410,648,654,3 days,3,days,time,C0002978,Exam,same_sentence
+MACCROBAT_27773410,910,916,1 week,1,week,time,C0202930,Exam,same_sentence_forward
+MACCROBAT_27773410,1073,1077,2.4%,2.4,%,percentage,C0178784,BodyPart,window_fallback
+MACCROBAT_27773410,1147,1150,15%,15,%,percentage,C0048701,Treatment,same_sentence_forward
+MACCROBAT_27773410,1175,1180,30 mm,30,mm,length,C0048701,Treatment,same_sentence
+MACCROBAT_27773410,2121,2127,2 days,2,days,time,C0003842,BodyPart,window_fallback
+MACCROBAT_27773410,2189,2192,20%,20,%,percentage,C0013516,Exam,same_sentence
+MACCROBAT_27773410,2374,2377,30%,30,%,percentage,C0013516,Exam,same_sentence
+MACCROBAT_27793101,240,247,4 years,4,years,time,C0226031,BodyPart,same_sentence
+MACCROBAT_27793101,557,561,90 %,90,%,percentage,C0085532,Exam,same_sentence
+MACCROBAT_27793101,1212,1217,15-mm,15,mm,length,C0221198,Finding,window_fallback
+MACCROBAT_27793101,1359,1364,28-mm,28,mm,length,C0333288,Diagnosis,window_fallback
+MACCROBAT_27793101,1528,1533,15-mm,15,mm,length,C0700124,Finding,same_sentence
+MACCROBAT_27793101,1743,1748,28-mm,28,mm,length,C0002996,Treatment,same_sentence
+MACCROBAT_27793101,1789,1795,3.0 mm,3.0,mm,length,C0011209,Treatment,same_sentence
+MACCROBAT_27793101,1798,1803,15-mm,15,mm,length,C0011209,Treatment,same_sentence
+MACCROBAT_27793101,2731,2736,40-mm,40,mm,length,C0040405,Exam,same_sentence
+MACCROBAT_27821134,65,73,49 years,49,years,time,,,none
+MACCROBAT_27821134,303,307,75 %,75,%,percentage,C0518214,Finding,window_fallback
+MACCROBAT_27821134,624,633,1112.5 mg,1112.5,mg,mass,C0543467,Treatment,same_sentence
+MACCROBAT_27821134,650,656,150 mg,150,mg,mass,C0023570,Treatment,same_sentence
+MACCROBAT_27821134,2471,2475,95 %,95,%,percentage,C0034108,Exam,same_sentence
+MACCROBAT_27821134,3471,3476,50 mg,50,mg,mass,C0443235,Treatment,window_fallback
+MACCROBAT_27821134,3988,3994,7 days,7,days,time,C0443235,Treatment,same_sentence
+MACCROBAT_27842595,53,60,1-month,1,month,time,C0012359,Diagnosis,same_sentence_forward
+MACCROBAT_27842595,241,252,335.2 ng/mL,335.2,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_27842595,263,270,5 ng/mL,5,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_27842595,480,485,15 cm,15,cm,length,C0040405,Exam,same_sentence
+MACCROBAT_27842595,872,879,2 weeks,2,weeks,time,C0013604,Diagnosis,same_sentence
+MACCROBAT_27842595,1337,1344,3800 mL,3800,mL,volume,C0230259,BodyPart,window_fallback
+MACCROBAT_27842595,2300,2307,2 weeks,2,weeks,time,C0069717,Treatment,same_sentence
+MACCROBAT_27842595,2312,2320,5 months,5,months,time,C0069717,Treatment,same_sentence
+MACCROBAT_27842595,2325,2334,29 months,29,months,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_27842595,2435,2444,78 months,78,months,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_27842605,2195,2200,42 mm,42,mm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_27842605,2337,2342,37 mm,37,mm,length,C1305372,BodyPart,same_sentence
+MACCROBAT_27842605,3493,3499,70–80%,,%,percentage,C0334094,Diagnosis,same_sentence
+MACCROBAT_27842605,4159,4164,day 1,1,day,time,C0079083,Treatment,same_sentence
+MACCROBAT_27842605,4180,4187,21 days,21,days,time,C0079083,Treatment,same_sentence
+MACCROBAT_27842605,4204,4209,80 mg,80,mg,mass,C0015133,Treatment,same_sentence
+MACCROBAT_27842605,4216,4222,days 1,1,days,time,C0015133,Treatment,same_sentence
+MACCROBAT_27842605,4248,4255,21 days,21,days,time,C0015133,Treatment,same_sentence
+MACCROBAT_27842605,4373,4381,4 months,4,months,time,C2825055,Diagnosis,same_sentence_forward
+MACCROBAT_27842605,4574,4579,24 mg,24,mg,mass,C3665472,Treatment,same_sentence
+MACCROBAT_27842605,4586,4592,days 1,1,days,time,C3665472,Treatment,same_sentence
+MACCROBAT_27842605,4618,4625,21 days,21,days,time,C3665472,Treatment,same_sentence
+MACCROBAT_27842605,4836,4844,8 months,8,months,time,C1335499,Diagnosis,same_sentence
+MACCROBAT_27846860,728,735,90 mmHg,90,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_27846860,766,771,98 °F,98,°F,temperature,C1271104,Finding,same_sentence
+MACCROBAT_27846860,1038,1046,13 mg/dl,13,mg/dl,lab_concentration,C0201976,Exam,same_sentence
+MACCROBAT_27846860,1059,1068,293 mg/dl,293,mg/dl,lab_concentration,C0041942,Treatment,same_sentence
+MACCROBAT_27846860,1112,1119,249 U/L,249,U/L,lab_concentration,C0201885,Exam,same_sentence
+MACCROBAT_27846860,1137,1144,100 U/L,100,U/L,lab_concentration,C0201885,Exam,same_sentence
+MACCROBAT_27846860,1160,1167,227 U/L,227,U/L,lab_concentration,C0023764,Treatment,same_sentence
+MACCROBAT_27846860,1179,1188,13–60 U/L,,U/L,lab_concentration,C0023764,Treatment,same_sentence
+MACCROBAT_27846860,1236,1245,0.9 mg/dl,0.9,mg/dl,lab_concentration,C0438235,Finding,same_sentence
+MACCROBAT_27846860,1272,1278,38 U/L,38,U/L,lab_concentration,C1648700,Treatment,same_sentence
+MACCROBAT_27846860,1307,1313,35 U/L,35,U/L,lab_concentration,C1648700,Treatment,same_sentence
+MACCROBAT_27846860,1336,1343,122 U/L,122,U/L,lab_concentration,C1648700,Treatment,same_sentence
+MACCROBAT_27846860,1359,1363,37 g,37,g,mass,C0523465,Exam,same_sentence
+MACCROBAT_27846860,1386,1396,5.1 mmol/L,5.1,mmol/L,lab_concentration,C0032821,Treatment,same_sentence
+MACCROBAT_27846860,1419,1428,19 mmol/L,19,mmol/L,lab_concentration,C0005367,Treatment,same_sentence
+MACCROBAT_27846860,1457,1466,173 mg/dl,173,mg/dl,lab_concentration,C0005367,Treatment,same_sentence
+MACCROBAT_27846860,2367,2370,1 g,1,g,mass,C0025815,Treatment,same_sentence
+MACCROBAT_27846860,2400,2406,3 days,3,days,time,C0025815,Treatment,same_sentence
+MACCROBAT_27846860,3052,3061,16 months,16,months,time,C1546956,Finding,same_sentence
+MACCROBAT_27904130,154,162,65 years,65,years,time,C0005400,BodyPart,window_fallback
+MACCROBAT_27904130,766,777,780.2 ng/ml,780.2,ng/ml,lab_concentration,C0728940,Treatment,window_fallback
+MACCROBAT_27904130,899,904,27 mm,27,mm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_27904130,2794,2799,day 8,8,day,time,C0025483,BodyPart,window_fallback
+MACCROBAT_27904130,3425,3434,13 months,13,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_27906105,184,191,10 days,10,days,time,C0000737,Symptom,same_sentence
+MACCROBAT_27906105,297,304,136 U/L,136,U/L,lab_concentration,C0002712,Treatment,same_sentence
+MACCROBAT_27906105,323,333,6.37 mg/dL,6.37,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_27906105,360,370,5.30 mg/dL,5.30,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_27906105,520,524,3 cm,3,cm,length,C0018670,BodyPart,same_sentence
+MACCROBAT_27906105,804,810,2.6 cm,2.6,cm,length,C0221198,Finding,same_sentence
+MACCROBAT_27906105,960,963,22G,22,G,mass,C1880510,Exam,same_sentence
+MACCROBAT_27928148,1014,1020,36.8°C,36.8,°C,temperature,C0040861,Treatment,same_sentence
+MACCROBAT_27928148,1041,1047,100 mm,100,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_27928148,1152,1155,95%,95,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_27974938,216,223,4 hours,4,hours,time,C6022470,Finding,same_sentence
+MACCROBAT_27974938,1467,1473,80mmHg,80,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_27974938,1535,1541,"36,8°C","36,8",°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_27974938,2237,2246,"9,11 mmol","9,11",mmol,dose_unit,C0580545,Finding,same_sentence
+MACCROBAT_27974938,2264,2275,"3,9-5,8mmol",,mmol,dose_unit,C0580545,Finding,same_sentence
+MACCROBAT_27974938,2298,2306,"0,69mmol","0,69",mmol,dose_unit,C0201976,Exam,same_sentence
+MACCROBAT_27974938,2317,2328,"0,5-0,9mmol",,mmol,dose_unit,C0201976,Exam,same_sentence
+MACCROBAT_27974938,2358,2365,"5,2mmol","5,2",mmol,dose_unit,C0587184,Exam,same_sentence
+MACCROBAT_27974938,2385,2393,"5,2 mmol","5,2",mmol,dose_unit,C0587184,Exam,same_sentence
+MACCROBAT_27974938,4742,4748,7 days,7,days,time,C2741638,Diagnosis,window_fallback
+MACCROBAT_27974938,5305,5313,6 months,6,months,time,C2984081,Finding,window_fallback
+MACCROBAT_27974938,5372,5380,6 months,6,months,time,,,none
+MACCROBAT_27974938,5470,5478,6 months,6,months,time,C0589120,Finding,same_sentence
+MACCROBAT_27980261,229,237,50 years,50,years,time,C0035648,Finding,same_sentence
+MACCROBAT_27980261,477,482,50-mm,50,mm,length,C0011923,Exam,same_sentence
+MACCROBAT_27980261,899,903,6 cm,6,cm,length,C0040405,Exam,same_sentence
+MACCROBAT_27980272,704,709,23 kg,23,kg,mass,,,none
+MACCROBAT_27980272,861,865,5 mg,5,mg,mass,C2717539,Treatment,window_fallback
+MACCROBAT_27980272,974,979,30 mg,30,mg,mass,C1098320,Treatment,same_sentence
+MACCROBAT_27980272,1201,1207,165 cm,165,cm,length,C0013227,Treatment,window_fallback
+MACCROBAT_27980272,1226,1231,47 kg,47,kg,mass,C0013227,Treatment,window_fallback
+MACCROBAT_27980272,1256,1261,17 kg,17,kg,mass,,,none
+MACCROBAT_27980272,1339,1346,81 mmHg,81,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_27980272,1428,1431,98%,98,%,percentage,C0034108,Exam,same_sentence
+MACCROBAT_27980272,2094,2103,12.5 g/dL,12.5,g/dL,lab_concentration,C0019029,Exam,same_sentence
+MACCROBAT_27980272,2179,2188,136 mEq/L,136,mEq/L,lab_concentration,C0428291,Exam,same_sentence
+MACCROBAT_27980272,2207,2216,3.8 mEq/L,3.8,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,2234,2243,103 mEq/L,103,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,2257,2262,57 μg,57,μg,other,C0337439,Exam,same_sentence
+MACCROBAT_27980272,2284,2293,64-187 μg,,μg,other,C0337439,Exam,same_sentence
+MACCROBAT_27980272,2315,2324,366 ng/mL,366,ng/mL,lab_concentration,C0373607,Exam,same_sentence
+MACCROBAT_27980272,2343,2355,50-200 ng/mL,,ng/mL,lab_concentration,C0373607,Exam,same_sentence
+MACCROBAT_27980272,2398,2409,125.3 pg/mL,125.3,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27980272,2429,2439,18.4 pg/mL,18.4,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_27980272,2464,2471,8 ng/mL,8,ng/mL,lab_concentration,C0039840,Treatment,same_sentence
+MACCROBAT_27980272,2490,2501,24-66 ng/mL,,ng/mL,lab_concentration,C0039840,Treatment,same_sentence
+MACCROBAT_27980272,2591,2596,40.8%,40.8,%,percentage,C0817096,BodyPart,same_sentence
+MACCROBAT_27980272,3133,3140,10 days,10,days,time,C1444662,Finding,same_sentence
+MACCROBAT_27980272,3300,3304,3 kg,3,kg,mass,C0043094,Finding,same_sentence
+MACCROBAT_27980272,3565,3572,90 mmHg,90,mmHg,pressure,C0497247,Finding,same_sentence
+MACCROBAT_27980272,3789,3794,2-day,2,day,time,C0021853,BodyPart,same_sentence
+MACCROBAT_27980272,3871,3876,47 kg,47,kg,mass,C5574742,Finding,same_sentence
+MACCROBAT_27980272,3910,3917,3 weeks,3,weeks,time,C5574742,Finding,same_sentence
+MACCROBAT_27980272,4070,4077,75 mmHg,75,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_27980272,4195,4204,139 mEq/L,139,mEq/L,lab_concentration,C0428291,Exam,same_sentence
+MACCROBAT_27980272,4223,4232,2.9 mEq/L,2.9,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,4254,4263,116 mEq/L,116,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,4353,4361,23 mEq/L,23,mEq/L,lab_concentration,C0428294,Exam,same_sentence
+MACCROBAT_27980272,4442,4449,25 mmHg,25,mmHg,pressure,C1304686,Finding,same_sentence
+MACCROBAT_27980272,4461,4470,11 mmol/L,11,mmol/L,lab_concentration,C1304686,Finding,same_sentence
+MACCROBAT_27980272,4527,4535,15 mEq/L,15,mEq/L,lab_concentration,C0428291,Exam,same_sentence
+MACCROBAT_27980272,4554,4562,13 mEq/L,13,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,4580,4589,100 mEq/L,100,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27980272,4613,4621,72 mEq/L,72,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_27990013,1085,1090,34.9%,34.9,%,percentage,C0018935,Exam,same_sentence
+MACCROBAT_27990013,1270,1275,81 mg,81,mg,mass,C0018821,Treatment,same_sentence_forward
+MACCROBAT_27998312,485,495,1.23 mg/dL,1.23,mg/dL,lab_concentration,C0455686,Finding,same_sentence
+MACCROBAT_27998312,523,531,16 mg/dL,16,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_27998312,648,657,500 mg/dL,500,mg/dL,lab_concentration,C0586328,Treatment,same_sentence
+MACCROBAT_27998312,758,767,378 mg/dL,378,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_27998312,1716,1724,3 months,3,months,time,C1508499,BodyPart,same_sentence
+MACCROBAT_27998312,1886,1895,200 mg/dL,200,mg/dL,lab_concentration,C0428554,Exam,same_sentence
+MACCROBAT_28033278,48,54,6-year,6,year,time,,,none
+MACCROBAT_28033278,241,248,1 month,1,month,time,C0013404,Symptom,same_sentence
+MACCROBAT_28033278,267,273,3 days,3,days,time,C0028961,Diagnosis,same_sentence
+MACCROBAT_28033278,438,444,127 mm,127,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28033278,596,604,8.6 g/dL,8.6,g/dL,lab_concentration,C0023508,Exam,same_sentence
+MACCROBAT_28033278,606,616,12–16 g/dL,,g/dL,lab_concentration,C0023508,Exam,same_sentence
+MACCROBAT_28033278,687,695,78 mg/dL,78,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28033278,697,707,6–21 mg/dL,,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28033278,722,731,8.9 mg/dL,8.9,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28033278,733,746,1.1–1.5 mg/dL,,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28033278,758,767,8.2 mg/dL,8.2,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,769,783,8.8–10.3 mg/dL,,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,798,807,5.4 mg/dL,5.4,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,809,822,2.7–4.5 mg/dL,,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,839,849,6.56 mg/dL,6.56,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,851,863,30–200 mg/dL,,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28033278,893,900,547 U/L,547,U/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_28033278,902,913,106–211 U/L,,U/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_28033278,973,982,200 mg/dL,200,mg/dL,lab_concentration,C0449820,Finding,same_sentence
+MACCROBAT_28033278,1501,1507,3 days,3,days,time,C0028961,Diagnosis,same_sentence
+MACCROBAT_28033278,1914,1920,3 days,3,days,time,C0006938,Treatment,same_sentence_forward
+MACCROBAT_28033278,2116,2122,180 mm,180,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28033278,2144,2151,3 weeks,3,weeks,time,C4040576,Treatment,same_sentence_forward
+MACCROBAT_28033278,2612,2618,1 week,1,week,time,C0019004,Treatment,window_fallback
+MACCROBAT_28033278,2836,2842,100 mm,100,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28033278,2890,2897,332 U/L,332,U/L,lab_concentration,C1278052,Exam,same_sentence
+MACCROBAT_28033278,3405,3410,25 mg,25,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_28033278,3585,3591,3 days,3,days,time,C0278060,Finding,same_sentence
+MACCROBAT_28033278,3660,3668,2 months,2,months,time,C0006104,BodyPart,same_sentence
+MACCROBAT_28057913,439,447,9.2 g/dL,9.2,g/dL,lab_concentration,C0009555,Exam,same_sentence
+MACCROBAT_28057913,564,574,13.1 mg/dL,13.1,mg/dL,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_28057913,1624,1634,19.2 mg/dL,19.2,mg/dL,lab_concentration,C0728876,Exam,same_sentence
+MACCROBAT_28057913,1715,1723,37 mg/dL,37,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28057913,1742,1752,1.81 mg/dL,1.81,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28057913,1943,1952,301 pg/mL,301,pg/mL,lab_concentration,C0344315,Finding,same_sentence_forward
+MACCROBAT_28057913,1990,1997,3 pg/mL,3,pg/mL,lab_concentration,C0344315,Finding,same_sentence
+MACCROBAT_28057913,2051,2059,16 ng/mL,16,ng/mL,lab_concentration,C0042866,Treatment,same_sentence
+MACCROBAT_28079821,168,176,15 years,15,years,time,C4035626,Finding,same_sentence
+MACCROBAT_28079821,377,379,2%,2,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28079821,393,396,94%,94,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28079821,413,415,2%,2,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28079821,438,447,11.1 g/dL,11.1,g/dL,lab_concentration,C0023508,Exam,same_sentence
+MACCROBAT_28079821,669,672,2 g,2,g,mass,C0001344,Diagnosis,window_fallback
+MACCROBAT_28079821,829,833,5 mg,5,mg,mass,C5848556,Treatment,same_sentence
+MACCROBAT_28079821,851,857,2.5 mg,2.5,mg,mass,C0986241,Treatment,same_sentence
+MACCROBAT_28079821,874,880,600 mg,600,mg,mass,C0033228,Treatment,same_sentence
+MACCROBAT_28079821,904,910,324 mg,324,mg,mass,C0002371,Treatment,same_sentence
+MACCROBAT_28079821,927,931,5 mg,5,mg,mass,C0002371,Treatment,same_sentence
+MACCROBAT_28079821,954,961,1000 mg,1000,mg,mass,C1128066,Treatment,same_sentence
+MACCROBAT_28079821,982,987,40 mg,40,mg,mass,C1124909,Treatment,same_sentence
+MACCROBAT_28079821,1032,1039,2000 iu,2000,iu,dose_unit,C2608989,Treatment,window_fallback
+MACCROBAT_28079821,1120,1126,1 year,1,year,time,C2729346,Treatment,same_sentence
+MACCROBAT_28079821,1237,1242,50 mg,50,mg,mass,C0002144,Treatment,same_sentence
+MACCROBAT_28079821,1356,1365,9.8 mg/dL,9.8,mg/dL,lab_concentration,C0455272,Exam,same_sentence
+MACCROBAT_28079821,2077,2084,17 days,17,days,time,C0249529,Treatment,same_sentence
+MACCROBAT_28079821,2154,2157,66%,66,%,percentage,C0853697,Finding,same_sentence
+MACCROBAT_28090049,255,262,1-month,1,month,time,C5441521,Finding,same_sentence_forward
+MACCROBAT_28090049,305,309,7 kg,7,kg,mass,C1971624,Finding,same_sentence
+MACCROBAT_28090049,400,408,42 years,42,years,time,C0262926,Finding,same_sentence
+MACCROBAT_28090049,811,818,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28090049,834,841,200 bpm,200,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_28090049,900,903,99%,99,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28090049,1441,1450,472 mg/dL,472,mg/dL,lab_concentration,C0455280,Exam,same_sentence
+MACCROBAT_28090049,1480,1485,13.7%,13.7,%,percentage,C0455280,Exam,same_sentence
+MACCROBAT_28090049,1531,1542,6.440 pg/mL,6.440,pg/mL,lab_concentration,C0428421,Exam,same_sentence
+MACCROBAT_28090049,2297,2303,100 mg,100,mg,mass,C0040127,Diagnosis,same_sentence
+MACCROBAT_28090049,2310,2317,8 hours,8,hours,time,C4081382,Treatment,same_sentence
+MACCROBAT_28090049,2341,2346,50 mg,50,mg,mass,C0021968,Treatment,same_sentence
+MACCROBAT_28090049,2353,2360,6 hours,6,hours,time,C0021968,Treatment,same_sentence
+MACCROBAT_28090049,2383,2388,20 mg,20,mg,mass,C5939102,Finding,same_sentence
+MACCROBAT_28090049,2395,2402,6 hours,6,hours,time,C1377791,Treatment,same_sentence
+MACCROBAT_28090049,2518,2525,4-12 μg,,μg,other,C4541824,Treatment,same_sentence
+MACCROBAT_28090049,2563,2568,Day 3,3,Day,time,C0039231,Finding,same_sentence_forward
+MACCROBAT_28090049,2649,2654,Day 6,6,Day,time,C0023508,Exam,same_sentence_forward
+MACCROBAT_28090049,2730,2735,44.2%,44.2,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_28090049,2925,2931,Day 32,32,Day,time,C0040145,Treatment,same_sentence
+MACCROBAT_28090049,2973,2979,Day 37,37,Day,time,C0040145,Treatment,window_fallback
+MACCROBAT_28090049,3440,3449,152 mg/dL,152,mg/dL,lab_concentration,C0202042,Exam,same_sentence
+MACCROBAT_28090049,3545,3554,1.3 ng/mL,1.3,ng/mL,lab_concentration,C0202042,Exam,window_fallback
+MACCROBAT_28100235,778,785,2 years,2,years,time,C0009378,Exam,same_sentence
+MACCROBAT_28100235,988,992,9 cm,9,cm,length,C0023884,BodyPart,same_sentence
+MACCROBAT_28100235,1474,1479,2 min,2,min,time,C0205054,BodyPart,same_sentence
+MACCROBAT_28100235,1611,1617,20 min,20,min,time,C0591126,Treatment,same_sentence
+MACCROBAT_28100235,1739,1747,137 IU/L,137,IU/L,lab_concentration,C0023884,BodyPart,window_fallback
+MACCROBAT_28100235,1756,1765,5–50 IU/L,,IU/L,lab_concentration,C0023884,BodyPart,window_fallback
+MACCROBAT_28100235,1931,1936,15 cm,15,cm,length,C0728940,Treatment,same_sentence
+MACCROBAT_28100235,2959,2967,6 months,6,months,time,C0040405,Exam,same_sentence_forward
+MACCROBAT_28100235,3731,3737,3.8 cm,3.8,cm,length,C0225708,BodyPart,same_sentence
+MACCROBAT_28100235,3786,3793,1400 ml,1400,ml,volume,C0189477,Treatment,same_sentence
+MACCROBAT_28100235,4304,4311,1 month,1,month,time,C2584946,Finding,same_sentence
+MACCROBAT_28100279,108,114,5 days,5,days,time,C0015967,Symptom,same_sentence
+MACCROBAT_28100279,287,294,60 mmHg,60,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28100279,373,378,39 °C,39,°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_28100279,532,541,119 mg/dL,119,mg/dL,lab_concentration,C0201657,Exam,same_sentence
+MACCROBAT_28100279,570,579,1.8 mg/dL,1.8,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28100279,651,659,172 IU/L,172,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28100279,763,766,85%,85,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_28100279,895,902,34 mmHg,34,mmHg,pressure,C0030054,Treatment,same_sentence
+MACCROBAT_28100279,904,911,67 mmHg,67,mmHg,pressure,C0030054,Treatment,same_sentence
+MACCROBAT_28100279,913,924,26.5 mmol/L,26.5,mmol/L,lab_concentration,C0030054,Treatment,same_sentence
+MACCROBAT_28100279,930,933,95%,95,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28100279,2426,2432,400 mg,400,mg,mass,C0280274,Treatment,same_sentence
+MACCROBAT_28100279,2483,2488,day 4,4,day,time,C0015967,Symptom,same_sentence_forward
+MACCROBAT_28100279,2702,2708,day 13,13,day,time,C0039985,Exam,same_sentence
+MACCROBAT_28103924,110,119,16 months,16,months,time,,,none
+MACCROBAT_28103924,466,475,47.8 IU/L,47.8,IU/L,lab_concentration,C0430027,Exam,same_sentence
+MACCROBAT_28103924,490,498,5–7 IU/L,,IU/L,lab_concentration,C0430027,Exam,same_sentence
+MACCROBAT_28103924,885,892,2 weeks,2,weeks,time,,,none
+MACCROBAT_28103924,907,916,18 months,18,months,time,,,none
+MACCROBAT_28103924,966,975,30 months,30,months,time,,,none
+MACCROBAT_28103924,1319,1326,4 weeks,4,weeks,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28103924,1386,1393,weeks 1,1,weeks,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28103924,1434,1441,weeks 3,3,weeks,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28103924,1466,1472,100 mg,100,mg,mass,C0489451,BodyPart,same_sentence
+MACCROBAT_28103924,1498,1505,1 month,1,month,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28103924,1512,1519,2 weeks,2,weeks,time,C1321596,Treatment,same_sentence_forward
+MACCROBAT_28103924,2229,2237,6 months,6,months,time,,,none
+MACCROBAT_28103924,2620,2631,6–12 months,,months,time,C4521296,Finding,same_sentence
+MACCROBAT_28103924,2644,2651,5 years,5,years,time,C0009429,Treatment,same_sentence_forward
+MACCROBAT_28103924,3374,3381,5 years,5,years,time,C0684336,Finding,same_sentence
+MACCROBAT_28115731,48,59,10–12 hours,,hours,time,,,none
+MACCROBAT_28115731,423,431,50 years,50,years,time,C0020538,Diagnosis,window_fallback
+MACCROBAT_28115731,482,487,80 mm,80,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28115731,506,512,80 bpm,80,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_28115731,527,533,24 bpm,24,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_28115731,547,551,98°F,98,°F,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_28115731,553,559,36.7°C,36.7,°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_28115731,631,636,61 mm,61,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28115731,647,655,29 mEq/L,29,mEq/L,lab_concentration,C1304686,Finding,same_sentence
+MACCROBAT_28115731,672,675,92%,92,%,percentage,C1304686,Finding,same_sentence
+MACCROBAT_28115731,694,697,95%,95,%,percentage,C1304686,Finding,same_sentence
+MACCROBAT_28115731,1096,1099,88%,88,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28115731,1298,1304,140 mm,140,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28115731,1315,1323,30 mEq/L,30,mEq/L,lab_concentration,C1304686,Finding,same_sentence
+MACCROBAT_28115731,1345,1348,97%,97,%,percentage,C1304686,Finding,same_sentence
+MACCROBAT_28115731,1820,1830,100–150 mL,,mL,volume,C0040405,Exam,same_sentence
+MACCROBAT_28115731,3116,3124,24 hours,24,hours,time,C0013516,Exam,same_sentence
+MACCROBAT_28115731,3238,3246,48 hours,48,hours,time,C0578150,Finding,same_sentence_forward
+MACCROBAT_28115731,3353,3361,48 hours,48,hours,time,C0578150,Finding,window_fallback
+MACCROBAT_28120581,563,568,25 mm,25,mm,length,C0011911,Finding,same_sentence
+MACCROBAT_28120581,852,855,74%,74,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28120581,1142,1147,40 mm,40,mm,length,C0549099,Finding,window_fallback
+MACCROBAT_28120581,1528,1533,82 mm,82,mm,length,C0000925,Diagnosis,same_sentence
+MACCROBAT_28120581,1677,1682,30 mm,30,mm,length,C0003486,Diagnosis,same_sentence
+MACCROBAT_28120581,2503,2508,37 mm,37,mm,length,,,none
+MACCROBAT_28121940,799,803,3 mg,3,mg,mass,C3657270,Treatment,same_sentence
+MACCROBAT_28121940,808,815,14 days,14,days,time,C3657270,Treatment,same_sentence
+MACCROBAT_28151860,121,128,2 weeks,2,weeks,time,C0019079,Symptom,same_sentence
+MACCROBAT_28151860,507,514,2 weeks,2,weeks,time,C0041912,Diagnosis,same_sentence
+MACCROBAT_28151860,560,566,500 mL,500,mL,volume,C0041912,Diagnosis,window_fallback
+MACCROBAT_28151860,887,891,1-cm,1,cm,length,C0221198,Finding,same_sentence_forward
+MACCROBAT_28151860,925,929,2 cm,2,cm,length,C0040578,BodyPart,same_sentence
+MACCROBAT_28151860,1331,1337,1 week,1,week,time,C0013931,Treatment,same_sentence
+MACCROBAT_28151882,61,69,3 months,3,months,time,C0004604,Symptom,same_sentence
+MACCROBAT_28151882,2528,2534,600 mL,600,mL,volume,C1443559,Finding,same_sentence
+MACCROBAT_28151882,2611,2616,1 day,1,day,time,C0030193,Symptom,same_sentence_forward
+MACCROBAT_28151882,2637,2643,3 days,3,days,time,C0030193,Symptom,same_sentence
+MACCROBAT_28151882,2675,2681,1 week,1,week,time,C0003281,Treatment,same_sentence
+MACCROBAT_28151882,2716,2722,3 days,3,days,time,C0013103,Treatment,same_sentence
+MACCROBAT_28151882,2775,2780,50 mL,50,mL,volume,C0013103,Treatment,same_sentence
+MACCROBAT_28151882,2785,2793,24 hours,24,hours,time,C0013103,Treatment,same_sentence
+MACCROBAT_28151882,2865,2871,1 week,1,week,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28151882,2932,2940,3 months,3,months,time,C0543467,Treatment,window_fallback
+MACCROBAT_28151882,2985,2992,12 days,12,days,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28151882,3141,3147,1 week,1,week,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28151882,3169,3175,1 year,1,year,time,C0543467,Treatment,same_sentence
+MACCROBAT_28151882,3348,3356,3 months,3,months,time,C0425105,Finding,same_sentence
+MACCROBAT_28151882,3412,3418,1 week,1,week,time,C0563192,Finding,same_sentence
+MACCROBAT_28151882,3440,3446,1 year,1,year,time,C0543467,Treatment,same_sentence
+MACCROBAT_28151916,612,618,3.1 cm,3.1,cm,length,C1627358,Treatment,same_sentence
+MACCROBAT_28154281,1069,1076,day 120,120,day,time,C0032950,Treatment,window_fallback
+MACCROBAT_28154281,1246,1250,85 g,85,g,mass,C0010200,Symptom,window_fallback
+MACCROBAT_28154281,1583,1587,6 mg,6,mg,mass,C0393080,Treatment,same_sentence
+MACCROBAT_28154281,1626,1630,4 mg,4,mg,mass,C0393080,Treatment,same_sentence
+MACCROBAT_28154281,1751,1757,100 mg,100,mg,mass,C0393080,Treatment,same_sentence
+MACCROBAT_28154281,2619,2623,3 mg,3,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_28154281,2718,2724,7 days,7,days,time,C0600061,Finding,same_sentence
+MACCROBAT_28154281,2862,2868,400 mg,400,mg,mass,C0936148,Treatment,same_sentence
+MACCROBAT_28154281,2892,2897,50 mg,50,mg,mass,C0537894,Treatment,same_sentence
+MACCROBAT_28154281,2906,2911,70 mg,70,mg,mass,C0537894,Treatment,same_sentence
+MACCROBAT_28154281,2972,2979,2 weeks,2,weeks,time,C0009429,Treatment,same_sentence
+MACCROBAT_28154287,74,81,35 year,35,year,time,C0011860,Diagnosis,same_sentence
+MACCROBAT_28154287,325,331,35.4°C,35.4,°C,temperature,C0018787,BodyPart,same_sentence_forward
+MACCROBAT_28154287,419,426,77 mmHg,77,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28154287,597,600,82%,82,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28154287,606,615,10.2 g/dL,10.2,g/dL,lab_concentration,C0023508,Exam,same_sentence
+MACCROBAT_28154287,643,653,82.2 mg/dL,82.2,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28154287,672,682,6.50 mg/dL,6.50,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28154287,690,694,5.9%,5.9,%,percentage,C0005845,Exam,same_sentence
+MACCROBAT_28154287,717,725,189 IU/L,189,IU/L,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28154287,752,762,8.51 mg/dL,8.51,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28154287,801,812,127.4 pg/mL,127.4,pg/mL,lab_concentration,C1144709,Treatment,same_sentence
+MACCROBAT_28154287,1483,1488,day 8,8,day,time,C0199470,Treatment,window_fallback
+MACCROBAT_28154287,1725,1729,4.5g,4.5,g,mass,C0250480,Treatment,same_sentence
+MACCROBAT_28154287,1866,1872,day 15,15,day,time,C0040405,Exam,same_sentence
+MACCROBAT_28154287,2173,2178,0.5 g,0.5,g,mass,,,none
+MACCROBAT_28154287,2188,2194,day 16,16,day,time,,,none
+MACCROBAT_28154287,2261,2267,day 21,21,day,time,,,none
+MACCROBAT_28154287,2373,2377,3 mg,3,mg,mass,C0200949,Exam,same_sentence
+MACCROBAT_28154287,2407,2413,day 23,23,day,time,C0200949,Exam,window_fallback
+MACCROBAT_28154287,2600,2606,day 25,25,day,time,C0006104,BodyPart,same_sentence_forward
+MACCROBAT_28154287,2787,2791,3 mg,3,mg,mass,C0021051,Diagnosis,window_fallback
+MACCROBAT_28154287,2818,2824,day 31,31,day,time,C0202823,Exam,same_sentence_forward
+MACCROBAT_28154287,3106,3112,day 52,52,day,time,C0202823,Exam,same_sentence_forward
+MACCROBAT_28154287,3238,3244,day 79,79,day,time,C4522268,Finding,window_fallback
+MACCROBAT_28154287,3604,3610,day 87,87,day,time,C0042510,Diagnosis,same_sentence_forward
+MACCROBAT_28154669,560,567,10 g/dl,10,g/dl,lab_concentration,C1281911,Exam,same_sentence
+MACCROBAT_28154669,894,898,90cm,90,cm,length,C0020880,BodyPart,same_sentence_forward
+MACCROBAT_28154700,384,392,6 months,6,months,time,C1262477,Finding,same_sentence
+MACCROBAT_28154700,615,621,300 mm,300,mm,length,C0020877,Diagnosis,same_sentence
+MACCROBAT_28154700,842,846,22mm,22,mm,length,C0012359,Diagnosis,same_sentence
+MACCROBAT_28154700,1657,1663,1.5 cm,1.5,cm,length,C0008320,Treatment,same_sentence
+MACCROBAT_28154700,1830,1836,7 days,7,days,time,C0227590,BodyPart,window_fallback
+MACCROBAT_28154700,2139,2141,2%,2,%,percentage,C0687695,Finding,same_sentence
+MACCROBAT_28173879,91,99,14 years,14,years,time,C0022671,Treatment,same_sentence
+MACCROBAT_28173879,161,169,14 years,14,years,time,C0022671,Treatment,window_fallback
+MACCROBAT_28173879,441,446,39 °C,39,°C,temperature,C0015967,Symptom,same_sentence
+MACCROBAT_28173879,592,601,1.7 mg/dL,1.7,mg/dL,lab_concentration,C0184512,Finding,same_sentence
+MACCROBAT_28173879,668,672,3 mg,3,mg,mass,C0085149,Treatment,same_sentence
+MACCROBAT_28173879,702,709,1500 mg,1500,mg,mass,C0209368,Treatment,same_sentence
+MACCROBAT_28173879,732,736,4 mg,4,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28173879,795,804,6.3 ng/mL,6.3,ng/mL,lab_concentration,C0085149,Treatment,same_sentence
+MACCROBAT_28173879,845,853,12 years,12,years,time,C0085149,Treatment,window_fallback
+MACCROBAT_28173879,947,956,3.9 mg/dL,3.9,mg/dL,lab_concentration,C0201657,Exam,same_sentence
+MACCROBAT_28173879,1019,1022,9 g,9,g,mass,C2930041,Treatment,same_sentence
+MACCROBAT_28173879,2084,2087,99%,99,%,percentage,C0080194,Diagnosis,same_sentence
+MACCROBAT_28173879,2402,2409,11 days,11,days,time,C0200949,Exam,same_sentence
+MACCROBAT_28173879,2465,2472,15 days,15,days,time,C2242979,Exam,same_sentence
+MACCROBAT_28173879,2590,2597,6 weeks,6,weeks,time,C2930041,Treatment,same_sentence_forward
+MACCROBAT_28173879,2634,2641,2 weeks,2,weeks,time,C2930041,Treatment,same_sentence
+MACCROBAT_28173879,2668,2675,4 weeks,4,weeks,time,C2930041,Treatment,same_sentence
+MACCROBAT_28173879,2703,2711,6 months,6,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_28190872,544,549,60 mg,60,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28190872,601,606,10 mg,10,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28190872,2198,2203,day 5,5,day,time,C0040590,Treatment,same_sentence
+MACCROBAT_28190872,2288,2293,60 mg,60,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28190872,2923,2928,10 mg,10,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28190872,3008,3013,20 mg,20,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28193213,359,365,5years,5,years,time,C0037088,Symptom,same_sentence
+MACCROBAT_28193213,1574,1579,40 cm,40,cm,length,C0020885,BodyPart,same_sentence
+MACCROBAT_28193213,1943,1948,40 cm,40,cm,length,C0227327,BodyPart,same_sentence
+MACCROBAT_28193213,2148,2154,1.0 cm,1.0,cm,length,C0836916,BodyPart,same_sentence
+MACCROBAT_28193213,2409,2414,75 mm,75,mm,length,C0677554,Treatment,same_sentence
+MACCROBAT_28193213,2969,2976,2 weeks,2,weeks,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28193213,3063,3072,10 months,10,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_28196820,385,393,23–45 cm,,cm,length,C0428167,Finding,same_sentence
+MACCROBAT_28196820,442,446,7 cm,7,cm,length,C3494516,Finding,same_sentence
+MACCROBAT_28196820,1345,1350,45 cm,45,cm,length,C0030054,Treatment,same_sentence_forward
+MACCROBAT_28196820,1374,1381,7–11 cm,,cm,length,C0030054,Treatment,same_sentence
+MACCROBAT_28196820,2427,2435,5 months,5,months,time,C0024485,Exam,window_fallback
+MACCROBAT_28196820,2677,2683,5 days,5,days,time,,,none
+MACCROBAT_28196820,2705,2713,7 months,7,months,time,,,none
+MACCROBAT_28196820,2761,2768,15 days,15,days,time,,,none
+MACCROBAT_28196820,3427,3434,10 days,10,days,time,C0424092,Finding,same_sentence
+MACCROBAT_28196820,3679,3683,1 cm,1,cm,length,C0030054,Treatment,same_sentence_forward
+MACCROBAT_28196820,3697,3702,11 cm,11,cm,length,C0030054,Treatment,same_sentence
+MACCROBAT_28196820,3766,3772,6–7 mL,,mL,volume,C0030054,Treatment,window_fallback
+MACCROBAT_28196820,3794,3801,10 days,10,days,time,C0030054,Treatment,window_fallback
+MACCROBAT_28196820,3955,3960,20 cm,20,cm,length,C0344329,Finding,same_sentence
+MACCROBAT_28196820,4092,4097,45 cm,45,cm,length,C0184512,Finding,same_sentence
+MACCROBAT_28196820,4204,4212,2 months,2,months,time,C0040405,Exam,same_sentence
+MACCROBAT_28196820,4238,4245,1 month,1,month,time,C0040405,Exam,same_sentence
+MACCROBAT_28196820,4694,4699,80 mL,80,mL,volume,C0199470,Treatment,same_sentence
+MACCROBAT_28196820,4701,4705,9 mL,9,mL,volume,C0199470,Treatment,same_sentence
+MACCROBAT_28196820,4716,4721,10 cm,10,cm,length,C0199470,Treatment,same_sentence
+MACCROBAT_28196820,4772,4777,30 cm,30,cm,length,C0030054,Treatment,same_sentence_forward
+MACCROBAT_28196820,4828,4832,9 cm,9,cm,length,C0030054,Treatment,same_sentence_forward
+MACCROBAT_28202862,786,793,13.2 μg,13.2,μg,other,C0230416,BodyPart,same_sentence
+MACCROBAT_28202862,1154,1160,8 mmHg,8,mmHg,pressure,C0428642,Finding,same_sentence
+MACCROBAT_28202862,1274,1284,97.2 pg/mL,97.2,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_28202862,1289,1301,0.0061 ng/mL,0.0061,ng/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_28202862,1417,1424,80 mmHg,80,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28202862,1534,1539,97.7%,97.7,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28202862,1565,1572,24.4 kg,24.4,kg,mass,C0030054,Treatment,window_fallback
+MACCROBAT_28202862,1924,1929,30 mg,30,mg,mass,C1739768,Treatment,same_sentence
+MACCROBAT_28202862,2072,2078,7 days,7,days,time,C3159309,Treatment,window_fallback
+MACCROBAT_28202865,92,100,42 years,42,years,time,C0019079,Symptom,same_sentence
+MACCROBAT_28202865,1084,1092,"1,000 mg","1,000",mg,mass,C0025815,Treatment,same_sentence
+MACCROBAT_28202865,1104,1110,3 days,3,days,time,C0025815,Treatment,same_sentence
+MACCROBAT_28202865,1137,1142,25 mg,25,mg,mass,C0025815,Treatment,same_sentence
+MACCROBAT_28202865,1449,1457,46 years,46,years,time,C0019079,Symptom,same_sentence
+MACCROBAT_28202865,1592,1597,60 mg,60,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_28202865,1629,1633,5 mg,5,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_28202865,1644,1652,48 years,48,years,time,C0032950,Treatment,window_fallback
+MACCROBAT_28202865,1829,1833,3 mg,3,mg,mass,C0342269,Diagnosis,same_sentence
+MACCROBAT_28202865,1871,1876,75 kg,75,kg,mass,C4533677,Finding,same_sentence
+MACCROBAT_28202865,1888,1894,167 cm,167,cm,length,C4533677,Finding,same_sentence
+MACCROBAT_28202865,1949,1957,102 mmHg,102,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28202865,2002,2005,97%,97,%,percentage,C0034108,Exam,same_sentence
+MACCROBAT_28202865,2041,2047,36.8°C,36.8,°C,temperature,C0034108,Exam,same_sentence
+MACCROBAT_28202865,2313,2322,11.3 g/dL,11.3,g/dL,lab_concentration,C0002871,Diagnosis,same_sentence
+MACCROBAT_28202865,2361,2370,14.6 g/dL,14.6,g/dL,lab_concentration,C0002871,Diagnosis,same_sentence
+MACCROBAT_28202865,2606,2615,299 mg/dL,299,mg/dL,lab_concentration,C0017725,Treatment,same_sentence
+MACCROBAT_28202865,2620,2624,8.2%,8.2,%,percentage,C0017725,Treatment,same_sentence
+MACCROBAT_28202865,2872,2878,3 days,3,days,time,C0025815,Treatment,same_sentence
+MACCROBAT_28202865,2906,2911,60 mg,60,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_28202865,3556,3558,3%,3,%,percentage,C0015491,Treatment,same_sentence
+MACCROBAT_28202865,3922,3929,3 years,3,years,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_28202869,210,215,10 mg,10,mg,mass,C0003241,Treatment,same_sentence
+MACCROBAT_28202869,329,336,48 mmHg,48,mmHg,pressure,C0013516,Exam,same_sentence
+MACCROBAT_28202869,467,474,74 mmHg,74,mmHg,pressure,C2973725,Diagnosis,same_sentence
+MACCROBAT_28202869,710,716,250 mg,250,mg,mass,C0252643,Treatment,same_sentence_forward
+MACCROBAT_28202869,737,743,120 μg,120,μg,other,C0252643,Treatment,same_sentence
+MACCROBAT_28202869,954,961,61 mmHg,61,mmHg,pressure,C1272641,Finding,same_sentence
+MACCROBAT_28202869,1049,1052,95%,95,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28202869,1337,1348,929.4 pg/mL,929.4,pg/mL,lab_concentration,C0054015,Treatment,same_sentence
+MACCROBAT_28202869,1367,1376,62.5 mmHg,62.5,mmHg,pressure,C0700292,Finding,same_sentence
+MACCROBAT_28202869,1384,1393,27.1 mmHg,27.1,mmHg,pressure,C0700292,Finding,same_sentence
+MACCROBAT_28202869,1699,1706,65 mmHg,65,mmHg,pressure,C0520849,Finding,same_sentence_forward
+MACCROBAT_28202869,1755,1762,12 mmHg,12,mmHg,pressure,C0520849,Finding,same_sentence
+MACCROBAT_28202869,2278,2283,40 mg,40,mg,mass,C0012798,Treatment,same_sentence
+MACCROBAT_28202869,2318,2323,60 mg,60,mg,mass,C0016860,Treatment,same_sentence
+MACCROBAT_28202869,2518,2524,750 mg,750,mg,mass,C0442739,Finding,window_fallback
+MACCROBAT_28202869,2535,2542,4 weeks,4,weeks,time,C0442739,Finding,window_fallback
+MACCROBAT_28202869,2605,2610,60 mg,60,mg,mass,C0032950,Treatment,same_sentence
+MACCROBAT_28202869,2723,2727,95 %,95,%,percentage,C0430515,Exam,same_sentence
+MACCROBAT_28202869,2883,2890,53 mmHg,53,mmHg,pressure,C0456261,Finding,same_sentence_forward
+MACCROBAT_28202869,3072,3081,18 months,18,months,time,C0428776,Finding,window_fallback
+MACCROBAT_28207542,207,213,300 mg,300,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,223,229,450 mg,450,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,251,257,750 mg,750,mg,mass,C0014964,Treatment,same_sentence
+MACCROBAT_28207542,285,292,1500 mg,1500,mg,mass,C0034239,Treatment,same_sentence
+MACCROBAT_28207542,303,309,1 week,1,week,time,C0087111,Treatment,same_sentence_forward
+MACCROBAT_28207542,1165,1171,1.13 g,1.13,g,mass,C0016006,Treatment,same_sentence
+MACCROBAT_28207542,1189,1198,2.0–4.0 g,,g,mass,C0016006,Treatment,same_sentence
+MACCROBAT_28207542,1213,1223,23.45 mg/L,23.45,mg/L,lab_concentration,C0016006,Treatment,same_sentence
+MACCROBAT_28207542,1240,1249,0.55 mg/L,0.55,mg/L,lab_concentration,C0016006,Treatment,same_sentence
+MACCROBAT_28207542,1280,1289,60.4 mg/L,60.4,mg/L,lab_concentration,C0015982,Treatment,same_sentence
+MACCROBAT_28207542,1305,1311,5 mg/L,5,mg/L,lab_concentration,C0015982,Treatment,same_sentence
+MACCROBAT_28207542,1477,1481,65 g,65,g,mass,,,none
+MACCROBAT_28207542,1499,1508,130–175 g,,g,mass,C0201913,Exam,same_sentence_forward
+MACCROBAT_28207542,1663,1669,75 U/L,75,U/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28207542,1686,1692,40 U/L,40,U/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28207542,1721,1728,293 U/L,293,U/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28207542,1745,1751,50 U/L,50,U/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28207542,1777,1784,380 U/L,380,U/L,lab_concentration,C1881354,Treatment,same_sentence
+MACCROBAT_28207542,1800,1811,110–220 U/L,,U/L,lab_concentration,C1881354,Treatment,same_sentence
+MACCROBAT_28207542,1835,1847,13.01 mmol/L,13.01,mmol/L,lab_concentration,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,1863,1878,3.2–7.79 mmol/L,,mmol/L,lab_concentration,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,1901,1911,16.70 mg/L,16.70,mg/L,lab_concentration,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,1928,1934,5 mg/L,5,mg/L,lab_concentration,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,1951,1957,0.41 g,0.41,g,mass,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,1975,1988,0.785–1.520 g,,g,mass,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,2011,2019,0.0797 g,0.0797,g,mass,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,2037,2050,0.145–0.360 g,,g,mass,C0041942,Treatment,same_sentence
+MACCROBAT_28207542,2137,2140,2 g,2,g,mass,,,none
+MACCROBAT_28207542,3570,3576,200 mg,200,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,3622,3629,24 days,24,days,time,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,3956,3963,4 weeks,4,weeks,time,C1115804,Finding,same_sentence_forward
+MACCROBAT_28207542,4031,4037,300 mg,300,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,4047,4053,750 mg,750,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,4072,4078,500 mg,500,mg,mass,C0022209,Treatment,same_sentence
+MACCROBAT_28207542,4192,4200,8 months,8,months,time,C0019080,Diagnosis,same_sentence
+MACCROBAT_28216610,527,533,97.9°F,97.9,°F,temperature,C0018787,BodyPart,same_sentence_forward
+MACCROBAT_28216610,638,643,66 mm,66,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28216610,674,678,100%,100,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28216610,933,941,9.7 g/dL,9.7,g/dL,lab_concentration,C0009555,Exam,same_sentence
+MACCROBAT_28216610,1006,1016,0.62 mg/dL,0.62,mg/dL,lab_concentration,C0005845,Exam,same_sentence_forward
+MACCROBAT_28216610,1046,1054,10 mg/dL,10,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28216610,1697,1706,80–160 mg,,mg,mass,C0591139,Treatment,same_sentence
+MACCROBAT_28216610,1730,1737,1200 mg,1200,mg,mass,C0591139,Treatment,same_sentence
+MACCROBAT_28216610,2149,2155,300 mg,300,mg,mass,C1099776,Treatment,same_sentence
+MACCROBAT_28216610,2173,2178,50 mg,50,mg,mass,C1099776,Treatment,same_sentence
+MACCROBAT_28239141,526,533,104 bpm,104,bpm,rate,C0018787,BodyPart,same_sentence
+MACCROBAT_28239141,557,562,68 mm,68,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28239141,585,591,99.7°F,99.7,°F,temperature,C1271104,Finding,same_sentence
+MACCROBAT_28239141,593,599,37.6°C,37.6,°C,temperature,C1271104,Finding,same_sentence
+MACCROBAT_28239141,750,759,13.3 g/dL,13.3,g/dL,lab_concentration,C0023508,Exam,same_sentence_forward
+MACCROBAT_28239141,808,813,79.6%,79.6,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28239141,827,831,7.2%,7.2,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28239141,847,851,8.3%,8.3,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28239141,911,921,18.6 mg/dL,18.6,mg/dL,lab_concentration,C0006675,Treatment,same_sentence
+MACCROBAT_28239141,933,942,4.6 mg/dL,4.6,mg/dL,lab_concentration,C1601799,Treatment,same_sentence
+MACCROBAT_28239141,951,960,135 mEq/L,135,mEq/L,lab_concentration,C0337443,Exam,same_sentence
+MACCROBAT_28239141,972,981,2.7 mg/dL,2.7,mg/dL,lab_concentration,C0032821,Treatment,same_sentence
+MACCROBAT_28239141,991,999,4.0 g/dL,4.0,g/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_28239141,1012,1021,2.2 mg/dL,2.2,mg/dL,lab_concentration,C5966160,Treatment,same_sentence
+MACCROBAT_28239141,1039,1048,0.9 mg/dL,0.9,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28239141,1071,1079,125 IU/L,125,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28239141,1108,1115,41 IU/L,41,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28239141,1146,1153,71 IU/L,71,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28239141,1293,1303,30.4 ng/mL,30.4,ng/mL,lab_concentration,C0042866,Treatment,same_sentence
+MACCROBAT_28239141,1305,1316,20–50 ng/mL,,ng/mL,lab_concentration,C0042866,Treatment,same_sentence
+MACCROBAT_28239141,1341,1351,33.7 ng/mL,33.7,ng/mL,lab_concentration,C0008318,Treatment,same_sentence
+MACCROBAT_28239141,1695,1699,0.9%,0.9,%,percentage,C1321013,Finding,same_sentence
+MACCROBAT_28239141,1793,1799,3.3 mg,3.3,mg,mass,C0257685,Treatment,same_sentence
+MACCROBAT_28239141,2139,2143,4 mg,4,mg,mass,C0728876,Exam,same_sentence
+MACCROBAT_28248858,88,96,24 hours,24,hours,time,C1278293,Exam,same_sentence
+MACCROBAT_28248858,802,808,5.6 mm,5.6,mm,length,C0205400,Finding,same_sentence
+MACCROBAT_28248858,1002,1008,150 mg,150,mg,mass,C0042105,Treatment,same_sentence
+MACCROBAT_28248858,1099,1106,1000 mg,1000,mg,mass,C3665472,Treatment,same_sentence
+MACCROBAT_28248858,1121,1125,2 mg,2,mg,mass,C0042679,Treatment,same_sentence
+MACCROBAT_28248858,1139,1144,90 mg,90,mg,mass,C0014582,Treatment,same_sentence
+MACCROBAT_28248858,1162,1167,90 mg,90,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28248891,997,1000,70%,70,%,percentage,C0017817,Treatment,same_sentence
+MACCROBAT_28248891,1768,1774,850 mg,850,mg,mass,C2346836,Treatment,same_sentence
+MACCROBAT_28248891,2294,2301,2 weeks,2,weeks,time,C1699633,Exam,same_sentence
+MACCROBAT_28248891,2331,2334,80%,80,%,percentage,C1522449,Treatment,same_sentence
+MACCROBAT_28248891,2902,2910,2 months,2,months,time,C2939419,Diagnosis,window_fallback
+MACCROBAT_28248891,3803,3809,1 week,1,week,time,C0087111,Treatment,same_sentence_forward
+MACCROBAT_28250304,107,114,3 years,3,years,time,C0027627,Diagnosis,same_sentence
+MACCROBAT_28250304,813,821,3 months,3,months,time,C3714552,Symptom,same_sentence_forward
+MACCROBAT_28250304,1181,1184,97%,97,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28250304,1468,1477,2.8 mEq/L,2.8,mEq/L,lab_concentration,C0428289,Finding,same_sentence
+MACCROBAT_28250304,1516,1524,468 IU/L,468,IU/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_28250304,1542,1553,370.8 pg/mL,370.8,pg/mL,lab_concentration,C0017696,Treatment,same_sentence
+MACCROBAT_28250304,1562,1573,354.1 pg/mL,354.1,pg/mL,lab_concentration,C0001655,Treatment,same_sentence
+MACCROBAT_28250304,1590,1597,49.1 μg,49.1,μg,other,C0020268,Treatment,same_sentence
+MACCROBAT_28250304,2249,2255,150 mL,150,mL,volume,C0012383,Treatment,same_sentence
+MACCROBAT_28250304,2268,2273,62.7%,62.7,%,percentage,C0036082,Treatment,same_sentence
+MACCROBAT_28250304,2409,2414,17.0%,17.0,%,percentage,C0012383,Treatment,same_sentence
+MACCROBAT_28250304,2428,2433,81.0%,81.0,%,percentage,C0012383,Treatment,same_sentence
+MACCROBAT_28250304,2451,2455,2.0%,2.0,%,percentage,C0012383,Treatment,same_sentence
+MACCROBAT_28250304,2772,2776,12 g,12,g,mass,C0041044,Treatment,same_sentence
+MACCROBAT_28250304,2786,2793,3 weeks,3,weeks,time,C0041044,Treatment,same_sentence
+MACCROBAT_28250304,3302,3308,250 mg,250,mg,mass,C0025876,Treatment,same_sentence
+MACCROBAT_28250406,497,503,2–3 kg,,kg,mass,C1262477,Finding,same_sentence_forward
+MACCROBAT_28250406,2394,2399,40 mL,40,mL,volume,C0543467,Treatment,same_sentence
+MACCROBAT_28265107,201,207,5 days,5,days,time,C5849062,Treatment,same_sentence_forward
+MACCROBAT_28265107,1341,1344,75%,75,%,percentage,C0005491,Treatment,window_fallback
+MACCROBAT_28272214,25,32,30-year,30,year,time,,,none
+MACCROBAT_28272214,102,108,1.5 cm,1.5,cm,length,C0024109,BodyPart,same_sentence_forward
+MACCROBAT_28272214,473,484,30.25 ng/mL,30.25,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28272214,500,509,0–5 ng/mL,,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28272214,1012,1015,20%,20,%,percentage,C0442749,Finding,same_sentence
+MACCROBAT_28272214,1016,1019,30%,30,%,percentage,C0442749,Finding,same_sentence
+MACCROBAT_28272214,1237,1245,3 months,3,months,time,C0027651,Diagnosis,same_sentence
+MACCROBAT_28272214,1652,1663,17.45 ng/mL,17.45,ng/mL,lab_concentration,C0087136,Finding,same_sentence
+MACCROBAT_28272214,1693,1704,0–3.3 ng/mL,,ng/mL,lab_concentration,C0087136,Finding,same_sentence
+MACCROBAT_28272214,2945,2948,20%,20,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,2950,2952,0%,0,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,2958,2962,7.8%,7.8,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,3033,3036,10%,10,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,3038,3040,0%,0,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,3046,3048,5%,5,%,percentage,C0024109,BodyPart,same_sentence
+MACCROBAT_28272214,3205,3210,75 mg,75,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_28272214,3230,3237,1250 mg,1250,mg,mass,C0045093,Treatment,same_sentence
+MACCROBAT_28272214,3253,3260,21 days,21,days,time,C0045093,Treatment,same_sentence
+MACCROBAT_28272214,3521,3527,150 mg,150,mg,mass,C1122962,Treatment,same_sentence
+MACCROBAT_28272235,53,61,5 months,5,months,time,C0267596,Diagnosis,same_sentence_forward
+MACCROBAT_28272235,183,191,55 years,55,years,time,C0332119,Finding,same_sentence
+MACCROBAT_28272235,864,872,5 months,5,months,time,C0267596,Diagnosis,same_sentence_forward
+MACCROBAT_28272235,1502,1506,5 kg,5,kg,mass,C1271104,Finding,window_fallback
+MACCROBAT_28272235,1538,1546,5 months,5,months,time,C1271104,Finding,window_fallback
+MACCROBAT_28272235,1916,1920,86 g,86,g,mass,C0014772,Exam,same_sentence
+MACCROBAT_28272235,1932,1941,135–175 g,,g,mass,C0014772,Exam,same_sentence
+MACCROBAT_28272235,2495,2500,25 cm,25,cm,length,C0543467,Treatment,same_sentence
+MACCROBAT_28272235,3471,3479,6 months,6,months,time,C2825055,Diagnosis,same_sentence
+MACCROBAT_28292056,647,652,40 mm,40,mm,length,C0184906,Treatment,same_sentence
+MACCROBAT_28296749,486,492,0.5-cm,0.5,cm,length,C6069033,Exam,same_sentence
+MACCROBAT_28296749,918,922,1-cm,1,cm,length,C0014245,Exam,same_sentence
+MACCROBAT_28296749,1101,1107,1.2 cm,1.2,cm,length,C0227327,BodyPart,same_sentence
+MACCROBAT_28296749,1162,1168,1.0 cm,1.0,cm,length,C0034896,BodyPart,same_sentence
+MACCROBAT_28296749,1712,1715,30%,30,%,percentage,C0487602,Exam,same_sentence
+MACCROBAT_28296775,288,296,3 months,3,months,time,C0007097,Diagnosis,same_sentence
+MACCROBAT_28296775,384,391,2-month,2,month,time,C0022346,Finding,same_sentence_forward
+MACCROBAT_28296775,734,741,2–10 mm,,mm,length,C0019209,Finding,same_sentence
+MACCROBAT_28296775,957,964,7 hours,7,hours,time,C0019151,Diagnosis,same_sentence
+MACCROBAT_28296775,1217,1223,6.5 kg,6.5,kg,mass,C0023884,BodyPart,same_sentence
+MACCROBAT_28296775,1343,1348,50 mm,50,mm,length,C0005682,BodyPart,same_sentence
+MACCROBAT_28296775,1492,1497,10-mm,10,mm,length,C3273930,Finding,window_fallback
+MACCROBAT_28296775,1766,1769,10%,10,%,percentage,C0949307,Treatment,same_sentence_forward
+MACCROBAT_28296775,2257,2261,2 mm,2,mm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_28320420,101,109,4.7 g/dl,4.7,g/dl,lab_concentration,C0162119,Finding,same_sentence
+MACCROBAT_28320420,261,266,30 kg,30,kg,mass,C1262477,Finding,same_sentence_forward
+MACCROBAT_28320420,293,301,6 months,6,months,time,C1262477,Finding,same_sentence
+MACCROBAT_28320420,606,614,5.1 g/dl,5.1,g/dl,lab_concentration,C0162119,Finding,same_sentence
+MACCROBAT_28320420,628,633,10 ug,10,ug,mass,C0860975,Finding,same_sentence
+MACCROBAT_28320420,1527,1531,2 cm,2,cm,length,C0430385,Exam,same_sentence
+MACCROBAT_28320420,2724,2727,96%,96,%,percentage,C0027651,Diagnosis,same_sentence
+MACCROBAT_28320420,3105,3112,3 years,3,years,time,C0589120,Finding,same_sentence
+MACCROBAT_28321070,422,425,96%,96,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28321070,1354,1357,81%,81,%,percentage,C0027651,Diagnosis,window_fallback
+MACCROBAT_28321070,2284,2289,50 mg,50,mg,mass,C0393022,Treatment,same_sentence
+MACCROBAT_28321071,401,410,35.1 mmHg,35.1,mmHg,pressure,C1304686,Finding,same_sentence
+MACCROBAT_28321071,416,425,61.0 mmHg,61.0,mmHg,pressure,C1304686,Finding,same_sentence
+MACCROBAT_28321071,430,442,3- 20.1 mmHg,,mmHg,pressure,C1304686,Finding,same_sentence
+MACCROBAT_28321071,448,456,5.5 mmHg,5.5,mmHg,pressure,C1304686,Finding,same_sentence
+MACCROBAT_28321071,463,468,90.5%,90.5,%,percentage,C1304686,Finding,same_sentence
+MACCROBAT_28321071,537,543,100 mL,100,mL,volume,C0021932,Treatment,same_sentence
+MACCROBAT_28321073,25,32,45-year,45,year,time,,,none
+MACCROBAT_28321073,344,351,11.0 cm,11.0,cm,length,C1261076,BodyPart,same_sentence
+MACCROBAT_28321073,580,586,4.7 cm,4.7,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_28321073,810,819,14.8 g/dL,14.8,g/dL,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_28321073,872,879,31 IU/L,31,IU/L,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_28321073,902,909,19 IU/L,19,IU/L,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_28321073,943,951,749 IU/L,749,IU/L,lab_concentration,C0376261,Treatment,same_sentence
+MACCROBAT_28321073,1284,1289,60 mg,60,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_28321073,1314,1319,Day 1,1,Day,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28321073,1336,1342,100 mg,100,mg,mass,C0489451,BodyPart,same_sentence
+MACCROBAT_28321073,1367,1373,Days 1,1,Days,time,C0489451,BodyPart,same_sentence
+MACCROBAT_28321073,1393,1400,2 weeks,2,weeks,time,C0040405,Exam,same_sentence_forward
+MACCROBAT_28321073,1473,1478,Day 3,3,Day,time,C3665472,Treatment,same_sentence_forward
+MACCROBAT_28321073,1631,1638,55 mmHg,55,mmHg,pressure,C0020649,Finding,same_sentence
+MACCROBAT_28321073,1702,1710,6.7 g/dL,6.7,g/dL,lab_concentration,C0002871,Diagnosis,same_sentence
+MACCROBAT_28321073,1747,1756,14.8 g/dL,14.8,g/dL,lab_concentration,C0002871,Diagnosis,same_sentence
+MACCROBAT_28321073,1762,1769,10 days,10,days,time,C0002871,Diagnosis,same_sentence
+MACCROBAT_28321073,3114,3121,70 mmHg,70,mmHg,pressure,C1271104,Finding,same_sentence
+MACCROBAT_28353556,34,41,5-month,5,month,time,C0037199,Diagnosis,same_sentence_forward
+MACCROBAT_28353556,327,335,26 mg/dL,26,mg/dL,lab_concentration,C0439775,Treatment,same_sentence
+MACCROBAT_28353556,353,362,1.2 mg/dL,1.2,mg/dL,lab_concentration,C0439775,Treatment,same_sentence
+MACCROBAT_28353556,519,525,500 mg,500,mg,mass,C0338237,Treatment,same_sentence
+MACCROBAT_28353556,861,867,9 g/dL,9,g/dL,lab_concentration,C0085577,Diagnosis,same_sentence
+MACCROBAT_28353556,1030,1035,71 mm,71,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353556,1046,1051,51 mm,51,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353556,1059,1071,3– 25 mmol/L,,mmol/L,lab_concentration,C1304686,Finding,same_sentence
+MACCROBAT_28353556,1078,1081,94%,94,%,percentage,C1304686,Finding,same_sentence
+MACCROBAT_28353556,1182,1185,1 g,1,g,mass,C0025815,Treatment,same_sentence
+MACCROBAT_28353556,1196,1202,3 days,3,days,time,C0025815,Treatment,same_sentence
+MACCROBAT_28353556,1207,1211,1 mg,1,mg,mass,C0025815,Treatment,same_sentence
+MACCROBAT_28353556,1252,1257,1.2 g,1.2,g,mass,C0010583,Treatment,same_sentence
+MACCROBAT_28353556,1270,1277,2 weeks,2,weeks,time,C0010583,Treatment,same_sentence
+MACCROBAT_28353556,1328,1335,3 weeks,3,weeks,time,C0010583,Treatment,same_sentence
+MACCROBAT_28353556,1611,1617,9 days,9,days,time,,,none
+MACCROBAT_28353556,1765,1771,0.3 mg,0.3,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28353556,1966,1971,61 mm,61,mm,length,C0700292,Finding,same_sentence
+MACCROBAT_28353556,2102,2107,35 mL,35,mL,volume,C3811844,Exam,same_sentence
+MACCROBAT_28353556,2446,2449,1 g,1,g,mass,C0025815,Treatment,same_sentence
+MACCROBAT_28353556,2495,2501,375 mg,375,mg,mass,C0393022,Treatment,same_sentence
+MACCROBAT_28353556,2516,2523,4 weeks,4,weeks,time,C0393022,Treatment,same_sentence
+MACCROBAT_28353556,2657,2663,1-year,1,year,time,C0748159,Diagnosis,window_fallback
+MACCROBAT_28353556,2735,2741,150 mg,150,mg,mass,C0004482,Treatment,same_sentence
+MACCROBAT_28353556,2765,2770,15 mg,15,mg,mass,C0032952,Treatment,same_sentence
+MACCROBAT_28353556,2854,2859,94 mL,94,mL,volume,C3811844,Exam,same_sentence
+MACCROBAT_28353556,2901,2906,86 mm,86,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353556,2917,2922,36 mm,36,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353556,2930,2942,3– 23 mmol/L,,mmol/L,lab_concentration,C0767563,Treatment,same_sentence
+MACCROBAT_28353556,2949,2952,95%,95,%,percentage,C0767563,Treatment,same_sentence
+MACCROBAT_28353558,546,552,day 42,42,day,time,C1998827,Finding,same_sentence_forward
+MACCROBAT_28353558,938,944,day 62,62,day,time,C2242979,Exam,same_sentence
+MACCROBAT_28353558,1140,1146,day 60,60,day,time,C0854135,Diagnosis,same_sentence_forward
+MACCROBAT_28353558,1244,1247,3 g,3,g,mass,C0071972,Treatment,same_sentence
+MACCROBAT_28353558,1303,1310,6 weeks,6,weeks,time,C0005558,Exam,same_sentence
+MACCROBAT_28353558,1491,1497,day 65,65,day,time,C1457868,Finding,same_sentence_forward
+MACCROBAT_28353558,1658,1664,day 70,70,day,time,C1306577,Finding,same_sentence
+MACCROBAT_28353558,1841,1847,days 1,1,days,time,C0024109,BodyPart,same_sentence
+MACCROBAT_28353561,100,107,10 days,10,days,time,C0000737,Symptom,same_sentence
+MACCROBAT_28353561,227,232,10 cm,10,cm,length,C0018889,Diagnosis,same_sentence
+MACCROBAT_28353561,304,310,38.4°C,38.4,°C,temperature,C0239574,Finding,same_sentence
+MACCROBAT_28353561,465,471,11.2 G,11.2,G,mass,C0023508,Exam,same_sentence
+MACCROBAT_28353561,488,492,5.2%,5.2,%,percentage,C0023508,Exam,same_sentence
+MACCROBAT_28353561,543,550,928 U/L,928,U/L,lab_concentration,C0201886,Exam,same_sentence
+MACCROBAT_28353561,730,737,163 U/L,163,U/L,lab_concentration,C0205054,BodyPart,same_sentence
+MACCROBAT_28353561,766,772,96 U/L,96,U/L,lab_concentration,C0205054,BodyPart,same_sentence
+MACCROBAT_28353561,877,883,1.5 cm,1.5,cm,length,C0009437,BodyPart,same_sentence
+MACCROBAT_28353561,925,931,1.3 cm,1.3,cm,length,C0005401,BodyPart,same_sentence
+MACCROBAT_28353561,1382,1386,1 cm,1,cm,length,C0184898,Treatment,same_sentence_forward
+MACCROBAT_28353561,2153,2159,3 days,3,days,time,C0013227,Treatment,same_sentence
+MACCROBAT_28353561,2227,2233,3 days,3,days,time,C0036082,Treatment,same_sentence
+MACCROBAT_28353569,51,59,10 years,10,years,time,C0455500,Finding,same_sentence
+MACCROBAT_28353569,83,90,3 years,3,years,time,C0455500,Finding,same_sentence
+MACCROBAT_28353569,224,230,2 days,2,days,time,C0000737,Symptom,same_sentence
+MACCROBAT_28353569,276,283,3 years,3,years,time,C0079304,Exam,same_sentence
+MACCROBAT_28353569,472,477,60 mm,60,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28353569,763,772,12.5 g/dL,12.5,g/dL,lab_concentration,C0025222,Finding,window_fallback
+MACCROBAT_28353569,864,872,20 mg/dL,20,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28353569,891,900,1.1 mg/dL,1.1,mg/dL,lab_concentration,C0005845,Exam,same_sentence
+MACCROBAT_28353569,937,944,21 IU/L,21,IU/L,lab_concentration,C0005845,Exam,window_fallback
+MACCROBAT_28353569,973,980,16 IU/L,16,IU/L,lab_concentration,C0201913,Exam,same_sentence_forward
+MACCROBAT_28353569,1000,1009,0.6 mg/dL,0.6,mg/dL,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28353569,1034,1041,64 IU/L,64,IU/L,lab_concentration,C0201913,Exam,same_sentence
+MACCROBAT_28353569,1121,1129,9.3 g/dL,9.3,g/dL,lab_concentration,C0023764,Treatment,window_fallback
+MACCROBAT_28353569,1215,1219,5-cm,5,cm,length,C0040405,Exam,same_sentence
+MACCROBAT_28353569,2070,2074,5-cm,5,cm,length,C0024485,Exam,same_sentence
+MACCROBAT_28353569,2544,2550,2.2-cm,2.2,cm,length,C0429856,Finding,window_fallback
+MACCROBAT_28353588,83,91,9 months,9,months,time,C0011168,Diagnosis,same_sentence
+MACCROBAT_28353588,253,261,30 years,30,years,time,C0337664,Finding,same_sentence
+MACCROBAT_28353588,660,666,4.0 cm,4.0,cm,length,C0027651,Diagnosis,same_sentence
+MACCROBAT_28353588,889,894,20 cm,20,cm,length,C0014876,BodyPart,same_sentence
+MACCROBAT_28353588,1631,1637,2.5 cm,2.5,cm,length,C0577559,Finding,same_sentence
+MACCROBAT_28353588,4411,4419,8 months,8,months,time,C1522449,Treatment,window_fallback
+MACCROBAT_28353596,2440,2443,4 g,4,g,mass,C0376259,Treatment,same_sentence
+MACCROBAT_28353596,2470,2473,3 g,3,g,mass,C0137996,Treatment,same_sentence
+MACCROBAT_28353596,2482,2489,2 weeks,2,weeks,time,C0137996,Treatment,same_sentence
+MACCROBAT_28353596,2513,2518,20 mg,20,mg,mass,C0038317,Treatment,same_sentence
+MACCROBAT_28353596,2527,2534,1 month,1,month,time,C0989247,Treatment,same_sentence
+MACCROBAT_28353596,2536,2541,10 mg,10,mg,mass,C0989247,Treatment,same_sentence
+MACCROBAT_28353596,2550,2558,4 months,4,months,time,C0989247,Treatment,same_sentence
+MACCROBAT_28353596,2580,2585,1.0 g,1.0,g,mass,C1601799,Treatment,same_sentence
+MACCROBAT_28353596,2594,2602,5 months,5,months,time,C1601799,Treatment,same_sentence
+MACCROBAT_28353596,2626,2632,600 mg,600,mg,mass,C3540037,Treatment,same_sentence
+MACCROBAT_28353596,2641,2649,5 months,5,months,time,C3540037,Treatment,same_sentence
+MACCROBAT_28353596,2691,2696,0.5 g,0.5,g,mass,C0042866,Treatment,same_sentence
+MACCROBAT_28353596,2705,2713,5 months,5,months,time,C0042866,Treatment,same_sentence
+MACCROBAT_28353604,122,130,40 years,40,years,time,C0231807,Symptom,window_fallback
+MACCROBAT_28353604,541,549,104 mmHg,104,mmHg,pressure,C1272641,Finding,same_sentence
+MACCROBAT_28353604,615,620,57 mm,57,mm,length,C0225883,BodyPart,same_sentence
+MACCROBAT_28353604,1015,1021,2.5 mg,2.5,mg,mass,C0043031,Treatment,same_sentence
+MACCROBAT_28353604,1146,1151,20 mg,20,mg,mass,C0087111,Treatment,same_sentence
+MACCROBAT_28353604,1251,1258,1 month,1,month,time,C4284232,Treatment,same_sentence
+MACCROBAT_28353604,1317,1324,72 mmHg,72,mmHg,pressure,C0013516,Exam,same_sentence
+MACCROBAT_28353604,1424,1432,6 months,6,months,time,C4284232,Treatment,same_sentence
+MACCROBAT_28353604,1581,1588,47 mmHg,47,mmHg,pressure,C0189896,Exam,same_sentence
+MACCROBAT_28353604,1637,1644,10 mmHg,10,mmHg,pressure,C0043091,Exam,same_sentence
+MACCROBAT_28353604,1938,1943,20 mg,20,mg,mass,C4035626,Finding,same_sentence_forward
+MACCROBAT_28353604,1974,1980,400 mg,400,mg,mass,C1516119,Treatment,same_sentence
+MACCROBAT_28353604,2057,2068,2.5–3.75 mg,,mg,mass,C0003281,Treatment,same_sentence
+MACCROBAT_28353604,2244,2251,95 mmHg,95,mmHg,pressure,C0013516,Exam,same_sentence
+MACCROBAT_28353604,2406,2413,63 mmHg,63,mmHg,pressure,C0150411,Exam,same_sentence
+MACCROBAT_28353604,2437,2440,93%,93,%,percentage,C0030054,Treatment,same_sentence
+MACCROBAT_28353604,2540,2546,62.06%,62.06,%,percentage,C0035213,Finding,same_sentence
+MACCROBAT_28353604,2551,2553,1%,1,%,percentage,C0035213,Finding,same_sentence
+MACCROBAT_28353604,2565,2570,80.9%,80.9,%,percentage,C0035213,Finding,same_sentence
+MACCROBAT_28353604,2660,2663,42%,42,%,percentage,C0007009,Treatment,same_sentence
+MACCROBAT_28353604,2947,2954,53 mmHg,53,mmHg,pressure,C0189896,Exam,same_sentence
+MACCROBAT_28353604,2973,2980,11 mmHg,11,mmHg,pressure,C0189896,Exam,same_sentence
+MACCROBAT_28353604,3226,3229,65%,65,%,percentage,C1535502,Treatment,same_sentence
+MACCROBAT_28353604,4946,4952,1 year,1,year,time,C0013404,Symptom,same_sentence
+MACCROBAT_28353613,110,117,1-month,1,month,time,C3714772,Symptom,same_sentence_forward
+MACCROBAT_28353613,161,166,40 °C,40,°C,temperature,C3714772,Symptom,same_sentence
+MACCROBAT_28353613,612,617,95 mm,95,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28353613,700,707,39.3 °C,39.3,°C,temperature,C0018787,BodyPart,same_sentence
+MACCROBAT_28353613,929,936,53.5 mm,53.5,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353613,949,956,62.8 mm,62.8,mm,length,C1304686,Finding,same_sentence
+MACCROBAT_28353613,1037,1042,97.4%,97.4,%,percentage,C3842088,Finding,same_sentence
+MACCROBAT_28353613,1086,1096,5.16 ng/mL,5.16,ng/mL,lab_concentration,C3842088,Finding,same_sentence
+MACCROBAT_28353613,1459,1466,6 hours,6,hours,time,C5939038,Finding,same_sentence
+MACCROBAT_28353613,1668,1673,day 6,6,day,time,C0037813,Exam,same_sentence
+MACCROBAT_28383413,132,139,4 years,4,years,time,C0547030,Finding,same_sentence
+MACCROBAT_28383413,455,462,2 years,2,years,time,C0221198,Finding,window_fallback
+MACCROBAT_28383413,547,551,3–5%,,%,percentage,C0018870,BodyPart,same_sentence
+MACCROBAT_28383413,635,644,15 months,15,months,time,C0025202,Diagnosis,same_sentence
+MACCROBAT_28383413,1079,1084,15 mm,15,mm,length,C4521130,Finding,same_sentence
+MACCROBAT_28383413,1711,1716,31 mm,31,mm,length,C0729596,BodyPart,same_sentence
+MACCROBAT_28383413,2045,2050,30 mm,30,mm,length,C0024485,Exam,same_sentence
+MACCROBAT_28383413,2657,2666,119.08 μg,119.08,μg,other,C0033371,Treatment,same_sentence
+MACCROBAT_28383413,2683,2696,5.99–30.04 μg,,μg,other,C0033371,Treatment,same_sentence
+MACCROBAT_28383413,4165,4167,3%,3,%,percentage,C0278883,Diagnosis,same_sentence_forward
+MACCROBAT_28383413,4171,4173,5%,5,%,percentage,C0278883,Diagnosis,same_sentence_forward
+MACCROBAT_28383413,4787,4795,2 months,2,months,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28403086,1472,1478,500 mg,500,mg,mass,C2346836,Treatment,same_sentence
+MACCROBAT_28403086,1851,1858,3 weeks,3,weeks,time,C2346836,Treatment,same_sentence
+MACCROBAT_28403086,1922,1931,11 months,11,months,time,C0202823,Exam,same_sentence
+MACCROBAT_28403086,1974,1981,7-month,7,month,time,C2346836,Treatment,window_fallback
+MACCROBAT_28403086,2293,2301,11-month,11,month,time,C2924612,BodyPart,same_sentence_forward
+MACCROBAT_28403086,2500,2508,7 months,7,months,time,C0052460,Treatment,same_sentence
+MACCROBAT_28403092,56,63,3 weeks,3,weeks,time,C0012833,Symptom,same_sentence
+MACCROBAT_28403092,366,373,20-year,20,year,time,C0455527,Finding,same_sentence_forward
+MACCROBAT_28403092,888,894,5.0 cm,5.0,cm,length,C0447120,BodyPart,window_fallback
+MACCROBAT_28403092,1410,1414,36 g,36,g,mass,C5966160,Treatment,same_sentence
+MACCROBAT_28403092,1541,1547,17 U/L,17,U/L,lab_concentration,C0525032,Finding,same_sentence_forward
+MACCROBAT_28403092,1972,1978,3 days,3,days,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28403092,2257,2263,800 mg,800,mg,mass,C0543467,Treatment,same_sentence
+MACCROBAT_28403092,2551,2556,50 mL,50,mL,volume,C1995000,BodyPart,window_fallback
+MACCROBAT_28403092,2908,2915,1200 mg,1200,mg,mass,C0018926,Symptom,window_fallback
+MACCROBAT_28403092,3059,3065,500 mg,500,mg,mass,C0021853,BodyPart,same_sentence
+MACCROBAT_28403092,3146,3151,day 3,3,day,time,C0024485,Exam,same_sentence
+MACCROBAT_28403092,3367,3372,day 4,4,day,time,C0025286,Diagnosis,window_fallback
+MACCROBAT_28403092,3448,3454,3.0 mm,3.0,mm,length,C0700124,Finding,same_sentence
+MACCROBAT_28403092,3987,3995,24 hours,24,hours,time,C0007785,Diagnosis,same_sentence
+MACCROBAT_28403092,4186,4190,33 g,33,g,mass,C5966160,Treatment,same_sentence
+MACCROBAT_28403092,4257,4263,12 U/L,12,U/L,lab_concentration,C0525032,Finding,same_sentence_forward
+MACCROBAT_28403092,5019,5025,3 days,3,days,time,C0041657,Finding,same_sentence
+MACCROBAT_28403092,5650,5658,24 hours,24,hours,time,C0278060,Finding,same_sentence
+MACCROBAT_28403092,5730,5738,48 hours,48,hours,time,C0278060,Finding,same_sentence
+MACCROBAT_28403092,5836,5842,4 days,4,days,time,C0002607,Treatment,same_sentence
+MACCROBAT_28403092,5869,5875,day 15,15,day,time,C0002607,Treatment,window_fallback
+MACCROBAT_28403092,5877,5883,8 days,8,days,time,C0002607,Treatment,window_fallback
+MACCROBAT_28403092,6011,6018,month 5,5,month,time,,,none
+MACCROBAT_28403099,536,544,10 years,10,years,time,C0020538,Diagnosis,same_sentence
+MACCROBAT_28403099,583,591,30 years,30,years,time,C0023890,Diagnosis,same_sentence
+MACCROBAT_28403099,628,634,100 mg,100,mg,mass,C0023890,Diagnosis,same_sentence
+MACCROBAT_28403099,662,667,10 mg,10,mg,mass,C0992487,Treatment,same_sentence
+MACCROBAT_28403099,675,682,6 years,6,years,time,C2725339,Treatment,same_sentence
+MACCROBAT_28403099,723,728,37 °C,37,°C,temperature,C1271104,Finding,same_sentence_forward
+MACCROBAT_28403099,756,761,96 mm,96,mm,length,C1271104,Finding,same_sentence
+MACCROBAT_28403099,1000,1009,3.7 ng/mL,3.7,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28403099,1029,1039,17.3 ng/mL,17.3,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28403099,1495,1498,10%,10,%,percentage,C1521726,Finding,same_sentence
+MACCROBAT_28403099,1535,1538,15%,15,%,percentage,C0027651,Diagnosis,same_sentence
+MACCROBAT_28403099,1696,1699,10%,10,%,percentage,C5441575,Finding,same_sentence
+MACCROBAT_28403099,1814,1820,3.5 cm,3.5,cm,length,C0011923,Exam,same_sentence
+MACCROBAT_28403099,2511,2517,0.3 mm,0.3,mm,length,C0041618,Exam,same_sentence
+MACCROBAT_28403099,2681,2686,15 mm,15,mm,length,C0547070,Treatment,same_sentence
+MACCROBAT_28403099,2994,2999,5-day,5,day,time,C0018670,BodyPart,window_fallback
+MACCROBAT_28403099,3200,3206,1-week,1,week,time,C0027651,Diagnosis,window_fallback
+MACCROBAT_28403099,3732,3738,3 days,3,days,time,C0348007,Treatment,same_sentence
+MACCROBAT_28403099,3965,3971,3 days,3,days,time,C0036679,Diagnosis,same_sentence
+MACCROBAT_28403099,4120,4127,1 month,1,month,time,C0027540,Diagnosis,window_fallback
+MACCROBAT_28403099,4244,4252,5 months,5,months,time,C0040405,Exam,same_sentence_forward
+MACCROBAT_28403099,4553,4562,3.6 ng/mL,3.6,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28403099,4564,4574,26.7 ng/mL,26.7,ng/mL,lab_concentration,C0201933,Exam,same_sentence
+MACCROBAT_28422883,244,248,6 kg,6,kg,mass,C1262477,Finding,same_sentence
+MACCROBAT_28422883,256,264,6 months,6,months,time,C1262477,Finding,same_sentence
+MACCROBAT_28422883,482,487,70 mg,70,mg,mass,C0015133,Treatment,same_sentence
+MACCROBAT_28422883,489,494,45 mg,45,mg,mass,C0015133,Treatment,same_sentence
+MACCROBAT_28422883,511,516,79 mg,79,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_28422883,518,523,50 mg,50,mg,mass,C0008838,Treatment,same_sentence
+MACCROBAT_28422883,1124,1135,23.94 mg/dL,23.94,mg/dL,lab_concentration,C0742906,Finding,same_sentence
+MACCROBAT_28422883,2963,2972,12 months,12,months,time,,,none
+MACCROBAT_28538413,980,986,5.0 cm,5.0,cm,length,C0014876,BodyPart,same_sentence
+MACCROBAT_28538413,989,995,3.0 cm,3.0,cm,length,C0014876,BodyPart,same_sentence
+MACCROBAT_28538413,3535,3542,14 days,14,days,time,C0543467,Treatment,same_sentence_forward
+MACCROBAT_28538413,3639,3646,3 weeks,3,weeks,time,C3665472,Treatment,same_sentence
+MACCROBAT_28538413,3860,3865,day 1,1,day,time,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,3870,3875,day 8,8,day,time,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,3877,3883,135 mg,135,mg,mass,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,4006,4011,day 2,2,day,time,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,4018,4025,1000 mg,1000,mg,mass,C3842676,Finding,same_sentence
+MACCROBAT_28538413,4141,4146,day 2,2,day,time,C0008838,Treatment,same_sentence
+MACCROBAT_28538413,4153,4158,75 mg,75,mg,mass,C3842676,Finding,same_sentence
+MACCROBAT_28538413,4663,4669,3 days,3,days,time,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,4691,4697,1 year,1,year,time,C1533685,Treatment,same_sentence
+MACCROBAT_28538413,4861,4869,3 months,3,months,time,C0013806,Treatment,same_sentence
+MACCROBAT_28559815,21,27,1 week,1,week,time,,,none
+MACCROBAT_28559815,520,525,13 kg,13,kg,mass,C0549206,Finding,same_sentence_forward
+MACCROBAT_28559815,574,579,72 kg,72,kg,mass,C0549206,Finding,same_sentence
+MACCROBAT_28559815,642,650,38 weeks,38,weeks,time,C0007876,Treatment,same_sentence
+MACCROBAT_28559815,1518,1523,10 mL,10,mL,volume,C1533685,Treatment,window_fallback
+MACCROBAT_28559815,1591,1595,5 mL,5,mL,volume,C0021492,Treatment,same_sentence
+MACCROBAT_28559815,1802,1809,12 days,12,days,time,C1533685,Treatment,window_fallback
+MACCROBAT_28595573,1549,1557,38 years,38,years,time,C0543467,Treatment,same_sentence
+MACCROBAT_28595573,1725,1732,1 month,1,month,time,C0001645,Treatment,same_sentence_forward
+MACCROBAT_28595573,3802,3806,115G,115,G,mass,C0442726,Finding,same_sentence
+MACCROBAT_28767567,1044,1050,7.2 cm,7.2,cm,length,C0023884,BodyPart,window_fallback
+MACCROBAT_28767567,1642,1647,10 cm,10,cm,length,C1280903,Treatment,same_sentence
+MACCROBAT_28767567,1919,1923,7 cm,7,cm,length,,,none
+MACCROBAT_28767567,2178,2184,9 days,9,days,time,C0332140,Finding,window_fallback
+MACCROBAT_28767567,2368,2375,30 days,30,days,time,C0041618,Exam,same_sentence
