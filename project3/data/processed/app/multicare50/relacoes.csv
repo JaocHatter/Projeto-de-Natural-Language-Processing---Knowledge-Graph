@@ -1,0 +1,1503 @@
+case_id,relation,assertion_status,head_cui,head_entity_type,head_text,tail_cui,tail_entity_type,tail_text,score,sent_start,sent_end
+PMC10106591_01,HAS_SYMPTOM,affirmed,,Person,,C0008031,Symptom,chest pain,0.826,0,189
+PMC10106591_01,HAS_SYMPTOM,affirmed,,Person,,C0232292,Symptom,chest tightness,0.815,0,189
+PMC10106591_01,COORDINATE_WITH,affirmed,C0008031,Symptom,chest pain,C0232292,Symptom,chest tightness,0.898,0,189
+PMC10106591_01,HAS_SYMPTOM,affirmed,,Person,,C0008031,Symptom,chest pain,0.813,190,439
+PMC10106591_01,LOCATED_IN,negated,C0729889,BodyPart,throat,C0013404,Symptom,shortness of breath,0.785,190,439
+PMC10106591_01,COORDINATE_WITH,affirmed,C0013404,Symptom,shortness of breath,C0030252,Finding,palpitations,0.563,190,439
+PMC10106591_01,COORDINATE_WITH,affirmed,C0030252,Finding,palpitations,C0700590,Finding,diaphoresis,0.511,190,439
+PMC10106591_01,REVEALED_BY,historical,C0262926,Finding,medical history,C0020538,Diagnosis,hypertension,0.312,578,698
+PMC10106591_01,REVEALED_BY,affirmed,C0020538,Diagnosis,hypertension,C0003364,Treatment,antihypertensives,0.501,578,698
+PMC10106591_01,COORDINATE_WITH,affirmed,C0003364,Treatment,antihypertensives,C0986849,Treatment,"irbesartan, 150 mg",0.63,578,698
+PMC10106591_01,HAS_FINDING,affirmed,,Person,,C0235401,Finding,abnormal glucose tolerance,0.774,699,762
+PMC10106591_01,HAS_FINDING,affirmed,,Person,,C0442816,Finding,within normal limits,0.775,802,1042
+PMC10106591_01,COORDINATE_WITH,affirmed,C0442816,Finding,within normal limits,C1271104,Finding,blood pressure,0.507,802,1042
+PMC10106591_01,LOCATED_IN,affirmed,C3842090,Finding,1 mm,C0018787,BodyPart,heart,0.514,802,1042
+PMC10106591_01,LOCATED_IN,affirmed,C0018787,BodyPart,heart,C0332167,Finding,HR,0.502,802,1042
+PMC10106591_01,LOCATED_IN,affirmed,C0018808,Finding,murmur,C0024109,BodyPart,lungs,0.583,1043,1153
+PMC10106591_01,LOCATED_IN,affirmed,C0004339,Exam,auscultation,C0024109,BodyPart,lungs,0.818,1043,1153
+PMC10106591_01,LOCATED_IN,affirmed,C0030247,Exam,palpation,C0000726,BodyPart,abdomen,0.627,1154,1230
+PMC10106591_01,REVEALED_BY,affirmed,C1623258,Exam,ECG,C0232202,Finding,normal sinus rhythm,0.52,1289,1662
+PMC10106591_01,REVEALED_BY,affirmed,C0013516,Exam,echocardiography,C0205400,Finding,thickened,0.508,1289,1662
+PMC10106591_01,LOCATED_IN,affirmed,C0205400,Finding,thickened,C0225870,BodyPart,ventricular septum,0.593,1289,1662
+PMC10106591_01,COORDINATE_WITH,affirmed,C0040961,Diagnosis,tricuspid regurgitation,C0392756,Finding,reduced,0.473,1289,1662
+PMC10106591_01,COORDINATE_WITH,affirmed,C1968319,Treatment,clopidogrel (300 mg,C0085532,Exam,coronary angiography,0.688,1892,2120
+PMC10106591_01,REVEALED_BY,affirmed,C0948089,Diagnosis,acute coronary syndrome (ACS,C0983862,Treatment,aspirin (300 mg,0.65,1892,2120
+PMC10106591_01,REVEALED_BY,affirmed,C1623258,Exam,ECG,C0520886,Finding,ST-segment elevation,0.599,2204,2430
+PMC10106591_01,LOCATED_IN,affirmed,C1261287,Diagnosis,stenosis,C0226032,BodyPart,left anterior descending artery,0.746,2933,3369
+PMC10106591_01,COORDINATE_WITH,affirmed,C1261287,Diagnosis,stenosis,C1261287,Diagnosis,stenosis,0.33,2933,3369
+PMC10106591_01,LOCATED_IN,affirmed,C1261287,Diagnosis,stenosis,C1261316,BodyPart,right coronary artery,0.75,2933,3369
+PMC10106591_01,TREATED_WITH,affirmed,,Person,,C0023508,Exam,white blood cell count,0.937,3370,3665
+PMC10106591_01,LOCATED_IN,affirmed,C0023508,Exam,white blood cell count,C0023884,BodyPart,liver,0.549,3370,3665
+PMC10106591_01,LOCATED_IN,affirmed,C0013832,Treatment,electrolytes,C0040132,BodyPart,thyroid,0.495,3370,3665
+PMC10106591_01,COORDINATE_WITH,affirmed,C0441509,Treatment,coagulation,C0005833,Exam,erythrocyte sedimentation,0.77,3370,3665
+PMC10106591_01,TREATED_WITH,affirmed,,Person,,C1623258,Exam,ECG,0.971,3666,3749
+PMC10106591_01,TREATED_WITH,affirmed,,Person,,C1623258,Exam,ECG,0.969,3750,3813
+PMC10106591_01,TREATED_WITH,affirmed,,Person,,C0012373,Treatment,diltiazem,0.758,3814,4023
+PMC10106591_01,COORDINATE_WITH,affirmed,C0012373,Treatment,diltiazem,C1124475,Treatment,"aspirin, 100 mg",0.609,3814,4023
+PMC10106591_01,TREATED_WITH,affirmed,C0087111,Treatment,treatments,C0151744,Diagnosis,myocardial ischemia,0.605,4024,4166
+PMC10106591_01,COORDINATE_WITH,affirmed,C0008031,Symptom,chest pain,C2364135,Symptom,discomfort,0.808,4024,4166
+PMC10106591_01,TREATED_WITH,affirmed,,Person,,C1874451,Treatment,basis,0.702,4167,4278
+PMC10106591_01,TREATED_WITH,negated,C1874451,Treatment,basis,C2825055,Diagnosis,recurrence,0.622,4167,4278
+PMC10405809_01,HAS_DIAGNOSIS,affirmed,,Person,,C0011168,Diagnosis,dysphagia,0.871,0,105
+PMC10405809_01,COORDINATE_WITH,affirmed,C0018834,Symptom,heartburn,C0232494,Symptom,epigastric burning pain,0.898,106,242
+PMC10405809_01,TREATED_WITH,affirmed,C0232494,Symptom,epigastric burning pain,C4284232,Treatment,medications,0.676,106,242
+PMC10405809_01,LOCATED_IN,negated,C0024204,BodyPart,lymph node,C1293134,Treatment,enlargement,0.519,501,553
+PMC10405809_01,TREATED_WITH,affirmed,,Person,,C0023508,Exam,leukocyte count,0.828,639,853
+PMC10405809_01,COORDINATE_WITH,affirmed,C0015879,Treatment,ferritin,C0427491,Exam,hypochromic red blood cells,0.557,639,853
+PMC10405809_01,COORDINATE_WITH,affirmed,C0023508,Exam,leukocyte count,C0032181,Exam,platelet counts,0.877,639,853
+PMC10405809_01,REVEALED_BY,affirmed,C0032181,Exam,platelet counts,C0015879,Treatment,ferritin,0.553,639,853
+PMC10405809_01,LOCATED_IN,affirmed,C0203065,Exam,Barium swallow,C0227186,BodyPart,cervical esophagus,0.738,854,1049
+PMC10405809_01,HAS_DIAGNOSIS,hedged,,Person,,C0017168,Diagnosis,gastroesophageal reflux disease,0.793,1050,1248
+PMC10405809_01,CAUSED_BY,hedged,C0017168,Diagnosis,gastroesophageal reflux disease,C0017168,Diagnosis,GERD,0.472,1050,1248
+PMC10405809_01,CAUSED_BY,hedged,C0017168,Diagnosis,GERD,C1261287,Diagnosis,stricture,0.414,1050,1248
+PMC10405809_01,LOCATED_IN,hedged,C1261287,Diagnosis,stricture,C0014876,BodyPart,esophagus,0.904,1050,1248
+PMC10405809_01,REVEALED_BY,affirmed,C1444647,Finding,wanted,C0006826,Diagnosis,malignancy,0.398,1050,1248
+PMC10405809_01,COORDINATE_WITH,affirmed,C0006826,Diagnosis,malignancy,C1262477,Finding,weight loss,0.591,1050,1248
+PMC10405809_01,COORDINATE_WITH,affirmed,C1262477,Finding,weight loss,C0002871,Diagnosis,anemia,0.567,1050,1248
+PMC10405809_01,LOCATED_IN,affirmed,C0040405,Exam,CT) scan,C0027530,BodyPart,neck,0.93,1249,1475
+PMC10405809_01,COORDINATE_WITH,affirmed,C0027530,BodyPart,neck,C0817096,BodyPart,thorax,0.701,1249,1475
+PMC10405809_01,LOCATED_IN,affirmed,C0205400,Finding,thickening,C0014876,BodyPart,esophagus,0.641,1249,1475
+PMC10405809_01,LOCATED_IN,affirmed,C0079304,Exam,Esophagogastroduodenoscopy,C0021156,BodyPart,incisors,0.745,1476,1639
+PMC10405809_01,LOCATED_IN,affirmed,C1261287,Diagnosis,stricture,C0014876,BodyPart,esophagus,0.911,1476,1639
+PMC10405809_01,REVEALED_BY,affirmed,C0005558,Exam,Biopsies,C1261287,Diagnosis,stricture,0.685,1737,1799
+PMC10405809_01,REVEALED_BY,negated,C1261287,Diagnosis,stricture,C0006826,Diagnosis,malignancy,0.392,1737,1799
+PMC10405809_01,HAS_DIAGNOSIS,affirmed,,Person,,C1261287,Diagnosis,stricture,0.787,1800,1900
+PMC10405809_01,HAS_DIAGNOSIS,affirmed,,Person,,C0006826,Diagnosis,malignancy,0.781,1800,1900
+PMC10405809_01,COORDINATE_WITH,affirmed,C1261287,Diagnosis,stricture,C0006826,Diagnosis,malignancy,0.657,1800,1900
+PMC10405809_01,LOCATED_IN,affirmed,C0006826,Diagnosis,malignancy,C0014876,BodyPart,esophagus,0.907,1800,1900
+PMC10405809_01,LOCATED_IN,hedged,C0014876,BodyPart,esophagus,C5980913,Finding,differential diagnosis,0.553,1800,1900
+PMC10405809_01,CAUSED_BY,affirmed,C0002871,Diagnosis,anemia,C0006826,Diagnosis,malignancy,0.474,1901,2110
+PMC10405809_01,CAUSED_BY,affirmed,C1261287,Diagnosis,stricture,C1261287,Diagnosis,stricture,0.425,1901,2110
+PMC10405809_01,COORDINATE_WITH,affirmed,C1262477,Finding,weight loss,C0002871,Diagnosis,anemia,0.567,1901,2110
+PMC10405809_01,REVEALED_BY,affirmed,C0040405,Exam,CT scan,C0006826,Diagnosis,malignancy,0.578,1901,2110
+PMC10405809_01,COORDINATE_WITH,affirmed,C0040405,Exam,CT scan,C0005558,Exam,biopsy,0.643,1901,2110
+PMC10405809_01,REVEALED_BY,affirmed,C0005558,Exam,biopsy,C1261287,Diagnosis,stricture,0.685,1901,2110
+PMC10405809_01,REVEALED_BY,affirmed,C0014245,Exam,endoscopy,C0011911,Finding,LD,0.504,2111,2217
+PMC10405809_01,COORDINATE_WITH,affirmed,C0203065,Exam,barium swallow,C0014245,Exam,endoscopy,0.732,2111,2217
+PMC10405809_01,LOCATED_IN,affirmed,C0040405,Exam,CT scan,C0014876,BodyPart,esophagus,0.778,2218,2358
+PMC10405809_01,TREATED_WITH,affirmed,,Person,,C0004704,Treatment,balloon dilatation,0.839,2422,2520
+PMC10405809_01,REVEALED_BY,affirmed,C0012359,Diagnosis,dilatation,C0988268,Treatment,omeprazole 20 mg,0.697,2521,2616
+PMC10405809_01,HAS_FINDING,hedged,,Person,,C0424871,Finding,feeds normally,0.584,2617,2771
+PMC10434843_01,LOCATED_IN,affirmed,C0230346,BodyPart,right arm,C0030552,Diagnosis,paresis,0.547,0,98
+PMC10434843_01,HAS_SYMPTOM,affirmed,,Person,,C3714552,Symptom,weakness,0.831,99,185
+PMC10434843_01,HAS_FINDING,affirmed,,Person,,C0392699,Finding,dysaesthesia,0.668,335,535
+PMC10434843_01,LOCATED_IN,affirmed,C0392699,Finding,dysaesthesia,C0230370,BodyPart,right hand,0.561,335,535
+PMC10434843_01,LOCATED_IN,affirmed,C0230370,BodyPart,right hand,C3843647,Finding,2 years,0.534,335,535
+PMC10434843_01,COORDINATE_WITH,negated,C3843647,Finding,2 years,C4036196,Finding,not bothered,0.629,335,535
+PMC10434843_01,LOCATED_IN,affirmed,C0024485,Exam,Magnetic resonance imaging (MRI,C4299132,BodyPart,head and cervical spine,0.929,536,731
+PMC10434843_01,COORDINATE_WITH,affirmed,C0949766,Treatment,physiotherapy,C0010137,Treatment,cortisone,0.652,536,731
+PMC10434843_01,REVEALED_BY,affirmed,C0027853,Exam,neurological examination,C0030552,Diagnosis,paresis,0.701,732,852
+PMC10434843_01,LOCATED_IN,affirmed,C0030552,Diagnosis,paresis,C1140618,BodyPart,arm,0.774,732,852
+PMC10434843_01,COORDINATE_WITH,affirmed,C0043262,BodyPart,wrist,C0043262,BodyPart,wrist,0.601,853,1193
+PMC10434843_01,LOCATED_IN,affirmed,C0030552,Diagnosis,paresis,C0037004,BodyPart,shoulder,0.88,1311,1440
+PMC10434843_01,HAS_FINDING,affirmed,,Person,,C0020580,Finding,hypoesthesia,0.63,1441,1671
+PMC10434843_01,LOCATED_IN,affirmed,C0020580,Finding,hypoesthesia,C0222682,BodyPart,phalanx,0.536,1441,1671
+PMC10434843_01,LOCATED_IN,affirmed,C0040067,BodyPart,thumb,C0332568,Diagnosis,pad,0.547,1441,1671
+PMC10434843_01,LOCATED_IN,affirmed,C0332568,Diagnosis,pad,C0230373,BodyPart,palm,0.705,1441,1671
+PMC10434843_01,COORDINATE_WITH,affirmed,C0026821,Symptom,Cramps,C0015644,Symptom,fasciculations,0.898,1672,1716
+PMC10434843_01,REVEALED_BY,affirmed,C0555903,Exam,total protein,C5966160,Treatment,albumin,0.687,1811,2103
+PMC10434843_01,COORDINATE_WITH,affirmed,C0007584,Exam,cell count,C0555903,Exam,total protein,0.544,1811,2103
+PMC10434843_01,REVEALED_BY,affirmed,C0016263,Exam,Flow cytometry,C0332140,Finding,CD,0.531,2104,2276
+PMC10434843_01,REVEALED_BY,negated,C1148554,Exam,determination,C0003241,Treatment,antibodies,0.683,2768,3037
+PMC10434843_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C1510438,Exam,assay,0.465,2768,3037
+PMC10434843_01,HAS_FINDING,affirmed,,Person,,C0429379,Finding,motor nerve conduction block,0.729,3038,3181
+PMC10434843_01,LOCATED_IN,affirmed,C0429379,Finding,motor nerve conduction block,C0828898,BodyPart,right ulnar nerve,0.532,3038,3181
+PMC10434843_01,LOCATED_IN,affirmed,C0429381,Finding,Nerve conduction velocity,C0041602,BodyPart,ulnar nerve,0.58,3182,3259
+PMC10434843_01,LOCATED_IN,historical,C0013839,Exam,electromyography,C0224279,BodyPart,abductor pollicis brevis muscle,0.806,3574,3710
+PMC10434843_01,HAS_DIAGNOSIS,affirmed,,Person,,C0393847,Diagnosis,MMN,0.807,3711,3779
+PMC10434843_01,REVEALED_BY,affirmed,C0041618,Exam,ultrasonography,C1293134,Treatment,enlargement,0.873,3782,4043
+PMC10434843_01,LOCATED_IN,affirmed,C0041618,Exam,ultrasonography,C0031119,BodyPart,peripheral nerve,0.883,3782,4043
+PMC10434843_01,LOCATED_IN,affirmed,C1293134,Treatment,enlargement,C0828652,BodyPart,right median nerve,0.512,3782,4043
+PMC10434843_01,LOCATED_IN,affirmed,C0038999,Finding,swelling,C0041602,BodyPart,ulnar nerve,0.551,3782,4043
+PMC10434843_01,LOCATED_IN,affirmed,C0041602,BodyPart,ulnar nerve,C0446516,BodyPart,upper arm,0.523,3782,4043
+PMC10434843_01,LOCATED_IN,affirmed,C1285572,Exam,phenotype,C0446516,BodyPart,upper arm,0.858,3782,4043
+PMC10434843_01,HAS_DIAGNOSIS,negated,,Person,,C5671289,Diagnosis,autoimmune encephalitis,0.591,4044,4184
+PMC10434843_01,REVEALED_BY,negated,C0205160,Finding,ruled out,C5671289,Diagnosis,autoimmune encephalitis,0.284,4185,4297
+PMC10434843_01,TREATED_WITH,affirmed,,Person,,C0003241,Treatment,antibodies,0.892,4298,4574
+PMC10434843_01,TREATED_WITH,affirmed,C0003241,Treatment,antibodies,C0006826,Diagnosis,malignancy,0.627,4298,4574
+PMC10434843_01,COORDINATE_WITH,affirmed,C0006826,Diagnosis,malignancy,C0027651,Diagnosis,tumor,0.661,4298,4574
+PMC10434843_01,REVEALED_BY,negated,C1699633,Exam,PET-CT,C0027651,Diagnosis,tumor,0.556,4298,4574
+PMC10434843_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C0000726,BodyPart,abdomen and,0.771,4298,4574
+PMC10434843_01,COORDINATE_WITH,affirmed,C0000726,BodyPart,abdomen and,C0040132,BodyPart,thyroid,0.427,4298,4574
+PMC10434843_01,LOCATED_IN,affirmed,C1699633,Exam,Positron emission tomography-computed tomography,C0040132,BodyPart,thyroid,0.688,4298,4574
+PMC10434843_01,COORDINATE_WITH,affirmed,C0947619,BodyPart,right finger,C0040067,BodyPart,thumb,0.52,4662,4831
+PMC10434843_01,TREATED_WITH,affirmed,,Person,,C0085297,Treatment,IVIG,0.831,4832,4877
+PMC10434843_01,HAS_FINDING,affirmed,,Person,,C1299581,Finding,able,0.708,4878,4997
+PMC10434843_01,LOCATED_IN,affirmed,C0449381,Finding,parameters,C0016129,BodyPart,finger,0.537,4998,5243
+PMC10434843_01,TREATED_WITH,affirmed,,Person,,C0200125,Exam,electroneurography,0.871,5244,5530
+PMC10434843_01,REVEALED_BY,affirmed,C0200125,Exam,electroneurography,C0028778,Finding,block,0.544,5244,5530
+PMC10434843_01,COORDINATE_WITH,affirmed,C0028778,Finding,block,C0429379,Finding,motor nerve conduction block,0.6,5244,5530
+PMC10434843_01,LOCATED_IN,affirmed,C0429379,Finding,motor nerve conduction block,C0025058,BodyPart,median nerve,0.533,5244,5530
+PMC10434843_01,REVEALED_BY,hedged,C5980913,Finding,differential diagnosis,C0039082,Diagnosis,syndrome,0.301,5721,5874
+PMC10434843_01,REVEALED_BY,affirmed,C0002736,Diagnosis,amyotrophic lateral sclerosis,C0003241,Treatment,antibodies,0.351,5721,5874
+PMC10434843_01,COORDINATE_WITH,affirmed,C0039082,Diagnosis,syndrome,C0002736,Diagnosis,amyotrophic lateral sclerosis,0.657,5721,5874
+PMC10434843_01,HAS_FINDING,affirmed,,Person,,C0423551,Finding,sensory symptoms,0.641,5958,6170
+PMC10434843_01,LOCATED_IN,affirmed,C0423551,Finding,sensory symptoms,C0025058,BodyPart,median nerve,0.547,5958,6170
+PMC10434843_01,LOCATED_IN,negated,C0040067,BodyPart,thumb,C0332568,Diagnosis,pad,0.547,5958,6170
+PMC10434843_01,LOCATED_IN,affirmed,C0332568,Diagnosis,pad,C1140618,BodyPart,arm,0.73,5958,6170
+PMC10434843_01,HAS_DIAGNOSIS,negated,,Person,,C0012634,Diagnosis,diseases,0.683,6493,6609
+PMC10434843_01,REVEALED_BY,negated,C0012634,Diagnosis,diseases,C0003241,Treatment,antibodies,0.368,6493,6609
+PMC10488652_01,COORDINATE_WITH,affirmed,C0277799,Finding,intermittent fever,C0231218,Symptom,malaise,0.559,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C0231218,Symptom,malaise,C0018681,Symptom,headache,0.85,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C0018681,Symptom,headache,C0231528,Symptom,myalgia,0.85,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C0231528,Symptom,myalgia,C5779629,Diagnosis,rash,0.722,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C5779629,Diagnosis,rash,C0011991,Symptom,diarrhea,0.813,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C0011991,Symptom,diarrhea,C0042963,Symptom,emesis,0.94,0,324
+PMC10488652_01,COORDINATE_WITH,affirmed,C0241137,Finding,pallor,C0022346,Finding,icteric,0.509,325,528
+PMC10488652_01,COORDINATE_WITH,affirmed,C0497156,Diagnosis,adenopathies,C0039103,Diagnosis,synovitis,0.626,325,528
+PMC10488652_01,COORDINATE_WITH,affirmed,C0039103,Diagnosis,synovitis,C0013604,Diagnosis,edema,0.344,325,528
+PMC10488652_01,LOCATED_IN,affirmed,C0013604,Diagnosis,edema,C0023216,BodyPart,lower limbs,0.895,325,528
+PMC10488652_01,HAS_DIAGNOSIS,affirmed,,Person,,C1882062,Diagnosis,neoplasia,0.681,529,642
+PMC10488652_01,REVEALED_BY,affirmed,C0373835,Exam,cold agglutinin titer,C0002880,Diagnosis,Autoimmune hemolytic anemia,0.785,860,1171
+PMC10488652_01,REVEALED_BY,affirmed,C0202087,Exam,IgG,C0009443,Diagnosis,cold,0.613,860,1171
+PMC10488652_01,HAS_DIAGNOSIS,affirmed,,Person,,C0030312,Diagnosis,pancytopenia,0.507,1172,1304
+PMC10488652_01,TREATED_WITH,affirmed,,Person,,C0011777,Treatment,dexamethasone,0.768,1305,1575
+PMC10488652_01,COORDINATE_WITH,affirmed,C0011777,Treatment,dexamethasone,C0020336,Treatment,hydroxychloroquine,0.681,1305,1575
+PMC10488652_01,TREATED_WITH,affirmed,,Person,,C0032952,Treatment,prednisone,0.72,1654,1959
+PMC10488652_01,COORDINATE_WITH,affirmed,C0032952,Treatment,prednisone,C0020336,Treatment,hydroxychloroquine,0.763,1654,1959
+PMC10488652_01,COORDINATE_WITH,affirmed,C0020336,Treatment,hydroxychloroquine,C0209368,Treatment,mycophenolate mofetil,0.727,1654,1959
+PMC10521634_01,LOCATED_IN,affirmed,C0021853,BodyPart,bowel,C0012833,Symptom,dizziness,0.582,0,191
+PMC10521634_01,COORDINATE_WITH,affirmed,C0012833,Symptom,dizziness,C0267596,Diagnosis,rectal bleeding,0.822,0,191
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0001617,Treatment,corticosteroids,0.673,192,398
+PMC10521634_01,HAS_DIAGNOSIS,affirmed,,Person,,C0151594,Diagnosis,bloody diarrhea,0.51,399,561
+PMC10521634_01,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0000737,Symptom,abdominal pain,0.952,399,561
+PMC10521634_01,REVEALED_BY,affirmed,C0009378,Exam,colonoscopy,C0009319,Diagnosis,colitis,0.679,562,657
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0032181,Exam,platelet count,0.865,658,817
+PMC10521634_01,REVEALED_BY,affirmed,C0032181,Exam,platelet count,C0015879,Treatment,ferritin,0.835,658,817
+PMC10521634_01,COORDINATE_WITH,affirmed,C0015879,Treatment,ferritin,C5966160,Treatment,albumin,0.802,658,817
+PMC10521634_01,HAS_DIAGNOSIS,affirmed,,Person,,C3714514,Diagnosis,infections,0.798,818,912
+PMC10521634_01,REVEALED_BY,affirmed,C0042487,Diagnosis,Venous thrombosis,C0199176,Treatment,prophylaxis,0.482,913,1001
+PMC10521634_01,HAS_FINDING,affirmed,,Person,,C0836924,Diagnosis,thrombocytosis,0.51,1145,1279
+PMC10521634_01,REVEALED_BY,affirmed,C0836924,Diagnosis,thrombocytosis,C0015879,Treatment,ferritin,0.448,1145,1279
+PMC10521634_01,COORDINATE_WITH,affirmed,C0015879,Treatment,ferritin,C5966160,Treatment,albumin,0.693,1145,1279
+PMC10521634_01,HAS_DIAGNOSIS,affirmed,,Person,,C0024050,Diagnosis,lower GI bleeding,0.772,1327,1405
+PMC10521634_01,REVEALED_BY,affirmed,C0009378,Exam,colonoscopy,C0041834,Diagnosis,erythema,0.598,1406,1539
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0040405,Exam,CT scan,0.8,1628,1818
+PMC10521634_01,REVEALED_BY,affirmed,C0040405,Exam,CT scan,C0019080,Diagnosis,bleeding,0.534,1628,1818
+PMC10521634_01,LOCATED_IN,affirmed,C0019080,Diagnosis,bleeding,C0227391,BodyPart,sigmoid colon,0.696,1628,1818
+PMC10521634_01,COORDINATE_WITH,affirmed,C0149750,Treatment,subtotal colectomy,C0037995,Treatment,splenectomy,0.802,1819,1930
+PMC10521634_01,LOCATED_IN,affirmed,C0037995,Treatment,splenectomy,C0034896,BodyPart,rectum,0.511,1819,1930
+PMC10521634_01,LOCATED_IN,negated,C0009368,BodyPart,colon,C0006826,Diagnosis,malignancy,0.633,1998,2257
+PMC10521634_01,REVEALED_BY,affirmed,C0006826,Diagnosis,malignancy,C0041582,Diagnosis,ulcers,0.371,1998,2257
+PMC10521634_01,COORDINATE_WITH,affirmed,C0041582,Diagnosis,ulcers,C0021368,Diagnosis,inflammation,0.662,1998,2257
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0127615,Treatment,5-ASA,0.705,2258,2444
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0019139,Treatment,LMWH,0.681,2258,2444
+PMC10521634_01,REVEALED_BY,affirmed,C0398663,Diagnosis,post-splenectomy thrombocytosis,C0666743,Treatment,infliximab,0.609,2258,2444
+PMC10521634_01,REVEALED_BY,affirmed,C0398663,Diagnosis,post-splenectomy thrombocytosis,C4045974,Treatment,biosimilar,0.607,2258,2444
+PMC10521634_01,COORDINATE_WITH,affirmed,C0127615,Treatment,5-ASA,C0019139,Treatment,LMWH,0.802,2258,2444
+PMC10521634_01,TREATED_WITH,affirmed,C0019139,Treatment,LMWH,C0398663,Diagnosis,post-splenectomy thrombocytosis,0.591,2258,2444
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0087111,Treatment,therapy,0.479,2549,2678
+PMC10521634_01,HAS_DIAGNOSIS,affirmed,,Person,,C0009566,Diagnosis,complication,0.811,2679,2780
+PMC10521634_01,COORDINATE_WITH,affirmed,C0009566,Diagnosis,complication,C0243001,Diagnosis,abdominal abscess,0.652,2679,2780
+PMC10521634_01,TREATED_WITH,affirmed,,Person,,C0040405,Exam,CT scan,0.961,2781,2906
+PMC10521634_01,REVEALED_BY,affirmed,C0040405,Exam,CT scan,C0543467,Treatment,surgery,0.583,2781,2906
+PMC10521634_01,TREATED_WITH,affirmed,C0013103,Treatment,drainage,C0000833,Diagnosis,abscess,0.631,2781,2906
+PMC10521634_01,REVEALED_BY,affirmed,C0014245,Exam,endoscopy,C1394254,Diagnosis,cryptitis,0.552,2907,3023
+PMC10521634_01,COORDINATE_WITH,affirmed,C1394254,Diagnosis,cryptitis,C0000833,Diagnosis,abscesses,0.622,2907,3023
+PMC10521634_01,HAS_FINDING,affirmed,,Person,,C5401128,Finding,add,0.595,3024,3198
+PMC10521634_01,COORDINATE_WITH,affirmed,C2947996,Treatment,perform,C0677554,Treatment,anastomosis,0.542,3199,3354
+PMC11131390_01,TREATED_WITH,affirmed,,Person,,C0040130,Exam,thyroid function tests,0.955,139,352
+PMC11131390_01,REVEALED_BY,affirmed,C0040130,Exam,thyroid function tests,C0020550,Diagnosis,hyperthyroidism,0.601,139,352
+PMC11131390_01,HAS_DIAGNOSIS,negated,,Person,,C0018021,Diagnosis,goiter,0.926,353,409
+PMC11131390_01,HAS_DIAGNOSIS,negated,C0018021,Diagnosis,goiter,C0339143,Diagnosis,thyroid eye disease,0.398,353,409
+PMC11131390_01,TREATED_WITH,affirmed,,Person,,C0003241,Treatment,antibodies,0.469,410,618
+PMC11131390_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0040123,Treatment,thyroglobulin (Tg,0.566,410,618
+PMC11131390_01,HAS_FINDING,affirmed,,Person,,C1444648,Finding,offered,0.585,619,839
+PMC11131390_01,COORDINATE_WITH,affirmed,C0006983,Treatment,carbimazole,C0025644,Treatment,methimazole,0.654,619,839
+PMC11131390_01,HAS_FINDING,affirmed,,Person,,C4698447,Finding,patient age,0.66,1838,2220
+PMC11259348_P1,HAS_SYMPTOM,affirmed,,Person,,C0015967,Symptom,fever,0.805,0,133
+PMC11259348_P1,HAS_SYMPTOM,affirmed,,Person,,C2129214,Symptom,loose stools,0.812,0,133
+PMC11259348_P1,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C2129214,Symptom,loose stools,0.85,0,133
+PMC11259348_P1,REVEALED_BY,affirmed,C0600103,Exam,blood group,C0003241,Treatment,antibody,0.622,200,272
+PMC11259348_P1,REVEALED_BY,negated,C0274435,Diagnosis,Transfusion reaction,C0014792,Treatment,erythrocyte,0.341,467,616
+PMC11259348_P1,TREATED_WITH,affirmed,C0014792,Treatment,erythrocyte,C0860218,Diagnosis,ABO incompatibility,0.608,467,616
+PMC11259348_P1,TREATED_WITH,affirmed,C2945560,Finding,hemolysis,C0005841,Treatment,blood transfusions,0.436,617,779
+PMC11259348_P1,REVEALED_BY,hedged,C0200532,Exam,Donath-Landsteiner test,C0003241,Treatment,antibody,0.719,1009,1176
+PMC11259348_P1,COORDINATE_WITH,negated,C3842923,Finding,positive and negative,C4554418,Finding,parallel,0.514,1770,1945
+PMC11259348_P1,TREATED_WITH,affirmed,,Person,,C0600103,Exam,blood group,0.766,2222,2340
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C0347944,Finding,pelvic mass,0.838,0,187
+PMC11345641_01,REVEALED_BY,affirmed,C0041618,Exam,ultrasonography,C0347944,Finding,pelvic mass,0.51,0,187
+PMC11345641_01,HAS_SYMPTOM,affirmed,,Person,,C0000737,Symptom,abdominal pain,0.898,281,379
+PMC11345641_01,TREATED_WITH,affirmed,C0000737,Symptom,abdominal pain,C1293134,Treatment,enlargement,0.692,281,379
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C0014533,BodyPart,epididymis,0.644,466,666
+PMC11345641_01,COORDINATE_WITH,affirmed,C0018880,Treatment,4 (HE,C0201933,Exam,carcinoembryonic antigen,0.762,466,666
+PMC11345641_01,LOCATED_IN,affirmed,C0041618,Exam,Ultrasonography,C0227225,BodyPart,anterior wall,0.713,667,944
+PMC11345641_01,LOCATED_IN,affirmed,C0227225,BodyPart,anterior wall,C0042149,BodyPart,uterus,0.525,667,944
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C0205400,Finding,thickening,0.608,945,1205
+PMC11345641_01,LOCATED_IN,affirmed,C0011923,Exam,imaging,C0027088,BodyPart,uterine muscle,0.775,945,1205
+PMC11345641_01,REVEALED_BY,affirmed,C0024485,Exam,MRI,C0023267,Diagnosis,leiomyomas,0.54,1206,1310
+PMC11345641_01,COORDINATE_WITH,hedged,C0023267,Diagnosis,leiomyomas,C0334477,Diagnosis,cellular leiomyoma,0.651,1206,1310
+PMC11345641_01,LOCATED_IN,affirmed,C1510477,Exam,endometrial biopsy,C0014180,BodyPart,endometrium,0.681,1311,1399
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C2243030,Treatment,bilateral salpingectomy,0.456,1400,1510
+PMC11345641_01,COORDINATE_WITH,affirmed,C0404090,Treatment,total laparoscopic hysterectomy,C2243030,Treatment,bilateral salpingectomy,0.802,1400,1510
+PMC11345641_01,LOCATED_IN,affirmed,C0042133,Diagnosis,fibroids,C0227225,BodyPart,anterior wall,0.632,1511,1695
+PMC11345641_01,REVEALED_BY,affirmed,C0026018,Exam,Microscopic examination,C0023267,Diagnosis,leiomyoma,0.548,1811,1994
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C3810854,Finding,close,0.568,1995,2051
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C5980104,Finding,abdominal distension,0.908,2132,2195
+PMC11345641_01,REVEALED_BY,affirmed,C0024485,Exam,MRI,C4521343,Finding,vaginal,0.51,2196,2579
+PMC11345641_01,COORDINATE_WITH,affirmed,C0028977,BodyPart,omentum,C0025474,BodyPart,mesentery,0.482,2196,2579
+PMC11345641_01,LOCATED_IN,affirmed,C0475806,Finding,near,C0729890,BodyPart,iliac vessel,0.615,2196,2579
+PMC11345641_01,LOCATED_IN,affirmed,C0729890,BodyPart,iliac vessel,C0184906,Treatment,bifurcation,0.519,2196,2579
+PMC11345641_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0224378,BodyPart,transversus abdominis muscle,0.556,2580,2715
+PMC11345641_01,HAS_DIAGNOSIS,affirmed,,Person,,C0012359,Diagnosis,distention,0.958,2835,2999
+PMC11345641_01,LOCATED_IN,affirmed,C0746412,Finding,palpable mass,C0016129,BodyPart,fingers,0.598,2835,2999
+PMC11345641_01,COORDINATE_WITH,affirmed,C0012359,Diagnosis,distention,C0746412,Finding,palpable mass,0.518,2835,2999
+PMC11345641_01,LOCATED_IN,affirmed,C4521343,Finding,vaginal,C0227784,BodyPart,vaginal mucosa,0.504,3000,3125
+PMC11345641_01,TREATED_WITH,affirmed,,Person,,C0085704,Exam,exploratory laparotomy,0.858,3126,3303
+PMC11345641_01,REVEALED_BY,affirmed,C0085704,Exam,exploratory laparotomy,C0027651,Diagnosis,tumors,0.564,3126,3303
+PMC11345641_01,REVEALED_BY,affirmed,C0027651,Diagnosis,tumors,C0728940,Treatment,resection,0.39,3126,3303
+PMC11345641_01,LOCATED_IN,affirmed,C0728940,Treatment,resection,C1305188,BodyPart,right colon,0.576,3126,3303
+PMC11345641_01,LOCATED_IN,affirmed,C1305188,BodyPart,right colon,C0027651,Diagnosis,tumor,0.547,3126,3303
+PMC11345641_01,COORDINATE_WITH,affirmed,C0230168,BodyPart,abdominal cavity,C0230259,BodyPart,greater omentum,0.604,3304,3474
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C0230168,BodyPart,abdominal cavity,0.895,3304,3474
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C0227386,BodyPart,transverse colon,0.798,3475,3639
+PMC11345641_01,COORDINATE_WITH,affirmed,C0227386,BodyPart,transverse colon,C0020885,BodyPart,ileum,0.553,3475,3639
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumors,C0021852,BodyPart,small intestine,0.717,3640,3793
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumors,C0227389,BodyPart,descending colon,0.811,3640,3793
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumors,C0030797,BodyPart,pelvis,0.745,3640,3793
+PMC11345641_01,COORDINATE_WITH,affirmed,C0021852,BodyPart,small intestine,C0227389,BodyPart,descending colon,0.701,3640,3793
+PMC11345641_01,TREATED_WITH,affirmed,,Person,,C3850079,Treatment,cytoreductive surgery,0.571,3911,4088
+PMC11345641_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C1305188,BodyPart,right colon,0.776,4118,4345
+PMC11345641_01,COORDINATE_WITH,affirmed,C1305188,BodyPart,right colon,C0020885,BodyPart,ileum,0.485,4118,4345
+PMC11345641_01,COORDINATE_WITH,affirmed,C0020885,BodyPart,ileum,C0025474,BodyPart,mesentery,0.482,4118,4345
+PMC11345641_01,COORDINATE_WITH,affirmed,C0025474,BodyPart,mesentery,C0024204,BodyPart,lymph nodes,0.564,4118,4345
+PMC11345641_01,COORDINATE_WITH,affirmed,C0024204,BodyPart,lymph nodes,C0028977,BodyPart,omentum,0.482,4118,4345
+PMC11345641_01,COORDINATE_WITH,affirmed,C0028977,BodyPart,omentum,C0003617,BodyPart,appendix,0.738,4118,4345
+PMC11345641_01,HAS_DIAGNOSIS,affirmed,,Person,,C6009855,Diagnosis,"pleural effusion, right",0.845,4346,4453
+PMC11345641_01,HAS_DIAGNOSIS,affirmed,,Person,,C0020295,Diagnosis,hydronephrosis,0.943,4346,4453
+PMC11345641_01,COORDINATE_WITH,affirmed,C6009855,Diagnosis,"pleural effusion, right",C0020295,Diagnosis,hydronephrosis,0.573,4346,4453
+PMC11345641_01,REVEALED_BY,affirmed,C0020295,Diagnosis,hydronephrosis,C0184898,Treatment,incision,0.447,4346,4453
+PMC11345641_01,HAS_FINDING,affirmed,,Person,,C2598387,Finding,overall status,0.674,4507,4577
+PMC11368112_01,TREATED_WITH,historical,C3842676,Finding,2-day,C0232292,Symptom,chest tightness,0.531,0,127
+PMC11368112_01,COORDINATE_WITH,affirmed,C0232292,Symptom,chest tightness,C0015967,Symptom,fever,0.898,0,127
+PMC11368112_01,LOCATED_IN,historical,C0262926,Finding,medical history,C0023216,BodyPart,lower extremity,0.643,128,245
+PMC11368112_01,LOCATED_IN,historical,C0023216,BodyPart,lower extremity,C0392108,Diagnosis,"venous thrombosis, pulmonary",0.494,128,245
+PMC11368112_01,REVEALED_BY,affirmed,C0392108,Diagnosis,"venous thrombosis, pulmonary",C0018821,Treatment,cardiac surgery,0.433,128,245
+PMC11368112_01,TREATED_WITH,affirmed,C0018821,Treatment,cardiac surgery,C0020538,Diagnosis,hypertension,0.614,128,245
+PMC11368112_01,HAS_SYMPTOM,affirmed,,Person,,C0013404,Symptom,dyspnea,0.955,246,340
+PMC11368112_01,COORDINATE_WITH,affirmed,C0013404,Symptom,dyspnea,C0085593,Symptom,chills,0.873,246,340
+PMC11368112_01,COORDINATE_WITH,affirmed,C0277799,Finding,intermittent fever,C0085593,Symptom,chills,0.846,246,340
+PMC11368112_01,HAS_FINDING,affirmed,,Person,,C0231835,Finding,rapid respiration,0.73,341,458
+PMC11368112_01,REVEALED_BY,affirmed,C0041618,Exam,ultrasound,C0040053,Diagnosis,thrombosis,0.713,459,742
+PMC11368112_01,LOCATED_IN,affirmed,C0040053,Diagnosis,thrombosis,C1275667,BodyPart,common femoral vein,0.895,459,742
+PMC11368112_01,COORDINATE_WITH,affirmed,C1275667,BodyPart,common femoral vein,C0020888,BodyPart,iliac veins,0.515,459,742
+PMC11368112_01,COORDINATE_WITH,affirmed,C0020888,BodyPart,iliac veins,C1301369,BodyPart,superficial femoral vein,0.628,459,742
+PMC11368112_01,REVEALED_BY,affirmed,C1623258,Exam,ECG,C0039239,Diagnosis,sinus tachycardia,0.538,743,775
+PMC11368112_01,REVEALED_BY,affirmed,C4522268,Finding,Pulmonary,C0013922,Diagnosis,embolism,0.278,776,981
+PMC11368112_01,LOCATED_IN,affirmed,C0013922,Diagnosis,embolism,C0034052,BodyPart,pulmonary artery,0.844,776,981
+PMC11368112_01,LOCATED_IN,affirmed,C1704212,Finding,embolus,C1282007,BodyPart,pulmonary artery branch,0.622,776,981
+PMC11368112_01,HAS_DIAGNOSIS,affirmed,,Person,,C0034065,Diagnosis,pulmonary embolism (PE,0.633,982,1084
+PMC11368112_01,HAS_SYMPTOM,affirmed,,Person,,C0085593,Symptom,chills,0.818,1085,1159
+PMC11368112_01,COORDINATE_WITH,affirmed,C0087111,Treatment,therapy,C0663241,Treatment,linezolid,0.643,1160,1331
+PMC11368112_01,HAS_FINDING,affirmed,,Person,,C0743973,Finding,high fever,0.619,1373,1539
+PMC11368112_01,COORDINATE_WITH,affirmed,C0018821,Treatment,cardiac surgery,C0003419,Treatment,antipyretic,0.565,1373,1539
+PMC11368112_01,TREATED_WITH,historical,C0743973,Finding,high fever,C0018821,Treatment,cardiac surgery,0.43,1373,1539
+PMC11368112_01,LOCATED_IN,affirmed,C0013516,Exam,echocardiogram,C0225844,BodyPart,right atrium,0.784,1540,1672
+PMC11368112_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,surgery,0.817,1673,1742
+PMC11368112_01,LOCATED_IN,affirmed,C0543467,Treatment,surgery,C0729936,BodyPart,intracardiac,0.512,1673,1742
+PMC11368112_01,LOCATED_IN,affirmed,C0456944,BodyPart,coronary sinus,C0225844,BodyPart,right atrium,0.525,1743,1872
+PMC11368112_01,HAS_DIAGNOSIS,affirmed,,Person,,C0332448,Diagnosis,infiltration,0.682,1873,2017
+PMC11368112_01,HAS_DIAGNOSIS,affirmed,,Person,,C0009450,Diagnosis,infection,0.745,2018,2231
+PMC11368112_01,REVEALED_BY,affirmed,C0009450,Diagnosis,infection,C0543467,Treatment,surgery,0.634,2018,2231
+PMC11368112_01,TREATED_WITH,affirmed,C0543467,Treatment,surgery,C0041296,Diagnosis,tuberculosis,0.608,2018,2231
+PMC11368112_01,COORDINATE_WITH,affirmed,C0041296,Diagnosis,tuberculosis,C0026946,Diagnosis,fungal infection,0.657,2018,2231
+PMC11368112_01,HAS_DIAGNOSIS,affirmed,,Person,,C1265815,Diagnosis,multiple ulcers,0.917,2232,2401
+PMC11368112_01,LOCATED_IN,affirmed,C1265815,Diagnosis,multiple ulcers,C0023216,BodyPart,lower extremities,0.792,2232,2401
+PMC11368112_01,COORDINATE_WITH,affirmed,C0023216,BodyPart,lower extremities,C0018246,BodyPart,groin,0.482,2232,2401
+PMC11368112_01,COORDINATE_WITH,affirmed,C0018246,BodyPart,groin,C0036471,BodyPart,scrotum,0.738,2232,2401
+PMC11368112_01,LOCATED_IN,affirmed,C1265815,Diagnosis,multiple ulcers,C0040408,BodyPart,tongue,0.881,2402,2483
+PMC11368112_01,COORDINATE_WITH,affirmed,C0040408,BodyPart,tongue,C0227759,BodyPart,labium,0.701,2402,2483
+PMC11368112_01,TREATED_WITH,affirmed,,Person,,C0150866,Exam,skin biopsy,0.867,2484,2624
+PMC11368112_01,REVEALED_BY,affirmed,C0150866,Exam,skin biopsy,C0268279,Diagnosis,lipofuscinosis,0.621,2484,2624
+PMC11368112_01,CAUSED_BY,affirmed,C3887532,Diagnosis,ulceration,C0268279,Diagnosis,lipofuscinosis,0.409,2484,2624
+PMC11368112_01,TREATED_WITH,affirmed,,Person,,C0557061,Treatment,discussion,0.854,2625,2861
+PMC11368112_01,COORDINATE_WITH,affirmed,C0557061,Treatment,discussion,C0543467,Treatment,surgery,0.503,2625,2861
+PMC11368112_01,REVEALED_BY,affirmed,C0041618,Exam,ultrasonography,C0004943,Diagnosis,Behcet's Disease,0.774,2625,2861
+PMC11368112_01,COORDINATE_WITH,affirmed,C0543467,Treatment,surgery,C0042381,Treatment,vascular surgery,0.666,2625,2861
+PMC11368112_01,COORDINATE_WITH,affirmed,C0042381,Treatment,vascular surgery,C0041618,Exam,ultrasonography,0.878,2625,2861
+PMC11368112_01,TREATED_WITH,affirmed,,Person,,C0025815,Treatment,methylprednisolone,0.696,2862,3183
+PMC11368112_01,COORDINATE_WITH,affirmed,C0010592,Treatment,cyclosporine,C0043031,Treatment,warfarin,0.766,2862,3183
+PMC11368112_01,HAS_DIAGNOSIS,negated,,Person,,C0559546,Diagnosis,adverse reactions,0.843,3310,3390
+PMC11368112_01,HAS_FINDING,affirmed,,Person,,C0544452,Finding,in remission,0.778,3604,3730
+PMC11420039_01,COORDINATE_WITH,affirmed,C0006497,BodyPart,buttocks,C0023216,BodyPart,lower limbs,0.569,377,559
+PMC11420039_01,HAS_FINDING,negated,,Person,,C0455458,Finding,past medical history,0.755,686,831
+PMC11420039_01,COORDINATE_WITH,negated,C0455458,Finding,past medical history,C0489531,Finding,history of allergies,0.524,686,831
+PMC11420039_01,COORDINATE_WITH,negated,C0489531,Finding,history of allergies,C0240320,Finding,medication use,0.544,686,831
+PMC11420039_01,REVEALED_BY,affirmed,C0487602,Exam,staining,C0332448,Diagnosis,infiltration,0.532,904,1178
+PMC11420039_01,TREATED_WITH,affirmed,,Person,,C1125541,Treatment,methylprednisolone 40 mg,0.806,1257,1460
+PMC11420039_01,COORDINATE_WITH,affirmed,C1125541,Treatment,methylprednisolone 40 mg,C0025815,Treatment,methylprednisolone,0.596,1257,1460
+PMC11420039_01,TREATED_WITH,affirmed,,Person,,C0025815,Treatment,methylprednisolone,0.635,2116,2313
+PMC11420039_01,HAS_SYMPTOM,affirmed,,Person,,C0015672,Symptom,fatigue,0.872,2314,2445
+PMC11420039_01,HAS_SYMPTOM,affirmed,,Person,,C0013404,Symptom,dyspnea,0.819,2314,2445
+PMC11420039_01,COORDINATE_WITH,affirmed,C0015672,Symptom,fatigue,C0013404,Symptom,dyspnea,0.898,2314,2445
+PMC11420039_01,COORDINATE_WITH,affirmed,C1457868,Finding,worsened,C1145670,Diagnosis,respiratory failure,0.464,2446,2584
+PMC11420039_01,COORDINATE_WITH,affirmed,C0202691,Exam,head CT,C0024485,Exam,MRI,0.732,2585,2704
+PMC11420039_01,HAS_DIAGNOSIS,affirmed,,Person,,C0036690,Diagnosis,septicemia,0.882,3008,3116
+PMC11420039_01,TREATED_WITH,affirmed,C0036690,Diagnosis,septicemia,C0001367,Treatment,acyclovir,0.598,3008,3116
+PMC11420039_01,REVEALED_BY,affirmed,C0439662,Finding,immune,C0009450,Diagnosis,infection,0.324,3117,3411
+PMC11420039_01,REVEALED_BY,affirmed,C0009450,Diagnosis,infection,C0025815,Treatment,methylprednisolone,0.445,3117,3411
+PMC11420039_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0003241,Treatment,antibodies,0.677,3412,3579
+PMC11420039_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0003241,Treatment,antibodies,0.697,3412,3579
+PMC11420039_01,COORDINATE_WITH,affirmed,C0262926,Finding,medical history,C0043352,Diagnosis,dry mouth,0.367,3580,3734
+PMC11420039_01,COORDINATE_WITH,affirmed,C0314719,Symptom,dry eyes,C0043352,Diagnosis,dry mouth,0.764,3580,3734
+PMC11420039_01,HAS_FINDING,affirmed,,Person,,C0151450,Diagnosis,Secondary Sjogren's Syndrome,0.48,3803,3921
+PMC11420039_01,LOCATED_IN,affirmed,C0024485,Exam,MRI,C0018670,BodyPart,head,0.883,4035,4082
+PMC11420039_01,TREATED_WITH,affirmed,,Person,,C0021079,Treatment,immunosuppression,0.715,4184,4380
+PMC11420039_01,TREATED_WITH,affirmed,C0021079,Treatment,immunosuppression,C0007684,Diagnosis,CNS infection,0.49,4184,4380
+PMC11420039_01,COORDINATE_WITH,affirmed,C0007684,Diagnosis,CNS infection,C0876973,Diagnosis,lung infection,0.6,4184,4380
+PMC11420039_01,TREATED_WITH,affirmed,,Person,,C0087111,Treatment,therapy,0.705,4381,4473
+PMC11420039_01,COORDINATE_WITH,affirmed,C0087111,Treatment,therapy,C0663241,Treatment,linezolid,0.627,4381,4473
+PMC11420039_01,COORDINATE_WITH,affirmed,C0663241,Treatment,linezolid,C0001367,Treatment,acyclovir,0.823,4381,4473
+PMC11420039_01,HAS_DIAGNOSIS,affirmed,,Person,,C0876973,Diagnosis,pulmonary infection,0.479,5053,5167
+PMC11722600_01,TREATED_WITH,historical,C0475172,Finding,history of cesarean section,C0000737,Symptom,abdominal pain,0.481,0,176
+PMC11722600_01,HAS_SYMPTOM,negated,,Person,,C0015967,Symptom,fever,0.741,177,220
+PMC11722600_01,COORDINATE_WITH,affirmed,C0013390,Diagnosis,dysmenorrhea,C0030794,Symptom,pelvic pain,0.619,292,332
+PMC11722600_01,HAS_SYMPTOM,affirmed,,Person,,C0000737,Symptom,abdominal pain,0.562,333,459
+PMC11722600_01,COORDINATE_WITH,affirmed,C0000737,Symptom,abdominal pain,C0234233,Symptom,tenderness,0.703,333,459
+PMC11722600_01,COORDINATE_WITH,negated,C0234233,Symptom,tenderness,C0234246,Symptom,rebound tenderness,0.611,333,459
+PMC11722600_01,COORDINATE_WITH,affirmed,C0277974,Symptom,McBurney's point,C0277978,Symptom,obturator sign,0.674,460,526
+PMC11722600_01,HAS_FINDING,affirmed,,Person,,C3842088,Finding,mm3,0.78,527,795
+PMC11722600_01,REVEALED_BY,affirmed,C0005833,Exam,erythrocyte sedimentation,C3842088,Finding,mm3,0.616,527,795
+PMC11722600_01,REVEALED_BY,negated,C0005833,Exam,erythrocyte sedimentation,C0018062,Treatment,chorionic gonadotropin,0.691,527,795
+PMC11722600_01,REVEALED_BY,negated,C0041618,Exam,ultrasound,C0013687,Diagnosis,free fluid,0.655,796,881
+PMC11722600_01,LOCATED_IN,affirmed,C2959418,Exam,Laparoscopic exploration,C0227873,BodyPart,right ovary,0.875,882,1383
+PMC11722600_01,REVEALED_BY,affirmed,C2959418,Exam,Laparoscopic exploration,C0003615,Diagnosis,appendicitis,0.66,882,1383
+PMC11722600_01,LOCATED_IN,affirmed,C0031154,Diagnosis,peritonitis,C0003617,BodyPart,appendix,0.727,882,1383
+PMC11722600_01,CAUSED_BY,negated,C0003615,Diagnosis,appendicitis,C0031154,Diagnosis,peritonitis,0.433,882,1383
+PMC11722600_01,REVEALED_BY,affirmed,C0205400,Finding,thickened,C0700148,Diagnosis,congestion,0.458,882,1383
+PMC11722600_01,LOCATED_IN,affirmed,C0700148,Diagnosis,congestion,C0227900,BodyPart,right fallopian tube,0.904,882,1383
+PMC11722600_01,HAS_FINDING,negated,,Person,,C4321394,Finding,foci,0.689,1528,1605
+PMC11722600_01,REVEALED_BY,affirmed,C0019080,Diagnosis,bleeding,C0019080,Diagnosis,hemorrhage,0.332,1688,2153
+PMC11722600_01,LOCATED_IN,affirmed,C0019080,Diagnosis,hemorrhage,C0227849,BodyPart,endometrial stroma,0.657,1688,2153
+PMC11722600_01,LOCATED_IN,affirmed,C0225358,BodyPart,muscularis,C0003617,BodyPart,appendix,0.5,1688,2153
+PMC11722600_01,COORDINATE_WITH,affirmed,C0014175,Diagnosis,endometriosis,C0019080,Diagnosis,bleeding,0.327,1688,2153
+PMC11722600_02,COORDINATE_WITH,affirmed,C4321394,Finding,foci,C0000737,Symptom,abdominal pain,0.816,0,349
+PMC11722600_02,COORDINATE_WITH,affirmed,C0007876,Treatment,cesarean sections,C2959418,Exam,laparoscopic exploration,0.72,0,349
+PMC11722600_02,REVEALED_BY,affirmed,C2959418,Exam,laparoscopic exploration,C0728940,Treatment,resection,0.724,0,349
+PMC11722600_02,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0426359,Symptom,urinary symptoms,0.808,350,379
+PMC11722600_02,COORDINATE_WITH,historical,C0013390,Diagnosis,dysmenorrhea,C0000737,Symptom,abdominal pain,0.549,380,431
+PMC11722600_02,HAS_SYMPTOM,affirmed,,Person,,C0000737,Symptom,abdominal pain,0.566,432,538
+PMC11722600_02,COORDINATE_WITH,affirmed,C0000737,Symptom,abdominal pain,C0234233,Symptom,tenderness,0.703,432,538
+PMC11722600_02,COORDINATE_WITH,affirmed,C0234233,Symptom,tenderness,C0277974,Symptom,McBurney's sign,0.83,432,538
+PMC11722600_02,HAS_DIAGNOSIS,affirmed,,Person,,C0023518,Diagnosis,leukocytosis,0.96,645,770
+PMC11722600_02,COORDINATE_WITH,affirmed,C0023518,Diagnosis,leukocytosis,C3842088,Finding,mm3,0.482,645,770
+PMC11722600_02,REVEALED_BY,hedged,C0040405,Exam,CT,C0085693,Diagnosis,acute appendicitis,0.617,771,1030
+PMC11722600_02,LOCATED_IN,affirmed,C0040405,Exam,CT,C0003617,BodyPart,appendix,0.922,771,1030
+PMC11722600_02,COORDINATE_WITH,affirmed,C0003617,BodyPart,appendix,C0227327,BodyPart,terminal ileum,0.576,771,1030
+PMC11722600_02,REVEALED_BY,hedged,C0332148,Finding,presumptive diagnosis,C0085693,Diagnosis,acute appendicitis,0.317,771,1030
+PMC11722600_02,COORDINATE_WITH,affirmed,C0007531,BodyPart,cecum,C0227327,BodyPart,terminal ileum,0.701,771,1030
+PMC11722600_02,REVEALED_BY,affirmed,C0031150,Exam,laparoscopy,C0039231,Finding,tachycardia,0.499,1152,1457
+PMC11722600_02,LOCATED_IN,affirmed,C0031150,Exam,laparoscopy,C0007531,BodyPart,cecum,0.789,1152,1457
+PMC11722600_02,LOCATED_IN,affirmed,C0031150,Exam,laparoscopy,C0227327,BodyPart,terminal ileum,0.636,1152,1457
+PMC11722600_02,LOCATED_IN,affirmed,C0031150,Exam,laparoscopy,C0230259,BodyPart,greater omentum,0.565,1152,1457
+PMC11722600_02,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0000737,Symptom,abdominal pain,0.895,1152,1457
+PMC11722600_02,COORDINATE_WITH,affirmed,C0000737,Symptom,abdominal pain,C0039231,Finding,tachycardia,0.563,1152,1457
+PMC11722600_02,COORDINATE_WITH,affirmed,C0007531,BodyPart,cecum,C0227327,BodyPart,terminal ileum,0.482,1152,1457
+PMC11722600_02,COORDINATE_WITH,affirmed,C0227327,BodyPart,terminal ileum,C0230259,BodyPart,greater omentum,0.738,1152,1457
+PMC11722600_02,TREATED_WITH,affirmed,,Person,,C0040405,Exam,CT,0.924,1733,1959
+PMC11722600_02,REVEALED_BY,affirmed,C0040405,Exam,CT,C0013103,Treatment,drainage,0.736,1733,1959
+PMC11722600_02,LOCATED_IN,affirmed,C1293134,Treatment,enlargement,C0003617,BodyPart,appendix,0.576,2119,2349
+PMC11722600_02,LOCATED_IN,affirmed,C0014175,Diagnosis,endometriosis,C0227849,BodyPart,endometrial stroma,0.767,2657,3288
+PMC11722600_02,COORDINATE_WITH,affirmed,C0019080,Diagnosis,bleeding,C0019080,Diagnosis,hemorrhage,0.589,2657,3288
+PMC11722600_02,REVEALED_BY,affirmed,C4321394,Finding,foci,C0019080,Diagnosis,bleeding,0.301,2657,3288
+PMC11723754_01,HAS_DIAGNOSIS,affirmed,,Person,,C5546448,Diagnosis,traumatic spinal cord injury,0.833,0,182
+PMC11723754_01,COORDINATE_WITH,affirmed,C5546448,Diagnosis,traumatic spinal cord injury,C1997329,Diagnosis,fall from height,0.607,0,182
+PMC11723754_01,CAUSED_BY,affirmed,C1997329,Diagnosis,fall from height,C0695242,Diagnosis,neurogenic bowel,0.409,0,182
+PMC11723754_01,LOCATED_IN,affirmed,C0695242,Diagnosis,neurogenic bowel,C0005682,BodyPart,bladder,0.705,0,182
+PMC11723754_01,LOCATED_IN,affirmed,C4554531,Diagnosis,pressure injury,C0036033,BodyPart,sacral region,0.889,0,182
+PMC11723754_01,LOCATED_IN,affirmed,C0450094,Finding,Grade III,C0036033,BodyPart,sacral region,0.605,229,376
+PMC11723754_01,TREATED_WITH,affirmed,C0278286,Treatment,dressing,C0043250,Diagnosis,wounds,0.572,229,376
+PMC11723754_01,HAS_FINDING,affirmed,,Person,,C0085639,Finding,fall,0.677,377,532
+PMC11723754_01,TREATED_WITH,affirmed,,Person,,C0150238,Treatment,fluid resuscitation,0.755,533,630
+PMC11723754_01,COORDINATE_WITH,affirmed,C0150238,Treatment,fluid resuscitation,C0013227,Treatment,drugs,0.566,631,810
+PMC11723754_01,TREATED_WITH,affirmed,C0013227,Treatment,drugs,C0026766,Diagnosis,multiple organ dysfunction syndrome (MODS,0.534,631,810
+PMC11723754_01,TREATED_WITH,affirmed,,Person,,C0013832,Treatment,electrolytes,0.653,811,883
+PMC11723754_01,HAS_DIAGNOSIS,affirmed,,Person,,C0036983,Diagnosis,septic shock,0.585,942,1051
+PMC11723754_01,TREATED_WITH,affirmed,,Person,,C1879316,Treatment,transfusion,0.939,1052,1227
+PMC11723754_01,HAS_FINDING,affirmed,,Person,,C0427965,Finding,sensitivity,0.706,1313,1430
+PMC11723754_01,HAS_DIAGNOSIS,affirmed,,Person,,C4554531,Diagnosis,pressure injuries,0.852,1825,1949
+PMC11723754_01,COORDINATE_WITH,affirmed,C0087111,Treatment,therapeutic,C0204096,Treatment,neurorehabilitation,0.63,1950,2083
+PMC11723754_01,COORDINATE_WITH,affirmed,C0087111,Treatment,therapeutic,C2728259,Treatment,program,0.499,1950,2083
+PMC11723754_01,LOCATED_IN,affirmed,C0947131,BodyPart,bilateral hip,C1963703,BodyPart,knee,0.514,1950,2083
+PMC11723754_01,LOCATED_IN,affirmed,C1963703,BodyPart,knee,C0003086,BodyPart,ankle,0.514,1950,2083
+PMC11723754_01,LOCATED_IN,affirmed,C0003086,BodyPart,ankle,C0016504,BodyPart,foot,0.514,1950,2083
+PMC11783470_01,COORDINATE_WITH,family,C0025323,Diagnosis,menorrhagia,C0241889,Finding,family history of,0.482,48,124
+PMC11783470_01,REVEALED_BY,family,C0241889,Finding,family history of,C0006826,Diagnosis,malignancy,0.29,48,124
+PMC11783470_01,COORDINATE_WITH,affirmed,C0011168,Diagnosis,dysphagia,C0221150,Symptom,odynophagia,0.622,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0221150,Symptom,odynophagia,C0018834,Symptom,heartburn,0.85,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0018834,Symptom,heartburn,C0027497,Symptom,nausea,0.85,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0027497,Symptom,nausea,C0042963,Symptom,vomiting,0.85,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0042963,Symptom,vomiting,C0000737,Symptom,abdominal pain,0.85,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0000737,Symptom,abdominal pain,C0278008,Symptom,altered bowel habits,0.85,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0278008,Symptom,altered bowel habits,C0025222,Finding,melena,0.563,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0025222,Finding,melena,C0018932,Diagnosis,hematochezia,0.606,125,279
+PMC11783470_01,COORDINATE_WITH,affirmed,C0018932,Diagnosis,hematochezia,C2363736,Finding,unintentional weight loss,0.622,125,279
+PMC11783470_01,HAS_FINDING,affirmed,,Person,,C0241137,Finding,pallor,0.726,306,390
+PMC11783470_01,TREATED_WITH,affirmed,C0240066,Diagnosis,iron deficiency,C0079304,Exam,esophagogastroduodenoscopy (EGD,0.415,391,727
+PMC11783470_01,COORDINATE_WITH,affirmed,C1277709,Exam,transferrin saturation,C0015879,Treatment,ferritin,0.546,391,727
+PMC11783470_01,COORDINATE_WITH,affirmed,C0015879,Treatment,ferritin,C0302583,Treatment,iron,0.778,391,727
+PMC11783470_01,COORDINATE_WITH,affirmed,C0373607,Exam,ferritin level,C1277709,Exam,transferrin saturation,0.606,391,727
+PMC11783470_01,REVEALED_BY,affirmed,C1277709,Exam,transferrin saturation,C0240066,Diagnosis,iron deficiency,0.527,391,727
+PMC11783470_01,COORDINATE_WITH,affirmed,C0079304,Exam,esophagogastroduodenoscopy (EGD,C0009378,Exam,colonoscopy,0.732,391,727
+PMC11783470_01,REVEALED_BY,affirmed,C0221198,Finding,lesion,C0334094,Diagnosis,proliferation,0.292,879,1026
+PMC11783470_01,TREATED_WITH,affirmed,,Person,,C0005558,Exam,biopsies,0.948,1027,1152
+PMC11783470_01,REVEALED_BY,negated,C0005558,Exam,biopsies,C0007570,Diagnosis,celiac disease,0.648,1027,1152
+PMC11783470_01,REVEALED_BY,negated,C5968610,Exam,ileocolonoscopy,C0019080,Diagnosis,bleeding,0.648,1027,1152
+PMC11783470_01,REVEALED_BY,negated,C5968610,Exam,ileocolonoscopy,C0449416,Finding,source,0.555,1027,1152
+PMC11783470_01,REVEALED_BY,negated,C5968610,Exam,ileocolonoscopy,C0007570,Diagnosis,celiac disease,0.657,1027,1152
+PMC11783470_01,TREATED_WITH,affirmed,,Person,,C0015252,Treatment,removal,0.482,1153,1242
+PMC11783470_01,TREATED_WITH,affirmed,,Person,,C5204448,Treatment,endoscopic resection,0.87,1243,1324
+PMC11783470_01,HAS_DIAGNOSIS,negated,,Person,,C0025323,Diagnosis,menorrhagia,0.862,1404,1624
+PMC11783470_01,HAS_DIAGNOSIS,negated,,Person,,C2825055,Diagnosis,recurrence,0.495,1625,1721
+PMC12215201_01,TREATED_WITH,negated,C0455458,Finding,past medical history,C0015672,Symptom,fatigue,0.639,0,203
+PMC12215201_01,COORDINATE_WITH,affirmed,C0455458,Finding,past medical history,C0232462,Symptom,decreased appetite,0.641,0,203
+PMC12215201_01,COORDINATE_WITH,affirmed,C0015672,Symptom,fatigue,C0000731,Finding,swollen abdomen,0.563,0,203
+PMC12215201_01,COORDINATE_WITH,affirmed,C0000731,Finding,swollen abdomen,C0232462,Symptom,decreased appetite,0.733,0,203
+PMC12215201_01,COORDINATE_WITH,affirmed,C0232462,Symptom,decreased appetite,C1262477,Finding,weight loss,0.762,0,203
+PMC12215201_01,HAS_SYMPTOM,affirmed,,Person,,C0030193,Symptom,pain,0.878,204,287
+PMC12215201_01,COORDINATE_WITH,affirmed,C0277797,Finding,afebrile,C0578150,Finding,hemodynamically stable,0.509,596,694
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0032181,Exam,platelet count,0.971,812,1511
+PMC12215201_01,LOCATED_IN,affirmed,C2348813,Exam,abdominal ultrasound,C0023884,BodyPart,liver,0.801,812,1511
+PMC12215201_01,REVEALED_BY,affirmed,C0040405,Exam,CT,C3844126,Finding,very little,0.502,812,1511
+PMC12215201_01,REVEALED_BY,affirmed,C0032181,Exam,platelet count,C3842088,Finding,mm3,0.502,812,1511
+PMC12215201_01,REVEALED_BY,affirmed,C0201913,Exam,total bilirubin,C5966160,Treatment,albumin,0.799,812,1511
+PMC12215201_01,TREATED_WITH,affirmed,C5966160,Treatment,albumin,C2348813,Exam,abdominal ultrasound,0.356,812,1511
+PMC12215201_01,LOCATED_IN,affirmed,C0040405,Exam,CT,C1508499,BodyPart,abdomen and pelvis,0.929,812,1511
+PMC12215201_01,COORDINATE_WITH,affirmed,C0225754,BodyPart,"lung, bilateral",C0022646,BodyPart,kidney,0.427,1512,1696
+PMC12215201_01,COORDINATE_WITH,affirmed,C0022646,BodyPart,kidney,C0262950,BodyPart,bones,0.738,1512,1696
+PMC12215201_01,LOCATED_IN,affirmed,C0262950,BodyPart,bones,C0003962,Symptom,ascites,0.639,1512,1696
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C2316467,Treatment,packed red blood cells,0.942,1697,1837
+PMC12215201_01,TREATED_WITH,affirmed,C2316467,Treatment,packed red blood cells,C0002871,Diagnosis,anemia,0.612,1697,1837
+PMC12215201_01,TREATED_WITH,affirmed,C2316467,Treatment,packed red blood cells,C0040034,Diagnosis,thrombocytopenia,0.6,1697,1837
+PMC12215201_01,COORDINATE_WITH,affirmed,C0002871,Diagnosis,anemia,C0040034,Diagnosis,thrombocytopenia,0.657,1697,1837
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0034115,Treatment,paracentesis,0.939,1838,1932
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0010818,Exam,cytology,0.935,2092,2178
+PMC12215201_01,LOCATED_IN,affirmed,C0079304,Exam,Esophagogastroduodenoscopy,C0013303,BodyPart,duodenum,0.739,2256,2385
+PMC12215201_01,LOCATED_IN,affirmed,C1721048,Exam,Video capsule endoscopy,C3714551,BodyPart,stomach,0.719,2440,2543
+PMC12215201_01,LOCATED_IN,affirmed,C1721048,Exam,Video capsule endoscopy,C0021852,BodyPart,small bowel,0.665,2440,2543
+PMC12215201_01,COORDINATE_WITH,affirmed,C3714551,BodyPart,stomach,C0021852,BodyPart,small bowel,0.701,2440,2543
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0086818,Treatment,platelet transfusions,0.854,2544,2623
+PMC12215201_01,TREATED_WITH,affirmed,C0086818,Treatment,platelet transfusions,C0040034,Diagnosis,thrombocytopenia,0.595,2544,2623
+PMC12215201_01,REVEALED_BY,hedged,C0005558,Exam,biopsy,C0018923,Diagnosis,angiosarcoma,0.622,2624,2787
+PMC12215201_01,LOCATED_IN,affirmed,C0005558,Exam,biopsy,C0023884,BodyPart,liver,0.883,2624,2787
+PMC12215201_01,REVEALED_BY,affirmed,C0027651,Diagnosis,Tumor,C0015506,Treatment,factor VIII,0.324,2788,2879
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0021107,Treatment,placement,0.839,2880,2951
+PMC12215201_01,TREATED_WITH,affirmed,,Person,,C0013103,Treatment,drainage,0.768,2952,3022
+PMC12215201_01,HAS_DIAGNOSIS,affirmed,,Person,,C0012739,Diagnosis,disseminated intravascular coagulation,0.89,3023,3201
+PMC12215201_01,COORDINATE_WITH,affirmed,C0009566,Diagnosis,complication,C0018790,Diagnosis,cardiac arrest,0.616,3023,3201
+PMC12215201_01,CAUSED_BY,affirmed,C0012739,Diagnosis,disseminated intravascular coagulation,C0009566,Diagnosis,complication,0.436,3023,3201
+PMC12832199_01,COORDINATE_WITH,affirmed,C0028754,Diagnosis,obesity,C0042963,Symptom,vomiting,0.636,0,111
+PMC12832199_01,COORDINATE_WITH,affirmed,C0232492,Symptom,upper abdominal pain,C0042963,Symptom,vomiting,0.898,0,111
+PMC12832199_01,HAS_SYMPTOM,affirmed,,Person,,C0042963,Symptom,vomiting,0.902,112,236
+PMC12832199_01,REVEALED_BY,affirmed,C0040021,Diagnosis,Buerger's disease,C0002688,Treatment,amputations,0.613,237,442
+PMC12832199_01,REVEALED_BY,affirmed,C0001623,Diagnosis,adrenal insufficiency,C0001617,Treatment,corticosteroids,0.347,237,442
+PMC12832199_01,REVEALED_BY,historical,C0262926,Finding,medical history,C0040021,Diagnosis,Buerger's disease,0.317,237,442
+PMC12832199_01,TREATED_WITH,affirmed,C0002688,Treatment,amputations,C0001623,Diagnosis,adrenal insufficiency,0.608,237,442
+PMC12832199_01,TREATED_WITH,affirmed,C0192963,Treatment,transverse colostomy,C0162529,Diagnosis,ischemic colitis,0.585,443,546
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,,Person,,C0033377,Diagnosis,prolapse,0.748,547,709
+PMC12832199_01,LOCATED_IN,affirmed,C0000726,BodyPart,abdomen,C0234233,Symptom,tenderness,0.596,710,786
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,,Person,,C0032290,Diagnosis,aspiration pneumonia,0.879,787,852
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,,Person,,C0023518,Diagnosis,leukocytosis,0.852,853,1045
+PMC12832199_01,REVEALED_BY,affirmed,C0023508,Exam,white blood cell count,C0023518,Diagnosis,leukocytosis,0.573,853,1045
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,C0002871,Diagnosis,anemia,C0239981,Diagnosis,hypoalbuminemia,0.385,853,1045
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,C0239981,Diagnosis,hypoalbuminemia,C0022660,Diagnosis,acute kidney injury,0.392,853,1045
+PMC12832199_01,REVEALED_BY,affirmed,C0040405,Exam,CT,C0012359,Diagnosis,distention,0.633,1046,1199
+PMC12832199_01,TREATED_WITH,hedged,C4522268,Finding,pulmonary,C0032290,Diagnosis,aspiration pneumonia,0.466,1291,1378
+PMC12832199_01,COORDINATE_WITH,affirmed,C0021107,Treatment,placement,C0338237,Treatment,antibiotic therapy,0.836,1379,1596
+PMC12832199_01,LOCATED_IN,affirmed,C3282907,BodyPart,nasogastric,C1829459,Treatment,decompression,0.519,1379,1596
+PMC12832199_01,COORDINATE_WITH,affirmed,C0338237,Treatment,antibiotic therapy,C0358591,Treatment,proton pump inhibitor,0.704,1379,1596
+PMC12832199_01,LOCATED_IN,negated,C0012359,Diagnosis,distension,C0442034,BodyPart,peritoneal,0.714,1741,1823
+PMC12832199_01,COORDINATE_WITH,affirmed,C0000737,Symptom,abdominal pain,C0012359,Diagnosis,distension,0.764,1741,1823
+PMC12832199_01,HAS_DIAGNOSIS,negated,,Person,,C0002871,Diagnosis,anemia,0.915,1824,1912
+PMC12832199_01,HAS_FINDING,affirmed,,Person,,C0549099,Finding,perforation,0.803,1913,2038
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,,Person,,C3887513,Diagnosis,ischemic necrosis,0.472,1913,2038
+PMC12832199_01,COORDINATE_WITH,affirmed,C0549099,Finding,perforation,C3887513,Diagnosis,ischemic necrosis,0.5,1913,2038
+PMC12832199_01,HAS_DIAGNOSIS,historical,,Person,,C0033377,Diagnosis,prolapse,0.757,2134,2371
+PMC12832199_01,REVEALED_BY,affirmed,C0033377,Diagnosis,prolapse,C0728940,Treatment,resection,0.472,2134,2371
+PMC12832199_01,LOCATED_IN,affirmed,C0441636,Treatment,shortening,C0009368,BodyPart,colon,0.576,2134,2371
+PMC12832199_01,HAS_DIAGNOSIS,affirmed,,Person,,C0033377,Diagnosis,prolapse,0.492,2372,2491
+PMC12832199_01,LOCATED_IN,affirmed,C0033377,Diagnosis,prolapse,C0009368,BodyPart,colon,0.861,2372,2491
+PMC12832199_01,TREATED_WITH,affirmed,,Person,,C0374711,Treatment,repair,0.768,2664,2754
+PMC12832199_01,LOCATED_IN,affirmed,C0040597,Treatment,traction,C0230229,BodyPart,gastrocolic ligament,0.576,2755,2881
+PMC12832199_01,LOCATED_IN,affirmed,C5979919,Finding,incarcerated,C3714551,BodyPart,stomach,0.593,2882,3036
+PMC12832199_01,LOCATED_IN,affirmed,C0040597,Treatment,traction,C0009368,BodyPart,colon,0.553,3037,3231
+PMC12832199_01,COORDINATE_WITH,affirmed,C0836916,BodyPart,abdominal wall,C0021853,BodyPart,bowel,0.53,3308,3520
+PMC12832199_01,COORDINATE_WITH,affirmed,C0021853,BodyPart,bowel,C0025474,BodyPart,mesentery,0.701,3308,3520
+PMC12832199_01,LOCATED_IN,affirmed,C0185003,Treatment,closure,C0021853,BodyPart,bowel,0.523,3521,3644
+PMC12832199_01,LOCATED_IN,affirmed,C4760449,Finding,intraperitoneal,C1563019,BodyPart,suture line,0.509,3645,3827
+PMC12832199_01,COORDINATE_WITH,affirmed,C0185003,Treatment,closure,C0374711,Treatment,repair,0.659,3645,3827
+PMC12832199_01,REVEALED_BY,historical,C0014245,Exam,Endoscopy,C0085695,Diagnosis,chronic gastritis,0.602,4143,4302
+PMC12832199_01,CAUSED_BY,affirmed,C0014868,Diagnosis,esophagitis,C0232483,Diagnosis,reflux,0.404,4143,4302
+PMC12832199_01,COORDINATE_WITH,affirmed,C0085695,Diagnosis,chronic gastritis,C3887532,Diagnosis,ulceration,0.614,4143,4302
+PMC12832199_01,COORDINATE_WITH,affirmed,C3887532,Diagnosis,ulceration,C0014868,Diagnosis,esophagitis,0.307,4143,4302
+PMC12832199_01,COORDINATE_WITH,hedged,C0012359,Diagnosis,distension,C0445223,Finding,related,0.6,4303,4426
+PMC12832199_01,COORDINATE_WITH,affirmed,C0009368,BodyPart,colon,C0025474,BodyPart,mesentery,0.564,4517,4679
+PMC12832199_01,TREATED_WITH,negated,C2825055,Diagnosis,recurrence,C0591126,Treatment,at 10,0.391,4887,4947
+PMC2700431_01,HAS_DIAGNOSIS,affirmed,,Person,,C0000932,Diagnosis,traffic accident,0.683,0,151
+PMC2700431_01,COORDINATE_WITH,affirmed,C0000932,Diagnosis,traffic accident,C0026771,Diagnosis,multiple injuries,0.66,0,151
+PMC2700431_01,COORDINATE_WITH,affirmed,C0700285,Finding,drug addict,C0019187,Diagnosis,"alcoholic, hepatitis",0.606,152,212
+PMC2700431_01,LOCATED_IN,affirmed,C0016658,Diagnosis,fracture,C3665420,BodyPart,cervical vertebra,0.725,276,509
+PMC2700431_01,COORDINATE_WITH,affirmed,C0016658,Diagnosis,fracture,C1631070,Finding,"4, 5, 6",0.472,276,509
+PMC2700431_01,LOCATED_IN,affirmed,C1631070,Finding,"4, 5, 6",C0035561,BodyPart,ribs,0.605,276,509
+PMC2700431_01,LOCATED_IN,affirmed,C0032326,Diagnosis,pneumothorax,C0817096,BodyPart,chest,0.772,276,509
+PMC2700431_01,LOCATED_IN,affirmed,C3203359,Diagnosis,rupture,C0545797,BodyPart,spleen and liver,0.833,276,509
+PMC2700431_01,LOCATED_IN,affirmed,C0205054,BodyPart,hepatic,C0374711,Treatment,repair,0.519,510,739
+PMC2700431_01,REVEALED_BY,affirmed,C3263723,Diagnosis,injuries,C0040590,Treatment,tracheostomy,0.522,510,739
+PMC2700431_01,LOCATED_IN,affirmed,C1995000,BodyPart,back,C2603364,Finding,on ventilator,0.505,740,794
+PMC2700431_01,TREATED_WITH,affirmed,,Person,,C0030231,Treatment,supportive care,0.902,795,904
+PMC2700431_01,LOCATED_IN,affirmed,C3842377,Exam,Chest radiograph,C0024109,BodyPart,lung,0.92,1192,1303
+PMC2700431_01,TREATED_WITH,affirmed,,Person,,C0030054,Treatment,2O,0.504,1390,1521
+PMC2700431_01,HAS_DIAGNOSIS,affirmed,,Person,,C0032290,Diagnosis,aspiration pneumonia,0.94,1576,1709
+PMC2817501_01,HAS_SYMPTOM,affirmed,,Person,,C0231807,Symptom,exertional dyspnea,0.917,0,81
+PMC2817501_01,HAS_SYMPTOM,affirmed,,Person,,C0002962,Symptom,angina,0.837,0,81
+PMC2817501_01,COORDINATE_WITH,affirmed,C0231807,Symptom,exertional dyspnea,C0002962,Symptom,angina,0.898,0,81
+PMC2817501_01,LOCATED_IN,affirmed,C0003501,BodyPart,aortic valve,C0035139,Treatment,replacement,0.519,82,264
+PMC2817501_01,HAS_FINDING,affirmed,,Person,,C0457436,Finding,left hemiparesis,0.83,265,385
+PMC2817501_01,HAS_FINDING,affirmed,,Person,,C1271104,Finding,blood pressure,0.745,265,385
+PMC2817501_01,LOCATED_IN,affirmed,C1271104,Finding,blood pressure,C0018787,BodyPart,heart,0.505,265,385
+PMC2817501_01,REVEALED_BY,affirmed,C0018793,Exam,Cardiac auscultation,C0442748,Finding,4/6,0.505,386,484
+PMC2817501_01,REVEALED_BY,affirmed,C0018793,Exam,Cardiac auscultation,C0232257,Finding,systolic murmur,0.536,386,484
+PMC2817501_01,COORDINATE_WITH,affirmed,C0232257,Finding,systolic murmur,C0034642,Finding,rales,0.659,386,484
+PMC2817501_01,LOCATED_IN,affirmed,C0034642,Finding,rales,C0024109,BodyPart,lungs,0.52,386,484
+PMC2817501_01,REVEALED_BY,affirmed,C0206054,Exam,Transesophageal echocardiography,C0264765,Diagnosis,rheumatic mitral valve disease,0.614,485,913
+PMC2817501_01,REVEALED_BY,affirmed,C0442757,Finding,3-4,C0026266,Diagnosis,mitral insufficiency,0.29,485,913
+PMC2817501_01,REVEALED_BY,affirmed,C0042508,Exam,ventricular ejection fraction,C0026266,Diagnosis,mitral insufficiency,0.532,485,913
+PMC2817501_01,REVEALED_BY,affirmed,C0042508,Exam,ventricular ejection fraction,C0428642,Finding,pulmonary artery pressure,0.515,485,913
+PMC2817501_01,REVEALED_BY,affirmed,C0428642,Finding,pulmonary artery pressure,C0333350,Diagnosis,pannus,0.319,485,913
+PMC2817501_01,REVEALED_BY,affirmed,C0085532,Exam,Coronary arteriography,C1261287,Diagnosis,stenosis,0.7,914,1040
+PMC2817501_01,TREATED_WITH,affirmed,,Person,,C0035110,Treatment,reoperation,0.86,1041,1238
+PMC2817501_01,LOCATED_IN,affirmed,C0010075,BodyPart,vessel coronary,C0003842,BodyPart,artery,0.514,1041,1238
+PMC2817501_01,LOCATED_IN,affirmed,C0003842,BodyPart,artery,C0813207,Treatment,bypass,0.519,1041,1238
+PMC2817501_01,TREATED_WITH,affirmed,C0190267,Treatment,aortotomy,C0333350,Diagnosis,pannus,0.569,1411,1649
+PMC2817501_01,LOCATED_IN,affirmed,C0035110,Treatment,reoperation,C0026264,BodyPart,mitral valve,0.543,1411,1649
+PMC3437073_01,COORDINATE_WITH,affirmed,C0817096,BodyPart,chest,C2937240,BodyPart,upper abdomen,0.701,0,138
+PMC3437073_01,HAS_FINDING,negated,,Person,,C3841442,Finding,other medical,0.802,139,225
+PMC3437073_01,HAS_FINDING,affirmed,,Person,,C0231441,Finding,immobile,0.842,226,521
+PMC3437073_01,LOCATED_IN,negated,C0006318,Finding,bruit,C0817096,BodyPart,chest,0.507,226,521
+PMC3437073_01,COORDINATE_WITH,affirmed,C0817096,BodyPart,chest,C2937240,BodyPart,upper abdomen,0.701,226,521
+PMC3437073_01,HAS_FINDING,affirmed,,Person,,C0221198,Finding,lesion,0.65,603,719
+PMC3437073_01,HAS_FINDING,affirmed,,Person,,C0475806,Finding,near,0.601,603,719
+PMC3437073_01,LOCATED_IN,affirmed,C0475806,Finding,near,C0225706,BodyPart,right lung,0.533,603,719
+PMC3437073_01,LOCATED_IN,affirmed,C0041618,Exam,Ultrasound,C0000726,BodyPart,abdomen,0.93,806,889
+PMC3437073_01,REVEALED_BY,affirmed,C0038002,Finding,enlarged spleen,C1533591,Diagnosis,calcification,0.31,806,889
+PMC3437073_01,LOCATED_IN,affirmed,C0000726,BodyPart,abdomen,C0272412,Diagnosis,splenic abscess,0.537,890,1028
+PMC3437073_01,LOCATED_IN,affirmed,C0040405,Exam,CT scan,C0000726,BodyPart,abdomen,0.93,890,1028
+PMC3437073_01,LOCATED_IN,affirmed,C0241266,Diagnosis,subcutaneous abscess,C0205076,BodyPart,chest wall,0.952,890,1028
+PMC3437073_01,HAS_DIAGNOSIS,affirmed,,Person,,C0041296,Diagnosis,tuberculous,0.966,1029,1124
+PMC3437073_01,HAS_DIAGNOSIS,affirmed,,Person,,C0272412,Diagnosis,splenic abscess,0.964,1029,1124
+PMC3437073_01,CAUSED_BY,affirmed,C0041296,Diagnosis,tuberculous,C0272412,Diagnosis,splenic abscess,0.472,1029,1124
+PMC3437073_01,REVEALED_BY,affirmed,C0241266,Diagnosis,subcutaneous abscess,C0037995,Treatment,splenectomy,0.574,1125,1246
+PMC3437073_01,COORDINATE_WITH,affirmed,C1719976,Finding,Under general anesthesia,C0241266,Diagnosis,subcutaneous abscess,0.658,1125,1246
+PMC3437073_01,LOCATED_IN,affirmed,C0000833,Diagnosis,abscess,C0037993,BodyPart,spleen,0.951,1332,1505
+PMC3437073_01,LOCATED_IN,affirmed,C0241266,Diagnosis,subcutaneous abscess,C0205076,BodyPart,chest wall,0.863,1332,1505
+PMC3437073_01,COORDINATE_WITH,affirmed,C0017547,Diagnosis,giant,C0027540,Diagnosis,necrosis,0.596,1563,1738
+PMC3437073_01,TREATED_WITH,affirmed,,Person,,C0022209,Treatment,Isoniazid,0.918,1821,1996
+PMC3437073_01,COORDINATE_WITH,affirmed,C0022209,Treatment,INH,C1104996,Treatment,Rifampin 600 mg,0.96,1821,1996
+PMC3437073_01,COORDINATE_WITH,affirmed,C1104996,Treatment,Rifampin 600 mg,C0014964,Treatment,Ethambutol,0.707,1821,1996
+PMC3437073_01,COORDINATE_WITH,affirmed,C0014964,Treatment,Ethambutol,C1186764,Treatment,Pyrazinamide 500 mg,0.718,1821,1996
+PMC3437073_01,TREATED_WITH,affirmed,C0438108,Finding,patient's condition improved,C4284232,Treatment,medications,0.451,1997,2118
+PMC3557982_01,COORDINATE_WITH,affirmed,C3853643,Exam,PCR,C1535528,Treatment,tracheal aspiration,0.743,0,94
+PMC3557982_01,TREATED_WITH,negated,C1535528,Treatment,tracheal aspiration,C0021400,Diagnosis,influenza,0.569,0,94
+PMC3557982_01,TREATED_WITH,affirmed,,Person,,C0282646,Exam,indirect immunofluorescence,0.775,350,604
+PMC3557982_01,REVEALED_BY,affirmed,C0282646,Exam,indirect immunofluorescence,C0419997,Treatment,Viral Screening,0.639,350,604
+PMC3557982_01,TREATED_WITH,affirmed,,Person,,C0085672,Exam,Microbiology,0.836,606,873
+PMC3557982_01,REVEALED_BY,affirmed,C0085672,Exam,Microbiology,C0080194,Diagnosis,strain,0.539,606,873
+PMC3557982_01,LOCATED_IN,affirmed,C0004398,Exam,Postmortem examination,C0024109,BodyPart,lungs,0.755,874,1081
+PMC3557982_01,LOCATED_IN,affirmed,C4321394,Finding,foci,C0225706,BodyPart,right lung,0.582,874,1081
+PMC3557982_01,REVEALED_BY,affirmed,C0026018,Exam,microscopy,C1262020,Diagnosis,diffuse alveolar damage,0.717,1082,1218
+PMC3557982_01,COORDINATE_WITH,affirmed,C1262020,Diagnosis,diffuse alveolar damage,C0027540,Diagnosis,necrosis,0.315,1082,1218
+PMC3557982_01,REVEALED_BY,affirmed,C0178539,Exam,cellular,C0027540,Diagnosis,necrosis,0.657,1082,1218
+PMC3557982_01,REVEALED_BY,affirmed,C0021044,Exam,Immunohistochemistry,C0003241,Treatment,Antibody,0.785,1219,1398
+PMC3557982_01,COORDINATE_WITH,affirmed,C0041912,Diagnosis,upper respiratory tract infection,C0581372,Diagnosis,acute bilateral otitis media,0.657,2082,2227
+PMC3557982_01,LOCATED_IN,affirmed,C0034627,BodyPart,radius,C1546956,Finding,died,0.511,2499,2633
+PMC3557982_01,HAS_DIAGNOSIS,historical,,Person,,C0009450,Diagnosis,infection,0.635,2634,2798
+PMC3557982_01,COORDINATE_WITH,hedged,C0009450,Diagnosis,infection,C0080194,Diagnosis,strain,0.344,2634,2798
+PMC3557982_01,TREATED_WITH,affirmed,,Person,,C0225326,Treatment,fiber,0.604,2799,3019
+PMC3557982_01,TREATED_WITH,affirmed,C0225326,Treatment,fiber,C0080194,Diagnosis,strain,0.451,3188,3334
+PMC3859158_01,HAS_SYMPTOM,historical,,Person,,C0232493,Symptom,epigastric pain,0.777,0,76
+PMC3859158_01,COORDINATE_WITH,affirmed,C0030193,Symptom,pain,C0027498,Symptom,nausea and vomiting,0.722,77,163
+PMC3859158_01,COORDINATE_WITH,affirmed,C1368081,Diagnosis,physical trauma,C0017168,Diagnosis,gastroesophageal reflux disease,0.626,164,316
+PMC3859158_01,COORDINATE_WITH,affirmed,C0017168,Diagnosis,gastroesophageal reflux disease,C0017152,Diagnosis,gastritis,0.626,164,316
+PMC3859158_01,COORDINATE_WITH,affirmed,C0017152,Diagnosis,gastritis,C0030920,Diagnosis,peptic ulcer disease,0.626,164,316
+PMC3859158_01,COORDINATE_WITH,affirmed,C0030920,Diagnosis,peptic ulcer disease,C0030305,Diagnosis,pancreatitis,0.626,164,316
+PMC3859158_01,COORDINATE_WITH,affirmed,C0030305,Diagnosis,pancreatitis,C0267792,Diagnosis,hepatobiliary disease,0.64,164,316
+PMC3859158_01,TREATED_WITH,negated,C0009812,Symptom,constitutional symptoms,C0015967,Symptom,fever,0.483,317,427
+PMC3859158_01,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0038990,Finding,sweating,0.596,317,427
+PMC3859158_01,COORDINATE_WITH,affirmed,C0038990,Finding,sweating,C1262477,Finding,weight loss,0.511,317,427
+PMC3859158_01,LOCATED_IN,affirmed,C0030247,Exam,palpation,C0230185,BodyPart,epigastric region,0.699,584,686
+PMC3859158_01,REVEALED_BY,negated,C0030247,Exam,palpation,C0746412,Finding,palpable mass,0.568,584,686
+PMC3859158_01,LOCATED_IN,affirmed,C0009555,Exam,complete blood count,C0205054,BodyPart,hepatic,0.811,687,924
+PMC3859158_01,COORDINATE_WITH,affirmed,C2928321,Treatment,"amylase, lipase",C0376261,Treatment,lactate,0.647,687,924
+PMC3859158_01,COORDINATE_WITH,affirmed,C0376261,Treatment,lactate,C0201933,Exam,carcinoembryonic antigen,0.75,687,924
+PMC3859158_01,REVEALED_BY,affirmed,C0201933,Exam,carcinoembryonic antigen,C0006826,Diagnosis,cancer,0.545,687,924
+PMC3859158_01,LOCATED_IN,affirmed,C0040405,Exam,CT) scan,C0001625,BodyPart,adrenal gland,0.584,925,1111
+PMC3859158_01,LOCATED_IN,affirmed,C0040405,Exam,CT) scan,C0030274,BodyPart,pancreas,0.535,925,1111
+PMC3859158_01,COORDINATE_WITH,affirmed,C0001625,BodyPart,adrenal gland,C0030274,BodyPart,pancreas,0.482,925,1111
+PMC3859158_01,COORDINATE_WITH,affirmed,C0497156,Diagnosis,lymphadenopathy,C5441917,Diagnosis,distant metastasis,0.599,1200,1301
+PMC3859158_01,TREATED_WITH,affirmed,,Person,,C0728940,Treatment,surgical resection,0.947,1374,1478
+PMC3859158_01,LOCATED_IN,affirmed,C0728940,Treatment,surgical resection,C0039259,BodyPart,tail,0.533,1374,1478
+PMC3859158_01,LOCATED_IN,affirmed,C0229766,BodyPart,celiac lymph node,C0012737,Treatment,dissections,0.519,1374,1478
+PMC3859158_01,LOCATED_IN,affirmed,C0026018,Exam,microscopic examination,C0037993,BodyPart,spleen,0.922,1479,1650
+PMC3859158_01,COORDINATE_WITH,affirmed,C0037993,BodyPart,spleen,C0229766,BodyPart,celiac lymph node,0.701,1479,1650
+PMC3859158_01,LOCATED_IN,affirmed,C0229766,BodyPart,celiac lymph node,C0012737,Treatment,dissections,0.519,1479,1650
+PMC3859158_01,REVEALED_BY,affirmed,C0877425,Finding,pancreatic mass,C0000925,Diagnosis,cut,0.41,1651,1788
+PMC3859158_01,TREATED_WITH,affirmed,,Person,,C4050026,Treatment,matrix,0.545,2042,2184
+PMC3859158_01,HAS_DIAGNOSIS,hedged,,Person,,C1536561,Diagnosis,ancient schwannoma,0.836,2185,2283
+PMC3859158_01,COORDINATE_WITH,affirmed,C0332140,Finding,CD,C0332140,Finding,CD,0.539,2436,2508
+PMC3859158_01,LOCATED_IN,affirmed,C1536561,Diagnosis,ancient schwannoma,C0039259,BodyPart,tail,0.874,2509,2592
+PMC3859158_01,TREATED_WITH,negated,,Person,,C0087111,Treatment,therapy,0.519,2659,2713
+PMC3859158_01,COORDINATE_WITH,affirmed,C0040405,Exam,CT scan,C0231221,Finding,asymptomatic,0.678,2714,2846
+PMC3859158_01,REVEALED_BY,negated,C0332651,Exam,no evidence of tumor,C2825055,Diagnosis,recurrence,0.573,2714,2846
+PMC3897989_01,HAS_FINDING,affirmed,,Person,,C0022346,Finding,jaundice,0.947,0,135
+PMC3897989_01,HAS_SYMPTOM,affirmed,,Person,,C0033774,Symptom,pruritus,0.839,0,135
+PMC3897989_01,COORDINATE_WITH,affirmed,C0022346,Finding,jaundice,C0033774,Symptom,pruritus,0.733,0,135
+PMC3897989_01,COORDINATE_WITH,affirmed,C0033774,Symptom,pruritus,C0232492,Symptom,upper abdominal pain,0.949,0,135
+PMC3897989_01,REVEALED_BY,historical,C0455458,Finding,Past medical history,C0004238,Diagnosis,atrial fibrillation,0.337,136,238
+PMC3897989_01,TREATED_WITH,affirmed,C0004238,Diagnosis,atrial fibrillation,C4303556,Treatment,aspirin therapy,0.39,136,238
+PMC3897989_01,LOCATED_IN,affirmed,C0022346,Finding,icteric,C0036410,BodyPart,sclera,0.593,276,414
+PMC3897989_01,LOCATED_IN,affirmed,C0036410,BodyPart,sclera,C0232498,Symptom,abdominal tenderness,0.512,276,414
+PMC3897989_01,REVEALED_BY,affirmed,C0201913,Exam,total bilirubin,C4533677,Finding,at admission,0.497,415,833
+PMC3897989_01,REVEALED_BY,affirmed,C0012634,Diagnosis,diseases,C0003241,Treatment,antibody,0.315,981,1125
+PMC3897989_01,REVEALED_BY,affirmed,C0220908,Exam,Screening,C0012634,Diagnosis,diseases,0.555,981,1125
+PMC3897989_01,REVEALED_BY,affirmed,C0024485,Exam,MRI,C1293134,Treatment,enlargement,0.884,1184,1375
+PMC3897989_01,COORDINATE_WITH,affirmed,C0040405,Exam,CT,C0024485,Exam,magnetic resonance,0.732,1184,1375
+PMC3897989_01,LOCATED_IN,affirmed,C1293134,Treatment,enlargement,C0030274,BodyPart,pancreas,0.576,1184,1375
+PMC3897989_01,HAS_DIAGNOSIS,affirmed,,Person,,C0012359,Diagnosis,dilation,0.926,1376,1542
+PMC3897989_01,LOCATED_IN,affirmed,C0012359,Diagnosis,dilation,C0005400,BodyPart,bile duct,0.802,1376,1542
+PMC3897989_01,LOCATED_IN,affirmed,C0205400,Finding,thickening,C0016976,BodyPart,gallbladder,0.652,1376,1542
+PMC3897989_01,LOCATED_IN,affirmed,C0333641,Diagnosis,atrophy,C0227613,BodyPart,right kidney,0.904,1376,1542
+PMC3897989_01,COORDINATE_WITH,affirmed,C0040405,Exam,CT,C0024485,Exam,MRI,0.732,1543,1656
+PMC3897989_01,HAS_DIAGNOSIS,affirmed,,Person,,C0008370,Diagnosis,cholestasis,0.965,2046,2370
+PMC3897989_01,TREATED_WITH,affirmed,C0008370,Diagnosis,cholestasis,C0439775,Treatment,elevation,0.379,2046,2370
+PMC3897989_01,TREATED_WITH,affirmed,,Person,,C0193606,Exam,pancreatic biopsy,0.933,2537,2670
+PMC3897989_01,REVEALED_BY,affirmed,C0193606,Exam,pancreatic biopsy,C0332448,Diagnosis,infiltration,0.8,2537,2670
+PMC3897989_01,REVEALED_BY,affirmed,C0193606,Exam,pancreatic biopsy,C0016059,Diagnosis,fibrosis,0.773,2537,2670
+PMC3897989_01,COORDINATE_WITH,affirmed,C0332448,Diagnosis,infiltration,C0016059,Diagnosis,fibrosis,0.657,2537,2670
+PMC3897989_01,LOCATED_IN,affirmed,C0013806,Treatment,ECT,C0036098,BodyPart,salivary gland,0.552,2772,2805
+PMC3897989_01,TREATED_WITH,affirmed,,Person,,C0149783,Treatment,steroid therapy,0.802,3224,3345
+PMC3897989_01,LOCATED_IN,affirmed,C0024485,Exam,MRI,C0030274,BodyPart,pancreas,0.915,3464,3521
+PMC3897989_01,LOCATED_IN,affirmed,C0202087,Exam,IgG,C1995000,BodyPart,back,0.712,3522,3599
+PMC3897989_01,LOCATED_IN,affirmed,C3844327,BodyPart,right chest,C0030193,Symptom,pain,0.723,3856,4007
+PMC3897989_01,COORDINATE_WITH,affirmed,C0030193,Symptom,pain,C1457868,Finding,worsened,0.563,3856,4007
+PMC3897989_01,COORDINATE_WITH,affirmed,C0333307,Diagnosis,erosion,C0005758,Finding,blisters,0.584,3856,4007
+PMC3897989_01,HAS_DIAGNOSIS,affirmed,,Person,,C0019360,Diagnosis,herpes zoster,0.93,4008,4112
+PMC3897989_01,TREATED_WITH,affirmed,C0019360,Diagnosis,herpes zoster,C5222310,Treatment,acyclovir (500 mg,0.598,4008,4112
+PMC3897989_01,LOCATED_IN,affirmed,C0039985,Exam,chest X-ray,C0225706,BodyPart,right lung,0.904,4113,4206
+PMC3897989_01,REVEALED_BY,affirmed,C0005558,Exam,biopsy,C0013687,Diagnosis,effusion,0.688,4263,4355
+PMC3897989_01,LOCATED_IN,affirmed,C0005558,Exam,biopsy,C0024109,BodyPart,lung,0.883,4263,4355
+PMC3897989_01,HAS_DIAGNOSIS,affirmed,,Person,,C0024110,Diagnosis,pulmonary abscess,0.93,4356,4462
+PMC3897989_01,HAS_FINDING,affirmed,,Person,,C0439662,Finding,immune,0.541,4463,4579
+PMC3917415_01,TREATED_WITH,affirmed,,Person,,C0032950,Treatment,prednisolone,0.785,129,258
+PMC3917415_01,COORDINATE_WITH,affirmed,C0032950,Treatment,prednisolone,C0010583,Treatment,cyclophosphamide,0.64,129,258
+PMC3917415_01,TREATED_WITH,affirmed,,Person,,C0020852,Treatment,antibody (IgG,0.646,505,605
+PMC3917415_01,HAS_DIAGNOSIS,historical,,Person,,C0022661,Diagnosis,chronic renal failure,0.866,690,830
+PMC3917415_01,TREATED_WITH,affirmed,C4551529,Treatment,renal dialysis,C0162869,Diagnosis,ruptured aneurysm,0.646,690,830
+PMC3917415_01,REVEALED_BY,negated,C0022661,Diagnosis,chronic renal failure,C4551529,Treatment,renal dialysis,0.363,690,830
+PMC3917415_01,TREATED_WITH,affirmed,,Person,,C0024485,Exam,magnetic resonance,0.931,831,910
+PMC3917415_01,TREATED_WITH,affirmed,,Person,,C0337280,Treatment,fenestration,0.892,1131,1278
+PMC3917415_01,TREATED_WITH,affirmed,C0337280,Treatment,fenestration,C2713497,Diagnosis,saccular aneurysm,0.649,1131,1278
+PMC3917415_01,REVEALED_BY,affirmed,C2713497,Diagnosis,saccular aneurysm,C0337280,Treatment,fenestration,0.318,1131,1278
+PMC3917415_01,HAS_DIAGNOSIS,hedged,,Person,,C0162869,Diagnosis,ruptured aneurysm,0.827,1279,1324
+PMC3917415_01,LOCATED_IN,affirmed,C0010280,Treatment,craniotomy,C0027530,BodyPart,neck,0.511,1325,1421
+PMC3917415_01,LOCATED_IN,affirmed,C0027530,BodyPart,neck,C0002940,Diagnosis,aneurysm,0.542,1325,1421
+PMC3917415_01,REVEALED_BY,affirmed,C0026018,Exam,microscopy,C0162869,Diagnosis,ruptured aneurysm,0.557,1422,1560
+PMC3917415_01,TREATED_WITH,affirmed,C0337280,Treatment,fenestration,C0162869,Diagnosis,ruptured aneurysm,0.591,1422,1560
+PMC3917415_01,HAS_DIAGNOSIS,affirmed,,Person,,C0265110,Diagnosis,cerebral vasospasm,0.798,1646,1857
+PMC3917415_01,REVEALED_BY,affirmed,C0265110,Diagnosis,cerebral vasospasm,C4551529,Treatment,renal dialysis,0.447,1646,1857
+PMC3917415_01,HAS_DIAGNOSIS,affirmed,,Person,,C0020258,Diagnosis,normal pressure hydrocephalus,0.961,1858,1972
+PMC3917415_01,REVEALED_BY,affirmed,C0020258,Diagnosis,normal pressure hydrocephalus,C0021107,Treatment,placement,0.42,1858,1972
+PMC3950436_01,HAS_DIAGNOSIS,affirmed,,Person,,C0027651,Diagnosis,tumor,0.503,0,146
+PMC3950436_01,REVEALED_BY,affirmed,C0027651,Diagnosis,tumor,C0040590,Treatment,tracheostomy,0.361,0,146
+PMC3950436_01,LOCATED_IN,affirmed,C0040590,Treatment,tracheostomy,C0458827,BodyPart,airway,0.706,0,146
+PMC3950436_01,LOCATED_IN,affirmed,C0027651,Diagnosis,tumor,C0521367,BodyPart,oropharynx,0.736,147,298
+PMC3950436_01,LOCATED_IN,affirmed,C0027429,Finding,nasal obstruction,C0230028,BodyPart,mouth,0.573,147,298
+PMC3950436_01,COORDINATE_WITH,affirmed,C0230028,BodyPart,mouth,C0027530,BodyPart,neck,0.588,147,298
+PMC3950436_01,COORDINATE_WITH,affirmed,C0520679,Diagnosis,obstructive sleep apnea,C0013404,Symptom,shortness of breath,0.622,299,448
+PMC3950436_01,COORDINATE_WITH,affirmed,C0013404,Symptom,shortness of breath,C3665347,Finding,visual impairment,0.563,299,448
+PMC3950436_01,COORDINATE_WITH,affirmed,C3665347,Finding,visual impairment,C0011168,Diagnosis,dysphagia,0.567,299,448
+PMC3950436_01,TREATED_WITH,affirmed,C0011168,Diagnosis,dysphagia,C0017196,Treatment,gastrostomy,0.386,299,448
+PMC3950436_01,CAUSED_BY,affirmed,C2825055,Diagnosis,recurrence,C0027651,Diagnosis,tumor,0.614,449,566
+PMC3950436_01,REVEALED_BY,affirmed,C0027651,Diagnosis,tumor,C1522449,Treatment,radiotherapy,0.507,449,566
+PMC3950436_01,HAS_SYMPTOM,affirmed,,Person,,C0030193,Symptom,pain,0.724,567,823
+PMC3950436_01,HAS_FINDING,affirmed,,Person,,C0205082,Finding,severely,0.676,824,963
+PMC3950436_01,LOCATED_IN,affirmed,C0205082,Finding,severely,C0458827,BodyPart,airway,0.605,824,963
+PMC3950436_01,TREATED_WITH,affirmed,C0030193,Symptom,pain,C0040590,Treatment,tracheostomy procedure,0.718,1029,1207
+PMC3950436_01,COORDINATE_WITH,affirmed,C0543467,Treatment,surgery,C0344106,Treatment,sedation,0.647,1268,1654
+PMC3950436_01,LOCATED_IN,affirmed,C0018787,BodyPart,heart,C0332167,Finding,HR,0.502,1268,1654
+PMC3950436_01,COORDINATE_WITH,affirmed,C0030054,Treatment,oxygen,C0022614,Treatment,Ketamine,0.629,1268,1654
+PMC3950436_01,COORDINATE_WITH,affirmed,C0059079,Treatment,EMLA,C0189341,Treatment,planned tracheostomy,0.537,1808,2015
+PMC3950436_01,COORDINATE_WITH,affirmed,C0189341,Treatment,planned tracheostomy,C0278286,Treatment,dressing,0.546,1808,2015
+PMC3950436_01,LOCATED_IN,affirmed,C0234422,Finding,awake,C0015392,BodyPart,eye,0.569,2016,2093
+PMC3950436_01,TREATED_WITH,affirmed,,Person,,C1623258,Exam,electrocardiogram,0.894,2094,2186
+PMC3950436_01,TREATED_WITH,affirmed,,Person,,C0034108,Exam,pulse oximetry,0.886,2094,2186
+PMC3950436_01,COORDINATE_WITH,affirmed,C1623258,Exam,electrocardiogram,C0034108,Exam,pulse oximetry,0.575,2094,2186
+PMC3950436_01,LOCATED_IN,affirmed,C0041618,Exam,ultrasound,C1276271,BodyPart,antecubital vein,0.889,2247,2345
+PMC3950436_01,REVEALED_BY,negated,C0041618,Exam,ultrasound,C5441521,Finding,complaint,0.582,2247,2345
+PMC3950436_01,TREATED_WITH,affirmed,,Person,,C0040590,Treatment,tracheostomy,0.846,2501,2563
+PMC3950436_01,TREATED_WITH,affirmed,,Person,,C0040590,Treatment,tracheostomy,0.651,2626,2742
+PMC4073451_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,Surgery,0.458,0,262
+PMC4073451_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0925384,BodyPart,ramus of right mandible,0.577,0,262
+PMC4073451_01,HAS_FINDING,affirmed,,Person,,C0038999,Finding,swelling,0.593,263,400
+PMC4073451_01,LOCATED_IN,affirmed,C0038999,Finding,swelling,C1718564,BodyPart,right mandible,0.602,263,400
+PMC4073451_01,REVEALED_BY,affirmed,C0040405,Exam,computerized tomography (CT,C0524865,Treatment,reconstruction,0.574,401,676
+PMC4073451_01,HAS_DIAGNOSIS,affirmed,,Person,,C1708604,Diagnosis,keratocystic odontogenic tumor,0.742,786,874
+PMC4073451_01,REVEALED_BY,affirmed,C0221198,Finding,lesion,C1708604,Diagnosis,keratocystic odontogenic tumor,0.336,1017,1263
+PMC4073451_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0222652,BodyPart,cortical bone,0.516,1318,1438
+PMC4073451_01,LOCATED_IN,affirmed,C0262950,BodyPart,bone,C0374711,Treatment,repair,0.519,1318,1438
+PMC4073451_01,LOCATED_IN,affirmed,C4554418,Finding,parallel,C0222746,BodyPart,body of mandible,0.524,1439,1587
+PMC4073451_01,REVEALED_BY,affirmed,C0040405,Exam,CT scan,C0184906,Treatment,bifurcation,0.778,1588,1852
+PMC4073451_01,LOCATED_IN,affirmed,C0184906,Treatment,bifurcation,C0448012,BodyPart,border of mandible,0.513,1588,1852
+PMC4073451_01,COORDINATE_WITH,affirmed,C0448012,BodyPart,border of mandible,C0262950,BodyPart,bone,0.547,1588,1852
+PMC4073451_01,LOCATED_IN,affirmed,C0262950,BodyPart,bone,C0374711,Treatment,repair,0.519,1588,1852
+PMC4073451_01,TREATED_WITH,hedged,C0374711,Treatment,repair,C2825055,Diagnosis,recurrence,0.609,1588,1852
+PMC4310058_01,HAS_FINDING,affirmed,,Person,,C3843647,Finding,2 years,0.68,180,356
+PMC4310058_01,HAS_SYMPTOM,affirmed,,Person,,C0018681,Symptom,headaches,0.847,357,467
+PMC4310058_01,COORDINATE_WITH,negated,C0018681,Symptom,headaches,C0234233,Symptom,tenderness,0.849,357,467
+PMC4310058_01,LOCATED_IN,affirmed,C3843647,Finding,2 years,C0037303,BodyPart,skull,0.571,692,790
+PMC4310058_01,LOCATED_IN,affirmed,C0037303,BodyPart,skull,C0925353,BodyPart,right parietal bone,0.5,692,790
+PMC4310058_01,REVEALED_BY,affirmed,C0040405,Exam,CT,C0333307,Diagnosis,erosion,0.609,791,901
+PMC4310058_01,LOCATED_IN,affirmed,C0333307,Diagnosis,erosion,C0037303,BodyPart,skull,0.904,791,901
+PMC4310058_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0037303,BodyPart,skull,0.568,958,1078
+PMC4310058_01,LOCATED_IN,affirmed,C0728940,Treatment,Excision,C0037303,BodyPart,skull,0.576,1079,1174
+PMC4310058_01,LOCATED_IN,affirmed,C4296884,Finding,not involved,C0262950,BodyPart,bone,0.517,1590,1663
+PMC4310058_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,operation,0.824,1784,1887
+PMC4310058_01,HAS_FINDING,affirmed,,Person,,C3842676,Finding,day 2,0.736,1888,1987
+PMC4310058_01,HAS_FINDING,affirmed,,Person,,C4321394,Finding,foci,0.635,2074,2208
+PMC4310058_01,LOCATED_IN,affirmed,C0334168,Finding,woven bone,C0262950,BodyPart,bone,0.528,2074,2208
+PMC4630775_01,REVEALED_BY,affirmed,C1384674,Finding,cesarean delivery,C3541213,Diagnosis,prolonged rupture of membranes,0.298,0,125
+PMC4630775_01,HAS_FINDING,affirmed,,Person,,C0237849,Finding,desquamation,0.78,126,302
+PMC4630775_01,LOCATED_IN,affirmed,C0237849,Finding,desquamation,C0230373,BodyPart,palm,0.652,126,302
+PMC4630775_01,COORDINATE_WITH,affirmed,C3841522,BodyPart,right dorsal hand,C0016536,BodyPart,forearm,0.493,126,302
+PMC4630775_01,LOCATED_IN,affirmed,C0022116,Diagnosis,ischemia,C0040067,BodyPart,thumb,0.805,126,302
+PMC4630775_01,HAS_DIAGNOSIS,affirmed,,Person,,C5782100,Diagnosis,neonatal compartment syndrome,0.618,303,356
+PMC4630775_01,COORDINATE_WITH,affirmed,C0037088,Symptom,signs and symptoms,C5782100,Diagnosis,neonatal compartment syndrome,0.687,439,504
+PMC4782471_01,HAS_FINDING,affirmed,,Person,,C3840882,Finding,5 mm,0.764,0,168
+PMC4782471_01,COORDINATE_WITH,negated,C3840882,Finding,5 mm,C0003504,Diagnosis,aortic regurgitation,0.616,0,168
+PMC4782471_01,COORDINATE_WITH,affirmed,C0003504,Diagnosis,aortic regurgitation,C0264733,Diagnosis,ventricular dilatation,0.675,0,168
+PMC4782471_01,COORDINATE_WITH,negated,C0264733,Diagnosis,ventricular dilatation,C0020542,Diagnosis,pulmonary hypertension,0.697,0,168
+PMC4782471_01,TREATED_WITH,affirmed,,Person,,C0185003,Treatment,closure,0.82,169,340
+PMC4782471_01,TREATED_WITH,affirmed,,Person,,C0185003,Treatment,closure,0.859,441,574
+PMC4782471_01,COORDINATE_WITH,affirmed,C1442858,Finding,shunt,C0032787,Diagnosis,postoperative complications,0.597,746,845
+PMC4782471_01,HAS_DIAGNOSIS,affirmed,,Person,,C0476474,Diagnosis,persistent fever,0.892,846,976
+PMC4782471_01,COORDINATE_WITH,affirmed,C3842955,Finding,30/min,C1271104,Finding,blood pressure,0.684,1054,1180
+PMC4782471_01,COORDINATE_WITH,affirmed,C0333286,Diagnosis,splinter hemorrhages,C0240916,Finding,Roth's spots,0.482,1181,1326
+PMC4782471_01,HAS_FINDING,affirmed,,Person,,C0151632,Finding,elevated erythrocyte sedimentation rate,0.736,1327,1584
+PMC4782471_01,TREATED_WITH,affirmed,C0427564,Finding,normal platelet count,C0005841,Treatment,blood transfusion,0.4,1327,1584
+PMC4782471_01,REVEALED_BY,affirmed,C0023508,Exam,white blood cell count,C0151632,Finding,elevated erythrocyte sedimentation rate,0.697,1327,1584
+PMC4782471_01,COORDINATE_WITH,affirmed,C0023508,Exam,white blood cell count,C3842088,Finding,mm3,0.472,1327,1584
+PMC4782471_01,COORDINATE_WITH,affirmed,C3842088,Finding,mm3,C0427564,Finding,normal platelet count,0.659,1327,1584
+PMC4782471_01,REVEALED_BY,affirmed,C0013516,Exam,Echocardiography,C3840882,Finding,5 mm,0.533,1664,1809
+PMC4782471_01,LOCATED_IN,affirmed,C3842086,Finding,6 mm,C0040960,BodyPart,tricuspid valve,0.564,1664,1809
+PMC4782471_01,COORDINATE_WITH,affirmed,C0040960,BodyPart,tricuspid valve,C0040960,BodyPart,tricuspid valve,0.585,1664,1809
+PMC4782471_01,HAS_DIAGNOSIS,affirmed,,Person,,C0012359,Diagnosis,dilatation,0.747,1810,1909
+PMC4782471_01,LOCATED_IN,affirmed,C0012359,Diagnosis,dilatation,C0225883,BodyPart,right ventricle,0.904,1810,1909
+PMC4782471_01,HAS_FINDING,negated,,Person,,C1442858,Finding,shunt,0.644,1910,1975
+PMC4782471_01,HAS_DIAGNOSIS,affirmed,,Person,,C1541923,Diagnosis,infective endocarditis,0.93,1976,2145
+PMC4782471_01,HAS_FINDING,negated,,Person,,C3844714,Finding,no improvement,0.779,2257,2439
+PMC4782471_01,REVEALED_BY,affirmed,C0018941,Exam,blood tests,C0023518,Diagnosis,leucocytosis,0.661,2257,2439
+PMC4782471_01,REVEALED_BY,affirmed,C0597428,Exam,sedimentation,C0023518,Diagnosis,leucocytosis,0.462,2257,2439
+PMC4782471_01,TREATED_WITH,affirmed,,Person,,C0007202,Treatment,cardiopulmonary bypass,0.741,2440,2515
+PMC4782471_01,HAS_DIAGNOSIS,affirmed,,Person,,C0018794,Diagnosis,heart block,0.925,2935,3072
+PMC4782471_01,COORDINATE_WITH,affirmed,C0018794,Diagnosis,heart block,C0018801,Diagnosis,heart failure,0.345,2935,3072
+PMC4782471_01,COORDINATE_WITH,affirmed,C0018801,Diagnosis,heart failure,C0243026,Diagnosis,sepsis,0.621,2935,3072
+PMC4782471_01,TREATED_WITH,affirmed,,Person,,C0014563,Treatment,adrenaline,0.644,3073,3182
+PMC4782471_01,COORDINATE_WITH,affirmed,C0014563,Treatment,adrenaline,C0013030,Treatment,dopamine,0.647,3073,3182
+PMC4782471_01,COORDINATE_WITH,affirmed,C0013030,Treatment,dopamine,C0012963,Treatment,dobutamine,0.823,3073,3182
+PMC4782471_01,TREATED_WITH,affirmed,C1546956,Finding,died,C0543467,Treatment,surgery,0.475,3240,3270
+PMC4828947_01,HAS_SYMPTOM,historical,,Person,,C0036572,Symptom,seizures,0.909,0,87
+PMC4828947_01,REVEALED_BY,affirmed,C0013819,Exam,EEG,C0149958,Diagnosis,complex partial seizures,0.524,88,219
+PMC4828947_01,LOCATED_IN,affirmed,C0149958,Diagnosis,complex partial seizures,C0228233,BodyPart,left temporal lobe,0.889,88,219
+PMC4828947_01,LOCATED_IN,affirmed,C0872410,Diagnosis,posturing,C0230370,BodyPart,right hand,0.904,220,347
+PMC4828947_01,COORDINATE_WITH,affirmed,C0684336,Finding,Impairment,C0233485,Finding,apprehension,0.553,348,426
+PMC4828947_01,REVEALED_BY,affirmed,C0233485,Finding,apprehension,C0973461,Diagnosis,dysphasia,0.282,348,426
+PMC4828947_01,LOCATED_IN,affirmed,C0973461,Diagnosis,dysphasia,C0028429,BodyPart,nose,0.782,427,520
+PMC4828947_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,surgery,0.738,521,721
+PMC4828947_01,TREATED_WITH,affirmed,C0036572,Symptom,seizures,C0069751,Treatment,oxcarbazepine,0.665,521,721
+PMC4828947_01,COORDINATE_WITH,affirmed,C0069751,Treatment,oxcarbazepine,C0042291,Treatment,valproic acid,0.695,521,721
+PMC4828947_01,TREATED_WITH,negated,C0035648,Finding,risk factors,C0009952,Diagnosis,febrile seizures,0.536,722,846
+PMC4828947_01,COORDINATE_WITH,affirmed,C0009952,Diagnosis,febrile seizures,C0025289,Diagnosis,meningitis,0.626,722,846
+PMC4828947_01,COORDINATE_WITH,affirmed,C0025289,Diagnosis,meningitis,C0018674,Diagnosis,head trauma,0.706,722,846
+PMC4828947_01,REVEALED_BY,family,C0241889,Finding,family history,C0014544,Diagnosis,epilepsy,0.386,847,903
+PMC4828947_01,REVEALED_BY,affirmed,C0024485,Exam,magnetic resonance imaging (MRI,C0221198,Finding,lesion,0.537,960,1163
+PMC4828947_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0152309,BodyPart,superior temporal gyrus,0.59,960,1163
+PMC4828947_01,LOCATED_IN,affirmed,C0152309,BodyPart,superior temporal gyrus,C0228233,BodyPart,left temporal lobe,0.553,960,1163
+PMC4828947_01,LOCATED_IN,affirmed,C0013819,Exam,EEG,C0228233,BodyPart,left temporal lobe,0.817,1332,1473
+PMC4828947_01,REVEALED_BY,affirmed,C0024485,Exam,MRI,C0221198,Finding,lesion,0.557,1332,1473
+PMC4828947_01,REVEALED_BY,affirmed,C0221198,Finding,lesion,C0206716,Diagnosis,ganglioglioma,0.346,2557,2624
+PMC4828947_01,HAS_FINDING,hedged,,Person,,C0013604,Diagnosis,edema,0.479,2625,2753
+PMC4835621_01,HAS_SYMPTOM,historical,,Person,,C0241144,Symptom,petechial rash,0.78,0,154
+PMC4835621_01,HAS_SYMPTOM,affirmed,,Person,,C0018681,Symptom,headaches,0.838,155,273
+PMC4835621_01,HAS_FINDING,affirmed,,Person,,C3845366,Finding,on a daily basis,0.626,155,273
+PMC4835621_01,COORDINATE_WITH,affirmed,C3845366,Finding,on a daily basis,C0024528,Symptom,fatigue and malaise,0.757,155,273
+PMC4835621_01,TREATED_WITH,affirmed,C0015967,Symptom,fever,C4284232,Treatment,medications,0.593,274,438
+PMC4835621_01,COORDINATE_WITH,affirmed,C0028081,Symptom,night sweats,C0018965,Symptom,hematuria,0.85,439,541
+PMC4835621_01,COORDINATE_WITH,affirmed,C0018965,Symptom,hematuria,C0011991,Symptom,diarrhea,0.85,439,541
+PMC4835621_01,COORDINATE_WITH,affirmed,C0011991,Symptom,diarrhea,C3843946,Finding,"nausea, or vomiting",0.563,439,541
+PMC4835621_01,HAS_DIAGNOSIS,negated,,Person,,C0014591,Diagnosis,epistaxis,0.79,542,603
+PMC4835621_01,COORDINATE_WITH,affirmed,C0020538,Diagnosis,hypertension,C0029456,Diagnosis,osteoporosis,0.657,604,689
+PMC4835621_01,COORDINATE_WITH,affirmed,C0006684,Treatment,calcium channel blocker,C0020261,Treatment,hydrochlorothiazide,0.802,690,822
+PMC4835621_01,COORDINATE_WITH,affirmed,C0020261,Treatment,hydrochlorothiazide,C0042866,Treatment,vitamin D,0.802,690,822
+PMC4835621_01,HAS_FINDING,negated,,Person,,C0022346,Finding,jaundice,0.719,992,1050
+PMC4835621_01,HAS_FINDING,affirmed,,Person,,C0031256,Finding,petechiae,0.85,1051,1138
+PMC4835621_01,LOCATED_IN,affirmed,C0031256,Finding,petechiae,C1140618,BodyPart,upper extremities,0.56,1051,1138
+PMC4835621_01,LOCATED_IN,affirmed,C0442816,Finding,within normal limits,C0018787,BodyPart,heart,0.591,1139,1247
+PMC4835621_01,COORDINATE_WITH,affirmed,C0018787,BodyPart,heart,C0024109,BodyPart,lungs,0.482,1139,1247
+PMC4835621_01,COORDINATE_WITH,affirmed,C0024109,BodyPart,lungs,C0000726,BodyPart,and abdomen,0.482,1139,1247
+PMC4835621_01,COORDINATE_WITH,affirmed,C0025222,Finding,melena,C0018932,Diagnosis,hematochezia,0.5,1248,1340
+PMC4835621_01,LOCATED_IN,affirmed,C0442816,Finding,within normal limits,C0015462,BodyPart,facial nerve,0.565,1341,1507
+PMC4835621_01,LOCATED_IN,affirmed,C0015462,BodyPart,facial nerve,C0522224,Finding,palsy,0.534,1341,1507
+PMC4835621_01,TREATED_WITH,affirmed,,Person,,C0202691,Exam,head CT,0.935,1508,1576
+PMC4835621_01,LOCATED_IN,negated,C0202691,Exam,head CT,C0524466,BodyPart,intracranial,0.958,1508,1576
+PMC4835621_01,LOCATED_IN,negated,C0524466,BodyPart,intracranial,C0019080,Diagnosis,bleeding,0.547,1508,1576
+PMC4835621_01,COORDINATE_WITH,affirmed,C0441509,Treatment,Coagulation,C0016006,Treatment,fibrinogen,0.7,1916,1983
+PMC4835621_01,LOCATED_IN,affirmed,C0005954,Exam,Bone marrow biopsy,C0376152,BodyPart,marrow,0.871,2299,2418
+PMC4835621_01,TREATED_WITH,affirmed,,Person,,C0032134,Treatment,plasmapheresis,0.672,2437,2534
+PMC4835621_01,REVEALED_BY,affirmed,C0040405,Exam,computed tomography,C0006826,Diagnosis,malignancy,0.64,2568,2760
+PMC4835621_01,LOCATED_IN,affirmed,C0040405,Exam,CT) scan,C1442171,BodyPart,chest and abdomen,0.929,2568,2760
+PMC4835621_01,LOCATED_IN,affirmed,C0205400,Finding,thickening,C3714551,BodyPart,stomach,0.544,2568,2760
+PMC4835621_01,REVEALED_BY,affirmed,C1699633,Exam,PET CT,C0205400,Finding,thickening,0.508,2761,2982
+PMC4835621_01,LOCATED_IN,affirmed,C0205400,Finding,thickening,C0007144,BodyPart,gastric cardia,0.652,2761,2982
+PMC4835621_01,HAS_DIAGNOSIS,affirmed,,Person,,C0149871,Diagnosis,deep vein thrombosis,0.87,3116,3253
+PMC4835621_01,TREATED_WITH,affirmed,C0149871,Diagnosis,deep vein thrombosis,C0019139,Treatment,low molecular weight heparin,0.623,3116,3253
+PMC4835621_01,REVEALED_BY,affirmed,C0192657,Exam,gastroduodenoscopy,C0577015,Finding,normal esophagus,0.523,3254,3413
+PMC4835621_01,LOCATED_IN,affirmed,C0577015,Finding,normal esophagus,C1549092,BodyPart,antrum,0.53,3254,3413
+PMC4835621_01,LOCATED_IN,affirmed,C1549092,BodyPart,antrum,C3714551,BodyPart,stomach,0.525,3254,3413
+PMC4835621_01,REVEALED_BY,historical,C0192420,Exam,Gastric biopsy,C0085695,Diagnosis,chronic gastritis,0.576,3414,3527
+PMC4835621_01,HAS_FINDING,affirmed,,Person,,C0442816,Finding,within normal limits,0.723,4188,4281
+PMC5137649_01,HAS_FINDING,affirmed,,Person,,C3842675,Finding,3-day,0.772,0,140
+PMC5137649_01,TREATED_WITH,affirmed,C0030193,Symptom,pain,C0027497,Symptom,nausea,0.52,0,140
+PMC5137649_01,COORDINATE_WITH,affirmed,C0030193,Symptom,pain,C0009806,Symptom,constipation,0.862,0,140
+PMC5137649_01,LOCATED_IN,historical,C3842675,Finding,3-day,C0733995,BodyPart,right flank,0.666,0,140
+PMC5137649_01,COORDINATE_WITH,affirmed,C0733995,BodyPart,right flank,C0230184,BodyPart,lower quadrant abdominal,0.701,0,140
+PMC5137649_01,LOCATED_IN,affirmed,C0230184,BodyPart,lower quadrant abdominal,C0030193,Symptom,pain,0.663,0,140
+PMC5137649_01,COORDINATE_WITH,affirmed,C0027497,Symptom,nausea,C0009806,Symptom,constipation,0.898,0,140
+PMC5137649_01,TREATED_WITH,affirmed,,Person,,C0040405,Exam,computed tomography,0.903,268,413
+PMC5137649_01,REVEALED_BY,affirmed,C0040405,Exam,computed tomography,C0221198,Finding,lesion,0.506,268,413
+PMC5137649_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C3714551,BodyPart,stomach,0.673,268,413
+PMC5137649_01,COORDINATE_WITH,affirmed,C3714551,BodyPart,stomach,C0039259,BodyPart,tail,0.555,268,413
+PMC5137649_01,LOCATED_IN,affirmed,C0039259,BodyPart,tail,C0030274,BodyPart,pancreas,0.525,268,413
+PMC5137649_01,TREATED_WITH,affirmed,,Person,,C1880510,Exam,EUS-FNA,0.946,414,619
+PMC5137649_01,HAS_FINDING,negated,,Person,,C0391857,Finding,no evidence of malignancy,0.618,620,911
+PMC5137649_01,REVEALED_BY,negated,C0201933,Exam,carcinoembryonic antigen,C0391857,Finding,no evidence of malignancy,0.46,620,911
+PMC5137649_01,TREATED_WITH,affirmed,,Person,,C0728940,Treatment,surgical resection,0.764,912,970
+PMC5137649_01,REVEALED_BY,affirmed,C2959418,Exam,laparoscopic exploration,C0185112,Treatment,mobilising,0.642,1024,1246
+PMC5137649_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C3714551,BodyPart,stomach,0.522,1024,1246
+PMC5137649_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0030274,BodyPart,pancreas,0.567,1024,1246
+PMC5137649_01,LOCATED_IN,affirmed,C0185112,Treatment,mobilising,C3714551,BodyPart,stomach,0.519,1024,1246
+PMC5137649_01,COORDINATE_WITH,affirmed,C3714551,BodyPart,stomach,C0030274,BodyPart,pancreas,0.701,1024,1246
+PMC5137649_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C3714551,BodyPart,stomach,0.632,1247,1354
+PMC5137649_01,LOCATED_IN,negated,C0014245,Exam,endoscopy,C3714551,BodyPart,stomach,0.801,1355,1449
+PMC5137649_01,LOCATED_IN,affirmed,C0728940,Treatment,resection,C3714551,BodyPart,stomach,0.515,1685,1858
+PMC5137649_01,LOCATED_IN,affirmed,C0079304,Exam,oesophagogastroduodenoscopy,C3714551,BodyPart,stomach,0.849,1859,2007
+PMC5137649_01,HAS_FINDING,affirmed,,Person,,C3840892,Finding,day 4,0.694,2164,2287
+PMC5137649_01,HAS_SYMPTOM,affirmed,,Person,,C0030193,Symptom,pain,0.913,2288,2406
+PMC5137649_01,HAS_SYMPTOM,affirmed,,Person,,C0027497,Symptom,nausea,0.899,2288,2406
+PMC5137649_01,COORDINATE_WITH,affirmed,C0030193,Symptom,pain,C0027497,Symptom,nausea,0.898,2288,2406
+PMC5804616_01,TREATED_WITH,affirmed,,Person,,C3665472,Treatment,chemotherapy,0.904,111,311
+PMC5804616_01,TREATED_WITH,affirmed,,Person,,C1522449,Treatment,radiotherapy,0.832,111,311
+PMC5804616_01,COORDINATE_WITH,affirmed,C3665472,Treatment,chemotherapy,C1522449,Treatment,radiotherapy,0.802,111,311
+PMC5804616_01,TREATED_WITH,affirmed,C1522449,Treatment,radiotherapy,C0546837,Diagnosis,esophageal cancer,0.585,111,311
+PMC5804616_01,LOCATED_IN,hedged,C0546837,Diagnosis,esophageal cancer,C0011666,BodyPart,descending aorta,0.69,111,311
+PMC5804616_01,COORDINATE_WITH,affirmed,C0011666,BodyPart,descending aorta,C0225630,BodyPart,left main bronchus,0.701,111,311
+PMC5804616_01,COORDINATE_WITH,affirmed,C0020538,Diagnosis,hypertension,C0011849,Diagnosis,diabetes mellitus,0.626,433,540
+PMC5804616_01,COORDINATE_WITH,affirmed,C0011849,Diagnosis,diabetes mellitus,C0005684,Diagnosis,bladder cancer,0.626,433,540
+PMC5804616_01,COORDINATE_WITH,affirmed,C0005684,Diagnosis,bladder cancer,C0007785,Diagnosis,cerebral infarction,0.706,433,540
+PMC5804616_01,REVEALED_BY,affirmed,C0150411,Exam,arterial blood gas analysis,C0030054,Treatment,oxygen,0.875,541,703
+PMC5804616_01,COORDINATE_WITH,affirmed,C0030054,Treatment,oxygen,C0201930,Exam,carbon dioxide,0.613,541,703
+PMC5804616_01,REVEALED_BY,affirmed,C0201930,Exam,carbon dioxide,C1304686,Finding,pH,0.499,541,703
+PMC5804616_01,LOCATED_IN,affirmed,C3842088,Finding,3 mm,C0225630,BodyPart,left main bronchus,0.533,704,938
+PMC5804616_01,LOCATED_IN,negated,C0005758,Finding,bullae,C0024109,BodyPart,lungs,0.527,939,975
+PMC5804616_01,LOCATED_IN,affirmed,C0559312,Exam,One-lung ventilation,C0225608,BodyPart,right main bronchus,0.755,1615,1776
+PMC5804616_01,LOCATED_IN,affirmed,C0225608,BodyPart,right main bronchus,C0412771,Finding,spontaneous respiration,0.507,1615,1776
+PMC5804616_01,REVEALED_BY,affirmed,C0559312,Exam,one-lung ventilation,C0010957,Diagnosis,damage,0.545,1777,1974
+PMC5804616_01,REVEALED_BY,affirmed,C0559312,Exam,one-lung ventilation,C0412771,Finding,spontaneous respiration,0.491,1777,1974
+PMC5804616_01,TREATED_WITH,hedged,,Person,,C1522449,Treatment,radiotherapy,0.66,2116,2202
+PMC5804616_01,REVEALED_BY,affirmed,C0559312,Exam,one-lung ventilation,C0700292,Finding,hypoxemia,0.532,2203,2467
+PMC5804616_01,LOCATED_IN,hedged,C0019540,Treatment,high-frequency jet ventilation,C0225630,BodyPart,left main bronchus,0.502,2203,2467
+PMC5804616_01,LOCATED_IN,affirmed,C0018563,BodyPart,hand,C0700292,Finding,hypoxemia,0.507,2203,2467
+PMC5804616_01,COORDINATE_WITH,affirmed,C0559312,Exam,one-lung ventilation,C0019540,Treatment,high-frequency jet ventilation,0.527,2203,2467
+PMC5804616_01,REVEALED_BY,affirmed,C5575665,Finding,extracorporeal,C0035229,Diagnosis,pulmonary insufficiency,0.41,2468,2623
+PMC5804616_01,TREATED_WITH,affirmed,C0278134,Symptom,anesthesia,C0074414,Treatment,sevoflurane,0.556,2624,2733
+PMC5804616_01,TREATED_WITH,affirmed,C1630409,Finding,10-20,C0543467,Treatment,surgery,0.438,2824,2943
+PMC5804616_01,COORDINATE_WITH,affirmed,C0198488,Treatment,abdominal incision,C0023660,Treatment,lidocaine,0.576,2944,3142
+PMC5804616_01,COORDINATE_WITH,affirmed,C0023660,Treatment,lidocaine,C0444889,Treatment,continuous infusion,0.637,2944,3142
+PMC5804616_01,LOCATED_IN,affirmed,C0442748,Finding,4-6,C0000739,BodyPart,abdominal muscle,0.525,2944,3142
+PMC5804616_01,REVEALED_BY,affirmed,C0150411,Exam,Arterial blood gas analysis,C1304686,Finding,pH,0.539,3143,3293
+PMC5804616_01,REVEALED_BY,affirmed,C0428175,Exam,arterial oxygen saturation,C0543467,Treatment,surgical procedure,0.675,3294,3436
+PMC5804616_01,LOCATED_IN,affirmed,C0004144,Diagnosis,atelectasis,C0458827,BodyPart,airway,0.944,3534,3698
+PMC5804616_01,LOCATED_IN,affirmed,C0024109,BodyPart,lung,C0004144,Diagnosis,atelectasis,0.547,3534,3698
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0028778,Finding,obstruction,0.836,3699,3805
+PMC5804616_01,LOCATED_IN,affirmed,C0028778,Finding,obstruction,C0225630,BodyPart,left main bronchus,0.549,3699,3805
+PMC5804616_01,TREATED_WITH,affirmed,,Person,,C0030054,Treatment,2O,0.439,3806,4045
+PMC5804616_01,COORDINATE_WITH,affirmed,C0030054,Treatment,2O,C0150411,Exam,arterial blood gas analysis,0.606,3806,4045
+PMC5804616_01,REVEALED_BY,affirmed,C0039985,Exam,chest X-ray,C0546333,Finding,right pneumothorax,0.599,4046,4128
+PMC5804616_01,COORDINATE_WITH,affirmed,C0543467,Treatment,surgery,C0039985,Exam,chest X-ray,0.739,4046,4128
+PMC5804616_01,LOCATED_IN,affirmed,C0817096,BodyPart,chest,C0013103,Treatment,drainage,0.519,4129,4272
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C1531943,Treatment,maintenance of spontaneous respiration,0.452,4619,4898
+PMC5804616_01,TREATED_WITH,affirmed,C0700292,Finding,hypoxemia,C0032326,Diagnosis,pneumothorax,0.472,4619,4898
+PMC5804616_01,COORDINATE_WITH,affirmed,C0002913,Treatment,epidural anesthesia,C1531943,Treatment,maintenance of spontaneous respiration,0.802,4619,4898
+PMC5804616_01,LOCATED_IN,affirmed,C0344329,Finding,collapse,C0225706,BodyPart,right lung,0.652,4899,5030
+PMC5804616_01,REVEALED_BY,negated,C0040405,Exam,computed tomography,C0005758,Finding,bullae,0.504,5031,5163
+PMC5804616_01,HAS_DIAGNOSIS,affirmed,,Person,,C0877248,Diagnosis,adverse event,0.61,5164,5339
+PMC5804616_01,LOCATED_IN,affirmed,C0017547,Diagnosis,giant,C0225594,BodyPart,carina,0.881,5639,5847
+PMC5804616_01,LOCATED_IN,affirmed,C0559312,Exam,one-lung ventilation,C0225594,BodyPart,carina,0.811,5639,5847
+PMC5804616_01,LOCATED_IN,affirmed,C1299583,Finding,independent,C0024109,BodyPart,lung,0.593,5639,5847
+PMC5804616_01,TREATED_WITH,hedged,,Person,,C1522449,Treatment,radiotherapy,0.66,6319,6405
+PMC5804616_01,COORDINATE_WITH,affirmed,C0225630,BodyPart,left main bronchus,C0225594,BodyPart,carina,0.588,6406,6562
+PMC5804616_01,TREATED_WITH,affirmed,C0412771,Finding,spontaneous respiration,C0002915,Treatment,general anesthesia,0.386,6563,6724
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0412771,Finding,spontaneous respiration,0.568,6725,6858
+PMC5804616_01,TREATED_WITH,affirmed,C0546333,Finding,right pneumothorax,C0543467,Treatment,surgical procedure,0.457,6859,6974
+PMC5804616_01,CAUSED_BY,hedged,C0032326,Diagnosis,pneumothorax,C0412771,Finding,spontaneous respiration,0.585,6975,7190
+PMC5804616_01,LOCATED_IN,affirmed,C0344329,Finding,collapse,C0225706,BodyPart,right lung,0.652,6975,7190
+PMC5804616_01,COORDINATE_WITH,affirmed,C0412771,Finding,spontaneous respiration,C0004144,Diagnosis,atelectasis,0.607,6975,7190
+PMC5804616_01,LOCATED_IN,hedged,C0004144,Diagnosis,atelectasis,C0024109,BodyPart,lungs,0.852,6975,7190
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0412771,Finding,spontaneous respiration,0.722,7191,7451
+PMC5804616_01,REVEALED_BY,hedged,C3843761,Finding,at higher risk,C3263722,Diagnosis,injury,0.333,7191,7451
+PMC5804616_01,LOCATED_IN,hedged,C3263722,Diagnosis,injury,C0225777,BodyPart,parietal pleura,0.805,7191,7451
+PMC5804616_01,REVEALED_BY,affirmed,C0032326,Diagnosis,pneumothorax,C0813207,Treatment,bypass,0.347,7452,7718
+PMC5804616_01,REVEALED_BY,affirmed,C0032326,Diagnosis,pneumothorax,C0543467,Treatment,surgery,0.345,7452,7718
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0813207,Treatment,bypass,0.433,7719,7994
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0543467,Treatment,surgery,0.419,7719,7994
+PMC5804616_01,REVEALED_BY,affirmed,C0032326,Diagnosis,pneumothorax,C0543467,Treatment,Surgery,0.565,7719,7994
+PMC5804616_01,TREATED_WITH,affirmed,C0543467,Treatment,surgery,C0032326,Diagnosis,pneumothorax,0.598,7719,7994
+PMC5804616_01,HAS_DIAGNOSIS,affirmed,,Person,,C0032326,Diagnosis,pneumothorax,0.761,7995,8219
+PMC5804616_01,HAS_FINDING,affirmed,,Person,,C0412771,Finding,spontaneous respiration,0.557,8220,8425
+PMC5804616_01,REVEALED_BY,hedged,C0032326,Diagnosis,pneumothorax,C0543467,Treatment,surgery,0.347,8220,8425
+PMC5804616_01,REVEALED_BY,affirmed,C0412771,Finding,spontaneous respiration,C0032326,Diagnosis,pneumothorax,0.396,8220,8425
+PMC5804616_01,REVEALED_BY,affirmed,C0559312,Exam,one-lung ventilation,C0412771,Finding,spontaneous respiration,0.491,8426,8598
+PMC5804616_01,REVEALED_BY,affirmed,C0412771,Finding,spontaneous respiration,C0032326,Diagnosis,pneumothorax,0.372,8426,8598
+PMC5804616_01,REVEALED_BY,affirmed,C0032326,Diagnosis,pneumothorax,C0813207,Treatment,bypass,0.359,8426,8598
+PMC5833205_01,HAS_FINDING,historical,,Person,,C0038999,Finding,swelling,0.852,0,99
+PMC5833205_01,COORDINATE_WITH,affirmed,C0038999,Finding,swelling,C5980104,Finding,abdominal distension,0.625,100,332
+PMC5833205_01,REVEALED_BY,affirmed,C0038999,Finding,swelling,C5230913,Diagnosis,bilateral lower extremity edema,0.457,100,332
+PMC5833205_01,COORDINATE_WITH,affirmed,C5980104,Finding,abdominal distension,C5230913,Diagnosis,bilateral lower extremity edema,0.567,100,332
+PMC5833205_01,REVEALED_BY,affirmed,C0681827,Exam,Laboratory studies,C5966160,Treatment,albumin,0.899,610,747
+PMC5833205_01,COORDINATE_WITH,affirmed,C5966160,Treatment,albumin,C0042014,Exam,urinalysis,0.825,610,747
+PMC5833205_01,REVEALED_BY,hedged,C0681827,Exam,Laboratory studies,C5194182,Diagnosis,microcytic anemia,0.728,797,1068
+PMC5833205_01,REVEALED_BY,hedged,C0524587,Exam,mean corpuscular volume,C5194182,Diagnosis,microcytic anemia,0.707,797,1068
+PMC5833205_01,REVEALED_BY,affirmed,C0240066,Diagnosis,iron deficiency,C0015879,Treatment,ferritin,0.482,797,1068
+PMC5833205_01,REVEALED_BY,affirmed,C0020639,Diagnosis,hypoproteinemia,C5966160,Treatment,albumin,0.482,797,1068
+PMC5833205_01,COORDINATE_WITH,affirmed,C5966160,Treatment,albumin,C0555903,Exam,total protein,0.863,797,1068
+PMC5833205_01,TREATED_WITH,affirmed,,Person,,C6069601,Exam,upper endoscopy,0.969,1240,1413
+PMC5833205_01,TREATED_WITH,affirmed,,Person,,C0009378,Exam,colonoscopy,0.961,1240,1413
+PMC5833205_01,LOCATED_IN,affirmed,C0009378,Exam,colonoscopy,C0226875,BodyPart,lower gastrointestinal tract,0.711,1240,1413
+PMC5833205_01,COORDINATE_WITH,affirmed,C6069601,Exam,upper endoscopy,C0009378,Exam,colonoscopy,0.732,1240,1413
+PMC5833205_01,LOCATED_IN,historical,C0021368,Diagnosis,inflammation,C0014876,BodyPart,esophagus,0.937,1414,1667
+PMC5833205_01,COORDINATE_WITH,affirmed,C0014876,BodyPart,esophagus,C0013303,BodyPart,duodenum,0.482,1414,1667
+PMC5833205_01,COORDINATE_WITH,affirmed,C0013303,BodyPart,duodenum,C4037993,BodyPart,"colon, and rectum",0.482,1414,1667
+PMC5833205_01,TREATED_WITH,affirmed,,Person,,C1879316,Treatment,transfusion,0.89,1668,1826
+PMC5833205_01,COORDINATE_WITH,affirmed,C2316467,Treatment,packed red blood cells,C0302583,Treatment,iron,0.546,1668,1826
+PMC5833205_01,COORDINATE_WITH,affirmed,C2316467,Treatment,packed red blood cells,C0035139,Treatment,replacement,0.522,1668,1826
+PMC5833205_01,TREATED_WITH,affirmed,,Person,,C0087111,Treatment,therapy,0.792,2048,2102
+PMC5833205_01,HAS_DIAGNOSIS,negated,,Person,,C0013604,Diagnosis,edema,0.931,2103,2172
+PMC5833205_01,COORDINATE_WITH,affirmed,C0013604,Diagnosis,edema,C0011991,Symptom,diarrhea,0.571,2103,2172
+PMC5833205_01,TREATED_WITH,affirmed,C5966160,Treatment,albumin,C0013604,Diagnosis,edema,0.504,2173,2244
+PMC5875137_01,HAS_DIAGNOSIS,affirmed,,Person,,C0006142,Diagnosis,breast cancer,0.89,0,244
+PMC5875137_01,LOCATED_IN,affirmed,C0006142,Diagnosis,breast cancer,C0817096,BodyPart,chest,0.543,0,244
+PMC5875137_01,LOCATED_IN,affirmed,C0040405,Exam,computed tomography,C0817096,BodyPart,chest,0.883,0,244
+PMC5875137_01,REVEALED_BY,affirmed,C0231221,Finding,asymptomatic,C0003486,Diagnosis,aortic aneurysm,0.29,0,244
+PMC5875137_01,COORDINATE_WITH,affirmed,C0032207,Treatment,platinum,C0677554,Treatment,anastomosis,0.7,245,477
+PMC5875137_01,LOCATED_IN,affirmed,C0677554,Treatment,anastomosis,C0447054,BodyPart,left internal mammary artery,0.576,245,477
+PMC5875137_01,TREATED_WITH,affirmed,,Person,,C0700431,Treatment,cardiac rehabilitation,0.88,478,589
+PMC5875137_01,COORDINATE_WITH,negated,C0003483,BodyPart,aorta,C0729936,BodyPart,intracardiac,0.573,813,927
+PMC5875137_01,LOCATED_IN,affirmed,C2981153,Finding,focusing,C0018787,BodyPart,heart,0.568,813,927
+PMC5875137_01,COORDINATE_WITH,affirmed,C0018787,BodyPart,heart,C0003483,BodyPart,aorta,0.701,813,927
+PMC5875137_01,LOCATED_IN,affirmed,C0013516,Exam,echocardiography,C3163626,BodyPart,descending thoracic aorta,0.865,928,1138
+PMC6083636_P1,COORDINATE_WITH,affirmed,C1272091,Finding,history of amblyopia,C0038379,Diagnosis,strabismus,0.606,237,360
+PMC6083636_P1,COORDINATE_WITH,affirmed,C0038379,Diagnosis,strabismus,C0015397,Diagnosis,eye disorders,0.598,237,360
+PMC6083636_P1,LOCATED_IN,affirmed,C0855713,Exam,Cycloplegic refraction,C0229089,BodyPart,right eye,0.754,558,696
+PMC6083636_P1,LOCATED_IN,affirmed,C0419360,Exam,Slit-lamp examination,C0016823,BodyPart,fundus,0.734,698,820
+PMC6083636_P1,COORDINATE_WITH,affirmed,C0332573,Finding,macula,C0475806,Finding,near,0.521,1216,1419
+PMC6083636_P1,HAS_FINDING,affirmed,,Person,,C0332573,Finding,macula,0.655,1420,1534
+PMC6083636_P1,LOCATED_IN,affirmed,C0035298,BodyPart,retina,C5425799,Finding,all other,0.513,1738,1865
+PMC6083636_P1,HAS_FINDING,affirmed,,Person,,C3539106,Finding,defined,0.638,2074,2240
+PMC6083636_P1,LOCATED_IN,affirmed,C3539106,Finding,defined,C0229090,BodyPart,left eye,0.551,2074,2240
+PMC6083636_P1,HAS_FINDING,affirmed,,Person,,C0449820,Finding,score,0.604,2900,3141
+PMC6083636_P1,TREATED_WITH,affirmed,C0475806,Finding,near,C0423062,Diagnosis,intermittent exotropia,0.397,3142,3340
+PMC6083636_P1,HAS_DIAGNOSIS,affirmed,C0423062,Diagnosis,intermittent exotropia,C0271385,Diagnosis,horizontal nystagmus,0.372,3142,3340
+PMC6083636_P1,LOCATED_IN,affirmed,C0553544,Finding,gaze,C0016823,BodyPart,fundus,0.542,3341,3469
+PMC6134951_01,COORDINATE_WITH,affirmed,C0455544,Finding,history of asthma,C0151241,Diagnosis,atrial myxoma,0.563,0,220
+PMC6134951_01,LOCATED_IN,affirmed,C0151241,Diagnosis,atrial myxoma,C1261076,BodyPart,left upper lobe,0.61,0,220
+PMC6134951_01,LOCATED_IN,affirmed,C1261076,BodyPart,left upper lobe,C0034079,Finding,lung nodule,0.546,0,220
+PMC6134951_01,COORDINATE_WITH,affirmed,C0034079,Finding,lung nodule,C0520743,Diagnosis,mediastinal lymphadenopathy,0.606,0,220
+PMC6134951_01,COORDINATE_WITH,affirmed,C0520743,Diagnosis,mediastinal lymphadenopathy,C6009854,Diagnosis,left pleural effusion,0.733,0,220
+PMC6134951_01,REVEALED_BY,affirmed,C5885800,Exam,1-positive,C0032227,Diagnosis,pleural effusion,0.544,221,313
+PMC6134951_01,REVEALED_BY,affirmed,C0010818,Exam,Cytology,C0032227,Diagnosis,pleural effusion,0.627,221,313
+PMC6134951_01,HAS_FINDING,negated,,Person,,C1293131,Treatment,fusion,0.497,314,436
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C0079083,Treatment,carboplatin,0.913,466,618
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C0210657,Treatment,pemetrexed,0.895,466,618
+PMC6134951_01,COORDINATE_WITH,affirmed,C0079083,Treatment,carboplatin,C0210657,Treatment,pemetrexed,0.802,466,618
+PMC6134951_01,COORDINATE_WITH,affirmed,C0210657,Treatment,pemetrexed,C3658706,Treatment,pembrolizumab,0.639,466,618
+PMC6134951_01,REVEALED_BY,affirmed,C0200898,Exam,DNA analysis,C0027651,Diagnosis,tumor,0.573,619,728
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C3853921,Treatment,alectinib,0.935,1044,1153
+PMC6134951_01,TREATED_WITH,affirmed,C3853921,Treatment,alectinib,C0541828,Symptom,left-sided chest pain,0.683,1044,1153
+PMC6134951_01,HAS_FINDING,affirmed,,Person,,C0234918,Finding,morbilliform rash,0.913,1154,1342
+PMC6134951_01,LOCATED_IN,affirmed,C0234918,Finding,morbilliform rash,C0460005,BodyPart,trunk,0.755,1154,1342
+PMC6134951_01,LOCATED_IN,affirmed,C0023759,BodyPart,lip,C0270996,Symptom,eye swelling,0.675,1154,1342
+PMC6134951_01,REVEALED_BY,affirmed,C0221198,Finding,lesion,C0262981,Diagnosis,interface dermatitis,0.47,1434,1611
+PMC6134951_01,HAS_DIAGNOSIS,hedged,C0262981,Diagnosis,interface dermatitis,C0011609,Diagnosis,drug eruption,0.36,1434,1611
+PMC6134951_01,LOCATED_IN,affirmed,C0230346,BodyPart,right arm,C0221198,Finding,lesion,0.534,1434,1611
+PMC6134951_01,HAS_FINDING,negated,,Person,,C2240374,Finding,eosinophilia,0.838,1612,1757
+PMC6134951_01,LOCATED_IN,affirmed,C2240374,Finding,eosinophilia,C0205054,BodyPart,hepatic,0.617,1612,1757
+PMC6134951_01,REVEALED_BY,negated,C0009450,Diagnosis,Infectious disease,C0036689,Diagnosis,streptococcal pharyngitis,0.447,1758,1896
+PMC6134951_01,COORDINATE_WITH,affirmed,C0036689,Diagnosis,streptococcal pharyngitis,C0039128,Diagnosis,syphilis,0.711,1758,1896
+PMC6134951_01,COORDINATE_WITH,affirmed,C0039128,Diagnosis,syphilis,C0038463,Diagnosis,strongyloidiasis,0.626,1758,1896
+PMC6134951_01,COORDINATE_WITH,affirmed,C0038463,Diagnosis,strongyloidiasis,C0004610,Finding,bacteremia,0.622,1758,1896
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C0591126,Treatment,at 10,0.742,2062,2146
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C0012522,Treatment,diphenhydramine,0.93,2147,2270
+PMC6134951_01,COORDINATE_WITH,affirmed,C0032952,Treatment,prednisone,C1252065,Treatment,topical triamcinolone cream,0.802,2147,2270
+PMC6134951_01,TREATED_WITH,affirmed,C0015967,Symptom,febrile,C0032952,Treatment,prednisone,0.736,2305,2421
+PMC6134951_01,TREATED_WITH,hedged,C4722104,Treatment,Desensitization,C0020522,Diagnosis,delayed hypersensitivity reaction,0.654,2422,2628
+PMC6134951_01,TREATED_WITH,affirmed,,Person,,C4287815,Treatment,brigatinib,0.917,2629,2705
+PMC6134951_01,HAS_DIAGNOSIS,negated,,Person,,C5779629,Diagnosis,rash,0.913,2706,2767
+PMC6134951_01,HAS_SYMPTOM,affirmed,,Person,,C0015967,Symptom,fever,0.914,2706,2767
+PMC6134951_01,COORDINATE_WITH,affirmed,C5779629,Diagnosis,rash,C0015967,Symptom,fever,0.799,2706,2767
+PMC6134951_01,HAS_DIAGNOSIS,affirmed,,Person,,C0032227,Diagnosis,pleural effusion,0.93,2768,2871
+PMC6134951_01,HAS_DIAGNOSIS,affirmed,,Person,,C0027651,Diagnosis,tumor,0.965,2768,2871
+PMC6134951_01,COORDINATE_WITH,affirmed,C0032227,Diagnosis,pleural effusion,C0027651,Diagnosis,tumor,0.657,2768,2871
+PMC6343374_01,REVEALED_BY,affirmed,C0013516,Exam,Echocardiography,C2962221,Treatment,TAC,0.755,102,227
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C3842673,Finding,day 6,0.682,385,456
+PMC6343374_01,TREATED_WITH,affirmed,C3842673,Finding,day 6,C1282959,Treatment,median sternotomy,0.457,385,456
+PMC6343374_01,HAS_DIAGNOSIS,affirmed,,Person,,C0009443,Diagnosis,cold,0.718,457,696
+PMC6343374_01,REVEALED_BY,affirmed,C0009443,Diagnosis,cold,C0018791,Treatment,cardioplegia,0.34,457,696
+PMC6343374_01,LOCATED_IN,affirmed,C0332461,Finding,patch,C0225897,BodyPart,left ventricle,0.52,457,696
+PMC6343374_01,COORDINATE_WITH,affirmed,C0038530,BodyPart,subclavian artery,C0011666,BodyPart,descending aorta,0.54,850,1083
+PMC6343374_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,surgery,0.594,1393,1566
+PMC6343374_01,TREATED_WITH,affirmed,,Person,,C0522778,Treatment,stent removal,0.771,1567,1668
+PMC6343374_01,COORDINATE_WITH,affirmed,C0522778,Treatment,stent removal,C0374711,Treatment,repair,0.677,1567,1668
+PMC6343374_01,HAS_DIAGNOSIS,affirmed,,Person,,C0264353,Diagnosis,bronchomalacia,0.883,1669,1777
+PMC6343374_01,REVEALED_BY,negated,C0013516,Exam,echocardiography,C1261287,Diagnosis,stenosis,0.564,1851,2045
+PMC6343374_01,COORDINATE_WITH,affirmed,C1261287,Diagnosis,stenosis,C0344960,Diagnosis,truncal valve regurgitation,0.696,1851,2045
+PMC6343374_01,COORDINATE_WITH,affirmed,C0344960,Diagnosis,truncal valve regurgitation,C2004489,Symptom,regurgitation,0.666,1851,2045
+PMC6343374_01,TREATED_WITH,historical,,Person,,C0543467,Treatment,surgery,0.526,2091,2196
+PMC6343374_01,TREATED_WITH,affirmed,,Person,,C0374711,Treatment,repair,0.678,2259,2435
+PMC6343374_01,LOCATED_IN,affirmed,C0003489,BodyPart,aortic arch,C0374711,Treatment,repair,0.519,2259,2435
+PMC6343374_01,TREATED_WITH,affirmed,C0455844,Finding,right ventricular outflow,C0524865,Treatment,reconstruction,0.433,2259,2435
+PMC6343374_01,LOCATED_IN,affirmed,C4253024,BodyPart,truncal valve,C0374711,Treatment,repair,0.519,2259,2435
+PMC6343374_01,LOCATED_IN,affirmed,C0003489,BodyPart,aortic arch,C0035110,Treatment,reoperation,0.519,2541,2718
+PMC6343374_01,LOCATED_IN,affirmed,C0035110,Treatment,reoperation,C0018787,BodyPart,heart,0.513,2541,2718
+PMC6343374_01,LOCATED_IN,affirmed,C0018787,BodyPart,heart,C0543467,Treatment,surgery,0.519,2541,2718
+PMC6343374_01,LOCATED_IN,hedged,C0009566,Diagnosis,complication,C0003489,BodyPart,aortic arch,0.809,2719,2832
+PMC6343374_01,LOCATED_IN,hedged,C0003489,BodyPart,aortic arch,C0677554,Treatment,anastomosis,0.519,2719,2832
+PMC6343374_01,TREATED_WITH,hedged,C0677554,Treatment,anastomosis,C0264351,Diagnosis,bronchial compression,0.576,2719,2832
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C0332461,Finding,patch,0.876,3034,3185
+PMC6343374_01,LOCATED_IN,affirmed,C0441480,Treatment,direct anastomosis,C0003956,BodyPart,ascending aorta,0.525,3034,3185
+PMC6343374_01,HAS_DIAGNOSIS,affirmed,,Person,,C1261287,Diagnosis,stenosis,0.83,3186,3367
+PMC6343374_01,COORDINATE_WITH,affirmed,C0009068,Treatment,suturing,C0004704,Treatment,balloon dilatation,0.511,3186,3367
+PMC6343374_01,COORDINATE_WITH,affirmed,C0004704,Treatment,balloon dilatation,C2348535,Treatment,stenting,0.775,3186,3367
+PMC6343374_01,REVEALED_BY,affirmed,C1261287,Diagnosis,stenosis,C0009068,Treatment,suturing,0.557,3186,3367
+PMC6343374_01,HAS_FINDING,hedged,,Person,,C0564405,Finding,relief,0.559,3368,3578
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C0445223,Finding,related,0.656,3579,3691
+PMC6343374_01,REVEALED_BY,negated,C1456025,Exam,intravascular ultrasound,C0442739,Finding,no change,0.524,3692,3998
+PMC6343374_01,REVEALED_BY,affirmed,C0442739,Finding,no change,C0334096,Diagnosis,intimal proliferation,0.458,3692,3998
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C0332138,Finding,SE,0.907,4273,4332
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C0033213,Finding,problem,0.638,4333,4410
+PMC6343374_01,REVEALED_BY,affirmed,C0033213,Finding,problem,C0264353,Diagnosis,bronchomalacia,0.412,4333,4410
+PMC6343374_01,HAS_DIAGNOSIS,affirmed,,Person,,C0264351,Diagnosis,bronchial compression,0.839,4487,4577
+PMC6343374_01,TREATED_WITH,affirmed,,Person,,C0728940,Treatment,surgical removal,0.834,4578,4646
+PMC6343374_01,HAS_DIAGNOSIS,affirmed,,Person,,C0264353,Diagnosis,bronchomalacia,0.864,4647,4754
+PMC6343374_01,REVEALED_BY,affirmed,C1261287,Diagnosis,stenosis,C0264353,Diagnosis,bronchomalacia,0.378,4755,4953
+PMC6343374_01,HAS_FINDING,affirmed,,Person,,C0028778,Finding,obstruction,0.898,4954,5024
+PMC6343374_01,REVEALED_BY,affirmed,C1261287,Diagnosis,stenosis,C0374711,Treatment,surgical repair,0.378,5025,5205
+PMC6343374_01,LOCATED_IN,hedged,C0374711,Treatment,surgical repair,C0018787,BodyPart,heart,0.519,5025,5205
+PMC6354154_01,REVEALED_BY,affirmed,C0021359,Finding,infertility,C0006826,Diagnosis,cancer,0.322,326,408
+PMC6354154_01,REVEALED_BY,affirmed,C1510438,Exam,assay,C0733758,Treatment,FSH,0.749,462,594
+PMC6354154_01,COORDINATE_WITH,affirmed,C0733758,Treatment,FSH,C0023607,Treatment,LH,0.647,462,594
+PMC6354154_01,COORDINATE_WITH,affirmed,C0023607,Treatment,LH,C0039601,Treatment,testosterone,0.936,462,594
+PMC6354154_01,COORDINATE_WITH,affirmed,C0039601,Treatment,testosterone,C0011185,Treatment,dehydroepiandrosterone (DHEA,0.823,462,594
+PMC6354154_01,LOCATED_IN,affirmed,C0041618,Exam,ultrasonography,C0042149,BodyPart,uterus,0.943,595,776
+PMC6354154_01,LOCATED_IN,affirmed,C0041618,Exam,ultrasonography,C0029939,BodyPart,ovaries,0.861,595,776
+PMC6354154_01,COORDINATE_WITH,affirmed,C0042149,BodyPart,uterus,C0029939,BodyPart,ovaries,0.701,595,776
+PMC6354154_01,HAS_FINDING,negated,,Person,,C0455458,Finding,past medical history,0.555,815,914
+PMC6354154_01,TREATED_WITH,affirmed,,Person,,C1880304,Exam,diagnostic laparoscopy,0.964,915,982
+PMC6354154_01,COORDINATE_WITH,affirmed,C1880304,Exam,diagnostic laparoscopy,C0337279,Treatment,drilling,0.747,915,982
+PMC6354154_01,LOCATED_IN,affirmed,C0543467,Treatment,surgery,C0227898,BodyPart,both ovaries,0.495,983,1170
+PMC6354154_01,HAS_DIAGNOSIS,negated,,Person,,C3203359,Diagnosis,rupture,0.592,1171,1244
+PMC6354154_01,HAS_DIAGNOSIS,affirmed,,Person,,C0027651,Diagnosis,tumor,0.93,1353,1487
+PMC6354154_01,HAS_DIAGNOSIS,affirmed,,Person,,C0027651,Diagnosis,tumor,0.907,1488,1706
+PMC6354154_01,HAS_FINDING,affirmed,,Person,,C0221198,Finding,lesion,0.873,1488,1706
+PMC6354154_01,HAS_DIAGNOSIS,hedged,,Person,,C0334412,Diagnosis,steroid cell tumor,0.961,1862,1929
+PMC6354154_01,TREATED_WITH,affirmed,,Person,,C0039601,Treatment,testosterone,0.373,1930,2066
+PMC6354154_01,COORDINATE_WITH,affirmed,C0039601,Treatment,testosterone,C0041618,Exam,ultrasound,0.766,1930,2066
+PMC6354154_01,HAS_DIAGNOSIS,negated,,Person,,C2825055,Diagnosis,recurrence,0.92,2067,2173
+PMC6354154_01,TREATED_WITH,affirmed,,Person,,C0015915,Treatment,in vitro fertilization,0.905,2174,2328
+PMC6354154_01,COORDINATE_WITH,affirmed,C0015915,Treatment,in vitro fertilization,C0018061,Treatment,gonadotropin,0.535,2174,2328
+PMC6354154_01,COORDINATE_WITH,negated,C0949385,Treatment,ovarian stimulation,C4282382,Finding,no response,0.527,2174,2328
+PMC6354154_01,COORDINATE_WITH,negated,C0232973,Finding,not pregnant,C2825055,Diagnosis,recurrence,0.455,2329,2419
+PMC6949661_01,COORDINATE_WITH,affirmed,C0012833,Symptom,dizzy,C0683369,Finding,confused,0.743,0,198
+PMC6949661_01,COORDINATE_WITH,affirmed,C0683369,Finding,confused,C0042024,Diagnosis,urinary incontinence,0.583,0,198
+PMC6949661_01,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0018681,Symptom,headache,0.85,199,309
+PMC6949661_01,COORDINATE_WITH,affirmed,C0018681,Symptom,headache,C0008031,Symptom,chest pain,0.85,199,309
+PMC6949661_01,COORDINATE_WITH,affirmed,C0008031,Symptom,chest pain,C0013404,Symptom,shortness of breath,0.85,199,309
+PMC6949661_01,COORDINATE_WITH,affirmed,C0013404,Symptom,shortness of breath,C0030252,Finding,palpitations,0.743,199,309
+PMC6949661_01,COORDINATE_WITH,affirmed,C0030252,Finding,palpitations,C0018799,Diagnosis,cardiac diseases,0.603,199,309
+PMC6949661_01,REVEALED_BY,affirmed,C1623258,Exam,ECG,C0149721,Diagnosis,left ventricular hypertrophy,0.717,604,732
+PMC6949661_01,COORDINATE_WITH,affirmed,C1623258,Exam,ECG,C1997354,Finding,early repolarization,0.424,604,732
+PMC6949661_01,LOCATED_IN,affirmed,C0040405,Exam,CT) scan,C0018670,BodyPart,head,0.93,604,732
+PMC6949661_01,COORDINATE_WITH,affirmed,C1623258,Exam,ECG,C0018670,BodyPart,head,0.493,604,732
+PMC6949661_01,COORDINATE_WITH,affirmed,C0149721,Diagnosis,left ventricular hypertrophy,C1997354,Finding,early repolarization,0.584,604,732
+PMC6949661_01,REVEALED_BY,affirmed,C0013516,Exam,Echocardiography,C0020564,Diagnosis,hypertrophy,0.59,733,818
+PMC6949661_01,HAS_FINDING,historical,,Person,,C0025222,Finding,melena,0.693,819,1075
+PMC6949661_01,COORDINATE_WITH,affirmed,C0025222,Finding,melena,C0027497,Symptom,nausea,0.591,819,1075
+PMC6949661_01,COORDINATE_WITH,affirmed,C0027497,Symptom,nausea,C0042963,Symptom,vomiting,0.855,819,1075
+PMC6949661_01,TREATED_WITH,affirmed,C0042963,Symptom,vomiting,C0002771,Treatment,analgesic,0.639,819,1075
+PMC6949661_01,HAS_FINDING,affirmed,,Person,,C0039231,Finding,tachycardia,0.683,1076,1179
+PMC6949661_01,HAS_FINDING,affirmed,,Person,,C0232693,Finding,bowel sounds,0.589,1237,1293
+PMC6949661_01,TREATED_WITH,affirmed,,Person,,C0041942,Treatment,urea,0.675,1351,1438
+PMC6949661_01,TREATED_WITH,affirmed,C5453073,Finding,2 units,C2316467,Treatment,packed red blood cells,0.441,1439,1589
+PMC6949661_01,COORDINATE_WITH,affirmed,C2316467,Treatment,packed red blood cells,C0019029,Exam,hemoglobin level,0.691,1439,1589
+PMC6949661_01,LOCATED_IN,affirmed,C0079304,Exam,Esophagogastroduodenoscopy (EGD,C0013303,BodyPart,duodenum,0.775,1590,1727
+PMC6949661_01,LOCATED_IN,affirmed,C0399619,Exam,enteroscopy,C0034196,BodyPart,pylorus,0.76,1728,1863
+PMC6949661_01,COORDINATE_WITH,affirmed,C0009378,Exam,Colonoscopy,C0399619,Exam,enteroscopy,0.606,1728,1863
+PMC6949661_01,HAS_FINDING,affirmed,,Person,,C0578150,Finding,hemodynamically stable,0.696,1864,1968
+PMC6949661_01,REVEALED_BY,affirmed,C1536105,Exam,CT angiography,C0449416,Finding,source,0.521,1969,2182
+PMC6949661_01,REVEALED_BY,affirmed,C0449416,Finding,source,C0019080,Diagnosis,bleeding,0.317,1969,2182
+PMC6949661_01,REVEALED_BY,affirmed,C0019080,Diagnosis,bleeding,C6024877,Treatment,coil embolization,0.481,1969,2182
+PMC6949661_01,LOCATED_IN,affirmed,C0743997,Finding,incidental finding,C0022646,BodyPart,kidney,0.616,1969,2182
+PMC6949661_01,TREATED_WITH,affirmed,,Person,,C1880304,Exam,diagnostic laparoscopy,0.979,2183,2294
+PMC6949661_01,REVEALED_BY,negated,C1880304,Exam,diagnostic laparoscopy,C1704258,Finding,abnormality,0.534,2183,2294
+PMC6949661_01,REVEALED_BY,affirmed,C0014245,Exam,Endoscopy,C0221198,Finding,lesion,0.515,2295,2432
+PMC6949661_01,COORDINATE_WITH,affirmed,C0221198,Finding,lesion,C0332218,Finding,difficult,0.601,2295,2432
+PMC6949661_01,LOCATED_IN,affirmed,C0221198,Finding,lesion,C0022378,BodyPart,jejunum,0.521,2513,2690
+PMC6949661_01,LOCATED_IN,affirmed,C5686944,Diagnosis,pushed,C0021853,BodyPart,bowel,0.809,2730,2826
+PMC6949661_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,surgery,0.736,2893,2992
+PMC6949661_01,TREATED_WITH,negated,C0543467,Treatment,surgery,C0019080,Diagnosis,bleeding,0.711,2893,2992
+PMC6949661_01,HAS_FINDING,affirmed,,Person,,C3843647,Finding,2 years,0.561,2993,3070
+PMC6949661_01,TREATED_WITH,affirmed,C3843647,Finding,2 years,C0543467,Treatment,surgery,0.441,2993,3070
+PMC6949661_01,HAS_DIAGNOSIS,affirmed,,Person,,C0008519,Diagnosis,heterotopic tissue,0.825,3071,3149
+PMC6949661_01,LOCATED_IN,affirmed,C0021852,BodyPart,small bowel,C0022378,BodyPart,jejunum,0.514,3150,3359
+PMC6949661_01,LOCATED_IN,affirmed,C0700124,Finding,dilated,C1285092,BodyPart,gland,0.593,3150,3359
+PMC7086412_01,COORDINATE_WITH,affirmed,C0600457,Finding,gravida,C0030563,Finding,para,0.546,0,144
+PMC7086412_01,HAS_DIAGNOSIS,historical,,Person,,C0015927,Diagnosis,fetal demise,0.86,145,293
+PMC7086412_01,TREATED_WITH,affirmed,,Person,,C0017725,Treatment,glucose,0.445,395,644
+PMC7086412_01,HAS_FINDING,affirmed,,Person,,C0549206,Finding,pregnant,0.701,732,897
+PMC7086412_01,HAS_DIAGNOSIS,affirmed,,Person,,C0015927,Diagnosis,fetal demise,0.588,898,1032
+PMC7086412_01,REVEALED_BY,affirmed,C1704258,Finding,abnormality,C0011847,Diagnosis,diabetes,0.439,1033,1640
+PMC7086412_01,REVEALED_BY,affirmed,C0011847,Diagnosis,diabetes,C0011847,Diagnosis,Diabetes,0.414,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0009555,Exam,complete blood count,C0033707,Exam,prothrombin time,0.575,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0033707,Exam,prothrombin time,C0030605,Exam,partial thromboplastin time,0.575,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0030605,Exam,partial thromboplastin time,C0337428,Exam,fibrinogen level,0.575,1033,1640
+PMC7086412_01,REVEALED_BY,affirmed,C0337428,Exam,fibrinogen level,C0040160,Treatment,thyroid stimulating hormone,0.59,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0040160,Treatment,thyroid stimulating hormone,C0013227,Treatment,drug,0.649,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0003241,Treatment,antibodies,0.677,1033,1640
+PMC7086412_01,REVEALED_BY,affirmed,C0311370,Diagnosis,lupus anticoagulant,C0003241,Treatment,antibodies,0.482,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0003241,Treatment,antibodies,0.664,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0003241,Treatment,antibodies,C0003241,Treatment,antibodies,0.677,1033,1640
+PMC7086412_01,COORDINATE_WITH,affirmed,C0584960,Diagnosis,factor V Leiden mutation,C1260403,Diagnosis,prothrombin gene mutation,0.706,1033,1640
+PMC7086412_01,TREATED_WITH,affirmed,,Person,,C0259787,Treatment,induction of labor,0.855,1724,1870
+PMC7086412_01,COORDINATE_WITH,affirmed,C0085174,Treatment,misoprostol,C0733348,Treatment,Pitocin,0.609,1724,1870
+PMC7086412_01,COORDINATE_WITH,affirmed,C0085174,Treatment,misoprostol,C1384591,Treatment,artificial rupture of membranes,0.717,1724,1870
+PMC7086412_01,COORDINATE_WITH,affirmed,C1293122,Treatment,augmentation,C1384591,Treatment,artificial rupture of membranes,0.802,1724,1870
+PMC7086412_01,HAS_DIAGNOSIS,affirmed,,Person,,C0012359,Diagnosis,dilation,0.785,1957,2036
+PMC7086412_01,LOCATED_IN,affirmed,C0473306,Treatment,McRoberts maneuver,C1550314,BodyPart,suprapubic,0.515,2474,2547
+PMC7086412_01,LOCATED_IN,affirmed,C0473306,Treatment,McRoberts maneuver,C1550314,BodyPart,suprapubic,0.515,2699,2816
+PMC7086412_01,TREATED_WITH,negated,,Person,,C0011209,Treatment,delivery,0.732,2817,2926
+PMC7086412_01,TREATED_WITH,affirmed,,Person,,C0011209,Treatment,delivery,0.604,2927,3038
+PMC7086412_01,TREATED_WITH,affirmed,,Person,,C0017887,Treatment,nitroglycerin,0.601,3039,3120
+PMC7086412_02,COORDINATE_WITH,affirmed,C0600457,Finding,gravida,C0030563,Finding,para,0.557,0,174
+PMC7086412_02,HAS_DIAGNOSIS,affirmed,,Person,,C0015927,Diagnosis,fetal demise,0.769,175,226
+PMC7086412_02,REVEALED_BY,affirmed,C0017741,Exam,glucose tolerance test,C5203192,Finding,weeks gestational,0.512,227,503
+PMC7086412_02,HAS_FINDING,affirmed,,Person,,C0015663,Finding,fasting,0.614,609,760
+PMC7086412_02,REVEALED_BY,negated,C0686906,Finding,No diagnosis,C0271650,Diagnosis,glucose intolerance,0.317,761,879
+PMC7086412_02,HAS_FINDING,affirmed,,Person,,C5203192,Finding,weeks gestational,0.731,880,1012
+PMC7086412_02,HAS_FINDING,affirmed,,Person,,C0015663,Finding,fasting,0.531,1013,1148
+PMC7086412_02,REVEALED_BY,negated,C0686906,Finding,no diagnosis,C0271650,Diagnosis,glucose intolerance,0.317,1149,1239
+PMC7086412_02,HAS_DIAGNOSIS,affirmed,,Person,,C0015927,Diagnosis,fetal demise,0.588,1240,1398
+PMC7086412_02,REVEALED_BY,affirmed,C1704258,Finding,abnormality,C0011847,Diagnosis,diabetes,0.439,1399,1581
+PMC7086412_02,REVEALED_BY,affirmed,C0011847,Diagnosis,diabetes,C0011847,Diagnosis,Diabetes,0.414,1399,1581
+PMC7086412_02,TREATED_WITH,affirmed,,Person,,C0259787,Treatment,induction of labor,0.855,1582,1728
+PMC7086412_02,COORDINATE_WITH,affirmed,C0085174,Treatment,misoprostol,C0733348,Treatment,Pitocin,0.609,1582,1728
+PMC7086412_02,COORDINATE_WITH,affirmed,C0085174,Treatment,misoprostol,C1384591,Treatment,artificial rupture of membranes,0.717,1582,1728
+PMC7086412_02,COORDINATE_WITH,affirmed,C1293122,Treatment,augmentation,C1384591,Treatment,artificial rupture of membranes,0.802,1582,1728
+PMC7086412_02,HAS_DIAGNOSIS,affirmed,,Person,,C0012359,Diagnosis,dilation,0.785,1815,1880
+PMC7086412_02,TREATED_WITH,affirmed,,Person,,C0011209,Treatment,delivery,0.794,1881,1967
+PMC7086412_02,LOCATED_IN,affirmed,C0011209,Treatment,delivery,C0018670,BodyPart,head,0.56,1881,1967
+PMC7086412_02,LOCATED_IN,affirmed,C0473306,Treatment,McRoberts maneuver,C1550314,BodyPart,suprapubic,0.515,2082,2155
+PMC7086412_02,LOCATED_IN,affirmed,C0011209,Treatment,Delivery,C1140618,BodyPart,arm,0.585,2473,2547
+PMC7086412_02,TREATED_WITH,affirmed,C0011209,Treatment,delivery,C0269825,Diagnosis,shoulder dystocia,0.483,2616,2749
+PMC7086412_02,TREATED_WITH,affirmed,,Person,,C0473307,Treatment,Wood's Screw maneuver,0.574,2829,2968
+PMC7086412_02,TREATED_WITH,affirmed,C0269825,Diagnosis,shoulder dystocia,C0011209,Treatment,delivery,0.409,2969,3117
+PMC7102447_01,TREATED_WITH,historical,C0553895,Treatment,bioprosthetic mitral valve replacement,C0476273,Symptom,respiratory distress,0.552,0,276
+PMC7102447_01,TREATED_WITH,historical,C0476273,Symptom,respiratory distress,C0021925,Treatment,intubation,0.666,0,276
+PMC7102447_01,REVEALED_BY,historical,C0455458,Finding,past medical history,C0020538,Diagnosis,hypertension,0.284,0,276
+PMC7102447_01,COORDINATE_WITH,affirmed,C0020538,Diagnosis,hypertension,C0004096,Diagnosis,asthma,0.626,0,276
+PMC7102447_01,REVEALED_BY,affirmed,C0004096,Diagnosis,asthma,C0553895,Treatment,bioprosthetic mitral valve replacement,0.439,0,276
+PMC7102447_01,REVEALED_BY,affirmed,C1623258,Exam,electrocardiogram (EKG,C0232201,Finding,sinus rhythm,0.599,277,435
+PMC7102447_01,REVEALED_BY,affirmed,C1623258,Exam,electrocardiogram (EKG,C0264912,Diagnosis,left anterior fascicular block,0.794,277,435
+PMC7102447_01,REVEALED_BY,affirmed,C1623258,Exam,electrocardiogram (EKG,C0085615,Diagnosis,right bundle branch block,0.744,277,435
+PMC7102447_01,COORDINATE_WITH,affirmed,C0264912,Diagnosis,left anterior fascicular block,C0085615,Diagnosis,right bundle branch block,0.626,277,435
+PMC7102447_01,COORDINATE_WITH,affirmed,C0085615,Diagnosis,right bundle branch block,C0238705,Finding,left atrial enlargement,0.624,277,435
+PMC7102447_01,HAS_FINDING,affirmed,,Person,,C0525032,Finding,INR,0.783,557,635
+PMC7102447_01,REVEALED_BY,affirmed,C0030605,Exam,PTT,C0032207,Treatment,PT,0.655,557,635
+PMC7102447_01,TREATED_WITH,affirmed,,Person,,C0019134,Treatment,heparin,0.524,636,946
+PMC7102447_01,TREATED_WITH,affirmed,,Person,,C0574032,Treatment,infusion,0.521,636,946
+PMC7102447_01,TREATED_WITH,affirmed,C0574032,Treatment,infusion,C0948089,Diagnosis,acute coronary syndrome (ACS,0.669,636,946
+PMC7102447_01,LOCATED_IN,affirmed,C0002978,Exam,angiogram,C0817096,BodyPart,chest,0.902,636,946
+PMC7102447_01,COORDINATE_WITH,affirmed,C0013604,Diagnosis,interstitial edema,C0018800,Finding,cardiomegaly,0.584,636,946
+PMC7102447_01,REVEALED_BY,affirmed,C0206054,Exam,Transesophageal echocardiogram,C0040053,Diagnosis,thrombosis,0.575,947,1184
+PMC7102447_01,LOCATED_IN,affirmed,C0040053,Diagnosis,thrombosis,C0026264,BodyPart,mitral valve,0.885,947,1184
+PMC7102447_01,COORDINATE_WITH,affirmed,C0026269,Diagnosis,mitral stenosis,C2004489,Symptom,regurgitation,0.799,947,1184
+PMC7102447_01,TREATED_WITH,affirmed,,Person,,C0553895,Treatment,bioprosthetic mitral valve replacement,0.469,1185,1346
+PMC7102447_01,HAS_FINDING,affirmed,,Person,,C4489118,Finding,near complete,0.616,1347,1517
+PMC7102447_01,LOCATED_IN,affirmed,C0026264,BodyPart,mitral valve,C0543467,Treatment,surgery,0.519,1347,1517
+PMC7102447_01,TREATED_WITH,affirmed,,Person,,C0043031,Treatment,warfarin,0.455,1797,1923
+PMC7519975_01,TREATED_WITH,historical,C0455488,Finding,history of diabetes mellitus,C0021641,Treatment,insulin,0.441,0,261
+PMC7519975_01,TREATED_WITH,affirmed,C0010280,Treatment,craniotomy,C0025286,Diagnosis,meningioma,0.585,0,261
+PMC7519975_01,COORDINATE_WITH,affirmed,C0013144,Finding,drowsiness,C0042963,Symptom,emesis,0.846,0,261
+PMC7519975_01,LOCATED_IN,affirmed,C0040405,Exam,CT,C0000726,BodyPart,abdomen,0.93,262,478
+PMC7519975_01,REVEALED_BY,hedged,C1442858,Finding,shunt,C0021368,Diagnosis,inflammation,0.274,262,478
+PMC7519975_01,LOCATED_IN,hedged,C0021368,Diagnosis,inflammation,C0021853,BodyPart,bowel,0.904,262,478
+PMC7519975_01,REVEALED_BY,affirmed,C0202691,Exam,CT head,C0333548,Diagnosis,acute infarct,0.654,479,700
+PMC7519975_01,LOCATED_IN,affirmed,C0333548,Diagnosis,acute infarct,C0006121,BodyPart,brain stem,0.83,479,700
+PMC7519975_01,TREATED_WITH,affirmed,C1293134,Treatment,enlargement,C0240059,Diagnosis,intraventricular hemorrhage,0.453,479,700
+PMC7519975_01,REVEALED_BY,affirmed,C1442858,Finding,shunt,C1112209,Diagnosis,intra-abdominal infection,0.313,701,842
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C1442858,Finding,shunt,0.615,843,922
+PMC7519975_01,LOCATED_IN,affirmed,C1442858,Finding,shunt,C0027530,BodyPart,neck,0.662,843,922
+PMC7519975_01,TREATED_WITH,affirmed,C0023038,Treatment,laparotomy,C0000727,Symptom,acute abdomen,0.528,923,1038
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C1272641,Finding,arterial blood pressure,0.55,1039,1267
+PMC7519975_01,REVEALED_BY,affirmed,C1623258,Exam,ECG,C0232202,Finding,normal sinus rhythm,0.602,1268,1379
+PMC7519975_01,COORDINATE_WITH,affirmed,C0523891,Exam,serum sodium,C0525032,Finding,international normalized ratio,0.47,1380,1936
+PMC7519975_01,COORDINATE_WITH,affirmed,C0523891,Exam,serum sodium,C0302353,Exam,serum potassium,0.552,1380,1936
+PMC7519975_01,COORDINATE_WITH,affirmed,C0302353,Exam,serum potassium,C0596019,Treatment,chloride,0.501,1380,1936
+PMC7519975_01,COORDINATE_WITH,affirmed,C0596019,Treatment,chloride,C0005845,Exam,BUN,0.739,1380,1936
+PMC7519975_01,COORDINATE_WITH,affirmed,C0202041,Exam,serum glucose,C0728876,Exam,serum calcium,0.565,1380,1936
+PMC7519975_01,COORDINATE_WITH,affirmed,C0728876,Exam,serum calcium,C0373675,Exam,magnesium,0.565,1380,1936
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C4319571,Finding,high risk,0.598,1937,2124
+PMC7519975_01,REVEALED_BY,affirmed,C0741923,Diagnosis,cardiac event,C0543467,Treatment,surgery,0.361,1937,2124
+PMC7519975_01,COORDINATE_WITH,affirmed,C3539106,Finding,defined,C0027051,Diagnosis,myocardial infarction,0.602,1937,2124
+PMC7519975_01,COORDINATE_WITH,affirmed,C0027051,Diagnosis,myocardial infarction,C0018790,Diagnosis,cardiac arrest,0.64,1937,2124
+PMC7519975_01,TREATED_WITH,affirmed,C3845590,Finding,within 30 days,C0543467,Treatment,surgery,0.438,1937,2124
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C3176821,Finding,Cardiac Risk,0.71,2125,2326
+PMC7519975_01,REVEALED_BY,affirmed,C0007820,Diagnosis,cerebrovascular disease,C0021641,Treatment,insulin,0.699,2125,2326
+PMC7519975_01,TREATED_WITH,affirmed,,Person,,C0543467,Treatment,surgery,0.798,2327,2482
+PMC7519975_01,COORDINATE_WITH,affirmed,C0543467,Treatment,surgery,C0557061,Treatment,discussion,0.673,2327,2482
+PMC7519975_01,TREATED_WITH,affirmed,,Person,,C0038842,Treatment,supervision,0.621,2483,2617
+PMC7519975_01,HAS_DIAGNOSIS,affirmed,,Person,,C0018790,Diagnosis,asystole,0.75,2618,2709
+PMC7519975_01,LOCATED_IN,affirmed,C0871269,Finding,rhythm,C0817096,BodyPart,chest,0.566,2947,3016
+PMC7519975_01,HAS_FINDING,negated,,Person,,C0871269,Finding,rhythm,0.738,3261,3335
+PMC7519975_01,REVEALED_BY,negated,C0871269,Finding,rhythm,C0018790,Diagnosis,cardiac arrest,0.279,3261,3335
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C1546956,Finding,dead,0.681,3445,3525
+PMC7519975_01,COORDINATE_WITH,affirmed,C0543467,Treatment,Surgery,C1293095,Exam,reexploration,0.519,4069,4142
+PMC7519975_01,LOCATED_IN,affirmed,C1305188,BodyPart,right colon,C0001511,Diagnosis,adhesion,0.511,4143,4287
+PMC7519975_01,COORDINATE_WITH,affirmed,C0020885,BodyPart,ileum,C1305188,BodyPart,right colon,0.701,4143,4287
+PMC7519975_01,HAS_FINDING,affirmed,,Person,,C0278252,Finding,poor prognosis,0.639,4635,4747
+PMC7718649_01,COORDINATE_WITH,affirmed,C0993472,Treatment,prednisone (10 mg,C0020336,Treatment,hydroxychloroquine,0.962,61,181
+PMC7718649_01,HAS_FINDING,hedged,,Person,,C5203671,Finding,suspected COVID-19,0.574,302,405
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0015967,Symptom,fever,0.927,406,524
+PMC7718649_01,COORDINATE_WITH,affirmed,C0015967,Symptom,fever,C0085593,Symptom,chills,0.547,406,524
+PMC7718649_01,COORDINATE_WITH,affirmed,C0085593,Symptom,chills,C0424790,Symptom,rigor,0.85,406,524
+PMC7718649_01,COORDINATE_WITH,affirmed,C0424790,Symptom,rigor,C0234233,Symptom,soreness,0.947,406,524
+PMC7718649_01,COORDINATE_WITH,affirmed,C0234233,Symptom,soreness,C0015672,Symptom,fatigue,0.898,406,524
+PMC7718649_01,HAS_FINDING,affirmed,,Person,,C1997237,Finding,white sputum,0.835,525,584
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0027497,Symptom,nausea,0.991,633,738
+PMC7718649_01,HAS_FINDING,affirmed,,Person,,C1971624,Finding,anorexia,0.963,633,738
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0018834,Symptom,heartburn,0.99,633,738
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0011991,Symptom,diarrhea,0.987,633,738
+PMC7718649_01,COORDINATE_WITH,affirmed,C0027497,Symptom,nausea,C1971624,Finding,anorexia,0.563,633,738
+PMC7718649_01,COORDINATE_WITH,affirmed,C1971624,Finding,anorexia,C0018834,Symptom,heartburn,0.733,633,738
+PMC7718649_01,COORDINATE_WITH,affirmed,C0018834,Symptom,heartburn,C0011991,Symptom,diarrhea,0.898,633,738
+PMC7718649_01,HAS_FINDING,affirmed,,Person,,C6068191,Finding,first time,0.537,739,967
+PMC7718649_01,COORDINATE_WITH,affirmed,C1126043,Treatment,oseltamivir 75 mg,C5399815,Treatment,arbidol,0.978,739,967
+PMC7718649_01,COORDINATE_WITH,affirmed,C0032952,Treatment,prednisone,C0020336,Treatment,hydroxychloroquine,0.802,968,1054
+PMC7718649_01,TREATED_WITH,affirmed,,Person,,C0013227,Treatment,drugs,0.857,1055,1171
+PMC7718649_01,COORDINATE_WITH,affirmed,C0358321,Treatment,human immunoglobulin,C0032952,Treatment,prednisone,0.759,1501,1695
+PMC7718649_01,COORDINATE_WITH,affirmed,C0003451,Treatment,antiviral,C0087111,Treatment,therapies,0.603,1696,1877
+PMC7718649_01,REVEALED_BY,affirmed,C0040405,Exam,CT,C4522268,Finding,pulmonary,0.602,1878,2059
+PMC7718649_01,HAS_DIAGNOSIS,affirmed,,Person,,C0023518,Diagnosis,leucocytosis,0.959,2060,2207
+PMC7718649_01,COORDINATE_WITH,affirmed,C0023518,Diagnosis,leucocytosis,C0151683,Finding,neutrophilic leucocytosis,0.759,2060,2207
+PMC7718649_01,COORDINATE_WITH,affirmed,C0151683,Finding,neutrophilic leucocytosis,C0438226,Finding,normal lymphocyte count,0.809,2060,2207
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0015967,Symptom,fever,0.909,2208,2375
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C0010200,Symptom,coughing,0.937,2376,2431
+PMC7718649_01,HAS_FINDING,affirmed,,Person,,C1271104,Finding,blood pressure,0.854,2432,2740
+PMC7718649_01,COORDINATE_WITH,affirmed,C0023508,Exam,White blood cell count,C0857490,Exam,granulocyte count,0.737,2807,2895
+PMC7718649_01,COORDINATE_WITH,affirmed,C0857490,Exam,granulocyte count,C0200635,Exam,lymphocyte count,0.732,2807,2895
+PMC7718649_01,LOCATED_IN,affirmed,C3263723,Diagnosis,injuries,C0022646,BodyPart,kidney,0.906,2939,3021
+PMC7718649_01,COORDINATE_WITH,affirmed,C0022646,BodyPart,kidney,C0023884,BodyPart,liver,0.722,2939,3021
+PMC7718649_01,HAS_DIAGNOSIS,affirmed,,Person,,C5203670,Diagnosis,COVID-19,0.883,3226,3342
+PMC7718649_01,HAS_DIAGNOSIS,affirmed,,Person,,C2062441,Diagnosis,influenza A,0.864,3226,3342
+PMC7718649_01,COORDINATE_WITH,affirmed,C5203670,Diagnosis,COVID-19,C2062441,Diagnosis,influenza A,0.626,3226,3342
+PMC7718649_01,COORDINATE_WITH,affirmed,C2062441,Diagnosis,influenza A,C0009450,Diagnosis,infection,0.694,3226,3342
+PMC7718649_01,COORDINATE_WITH,affirmed,C0009450,Diagnosis,infection,C0011849,Diagnosis,diabetes mellitus,0.657,3226,3342
+PMC7718649_01,TREATED_WITH,affirmed,C0020336,Treatment,hydroxychloroquine,C5203670,Diagnosis,COVID-19,0.738,3343,3484
+PMC7718649_01,COORDINATE_WITH,affirmed,C0032952,Treatment,Prednisone,C0020336,Treatment,hydroxychloroquine,0.938,3343,3484
+PMC7718649_01,REVEALED_BY,affirmed,C3263722,Diagnosis,injury,C0032952,Treatment,prednisone,0.367,3485,3587
+PMC7718649_01,TREATED_WITH,affirmed,C1126048,Treatment,Pantoprazole (40 mg,C3263722,Diagnosis,injury,0.803,3485,3587
+PMC7718649_01,HAS_DIAGNOSIS,affirmed,,Person,,C0009450,Diagnosis,infection,0.509,3588,3687
+PMC7718649_01,REVEALED_BY,affirmed,C0392756,Finding,reduced,C0032285,Diagnosis,pneumonia,0.301,4188,4263
+PMC7718649_01,COORDINATE_WITH,affirmed,C0015879,Treatment,ferritin,C1176468,Exam,erythrocyte sedimentation rate (ESR,0.917,4387,4546
+PMC7718649_01,TREATED_WITH,affirmed,,Person,,C0439775,Treatment,elevation,0.542,4547,4666
+PMC7718649_01,REVEALED_BY,affirmed,C0392756,Finding,reduced,C0032285,Diagnosis,pneumonia,0.302,4827,4911
+PMC7718649_01,HAS_SYMPTOM,affirmed,,Person,,C5970507,Symptom,wrist pain,0.959,5021,5146
+PMC7718649_01,TREATED_WITH,affirmed,C5970507,Symptom,wrist pain,C0065199,Treatment,loxoprofen,0.757,5021,5146
+PMC7718649_01,LOCATED_IN,affirmed,C5551868,Finding,met,C1995000,BodyPart,back,0.506,5574,5915
+PMC8627357_01,COORDINATE_WITH,affirmed,C0025611,Treatment,methamphetamine,C0011892,Treatment,heroin,0.75,0,213
+PMC8627357_01,LOCATED_IN,affirmed,C0230330,BodyPart,left upper extremity,C0007642,Diagnosis,cellulitis,0.547,0,213
+PMC8627357_01,COORDINATE_WITH,affirmed,C0007642,Diagnosis,cellulitis,C0013404,Symptom,dyspnea,0.799,0,213
+PMC8627357_01,LOCATED_IN,affirmed,C0040405,Exam,CT,C0230330,BodyPart,left upper extremity,0.93,214,354
+PMC8627357_01,HAS_FINDING,affirmed,,Person,,C1547668,Finding,level of care,0.546,355,417
+PMC8627357_01,REVEALED_BY,affirmed,C1509143,Finding,physical exam,C0013604,Diagnosis,edema,0.555,418,601
+PMC8627357_01,REVEALED_BY,affirmed,C1509143,Finding,physical exam,C0041834,Diagnosis,erythema,0.559,418,601
+PMC8627357_01,COORDINATE_WITH,affirmed,C0013604,Diagnosis,edema,C0041834,Diagnosis,erythema,0.706,418,601
+PMC8627357_01,LOCATED_IN,affirmed,C0041834,Diagnosis,erythema,C0230330,BodyPart,left upper extremity,0.904,418,601
+PMC8627357_01,REVEALED_BY,affirmed,C5978151,Exam,screen positive,C0002667,Treatment,amphetamines,0.802,602,802
+PMC8627357_01,COORDINATE_WITH,affirmed,C0002667,Treatment,amphetamines,C0221793,Treatment,opiates,0.802,602,802
+PMC8627357_01,LOCATED_IN,affirmed,C0230330,BodyPart,left upper extremity,C0037580,Diagnosis,soft tissue swelling,0.512,803,898
+PMC8627357_01,LOCATED_IN,affirmed,C0040405,Exam,CT,C0230330,BodyPart,left upper extremity,0.93,803,898
+PMC8627357_01,HAS_SYMPTOM,affirmed,,Person,,C0476273,Symptom,respiratory distress,0.958,1032,1184
+PMC8627357_01,COORDINATE_WITH,affirmed,C0476273,Symptom,respiratory distress,C0242184,Diagnosis,hypoxia,0.72,1032,1184
+PMC8627357_01,REVEALED_BY,affirmed,C0034108,Exam,pulse oximetry,C0242184,Diagnosis,hypoxia,0.665,1032,1184
+PMC8627357_01,REVEALED_BY,affirmed,C0202823,Exam,CT chest,C4321394,Finding,foci,0.599,1185,1395
+PMC8627357_01,COORDINATE_WITH,affirmed,C4321394,Finding,foci,C0578735,Diagnosis,axillary lymphadenopathy,0.711,1185,1395
+PMC8627357_01,COORDINATE_WITH,affirmed,C0578735,Diagnosis,axillary lymphadenopathy,C0032227,Diagnosis,pleural effusions,0.626,1185,1395
+PMC8627357_01,LOCATED_IN,affirmed,C0011079,Treatment,debridement,C0230330,BodyPart,left upper extremity,0.576,1396,1534
+PMC8627357_01,COORDINATE_WITH,affirmed,C2242979,Exam,culture,C0427965,Finding,sensitivity,0.678,1709,1902
+PMC8627357_01,TREATED_WITH,affirmed,,Person,,C0742344,Treatment,chest tube placement,0.535,1903,2120
+PMC8627357_01,TREATED_WITH,affirmed,C3649547,Treatment,renal replacement therapy,C0001122,Diagnosis,acidosis,0.638,1903,2120
+PMC8627357_01,TREATED_WITH,affirmed,C3649547,Treatment,renal replacement therapy,C0041948,Diagnosis,uremia,0.748,1903,2120
+PMC8627357_01,COORDINATE_WITH,affirmed,C0742344,Treatment,chest tube placement,C3649547,Treatment,renal replacement therapy,0.822,1903,2120
+PMC8627357_01,COORDINATE_WITH,affirmed,C0001122,Diagnosis,acidosis,C0041948,Diagnosis,uremia,0.657,1903,2120
+PMC8627357_01,LOCATED_IN,affirmed,C0021107,Treatment,placement,C0817096,BodyPart,chest,0.538,2121,2311
+PMC8627357_01,LOCATED_IN,affirmed,C0015252,Treatment,removal,C0817096,BodyPart,chest,0.551,2312,2572
+PMC8627357_01,LOCATED_IN,affirmed,C0038536,Diagnosis,subcutaneous emphysema,C0817096,BodyPart,thorax,0.908,2312,2572
+PMC8627357_01,LOCATED_IN,affirmed,C0038638,Treatment,suction,C0817096,BodyPart,chest,0.536,2312,2572
+PMC8627357_01,COORDINATE_WITH,affirmed,C0019004,Treatment,hemodialysis,C0700323,Finding,neuromuscular blockade,0.463,2573,2867
+PMC8627357_01,COORDINATE_WITH,affirmed,C0040590,Treatment,tracheostomy,C0176751,Treatment,percutaneous endoscopic gastrostomy,0.802,2573,2867
+PMC8627357_01,TREATED_WITH,affirmed,,Person,,C0034991,Treatment,rehabilitation,0.654,2868,2937
+PMC9387390_01,HAS_SYMPTOM,affirmed,,Person,,C0011991,Symptom,diarrhea,0.811,0,141
+PMC9387390_01,REVEALED_BY,affirmed,C0011923,Exam,imaging,C0013604,Diagnosis,edema,0.63,142,211
+PMC9387390_01,LOCATED_IN,affirmed,C0040405,Exam,CT,C0000726,BodyPart,abdomen,0.93,295,526
+PMC9387390_01,COORDINATE_WITH,affirmed,C0030274,BodyPart,pancreas,C1718572,BodyPart,superior mesenteric vessels,0.547,295,526
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C0456853,Exam,CT guided biopsy,0.979,527,758
+PMC9387390_01,REVEALED_BY,hedged,C0456853,Exam,CT guided biopsy,C0001418,Diagnosis,adenocarcinoma,0.607,527,758
+PMC9387390_01,LOCATED_IN,affirmed,C0001418,Diagnosis,adenocarcinoma,C4299163,BodyPart,upper gastrointestinal tract,0.671,527,758
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C3665472,Treatment,chemotherapy,0.494,759,842
+PMC9387390_01,COORDINATE_WITH,affirmed,C0027497,Symptom,nausea,C0042963,Symptom,emesis,0.85,843,980
+PMC9387390_01,COORDINATE_WITH,affirmed,C0042963,Symptom,emesis,C0012359,Diagnosis,distention,0.694,843,980
+PMC9387390_01,REVEALED_BY,hedged,C0011923,Exam,imaging,C0028778,Finding,obstruction,0.522,981,1091
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C0399839,Treatment,gastrojejunostomy,0.859,1092,1194
+PMC9387390_01,HAS_DIAGNOSIS,affirmed,,Person,,C0919691,Diagnosis,anastomotic leak,0.81,1195,1299
+PMC9387390_01,HAS_FINDING,affirmed,,Person,,C0243001,Diagnosis,intra-abdominal abscesses,0.452,1300,1451
+PMC9387390_01,COORDINATE_WITH,affirmed,C0013303,BodyPart,duodenum,C0022378,BodyPart,jejunum,0.566,1586,1661
+PMC9387390_01,TREATED_WITH,affirmed,C0543467,Treatment,operation,C0012359,Diagnosis,distension,0.63,1662,1821
+PMC9387390_01,REVEALED_BY,affirmed,C0202657,Exam,follow-up CT,C0543467,Treatment,operation,0.747,1662,1821
+PMC9387390_01,LOCATED_IN,affirmed,C0012359,Diagnosis,distension,C3714551,BodyPart,stomach,0.904,1662,1821
+PMC9387390_01,COORDINATE_WITH,affirmed,C3714551,BodyPart,stomach,C0021852,BodyPart,small intestine,0.566,1662,1821
+PMC9387390_01,REVEALED_BY,negated,C0079304,Exam,esophagogastroduodenoscopy (EGD,C1261287,Diagnosis,stricture,0.649,1910,2036
+PMC9387390_01,HAS_FINDING,affirmed,,Person,,C0740411,Finding,delayed gastric emptying,0.703,2179,2430
+PMC9387390_01,LOCATED_IN,affirmed,C1299582,Finding,unable,C0022378,BodyPart,jejunum,0.527,2431,2560
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C0013103,Treatment,drainage,0.7,2700,2813
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C0021107,Treatment,placement,0.458,2814,3021
+PMC9387390_01,LOCATED_IN,affirmed,C0399620,Exam,push enteroscopy,C0015385,BodyPart,limb,0.938,3022,3173
+PMC9387390_01,LOCATED_IN,affirmed,C0399620,Exam,push enteroscopy,C0015385,BodyPart,limb,0.816,3022,3173
+PMC9387390_01,HAS_FINDING,affirmed,,Person,,C0028778,Finding,obstruction,0.573,3246,3377
+PMC9387390_01,HAS_FINDING,affirmed,,Person,,C0740411,Finding,delayed gastric emptying,0.566,3246,3377
+PMC9387390_01,COORDINATE_WITH,affirmed,C0028778,Finding,obstruction,C0740411,Finding,delayed gastric emptying,0.659,3246,3377
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C1829459,Treatment,decompression,0.833,3378,3445
+PMC9387390_01,TREATED_WITH,affirmed,,Person,,C0035139,Treatment,replacement,0.838,3446,3648
+PMC9387390_01,COORDINATE_WITH,affirmed,C0035139,Treatment,replacement,C0014245,Exam,endoscopy,0.483,3446,3648
+PMC9387390_01,COORDINATE_WITH,affirmed,C0014245,Exam,endoscopy,C2348535,Treatment,stent placement,0.534,3446,3648
+PMC9387390_01,LOCATED_IN,affirmed,C2348535,Treatment,stent placement,C0015385,BodyPart,limb,0.546,3446,3648
+PMC9529523_01,LOCATED_IN,historical,C0035435,Diagnosis,rheumatic disease,C0947123,BodyPart,bilateral finger,0.877,213,333
+PMC9529523_01,LOCATED_IN,historical,C0947123,BodyPart,bilateral finger,C0030193,Symptom,pain,0.663,213,333
+PMC9529523_01,COORDINATE_WITH,affirmed,C0030193,Symptom,pain,C0041582,Diagnosis,ulcers,0.626,213,333
+PMC9529523_01,REVEALED_BY,affirmed,C0041582,Diagnosis,ulcers,C0013103,Treatment,drainage,0.482,213,333
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0013516,Exam,echocardiogram,0.917,334,581
+PMC9529523_01,REVEALED_BY,negated,C0013516,Exam,echocardiogram,C1541923,Diagnosis,infective endocarditis,0.662,334,581
+PMC9529523_01,LOCATED_IN,affirmed,C0002978,Exam,angiogram,C0016129,BodyPart,fingers,0.79,334,581
+PMC9529523_01,LOCATED_IN,affirmed,C1541923,Diagnosis,infective endocarditis,C1140618,BodyPart,upper extremity,0.767,334,581
+PMC9529523_01,LOCATED_IN,affirmed,C0002978,Exam,angiogram,C1140618,BodyPart,upper extremity,0.883,334,581
+PMC9529523_01,HAS_DIAGNOSIS,affirmed,,Person,,C0000833,Diagnosis,abscess,0.861,582,706
+PMC9529523_01,COORDINATE_WITH,affirmed,C0152277,Treatment,incision and drainage,C0002688,Treatment,amputation,0.6,582,706
+PMC9529523_01,TREATED_WITH,affirmed,C0000833,Diagnosis,abscess,C0152277,Treatment,incision and drainage,0.618,582,706
+PMC9529523_01,REVEALED_BY,affirmed,C0079603,Exam,immunofluorescence assay,C0003241,Treatment,antibodies,0.664,707,1048
+PMC9529523_01,REVEALED_BY,affirmed,C0042384,Diagnosis,vasculitis,C0003241,Treatment,antibodies,0.548,1049,1214
+PMC9529523_01,TREATED_WITH,affirmed,C0003241,Treatment,antibodies,C0311370,Diagnosis,lupus anticoagulant,0.565,1215,1547
+PMC9529523_01,CAUSED_BY,affirmed,C0042384,Diagnosis,vasculitis,C0024141,Diagnosis,systemic lupus erythematosus,0.404,1548,1648
+PMC9529523_01,REVEALED_BY,affirmed,C0442015,Exam,digital,C0042384,Diagnosis,vasculitis,0.573,1548,1648
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0020336,Treatment,hydroxychloroquine,0.918,1649,1776
+PMC9529523_01,COORDINATE_WITH,affirmed,C0020336,Treatment,hydroxychloroquine,C0209368,Treatment,mycophenolate mofetil,0.706,1649,1776
+PMC9529523_01,HAS_FINDING,affirmed,,Person,,C1302313,Finding,lost to follow-up,0.673,1777,1944
+PMC9529523_01,TREATED_WITH,negated,C1302313,Finding,lost to follow-up,C0557061,Treatment,discussion,0.44,1777,1944
+PMC9529523_01,HAS_FINDING,affirmed,,Person,,C1262477,Finding,weight loss,0.793,1945,2054
+PMC9529523_01,HAS_DIAGNOSIS,affirmed,,Person,,C1851885,Diagnosis,progressive alopecia,0.943,2055,2150
+PMC9529523_01,COORDINATE_WITH,affirmed,C1851885,Diagnosis,progressive alopecia,C5779629,Diagnosis,rash,0.626,2055,2150
+PMC9529523_01,LOCATED_IN,affirmed,C5779629,Diagnosis,rash,C0817096,BodyPart,chest,0.848,2055,2150
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0201976,Exam,serum creatinine,0.934,2151,2367
+PMC9529523_01,COORDINATE_WITH,affirmed,C0020336,Treatment,hydroxychloroquine,C0020336,Treatment,hydroxychloroquine,0.55,2368,2493
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0020336,Treatment,hydroxychloroquine,0.756,2545,2660
+PMC9529523_01,REVEALED_BY,historical,C0194073,Exam,kidney biopsy,C3808622,Diagnosis,chronic thrombotic microangiopathy,0.644,2661,2888
+PMC9529523_01,LOCATED_IN,affirmed,C0022646,BodyPart,kidney,C3263722,Diagnosis,injury,0.547,2661,2888
+PMC9529523_01,REVEALED_BY,affirmed,C0194073,Exam,kidney biopsy,C3263722,Diagnosis,injury,0.588,2661,2888
+PMC9529523_01,COORDINATE_WITH,historical,C0020540,Diagnosis,malignant hypertension,C3808622,Diagnosis,chronic thrombotic microangiopathy,0.657,2661,2888
+PMC9529523_01,COORDINATE_WITH,affirmed,C0024119,Exam,pulmonary function testing,C3714541,Exam,forced vital capacity (FVC,0.72,2889,3067
+PMC9529523_01,TREATED_WITH,affirmed,C1280474,Finding,diffusing capacity,C0007009,Treatment,carbon,0.433,3068,3163
+PMC9529523_01,LOCATED_IN,negated,C0817096,BodyPart,chest,C0206062,Diagnosis,interstitial lung disease (ILD,0.532,3164,3282
+PMC9529523_01,LOCATED_IN,affirmed,C0412612,Exam,High-resolution computed tomography (HRCT,C0817096,BodyPart,chest,0.919,3164,3282
+PMC9529523_01,HAS_DIAGNOSIS,affirmed,,Person,,C0243026,Diagnosis,sepsis,0.847,3283,3414
+PMC9529523_01,LOCATED_IN,historical,C0243026,Diagnosis,sepsis,C0022646,BodyPart,kidney,0.761,3283,3414
+PMC9529523_01,LOCATED_IN,historical,C0022646,BodyPart,kidney,C3263722,Diagnosis,injury,0.547,3283,3414
+PMC9529523_01,HAS_FINDING,affirmed,,Person,,C0209368,Treatment,Mycophenolate mofetil,0.431,3415,3645
+PMC9529523_01,TREATED_WITH,affirmed,C0209368,Treatment,Mycophenolate mofetil,C0409974,Diagnosis,lupus,0.476,3415,3645
+PMC9529523_01,TREATED_WITH,affirmed,C0209368,Treatment,Mycophenolate mofetil,C0015544,Diagnosis,failure to thrive,0.467,3415,3645
+PMC9529523_01,CAUSED_BY,affirmed,C0409974,Diagnosis,lupus,C0015544,Diagnosis,failure to thrive,0.409,3415,3645
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0430462,Exam,transthoracic echocardiography,0.936,3712,3939
+PMC9529523_01,REVEALED_BY,affirmed,C0430462,Exam,transthoracic echocardiography,C0281788,Diagnosis,biventricular hypertrophy,0.667,3712,3939
+PMC9529523_01,REVEALED_BY,negated,C0024485,Exam,magnetic resonance imaging (MRI,C0264839,Diagnosis,infiltrative cardiomyopathy,0.707,3712,3939
+PMC9529523_01,REVEALED_BY,affirmed,C0024485,Exam,magnetic resonance imaging (MRI,C0281788,Diagnosis,biventricular hypertrophy,0.51,3712,3939
+PMC9529523_01,HAS_SYMPTOM,affirmed,,Person,,C0013404,Symptom,shortness of breath,0.893,3983,4084
+PMC9529523_01,HAS_SYMPTOM,affirmed,,Person,,C0013404,Symptom,dyspnea,0.813,3983,4084
+PMC9529523_01,COORDINATE_WITH,affirmed,C0013404,Symptom,shortness of breath,C0013404,Symptom,dyspnea,0.898,3983,4084
+PMC9529523_01,TREATED_WITH,affirmed,,Person,,C0209368,Treatment,mycophenolate mofetil,0.73,4223,4326
+PMC9529523_01,REVEALED_BY,affirmed,C1623258,Exam,Electrocardiogram (EKG,C0232202,Finding,normal sinus rhythm,0.602,4327,4653
+PMC9529523_01,COORDINATE_WITH,affirmed,C0191234,Treatment,pericardiocentesis,C0010818,Exam,cytology,0.539,4327,4653
+PMC9529523_01,REVEALED_BY,affirmed,C0013516,Exam,echocardiogram,C0232202,Finding,normal sinus rhythm,0.488,4327,4653
+PMC9529523_01,COORDINATE_WITH,affirmed,C0042508,Exam,ventricular ejection fraction,C0191234,Treatment,pericardiocentesis,0.506,4327,4653
+PMC9529523_01,REVEALED_BY,affirmed,C0010818,Exam,cytology,C0006826,Diagnosis,malignancy,0.502,4327,4653
+PMC9529523_01,REVEALED_BY,negated,C0189785,Exam,endomyocardial biopsy,C0020542,Diagnosis,pulmonary hypertension,0.536,4654,4798
+PMC9529523_01,REVEALED_BY,negated,C0189785,Exam,Endomyocardial biopsy,C0027059,Diagnosis,myocarditis,0.642,4799,5053
+PMC9529523_01,REVEALED_BY,hedged,C0026019,Exam,electron microscopy,C0878544,Diagnosis,cardiomyopathy,0.666,4799,5053
+PMC9532611_01,LOCATED_IN,affirmed,C0429603,Finding,Tanner stage 1 breasts,C0018494,BodyPart,hair,0.512,281,394
+PMC9532611_01,COORDINATE_WITH,negated,C0018494,BodyPart,hair,C0018494,BodyPart,hair,0.61,281,394
+PMC9532611_01,COORDINATE_WITH,negated,C0231221,Finding,asymptomatic,C3845474,Finding,other family member,0.57,526,663
+PMC9532611_01,COORDINATE_WITH,affirmed,C0455527,Finding,history of hypertension,C1279412,Diagnosis,periodic paralysis,0.567,526,663
+PMC9532611_01,REVEALED_BY,affirmed,C0730342,Exam,"karyotype 46, XX",C0730341,Finding,"karyotype 46, XY",0.525,664,816
+PMC9532611_01,REVEALED_BY,affirmed,C0730342,Exam,"karyotype 46, XX",C0020538,Diagnosis,hypertension,0.585,664,816
+PMC9532611_02,TREATED_WITH,affirmed,,Person,,C1285572,Exam,phenotype,0.836,0,167
+PMC9532611_02,REVEALED_BY,affirmed,C1285572,Exam,phenotype,C0497247,Finding,increased blood pressure,0.521,0,167
+PMC9532611_02,HAS_FINDING,family,,Person,,C5571033,Finding,the child,0.572,326,417
+PMC9532611_02,LOCATED_IN,family,C5571033,Finding,the child,C0042993,BodyPart,vulva,0.637,326,417
+PMC9532611_02,COORDINATE_WITH,negated,C0042993,BodyPart,vulva,C0042232,BodyPart,vagina,0.678,326,417
+PMC9532611_02,TREATED_WITH,affirmed,C5571033,Finding,The child,C0184899,Exam,surgical exploration,0.582,495,631
+PMC9532611_02,LOCATED_IN,affirmed,C0184899,Exam,surgical exploration,C0042232,BodyPart,vagina,0.592,495,631
+PMC9532611_02,COORDINATE_WITH,affirmed,C0001655,Treatment,"hormone, Adrenocorticotropic",C0001655,Treatment,ACTH,0.657,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0001655,Treatment,ACTH,C0035094,Treatment,renin,0.658,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0035094,Treatment,renin,C0002006,Treatment,aldosterone,0.665,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0002006,Treatment,aldosterone,C0045010,Treatment,17alpha-hydroxyprogesterone,0.677,690,1309
+PMC9532611_02,TREATED_WITH,affirmed,C0045010,Treatment,17alpha-hydroxyprogesterone,C4085344,Diagnosis,AMH,0.569,690,1309
+PMC9532611_02,REVEALED_BY,affirmed,C4085344,Diagnosis,AMH,C0066928,Treatment,anti-Mullerian hormone,0.482,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0038148,Treatment,dihydrotestosterone,C0002860,Treatment,androstenedione,0.721,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0872318,Exam,liquid chromatography-mass spectrometry,C0011185,Treatment,dehydroepiandrosterone (DHEA,0.774,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0011185,Treatment,dehydroepiandrosterone (DHEA,C0023607,Treatment,luteinizing hormone (LH,0.647,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0023607,Treatment,luteinizing hormone (LH,C0733758,Treatment,follicle-stimulating hormone (FSH,0.647,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0733758,Treatment,follicle-stimulating hormone (FSH,C0014912,Treatment,estradiol,0.647,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0014912,Treatment,estradiol,C0039601,Treatment,testosterone,0.654,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0039601,Treatment,testosterone,C0033308,Treatment,progesterone,0.676,690,1309
+PMC9532611_02,COORDINATE_WITH,affirmed,C0033308,Treatment,progesterone,C0033371,Treatment,prolactin (PRL,0.834,690,1309
+PMC9532611_02,HAS_DIAGNOSIS,affirmed,,Person,,C0001627,Diagnosis,congenital adrenal hyperplasia,0.88,1905,2393
+PMC9969157_01,REVEALED_BY,affirmed,C0549206,Finding,pregnancy,C0085207,Diagnosis,gestational diabetes,0.402,0,332
+PMC9969157_01,COORDINATE_WITH,affirmed,C1277583,Finding,gravida 3,C0233072,Finding,para 3,0.509,0,332
+PMC9969157_01,COORDINATE_WITH,affirmed,C0085207,Diagnosis,gestational diabetes,C0852036,Diagnosis,gestational hypertension,0.657,0,332
+PMC9969157_01,COORDINATE_WITH,family,C0852036,Diagnosis,gestational hypertension,C0241889,Finding,family history,0.558,0,332
+PMC9969157_01,TREATED_WITH,affirmed,,Person,,C0007876,Treatment,cesarean section,0.801,333,506
+PMC9969157_01,TREATED_WITH,family,C3656218,Finding,maternal morbidity,C0032914,Diagnosis,preeclampsia,0.5,333,506
+PMC9969157_01,COORDINATE_WITH,affirmed,C0032914,Diagnosis,preeclampsia,C0162739,Diagnosis,HELLP syndrome,0.66,333,506
+PMC9969157_01,COORDINATE_WITH,family,C0241889,Finding,family history,C1858460,Finding,maternal,0.526,955,1229
+PMC9969157_01,REVEALED_BY,affirmed,C0013516,Exam,Echocardiogram,C0016522,Diagnosis,patent foramen ovale,0.534,1474,1576
+PMC9969157_01,TREATED_WITH,affirmed,,Person,,C0066650,Treatment,23 ml,0.45,1755,2077
+PMC9969157_01,COORDINATE_WITH,affirmed,C0042963,Symptom,emesis,C0018932,Diagnosis,hematochezia,0.615,2318,2387
+PMC9969157_01,REVEALED_BY,affirmed,C1962945,Exam,x-ray,C0333139,Finding,pneumatosis,0.523,2388,2525
+PMC9969157_01,LOCATED_IN,affirmed,C0021853,BodyPart,bowel,C1829459,Treatment,decompression,0.519,2526,2656
+PMC9969157_01,TREATED_WITH,affirmed,,Person,,C0030548,Treatment,total parental nutrition,0.761,2657,2804
+PMC9969157_01,COORDINATE_WITH,affirmed,C0147020,Treatment,TrophAmine,C0017725,Treatment,glucose,0.647,2657,2804
+PMC9969157_01,COORDINATE_WITH,affirmed,C0574032,Treatment,infusion,C0733854,Treatment,Intralipid,0.633,2657,2804

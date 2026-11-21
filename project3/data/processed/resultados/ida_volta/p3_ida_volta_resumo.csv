@@ -1,0 +1,5 @@
+narrador,dificuldade,fichas,fidelidade,erro_polaridade,fidelidade_p3,erro_polaridade_p3,alucinacao,rel_p1,rel_p2,rel_p3,par_p1,par_p2,par_p3
+modelo,dificil,134,0.9177,0.0699,0.9876,0.0,0.0076,0.6398,0.8033,0.8033,0.8033,0.8033,0.8033
+modelo,facil,134,0.9883,0.0,0.9883,0.0,0.0062,0.6109,0.8219,0.8219,0.8219,0.8219,0.8219
+modelo,medio,134,0.99,0.0,0.99,0.0,0.0062,0.6218,0.8193,0.8193,0.8193,0.8193,0.8193
+modelo,todas,402,0.9653,0.0233,0.9886,0.0,0.0067,0.6242,0.8148,0.8148,0.8148,0.8148,0.8148

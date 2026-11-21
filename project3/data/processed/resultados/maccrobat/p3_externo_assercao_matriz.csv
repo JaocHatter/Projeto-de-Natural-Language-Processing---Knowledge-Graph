@@ -1,0 +1,10 @@
+real,previsto,n
+affirmed,affirmed,12691
+affirmed,hedged,117
+affirmed,negated,322
+hedged,affirmed,172
+hedged,hedged,41
+hedged,negated,4
+negated,affirmed,459
+negated,hedged,6
+negated,negated,539

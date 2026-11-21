@@ -1,0 +1,491 @@
+"""Testes do Projeto 2. Rodar com: python -m unittest discover -s tests"""
+
+import math
+import unittest
+
+from clinical_kg.learning.modelo import (NENHUMA, Empilhamento, carregar_candidatos_fracos, Exemplo, ModeloAprendido,
+                                         PontuadorLM,
+                                         RegressaoLogistica, UmContraTodos,
+                                         pontuacoes_fora_de_amostra,
+                                         UmContraTodosSklearn, atributos,
+                                         atributos_associacao, atributos_estruturais,
+                                         carregar_exemplos, texto_entre,
+                                         sklearn_disponivel)
+from clinical_kg.learning.pipeline import (bootstrap_pareado, combinar_relacoes, confronto,
+                                           diagnostico_fraco, jaccard, linha_ml, medir, prf,
+                                           prever_validando_fraco, sem_repetidas, tabela_gatilhos)
+from clinical_kg.relations.extract import CSV_COLUMNS, analyze_case
+from clinical_kg.learning.ngramas import (Associacoes, ModeloLinguagem,
+                                          contar_ngramas, tokenizar)
+
+
+class TestNgramas(unittest.TestCase):
+    def test_tokenizar_minusculas_e_ignora_pontuacao(self):
+        self.assertEqual(tokenizar("Treated with Aspirin, 40 mg."),
+                         ["treated", "with", "aspirin", "40", "mg"])
+
+    def test_tokenizar_mantem_covid_19_como_um_token(self):
+        self.assertEqual(tokenizar("COVID-19 and SARS-CoV-2, 5-year"),
+                         ["covid-19", "and", "sars-cov-2", "5", "year"])
+
+    def test_contar_ngramas(self):
+        c = contar_ngramas(["a", "b", "a", "b"], n_max=2)
+        self.assertEqual(c[("a",)], 2)
+        self.assertEqual(c[("a", "b")], 2)
+        self.assertEqual(c[("b", "a")], 1)
+        self.assertNotIn(("a", "b", "a"), c)
+
+
+class TestAssociacoes(unittest.TestCase):
+    def setUp(self):
+        # "x y" sempre juntos; "p" e "q" aparecem sempre separados.
+        self.textos = ["x y p"] * 6 + ["q z"] * 6 + ["p q"] * 6
+        self.a = Associacoes(self.textos, contagem_minima=5)
+
+    def test_pmi_calculado_a_mao(self):
+        # 24 bigramas, 42 palavras; c(x,y)=6, c(x)=6, c(y)=6
+        esperado = math.log2((6 / 24) / ((6 / 42) * (6 / 42)))
+        self.assertAlmostEqual(self.a.pmi("x", "y"), esperado, places=6)
+
+    def test_pmi_zero_abaixo_da_contagem_minima(self):
+        b = Associacoes(["x y"], contagem_minima=5)
+        self.assertEqual(b.pmi("x", "y"), 0.0)
+
+    def test_par_inexistente_vale_zero(self):
+        self.assertEqual(self.a.pmi("x", "q"), 0.0)
+        self.assertEqual(self.a.llr("x", "q"), 0.0)
+
+    def test_llr_alto_para_par_associado_e_nulo_para_independente(self):
+        associado = Associacoes(["x y"] * 10 + ["z w"] * 10)
+        independente = Associacoes(["a b"] * 6 + ["a c"] * 6 + ["d b"] * 6 + ["d c"] * 6)
+        self.assertGreater(associado.llr("x", "y"), 10.0)
+        self.assertAlmostEqual(independente.llr("a", "b"), 0.0, places=6)
+
+    def test_ranking_ordenado(self):
+        pmis = [r[3] for r in self.a.ranking("pmi")]
+        self.assertEqual(pmis, sorted(pmis, reverse=True))
+
+
+class TestModeloLinguagem(unittest.TestCase):
+    def test_probabilidades_somam_um(self):
+        m = ModeloLinguagem().ajustar([["treated", "with", "aspirin"], ["caused", "by"]])
+        vocab = set(m.unigramas) | {"__nova__"}
+        # A massa reservada a palavras novas faz a soma ficar um pouco abaixo de 1.
+        soma = sum(m.probabilidade("treated", w) for w in vocab)
+        self.assertLessEqual(soma, 1.0 + 1e-9)
+        self.assertGreater(soma, 0.5)
+
+    def test_texto_nunca_visto_tem_logprob_finita(self):
+        m = ModeloLinguagem().ajustar([["treated", "with"]])
+        self.assertTrue(math.isfinite(m.log_prob_media(["xyzzy", "frobnicate"])))
+
+    def test_prefere_o_que_viu(self):
+        m = ModeloLinguagem().ajustar([["treated", "with"]] * 5)
+        self.assertGreater(m.log_prob_media(["treated", "with"]),
+                           m.log_prob_media(["with", "treated"]))
+
+
+class TestRegressaoLogistica(unittest.TestCase):
+    def test_separa_dados_linearmente_separaveis(self):
+        X = [{"a": 1.0}] * 20 + [{"b": 1.0}] * 20
+        y = [1] * 20 + [0] * 20
+        m = RegressaoLogistica(epocas=30).ajustar(X, y)
+        self.assertEqual(m.prever({"a": 1.0}), 1)
+        self.assertEqual(m.prever({"b": 1.0}), 0)
+        self.assertGreater(m.pesos["a"], 0)
+        self.assertLess(m.pesos["b"], 0)
+
+    def test_probabilidade_entre_zero_e_um_mesmo_com_pesos_grandes(self):
+        m = RegressaoLogistica()
+        m.pesos, m.vies = {"a": 800.0}, 0.0
+        self.assertEqual(m.probabilidade({"a": 1.0}), 1.0)
+        m.pesos = {"a": -800.0}
+        self.assertEqual(m.probabilidade({"a": 1.0}), 0.0)
+
+    def test_peso_da_classe_rara_faz_o_modelo_disparar(self):
+        # 3 positivos contra 60 negativos, todos com o mesmo atributo ambíguo.
+        X = [{"x": 1.0}] * 63
+        y = [1] * 3 + [0] * 60
+        sem = RegressaoLogistica(peso_classe_rara=False).ajustar(X, y)
+        com = RegressaoLogistica(peso_classe_rara=True).ajustar(X, y)
+        self.assertEqual(sem.prever({"x": 1.0}), 0)
+        self.assertGreater(com.probabilidade({"x": 1.0}), sem.probabilidade({"x": 1.0}))
+
+    def test_resultado_reprodutivel_com_a_mesma_semente(self):
+        X = [{"a": 1.0}, {"b": 1.0}] * 10
+        y = [1, 0] * 10
+        p1 = RegressaoLogistica(semente=3).ajustar(X, y).pesos
+        p2 = RegressaoLogistica(semente=3).ajustar(X, y).pesos
+        self.assertEqual(p1, p2)
+
+
+class TestUmContraTodos(unittest.TestCase):
+    def test_tres_classes(self):
+        X = [{"a": 1.0}] * 15 + [{"b": 1.0}] * 15 + [{"c": 1.0}] * 15
+        rotulos = ["TRATA"] * 15 + ["LOCAL"] * 15 + [NENHUMA] * 15
+        m = UmContraTodos(epocas=30).ajustar(X, rotulos)
+        self.assertEqual(m.prever({"a": 1.0}), "TRATA")
+        self.assertEqual(m.prever({"b": 1.0}), "LOCAL")
+        self.assertEqual(m.tem_relacao({"c": 1.0}), 0)
+        self.assertEqual(m.tem_relacao({"a": 1.0}), 1)
+        self.assertAlmostEqual(sum(m.probabilidades({"a": 1.0}).values()), 1.0)
+
+
+@unittest.skipUnless(sklearn_disponivel(), "scikit-learn não instalado")
+class TestSklearn(unittest.TestCase):
+    def test_mesma_interface_e_mesmas_respostas_em_dados_simples(self):
+        X = [{"a": 1.0}] * 15 + [{"b": 1.0}] * 15 + [{"c": 1.0}] * 15
+        rotulos = ["TRATA"] * 15 + ["LOCAL"] * 15 + [NENHUMA] * 15
+        m = UmContraTodosSklearn().ajustar(X, rotulos)
+        self.assertEqual(m.prever({"a": 1.0}), "TRATA")
+        self.assertEqual(m.prever({"b": 1.0}), "LOCAL")
+        self.assertEqual(m.tem_relacao({"c": 1.0}), 0)
+        self.assertAlmostEqual(sum(m.probabilidades({"a": 1.0}).values()), 1.0)
+
+    def test_concorda_com_a_versao_a_mao_no_gold(self):
+        ex = carregar_exemplos()
+        X = [atributos(e) for e in ex]
+        r = [e.relacao for e in ex]
+        a_mao = UmContraTodos().ajustar(X, r)
+        sk = UmContraTodosSklearn().ajustar(X, r)
+        concordam = sum(a_mao.tem_relacao(x) == sk.tem_relacao(x) for x in X) / len(X)
+        self.assertGreater(concordam, 0.85)
+
+
+def _exemplo(caso, i, entre, eh):
+    return Exemplo(caso=caso, chave=(caso, i, i, i, i), estruturais={}, entre=entre,
+                   eh_relacao=eh, relacao="R" if eh else NENHUMA)
+
+
+def _mini_corpus():
+    """Quatro casos; relações usam 'treated with', não-relações usam 'of the'."""
+    ex = []
+    for caso in ["c1", "c2", "c3", "c4"]:
+        for i in range(5):
+            ex.append(_exemplo(caso, i, ["treated", "with"], 1))
+            ex.append(_exemplo(caso, 10 + i, ["of", "the"], 0))
+    return ex
+
+
+class TestEmpilhamento(unittest.TestCase):
+    def test_pontuador_separa_os_dois_tipos_de_texto(self):
+        p = PontuadorLM().ajustar(_mini_corpus())
+        self.assertGreater(p.pontuar(["treated", "with"]), 0)
+        self.assertLess(p.pontuar(["of", "the"]), 0)
+        self.assertTrue(-1.0 <= p.pontuar(["xyzzy"]) <= 1.0)
+
+    def test_score_fora_de_amostra_nao_depende_do_proprio_caso(self):
+        ex = _mini_corpus()
+        antes = pontuacoes_fora_de_amostra(ex)
+        # Inverte todos os rótulos do caso c1: o score de c1 não pode mudar,
+        # porque nenhum modelo que o pontua viu c1.
+        invertido = [_exemplo(e.caso, e.chave[1], e.entre, 1 - e.eh_relacao)
+                     if e.caso == "c1" else e for e in ex]
+        depois = pontuacoes_fora_de_amostra(invertido)
+        for e in ex:
+            if e.caso == "c1":
+                self.assertEqual(antes[e.chave], depois[e.chave])
+        # E o score dos outros casos muda, pois eles viram o c1 com outros rótulos.
+        self.assertNotEqual(antes[("c2", 0, 0, 0, 0)], depois[("c2", 0, 0, 0, 0)])
+
+    def test_score_dentro_da_amostra_e_otimista(self):
+        ex = _mini_corpus()
+        fora = pontuacoes_fora_de_amostra(ex)
+        dentro = PontuadorLM().ajustar(ex)
+        alvo = ex[0]   # relação
+        self.assertGreaterEqual(dentro.pontuar(alvo.entre), fora[alvo.chave])
+
+    def test_empilhamento_usa_fora_no_treino_e_completo_no_teste(self):
+        ex = _mini_corpus()
+        e = Empilhamento().ajustar(ex)
+        x_treino = e.atributos_treino(ex[0])
+        x_teste = e.atributos_teste(ex[0])
+        self.assertEqual(x_treino["lm_score"], e.fora_de_amostra[ex[0].chave])
+        self.assertEqual(x_teste["lm_score"], e.pontuador.pontuar(ex[0].entre))
+
+
+class TestModeloAprendido(unittest.TestCase):
+    def test_grava_e_recarrega_com_as_mesmas_previsoes(self):
+        import json
+        ex = _mini_corpus()
+        for e in ex:   # um atributo estrutural que acompanha o rótulo
+            e.estruturais = {"tipo": 1.0 if e.eh_relacao else 0.0}
+        textos = ["treated with aspirin"] * 6 + ["of the patient"] * 6
+        m = ModeloAprendido().ajustar(ex, textos)
+        r = ModeloAprendido.de_dict(json.loads(json.dumps(m.para_dict())))
+        for e in ex:
+            self.assertEqual(m.prever(e.estruturais, e.entre), r.prever(e.estruturais, e.entre))
+        self.assertEqual(m.prever_exemplo(ex[0]), "R")
+        self.assertEqual(m.prever_exemplo(ex[5]), NENHUMA)
+
+    def test_ablacoes_desligam_as_pecas(self):
+        ex = _mini_corpus()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False).ajustar(ex, [])
+        self.assertIsNone(m.assoc)
+        self.assertNotIn("lm_score", m.atributos_de({}, ["of", "the"]))
+
+
+class TestNgramasDiretos(unittest.TestCase):
+    def _treino(self):
+        ex = _mini_corpus()
+        for e in ex:
+            e.estruturais = {}
+        return ex
+
+    def test_so_entram_frases_vistas_em_pelo_menos_minimo_pares(self):
+        ex = self._treino() + [_exemplo("c9", 99, ["raro", "unico"], 0)]
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        self.assertIn(("treated", "with"), m.vocabulario_ngramas)
+        self.assertNotIn(("raro", "unico"), m.vocabulario_ngramas)   # visto em 1 par
+
+    def test_as_frases_viram_atributos_e_separam_as_classes(self):
+        ex = self._treino()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        self.assertIn("ngrama:treated with", m.atributos_de({}, ["treated", "with"]))
+        self.assertEqual(m.prever_exemplo(ex[0]), "R")
+        self.assertEqual(m.prever_exemplo(ex[5]), NENHUMA)
+
+    def test_grava_e_recarrega_o_vocabulario(self):
+        import json
+        ex = self._treino()
+        m = ModeloAprendido(usar_pmi=False, usar_lm=False, usar_ngramas=True).ajustar(ex, [])
+        r = ModeloAprendido.de_dict(json.loads(json.dumps(m.para_dict())))
+        self.assertEqual(m.vocabulario_ngramas, r.vocabulario_ngramas)
+        self.assertEqual(m.prever_exemplo(ex[0]), r.prever_exemplo(ex[0]))
+
+    def test_desligado_por_padrao(self):
+        m = ModeloAprendido().ajustar(self._treino(), ["x y"] * 6)
+        self.assertFalse(m.usar_ngramas)
+        self.assertFalse(any(k.startswith("ngrama:") for k in m.atributos_de({}, ["treated", "with"])))
+
+
+class TestMedidas(unittest.TestCase):
+    def test_prf(self):
+        self.assertEqual(prf(0, 0, 0), (0.0, 0.0, 0.0))
+        p, r, f1 = prf(6, 2, 4)
+        self.assertAlmostEqual(p, 0.75)
+        self.assertAlmostEqual(r, 0.6)
+        self.assertAlmostEqual(f1, 2 * 0.75 * 0.6 / 1.35)
+
+    def test_medir_separa_deteccao_e_tipo(self):
+        a = _exemplo("c1", 1, [], 1); a.relacao = "R"
+        b = _exemplo("c1", 2, [], 1); b.relacao = "R"
+        c = _exemplo("c1", 3, [], 0)
+        m = medir([(a, "R"), (b, "OUTRA"), (c, "R")])
+        self.assertEqual((m["vp"], m["fp"], m["fn"]), (2, 1, 0))
+        self.assertAlmostEqual(m["tipo"], 0.5)   # detectou 2 relações, acertou o tipo de 1
+
+    def test_matriz_de_confusao_conta_real_contra_previsto(self):
+        a = _exemplo("c1", 1, [], 1); a.relacao = "R"
+        b = _exemplo("c1", 2, [], 1); b.relacao = "R"
+        c = _exemplo("c1", 3, [], 0)
+        m = medir([(a, "R"), (b, "OUTRA"), (c, "R")])
+        self.assertEqual(m["matriz"][("R", "R")], 1)
+        self.assertEqual(m["matriz"][("R", "OUTRA")], 1)
+        self.assertEqual(m["matriz"][(NENHUMA, "R")], 1)
+        self.assertEqual(sum(m["matriz"].values()), 3)
+
+    def test_confronto_conta_vence_empata_perde(self):
+        self.assertEqual(confronto({"a": 0.9, "b": 0.5, "c": 0.1},
+                                   {"a": 0.5, "b": 0.5, "c": 0.3}), (1, 1, 1))
+
+
+class TestExtracao(unittest.TestCase):
+    def test_sem_repetidas_fica_com_a_de_maior_probabilidade(self):
+        base = {"case_id": "c1", "head_start": "1", "tail_start": "9", "relation": "LOCATED_IN"}
+        linhas = [{**base, "score": 0.88}, {**base, "score": 0.90},
+                  {**base, "relation": "TREATED_WITH", "score": 0.7}]
+        saida = sem_repetidas(linhas)
+        self.assertEqual(len(saida), 2)
+        self.assertEqual([l["score"] for l in saida if l["relation"] == "LOCATED_IN"], [0.90])
+
+    def test_linha_ml_segue_o_esquema_do_p1_e_apaga_o_gatilho(self):
+        cand = {
+            "relation": "HAS_FINDING", "assertion_status": "negated", "sent_start": 0,
+            "sent_end": 30, "token_gap": 2, "same_clause": True, "score": 2.5,
+            "rule_path": "score.trigger_weight",
+            "head": {"start": 0, "end": 4, "cui": "C1", "entity_type": "Exam", "surface_text": "scan"},
+            "tail": {"start": 10, "end": 16, "cui": "C2", "entity_type": "Finding", "surface_text": "lesion"},
+            "trigger": {"words": ["showed"], "start": 5, "end": 11, "category": "REVEAL"},
+        }
+        linha = linha_ml({"case_id": "c1", "article_id": "a1"}, cand, "REVEALED_BY", 0.8123)
+        self.assertEqual(list(linha), CSV_COLUMNS)
+        self.assertEqual(linha["relation"], "REVEALED_BY")
+        self.assertEqual(linha["score"], 0.812)
+        self.assertEqual(linha["assertion_status"], "negated")   # escopo é etapa do P1
+        self.assertEqual(linha["trigger_text"], "")              # nada de gatilho do P1
+        self.assertEqual(linha["rule_path"], "p2.regressao_logistica")
+
+
+class TestLimitePorSuporte(unittest.TestCase):
+    def test_sklearn_usa_o_mesmo_teto_por_suporte(self):
+        modelo = UmContraTodosSklearn()
+        self.assertEqual(modelo.peso_positivo(413, 4), 4.0)
+        self.assertEqual(modelo.peso_positivo(413, 40), 9.325)
+        self.assertEqual(modelo.peso_positivo(413, 0), 1.0)
+
+    def test_classe_rara_nao_recebe_peso_maior_que_seus_exemplos(self):
+        # 3 positivos de "RARA" contra 60 de "NENHUMA": sem limite o peso seria 20.
+        X = [{"x": 1.0}] * 3 + [{"x": 1.0}] * 60
+        rotulos = ["RARA"] * 3 + [NENHUMA] * 60
+        livre = UmContraTodos(limitar_por_suporte=False).ajustar(X, rotulos)
+        limitado = UmContraTodos(limitar_por_suporte=True).ajustar(X, rotulos)
+        self.assertGreater(livre.modelos["RARA"].probabilidade({"x": 1.0}),
+                           limitado.modelos["RARA"].probabilidade({"x": 1.0}))
+
+
+class TestComparacaoDeGrafos(unittest.TestCase):
+    @staticmethod
+    def _linha(relacao, cabeca, cauda, **extra):
+        return {"case_id": "c1", "head_start": cabeca, "tail_start": cauda, "relation": relacao, **extra}
+
+    def test_origem_p1_p2_ou_ambos(self):
+        p1 = [self._linha("TREATED_WITH", 1, 5), self._linha("LOCATED_IN", 2, 6)]
+        p2 = [self._linha("TREATED_WITH", 1, 5), self._linha("HAS_FINDING", 3, 7)]
+        origem = {(l["relation"]): l["origem"] for l in combinar_relacoes(p1, p2)}
+        self.assertEqual(origem, {"TREATED_WITH": "ambos", "LOCATED_IN": "p1", "HAS_FINDING": "p2"})
+
+    def test_mesmo_par_com_tipo_diferente_sao_relacoes_distintas(self):
+        p1 = [self._linha("HAS_FINDING", 1, 5)]
+        p2 = [self._linha("REVEALED_BY", 1, 5)]
+        self.assertEqual({l["origem"] for l in combinar_relacoes(p1, p2)}, {"p1", "p2"})
+
+    def test_ambos_usa_a_linha_do_p2(self):
+        p1 = [self._linha("TREATED_WITH", 1, 5, score="2.0")]
+        p2 = [self._linha("TREATED_WITH", 1, 5, score="0.9")]
+        self.assertEqual(combinar_relacoes(p1, p2)[0]["score"], "0.9")
+
+
+class TestComparacao(unittest.TestCase):
+    def test_jaccard(self):
+        self.assertEqual(jaccard({1, 2, 3}, {2, 3, 4}), 0.5)
+        self.assertEqual(jaccard(set(), set()), 0.0)
+
+    def test_tabela_gatilhos_marca_o_lexico_do_p1_e_ignora_funcao(self):
+        entre = ["was treated with"] * 4 + ["of the"] * 6 + ["the patient"] * 5
+        linhas, vistos = tabela_gatilhos(entre, minimo=3)
+        por_frase = {l["ngrama"]: l for l in linhas}
+        self.assertIn("treated with", por_frase)
+        self.assertEqual(por_frase["treated with"]["no_lexico_p1"], 1)
+        self.assertNotIn("of the", por_frase)        # só palavras de função
+        self.assertNotIn("the patient", por_frase)   # começa com artigo
+        self.assertIn("treated", vistos)
+
+
+class TestBootstrap(unittest.TestCase):
+    CASOS = {f"c{i}": (8, 2, 2) for i in range(10)}          # (vp, fp, fn) iguais nos 10 casos
+
+    def test_metodos_identicos_nao_se_distinguem(self):
+        r = bootstrap_pareado(self.CASOS, self.CASOS, repeticoes=500)
+        self.assertEqual((r["diferenca"], r["ic_inf"], r["ic_sup"]), (0.0, 0.0, 0.0))
+
+    def test_metodo_claramente_melhor_tem_intervalo_acima_de_zero(self):
+        melhor = {f"c{i}": (9, 1, 1) for i in range(10)}
+        r = bootstrap_pareado(melhor, self.CASOS, repeticoes=500)
+        self.assertGreater(r["ic_inf"], 0)
+        self.assertEqual(r["prob_positiva"], 1.0)
+
+    def test_diferenca_instavel_inclui_o_zero(self):
+        a = {f"c{i}": ((9, 1, 1) if i % 2 else (6, 4, 4)) for i in range(10)}
+        b = {f"c{i}": ((6, 4, 4) if i % 2 else (9, 1, 1)) for i in range(10)}
+        r = bootstrap_pareado(a, b, repeticoes=2000)
+        self.assertLess(r["ic_inf"], 0)
+        self.assertGreater(r["ic_sup"], 0)
+
+    def test_reprodutivel_com_a_mesma_semente(self):
+        melhor = {f"c{i}": (9 - i % 3, 1 + i % 2, 1) for i in range(10)}
+        self.assertEqual(bootstrap_pareado(melhor, self.CASOS, 300, semente=5),
+                         bootstrap_pareado(melhor, self.CASOS, 300, semente=5))
+
+
+class TestSupervisaoFraca(unittest.TestCase):
+    def test_treina_so_com_as_etiquetas_fracas_e_nunca_com_as_do_gold(self):
+        # Fracos: "treated with" = relação. Gold: os MESMOS textos, mas com rótulo oposto.
+        fracos = _mini_corpus()
+        for e in fracos:
+            e.estruturais = {}
+        gold = [_exemplo("c1", 100 + i, ["treated", "with"], 0) for i in range(3)]   # gold diz NENHUMA
+        previsoes = prever_validando_fraco(gold, fracos, {"c1": "x", "c2": "x", "c3": "x", "c4": "x"},
+                                           "fraco_lexico")
+        # A previsão segue o que as regras (fracos) ensinaram, não o rótulo do gold.
+        self.assertTrue(all(p == "R" for _, p in previsoes))
+
+    def test_o_caso_de_teste_fica_fora_do_treino(self):
+        fracos = _mini_corpus()                  # casos c1..c4
+        for e in fracos:
+            e.estruturais = {}
+        gold = [_exemplo("c1", 100, ["treated", "with"], 1)]
+        usados = []
+        import clinical_kg.learning.pipeline as pl
+        original = pl.ModeloAprendido.ajustar
+        def espiao(self, exemplos, corpus, classificador=None):
+            usados.append({e.caso for e in exemplos})
+            return original(self, exemplos, corpus, classificador)
+        pl.ModeloAprendido.ajustar = espiao
+        try:
+            prever_validando_fraco(gold, fracos, {c: "x" for c in ("c1", "c2", "c3", "c4")}, "fraco_estrutura")
+        finally:
+            pl.ModeloAprendido.ajustar = original
+        self.assertEqual(usados, [{"c2", "c3", "c4"}])
+
+    def test_diagnostico_conta_recuperadas_perdidas_e_falsos_positivos(self):
+        def par(eh, p1_score):
+            e = _exemplo("c1", id(object()) % 10000, [], eh)
+            e.extras = {"p1_score": p1_score}
+            return e
+        previsoes = [
+            (par(1, 0.0), "R"),        # relação que o P1 perdeu e o modelo recuperou
+            (par(1, 2.0), NENHUMA),    # relação que o P1 achou e o modelo perdeu
+            (par(0, 2.0), NENHUMA),    # falso positivo do P1 que o modelo removeu
+            (par(0, 0.0), "R"),        # falso positivo novo do modelo
+            (par(1, 2.0), "R"),        # os dois acertam
+        ]
+        d = diagnostico_fraco(previsoes)
+        self.assertEqual((d["recuperadas"], d["perdidas"], d["fp_removidos"], d["fp_novos"]), (1, 1, 1, 1))
+        self.assertAlmostEqual(d["concordancia_com_p1"], 1 / 5)   # só o último par concorda
+
+    def test_candidatos_fracos_vem_das_regras_do_p1(self):
+        from clinical_kg.relations.core import features as regras_p1
+        fracos = carregar_candidatos_fracos()
+        self.assertEqual(len(fracos), 2391)
+        self.assertEqual(len({e.caso for e in fracos}), 50)
+        limiar = regras_p1.WEIGHTS["decide.threshold"]
+        self.assertTrue(all((e.relacao != NENHUMA) == (e.extras["p1_score"] >= limiar) for e in fracos))
+
+
+class TestAtributos(unittest.TestCase):
+    def test_texto_entre_preserva_ordem_fisica_em_par_invertido(self):
+        texto = "A pelvic mass was identified by ultrasonography."
+        entidades = [
+            {"start": 2, "end": 13, "surface_text": "pelvic mass", "entity_type": "Finding", "cui": "C1", "tui": "T000"},
+            {"start": 32, "end": 47, "surface_text": "ultrasonography", "entity_type": "Exam", "cui": "C2", "tui": "T000"},
+        ]
+        candidato = next(c for c in analyze_case(texto, entidades, {}, threshold=float("-inf"))
+                         if "orient.swapped" in c["rule_path"])
+        self.assertEqual(texto_entre(texto, candidato), " was identified by ")
+        estruturais, entre = atributos_estruturais(texto, candidato)
+        self.assertEqual(entre, ["was", "identified", "by"])
+        self.assertEqual(estruturais["n_palavras_entre"], 3 / 20)
+        self.assertEqual(estruturais["distancia:1_3"], 1.0)
+
+    def test_atributos_de_associacao(self):
+        assoc = Associacoes(["x y"] * 10 + ["z w"] * 10, contagem_minima=5)
+        f = atributos_associacao(["x", "y"], assoc)
+        self.assertGreater(f["pmi_max"], 0)
+        self.assertEqual(set(f), {"pmi_max", "pmi_medio", "llr_max"})
+        self.assertEqual(atributos_associacao(["x"], assoc), {})
+
+    def test_exemplos_do_gold(self):
+        ex = carregar_exemplos()
+        self.assertEqual(len(ex), 413)
+        self.assertEqual(len({e.caso for e in ex}), 10)
+        self.assertEqual(sum(e.eh_relacao for e in ex), 221)
+        self.assertTrue(all(e.relacao == NENHUMA for e in ex if not e.eh_relacao))
+        nomes = {n for e in ex for n in atributos(e)}
+        # Nada que venha das regras do Projeto 1 (gatilho, categoria, score).
+        self.assertFalse(any(n.startswith(("gatilho", "trigger", "score", "p1")) for n in nomes))
+        self.assertIn("mesma_clausula", nomes)
+
+
+if __name__ == "__main__":
+    unittest.main()
